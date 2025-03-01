@@ -1,0 +1,538 @@
+{
+   "format_version" : "1.14.0",
+   "sound_definitions" : {
+      "firearm.normal_hit" : {
+         "max_distance" : 16.0,
+         "sounds" : [
+				{
+            "name": "sounds/hit/normal_hit_1",
+            "volume" : 1.5,
+            "is3D": false
+            },
+				{
+            "name": "sounds/hit/normal_hit_2",
+            "volume" : 1.5,
+            "is3D": false
+            },
+				{
+            "name": "sounds/hit/normal_hit_3",
+            "volume" : 1.5,
+            "is3D": false
+            }
+         ]
+      },
+      "firearm.headshot_hit_ping" : {
+         "max_distance" : 16.0,
+         "sounds" : [
+				{
+            "name": "sounds/hit/headshot_with_helmet",
+            "volume" : 2.0,
+            "is3D": false
+            }
+         ]
+      },
+      "firearm.headshot_hit" : {
+         "max_distance" : 16.0,
+         "sounds" : [
+				{
+            "name": "sounds/hit/headshot_no_helmet",
+            "volume" : 1.5,
+            "is3D": false
+            }
+         ]
+      },
+
+      "firearm.rifle_reload_magazine_out_light" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_out_light",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_out_medium" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_out_medium",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_out_heavy" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_out_heavy",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_out_pubg" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_out_pubg",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_in_light" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_in_light",
+            "volume" : 0.8
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_in_medium" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_in_medium",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_in_heavy" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_in_heavy",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_in_pubg" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_in_pubg",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_cock_toward_light" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_cock_toward_light",
+            "volume" : 0.9
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_cock_away_light" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_cock_away_light",
+            "volume" : 0.9
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_cock_toward_heavy" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_cock_toward_heavy",
+            "pitch": 1.2,
+            "volume" : 1.3
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_cock_away_heavy" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_cock_away_heavy",
+            "pitch": 1.2,
+            "volume" : 1.3
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_cock_toward_pubg" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_cock_toward_pubg",
+            "pitch": 1.0
+            }
+         ]
+      },
+      "firearm.rifle_reload_magazine_cock_away_pubg" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/rifle/rifle_cock_away_pubg",
+            "pitch": 1.0
+            }
+         ]
+      },
+      
+      "firearm.pistol_reload_magazine_out" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/pistol/pistol_out",
+            "volume" : 1.75
+            }
+         ]
+      },
+      "firearm.pistol_reload_magazine_in" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/pistol/pistol_in",
+            "volume" : 1.75
+            }
+         ]
+      },
+      "firearm.pistol_reload_cock_toward" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/pistol/pistol_cock_toward",
+            "volume" : 1.75
+            }
+         ]
+      },
+      "firearm.pistol_reload_cock_away" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/pistol/pistol_cock_away",
+            "pitch": 1.2,
+            "volume" : 1.75
+            }
+         ]
+      },
+
+
+      "firearm.p90_reload_magazine_out" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/smg/p90/p90_out",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.p90_reload_magazine_in" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/smg/p90/p90_in",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.p90_reload_smack_magazine" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/smg/p90/p90_smack_magazine",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.p90_reload_cock_toward" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/smg/p90/p90_cock_toward",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.p90_reload_cock_away" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/smg/p90/p90_cock_away",
+            "volume" : 1.0
+            }
+         ]
+      },
+
+
+      "firearm.sniper_reload_bolt_pull_toward" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/sniper/sniper_reload_bolt_pull_toward",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.sniper_reload_bolt_pull_away" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/sniper/sniper_reload_bolt_pull_away",
+            "volume" : 1.0
+            }
+         ]
+      },
+
+
+      "firearm.shotgun_reload_magazine_in" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/shotgun/shotgun_in",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.shotgun_reload_cock_toward" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/shotgun/shotgun_cock_toward",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.shotgun_reload_cock_away" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/shotgun/shotgun_cock_away",
+            "volume" : 1.0
+            }
+         ]
+      },
+
+
+
+      "firearm.ak47_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/ak47_shoot",
+            "volume" : 0.8,
+            "pitch" : 1.40
+            }
+         ]
+      },
+      "firearm.akm_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/akm_shoot",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.m4a1_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/m4a1_shoot",
+            "volume" : 1.3,
+            "pitch": 0.9
+            },
+				{
+            "name": "sounds/shoot/m4a1_shoot",
+            "volume" : 1.3,
+            "pitch": 0.95
+            },
+				{
+            "name": "sounds/shoot/m4a1_shoot",
+            "volume" : 1.3,
+            "pitch": 1.0
+            },
+				{
+            "name": "sounds/shoot/m4a1_shoot",
+            "volume" : 1.3,
+            "pitch": 1.05
+            },
+				{
+            "name": "sounds/shoot/m4a1_shoot",
+            "volume" : 1.3,
+            "pitch": 1.1
+            }
+         ]
+      },
+      "firearm.m4a1_shoot_4_in_3_ticks" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/m4a1_shoot_4_in_3_ticks",
+            "volume" : 1.6
+            }
+         ]
+      },
+      "firearm.ar15_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/ar15_shoot",
+            "volume" : 0.7
+            }
+         ]
+      },
+      "firearm.hk417_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/hk417_shoot",
+            "volume" : 0.85
+            }
+         ]
+      },
+      "firearm.p90_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/p90_shoot",
+            "volume" : 1.2
+            }
+         ]
+      },
+      "firearm.ump45_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/ump45_shoot",
+            "volume" : 1.2
+            }
+         ]
+      },
+      "firearm.desert_eagle_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/desert_eagle_shoot",
+            "volume" : 3.0
+            }
+         ]
+      },
+      "firearm.mk13_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/mk13_shoot",
+            "volume" : 3.0
+            }
+         ]
+      },
+      "firearm.remington870_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/remington870_shoot",
+            "volume" : 3.0
+            }
+         ]
+      },
+      "firearm.rpg7_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/rpg7_shoot",
+            "volume" : 3.2
+            }
+         ]
+      },
+      "firearm.javelin_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/javelin_shoot"
+            }
+         ]
+      },
+      "firearm.javelin_shoot1" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/javelin_shoot1"
+            }
+         ]
+      },
+      "firearm.javelin_shoot2" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/javelin_shoot2"
+            }
+         ]
+      },
+
+
+
+      "firearm.switch_firing_mode_to_default" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/abilities/switch_firing_mode",
+            "pitch" : 1.3
+            }
+         ]
+      },
+      "firearm.switch_firing_mode_to_alternate" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/abilities/switch_firing_mode",
+            "pitch" : 0.9
+            }
+         ]
+      },
+      "firearm.switch_scope_zoom_to_default" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/abilities/switch_scope_zoom_to_default"
+            }
+         ]
+      },
+      "firearm.switch_scope_zoom_to_alternate" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/abilities/switch_scope_zoom_to_alternate"
+            }
+         ]
+      },
+      "firearm.javelin_lock_on" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/abilities/javelin_lock_on"
+            }
+         ]
+      },
+
+
+
+
+      "firearm.rpg7_explosion" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/explosions/rpg7_explosion"
+            }
+         ]
+      },
+      "firearm.javelin_explosion" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/explosions/javelin_explosion"
+            }
+         ]
+      },
+      "firearm.explosion" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/explosions/explosion"
+            }
+         ]
+      }
+   }
+}

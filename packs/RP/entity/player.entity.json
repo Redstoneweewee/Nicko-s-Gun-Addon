@@ -1,0 +1,384 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:player",
+      "materials": {
+        "default": "outline_base",
+				"firearm": "entity_alphablend",
+        "cape": "entity_alphatest",
+        "animated": "player_animated",
+				"scope": "entity_emissive_alpha",
+        "outline": "outline",
+        "screen_display": "screen_display"
+
+      },
+      "textures": {
+        "cape": "textures/entity/cape_invisible",
+        "normal_hit_marker": "textures/screen_display/normal_hit_marker",
+        "headshot_hit_marker": "textures/screen_display/headshot_hit_marker",
+        "gold_outline": "textures/material/gold_outline",
+        "blue_outline": "textures/material/blue_outline",
+				"iron_sight": "textures/entity/iron_sight",
+				"red_dot_scope": "textures/entity/red_dot_scope",
+				"acog": "textures/entity/acog",
+				"sniper_scope": "textures/entity/sniper_scope",
+        "ak47": "textures/entity/ak47_texture",
+        "akm": "textures/entity/akm_texture",
+        "m4a1": "textures/entity/m4a1_texture",
+        "ar15": "textures/entity/ar15_texture",
+        "hk417": "textures/entity/hk417_texture",
+        "mk13": "textures/entity/mk13_texture",
+        "p90": "textures/entity/p90_texture",
+        "ump45": "textures/entity/ump45_texture",
+        "desert_eagle": "textures/entity/desert_eagle_texture",
+        "remington870": "textures/entity/remington870_texture"
+      },
+      "geometry": {
+        "default": "geometry.humanoid.custom",
+        "arms": "geometry.weeweejuice.arms",
+        "screen_display": "geometry.weeweejuice.screen_display",
+        "cape": "geometry.cape",
+        "outline": "geometry.weeweejuice.player_outline",
+        "outline_vanilla": "geometry.weeweejuice.player_outline_vanilla",
+				"akm_iron_sight": "geometry.weeweejuice.akm_iron_sight",
+				"m4a1_iron_sight": "geometry.weeweejuice.m4a1_iron_sight",
+				"red_dot_scope": "geometry.weeweejuice.red_dot_scope",
+				"acog": "geometry.weeweejuice.acog",
+				"sniper_scope": "geometry.weeweejuice.sniper_scope",
+        "ak47": "geometry.weeweejuice.ak47",
+        "akm": "geometry.weeweejuice.akm",
+        "m4a1": "geometry.weeweejuice.m4a1",
+        "ar15": "geometry.weeweejuice.ar15",
+        "hk417": "geometry.weeweejuice.hk417",
+        "mk13": "geometry.weeweejuice.mk13",
+        "p90": "geometry.weeweejuice.p90",
+        "ump45": "geometry.weeweejuice.ump45",
+        "desert_eagle": "geometry.weeweejuice.desert_eagle",
+        "remington870": "geometry.weeweejuice.remington870"
+      },
+      "scripts": {
+        "scale": "0.9375",
+        "should_update_bones_and_effects_offscreen": true,
+        "initialize": [
+          "variable.is_holding_right = 0.0;",
+          "variable.is_blinking = 0.0;",
+          "variable.last_blink_time = 0.0;",
+          "variable.hand_bob = 0.0;",
+          "variable.is_not_shooting_increment = 1.0;",
+          "v.max_outline_width = 0.25;",
+          "v.movement_clamp = 0.0;",
+          "v.movement_clamp2 = 0.0;",
+          "V.movement_direction = 0.0;",
+          "v.movement_direction_value = 0.0;",
+          "v.reload_normal_animation_multiplier = 1.0;",
+          "v.reload_no_swap_animation_multiplier = 1.0;",
+          "v.reload_cock_animation_multiplier = 1.0;"
+        ],
+        "pre_animation": [
+          "variable.helmet_layer_visible = 1.0;",
+          "variable.leg_layer_visible = 1.0;",
+          "variable.boot_layer_visible = 1.0;",
+          "variable.chest_layer_visible = 1.0;",
+          "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
+          "variable.tcos0  = (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+          "variable.tcos02 = (math.cos(query.modified_distance_moved * 38.17/2) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+          "variable.tcos0_fast = (math.cos(query.modified_distance_moved * 38.17*1.5) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+          "variable.tcos02_fast = (math.cos(query.modified_distance_moved * 38.17*0.75) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+          "variable.first_person_rotation_factor = math.sin((1 - variable.attack_time) * 180.0);",
+          "variable.hand_bob = query.life_time <0.01 ? 0.0 : variable.hand_bob + ((query.is_on_ground && query.is_alive ? math.clamp(math.sqrt(math.pow(query.position_delta(0), 2.0) + math.pow(query.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;",
+          "variable.map_angle = math.clamp(1 - variable.player_x_rotation / 45.1, 0.0, 1.0);",
+          "variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;",
+
+          "v.team                        = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:team');",
+          "v.hit_marker_variant          = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:hit_marker_variant');",
+          "v.is_aiming                   = q.is_sneaking;",
+          "v.is_holding_firearm          = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:is_firearm');",
+          "v.is_holding_magazine         = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:is_magazine');",
+          "v.is_holding_offhand_magazine = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:has_offhand_magazine');",
+          "v.firearm_has_ammo            = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:firearm_has_ammo');",
+          "v.should_cock_on_reload       = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:should_cock_on_reload');",
+          "v.is_shooting                 = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:is_shooting');",
+          "v.is_reloading                = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:is_reloading');",
+          "v.should_start_cock           = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:should_start_cock');",
+          "v.recoil                      = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:recoil');",
+          "v.is_running                  = q.is_sprinting;",
+
+          "v.movement_direction            = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:movement_direction');",
+          "v.movement_direction_prop_val   = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:movement_direction_value')/1.5;",
+					"v.movement_clamp                = (v.movement_direction == 'center' && q.is_moving && !v.is_aiming) ? (v.movement_clamp < -0.01 ? v.movement_clamp+0.02 : v.movement_clamp > 0.01 ? v.movement_clamp-0.02 : 0) : v.movement_clamp+v.movement_direction_prop_val;",
+					"v.movement_clamp                = math.clamp(v.movement_clamp, -1, 1);",
+					"v.movement_direction_value      = math.atan(3*v.movement_clamp)*6/360;",
+					"v.movement_clamp2               = v.movement_clamp2+v.movement_direction_prop_val;",
+					"v.movement_clamp2               = math.clamp(v.movement_clamp2, -0.5, 0.5);",
+					"v.movement_direction_value_fast = math.atan(3*v.movement_clamp2)*2/360;",
+
+
+          "v.is_holding_iron_sight_firearm              = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm', 'yes:m4a1');",
+          "v.is_holding_red_dot_scope_variant_1_firearm = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:ak47', 'yes:ar15', 'yes:ump45', 'yes:desert_eagle');",
+          "v.is_holding_red_dot_scope_variant_2_firearm = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:p90', 'yes:remington870');",
+          "v.is_holding_acog_firearm                    = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:hk417');",
+          "v.is_holding_sniper_scope_firearm            = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:mk13');",
+
+          "v.should_use_rifle_animations   = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_rifle_animations');",
+          "v.should_use_pistol_animations  = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_pistol_animations');",
+          "v.should_use_shotgun_animations = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_shotgun_animations');",
+
+          "v.should_rifle_reload_swap      = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_rifle_reload_swap');",
+          "v.should_rifle_reload_no_swap   = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_rifle_reload_no_swap');",
+          "v.should_rifle_reload_cock      = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_rifle_reload_cock');",
+          "v.should_pistol_reload_swap     = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_pistol_reload_swap');",
+          "v.should_pistol_reload_no_swap  = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_pistol_reload_no_swap');",
+          "v.should_pistol_reload_cock     = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_pistol_reload_cock');",
+          "v.should_p90_reload_swap        = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_p90_reload_swap');",
+          "v.should_p90_reload_no_swap     = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_p90_reload_no_swap');",
+          "v.should_p90_reload_cock        = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_p90_reload_cock');",
+          "v.should_shotgun_reload_swap    = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_shotgun_reload_swap');",
+          "v.should_shotgun_reload_no_swap = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_shotgun_reload_no_swap');",
+          "v.should_shotgun_reload_cock    = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_shotgun_reload_cock');",
+
+          "v.is_not_shooting_increment = v.is_shooting ? 0 : v.is_not_shooting_increment >= 1 ? 1 : v.is_not_shooting_increment + 0.008;",
+          
+          "v.reload_normal_animation_multiplier  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_normal_animation_multiplier');",
+          "v.reload_no_swap_animation_multiplier = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_no_swap_animation_multiplier');",
+          "v.reload_cock_animation_multiplier    = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_cock_animation_multiplier');",
+
+
+          "v.rotation_offset_x  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:rotation_offset_x')/100;",
+          "v.rotation_offset_y  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:rotation_offset_y')/100;",
+          "v.rotation_offset_z  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:rotation_offset_z')/100;",
+          "v.transform_offset_x = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:transform_offset_x')/10000;",
+          "v.transform_offset_y = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:transform_offset_y')/1000;",
+          "v.transform_offset_z = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:transform_offset_z')/1000;"
+        ],
+        "animate": [
+          {
+            "root": "!v.is_first_person || !v.is_holding_firearm"
+          },
+          {
+            "first_person_base": "v.is_first_person && v.is_holding_firearm"
+          },
+          {
+            "hit_marker": "(v.is_paperdoll || q.is_in_ui) ? 0 : v.hit_marker_variant != 'none'"
+          },
+          {
+            "hide_arms": "v.is_holding_firearm"
+          },
+          {
+            "hide_magazines": "v.is_holding_firearm && !v.is_reloading"
+          },
+          {
+            "hide_firearm_magazine": "v.is_holding_firearm && !v.is_holding_offhand_magazine && !v.is_reloading"
+          },
+          {
+            "pistol_slide_back": "v.is_holding_firearm && !v.firearm_has_ammo"
+          },
+          {
+            "third_person_no_crouch": "!v.is_first_person && v.is_holding_firearm"
+          },
+          {
+            "player_outline_size": "!v.is_first_person && !q.is_spectator && q.distance_from_camera > 4.5"
+          },
+          "firearms_controller"
+        ]
+      },
+      "animations": {
+        "root": "controller.animation.player.root",
+        "base_controller": "controller.animation.player.base",
+        "hudplayer": "controller.animation.player.hudplayer",
+        "humanoid_base_pose": "animation.humanoid.base_pose",
+        "look_at_target": "controller.animation.humanoid.look_at_target",
+        "look_at_target_ui": "animation.player.look_at_target.ui",
+        "look_at_target_default": "animation.humanoid.look_at_target.default",
+        "look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
+        "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
+        "look_at_target_inverted": "animation.player.look_at_target.inverted",
+        "cape": "animation.player.cape",
+        "move.arms": "animation.player.move.arms",
+        "move.legs": "animation.player.move.legs",
+        "swimming": "animation.player.swim",
+        "swimming.legs": "animation.player.swim.legs",
+        "riding.arms": "animation.player.riding.arms",
+        "riding.legs": "animation.player.riding.legs",
+        "holding": "animation.player.holding",
+        "brandish_spear": "animation.humanoid.brandish_spear",
+        "charging": "animation.humanoid.charging",
+        "attack.positions": "animation.player.attack.positions",
+        "attack.rotations": "animation.player.attack.rotations",
+        "sneaking": "animation.player.sneaking",
+        "bob": "animation.player.bob",
+        "damage_nearby_mobs": "animation.humanoid.damage_nearby_mobs",
+        "bow_and_arrow": "animation.humanoid.bow_and_arrow",
+        "use_item_progress": "animation.humanoid.use_item_progress",
+        "skeleton_attack": "animation.skeleton.attack",
+        "sleeping": "animation.player.sleeping",
+        "first_person_base_pose": "animation.player.first_person.base_pose",
+        "first_person_empty_hand": "animation.player.first_person.empty_hand",
+        "first_person_swap_item": "animation.player.first_person.swap_item",
+        "first_person_attack_controller": "controller.animation.player.first_person_attack",
+        "first_person_attack_rotation": "animation.player.first_person.attack_rotation",
+        "first_person_attack_rotation_item": "animation.player.first_person.attack_rotation_item",
+        "first_person_vr_attack_rotation": "animation.player.first_person.vr_attack_rotation",
+        "first_person_walk": "animation.player.first_person.walk",
+        "first_person_map_controller": "controller.animation.player.first_person_map",
+        "first_person_map_hold": "animation.player.first_person.map_hold",
+        "first_person_map_hold_attack": "animation.player.first_person.map_hold_attack",
+        "first_person_map_hold_off_hand": "animation.player.first_person.map_hold_off_hand",
+        "first_person_map_hold_main_hand": "animation.player.first_person.map_hold_main_hand",
+        "first_person_crossbow_equipped": "animation.player.first_person.crossbow_equipped",
+        "first_person_crossbow_hold": "animation.player.first_person.crossbow_hold",
+        "first_person_breathing_bob": "animation.player.first_person.breathing_bob",
+        "third_person_crossbow_equipped": "animation.player.crossbow_equipped",
+        "third_person_bow_equipped": "animation.player.bow_equipped",
+        "crossbow_hold": "animation.player.crossbow_hold",
+        "crossbow_controller": "controller.animation.player.crossbow",
+        "shield_block_main_hand": "animation.player.shield_block_main_hand",
+        "shield_block_off_hand": "animation.player.shield_block_off_hand",
+        "blink": "controller.animation.persona.blink",
+        "fishing_rod": "animation.humanoid.fishing_rod",
+        "holding_spyglass": "animation.humanoid.holding_spyglass",
+        "first_person_shield_block": "animation.player.first_person.shield_block",
+        "tooting_goat_horn": "animation.humanoid.tooting_goat_horn",
+        "holding_brush": "animation.humanoid.holding_brush",
+        "brushing": "animation.humanoid.brushing",
+        "crawling": "animation.player.crawl",
+        "crawling.legs": "animation.player.crawl.legs",
+        "holding_heavy_core": "animation.player.holding_heavy_core",
+        
+        "hit_marker": "animation.weeweejuice.hit_marker",
+        "player_outline_size": "animation.weeweejuice.player_outline_size",
+        "test_movement": "animation.test_entity.move",
+				"first_person_base": "animation.first_person_base",
+        "third_person_no_crouch": "animation.third_person_no_crouch",
+				"hide_arms": "animation.hide_arms",
+        "hide_magazines": "animation.hide_magazines",
+        "hide_firearm_magazine": "animation.hide_firearm_magazine",
+        "pistol_slide_back": "animation.pistol_slide_back",
+
+        "first_person_base_controller": "controller.animation.first_person_base",
+        "firearms_controller": "controller.animation.firearms",
+
+        "rifle_hold_first_person":     "animation.rifle_hold_first_person",
+        "rifle_hold_third_person":     "animation.rifle_hold_third_person",
+        "rifle_hold_run_first_person": "animation.rifle_hold_run_first_person",
+        "rifle_hold_run_third_person": "animation.rifle_hold_run_third_person",
+        "rifle_hipfire_first_person":  "animation.rifle_hipfire_first_person",
+        "rifle_hipfire_third_person":  "animation.rifle_hipfire_third_person",
+
+        "pistol_hold_first_person":     "animation.pistol_hold_first_person",
+        "pistol_hold_third_person":     "animation.pistol_hold_third_person",
+        "pistol_hold_run_first_person": "animation.pistol_hold_run_first_person",
+        "pistol_hold_run_third_person": "animation.pistol_hold_run_third_person",
+        "pistol_hipfire_first_person":  "animation.pistol_hipfire_first_person",
+        "pistol_hipfire_third_person":  "animation.pistol_hipfire_third_person",
+
+        "shotgun_hold_first_person":     "animation.shotgun_hold_first_person",
+        "shotgun_hold_third_person":     "animation.shotgun_hold_third_person",
+        "shotgun_hold_run_first_person": "animation.shotgun_hold_run_first_person",
+        "shotgun_hold_run_third_person": "animation.shotgun_hold_run_third_person",
+        "shotgun_hipfire_first_person":  "animation.shotgun_hipfire_first_person",
+        "shotgun_hipfire_third_person":  "animation.shotgun_hipfire_third_person",
+
+        "akm_aim_iron_sight_first_person":    "animation.akm_aim_iron_sight_first_person",
+        "m4a1_aim_iron_sight_first_person":   "animation.m4a1_aim_iron_sight_first_person",
+        "rifle_aim_red_dot_scope_first_person": "animation.rifle_aim_red_dot_scope_first_person",
+        "rifle_aim_acog_first_person":          "animation.rifle_aim_acog_first_person",
+        "rifle_aim_sniper_scope_first_person":  "animation.rifle_aim_sniper_scope_first_person",
+        "rifle_aim_third_person":               "animation.rifle_aim_third_person",
+
+        "pistol_aim_red_dot_scope_first_person": "animation.pistol_aim_red_dot_scope_first_person",
+        "pistol_aim_acog_first_person":          "animation.pistol_aim_acog_first_person",
+        "pistol_aim_third_person":               "animation.pistol_aim_third_person",
+        
+        "shotgun_aim_third_person":               "animation.shotgun_aim_third_person",
+
+
+
+        "rifle_reload_swap_first_person":    "animation.rifle_reload_swap_first_person",
+        "rifle_reload_no_swap_first_person": "animation.rifle_reload_no_swap_first_person",
+        "rifle_reload_cock_first_person":    "animation.rifle_reload_cock_first_person",
+        "rifle_reload_swap_third_person":    "animation.rifle_reload_swap_third_person",
+        "rifle_reload_no_swap_third_person": "animation.rifle_reload_no_swap_third_person",
+        "rifle_reload_cock_third_person":    "animation.rifle_reload_cock_third_person",
+
+        "pistol_reload_swap_first_person":    "animation.pistol_reload_swap_first_person",
+        "pistol_reload_no_swap_first_person": "animation.pistol_reload_no_swap_first_person",
+        "pistol_reload_cock_first_person":    "animation.pistol_reload_cock_first_person",
+        "pistol_reload_swap_third_person":    "animation.pistol_reload_swap_third_person",
+        "pistol_reload_no_swap_third_person": "animation.pistol_reload_no_swap_third_person",
+        "pistol_reload_cock_third_person":    "animation.pistol_reload_cock_third_person",
+
+        "p90_reload_swap_first_person":    "animation.p90_reload_swap_first_person",
+        "p90_reload_no_swap_first_person": "animation.p90_reload_no_swap_first_person",
+        "p90_reload_cock_first_person":    "animation.p90_reload_cock_first_person",
+        "p90_reload_swap_third_person":    "animation.p90_reload_swap_third_person",
+        "p90_reload_no_swap_third_person": "animation.p90_reload_no_swap_third_person",
+        "p90_reload_cock_third_person":    "animation.p90_reload_cock_third_person",
+
+        "shotgun_reload_first_person":         "animation.shotgun_reload_first_person",
+        "shotgun_reload_cock_first_person":    "animation.shotgun_reload_cock_first_person",
+        "shotgun_reload_third_person":         "animation.shotgun_reload_third_person",
+        "shotgun_reload_cock_third_person":    "animation.shotgun_reload_cock_third_person"
+
+      },
+      "render_controllers": [
+        {
+          "controller.render.player.first_person_spectator": "variable.is_first_person && query.is_spectator"
+        },
+        {
+          "controller.render.player.third_person_spectator": "!variable.is_first_person && !variable.map_face_icon && query.is_spectator"
+        },
+        {
+          "controller.render.player.first_person": "variable.is_first_person && !query.is_spectator"
+        },
+        {
+          "controller.render.player.third_person": "!variable.is_first_person && !variable.map_face_icon && !query.is_spectator"
+        },
+        {
+          "controller.render.player.map": "variable.map_face_icon"
+        },
+        {
+          "controller.render.yes.entity.outline": "v.is_holding_firearm && !v.is_first_person && v.team != 'none' && q.distance_from_camera > 4.5 && !q.is_spectator"
+        },
+        {
+          "controller.render.yes.entity.outline_vanilla": "!v.is_holding_firearm && !v.is_first_person && v.team != 'none' && q.distance_from_camera > 4.5 && !q.is_spectator"
+        },
+        {
+          "controller.render.player.arms": "v.is_holding_firearm && !query.is_spectator"
+        },
+        {
+          "controller.render.player.hit_markers": "(v.is_paperdoll || q.is_in_ui) ? 0 : v.hit_marker_variant != 'none'"
+        },
+        { "controller.render.akm_iron_sight":  "v.is_holding_iron_sight_firearm && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm') && !query.is_spectator" },
+        { "controller.render.m4a1_iron_sight": "v.is_holding_iron_sight_firearm && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m4a1') && !query.is_spectator" },
+        { "controller.render.red_dot_scope": "v.is_holding_red_dot_scope_variant_1_firearm || v.is_holding_red_dot_scope_variant_2_firearm && !query.is_spectator" },
+        { "controller.render.acog":          "v.is_holding_acog_firearm && !query.is_spectator" },
+        { "controller.render.sniper_scope":  "v.is_holding_sniper_scope_firearm && !query.is_spectator" },
+
+        { "controller.render.ak47":         "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:ak47') && !query.is_spectator"  },
+        { "controller.render.akm":          "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm') && !query.is_spectator"  },
+        { "controller.render.m4a1":         "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m4a1') && !query.is_spectator"  },
+        { "controller.render.ar15":         "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:ar15') && !query.is_spectator"  },
+        { "controller.render.hk417":        "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:hk417') && !query.is_spectator" },
+        { "controller.render.mk13":         "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:mk13') && !query.is_spectator"  },
+        { "controller.render.p90":          "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:p90') && !query.is_spectator" },
+        { "controller.render.ump45":        "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:ump45') && !query.is_spectator" },
+        { "controller.render.desert_eagle": "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:desert_eagle') && !query.is_spectator" },
+        { "controller.render.remington870": "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:remington870') && !query.is_spectator" }
+      ],
+      "particle_effects": {
+          "muzzle_flash": "yes:muzzle_flash",
+          "muzzle_blast": "yes:muzzle_blast",
+          "bullet_casing": "yes:bullet_casing",
+          "sniper_bullet_casing": "yes:sniper_bullet_casing",
+          "shotgun_bullet_casing": "yes:shotgun_bullet_casing",
+
+          "breech_flash": "yes:breech_flash",
+          "rpg_smoke": "yes:rpg_smoke",
+          "rpg_blast": "yes:rpg_blast",
+          "rpg_blast2": "yes:rpg_blast2"
+      },
+      "enable_attachables": true
+    }
+  }
+}

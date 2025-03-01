@@ -1,0 +1,14 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.firearm_sounds": {
+            "states": {
+                "default": {
+					"animations" : [
+						{ "m4a1_sound": "1" }
+					]
+                }
+            }
+        }
+    }
+}

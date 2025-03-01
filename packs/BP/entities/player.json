@@ -1,0 +1,400 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minecraft:player",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "scripts": {
+        "animate": [ 
+          "shoot_automatic_firearm",
+          "firearm_left_click"
+        ]
+      },
+      "animations": {
+        "shoot_automatic_firearm": "controller.animation.shoot_automatic_firearm",
+        "shoot": "animation.shoot",
+        "firearm_left_click": "animation.firearm_left_click"
+      },
+      "properties": {
+        "yes:team": {
+          "type": "enum",
+          "values": ["gold", "blue"],
+          "default": "gold",
+          "client_sync": true
+        },
+        "yes:hit_marker_variant": {
+          "type": "enum",
+          "values": ["none", "normal", "headshot"],
+          "default": "none",
+          "client_sync": true
+        },
+        "yes:has_offhand_magazine": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "yes:firearm_firing_mode": {
+          "type": "enum",
+          "values": ["semi", "auto", "burst"],
+          "default": "semi",
+          "client_sync": true
+        },
+        "yes:firearm_fire_rate": {
+          "type": "float",
+          "range": [
+            0.0,
+            1200.0
+          ],
+          "default": 0.0,
+          "client_sync": true
+        },
+        "yes:firearm_has_ammo": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "yes:should_cock_on_reload": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "yes:is_shooting": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "yes:is_reloading": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "yes:should_start_cock": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "yes:should_keep_bolt_open": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "yes:recoil": {
+          "type": "float",
+          "range": [
+            0.0,
+            130.0
+          ],
+          "default": 0.0,
+          "client_sync": true
+        },
+        "yes:movement_direction": {
+          "type": "enum",
+          "values": ["left", "center", "right"],
+          "default": "center",
+          "client_sync": true
+        },
+        "yes:movement_direction_value": {
+          "type": "float",
+          "range": [
+            -1.0,
+            1.0
+          ],
+          "default": 0.0,
+          "client_sync": true
+        },
+        "yes:reload_normal_animation_multiplier": {
+          "type": "float",
+          "range": [
+            0.0,
+            10.0
+          ],
+          "default": 1.0,
+          "client_sync": true
+        },
+        "yes:reload_no_swap_animation_multiplier": {
+          "type": "float",
+          "range": [
+            0.0,
+            10.0
+          ],
+          "default": 1.0,
+          "client_sync": true
+        },
+        "yes:reload_cock_animation_multiplier": {
+          "type": "float",
+          "range": [
+            0.0,
+            10.0
+          ],
+          "default": 1.0,
+          "client_sync": true
+        },
+
+        "yes:rotation_offset_x": {
+          "type": "int",
+          "range": [
+            -9999,
+            9999
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "yes:rotation_offset_y": {
+          "type": "int",
+          "range": [
+            -9999,
+            9999
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "yes:rotation_offset_z": {
+          "type": "int",
+          "range": [
+            -9999,
+            9999
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "yes:transform_offset_x": {
+          "type": "int",
+          "range": [
+            -9999,
+            9999
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "yes:transform_offset_y": {
+          "type": "int",
+          "range": [
+            -9999,
+            9999
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "yes:transform_offset_z": {
+          "type": "int",
+          "range": [
+            -9999,
+            9999
+          ],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+
+    "component_groups": {
+      "minecraft:add_raid_omen": {
+        "minecraft:spell_effects": {
+          "add_effects": [
+            {
+              "effect": "raid_omen",
+              "duration": 30,
+              "display_on_screen_animation": true
+            }
+          ],
+          "remove_effects": "bad_omen"
+        },
+        "minecraft:timer": {
+          "time": [ 0.0, 0.0 ],
+          "looping": false,
+          "time_down_event": {
+            "event": "minecraft:clear_add_raid_omen",
+            "target": "self"
+          }
+        }
+      },
+      "minecraft:clear_raid_omen_spell_effect": {
+        "minecraft:spell_effects": {
+        }
+      },
+      "minecraft:raid_trigger": {
+        "minecraft:raid_trigger": {
+          "triggered_event": {
+            "event": "minecraft:remove_raid_trigger",
+            "target": "self"
+          }
+        }
+      }
+    },
+
+    "components": {
+      "minecraft:experience_reward": {
+        "on_death": "Math.Min(query.player_level * 7, 100)"
+      },
+      "minecraft:type_family": {
+        "family": [ "player" ]
+      },
+      "minecraft:is_hidden_when_invisible": {
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.8
+      },
+      "minecraft:can_climb": {
+      },
+      "minecraft:movement": {
+        "value": 0.1
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:attack": {
+        "damage": 1
+      },
+      "minecraft:exhaustion_values": {
+        "heal": 6,
+        "jump": 0.05,
+        "sprint_jump": 0.2,
+        "mine": 0.005,
+        "attack": 0.1,
+        "damage": 0.1,
+        "walk": 0.0,
+        "sprint": 0.1,
+        "swim": 0.01
+      },
+      "minecraft:player.saturation": {
+        "value": 5,
+        "max": 20
+      },
+      "minecraft:player.exhaustion": {
+        "value": 0,
+        "max": 20
+      },
+      "minecraft:player.level": {
+        "value": 0,
+        "max": 24791
+      },
+      "minecraft:player.experience": {
+        "value": 0,
+        "max": 1
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": -1,
+        "inhale_time": 3.75,
+        "generates_bubbles": false
+      },
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": false
+      },
+      "minecraft:physics": {
+        "push_towards_closest_space": true
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:insomnia": {
+        "days_until_insomnia": 3
+      },
+      "minecraft:rideable": {
+        "seat_count": 2,
+        "family_types": [
+          "parrot_tame"
+        ],
+        "pull_in_entities": true,
+        "seats": [
+          {
+            "position": [ 0.4, -0.2, -0.1 ],
+            "min_rider_count": 0,
+            "max_rider_count": 0,
+            "lock_rider_rotation": 0
+          },
+          {
+            "position": [ -0.4, -0.2, -0.1 ],
+            "min_rider_count": 1,
+            "max_rider_count": 2,
+            "lock_rider_rotation": 0
+          }
+        ]
+      },
+      "minecraft:conditional_bandwidth_optimization": {
+      },
+      "minecraft:block_climber": {},
+      "minecraft:environment_sensor": {
+        "triggers": {
+          "filters": {
+            "all_of": [
+              {
+                "test": "has_mob_effect",
+                "subject": "self",
+                "value": "bad_omen"
+              },
+              {
+                "test": "is_in_village",
+                "subject": "self",
+                "value": true
+              }
+            ]
+          },
+          "event": "minecraft:gain_raid_omen"
+        }
+      }
+    },
+
+    "events": {
+      "yes:test": {
+        "queue_command": {
+          "command": [
+            "say hie"
+          ]
+        }
+      },
+      "minecraft:gain_raid_omen": {
+        "add": {
+          "component_groups": [
+            "minecraft:add_raid_omen"
+          ]
+        }
+      },
+      "minecraft:clear_add_raid_omen": {
+        "remove": {
+          "component_groups": [
+            "minecraft:add_raid_omen"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minecraft:clear_raid_omen_spell_effect"
+          ]
+        }
+      },
+      "minecraft:trigger_raid": {
+        "add": {
+          "component_groups": [ "minecraft:raid_trigger" ]
+        }
+      },
+      "minecraft:remove_raid_trigger": {
+        "remove": {
+          "component_groups": [ "minecraft:raid_trigger" ]
+        }
+      }
+    }
+  }
+}
+
+
+
+

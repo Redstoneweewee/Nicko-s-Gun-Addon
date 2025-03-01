@@ -1,0 +1,43 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "yes:empty_test_entity2",
+            "materials": {
+                "default": "goat"
+            },
+            "textures": {
+                "default": "textures/entity/zombie/husk2"
+            },
+            "geometry": {
+                "default": "geometry.test_entity"
+            },
+            "spawn_egg": {
+                "base_color": "#c0ac90",
+                "overlay_color": "#857261"
+            },
+            "scripts": {
+                "variables": {
+                    "variable.test_var2": "public"
+                },
+                "initialize": [
+                    "variable.test_var2 = 0;"
+                ],
+                "pre_animation": [
+                    "v.test_var2 = query.day;"
+                ],
+                "animate": [
+                    {
+                        "test_movement": "variable.test_var2 == 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "test_movement": "animation.test_entity.move"
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

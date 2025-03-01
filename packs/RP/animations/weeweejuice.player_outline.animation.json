@@ -1,0 +1,16 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.weeweejuice.player_outline_size": {
+			"loop": true,
+			"bones": {
+				"outline_root": {
+					"scale": "1+(q.distance_from_camera < 4.5 ? 0 : (v.max_outline_width/math.ln(96.5))*(math.ln(q.distance_from_camera-3.5)))"
+				},
+				"hat": {
+					"scale": "1+(q.distance_from_camera < 4.5 || v.is_holding_firearm ? 0 : (v.max_outline_width/math.ln(96.5))*(math.ln(q.distance_from_camera-3.5)))"
+				}
+			}
+		}
+	}
+}

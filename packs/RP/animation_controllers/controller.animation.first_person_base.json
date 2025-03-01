@@ -1,0 +1,27 @@
+{
+	"format_version" : "1.10.0",
+	"animation_controllers" : {
+		"controller.animation.first_person_base" : {
+			"initial_state" : "default",
+			"states" : {
+				"default" : {
+					"transitions" : [
+						{
+							"animate" : "variable.is_first_person"
+						}
+					]
+				},
+				"animate" : {
+					"animations" : [
+						"first_person_base"
+					],
+					"transitions" : [
+						{
+							"default" : "!variable.is_first_person"
+						}
+					]
+				}
+			}
+		}
+	}
+}

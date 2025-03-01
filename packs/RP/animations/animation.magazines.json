@@ -1,0 +1,38 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.magazine_invisible": {
+			"loop": "hold_on_last_frame",
+			"bones": {
+				"magazine": {
+					"scale": 0
+				},
+				"magazine2": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.magazine_left_hand_visible": {
+			"loop": "hold_on_last_frame",
+			"bones": {
+				"magazine": {
+					"scale": 0
+				},
+				"magazine2": {
+					"scale": 1
+				}
+			}
+		},
+		"animation.magazine_right_hand_visible": {
+			"loop": "hold_on_last_frame",
+			"bones": {
+				"magazine": {
+					"scale": 1
+				},
+				"magazine2": {
+					"scale": 0
+				}
+			}
+		}
+	}
+}

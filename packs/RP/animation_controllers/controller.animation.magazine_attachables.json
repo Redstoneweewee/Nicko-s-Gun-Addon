@@ -1,0 +1,23 @@
+{
+	"format_version" : "1.10.0",
+	"animation_controllers" : {
+		"controller.animation.magazine_attachables" : {
+			"initial_state" : "default",
+			"states" : {
+				"default" : {
+					"animations" : [
+						{
+							"invisible": "v.is_holding_firearm_late"
+						},
+						{
+							"right_hand_visible": "!v.is_holding_firearm_late && c.item_slot == 'main_hand'"
+						},
+						{
+							"left_hand_visible": "!v.is_holding_firearm_late && c.item_slot == 'off_hand'"
+						}
+					]
+				}
+			}
+		}
+	}
+}

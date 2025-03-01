@@ -1,0 +1,20 @@
+{
+	"format_version": "1.21.20",
+	"minecraft:block": {
+		"description": {
+			"identifier": "yes:pistol_magazine_8",
+			"menu_category": {
+				"category": "none"
+			}
+		},
+		"components": {
+			"minecraft:geometry": "geometry.weeweejuice.pistol_magazine_8_ground",
+			"minecraft:material_instances": {
+				"*": {
+					"render_method": "alpha_test",
+					"texture": "pistol_magazine_8"
+				}
+			}
+		}
+	}
+}

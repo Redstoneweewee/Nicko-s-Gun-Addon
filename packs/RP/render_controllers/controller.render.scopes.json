@@ -1,0 +1,30 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.akm_iron_sight": {
+			"textures": [ "Texture.iron_sight" ],
+			"geometry": "Geometry.akm_iron_sight",
+			"materials": [ { "*": "Material.scope" } ]
+		},
+		"controller.render.m4a1_iron_sight": {
+			"textures": [ "Texture.iron_sight" ],
+			"geometry": "Geometry.m4a1_iron_sight",
+			"materials": [ { "*": "Material.scope" } ]
+		},
+		"controller.render.red_dot_scope": {
+			"textures": [ "Texture.red_dot_scope" ],
+			"geometry": "Geometry.red_dot_scope",
+			"materials": [ { "*": "Material.scope" } ]
+		},
+		"controller.render.acog": {
+			"textures": [ "Texture.acog" ],
+			"geometry": "Geometry.acog",
+			"materials": [ { "*": "Material.scope" } ]
+		},
+		"controller.render.sniper_scope": {
+			"textures": [ "Texture.sniper_scope" ],
+			"geometry": "Geometry.sniper_scope",
+			"materials": [ { "*": "Material.scope" } ]
+		}
+	}
+}

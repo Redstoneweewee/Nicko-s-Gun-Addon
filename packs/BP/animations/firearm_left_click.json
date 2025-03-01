@@ -1,0 +1,15 @@
+{
+    "format_version": "1.10.0",
+    "animations": {
+      "animation.firearm_left_click": {
+        "loop": true,
+        "animation_length": 0.01,
+        "anim_time_update": "(v.attack_time) ? 0 : -0.000001",
+        "timeline": {
+          "0.00": [
+            "/scriptevent yes:firearm_left_click"
+          ]
+        }
+      }
+    }
+  }			

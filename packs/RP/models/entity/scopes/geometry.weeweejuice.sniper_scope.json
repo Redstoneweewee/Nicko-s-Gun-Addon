@@ -1,0 +1,96 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.weeweejuice.sniper_scope",
+				"texture_width": 256,
+				"texture_height": 256,
+				"visible_bounds_width": 153,
+				"visible_bounds_height": 46,
+				"visible_bounds_offset": [0, -3, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "waist",
+					"parent": "root",
+					"pivot": [0, 12, 0]
+				},
+				{
+					"name": "body",
+					"parent": "waist",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "movement",
+					"parent": "body",
+					"pivot": [-6, 9.245, -5.115]
+				},
+				{
+					"name": "arm_rotate_pivot",
+					"parent": "movement",
+					"pivot": [4, 16.5, 0.5]
+				},
+				{
+					"name": "arm_hipfire_pivot",
+					"parent": "arm_rotate_pivot",
+					"pivot": [-3, 21.5, 0]
+				},
+				{
+					"name": "arm_scope_pivot",
+					"parent": "arm_hipfire_pivot",
+					"pivot": [-6, 9.245, -5.115]
+				},
+				{
+					"name": "arm_recoil_pivot",
+					"parent": "arm_scope_pivot",
+					"pivot": [-6.025, 21.5, -2.875]
+				},
+				{
+					"name": "rightArm_custom",
+					"parent": "arm_recoil_pivot",
+					"pivot": [-5, 22, 0]
+				},
+				{
+					"name": "rightItem",
+					"parent": "rightArm_custom",
+					"pivot": [-6, 15, 1]
+				},
+				{
+					"name": "weapon_root",
+					"parent": "rightItem",
+					"pivot": [-5.71719, 11.7, -0.27344],
+					"rotation": [90, 0, 0]
+				},
+				{
+					"name": "sniper_scope",
+					"parent": "weapon_root",
+					"pivot": [-5.99531, 15.90896, -3.64844]
+				},
+				{
+					"name": "glass3",
+					"parent": "sniper_scope",
+					"pivot": [-6.05352, 16.54883, -7.275],
+					"cubes": [
+						{
+							"origin": [-6.55726, 15.99625, -7.04284],
+							"size": [1.11354, 1.09653, 0],
+							"uv": {
+								"north": {"uv": [256, 256], "uv_size": [0, 0]},
+								"east": {"uv": [256, 256], "uv_size": [0, 0]},
+								"south": {"uv": [0, 0], "uv_size": [256, 256]},
+								"west": {"uv": [256, 256], "uv_size": [0, 0]},
+								"up": {"uv": [256, 256], "uv_size": [0, 0]},
+								"down": {"uv": [256, 256], "uv_size": [0, 0]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

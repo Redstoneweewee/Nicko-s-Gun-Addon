@@ -1,0 +1,84 @@
+{
+	"format_version": "1.17.11",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "yes:inventory_entity",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"components": {
+			"minecraft:knockback_resistance": {
+				"value": 1.0
+			},
+			"minecraft:collision_box": {
+			  "height": 0.6,
+			  "width": 0.6
+			},
+			"minecraft:body_rotation_blocked": {},
+			"minecraft:is_stackable": {},
+			"minecraft:damage_sensor": {
+				"triggers": {
+					"cause": "all",
+					"deals_damage": false
+				}
+			},
+			"minecraft:type_family": {
+				"family": [
+					"inanimate",
+					"weeweejuice",
+					"inventory_entity"
+				]
+			},
+			"minecraft:health": {
+				"value": 9999999,
+				"max": 9999999
+			},
+			"minecraft:vibration_damper": {},
+			"minecraft:navigation.walk": {
+				"is_amphibious": false,
+				"can_pass_doors": false,
+				"can_walk": false,
+				"can_break_doors": false
+			},
+			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
+			"minecraft:inventory": {
+			  "can_be_siphoned_from": false,
+			  "container_type": "inventory",
+			  "restrict_to_owner": true,
+			  "inventory_size": 72,
+			  "private": false
+			},
+			"minecraft:tameable": {},
+			"minecraft:interact": {
+				"interactions": [
+					{
+						"play_sounds": "armor.equip_generic",
+						"on_interact": {
+							"filters": {
+								"any_of": [
+									{
+										"test": "is_sneaking",
+										"subject": "other",
+										"value": false
+									}
+								]
+							},
+							"target": "self"
+						},
+						"equip_item_slot": "0",
+						"interact_text": "action.interact.equipcarpet"
+					}
+				]
+			}
+		},
+		"events": {
+			"yes:despawn": {}
+		}
+	}
+}

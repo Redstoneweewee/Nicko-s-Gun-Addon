@@ -1,0 +1,25 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.yes.entity.outline": {
+      "geometry": "geometry.outline",
+      "textures": [ "v.team == 'gold' ? texture.gold_outline : texture.blue_outline" ],
+      "ignore_lighting": true,
+      "materials": [
+        {
+          "*": "material.outline"
+        }
+      ]
+    },
+    "controller.render.yes.entity.outline_vanilla": {
+      "geometry": "geometry.outline_vanilla",
+      "textures": [ "v.team == 'gold' ? texture.gold_outline : texture.blue_outline" ],
+      "ignore_lighting": true,
+      "materials": [
+        {
+          "*": "material.outline"
+        }
+      ]
+    }
+  }
+}

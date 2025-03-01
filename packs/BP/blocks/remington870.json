@@ -1,0 +1,20 @@
+{
+	"format_version": "1.21.20",
+	"minecraft:block": {
+		"description": {
+			"identifier": "yes:remington870",
+			"menu_category": {
+				"category": "none"
+			}
+		},
+		"components": {
+			"minecraft:geometry": "geometry.weeweejuice.remington870_ground",
+			"minecraft:material_instances": {
+				"*": {
+					"render_method": "alpha_test",
+					"texture": "remington870"
+				}
+			}
+		}
+	}
+}

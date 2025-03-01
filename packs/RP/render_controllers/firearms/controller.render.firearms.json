@@ -1,0 +1,65 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.ak47": {
+			"textures": [ "Texture.ak47" ],
+			"geometry": "Geometry.ak47",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.akm": {
+			"textures": [ "Texture.akm" ],
+			"geometry": "Geometry.akm",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.m4a1": {
+			"textures": [ "Texture.m4a1" ],
+			"geometry": "Geometry.m4a1",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.ar15": {
+			"textures": [ "Texture.ar15" ],
+			"geometry": "Geometry.ar15",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.hk417": {
+			"textures": [ "Texture.hk417" ],
+			"geometry": "Geometry.hk417",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.mk13": {
+			"textures": [ "Texture.mk13" ],
+			"geometry": "Geometry.mk13",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.p90": {
+			"textures": [ "Texture.p90" ],
+			"geometry": "Geometry.p90",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.ump45": {
+			"textures": [ "Texture.ump45" ],
+			"geometry": "Geometry.ump45",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.desert_eagle": {
+			"textures": [ "Texture.desert_eagle" ],
+			"geometry": "Geometry.desert_eagle",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.remington870": {
+			"textures": [ "Texture.remington870" ],
+			"geometry": "Geometry.remington870",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.rpg7": {
+			"textures": [ "Texture.rpg7" ],
+			"geometry": "Geometry.rpg7",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.javelin": {
+			"textures": [ "Texture.javelin" ],
+			"geometry": "Geometry.javelin",
+			"materials": [ { "*": "Material.firearm" } ]
+		}
+	}
+}

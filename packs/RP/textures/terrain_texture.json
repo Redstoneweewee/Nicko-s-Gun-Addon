@@ -1,0 +1,140 @@
+{
+  "resource_pack_name": "vanilla",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "ak47": {
+      "textures": [
+        "textures/entity/ak47_texture"
+      ]
+    },
+    "akm": {
+      "textures": [
+        "textures/entity/akm_texture"
+      ]
+    },
+    "m4a1": {
+      "textures": [
+        "textures/entity/m4a1_texture"
+      ]
+    },
+    "ar15": {
+      "textures": [
+        "textures/entity/ar15_texture"
+      ]
+    },
+    "hk417": {
+      "textures": [
+        "textures/entity/hk417_texture"
+      ]
+    },
+    "mk13": {
+      "textures": [
+        "textures/entity/mk13_texture"
+      ]
+    },
+    "ump45": {
+      "textures": [
+        "textures/entity/ump45_texture"
+      ]
+    },
+    "p90": {
+      "textures": [
+        "textures/entity/p90_texture"
+      ]
+    },
+    "desert_eagle": {
+      "textures": [
+        "textures/entity/desert_eagle_texture_lighter"
+      ]
+    },
+    "remington870": {
+      "textures": [
+        "textures/entity/remington870_texture"
+      ]
+    },
+
+
+    "rifle_magazine_30": {
+      "textures": [
+        "textures/entity/magazines/rifle_magazine_30_texture"
+      ]
+    },
+    "rifle_magazine_30_empty": {
+      "textures": [
+        "textures/entity/magazines/rifle_magazine_30_empty_texture"
+      ]
+    },
+    "rifle_magazine_50": {
+      "textures": [
+        "textures/entity/magazines/rifle_magazine_50_texture"
+      ]
+    },
+    "rifle_magazine_50_empty": {
+      "textures": [
+        "textures/entity/magazines/rifle_magazine_50_empty_texture"
+      ]
+    },
+    "marksman_rifle_magazine_15": {
+      "textures": [
+        "textures/entity/magazines/marksman_rifle_magazine_15_texture"
+      ]
+    },
+    "marksman_rifle_magazine_15_empty": {
+      "textures": [
+        "textures/entity/magazines/marksman_rifle_magazine_15_empty_texture"
+      ]
+    },
+    "smg_magazine_24": {
+      "textures": [
+        "textures/entity/magazines/smg_magazine_24_texture"
+      ]
+    },
+    "smg_magazine_24_empty": {
+      "textures": [
+        "textures/entity/magazines/smg_magazine_24_empty_texture"
+      ]
+    },
+    "p90_magazine_50": {
+      "textures": [
+        "textures/entity/magazines/p90_magazine_50_texture"
+      ]
+    },
+    "p90_magazine_50_empty": {
+      "textures": [
+        "textures/entity/magazines/p90_magazine_50_texture"
+      ]
+    },
+    "sniper_magazine_3": {
+      "textures": [
+        "textures/entity/magazines/sniper_magazine_3_texture"
+      ]
+    },
+    "sniper_magazine_3_empty": {
+      "textures": [
+        "textures/entity/magazines/sniper_magazine_3_empty_texture"
+      ]
+    },
+    "pistol_magazine_8": {
+      "textures": [
+        "textures/entity/magazines/pistol_magazine_8_texture"
+      ]
+    },
+    "pistol_magazine_8_empty": {
+      "textures": [
+        "textures/entity/magazines/pistol_magazine_8_empty_texture"
+      ]
+    },
+    "shotgun_magazine_6": {
+      "textures": [
+        "textures/entity/magazines/shotgun_magazine_6_texture"
+      ]
+    },
+    "shotgun_magazine_6_empty": {
+      "textures": [
+        "textures/entity/magazines/shotgun_magazine_6_empty_texture"
+      ]
+    }
+  }
+}

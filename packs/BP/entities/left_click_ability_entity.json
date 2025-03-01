@@ -1,0 +1,78 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "yes:left_click_ability_entity",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "yes:despawn": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:knockback_resistance": {
+        "value": 1.0
+      },
+      "minecraft:collision_box": {
+        "width": 0.0001,
+        "height": 0.0001
+      },
+      "minecraft:custom_hit_test": {
+        "hitboxes": [
+          {
+            "pivot": [
+              0,
+              0,
+              0
+            ],
+            "width": 1.05,
+            "height": 1.00
+          }
+        ]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": false
+        }
+      },
+      "minecraft:nameable": {},
+      "minecraft:type_family": {
+        "family": [
+          "weeweejuice",
+          "left_click_ability_entity",
+          "inanimate"
+        ]
+      },
+      "minecraft:health": {
+        "value": 9999999,
+        "max": 9999999
+      },
+      "minecraft:vibration_damper": {},
+      "minecraft:navigation.walk": {
+        "is_amphibious": false,
+        "can_pass_doors": false,
+        "can_walk": false,
+        "can_break_doors": false
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      }
+    },
+    "events": {
+      "yes:despawn": {
+        "add": {
+          "component_groups": [
+            "yes:despawn"
+          ]
+        }
+      }
+    }
+  }
+}

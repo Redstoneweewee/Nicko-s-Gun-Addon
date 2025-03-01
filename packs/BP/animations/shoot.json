@@ -1,0 +1,15 @@
+{
+    "format_version": "1.16.100",
+    "animations": {
+      "animation.shoot": {
+        "loop": true,
+        "animation_length": 60,
+        "anim_time_update": "(q.property('yes:firearm_has_ammo') && q.is_using_item) ? (q.anim_time + q.delta_time*(q.property('yes:firearm_fire_rate')+0.1)) : -0.000001",
+        "timeline": {
+          "0.00": [
+            "/scriptevent yes:firearm_shoot"
+          ]
+        }
+      }
+    }
+  }			

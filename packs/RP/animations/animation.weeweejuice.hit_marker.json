@@ -1,0 +1,13 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.weeweejuice.hit_marker": {
+			"loop": true,
+			"bones": {
+				"head_test": {
+					"scale": "v.hit_marker_variant == 'normal' ? 0.0015 : 0.0025"
+				}
+			}
+		}
+	}
+}

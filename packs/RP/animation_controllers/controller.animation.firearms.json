@@ -1,0 +1,264 @@
+{
+	"format_version" : "1.10.0",
+	"animation_controllers" : {
+		"controller.animation.firearms" : {
+			"initial_state" : "default",
+			"states" : {
+				"default" : {
+					"transitions" : [
+						{
+							"aim_state" : "v.is_holding_firearm && v.is_aiming"
+						},
+						{
+							"hipfire_state" : "v.is_holding_firearm && v.is_not_shooting_increment < 1"
+						},
+						{
+							"hold_state" : "v.is_holding_firearm && !v.is_running"
+						},
+						{
+							"hold_run_state" : "v.is_holding_firearm && v.is_running"
+						},
+						{
+							"reload_state" : "v.is_reloading"
+						}
+					]
+				},
+
+
+
+
+				"hold_state" : {
+					"animations" : [
+						{ "rifle_hold_first_person":   " v.is_first_person && v.should_use_rifle_animations" },
+						{ "rifle_hold_third_person":   "!v.is_first_person && v.should_use_rifle_animations" },
+						{ "pistol_hold_first_person":  " v.is_first_person && v.should_use_pistol_animations" },
+						{ "pistol_hold_third_person":  "!v.is_first_person && v.should_use_pistol_animations" },
+						{ "shotgun_hold_first_person": " v.is_first_person && v.should_use_shotgun_animations" },
+						{ "shotgun_hold_third_person": "!v.is_first_person && v.should_use_shotgun_animations" }
+					],
+                    "blend_transition": 0.15,
+                    "blend_via_shortest_path": true,
+					"transitions" : [
+						{
+							"hold_run_state" : "v.is_running"
+						},
+						{
+							"hipfire_fast_transition_state" : "v.is_shooting"
+						},
+						{
+							"aim_state" : "v.is_aiming"
+						},
+						{
+							"reload_state" : "v.is_reloading"
+						},
+						{
+							"default" : "!v.is_holding_firearm"
+						}
+					]
+				},
+
+				"hold_run_state" : {
+					"animations" : [
+						{ "rifle_hold_run_first_person":   " v.is_first_person && v.should_use_rifle_animations" },
+						{ "rifle_hold_run_third_person":   "!v.is_first_person && v.should_use_rifle_animations" },
+						{ "pistol_hold_run_first_person":  " v.is_first_person && v.should_use_pistol_animations" },
+						{ "pistol_hold_run_third_person":  "!v.is_first_person && v.should_use_pistol_animations" },
+						{ "shotgun_hold_run_first_person": " v.is_first_person && v.should_use_shotgun_animations" },
+						{ "shotgun_hold_run_third_person": "!v.is_first_person && v.should_use_shotgun_animations" }
+					],
+                    "blend_transition": 0.15,
+                    "blend_via_shortest_path": true,
+					"transitions" : [
+						{
+							"hold_state" : "!v.is_running"
+						},
+						{
+							"hipfire_fast_transition_state" : "v.is_shooting"
+						},
+						{
+							"aim_state" : "v.is_aiming"
+						},
+						{
+							"reload_state" : "v.is_reloading"
+						},
+						{
+							"default" : "!v.is_holding_firearm"
+						}
+					]
+				},
+
+				
+				"hipfire_fast_transition_state" : {
+					"animations" : [
+						{ "rifle_hold_first_person":       " v.is_first_person && !v.is_running && v.should_use_rifle_animations" },
+						{ "rifle_hold_run_first_person":   " v.is_first_person &&  v.is_running && v.should_use_rifle_animations" },
+						{ "rifle_hold_third_person": 	   "!v.is_first_person && !v.is_running && v.should_use_rifle_animations" },
+						{ "rifle_hold_run_third_person":   "!v.is_first_person &&  v.is_running && v.should_use_rifle_animations" },
+						{ "pistol_hold_first_person":      " v.is_first_person && !v.is_running && v.should_use_pistol_animations" },
+						{ "pistol_hold_run_first_person":  " v.is_first_person &&  v.is_running && v.should_use_pistol_animations" },
+						{ "pistol_hold_third_person": 	   "!v.is_first_person && !v.is_running && v.should_use_pistol_animations" },
+						{ "pistol_hold_run_third_person":  "!v.is_first_person &&  v.is_running && v.should_use_pistol_animations" },
+						{ "shotgun_hold_first_person":     " v.is_first_person && !v.is_running && v.should_use_shotgun_animations" },
+						{ "shotgun_hold_run_first_person": " v.is_first_person &&  v.is_running && v.should_use_shotgun_animations" },
+						{ "shotgun_hold_third_person": 	   "!v.is_first_person && !v.is_running && v.should_use_shotgun_animations" },
+						{ "shotgun_hold_run_third_person": "!v.is_first_person &&  v.is_running && v.should_use_shotgun_animations" }
+					],
+                    "blend_transition": 0.05,
+                    "blend_via_shortest_path": true,
+					"transitions" : [
+						{ "hipfire_state" : "1" }
+					]
+				},
+				"hipfire_state" : {
+					"animations" : [
+						{ "rifle_hipfire_first_person":   " v.is_first_person && v.should_use_rifle_animations" },
+						{ "rifle_hipfire_third_person":   "!v.is_first_person && v.should_use_rifle_animations" },
+						{ "pistol_hipfire_first_person":  " v.is_first_person && v.should_use_pistol_animations" },
+						{ "pistol_hipfire_third_person":  "!v.is_first_person && v.should_use_pistol_animations" },
+						{ "shotgun_hipfire_first_person": " v.is_first_person && v.should_use_shotgun_animations" },
+						{ "shotgun_hipfire_third_person": "!v.is_first_person && v.should_use_shotgun_animations" }
+					],
+                    "blend_transition": 0.15,
+                    "blend_via_shortest_path": true,
+					"transitions" : [
+						{
+							"hold_state" : "!v.is_shooting && !v.is_running && v.is_not_shooting_increment >= 1"
+						},
+						{
+							"hold_run_state" : "!v.is_shooting && v.is_running && v.is_not_shooting_increment >= 1"
+						},
+						{
+							"aim_state" : "v.is_aiming"
+						},
+						{
+							"reload_state" : "v.is_reloading"
+						},
+						{
+							"default" : "!v.is_holding_firearm"
+						}
+					]
+				},
+
+
+
+				"aim_state" : {
+					"animations" : [
+						{ "akm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm')" },
+						{ "m4a1_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m4a1')" },
+						{ "rifle_aim_red_dot_scope_first_person":  " v.is_first_person && v.is_holding_red_dot_scope_variant_1_firearm && (v.should_use_rifle_animations || v.should_use_shotgun_animations)" },
+						{ "rifle_aim_acog_first_person": 		   " v.is_first_person && v.is_holding_red_dot_scope_variant_2_firearm && (v.should_use_rifle_animations || v.should_use_shotgun_animations)" },
+						{ "rifle_aim_acog_first_person": 		   " v.is_first_person && v.is_holding_acog_firearm                    && (v.should_use_rifle_animations || v.should_use_shotgun_animations)" },
+						{ "rifle_aim_sniper_scope_first_person":   " v.is_first_person && v.is_holding_sniper_scope_firearm            && (v.should_use_rifle_animations || v.should_use_shotgun_animations)" },
+						{ "rifle_aim_third_person":				   "!v.is_first_person && v.should_use_rifle_animations" },
+						{ "pistol_aim_red_dot_scope_first_person": " v.is_first_person && v.is_holding_red_dot_scope_variant_1_firearm && v.should_use_pistol_animations" },
+						{ "pistol_aim_acog_first_person": 		   " v.is_first_person && v.is_holding_red_dot_scope_variant_2_firearm && v.should_use_pistol_animations" },
+						{ "pistol_aim_third_person":			   "!v.is_first_person && v.should_use_pistol_animations" },
+						{ "shotgun_aim_third_person":			   "!v.is_first_person && v.should_use_shotgun_animations" }
+					],
+                    "blend_transition": 0.15,
+                    "blend_via_shortest_path": true,
+					"transitions" : [
+						{
+							"hold_state" : "!v.is_aiming && !v.is_running && !v.is_shooting && v.is_not_shooting_increment >= 1"
+						},
+						{
+							"hold_run_state" : "!v.is_aiming && v.is_running && !v.is_shooting && v.is_not_shooting_increment >= 1"
+						},
+						{
+							"hipfire_state" : "!v.is_aiming && v.is_not_shooting_increment < 1"
+						},
+						{
+							"reload_state" : "v.is_reloading"
+						},
+						{
+							"default" : "!v.is_holding_firearm"
+						}
+					] 
+				},
+
+
+				
+				"reload_state" : {
+                    "blend_transition": 0.15,
+                    "blend_via_shortest_path": true,
+					"animations" : [
+						{ "rifle_reload_swap_first_person":    " v.is_first_person &&  v.is_holding_offhand_magazine && v.should_rifle_reload_swap" },
+						{ "rifle_reload_swap_third_person":    "!v.is_first_person &&  v.is_holding_offhand_magazine && v.should_rifle_reload_swap" },
+						{ "rifle_reload_no_swap_first_person": " v.is_first_person && !v.is_holding_offhand_magazine && v.should_rifle_reload_no_swap" },
+						{ "rifle_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine && v.should_rifle_reload_no_swap" },
+
+						{ "pistol_reload_swap_first_person":    " v.is_first_person &&  v.is_holding_offhand_magazine && v.should_pistol_reload_swap" },
+						{ "pistol_reload_swap_third_person":    "!v.is_first_person &&  v.is_holding_offhand_magazine && v.should_pistol_reload_swap" },
+						{ "pistol_reload_no_swap_first_person": " v.is_first_person && !v.is_holding_offhand_magazine && v.should_pistol_reload_no_swap" },
+						{ "pistol_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine && v.should_pistol_reload_no_swap" },
+
+						{ "p90_reload_swap_first_person":    " v.is_first_person &&  v.is_holding_offhand_magazine && v.should_p90_reload_swap" },
+						{ "p90_reload_swap_third_person":    "!v.is_first_person &&  v.is_holding_offhand_magazine && v.should_p90_reload_swap" },
+						{ "p90_reload_no_swap_first_person": " v.is_first_person && !v.is_holding_offhand_magazine && v.should_p90_reload_no_swap" },
+						{ "p90_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine && v.should_p90_reload_no_swap" },
+
+						{ "shotgun_reload_first_person":    " v.is_first_person && v.should_shotgun_reload_swap" },
+						{ "shotgun_reload_third_person":    "!v.is_first_person && v.should_shotgun_reload_swap" }
+					],
+					"transitions" : [
+						{
+							"reload_cock_state" : "v.should_start_cock && v.should_cock_on_reload"
+						},
+						{
+							"hold_state" : "!v.is_reloading && !v.is_aiming && !v.is_running && !v.is_shooting && v.is_not_shooting_increment >= 1"
+						},
+						{
+							"hold_run_state" : "!v.is_reloading && !v.is_aiming && v.is_running && !v.is_shooting && v.is_not_shooting_increment >= 1"
+						},
+						{
+							"hipfire_state" : "!v.is_reloading && !v.is_aiming && v.is_not_shooting_increment < 1"
+						},
+						{
+							"aim_state" : "!v.is_reloading && v.is_aiming"
+						},
+						{
+							"default" : "!v.is_holding_firearm"
+						}
+					]
+				},
+
+
+				
+				"reload_cock_state" : {
+                    "blend_transition": 0.15,
+                    "blend_via_shortest_path": true,
+					"animations" : [
+						{ "rifle_reload_cock_first_person": " v.is_first_person && v.should_rifle_reload_cock" },
+						{ "rifle_reload_cock_third_person": "!v.is_first_person && v.should_rifle_reload_cock" },
+						
+						{ "pistol_reload_cock_first_person": " v.is_first_person && v.should_pistol_reload_cock" },
+						{ "pistol_reload_cock_third_person": "!v.is_first_person && v.should_pistol_reload_cock" },
+
+						{ "p90_reload_cock_first_person": " v.is_first_person && v.should_p90_reload_cock" },
+						{ "p90_reload_cock_third_person": "!v.is_first_person && v.should_p90_reload_cock" },
+
+						{ "shotgun_reload_cock_first_person": " v.is_first_person && v.should_shotgun_reload_cock" },
+						{ "shotgun_reload_cock_third_person": "!v.is_first_person && v.should_shotgun_reload_cock" }
+					],
+					"transitions" : [
+						{
+							"hold_state" : "!v.is_reloading && !v.is_aiming && !v.is_running && !v.is_shooting && v.is_not_shooting_increment >= 1"
+						},
+						{
+							"hold_run_state" : "!v.is_reloading && !v.is_aiming && v.is_running && !v.is_shooting && v.is_not_shooting_increment >= 1"
+						},
+						{
+							"hipfire_state" : "!v.is_reloading && !v.is_aiming && v.is_not_shooting_increment < 1"
+						},
+						{
+							"aim_state" : "!v.is_reloading && v.is_aiming"
+						},
+						{
+							"default" : "!v.is_holding_firearm"
+						}
+					]
+				}
+			}
+		}
+	}
+}

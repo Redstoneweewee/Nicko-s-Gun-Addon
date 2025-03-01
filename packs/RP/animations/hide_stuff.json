@@ -1,0 +1,38 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.hide_arms": {
+			"loop": "hold_on_last_frame",
+			"override_previous_animation": true,
+			"bones": {
+				"leftArm": {
+					"scale": 0
+				},
+				"rightArm": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.hide_magazines": {
+			"loop": "hold_on_last_frame",
+			"override_previous_animation": true,
+			"bones": {
+				"magazine_old": {
+					"scale": 0
+				},
+				"magazine_new": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.hide_firearm_magazine": {
+			"loop": "hold_on_last_frame",
+			"override_previous_animation": true,
+			"bones": {
+				"magazine": {
+					"scale": 0
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"format_version": "1.21.20",
+	"minecraft:block": {
+		"description": {
+			"identifier": "yes:null_block",
+			"menu_category": {
+				"category": "none"
+			}
+		},
+		"components": {
+		}
+	}
+}

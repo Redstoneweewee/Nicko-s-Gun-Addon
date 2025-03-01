@@ -1,0 +1,116 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.weeweejuice.m4a1_iron_sight",
+				"texture_width": 1,
+				"texture_height": 1,
+				"visible_bounds_width": 149,
+				"visible_bounds_height": 22,
+				"visible_bounds_offset": [0, 9, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "waist",
+					"parent": "root",
+					"pivot": [0, 12, 0]
+				},
+				{
+					"name": "body",
+					"parent": "waist",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "movement",
+					"parent": "body",
+					"pivot": [-6, 9.245, -5.115]
+				},
+				{
+					"name": "arm_rotate_pivot",
+					"parent": "movement",
+					"pivot": [4, 16.5, 0.5]
+				},
+				{
+					"name": "arm_hipfire_pivot",
+					"parent": "arm_rotate_pivot",
+					"pivot": [-3, 21.5, 0]
+				},
+				{
+					"name": "arm_iron_sight_pivot",
+					"parent": "arm_hipfire_pivot",
+					"pivot": [-6, 9.245, -4.33]
+				},
+				{
+					"name": "arm_scope_pivot",
+					"parent": "arm_iron_sight_pivot",
+					"pivot": [-6, 9.245, -5.115]
+				},
+				{
+					"name": "arm_recoil_pivot",
+					"parent": "arm_scope_pivot",
+					"pivot": [-6.025, 21.5, -2.875]
+				},
+				{
+					"name": "rightArm_custom",
+					"parent": "arm_recoil_pivot",
+					"pivot": [-5, 22, 0]
+				},
+				{
+					"name": "rightItem",
+					"parent": "rightArm_custom",
+					"pivot": [-6, 15, 1]
+				},
+				{
+					"name": "weapon_root",
+					"parent": "rightItem",
+					"pivot": [-5.6875, 13.77511, -0.64662],
+					"rotation": [90, 0, 0]
+				},
+				{
+					"name": "scope_pivot",
+					"parent": "weapon_root",
+					"pivot": [-5.975, 18.595, -5.425]
+				},
+				{
+					"name": "FrontSight",
+					"parent": "scope_pivot",
+					"pivot": [-6, 15.475, -6.35],
+					"rotation": [-180, 0, 180],
+					"cubes": [
+						{
+							"origin": [-6.01978, 17.91986, 0.18257],
+							"size": [0.03956, 0.04, 0.0196],
+							"pivot": [-6, 18.01986, 0.16257],
+							"rotation": [-45, 0, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [1, 1]},
+								"east": {"uv": [0, 0], "uv_size": [1, 1]},
+								"south": {"uv": [0, 0], "uv_size": [1, 1]},
+								"west": {"uv": [0, 0], "uv_size": [1, 1]},
+								"up": {"uv": [1, 1], "uv_size": [-1, -1]},
+								"down": {"uv": [1, 1], "uv_size": [-1, -1]}
+							}
+						},
+						{
+							"origin": [-6.01978, 17.895, 0.106],
+							"size": [0.03956, 0.04, 0.0596],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [1, 1]},
+								"east": {"uv": [0, 0], "uv_size": [1, 1]},
+								"south": {"uv": [0, 0], "uv_size": [1, 1]},
+								"west": {"uv": [0, 0], "uv_size": [1, 1]},
+								"up": {"uv": [1, 1], "uv_size": [-1, -1]},
+								"down": {"uv": [1, 1], "uv_size": [-1, -1]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

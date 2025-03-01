@@ -1,0 +1,35 @@
+import { world, system } from "@minecraft/server";
+import { settingsList, SettingsTypes } from "./Lists/SettingsList.js";
+import { SettingsUtil } from "./Utilities.js";
+
+if (world.scoreboard.getObjective("Settings") === undefined) {
+    world.scoreboard.addObjective("Settings");
+}
+
+/**
+ * change whether the setting is active based on the Settings scoreboard
+ * if the setting is not active, skips it & stays false
+*/
+for(const settings of settingsList) {
+    if(settings === undefined) { continue; }
+    if(!world.scoreboard.getObjective("Settings")?.hasParticipant(settings.name)) {
+        SettingsUtil.setSettingsValue(settings.name, settings.object.active ? 1 : 0);
+    }
+    /**
+     * Sets all to false before they get loaded by individual DLCs
+     * For settings that don't need DLCs, their dynamic properties are not used
+     */
+    world.setDynamicProperty(settings.name, false);
+ 
+    if(!settings.object.availabilityTest()) { 
+        SettingsUtil.setSettingsValue(settings.name , 0);
+        continue; 
+    }
+    if(settings.object.onlyActive) {
+        settings.object.active = true;
+        SettingsUtil.setSettingsValue(settings.name, 1);
+    }
+    else {
+        settings.object.active = SettingsUtil.getSettingsValue(settings.name) === 0 ? false : true;
+    }
+}

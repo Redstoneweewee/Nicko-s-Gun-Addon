@@ -1,0 +1,47 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:item": {
+        "description": {
+            "identifier": "yes:smg_magazine_24",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "yes:is_magazine",
+                    "yes:smg_magazine_24"
+                ]
+            },
+            "minecraft:block_placer": {
+                "block": "yes:smg_magazine_24",
+                "replace_block_item": true,
+                "use_on": ["yes:null_block"]
+            },
+            "minecraft:max_stack_size": 10,
+            "minecraft:display_name": {
+                "value": "SMG Magazine [§a24§7/§a24 Rounds§f]"
+            },
+            "minecraft:allow_off_hand": true,
+            "minecraft:should_despawn": {
+                "value": false
+            },
+            "minecraft:durability": {
+                "max_durability": 24,
+                "damage_chance": {
+                    "min": 0,
+                    "max": 0
+                }
+            },
+            "minecraft:use_modifiers": {
+                "movement_modifier": 1,
+                "use_duration": 0.05
+            },
+            "minecraft:cooldown": {
+                "category": "yes:smg_magazine_24",
+                "duration": 0
+            }
+        }
+    }
+}

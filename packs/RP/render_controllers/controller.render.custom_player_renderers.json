@@ -1,0 +1,16 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.player.arms": {
+			"textures": [ "Texture.default" ],
+			"geometry": "Geometry.arms",
+			"materials": [ { "*": "Material.default" } ]
+		},
+		"controller.render.player.hit_markers": {
+			"ignore_lighting": true,
+			"textures": [ "v.hit_marker_variant == 'normal' ? texture.normal_hit_marker : texture.headshot_hit_marker" ],
+			"geometry": "Geometry.screen_display",
+			"materials": [ { "*": "Material.screen_display" } ]
+		}
+	}
+}

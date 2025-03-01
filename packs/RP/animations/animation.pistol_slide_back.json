@@ -1,0 +1,31 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.pistol_slide_back": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.32,
+			"override_previous_animation": true,
+			"bones": {
+				"pistol_slide": {
+					"position": {
+						"0.0": [0, 0, 1.37],
+						"0.06": {
+							"pre": [0, 0, 2.77372],
+							"post": [0, 0, 2.77372],
+							"lerp_mode": "catmullrom"
+						},
+						"0.21": {
+							"post": [0, 0, 1.77372],
+							"lerp_mode": "catmullrom"
+						},
+						"0.32": [0, 0, 1.77372]
+					}
+				},
+				"hammer": {
+					"rotation": [-80, 0, 0],
+					"position": [0, 0, 0]
+				}
+			}
+		}
+	}
+}

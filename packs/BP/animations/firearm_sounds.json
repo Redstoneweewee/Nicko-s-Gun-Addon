@@ -1,0 +1,38 @@
+{
+    "format_version": "1.21.0",
+    "animations": {
+      "animation.m4a1_sound": {
+        "loop": true,
+        "animation_length": 0.6,
+        "timeline": {
+          "0.06": [
+            "/playsound firearm.m4a1_shoot @s"
+          ],
+          "0.12": [
+            "/playsound firearm.m4a1_shoot @s"
+          ],
+          "0.18": [
+            "/playsound firearm.m4a1_shoot @s"
+          ],
+          "0.24": [
+            "/playsound firearm.m4a1_shoot @s"
+          ],
+          "0.3": [
+            "/playsound firearm.m4a1_shoot @s"
+          ],
+          "0.36": [
+            "/playsound firearm.m4a1_shoot @s"
+          ],
+          "0.42": [
+            "/playsound firearm.m4a1_shoot @s"
+          ],
+          "0.48": [
+            "/playsound firearm.m4a1_shoot @s"
+          ],
+          "0.54": [
+            "/playsound firearm.m4a1_shoot @s"
+          ]
+        }
+      }
+    }
+  }			
