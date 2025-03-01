@@ -1,0 +1,27 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.attack_camerashake": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"attacking": "query.is_delayed_attacking>0.1"
+						}
+					]
+				},
+				"attacking": {
+					"on_exit": [
+						"/camerashake add @p 1 1 positional"
+					],
+					"transitions": [
+						{
+							"default": "query.is_delayed_attacking<0.1"
+						}
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "nn:supertyrant",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/supertyrant"
+			},
+			"geometry": {
+				"default": "geometry.supertyrant"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"base_color": "#FFFFFF"
+			},
+			"animations": {
+				"idle": "animation.supertyrant.idle",
+				"attack": "animation.supertyrant.attack",
+				"move": "animation.supertyrant.walk",
+				"dead": "animation.supertyrant.death",
+				"controller": "controller.animation.nn.birkin_1"
+			},
+			"scripts": {
+				"animate": [
+					"controller"
+				]
+			}
+		}
+	}
+}

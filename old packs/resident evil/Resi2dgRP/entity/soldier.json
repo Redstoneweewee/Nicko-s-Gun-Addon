@@ -1,0 +1,35 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "nn:soldier",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/soldier"
+			},
+			"geometry": {
+				"default": "geometry.soldier"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"base_color": "#FFFFFF"
+			},
+			"animations": {
+				"idle": "animation.soldier.idle",
+				"attack": "animation.soldier.attack",
+				"move": "animation.soldier.walk",
+				"dead": "animation.soldier.death",
+				"controller": "controller.animation.nn.birkin_1"
+			},
+			"scripts": {
+				"animate": [
+					"controller"
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,2243 @@
+{
+    "format_version": "1.18.10",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:player",
+            "is_spawnable": false,
+            "is_summonable": false,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "minecraft:add_bad_omen": {
+                "minecraft:spell_effects": {
+                    "add_effects": [
+                        {
+                            "effect": "bad_omen",
+                            "duration": 6000,
+                            "visible": false,
+                            "display_on_screen_animation": true
+                        }
+                    ]
+                },
+                "minecraft:timer": {
+                    "time": [
+                        0,
+                        0
+                    ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "minecraft:clear_add_bad_omen",
+                        "target": "self"
+                    }
+                }
+            },
+            "minecraft:clear_bad_omen_spell_effect": {
+                "minecraft:spell_effects": { }
+            },
+            "minecraft:raid_trigger": {
+                "minecraft:raid_trigger": {
+                    "triggered_event": {
+                        "event": "minecraft:remove_raid_trigger",
+                        "target": "self"
+                    }
+                },
+                "minecraft:spell_effects": {
+                    "remove_effects": "bad_omen"
+                }
+            },
+            "health_2": {
+                "minecraft:health": {
+                    "max": 2,
+                    "value": 2
+                },
+                "minecraft:variant": {
+                    "value": 2
+                }
+            },
+            "health_4": {
+                "minecraft:health": {
+                    "max": 4,
+                    "value": 4
+                },
+                "minecraft:variant": {
+                    "value": 4
+                }
+            },
+            "health_6": {
+                "minecraft:health": {
+                    "max": 6,
+                    "value": 6
+                },
+                "minecraft:variant": {
+                    "value": 6
+                }
+            },
+            "health_8": {
+                "minecraft:health": {
+                    "max": 8,
+                    "value": 8
+                },
+                "minecraft:variant": {
+                    "value": 8
+                }
+            },
+            "health_10": {
+                "minecraft:health": {
+                    "max": 10,
+                    "value": 10
+                },
+                "minecraft:variant": {
+                    "value": 10
+                }
+            },
+            "health_12": {
+                "minecraft:health": {
+                    "max": 12,
+                    "value": 12
+                },
+                "minecraft:variant": {
+                    "value": 12
+                }
+            },
+            "health_14": {
+                "minecraft:health": {
+                    "max": 14,
+                    "value": 14
+                },
+                "minecraft:variant": {
+                    "value": 14
+                }
+            },
+            "health_16": {
+                "minecraft:health": {
+                    "max": 16,
+                    "value": 16
+                },
+                "minecraft:variant": {
+                    "value": 16
+                }
+            },
+            "health_18": {
+                "minecraft:health": {
+                    "max": 18,
+                    "value": 18
+                },
+                "minecraft:variant": {
+                    "value": 18
+                }
+            },
+            "health_20": {
+                "minecraft:health": {
+                    "max": 20,
+                    "value": 20
+                },
+                "minecraft:variant": {
+                    "value": 20
+                }
+            },
+            "health_22": {
+                "minecraft:health": {
+                    "max": 22,
+                    "value": 22
+                },
+                "minecraft:variant": {
+                    "value": 22
+                }
+            },
+            "health_24": {
+                "minecraft:health": {
+                    "max": 24,
+                    "value": 24
+                },
+                "minecraft:variant": {
+                    "value": 24
+                }
+            },
+            "health_26": {
+                "minecraft:health": {
+                    "max": 26,
+                    "value": 26
+                },
+                "minecraft:variant": {
+                    "value": 26
+                }
+            },
+            "health_28": {
+                "minecraft:health": {
+                    "max": 28,
+                    "value": 28
+                },
+                "minecraft:variant": {
+                    "value": 28
+                }
+            },
+            "health_30": {
+                "minecraft:health": {
+                    "max": 30,
+                    "value": 30
+                },
+                "minecraft:variant": {
+                    "value": 30
+                }
+            },
+            "health_32": {
+                "minecraft:health": {
+                    "max": 32,
+                    "value": 32
+                },
+                "minecraft:variant": {
+                    "value": 32
+                }
+            },
+            "health_34": {
+                "minecraft:health": {
+                    "max": 34,
+                    "value": 34
+                },
+                "minecraft:variant": {
+                    "value": 34
+                }
+            },
+            "health_36": {
+                "minecraft:health": {
+                    "max": 36,
+                    "value": 36
+                },
+                "minecraft:variant": {
+                    "value": 36
+                }
+            },
+            "health_38": {
+                "minecraft:health": {
+                    "max": 38,
+                    "value": 38
+                },
+                "minecraft:variant": {
+                    "value": 38
+                }
+            },
+            "health_40": {
+                "minecraft:health": {
+                    "max": 40,
+                    "value": 40
+                },
+                "minecraft:variant": {
+                    "value": 40
+                }
+            },
+            "health_42": {
+                "minecraft:health": {
+                    "max": 42,
+                    "value": 42
+                },
+                "minecraft:variant": {
+                    "value": 42
+                }
+            },
+            "health_44": {
+                "minecraft:health": {
+                    "max": 44,
+                    "value": 44
+                },
+                "minecraft:variant": {
+                    "value": 44
+                }
+            },
+            "health_46": {
+                "minecraft:health": {
+                    "max": 46,
+                    "value": 46
+                },
+                "minecraft:variant": {
+                    "value": 46
+                }
+            },
+            "health_48": {
+                "minecraft:health": {
+                    "max": 48,
+                    "value": 48
+                },
+                "minecraft:variant": {
+                    "value": 48
+                }
+            },
+            "health_50": {
+                "minecraft:health": {
+                    "max": 50,
+                    "value": 50
+                },
+                "minecraft:variant": {
+                    "value": 50
+                }
+            },
+            "health_52": {
+                "minecraft:health": {
+                    "max": 52,
+                    "value": 52
+                },
+                "minecraft:variant": {
+                    "value": 52
+                }
+            },
+            "health_54": {
+                "minecraft:health": {
+                    "max": 54,
+                    "value": 54
+                },
+                "minecraft:variant": {
+                    "value": 54
+                }
+            },
+            "health_56": {
+                "minecraft:health": {
+                    "max": 56,
+                    "value": 56
+                },
+                "minecraft:variant": {
+                    "value": 56
+                }
+            },
+            "health_58": {
+                "minecraft:health": {
+                    "max": 58,
+                    "value": 58
+                },
+                "minecraft:variant": {
+                    "value": 58
+                }
+            },
+            "health_60": {
+                "minecraft:health": {
+                    "max": 60,
+                    "value": 60
+                },
+                "minecraft:variant": {
+                    "value": 60
+                }
+            },
+            "health_62": {
+                "minecraft:health": {
+                    "max": 62,
+                    "value": 62
+                },
+                "minecraft:variant": {
+                    "value": 62
+                }
+            },
+            "health_64": {
+                "minecraft:health": {
+                    "max": 64,
+                    "value": 64
+                },
+                "minecraft:variant": {
+                    "value": 64
+                }
+            },
+            "health_66": {
+                "minecraft:health": {
+                    "max": 66,
+                    "value": 66
+                },
+                "minecraft:variant": {
+                    "value": 66
+                }
+            },
+            "health_68": {
+                "minecraft:health": {
+                    "max": 68,
+                    "value": 68
+                },
+                "minecraft:variant": {
+                    "value": 68
+                }
+            },
+            "health_70": {
+                "minecraft:health": {
+                    "max": 70,
+                    "value": 70
+                },
+                "minecraft:variant": {
+                    "value": 70
+                }
+            },
+            "health_72": {
+                "minecraft:health": {
+                    "max": 72,
+                    "value": 72
+                },
+                "minecraft:variant": {
+                    "value": 72
+                }
+            },
+            "health_74": {
+                "minecraft:health": {
+                    "max": 74,
+                    "value": 74
+                },
+                "minecraft:variant": {
+                    "value": 74
+                }
+            },
+            "health_76": {
+                "minecraft:health": {
+                    "max": 76,
+                    "value": 76
+                },
+                "minecraft:variant": {
+                    "value": 76
+                }
+            },
+            "health_78": {
+                "minecraft:health": {
+                    "max": 78,
+                    "value": 78
+                },
+                "minecraft:variant": {
+                    "value": 78
+                }
+            },
+            "health_80": {
+                "minecraft:health": {
+                    "max": 80,
+                    "value": 80
+                },
+                "minecraft:variant": {
+                    "value": 80
+                }
+            },
+            "health_82": {
+                "minecraft:health": {
+                    "max": 82,
+                    "value": 82
+                },
+                "minecraft:variant": {
+                    "value": 82
+                }
+            },
+            "health_84": {
+                "minecraft:health": {
+                    "max": 84,
+                    "value": 84
+                },
+                "minecraft:variant": {
+                    "value": 84
+                }
+            },
+            "health_86": {
+                "minecraft:health": {
+                    "max": 86,
+                    "value": 86
+                },
+                "minecraft:variant": {
+                    "value": 86
+                }
+            },
+            "health_88": {
+                "minecraft:health": {
+                    "max": 88,
+                    "value": 88
+                },
+                "minecraft:variant": {
+                    "value": 88
+                }
+            },
+            "health_90": {
+                "minecraft:health": {
+                    "max": 90,
+                    "value": 90
+                },
+                "minecraft:variant": {
+                    "value": 90
+                }
+            },
+            "health_92": {
+                "minecraft:health": {
+                    "max": 92,
+                    "value": 92
+                },
+                "minecraft:variant": {
+                    "value": 92
+                }
+            },
+            "health_94": {
+                "minecraft:health": {
+                    "max": 94,
+                    "value": 94
+                },
+                "minecraft:variant": {
+                    "value": 94
+                }
+            },
+            "health_96": {
+                "minecraft:health": {
+                    "max": 96,
+                    "value": 96
+                },
+                "minecraft:variant": {
+                    "value": 96
+                }
+            },
+            "health_98": {
+                "minecraft:health": {
+                    "max": 98,
+                    "value": 98
+                },
+                "minecraft:variant": {
+                    "value": 98
+                }
+            },
+            "health_100": {
+                "minecraft:health": {
+                    "max": 100,
+                    "value": 100
+                },
+                "minecraft:variant": {
+                    "value": 100
+                }
+            }
+        },
+        "components": {
+            "minecraft:on_death": {
+                "event": "health_decrease"
+            },
+            "minecraft:experience_reward": {
+                "on_death": "math.min(query.player_level*7,100)"
+            },
+            "minecraft:type_family": {
+                "family": [
+                    "player"
+                ]
+            },
+            "minecraft:is_hidden_when_invisible": { },
+            "minecraft:loot": {
+                "table": "loot_tables/empty.json"
+            },
+            "minecraft:collision_box": {
+                "width": 0.6,
+                "height": 1.8
+            },
+            "minecraft:can_climb": { },
+            "minecraft:movement": {
+                "value": 0.1
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 4
+                    }
+                ]
+            },
+            "minecraft:attack": {
+                "damage": 1
+            },
+            "minecraft:player.saturation": {
+                "value": 20
+            },
+            "minecraft:player.exhaustion": {
+                "value": 0,
+                "max": 4
+            },
+            "minecraft:player.level": {
+                "value": 0,
+                "max": 24791
+            },
+            "minecraft:player.experience": {
+                "value": 0,
+                "max": 1
+            },
+            "minecraft:breathable": {
+                "total_supply": 15,
+                "suffocate_time": -1,
+                "inhale_time": 3.75,
+                "generates_bubbles": false
+            },
+            "minecraft:nameable": {
+                "always_show": true,
+                "allow_name_tag_renaming": false
+            },
+            "minecraft:physics": { },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:insomnia": {
+                "days_until_insomnia": 3
+            },
+            "minecraft:rideable": {
+                "seat_count": 2,
+                "family_types": [
+                    "parrot_tame"
+                ],
+                "pull_in_entities": true,
+                "seats": [
+                    {
+                        "position": [
+                            0.4,
+                            -0.2,
+                            -0.1
+                        ],
+                        "min_rider_count": 0,
+                        "max_rider_count": 0,
+                        "lock_rider_rotation": 0
+                    },
+                    {
+                        "position": [
+                            -0.4,
+                            -0.2,
+                            -0.1
+                        ],
+                        "min_rider_count": 1,
+                        "max_rider_count": 2,
+                        "lock_rider_rotation": 0
+                    }
+                ]
+            },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:block_climber": { },
+            "minecraft:environment_sensor": {
+                "triggers": {
+                    "filters": {
+                        "all_of": [
+                            {
+                                "test": "has_mob_effect",
+                                "subject": "self",
+                                "value": "bad_omen"
+                            },
+                            {
+                                "test": "is_in_village",
+                                "subject": "self",
+                                "value": true
+                            }
+                        ]
+                    },
+                    "event": "minecraft:trigger_raid"
+                }
+            }
+        },
+        "events": {
+            "start": {
+                "add": {
+                    "component_groups": [
+                        "health_20"
+                    ]
+                }
+            },
+            "minecraft:gain_bad_omen": {
+                "add": {
+                    "component_groups": [
+                        "minecraft:add_bad_omen"
+                    ]
+                }
+            },
+            "minecraft:clear_add_bad_omen": {
+                "remove": {
+                    "component_groups": [
+                        "minecraft:add_bad_omen"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "minecraft:clear_bad_omen_spell_effect"
+                    ]
+                }
+            },
+            "minecraft:trigger_raid": {
+                "add": {
+                    "component_groups": [
+                        "minecraft:raid_trigger"
+                    ]
+                }
+            },
+            "minecraft:remove_raid_trigger": {
+                "remove": {
+                    "component_groups": [
+                        "minecraft:raid_trigger"
+                    ]
+                }
+            },
+            "health_decrease": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 4
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_2"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_4"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 6
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_4"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_6"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 8
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_6"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_8"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 10
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_8"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_10"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 12
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_10"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_12"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 14
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_12"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_14"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 16
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_14"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_16"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 18
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_16"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_18"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 20
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_18"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_20"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 22
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_20"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_22"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 24
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_22"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_24"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 26
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_24"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_26"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 28
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_26"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_28"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 30
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_28"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_30"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 32
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_30"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_32"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 34
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_32"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_34"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 36
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_34"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_36"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 38
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_36"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_38"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 40
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_38"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_40"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 42
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_40"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_42"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 44
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_42"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_44"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 46
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_44"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_46"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 48
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_46"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_48"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 50
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_48"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_50"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 52
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_50"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_52"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 54
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_52"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_54"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 56
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_54"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_56"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 58
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_56"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_58"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 60
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_58"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_60"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 62
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_60"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_62"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 64
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_62"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_64"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 66
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_64"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_66"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 68
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_66"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_68"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 70
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_68"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_70"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 72
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_70"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_72"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 74
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_72"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_74"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 76
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_74"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_76"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 78
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_76"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_78"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 80
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_78"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_80"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 82
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_80"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_82"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 84
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_82"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_84"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 86
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_84"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_86"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 88
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_86"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_88"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 90
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_88"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_90"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 92
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_90"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_92"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 94
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_92"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_94"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 96
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_94"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_96"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 98
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_96"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_98"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 100
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_98"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_100"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "health_increase": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 2
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_4"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_2"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 4
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_6"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_4"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 6
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_8"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_6"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 8
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_10"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_8"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 10
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_12"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_10"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 12
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_14"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_12"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 14
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_16"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_14"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 16
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_18"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_16"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 18
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_20"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_18"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 20
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_22"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_20"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 22
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_24"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_22"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 24
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_26"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_24"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 26
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_28"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_26"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 28
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_30"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_28"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 30
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_32"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_30"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 32
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_34"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_32"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 34
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_36"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_34"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 36
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_38"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_36"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 38
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_40"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_38"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 40
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_42"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_40"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 42
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_44"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_42"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 44
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_46"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_44"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 46
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_48"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_46"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 48
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_50"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_48"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 50
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_52"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_50"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 52
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_54"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_52"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 54
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_56"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_54"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 56
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_58"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_56"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 58
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_60"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_58"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 60
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_62"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_60"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 62
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_64"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_62"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 64
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_66"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_64"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 66
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_68"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_66"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 68
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_70"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_68"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 70
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_72"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_70"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 72
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_74"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_72"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 74
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_76"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_74"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 76
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_78"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_76"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 78
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_80"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_78"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 80
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_82"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_80"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 82
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_84"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_82"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 84
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_86"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_84"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 86
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_88"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_86"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 88
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_90"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_88"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 90
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_92"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_90"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 92
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_94"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_92"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 94
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_96"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_94"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 96
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_98"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_96"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_variant",
+                            "value": 98
+                        },
+                        "add": {
+                            "component_groups": [
+                                "health_100"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "health_98"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

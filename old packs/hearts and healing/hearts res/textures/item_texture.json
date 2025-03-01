@@ -1,0 +1,8 @@
+{
+    "resource_pack_name": "rp",
+    "texture_data": {
+        "heart": {
+            "textures": "textures/items/heart"
+        }
+    }
+}

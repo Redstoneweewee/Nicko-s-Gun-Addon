@@ -1,0 +1,40 @@
+entity.nn:birkin_1.name=Birkin 1
+item.spawn_egg.entity.nn:birkin_1.name=Birkin 1
+entity.nn:birkin_2.name=Birkin 2
+item.spawn_egg.entity.nn:birkin_2.name=Birkin 2
+entity.nn:birkin_3.name=Birkin 3
+item.spawn_egg.entity.nn:birkin_3.name=Birkin 3
+entity.nn:mrx.name=Mrx
+item.spawn_egg.entity.nn:mrx.name=Mrx
+entity.nn:hunter.name=Hunter
+item.spawn_egg.entity.nn:hunter.name=Hunter
+entity.nn:zombie_female.name=Zombie Female
+item.spawn_egg.entity.nn:zombie_female.name=Zombie Female
+entity.nn:zombie_male1.name=Zombie Male1
+entity.nn:zombie_male2.name=Zombie Male2
+entity.nn:zombie_male3.name=Zombie Male3
+entity.nn:zombie_male4.name=Zombie Male4
+entity.nn:zombie_male5.name=Zombie Male5
+entity.nn:zombie_male6.name=Zombie Male6
+entity.nn:zombie_male7.name=Zombie Male7
+item.spawn_egg.entity.nn:zombie_male1.name=Zombie Male1
+item.spawn_egg.entity.nn:zombie_male2.name=Zombie Male2
+item.spawn_egg.entity.nn:zombie_male3.name=Zombie Male3
+item.spawn_egg.entity.nn:zombie_male4.name=Zombie Male4
+item.spawn_egg.entity.nn:zombie_male5.name=Zombie Male5
+item.spawn_egg.entity.nn:zombie_male6.name=Zombie Male6
+item.spawn_egg.entity.nn:zombie_male7.name=Zombie Male7
+entity.nn:zdog.name=Zdog
+item.spawn_egg.entity.nn:zdog.name=Zdog
+entity.nn:cerberus_dog.name=Cerberus Dog
+entity.nn:supertyrant.name=Supertyrant
+item.spawn_egg.entity.nn:cerberus_dog.name=Cerberus Dog
+item.spawn_egg.entity.nn:supertyrant.name=Supertyrant
+entity.nn:ivy.name=Ivy
+item.spawn_egg.entity.nn:ivy.name=Ivy
+
+
+
+
+
+item.nn:agm=Agm

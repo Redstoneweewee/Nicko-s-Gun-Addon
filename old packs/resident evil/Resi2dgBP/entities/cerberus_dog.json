@@ -1,0 +1,183 @@
+{
+	"format_version": "1.20.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "nn:cerberus_dog",
+			"is_experimental": true,
+			"is_spawnable": true,
+			"is_summonable": true
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"mob"
+				]
+			},
+			"minecraft:collision_box": {
+				"height": 2,
+				"width": 3
+			},
+			"minecraft:can_climb": {},
+			"minecraft:movement": {
+				"value": 0.85
+			},
+			"minecraft:movement.basic": {},
+			"minecraft:navigation.walk": {
+				"avoid_damage_blocks": true,
+				"can_path_over_water": true,
+				"can_sink": false
+			},
+			"minecraft:behavior.random_stroll": {
+				"priority": 6,
+				"speed_multiplier": 0.4
+			},
+			"minecraft:behavior.look_at_player": {
+				"priority": 7,
+				"look_distance": 16,
+				"angle_of_view_horizontal": 45,
+				"probability": 1
+			},
+			"minecraft:behavior.look_at_entity": {
+				"priority": 10,
+				"look_distance": 18,
+				"angle_of_view_horizontal": 45,
+				"filters": {
+					"test": "is_family",
+					"subject": "other",
+					"value": "mob"
+				}
+			},
+			"minecraft:experience_reward": {
+				"on_death": "query.last_hit_by_player?20:0"
+			},
+			"minecraft:breathable": {
+				"suffocate_time": 0,
+				"total_supply": 15
+			},
+			"minecraft:health": {
+				"max": 520,
+				"value": 520
+			},
+			"minecraft:knockback_resistance": {
+				"value": 0.5
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:follow_range": {
+				"value": 64
+			},
+			"minecraft:on_death": {
+				"event": "to_dead",
+				"target": "self"
+			},
+			"minecraft:behavior.avoid_mob_type": {
+				"priority": 1,
+				"entity_types": [
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "player"
+								}
+							]
+						},
+						"max_dist": 50,
+						"sprint_speed_multiplier": 1.5
+					}
+				]
+			},
+			"minecraft:timer": {
+				"looping": true,
+				"time": 10,
+				"time_down_event": {
+					"event": "spawn_zdog"
+				}
+			}
+		},
+		"component_groups": {
+			"to_dead": {
+				"minecraft:transformation": {
+					"into": "nn:cerberus_dog<dead>",
+					"delay": 0
+				}
+			},
+			"dead": {
+				"minecraft:movement": {
+					"value": 0
+				},
+				"minecraft:damage_sensor": {
+					"triggers": {
+						"deals_damage": false
+					}
+				},
+				"minecraft:is_sheared": {},
+				"minecraft:timer": {
+					"time": 1.21,
+					"time_down_event": {
+						"event": "despawn",
+						"target": "self"
+					}
+				},
+				"minecraft:pushable": {
+					"is_pushable": false,
+					"is_pushable_by_piston": false
+				}
+			},
+			"despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"events": {
+			"to_dead": {
+				"add": {
+					"component_groups": [
+						"to_dead"
+					]
+				}
+			},
+			"dead": {
+				"add": {
+					"component_groups": [
+						"dead"
+					]
+				},
+				"queue_command": {
+					"command": [
+						"stopsound @a"
+					]
+				}
+			},
+			"despawn": {
+				"add": {
+					"component_groups": [
+						"despawn"
+					]
+				}
+			},
+			"minecraft:entity_spawned": {
+				"queue_command": {
+					"command": [
+						"stopsound @a",
+						"playsound music.30cerb @a ~ ~ ~ 100"
+					]
+				}
+			},
+			"spawn_zdog": {
+				"queue_command": {
+					"command": [
+						"playanimation @s animation.cerberus_dog.howl",
+						"summon nn:zdog ~ ~ ~2",
+						"summon nn:zdog ~-2 ~ ~2",
+						"summon nn:zdog ~2 ~ ~2",
+						"playsound cerberus_dog_howl @a ~ ~ ~ 50"
+					]
+				}
+			}
+		}
+	}
+}

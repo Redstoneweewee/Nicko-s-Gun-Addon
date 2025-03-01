@@ -1,0 +1,35 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "nn:ivy",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/ivy"
+			},
+			"geometry": {
+				"default": "geometry.ivy"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"base_color": "#FFFFFF"
+			},
+			"animations": {
+				"idle": "animation.ivy.idle",
+				"attack": "animation.ivy.attack",
+				"move": "animation.ivy.walk",
+				"dead": "animation.ivy.death",
+				"controller": "controller.animation.nn.birkin_1"
+			},
+			"scripts": {
+				"animate": [
+					"controller"
+				]
+			}
+		}
+	}
+}

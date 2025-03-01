@@ -1,0 +1,28 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.vomit_attack": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"attacking": "query.is_delayed_attacking>0.1"
+						}
+					]
+				},
+				"attacking": {
+					"on_exit": [
+						"/effect @p poison 1 1",
+						"/effect @p slowness 1 1"
+					],
+					"transitions": [
+						{
+							"default": "query.is_delayed_attacking<0.1"
+						}
+					]
+				}
+			}
+		}
+	}
+}

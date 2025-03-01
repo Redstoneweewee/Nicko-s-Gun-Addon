@@ -1,0 +1,39 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "nn:zombie_male3",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/zombie_male3"
+			},
+			"geometry": {
+				"default": "geometry.zombie_male3"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"base_color": "#FFFFFF"
+			},
+			"animations": {
+				"idle": "animation.female_zombie.idle",
+				"attack": "animation.female_zombie.attack",
+				"attack2": "animation.female_zombie.attack2",
+				"move": "animation.female_zombie.walk",
+				"dead": "animation.female_zombie.death",
+				"controller": "controller.animation.nn.zombie"
+			},
+			"scripts": {
+				"animate": [
+					"controller"
+				]
+			},
+			"particle_effects": {
+				"vomit": "nn:vomit"
+			}
+		}
+	}
+}

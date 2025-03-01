@@ -1,0 +1,210 @@
+{
+	"format_version": "1.14.0",
+	"sound_definitions": {
+		"birkin_1_death": {
+			"sounds": [
+				"sounds/entities/birkin_1/birkin1_death"
+			]
+		},
+		"birkin_1_attack": {
+			"sounds": [
+				"sounds/entities/birkin_1/birkin1_hit"
+			]
+		},
+		"birkin_1_idle": {
+			"sounds": [
+				"sounds/entities/birkin_1/birkin1_idle1",
+				"sounds/entities/birkin_1/birkin1_idle2",
+				"sounds/entities/birkin_1/birkin1_idle3"
+			]
+		},
+		"birkin_1_walk": {
+			"sounds": [
+				"sounds/entities/birkin_1/birkin1_walk"
+			]
+		},
+		"birkin_2_death": {
+			"sounds": [
+				"sounds/entities/birkin_2/birkin_2_death"
+			]
+		},
+		"birkin_2_idle": {
+			"sounds": [
+				"sounds/entities/birkin_2/birkin_2_random1",
+				"sounds/entities/birkin_2/birkin_2_random2",
+				"sounds/entities/birkin_2/birkin_2_random3",
+				"sounds/entities/birkin_2/birkin_2_random4"
+			]
+		},
+		"birkin_2_attack": {
+			"sounds": [
+				"sounds/entities/birkin_2/birkin_2_attack"
+			]
+		},
+		"birkin_2_walk": {
+			"sounds": [
+				"sounds/entities/birkin_2/birkin_2_walk"
+			]
+		},
+		"mrx_attack": {
+			"sounds": [
+				"sounds/entities/mrx/mrx_attack"
+			]
+		},
+		"mrx_walk": {
+			"sounds": [
+				"sounds/entities/mrx/mrx_walk"
+			]
+		},
+		"mrx_stomp": {
+			"sounds": [
+				"sounds/entities/mrx/mrx_stomp"
+			]
+		},
+		"hunter_idle": {
+			"sounds": [
+				"sounds/entities/hunter/hunter_random",
+				"sounds/entities/hunter/hunter_random2",
+				"sounds/entities/hunter/hunter_random3",
+				"sounds/entities/hunter/hunter_random4",
+				"sounds/entities/hunter/hunter_random5",
+				"sounds/entities/hunter/hunter_random6",
+				"sounds/entities/hunter/hunter_random7"
+			]
+		},
+		"hunter_attack": {
+			"sounds": [
+				"sounds/entities/hunter/hunter_attack"
+			]
+		},
+		"female_zombie_idle": {
+			"sounds": [
+				"sounds/entities/female_zombie/femzombie_random",
+				"sounds/entities/female_zombie/femzombie_random1",
+				"sounds/entities/female_zombie/femzombie_random2",
+				"sounds/entities/female_zombie/femzombie_random3",
+				"sounds/entities/female_zombie/femzombie_random4"
+			]
+		},
+		"male_zombie_idle": {
+			"sounds": [
+				"sounds/entities/male_zombie/zombie random",
+				"sounds/entities/male_zombie/zombie random1",
+				"sounds/entities/male_zombie/zombie random2",
+				"sounds/entities/male_zombie/zombie random3",
+				"sounds/entities/male_zombie/zombie random4",
+				"sounds/entities/male_zombie/zombie random5",
+				"sounds/entities/male_zombie/zombie random6",
+				"sounds/entities/male_zombie/zombie random7",
+				"sounds/entities/male_zombie/zombie random8",
+				"sounds/entities/male_zombie/zombie random9",
+				"sounds/entities/male_zombie/zombie random10",
+				"sounds/entities/male_zombie/zombie random11",
+				"sounds/entities/male_zombie/zombie random12",
+				"sounds/entities/male_zombie/zombie random13",
+				"sounds/entities/male_zombie/zombie random14",
+				"sounds/entities/male_zombie/zombie random15",
+				"sounds/entities/male_zombie/zombie random16",
+				"sounds/entities/male_zombie/zombie random17"
+			]
+		},
+		"birkin_3_idle": {
+			"sounds": [
+				"sounds/entities/birkin_3/williambirkin3 random",
+				"sounds/entities/birkin_3/williambirkin3 random1",
+				"sounds/entities/birkin_3/williambirkin3 random2",
+				"sounds/entities/birkin_3/williambirkin3 random3",
+				"sounds/entities/birkin_3/williambirkin3 random4",
+				"sounds/entities/birkin_3/williambirkin3 random5"
+			]
+		},
+		"supertyrant_idle": {
+			"sounds": [
+				"sounds/entities/supertyrant/supertyrant random",
+				"sounds/entities/supertyrant/supertyrant random1",
+				"sounds/entities/supertyrant/supertyrant random2",
+				"sounds/entities/supertyrant/supertyrant random3",
+				"sounds/entities/supertyrant/supertyrant random4"
+			]
+		},
+		"supertyrant_attack": {
+			"sounds": [
+				"sounds/entities/supertyrant/supertyrant attack"
+			]
+		},
+		"cerberus_dog_howl": {
+			"sounds": [
+				"sounds/entities/cerberus_dog/cerberusdog howl"
+			]
+		},
+		"cerberus_dog_idle": {
+			"sounds": [
+				"sounds/entities/cerberus_dog/cerberusdog random",
+				"sounds/entities/cerberus_dog/cerberusdog random1",
+				"sounds/entities/cerberus_dog/cerberusdog random2",
+				"sounds/entities/cerberus_dog/cerberusdog random3",
+				"sounds/entities/cerberus_dog/cerberusdog random4",
+				"sounds/entities/cerberus_dog/cerberusdog random5"
+			]
+		},
+		"ivy_idle": {
+			"sounds": [
+				"sounds/entities/ivy/ivy random",
+				"sounds/entities/ivy/ivy random1",
+				"sounds/entities/ivy/ivy random2",
+				"sounds/entities/ivy/ivy random3"
+			]
+		},
+		"ivy_attack": {
+			"sounds": [
+				"sounds/entities/ivy/ivy attack"
+			]
+		},
+		"ivy_death": {
+			"sounds": [
+				"sounds/entities/ivy/ivy death"
+			]
+		},
+		"soldier_idle": {
+			"sounds": [
+				"sounds/entities/soldier/soldier random",
+				"sounds/entities/soldier/soldier random1",
+				"sounds/entities/soldier/soldier random2",
+				"sounds/entities/soldier/soldier random3",
+				"sounds/entities/soldier/soldier random4",
+				"sounds/entities/soldier/soldier random5",
+				"sounds/entities/soldier/soldier random6",
+				"sounds/entities/soldier/soldier random7",
+				"sounds/entities/soldier/soldier random8",
+				"sounds/entities/soldier/soldier random9"
+			]
+		},
+		"soldier_attack": {
+			"sounds": [
+				"sounds/entities/soldier/soldier attack"
+			]
+		},
+		"zdog_idle": {
+			"sounds": [
+				"sounds/entities/zdog/zdog random",
+				"sounds/entities/zdog/zdog random1",
+				"sounds/entities/zdog/zdog random2",
+				"sounds/entities/zdog/zdog random3",
+				"sounds/entities/zdog/zdog random4",
+				"sounds/entities/zdog/zdog random5",
+				"sounds/entities/zdog/zdog random6",
+				"sounds/entities/zdog/zdog random7"
+			]
+		},
+		"zdog_attack": {
+			"sounds": [
+				"sounds/entities/zdog/zdog attack"
+			]
+		},
+		"zdog_walk": {
+			"sounds": [
+				"sounds/entities/zdog/zdog_walk"
+			]
+		}
+	}
+}

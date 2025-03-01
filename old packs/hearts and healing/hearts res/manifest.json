@@ -1,0 +1,39 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Coded by digga",
+        "name": "resnd1 [RP]",
+        "uuid": "d260aa39-95d4-46a1-a8c6-80fdb080e430",
+        "min_engine_version": [
+            1,
+            20,
+            80
+        ],
+        "version": [
+            1,
+            0,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "25024f2e-2e8e-401d-b67d-9d899e349290",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "uuid": "2d40b645-becf-4451-9604-4ffef725393e",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ]
+}

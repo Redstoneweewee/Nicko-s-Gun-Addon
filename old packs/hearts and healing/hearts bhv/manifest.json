@@ -1,0 +1,54 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Coded by digga",
+        "name": "resnd1 [BP]",
+        "uuid": "d1c3f6a6-919f-4adb-b7b5-a183860ec546",
+        "min_engine_version": [
+            1,
+            20,
+            80
+        ],
+        "version": [
+            1,
+            0,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "9836cd80-06ff-4d5e-acfd-5ae8cb245cd1",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        },
+        {
+            "type": "script",
+            "language": "javascript",
+            "version": [
+                1,
+                0,
+                0
+            ],
+            "entry": "scripts/index.js",
+            "uuid": "7942fdb0-edfb-45d2-8a4c-c5edf9cf6dec"
+        }
+    ],
+    "dependencies": [
+        {
+            "uuid": "57a3f7cf-7e97-4919-a386-17fc9948fbaa",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        },
+        {
+            "module_name": "@minecraft/server",
+            "version": "1.11.0"
+        }
+    ]
+}

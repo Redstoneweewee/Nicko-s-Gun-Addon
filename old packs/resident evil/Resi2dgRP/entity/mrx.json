@@ -1,0 +1,43 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "nn:mrx",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/mrx"
+			},
+			"geometry": {
+				"default": "geometry.mrx"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"base_color": "#FFFFFF"
+			},
+			"animations": {
+				"idle": "animation.mrx.idle",
+				"attack": "animation.mrx.attack",
+				"move": "animation.mrx.walk",
+				"dead": "animation.mrx.death",
+				"stomp": "animation.mrx.stomp",
+				"controller": "controller.animation.nn.mrx"
+			},
+			"scripts": {
+				"animate": [
+					"controller"
+				]
+			},
+			"sound_effects": {
+				"walking": "mrx_walk",
+				"stomp": "mrx_stomp"
+			},
+			"particle_effects": {
+				"stomp": "minecraft:large_explosion"
+			}
+		}
+	}
+}

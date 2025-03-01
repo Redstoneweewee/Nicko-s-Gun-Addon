@@ -1,0 +1,175 @@
+{
+	"format_version": "1.20.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "nn:soldier",
+			"is_experimental": true,
+			"is_spawnable": true,
+			"is_summonable": true
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"mob"
+				]
+			},
+			"minecraft:collision_box": {
+				"height": 2,
+				"width": 1
+			},
+			"minecraft:can_climb": {},
+			"minecraft:movement": {
+				"value": 0.7
+			},
+			"minecraft:movement.basic": {},
+			"minecraft:navigation.walk": {
+				"avoid_damage_blocks": true,
+				"can_path_over_water": true,
+				"can_sink": false
+			},
+			"minecraft:behavior.random_stroll": {
+				"priority": 6,
+				"speed_multiplier": 0.4
+			},
+			"minecraft:behavior.look_at_player": {
+				"priority": 7,
+				"look_distance": 56,
+				"angle_of_view_horizontal": 45,
+				"probability": 1
+			},
+			"minecraft:behavior.look_at_entity": {
+				"priority": 10,
+				"look_distance": 58,
+				"angle_of_view_horizontal": 45,
+				"filters": {
+					"test": "is_family",
+					"subject": "other",
+					"value": "mob"
+				}
+			},
+			"minecraft:experience_reward": {
+				"on_death": "query.last_hit_by_player?20:0"
+			},
+			"minecraft:attack": {
+				"damage": 17
+			},
+			"minecraft:breathable": {
+				"suffocate_time": 0,
+				"total_supply": 15
+			},
+			"minecraft:health": {
+				"max": 40,
+				"value": 40
+			},
+			"minecraft:knockback_resistance": {
+				"value": 0.2
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:follow_range": {
+				"value": 64
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 3,
+				"within_radius": 66,
+				"entity_types": [
+					{
+						"max_dist": 66,
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "player",
+									"operator": "=="
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "mob",
+									"operator": "=="
+								}
+							]
+						}
+					}
+				],
+				"must_see": true
+			},
+			"minecraft:behavior.move_to_target": {
+                 "priority": 2,
+                 "speed_multiplier": 1.0,
+                 "min_distance": 2,
+                 "target_distance": 10
+            },
+			"minecraft:behavior.ranged_attack": {
+				"attack_interval_min": 0,
+				"attack_interval_max": 1,
+				"attack_radius": 30,
+				"priority": 1
+			},
+			"minecraft:on_death": {
+				"event": "to_dead",
+				"target": "self"
+			}
+		},
+		"component_groups": {
+			"to_dead": {
+				"minecraft:transformation": {
+					"into": "nn:soldier<dead>",
+					"delay": 0
+				}
+			},
+			"dead": {
+				"minecraft:movement": {
+					"value": 0
+				},
+				"minecraft:damage_sensor": {
+					"triggers": {
+						"deals_damage": false
+					}
+				},
+				"minecraft:is_sheared": {},
+				"minecraft:timer": {
+					"time": 2,
+					"time_down_event": {
+						"event": "despawn",
+						"target": "self"
+					}
+				},
+				"minecraft:pushable": {
+					"is_pushable": true,
+					"is_pushable_by_piston": true
+				}
+			},
+			"despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"events": {
+			"to_dead": {
+				"add": {
+					"component_groups": [
+						"to_dead"
+					]
+				}
+			},
+			"dead": {
+				"add": {
+					"component_groups": [
+						"dead"
+					]
+				}
+			},
+			"despawn": {
+				"add": {
+					"component_groups": [
+						"despawn"
+					]
+				}
+			}
+		}
+	}
+}

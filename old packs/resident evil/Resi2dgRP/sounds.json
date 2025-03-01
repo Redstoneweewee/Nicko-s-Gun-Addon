@@ -1,0 +1,194 @@
+{
+    "entity_sounds": {
+        "entities": {
+            "nn:birkin_1": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "birkin_1_idle",
+                    "death": "birkin_1_death"
+                }
+            },
+            "nn:birkin_2": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "birkin_2_idle",
+                    "death": "birkin_2_death",
+                    "attack": "birkin_2_attack"
+                }
+            },
+            "nn:mrx": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "attack": "mrx_attack"
+                }
+            },
+            "nn:hunter": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "attack": "hunter_attack",
+                    "ambient": "hunter_idle"
+                }
+            },
+            "nn:zombie_female": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "female_zombie_idle"
+                }
+            },
+            "nn:zombie_male1": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "male_zombie_idle"
+                }
+            },
+            "nn:zombie_male2": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "male_zombie_idle"
+                }
+            },
+            "nn:zombie_male3": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "male_zombie_idle"
+                }
+            },
+            "nn:zombie_male4": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "male_zombie_idle"
+                }
+            },
+            "nn:zombie_male5": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "male_zombie_idle"
+                }
+            },
+            "nn:zombie_male6": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "male_zombie_idle"
+                }
+            },
+            "nn:zombie_male7": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "male_zombie_idle"
+                }
+            },
+            "nn:birkin_3": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "birkin_3_idle"
+                }
+            },
+            "nn:supertyrant": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "supertyrant_idle",
+                    "attack": "supertyrant_attack"
+                }
+            },
+            "nn:cerberus_dog": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "cerberus_dog_idle"
+                }
+            },
+            "nn:ivy": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "ivy_idle",
+                    "attack": "ivy_attack",
+                    "death": "ivy_death"
+                }
+            },
+            "nn:soldier": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "soldier_idle",
+                    "attack": "soldier_attack"
+                }
+            },"nn:zdog": {
+                "pitch": [
+                    1,
+                    1
+                ],
+                "volume": 1,
+                "events": {
+                    "ambient": "zdog_idle",
+                    "attack": "zdog_attack"
+                }
+            }
+        }
+    }
+}

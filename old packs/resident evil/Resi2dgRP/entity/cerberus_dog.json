@@ -1,0 +1,36 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "nn:cerberus_dog",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/cerberus"
+			},
+			"geometry": {
+				"default": "geometry.cerberus_dog"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"base_color": "#FFFFFF"
+			},
+			"animations": {
+				"idle": "animation.cerberus_dog.idle",
+				"attack": "animation.cerberus_dog.attack",
+				"move": "animation.cerberus_dog.walk",
+				"dead": "animation.cerberus_dog.death",
+				"howl": "animation.cerberus_dog.howl",
+				"controller": "controller.animation.nn.birkin_1"
+			},
+			"scripts": {
+				"animate": [
+					"controller"
+				]
+			}
+		}
+	}
+}

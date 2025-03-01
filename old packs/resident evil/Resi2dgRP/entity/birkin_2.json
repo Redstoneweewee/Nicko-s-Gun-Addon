@@ -1,0 +1,38 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "nn:birkin_2",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/birkin_2"
+			},
+			"geometry": {
+				"default": "geometry.birkin_2"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"base_color": "#FFFFFF"
+			},
+			"animations": {
+				"idle": "animation.birkin2.idle",
+				"attack": "animation.birkin2.attack",
+				"move": "animation.birkin2.walk",
+				"dead": "animation.birkin2.death",
+				"controller": "controller.animation.nn.birkin_1"
+			},
+			"scripts": {
+				"animate": [
+					"controller"
+				]
+			},
+			"sound_effects": {
+				"walking": "birkin_2_walk"
+			}
+		}
+	}
+}

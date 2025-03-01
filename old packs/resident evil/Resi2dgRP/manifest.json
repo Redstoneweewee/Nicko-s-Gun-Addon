@@ -1,0 +1,52 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"Digga"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.36"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "resi2dg",
+		"description": "Addon by Digga",
+		"min_engine_version": [
+			1,
+			20,
+			80
+		],
+		"uuid": "cd0fe787-e7f2-41ad-913e-ab764ab639b2",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "04e28409-2d4d-4247-b86b-4297d971cb95",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "d1035181-e10e-46ed-b701-584554a21c71",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	]
+}

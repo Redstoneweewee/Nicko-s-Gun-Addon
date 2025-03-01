@@ -1,0 +1,168 @@
+{
+	"format_version": "1.20.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "nn:zdog",
+			"is_experimental": true,
+			"is_spawnable": true,
+			"is_summonable": true
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"mob"
+				]
+			},
+			"minecraft:collision_box": {
+				"height": 3,
+				"width": 1.5
+			},
+			"minecraft:can_climb": {},
+			"minecraft:movement": {
+				"value": 0.7
+			},
+			"minecraft:movement.basic": {},
+			"minecraft:navigation.walk": {
+				"avoid_damage_blocks": true,
+				"can_path_over_water": true,
+				"can_sink": false
+			},
+			"minecraft:behavior.delayed_attack": {
+				"priority": 4,
+				"attack_once": false,
+				"track_target": true,
+				"require_complete_path": false,
+				"random_stop_interval": 0,
+				"reach_multiplier": 2.5,
+				"speed_multiplier": 0.7,
+				"attack_duration": 1.71,
+				"hit_delay_pct": 0.6
+			},
+			"minecraft:behavior.random_stroll": {
+				"priority": 6,
+				"speed_multiplier": 0.4
+			},
+			"minecraft:behavior.look_at_player": {
+				"priority": 7,
+				"look_distance": 56,
+				"angle_of_view_horizontal": 45,
+				"probability": 1
+			},
+			"minecraft:behavior.look_at_entity": {
+				"priority": 10,
+				"look_distance": 58,
+				"angle_of_view_horizontal": 45,
+				"filters": {
+					"test": "is_family",
+					"subject": "other",
+					"value": "mob"
+				}
+			},
+			"minecraft:experience_reward": {
+				"on_death": "query.last_hit_by_player?20:0"
+			},
+			"minecraft:attack": {
+				"damage": 6
+			},
+			"minecraft:breathable": {
+				"suffocate_time": 0,
+				"total_supply": 15
+			},
+			"minecraft:health": {
+				"max": 45,
+				"value": 45
+			},
+			"minecraft:knockback_resistance": {
+				"value": 0.1
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:follow_range": {
+				"value": 64
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 3,
+				"within_radius": 56,
+				"entity_types": [
+					{
+						"max_dist": 56,
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "player",
+									"operator": "=="
+								}
+							]
+						}
+					}
+				],
+				"must_see": true
+			},
+			"minecraft:on_death": {
+				"event": "to_dead",
+				"target": "self"
+			}
+		},
+		"component_groups": {
+			"to_dead": {
+				"minecraft:transformation": {
+					"into": "nn:zdog<dead>",
+					"delay": 0
+				}
+			},
+			"dead": {
+				"minecraft:movement": {
+					"value": 0
+				},
+				"minecraft:damage_sensor": {
+					"triggers": {
+						"deals_damage": false
+					}
+				},
+				"minecraft:is_sheared": {},
+				"minecraft:timer": {
+					"time": 1.25,
+					"time_down_event": {
+						"event": "despawn",
+						"target": "self"
+					}
+				},
+				"minecraft:pushable": {
+					"is_pushable": true,
+					"is_pushable_by_piston": true
+				}
+			},
+			"despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"events": {
+			"to_dead": {
+				"add": {
+					"component_groups": [
+						"to_dead"
+					]
+				}
+			},
+			"dead": {
+				"add": {
+					"component_groups": [
+						"dead"
+					]
+				}
+			},
+			"despawn": {
+				"add": {
+					"component_groups": [
+						"despawn"
+					]
+				}
+			}
+		}
+	}
+}

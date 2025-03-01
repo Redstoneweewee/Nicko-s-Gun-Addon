@@ -1,0 +1,42 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "nn:zdog",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/zdog"
+			},
+			"geometry": {
+				"default": "geometry.zdog"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"base_color": "#FFFFFF"
+			},
+			"animations": {
+				"idle": "animation.zdog.idle",
+				"attack": "animation.zdog.attack",
+				"move": "animation.zdog.walk",
+				"dead": "animation.zdog.death",
+				"howl": "animation.zdog.howl",
+				"controller": "controller.animation.nn.birkin_1"
+			},
+			"scripts": {
+				"animate": [
+					"controller"
+				]
+			},
+			"sound_effects": {
+				"walking": "zdog_walk"
+			},
+			"particle_effects": {
+				"vomit": "nn:vomit"
+			}
+		}
+	}
+}

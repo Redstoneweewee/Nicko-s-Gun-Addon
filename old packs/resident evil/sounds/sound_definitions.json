@@ -1,0 +1,726 @@
+{
+    "format_version": "1.20.80",
+    "sound_definitions": {
+        "music.9floor": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/9floor"
+            ]
+        },
+        "music.8lk": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/8lk"
+            ]
+        },
+        "music.7susp": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/7susp"
+            ]
+        },
+        "music.6fronth": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/6fronth"
+            ]
+        },
+        "music.5city": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/5city"
+            ]
+        },
+        "music.58end": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/58end"
+            ]
+        },
+        "music.57esclab2": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/57esclab2"
+            ]
+        },
+        "music.56tb": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/56tb"
+            ]
+        },
+        "music.55lsfrd": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/55lsfrd"
+            ]
+        },
+        "music.54esclab": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/54esclab"
+            ]
+        },
+        "music.53birkin": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/53birkin"
+            ]
+        },
+        "music.52wptry": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/52wptry"
+            ]
+        },
+        "music.51wproom": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/51wproom"
+            ]
+        },
+        "music.50labmain": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/50labmain"
+            ]
+        },
+        "music.4city": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/4city"
+            ]
+        },
+        "music.49lab": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/49lab"
+            ]
+        },
+        "music.48lab": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/48lab"
+            ]
+        },
+        "music.47lab": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/47lab"
+            ]
+        },
+        "music.46lab": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/46lab"
+            ]
+        },
+        "music.45lab": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/45lab"
+            ]
+        },
+        "music.44yard": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/44yard"
+            ]
+        },
+        "music.43birkin": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/43birkin"
+            ]
+        },
+        "music.42yard": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/42yard"
+            ]
+        },
+        "music.41sewer": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/41sewer"
+            ]
+        },
+        "music.40sewer": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/40sewer"
+            ]
+        },
+        "music.3kendth": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/3kendth"
+            ]
+        },
+        "music.39sewer": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/39sewer"
+            ]
+        },
+        "music.38safe2": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/38safe2"
+            ]
+        },
+        "music.37esclg": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/37esclg"
+            ]
+        },
+        "music.36hunter": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/36hunter"
+            ]
+        },
+        "music.35lagercmb": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/35lagercmb"
+            ]
+        },
+        "music.34imlager": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/34imlager"
+            ]
+        },
+        "music.33lager": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/33lager"
+            ]
+        },
+        "music.32frdhskl": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/32frdhskl"
+            ]
+        },
+        "music.31frdhs": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/31frdhs"
+            ]
+        },
+        "music.30cerb": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/30cerb"
+            ]
+        },
+        "music.2kendo": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/2kendo"
+            ]
+        },
+        "music.29frdh": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/29frdh"
+            ]
+        },
+        "music.28outs": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/28outs"
+            ]
+        },
+        "music.27esc": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/27esc"
+            ]
+        },
+        "music.26offen": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/26offen"
+            ]
+        },
+        "music.25pris": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/25pris"
+            ]
+        },
+        "music.24office": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/24office"
+            ]
+        },
+        "music.23oben": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/23oben"
+            ]
+        },
+        "music.22mrx": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/22mrx"
+            ]
+        },
+        "music.21floor": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/21floor"
+            ]
+        },
+        "music.20rtsl": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/20rtsl"
+            ]
+        },
+        "music.1rc": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/1rc"
+            ]
+        },
+        "music.19floor": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/19floor"
+            ]
+        },
+        "music.18out": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/18out"
+            ]
+        },
+        "music.17base": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/17base"
+            ]
+        },
+        "music.16jmpsc": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/16jmpsc"
+            ]
+        },
+        "music.15birkin": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/15birkin"
+            ]
+        },
+        "music.14opt": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/14opt"
+            ]
+        },
+        "music.13prep": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/13prep"
+            ]
+        },
+        "music.12floor": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/12floor"
+            ]
+        },
+        "music.11save": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/11save"
+            ]
+        },
+        "music.10libr": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/10libr"
+            ]
+        },
+        "music.0intro": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/0intro"
+            ]
+        },
+        "music.60fort": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/60fort"
+            ]
+        },
+        "music.61comm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/61comm"
+            ]
+        },
+        "music.62brch": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/62brch"
+            ]
+        },
+        "music.63brch": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/63brch"
+            ]
+        },
+        "music.64fight": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/64fight"
+            ]
+        },
+        "music.65brch": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/65brch"
+            ]
+        },
+        "music.66und": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/66und"
+            ]
+        },
+        "music.67und": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/67und"
+            ]
+        },
+        "music.68und": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/68und"
+            ]
+        },
+        "music.69und": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/69und"
+            ]
+        },
+        "music.70und": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/70und"
+            ]
+        },
+        "music.71und": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/71und"
+            ]
+        },
+        "music.72und": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/72und"
+            ]
+        },
+        "music.73und": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/73und"
+            ]
+        },
+        "music.74und": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/74und"
+            ]
+        },
+        "music.75boss": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/75boss"
+            ]
+        },
+        "music.76sec": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/76sec"
+            ]
+        },
+        "music.77out": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/77out"
+            ]
+        },
+        "music.78lbct": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/78lbct"
+            ]
+        },
+        "music.79und": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/79und"
+            ]
+        },
+        "music.80out": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/80out"
+            ]
+        },
+        "music.81mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/81mm"
+            ]
+        },
+        "music.82mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/82mm"
+            ]
+        },
+        "music.83mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/83mm"
+            ]
+        },
+        "music.84mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/84mm"
+            ]
+        },
+        "music.85mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/85mm"
+            ]
+        },
+        "music.86mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/86mm"
+            ]
+        },
+        "music.87mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/87mm"
+            ]
+        },
+        "music.88mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/88mm"
+            ]
+        },
+        "music.89mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/89mm"
+            ]
+        },
+        "music.90mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/90mm"
+            ]
+        },
+        "music.91mm": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/91mm"
+            ]
+        },
+        "music.amb": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/amb"
+            ]
+        },
+        "music.amb1": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/amb1"
+            ]
+        },
+        "music.amb2": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/amb2"
+            ]
+        },
+        "music.amb3": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/amb3"
+            ]
+        },
+        "music.blast": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/blast"
+            ]
+        },
+        "music.break": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/break"
+            ]
+        },
+        "music.exp": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/exp"
+            ]
+        },
+        "music.exp1": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/exp1"
+            ]
+        },
+        "music.exp2": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/exp2"
+            ]
+        },
+        "music.exp3": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/exp3"
+            ]
+        },
+        "music.exp4": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/exp4"
+            ]
+        },
+        "music.siren2": {
+            "category": "ui",
+            "min_distance": 10,
+            "sounds": [
+                "sounds/music/siren2"
+            ]
+        }
+    }
+}
