@@ -19,7 +19,10 @@
 							"hold_run_state" : "v.is_holding_firearm && v.is_running"
 						},
 						{
-							"reload_state" : "v.is_reloading"
+							"reload_open_cock_state" : "v.should_open_cock_on_reload && v.is_reloading"
+						},
+						{
+							"reload_state" : "!v.should_open_cock_on_reload && v.is_reloading"
 						}
 					]
 				},
@@ -49,7 +52,10 @@
 							"aim_state" : "v.is_aiming"
 						},
 						{
-							"reload_state" : "v.is_reloading"
+							"reload_open_cock_state" : "v.should_open_cock_on_reload && v.is_reloading"
+						},
+						{
+							"reload_state" : "!v.should_open_cock_on_reload && v.is_reloading"
 						},
 						{
 							"default" : "!v.is_holding_firearm"
@@ -79,7 +85,10 @@
 							"aim_state" : "v.is_aiming"
 						},
 						{
-							"reload_state" : "v.is_reloading"
+							"reload_open_cock_state" : "v.should_open_cock_on_reload && v.is_reloading"
+						},
+						{
+							"reload_state" : "!v.should_open_cock_on_reload && v.is_reloading"
 						},
 						{
 							"default" : "!v.is_holding_firearm"
@@ -131,7 +140,10 @@
 							"aim_state" : "v.is_aiming"
 						},
 						{
-							"reload_state" : "v.is_reloading"
+							"reload_open_cock_state" : "v.should_open_cock_on_reload && v.is_reloading"
+						},
+						{
+							"reload_state" : "!v.should_open_cock_on_reload && v.is_reloading"
 						},
 						{
 							"default" : "!v.is_holding_firearm"
@@ -169,7 +181,10 @@
 							"hipfire_state" : "!v.is_aiming && v.is_not_shooting_increment < 1"
 						},
 						{
-							"reload_state" : "v.is_reloading"
+							"reload_open_cock_state" : "v.should_open_cock_on_reload && v.is_reloading"
+						},
+						{
+							"reload_state" : "!v.should_open_cock_on_reload && v.is_reloading"
 						},
 						{
 							"default" : "!v.is_holding_firearm"
@@ -178,6 +193,22 @@
 				},
 
 
+				"reload_open_cock_state" : {
+                    "blend_transition": 0.15,
+                    "blend_via_shortest_path": true,
+					"animations" : [
+						{ "agm_reload_open_cock_first_person": " v.is_first_person && v.should_agm_reload_cock" },
+						{ "agm_reload_open_cock_third_person": "!v.is_first_person && v.should_agm_reload_cock" }
+					],
+					"transitions" : [
+						{
+							"reload_state" : "v.is_holding_firearm && q.any_animation_finished"
+						},
+						{
+							"default" : "!v.is_holding_firearm"
+						}
+					]
+				},
 				
 				"reload_state" : {
                     "blend_transition": 0.15,

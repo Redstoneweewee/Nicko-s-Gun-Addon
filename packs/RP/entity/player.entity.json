@@ -99,6 +99,7 @@
           "v.is_holding_magazine         = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:is_magazine');",
           "v.is_holding_offhand_magazine = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:has_offhand_magazine');",
           "v.firearm_has_ammo            = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:firearm_has_ammo');",
+          "v.should_open_cock_on_reload  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:should_open_cock_on_reload');",
           "v.should_cock_on_reload       = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:should_cock_on_reload');",
           "v.is_shooting                 = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:is_shooting');",
           "v.is_reloading                = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:is_reloading');",
@@ -142,9 +143,10 @@
 
           "v.is_not_shooting_increment = v.is_shooting ? 0 : v.is_not_shooting_increment >= 1 ? 1 : v.is_not_shooting_increment + 0.008;",
           
-          "v.reload_normal_animation_multiplier  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_normal_animation_multiplier');",
-          "v.reload_no_swap_animation_multiplier = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_no_swap_animation_multiplier');",
-          "v.reload_cock_animation_multiplier    = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_cock_animation_multiplier');",
+          "v.reload_normal_animation_multiplier    = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_normal_animation_multiplier');",
+          "v.reload_no_swap_animation_multiplier   = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_no_swap_animation_multiplier');",
+          "v.reload_open_cock_animation_multiplier = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_open_cock_animation_multiplier');",
+          "v.reload_cock_animation_multiplier      = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_cock_animation_multiplier');",
 
 
           "v.rotation_offset_x  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:rotation_offset_x')/100;",
@@ -329,6 +331,7 @@
         "shotgun_reload_cock_third_person":    "animation.shotgun_reload_cock_third_person",
 
         "agm_reload_first_person":         "animation.agm_reload_first_person",
+        "agm_reload_open_cock_first_person":    "animation.agm_reload_open_cock_first_person",
         "agm_reload_cock_first_person":    "animation.agm_reload_cock_first_person",
         "agm_reload_third_person":         "animation.agm_reload_third_person",
         "agm_reload_cock_third_person":    "animation.agm_reload_cock_third_person"

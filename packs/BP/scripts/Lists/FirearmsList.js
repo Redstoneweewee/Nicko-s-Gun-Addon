@@ -454,6 +454,7 @@ var agmAttributes = {
     range:                  50,
     animationAttributes: [
         new ReloadAnimationAttributes(ReloadAnimations.shotgun.agmReload,     68),
+        new ReloadAnimationAttributes(ReloadAnimations.shotgun.agmReloadOpenCock, 8),
         new ReloadAnimationAttributes(ReloadAnimations.shotgun.agmReloadCock, 8),
         new AnimationAttributes(ShootAnimations.shotgun.agmShootWithAmmo), 
         new AnimationAttributes(ShootAnimations.shotgun.agmShootOutOfAmmo)

@@ -29,9 +29,9 @@ class AnimationLink {
         if(dynamicValue === undefined) { return; }
         // @ts-ignore
         player.setProperty(clientProperty, dynamicValue);
-        //if(propertyEnum == Global.PlayerDynamicProperties.animation.has_offhand_magazine) {
-        //    console.log(`player ${player.name}'s property ${propertyEnum} has been set to ${dynamicValue}`);
-       // }
+        if(propertyEnum == Global.PlayerDynamicProperties.animation.should_open_cock_on_reload) {
+            console.log(`player ${player.name}'s property ${propertyEnum} has been set to ${dynamicValue}`);
+        }
     }
 }
 

@@ -7,7 +7,7 @@ import { MagazineTags } from './Lists/MagazinesList.js';
 import { startReloadCooldown } from './Reload.js';
 import { AnimationLink } from './AnimationLink.js';
 import { LeftClickAbilityAttributes, LeftClickAbilityTypes, SwitchFiringModeAttributes, SwitchScopeZoomAttributes } from './Definitions/LeftClickAbilityDefinition.js';
-import { AnimationTypes, ReloadAnimationAttributes } from './Definitions/AnimationDefinition.js';
+import { AnimationTypes, ReloadAnimationAttributes, SoundTimeoutIdObject } from './Definitions/AnimationDefinition.js';
 //import { settingsList, SettingsTypes } from './Lists/SettingsList.js';
 const Vector = new Vector3();
 
@@ -894,25 +894,31 @@ class FirearmUtil {
      * 
      * @param {Player} player 
      */
-    static tryRenewReloadAnimationMultiplier(player) {
+    static tryRenewReloadAnimationMultipliers(player) {
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.script.currentMultipliersSaved) === true) { return; }
+        player.setDynamicProperty(Global.PlayerDynamicProperties.script.currentMultipliersSaved, true);
         if(!this.isHoldingFirearm(player)) {
-            this.#trySetReloadNormalAnimationMultiplierValue(player, 1.0);
-            this.#trySetReloadNoSwapAnimationMultiplierValue(player, 1.0);
-            this.#trySetReloadCockAnimationMultiplierValue(player, 1.0);
+            //this.#trySetReloadNormalAnimationMultiplierValue(player, 1.0);
+            //this.#trySetReloadNoSwapAnimationMultiplierValue(player, 1.0);
+            //this.#trySetReloadOpenCockAnimationMultiplierValue(player, 1.0);
+            //this.#trySetReloadCockAnimationMultiplierValue(player, 1.0);
+            //console.log("resetted");
             return;
         }
 
         const firearmItemStack = ItemUtil.getSelectedItemStack(player);
         const firearmObject = this.getFirearmObjectFromItemStack(firearmItemStack);
         if(firearmObject === null) {
-            this.#trySetReloadNormalAnimationMultiplierValue(player, 1.0);
-            this.#trySetReloadNoSwapAnimationMultiplierValue(player, 1.0);
-            this.#trySetReloadCockAnimationMultiplierValue(player, 1.0);
+            //this.#trySetReloadNormalAnimationMultiplierValue(player, 1.0);
+            //this.#trySetReloadNoSwapAnimationMultiplierValue(player, 1.0);
+            //this.#trySetReloadOpenCockAnimationMultiplierValue(player, 1.0);
+            //this.#trySetReloadCockAnimationMultiplierValue(player, 1.0);
+            //console.log("resetted");
             return;
         }
-
         let normalMultiplier = 1;
         let noSwapMultiplier = 1;
+        let openCockMultiplier = 1;
         let cockMultiplier = 1;
         firearmObject.animationsAttributes.forEach(attributes => {
             if(!(attributes instanceof ReloadAnimationAttributes)) { return; }
@@ -922,6 +928,9 @@ class FirearmUtil {
             else if(attributes.animation.type === AnimationTypes.reloadNoSwap) {
                 noSwapMultiplier = attributes.animation.timeInTicks/attributes.scaleDurationToValue;
             }
+            else if(attributes.animation.type === AnimationTypes.reloadOpenCock) {
+                openCockMultiplier = attributes.animation.timeInTicks/attributes.scaleDurationToValue;
+            }
             else if(attributes.animation.type === AnimationTypes.reloadCock) {
                 cockMultiplier = attributes.animation.timeInTicks/attributes.scaleDurationToValue;
             }
@@ -929,11 +938,13 @@ class FirearmUtil {
         if(firearmObject instanceof Gun) {
             this.#trySetReloadNormalAnimationMultiplierValue(player, normalMultiplier);
             this.#trySetReloadNoSwapAnimationMultiplierValue(player, noSwapMultiplier);
+            this.#trySetReloadOpenCockAnimationMultiplierValue(player, openCockMultiplier);
             this.#trySetReloadCockAnimationMultiplierValue(player, cockMultiplier);
         }
         else if(firearmObject instanceof Explosive) {
             this.#trySetReloadNormalAnimationMultiplierValue(player, normalMultiplier);
             this.#trySetReloadNoSwapAnimationMultiplierValue(player, 1.0);
+            this.#trySetReloadOpenCockAnimationMultiplierValue(player, 1.0);
             this.#trySetReloadCockAnimationMultiplierValue(player, 1.0);
         }
         else {
@@ -959,6 +970,16 @@ class FirearmUtil {
         if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_no_swap_animation_multiplier) !== value) {
             player.setDynamicProperty(Global.PlayerDynamicProperties.animation.reload_no_swap_animation_multiplier, value);
             AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.reload_no_swap_animation_multiplier);
+        }
+    }
+    /**
+     * @param {Player} player 
+     * @param {Number} value 
+     */
+    static #trySetReloadOpenCockAnimationMultiplierValue(player, value) {
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_open_cock_animation_multiplier) !== value) {
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.reload_open_cock_animation_multiplier, value);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.reload_open_cock_animation_multiplier);
         }
     }
     /**
@@ -1434,6 +1455,26 @@ class SoundsUtil {
             player.playSound(soundDefinition, {location: playLocation, volume: volume, pitch: NumberUtil.getRandomFloat(minPitch, maxPitch)});
         });
     }
+
+    /**
+     * 
+     * @param {SoundTimeoutIdObject[]} SoundTimeoutIdObjects 
+     * @param {string[]} [animationTypes] 
+     */
+    static stopSounds(SoundTimeoutIdObjects, animationTypes) {
+        SoundTimeoutIdObjects.forEach(obj => {
+            if(animationTypes === undefined) {
+                system.clearRun(obj.timeoutId);
+            }
+            else {
+                animationTypes.forEach(type => {
+                    if(type === obj.animationType) {
+                        system.clearRun(obj.timeoutId);
+                    }
+                });
+            }
+        });
+    }
 }
 
 export { SoundsUtil };
@@ -1467,10 +1508,11 @@ class AnimationUtil {
      * @param {string} animationType - an AnimationTypes enum, from AnimationDefinition
      * @param {Number} timeMultiplier
      * @param {Number} startDelay
-     * @returns {Number[] | undefined} - returns an array of sound timeoutIds
+     * @returns {SoundTimeoutIdObject[] | undefined} - returns an array of sound timeoutIds
      */
     static playAnimationWithSound(player, firearm, animationType, timeMultiplier = 1, startDelay = 0) {
-        let timeoutIds = [];
+        /**@type {SoundTimeoutIdObject[]} */
+        let timeoutObjects = [];
         for(let attributes of firearm.animationsAttributes) {
             if(attributes.animation.type !== animationType) { continue; }
 
@@ -1479,7 +1521,7 @@ class AnimationUtil {
                 const delayId = system.runTimeout(() => {
                     player.playAnimation(attributes.animation.animationDefiniton);
                 }, startDelay);
-                timeoutIds.push(delayId);
+                timeoutObjects.push(new SoundTimeoutIdObject(delayId, attributes.animation.type));
             }
 
             attributes.animation.animationSoundAttributes.forEach(sound => {
@@ -1487,9 +1529,9 @@ class AnimationUtil {
                 const timeoutId = system.runTimeout(() => {
                     SoundsUtil.playSound(player, sound.soundDefinition, player.getHeadLocation(), sound.soundRange, 1, 0.9, 1.1);
                 }, timeoutTime+startDelay);
-                timeoutIds.push(timeoutId);
+                timeoutObjects.push(new SoundTimeoutIdObject(timeoutId, attributes.animation.type));
             });
-            return timeoutIds;
+            return timeoutObjects;
         }
         return undefined;
     }

@@ -80,6 +80,7 @@ class Global {
             loadedOffhandMagazine:        "loadedOffhandMagazine",        //boolean keep across reload
             currentFirearmIdSaved:        "currentFirearmIdSaved",        //boolean reset across reload
             currentFirearmItemStackSaved: "currentFirearmItemStackSaved", //boolean reset across reload
+            currentMultipliersSaved:      "currentMultipliersSaved",      //boolean reset across reload
             isAiming:                     "isAiming",                     //boolean reset across reload
             isHoldingAbilityFirearm:      "isHoldingAbilityFirearm",      //boolean reset across reload
             lastShootTick:         "lastShootTick",         //number reset across reload
@@ -88,20 +89,22 @@ class Global {
         "animation": {
             team:                       "team",                        //Team enum ("gold" or "blue"), reset across reload
             hit_marker_variant:         "hit_marker_variant",          //HitMarkerVariants enum ("none", "normal", or "headshot"), reset across reload
-            has_offhand_magazine:       "has_offhand_magazine",        //boolean reset across reload
+            has_offhand_magazine:       "has_offhand_magazine",        //boolean keep across reload
             firearm_firing_mode:        "firearm_firing_mode",         //boolean reset across reload
             firearm_fire_rate:          "firearm_fire_rate",           //boolean reset across reload
-            firearm_has_ammo:           "firearm_has_ammo",            //boolean reset across reload
-            should_cock_on_reload:      "should_cock_on_reload",       //boolean reset across reload
+            firearm_has_ammo:           "firearm_has_ammo",            //boolean keep across reload
+            should_open_cock_on_reload: "should_open_cock_on_reload",  //boolean reset across reload
+            should_cock_on_reload:      "should_cock_on_reload",       //boolean keep across reload
             is_shooting:                "is_shooting",                 //boolean reset across reload
             is_reloading:               "is_reloading",                //boolean reset across reload
             should_start_cock:          "should_start_cock",           //boolean reset across reload
             recoil:                     "recoil",                      //float reset across reload
             movement_direction:         "movement_direction",          //Direction enum {string} reset across reload
             movement_direction_value:   "movement_direction_value",    //float reset across reload
-            reload_normal_animation_multiplier: "reload_normal_animation_multiplier",   //float reset across reload
-            reload_no_swap_animation_multiplier: "reload_no_swap_animation_multiplier", //float reset across reload
-            reload_cock_animation_multiplier: "reload_cock_animation_multiplier"        //float reset across reload
+            reload_normal_animation_multiplier: "reload_normal_animation_multiplier",         //float reset across reload
+            reload_no_swap_animation_multiplier: "reload_no_swap_animation_multiplier",       //float reset across reload
+            reload_open_cock_animation_multiplier: "reload_open_cock_animation_multiplier", //float reset across reload
+            reload_cock_animation_multiplier: "reload_cock_animation_multiplier"              //float reset across reload
         }
     }
 
@@ -114,6 +117,7 @@ class Global {
         loadedOffhandMagazine: "loadedOffhandMagazine",
         /** These are tied to loadedOffhandMagazine from HoldDetection() */
         has_offhand_magazine:  "has_offhand_magazine",
+        should_open_cock_on_reload: "should_open_cock_on_reload",
         should_cock_on_reload: "should_cock_on_reload",
         firearm_has_ammo:      "firearm_has_ammo"
 

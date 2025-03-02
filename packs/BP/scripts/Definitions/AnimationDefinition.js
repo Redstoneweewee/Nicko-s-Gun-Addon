@@ -71,10 +71,24 @@ class RestrictedAnimationSoundAttribute extends AnimationSoundAttribute {
     }
 }
 
+
+class SoundTimeoutIdObject {
+    /**
+     * 
+     * @param {Number} timeoutId 
+     * @param {string} animationType - An AnimationTypes enum
+     */
+    constructor(timeoutId, animationType) {
+        this.timeoutId = timeoutId;
+        this.animationType = animationType;
+    }
+}
+
 const AnimationTypes = {
     reloadSwap:          "reloadSwap",
     reloadNoSwap:        "reloadNoSwap",
     reloadBoth:          "reloadBoth",
+    reloadOpenCock:     "reloadOpenCock",
     reloadCock:          "reloadCock",
     shoot:               "shoot",
     shootWithAmmo:       "shootWithAmmo",
@@ -88,4 +102,4 @@ const AnimationTypes = {
 }
 
 
-export { AnimationTypes, Animation, AnimationSoundAttribute, AnimationAttributes, ReloadAnimationAttributes, RestrictedAnimationSoundAttribute};
+export { AnimationTypes, Animation, AnimationSoundAttribute, AnimationAttributes, ReloadAnimationAttributes, RestrictedAnimationSoundAttribute, SoundTimeoutIdObject};

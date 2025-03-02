@@ -55,6 +55,11 @@
           "default": false,
           "client_sync": true
         },
+        "yes:should_open_cock_on_reload": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
         "yes:should_cock_on_reload": {
           "type": "bool",
           "default": false,
@@ -114,6 +119,15 @@
           "client_sync": true
         },
         "yes:reload_no_swap_animation_multiplier": {
+          "type": "float",
+          "range": [
+            0.0,
+            10.0
+          ],
+          "default": 1.0,
+          "client_sync": true
+        },
+        "yes:reload_open_cock_animation_multiplier": {
           "type": "float",
           "range": [
             0.0,

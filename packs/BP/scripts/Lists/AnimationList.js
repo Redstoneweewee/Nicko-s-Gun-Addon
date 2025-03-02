@@ -374,18 +374,29 @@ const agmReloadAttributes = {
         }
     ]
 }
+const agmReloadOpenCockAttributes = {
+    duration: 8, //in ticks
+    type:     Def.AnimationTypes.reloadOpenCock,
+    sounds: [
+        {
+            soundDefinition: "firearm.agm_reload_slide_open",
+            timeToPlayInTicks: 3,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_cock_toward",
+            timeToPlayInTicks: 5,
+            soundRange: 40
+        }
+    ]
+}
 const agmReloadCockAttributes = {
     duration: 8, //in ticks
     type:     Def.AnimationTypes.reloadCock,
     sounds: [
         {
-            soundDefinition: "firearm.agm_reload_cock_toward",
-            timeToPlayInTicks: 2,
-            soundRange: 40
-        },
-        {
             soundDefinition: "firearm.agm_reload_cock_away",
-            timeToPlayInTicks: 6,
+            timeToPlayInTicks: 3,
             soundRange: 40
         }
     ]
@@ -506,6 +517,11 @@ const agmReload = new Def.Animation(
     agmReloadAttributes.type,
     agmReloadAttributes.sounds
 )
+const agmReloadOpenCock = new Def.Animation(
+    agmReloadOpenCockAttributes.duration,
+    agmReloadOpenCockAttributes.type,
+    agmReloadOpenCockAttributes.sounds
+)
 const agmReloadCock = new Def.Animation(
     agmReloadCockAttributes.duration,
     agmReloadCockAttributes.type,
@@ -543,6 +559,7 @@ const ReloadAnimations = {
         shotgunReload: shotgunReload,
         shotgunReloadCock: shotgunReloadCock,
         agmReload: agmReload,
+        agmReloadOpenCock: agmReloadOpenCock,
         agmReloadCock: agmReloadCock
     }
 }
@@ -769,12 +786,12 @@ const agmShootWithAmmoAttributes = {
         },
         {
             soundDefinition: "firearm.agm_reload_cock_toward",
-            timeToPlayInTicks: 6,
+            timeToPlayInTicks: 2,
             soundRange: 40
         },
         {
             soundDefinition: "firearm.agm_reload_cock_away",
-            timeToPlayInTicks: 12,
+            timeToPlayInTicks: 6,
             soundRange: 40
         }
     ],

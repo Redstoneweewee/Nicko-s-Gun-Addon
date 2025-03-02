@@ -6,6 +6,7 @@ import { Vector3 } from '../Math/Vector3.js';
 import { MagazineTags } from '../Lists/MagazinesList.js';
 import { renewAmmoCount } from '../AmmoText.js';
 import { AnimationLink } from '../AnimationLink.js';
+import { AnimationTypes } from '../Definitions/AnimationDefinition.js';
 
 
 
@@ -23,7 +24,7 @@ function holdingFirearmDetectionPart1(player) {
     }
 
     //console.log("is saving");
-    FirearmUtil.tryRenewReloadAnimationMultiplier(player);
+    FirearmUtil.tryRenewReloadAnimationMultipliers(player);
     FirearmUtil.tryCopyFirearmAmmoToWorld(player);
     FirearmInit.tryInitializeFirearm(player);
     tryReplaceOffhandItem(player);
@@ -70,7 +71,6 @@ function tryRenewAmmoCount(player) {
 function tryResetCurrentFirearmId(player) {
     if(!player.getDynamicProperty(Global.PlayerDynamicProperties.script.currentFirearmIdSaved)) { return; }
     player.setDynamicProperty(Global.PlayerDynamicProperties.script.currentFirearmIdSaved, false);
-    
     //wait one tick to save for other functions to test for item switch
     system.runTimeout(() => {
         Global.playerCurrentFirearmId.delete(player.id);
@@ -102,8 +102,8 @@ function trySaveCurrentFirearmId(player) {
  */
 function tryResetCurrentFirearmItemStack(player) {
     if(!player.getDynamicProperty(Global.PlayerDynamicProperties.script.currentFirearmItemStackSaved)) { return; }
-    Global.playerCurrentFirearmItemStack.delete(player.id);
     player.setDynamicProperty(Global.PlayerDynamicProperties.script.currentFirearmItemStackSaved, false);
+    Global.playerCurrentFirearmItemStack.delete(player.id);
 }
 
 
@@ -132,8 +132,11 @@ function trySaveCurrentFirearmItemStack(player) {
 function tryResetOffhandItem(player) {
     if(!player.getDynamicProperty(Global.PlayerDynamicProperties.script.loadedOffhandMagazine)) { return; }
     player.setDynamicProperty(Global.PlayerDynamicProperties.script.loadedOffhandMagazine, false);
+    player.setDynamicProperty(Global.PlayerDynamicProperties.script.currentMultipliersSaved, false);
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_offhand_magazine, false);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_offhand_magazine);
+    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload, false);
+    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_open_cock_on_reload);
     const offhandSlot = ItemUtil.getPlayerOffhandContainerSlot(player);
     
     const firearmItemStack = Global.playerCurrentFirearmItemStack.get(player.id);
@@ -161,9 +164,21 @@ function tryReplaceOffhandItem(player) {
 
     const magazineTag = String(firearmItemStack.getDynamicProperty(Global.ItemDynamicProperties.magazineTag));
 
+    const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
+    if(firearmObject) {
+        for(const attribute of firearmObject.animationsAttributes) {
+            if(attribute.animation.type === AnimationTypes.reloadOpenCock) {
+                player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload, true);
+                AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_open_cock_on_reload);
+                break;
+            }
+        }
+    }
+
     //If no magazine then don't do anything
     if(magazineTag === MagazineTags.none) {
         player.setDynamicProperty(Global.PlayerDynamicProperties.script.loadedOffhandMagazine, true);
+
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, false);
