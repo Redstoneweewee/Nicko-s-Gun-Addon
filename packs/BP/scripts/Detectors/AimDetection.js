@@ -55,7 +55,7 @@ function renewScopeZoom(player, firearmObject) {
     }
     player.removeEffect("speed");
     player.removeEffect("slowness");
-    player.onScreenDisplay.setHudVisibility(HudVisibility.Hide, [HudElement.Crosshair]);
+    //player.onScreenDisplay.setHudVisibility(HudVisibility.Hide, [HudElement.Crosshair]);
     if(firearmObject instanceof GunWithAbility && firearmObject.leftClickAbilityAttributes instanceof SwitchScopeZoomAttributes) {
         const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
         if(firearmContainerSlot !== null && (firearmContainerSlot.getDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom) === 1 || firearmContainerSlot.getDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom) === undefined)) {

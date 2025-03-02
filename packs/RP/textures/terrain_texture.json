@@ -4,6 +4,11 @@
   "padding": 8,
   "num_mip_levels": 4,
   "texture_data": {
+    "agm": {
+      "textures": [
+        "textures/entity/agm_texture"
+      ]
+    },
     "ak47": {
       "textures": [
         "textures/entity/ak47_texture"

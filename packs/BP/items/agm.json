@@ -1,0 +1,45 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:item": {
+        "description": {
+            "identifier": "yes:agm",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "yes:is_firearm",
+                    "yes:agm",
+                    "yes:use_shotgun_animations",
+                    "yes:use_agm_reload_swap",
+                    "yes:use_agm_reload_cock"
+                ]
+            },
+            "minecraft:block_placer": {
+                "block": "yes:agm",
+                "replace_block_item": true,
+                "use_on": ["yes:null_block"]
+            },
+            "minecraft:hand_equipped": true,
+            "minecraft:max_stack_size": 1,
+            "minecraft:allow_off_hand": false,
+            "minecraft:display_name": {
+                "value": "AGM Shotgun\n§7[Right-Click/Hold to shoot]\n§7Magazine: §7<§a6 Shell Batch§7>"
+            },
+            "minecraft:can_destroy_in_creative": false,
+            "minecraft:should_despawn": {
+                "value": false
+            },
+            "minecraft:use_modifiers": {
+                "movement_modifier": 1,
+                "use_duration": 9999
+            },
+            "minecraft:cooldown": {
+                "category": "yes:agm",
+                "duration": 0.5
+            }
+        }
+    }
+}

@@ -306,6 +306,43 @@
       },
 
 
+      "firearm.agm_reload_magazine_in" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/shotgun/agm_in",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.agm_reload_slide_open" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/shotgun/agm_slide_open",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.agm_reload_cock_toward" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/shotgun/agm_cock_toward",
+            "volume" : 1.0
+            }
+         ]
+      },
+      "firearm.agm_reload_cock_away" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/shotgun/agm_cock_away",
+            "volume" : 1.0
+            }
+         ]
+      },
+
 
       "firearm.ak47_shoot" : {
          "max_distance" : 200.0,
@@ -428,6 +465,15 @@
             }
          ]
       },
+      "firearm.agm_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/agm_shoot",
+            "volume" : 1.0
+            }
+         ]
+      },
       "firearm.rpg7_shoot" : {
          "max_distance" : 200.0,
          "sounds" : [
@@ -507,6 +553,16 @@
          ]
       },
 
+
+      "firearm.shotgun_shell_ground" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/ground/shotgun_shell_ground",
+            "volume" : 1.0
+            }
+         ]
+      },
 
 
 

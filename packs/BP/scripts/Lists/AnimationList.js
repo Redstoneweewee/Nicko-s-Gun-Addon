@@ -338,6 +338,59 @@ const shotgunReloadCockAttributes = {
     ]
 }
 
+const agmReloadAttributes = {
+    duration: 15*6, //in ticks
+    type:     Def.AnimationTypes.reloadBoth,
+    sounds: [
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 10,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 25,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 40,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 55,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 70,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 85,
+            soundRange: 40
+        }
+    ]
+}
+const agmReloadCockAttributes = {
+    duration: 8, //in ticks
+    type:     Def.AnimationTypes.reloadCock,
+    sounds: [
+        {
+            soundDefinition: "firearm.agm_reload_cock_toward",
+            timeToPlayInTicks: 2,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_cock_away",
+            timeToPlayInTicks: 6,
+            soundRange: 40
+        }
+    ]
+}
+
 const rifleReloadSwapLight = new Def.Animation(
     rifleReloadSwapLightAttributes.duration,
     rifleReloadSwapLightAttributes.type,
@@ -448,6 +501,17 @@ const shotgunReloadCock = new Def.Animation(
     shotgunReloadCockAttributes.sounds
 )
 
+const agmReload = new Def.Animation(
+    agmReloadAttributes.duration,
+    agmReloadAttributes.type,
+    agmReloadAttributes.sounds
+)
+const agmReloadCock = new Def.Animation(
+    agmReloadCockAttributes.duration,
+    agmReloadCockAttributes.type,
+    agmReloadCockAttributes.sounds
+)
+
 const ReloadAnimations = {
     rifle: {
         reloadSwapLight:    rifleReloadSwapLight,
@@ -477,7 +541,9 @@ const ReloadAnimations = {
     },
     shotgun: {
         shotgunReload: shotgunReload,
-        shotgunReloadCock: shotgunReloadCock
+        shotgunReloadCock: shotgunReloadCock,
+        agmReload: agmReload,
+        agmReloadCock: agmReloadCock
     }
 }
 
@@ -692,6 +758,41 @@ const javelinShootAttributes = {
     animationDefiniton: "animation.javelin_shoot"
 }
 
+const agmShootWithAmmoAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shootWithAmmo,
+    sounds: [
+        {
+            soundDefinition: "firearm.agm_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 150
+        },
+        {
+            soundDefinition: "firearm.agm_reload_cock_toward",
+            timeToPlayInTicks: 6,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_cock_away",
+            timeToPlayInTicks: 12,
+            soundRange: 40
+        }
+    ],
+    animationDefiniton: "animation.agm_shoot_with_ammo"
+}
+const agmShootOutOfAmmoAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shootOutOfAmmo,
+    sounds: [
+        {
+            soundDefinition: "firearm.agm_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 150
+        }
+    ],
+    animationDefiniton: "animation.agm_shoot_out_of_ammo"
+}
+
 const ak47Shoot = new Def.Animation(
     ak47ShootAttributes.duration,
     ak47ShootAttributes.type,
@@ -785,6 +886,19 @@ const javelinShoot = new Def.Animation(
     javelinShootAttributes.animationDefiniton
 )
 
+const agmShootWithAmmo = new Def.Animation(
+    agmShootWithAmmoAttributes.duration,
+    agmShootWithAmmoAttributes.type,
+    agmShootWithAmmoAttributes.sounds,
+    agmShootWithAmmoAttributes.animationDefiniton
+)
+const agmShootOutOfAmmo = new Def.Animation(
+    agmShootOutOfAmmoAttributes.duration,
+    agmShootOutOfAmmoAttributes.type,
+    agmShootOutOfAmmoAttributes.sounds,
+    agmShootOutOfAmmoAttributes.animationDefiniton
+)
+
 const ShootAnimations = {
     rifle: {
         ak47Shoot:          ak47Shoot,
@@ -803,7 +917,9 @@ const ShootAnimations = {
     },
     shotgun: {
         remington870ShootWithAmmo:  remington870ShootWithAmmo,
-        remington870ShootOutOfAmmo: remington870ShootOutOfAmmo
+        remington870ShootOutOfAmmo: remington870ShootOutOfAmmo,
+        agmShootWithAmmo:  agmShootWithAmmo,
+        agmShootOutOfAmmo: agmShootOutOfAmmo
     },
     pistol: {
         desertEagleShootWithAmmo:  desertEagleShootWithAmmo,

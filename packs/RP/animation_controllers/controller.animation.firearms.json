@@ -143,6 +143,7 @@
 
 				"aim_state" : {
 					"animations" : [
+						{ "agm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm')" },
 						{ "akm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm')" },
 						{ "m4a1_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m4a1')" },
 						{ "rifle_aim_red_dot_scope_first_person":  " v.is_first_person && v.is_holding_red_dot_scope_variant_1_firearm && (v.should_use_rifle_animations || v.should_use_shotgun_animations)" },
@@ -198,7 +199,10 @@
 						{ "p90_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine && v.should_p90_reload_no_swap" },
 
 						{ "shotgun_reload_first_person":    " v.is_first_person && v.should_shotgun_reload_swap" },
-						{ "shotgun_reload_third_person":    "!v.is_first_person && v.should_shotgun_reload_swap" }
+						{ "shotgun_reload_third_person":    "!v.is_first_person && v.should_shotgun_reload_swap" },
+
+						{ "agm_reload_first_person":    " v.is_first_person && v.should_agm_reload_swap" },
+						{ "agm_reload_third_person":    "!v.is_first_person && v.should_agm_reload_swap" }
 					],
 					"transitions" : [
 						{
@@ -238,7 +242,10 @@
 						{ "p90_reload_cock_third_person": "!v.is_first_person && v.should_p90_reload_cock" },
 
 						{ "shotgun_reload_cock_first_person": " v.is_first_person && v.should_shotgun_reload_cock" },
-						{ "shotgun_reload_cock_third_person": "!v.is_first_person && v.should_shotgun_reload_cock" }
+						{ "shotgun_reload_cock_third_person": "!v.is_first_person && v.should_shotgun_reload_cock" },
+
+						{ "agm_reload_cock_first_person": " v.is_first_person && v.should_agm_reload_cock" },
+						{ "agm_reload_cock_third_person": "!v.is_first_person && v.should_agm_reload_cock" }
 					],
 					"transitions" : [
 						{

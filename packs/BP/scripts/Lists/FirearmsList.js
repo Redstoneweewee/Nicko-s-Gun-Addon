@@ -441,6 +441,48 @@ var remington870Attributes = {
     }
 }
 
+var agmAttributes = {
+    tag:                    "yes:agm",
+    normalName:             "AGM Shotgun\n§7[Right-Click/Hold to shoot]",
+    fireMode:               Def.FiringModes.semi,
+    fireRate:               0,
+    bulletsPerShot:         5,
+    normalBulletDamage:     4,
+    headshotBulletDamage:   8,
+    pierce:                 4,
+    knockbackAmount:        Def.KnockbackAmounts.high,
+    range:                  50,
+    animationAttributes: [
+        new ReloadAnimationAttributes(ReloadAnimations.shotgun.agmReload,     68),
+        new ReloadAnimationAttributes(ReloadAnimations.shotgun.agmReloadCock, 8),
+        new AnimationAttributes(ShootAnimations.shotgun.agmShootWithAmmo), 
+        new AnimationAttributes(ShootAnimations.shotgun.agmShootOutOfAmmo)
+    ],
+    ammoType:               Def.AmmoTypes.Shotgun,
+    defaultMagazine:        magazinesList['yes:shotgun_magazine_6'],
+    scopeAttributes: {
+        slowness:           3,
+        speed:              20,
+        recoilMultiplier:   0.75,
+    },
+    minSpreadDegrees:       1,
+    maxSpreadDegrees:       1.5,
+    recoilAttributes: {
+        mainRecoil: {
+            amountPerShot:      30,
+            minCamerashake:     0.04,
+            maxCamerashake:     0.08,
+            camerashakeTime:    0.05
+        },
+        residualRecoil: {
+            minCamerashake:     0.0001,
+            maxCamerashake:     0.0006,
+            minCamerashakeTime: 4,
+            maxCamerashakeTime: 10
+        }
+    }
+}
+
 const ak47 = new Def.Gun(
     ak47Attributes.tag,
     ak47Attributes.normalName,
@@ -739,6 +781,35 @@ const remington870 = new Def.Gun(
                              remington870Attributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
     remington870Attributes.animationAttributes
 );
+const agm = new Def.Gun(
+    agmAttributes.tag,
+    agmAttributes.normalName,
+    agmAttributes.fireMode,
+    agmAttributes.fireRate,
+    agmAttributes.bulletsPerShot,
+    agmAttributes.normalBulletDamage,
+    agmAttributes.headshotBulletDamage,
+    agmAttributes.pierce,
+    agmAttributes.knockbackAmount,
+    agmAttributes.range,
+    agmAttributes.ammoType,
+    agmAttributes.defaultMagazine,
+    new Def.ScopeAttributes(agmAttributes.scopeAttributes.slowness, 
+                            agmAttributes.scopeAttributes.speed,
+                            agmAttributes.scopeAttributes.recoilMultiplier),
+    agmAttributes.minSpreadDegrees,
+    agmAttributes.maxSpreadDegrees,
+    new Def.MainRecoilAttributes(agmAttributes.recoilAttributes.mainRecoil.amountPerShot,
+                                 agmAttributes.recoilAttributes.mainRecoil.minCamerashake,
+                                 agmAttributes.recoilAttributes.mainRecoil.maxCamerashake,
+                                 agmAttributes.recoilAttributes.mainRecoil.camerashakeTime,
+                                 agmAttributes.recoilAttributes.mainRecoil.camerashakeTime),
+    new Def.RecoilAttributes(agmAttributes.recoilAttributes.residualRecoil.minCamerashake,
+                             agmAttributes.recoilAttributes.residualRecoil.maxCamerashake,
+                             agmAttributes.recoilAttributes.residualRecoil.minCamerashakeTime,
+                             agmAttributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
+    agmAttributes.animationAttributes
+);
 
 
 
@@ -754,7 +825,8 @@ const FirearmTags = {
     "yes:p90":          "yes:p90",
     "yes:ump45":        "yes:ump45",
     "yes:desert_eagle": "yes:desert_eagle",
-    "yes:remington870": "yes:remington870"
+    "yes:remington870": "yes:remington870",
+    "yes:agm":          "yes:agm"
 }
 
 Global.firearms.set(FirearmTags['yes:ak47'],         ak47);
@@ -767,6 +839,7 @@ Global.firearms.set(FirearmTags['yes:p90'],          p90);
 Global.firearms.set(FirearmTags['yes:ump45'],        ump45);
 Global.firearms.set(FirearmTags['yes:desert_eagle'], desertEagle);
 Global.firearms.set(FirearmTags['yes:remington870'], remington870);
+Global.firearms.set(FirearmTags['yes:agm'], agm);
 
 export { magazinesList, FirearmTags };
 

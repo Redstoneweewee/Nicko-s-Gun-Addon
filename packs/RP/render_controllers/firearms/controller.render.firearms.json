@@ -51,6 +51,11 @@
 			"geometry": "Geometry.remington870",
 			"materials": [ { "*": "Material.firearm" } ]
 		},
+		"controller.render.agm": {
+			"textures": [ "Texture.agm" ],
+			"geometry": "Geometry.agm",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
 		"controller.render.rpg7": {
 			"textures": [ "Texture.rpg7" ],
 			"geometry": "Geometry.rpg7",
