@@ -1,0 +1,452 @@
+{
+   "individual_event_sounds" : {
+      "events" : {
+         "fall" : {
+            "pitch" : [ 0.8, 1.2 ],
+            "sound" : "firearm.shotgun_shell_ground",
+            "volume" : [ 0.5 ]
+         },
+         "default" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "jump" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "land" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "step" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "gallop" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "heavy.step" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "hit" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "item.use.on" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "place" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "power.off" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "power.on" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "break" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "hurt" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "death" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "ambient" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "ambient.in.raid" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "ambient.in.water" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "celebrate" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "death.in.water" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "drink" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "drink.honey" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "eat" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "fall.big" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "fall.small" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "fizz" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "flop" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "hurt.in.water" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "splash" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "swim" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "attack" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "takeoff" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "ambient.pollinate" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "fuse" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "breathe" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "shoot" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "ambient.tame" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "purr" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "purreow" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "plop" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "add.chest" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "armor" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "mad" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "saddle" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "angry" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "retreat" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "irongolem.crack" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "irongolem.repair" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "fang" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "throw" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "cast.spell" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "prepare.attack" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "prepare.summon" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "prepare.wololo" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "growl" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "pant" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "whine" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "reappeared" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "haggle.yes" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "haggle.no" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "haggle" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "disappeared" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "death.to.zombie" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "charge" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "death.baby" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "hurt.baby" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "panic" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "tempt" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "shulker.close" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "shulker.open" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "attack.strong" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "roar" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "ambient.baby" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "stun" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "attack.nodamage" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "admire" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "flap" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "fly" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "sneeze" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "sleep" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "warn" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "ambient.screamer" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "death.screamer" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "hurt.screamer" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "spawn" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "ambient.aggressive" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "presneeze" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "ambient.worried" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         },
+         "cant_breed" : {
+            "pitch" : [ 1.0, 1.0 ],
+            "sound" : "",
+            "volume" : [ 0.5 ]
+         }
+      }
+      
+   }
+}
