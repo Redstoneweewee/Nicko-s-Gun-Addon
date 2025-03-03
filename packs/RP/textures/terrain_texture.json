@@ -140,6 +140,16 @@
       "textures": [
         "textures/entity/magazines/shotgun_magazine_6_empty_texture"
       ]
+    },
+    "12_gauge_shotgun_shells_6": {
+      "textures": [
+        "textures/entity/magazines/12_gauge_shotgun_shells_6_texture"
+      ]
+    },
+    "12_gauge_shotgun_shells_6_empty": {
+      "textures": [
+        "textures/entity/magazines/12_gauge_shotgun_shells_6_texture"
+      ]
     }
   }
 }

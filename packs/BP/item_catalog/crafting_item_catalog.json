@@ -68,10 +68,11 @@
              "groups": [
                 {
                    "group_identifier": {
-                      "icon": "yes:remington870",
+                      "icon": "yes:agm",
                       "name": "yes:itemGroup.name.shotguns"
                    },
                    "items": [
+                      "yes:agm",
                       "yes:remington870"
                    ]
                 }

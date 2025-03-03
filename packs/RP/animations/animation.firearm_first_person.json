@@ -2456,10 +2456,10 @@
 			"bones": {
 				"movement": {
 					"rotation": [-8.78, 61.5, -51.6],
-					"position": [-15.0357, 10.80163, -3.90545]
+					"position": [-12.96214, 8.64464, -4.12395]
 				},
 				"arm_hipfire_pivot": {
-					"rotation": [0, "-5+60*(variable.movement_direction_value_fast)", 0]
+					"rotation": [0, "-5+5*(variable.movement_direction_value_fast)", 0]
 				},
 				"leftArm_custom": {
 					"rotation": ["-4.6060819062 + (math.cos(query.life_time * 75) * 1.4325)-v.tcos0_fast/200", -1.79874, 37.56562],
@@ -2502,7 +2502,7 @@
 				},
 				"arm_iron_sight_pivot": {
 					"rotation": ["3.68+math.abs(0.68*(v.movement_direction_value))", "1.96+30*(v.movement_direction_value)", "0.06+2.23*(v.movement_direction_value)"],
-					"position": [0, 0.526, -0.845]
+					"position": [0, -0.1, -0.805]
 				}
 			}
 		},
