@@ -209,11 +209,13 @@ class ScopeAttributes {
      * @param {number} slowness 
      * @param {number} speed 
      * @param {number} recoilMultiplier 
+     * @param {boolean} stopAimOnCooldown
      */
-    constructor(slowness, speed, recoilMultiplier) {
+    constructor(slowness, speed, recoilMultiplier, stopAimOnCooldown) {
         this.slowness        = slowness;
         this.speed           = speed;
         this.recoilMultiplier = recoilMultiplier;
+        this.stopAimOnCooldown = stopAimOnCooldown;
     }
 }
 

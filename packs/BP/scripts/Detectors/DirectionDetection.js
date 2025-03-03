@@ -20,7 +20,7 @@ const Directions = {
  * @param {Player} player 
  */
 function directionDetection(player) {
-    if(!player.getDynamicProperty(Global.PlayerDynamicProperties.script.isAiming) && 
+    if(!player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming) && 
        system.currentTick - Number(player.getDynamicProperty(Global.PlayerDynamicProperties.script.lastShootTick)) > hipfireStayTime) { return; }
     let viewDirection = new Vector3(player.getViewDirection().x, 0, player.getViewDirection().z).normalize();
     const speed = new Vector3(player.getVelocity().x, 0, player.getVelocity().z).length();

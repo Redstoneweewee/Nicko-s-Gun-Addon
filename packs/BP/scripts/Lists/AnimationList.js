@@ -396,7 +396,7 @@ const agmReloadCockAttributes = {
     sounds: [
         {
             soundDefinition: "firearm.agm_reload_cock_away",
-            timeToPlayInTicks: 3,
+            timeToPlayInTicks: 4,
             soundRange: 40
         }
     ]
@@ -776,7 +776,7 @@ const javelinShootAttributes = {
 }
 
 const agmShootWithAmmoAttributes = {
-    duration: 30, //in ticks
+    duration: 40, //in ticks
     type:     Def.AnimationTypes.shootWithAmmo,
     sounds: [
         {
@@ -786,12 +786,12 @@ const agmShootWithAmmoAttributes = {
         },
         {
             soundDefinition: "firearm.agm_reload_cock_toward",
-            timeToPlayInTicks: 2,
+            timeToPlayInTicks: 11,
             soundRange: 40
         },
         {
             soundDefinition: "firearm.agm_reload_cock_away",
-            timeToPlayInTicks: 6,
+            timeToPlayInTicks: 23,
             soundRange: 40
         }
     ],

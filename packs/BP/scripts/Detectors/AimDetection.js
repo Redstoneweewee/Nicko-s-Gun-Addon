@@ -12,14 +12,21 @@ const Vector = new Vector3();
  * @param {Player} player 
  */
 function aimDetection(player) {
-    if(!FirearmUtil.isHoldingFirearm(player) && player.getDynamicProperty(Global.PlayerDynamicProperties.script.isAiming) === false) { return; }
+    if(!FirearmUtil.isHoldingFirearm(player) && player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming) === false) { return; }
     const firearmItemStack = ItemUtil.getSelectedItemStack(player);
     const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
+    if(firearmItemStack === null || firearmObject === null) {
+        tryRemoveScopeZoom(player);
+        return;
+    }
 
-    if(FirearmUtil.isSwitchingFirearm(player) && player.getDynamicProperty(Global.PlayerDynamicProperties.script.isAiming)) {
+    if(FirearmUtil.isSwitchingFirearm(player) && player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming)) {
         renewScopeZoom(player, firearmObject);
     }
-    else if(FirearmUtil.isHoldingFirearm(player) && player.isSneaking && !player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) {
+    else if(FirearmUtil.isHoldingFirearm(player) && 
+            player.isSneaking && 
+            !player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading) && 
+            (!firearmObject.scopeAttributes.stopAimOnCooldown || player.getItemCooldown(firearmItemStack.typeId) === 0)) {
         tryAddScopeZoom(player, firearmObject);
         //Does not apply night vision for javelin yet
     }
@@ -39,7 +46,7 @@ function tryAddScopeZoom(player, firearmObject) {
         tryRemoveScopeZoom(player);
         return;
     }
-    if(player.getDynamicProperty(Global.PlayerDynamicProperties.script.isAiming) === true) { return; }
+    if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming) === true) { return; }
     renewScopeZoom(player, firearmObject);
 }
 /**
@@ -62,14 +69,16 @@ function renewScopeZoom(player, firearmObject) {
             if(firearmObject.leftClickAbilityAttributes instanceof SwitchScopeZoomAttributes) {
                 player.addEffect("speed", 20000000, {amplifier: firearmObject.leftClickAbilityAttributes.defaultScopeAttributes.speed, showParticles: false});
                 player.addEffect("slowness", 20000000, {amplifier: firearmObject.leftClickAbilityAttributes.defaultScopeAttributes.slowness, showParticles: false});
-                player.setDynamicProperty(Global.PlayerDynamicProperties.script.isAiming, true);
+                player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, true);
+                AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming);
             }
         }
         else if(firearmContainerSlot !== null && firearmContainerSlot.getDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom) === 2) {
             if(firearmObject.leftClickAbilityAttributes instanceof SwitchScopeZoomAttributes) {
                 player.addEffect("speed", 20000000, {amplifier: firearmObject.leftClickAbilityAttributes.alternateScopeAttributes.speed, showParticles: false});
                 player.addEffect("slowness", 20000000, {amplifier: firearmObject.leftClickAbilityAttributes.alternateScopeAttributes.slowness, showParticles: false});
-                player.setDynamicProperty(Global.PlayerDynamicProperties.script.isAiming, true);
+                player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, true);
+                AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming);
             }
         }
         else {
@@ -79,7 +88,8 @@ function renewScopeZoom(player, firearmObject) {
     else {
         player.addEffect("speed", 20000000, {amplifier: firearmObject.scopeAttributes.speed, showParticles: false});
         player.addEffect("slowness", 20000000, {amplifier: firearmObject.scopeAttributes.slowness, showParticles: false});
-        player.setDynamicProperty(Global.PlayerDynamicProperties.script.isAiming, true);
+        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, true);
+        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming);
     }
 }
 
@@ -89,11 +99,12 @@ function renewScopeZoom(player, firearmObject) {
  * @returns 
  */
 function tryRemoveScopeZoom(player) {
-    if(player.getDynamicProperty(Global.PlayerDynamicProperties.script.isAiming) === false) { return; }
+    if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming) === false) { return; }
     player.removeEffect("speed");
     player.removeEffect("slowness");
     player.onScreenDisplay.setHudVisibility(HudVisibility.Reset, [HudElement.Crosshair]);
-    player.setDynamicProperty(Global.PlayerDynamicProperties.script.isAiming, false);
+    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, false);
+    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming);
 }
 
 export { aimDetection };

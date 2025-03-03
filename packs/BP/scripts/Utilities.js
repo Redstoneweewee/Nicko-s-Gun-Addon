@@ -855,7 +855,7 @@ class FirearmUtil {
         if(recoil === undefined || recoil === null || Number.isNaN(recoil)) { return; }
 
         let recoilMultiplier = 1.0;
-        if(player.getDynamicProperty(Global.PlayerDynamicProperties.script.isAiming)) {
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming)) {
             recoilMultiplier = firearm.scopeAttributes.recoilMultiplier;
         }
 

@@ -81,7 +81,6 @@ class Global {
             currentFirearmIdSaved:        "currentFirearmIdSaved",        //boolean reset across reload
             currentFirearmItemStackSaved: "currentFirearmItemStackSaved", //boolean reset across reload
             currentMultipliersSaved:      "currentMultipliersSaved",      //boolean reset across reload
-            isAiming:                     "isAiming",                     //boolean reset across reload
             isHoldingAbilityFirearm:      "isHoldingAbilityFirearm",      //boolean reset across reload
             lastShootTick:         "lastShootTick",         //number reset across reload
         },  
@@ -95,6 +94,7 @@ class Global {
             firearm_has_ammo:           "firearm_has_ammo",            //boolean keep across reload
             should_open_cock_on_reload: "should_open_cock_on_reload",  //boolean reset across reload
             should_cock_on_reload:      "should_cock_on_reload",       //boolean keep across reload
+            is_aiming:                  "is_aiming",                   //boolean reset across reload
             is_shooting:                "is_shooting",                 //boolean reset across reload
             is_reloading:               "is_reloading",                //boolean reset across reload
             should_start_cock:          "should_start_cock",           //boolean reset across reload

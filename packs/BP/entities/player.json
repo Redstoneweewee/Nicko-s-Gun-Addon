@@ -65,6 +65,11 @@
           "default": false,
           "client_sync": true
         },
+        "yes:is_aiming": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
         "yes:is_shooting": {
           "type": "bool",
           "default": false,

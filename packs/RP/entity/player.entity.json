@@ -94,7 +94,7 @@
 
           "v.team                        = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:team');",
           "v.hit_marker_variant          = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:hit_marker_variant');",
-          "v.is_aiming                   = q.is_sneaking;",
+          "v.is_aiming                   = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:is_aiming');",
           "v.is_holding_firearm          = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:is_firearm');",
           "v.is_holding_magazine         = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:is_magazine');",
           "v.is_holding_offhand_magazine = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:has_offhand_magazine');",
@@ -141,7 +141,7 @@
           "v.should_agm_reload_swap        = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_agm_reload_swap');",
           "v.should_agm_reload_cock        = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_agm_reload_cock');",
 
-          "v.is_not_shooting_increment = v.is_shooting ? 0 : v.is_not_shooting_increment >= 1 ? 1 : v.is_not_shooting_increment + 0.008;",
+          "v.is_not_shooting_increment = v.is_shooting ? 0 : v.is_not_shooting_increment >= 1 ? 1 : v.is_not_shooting_increment + 0.005;",
           
           "v.reload_normal_animation_multiplier    = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_normal_animation_multiplier');",
           "v.reload_no_swap_animation_multiplier   = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_no_swap_animation_multiplier');",

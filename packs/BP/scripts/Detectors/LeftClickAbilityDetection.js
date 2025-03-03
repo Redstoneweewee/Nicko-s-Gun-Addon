@@ -22,7 +22,7 @@ function onLeftClick(player) {
         const ammoCount = FirearmUtil.getAmmoCountFromOffhand(player);
         const isFullMagazine = (maxAmmo && ammoCount) ? (maxAmmo === ammoCount) ? true : false : false;
         //const speed = new Vector3(player.getVelocity().x, player.getVelocity().y, player.getVelocity().z).length();
-        if(player.getDynamicProperty(Global.PlayerDynamicProperties.script.isAiming) || isFullMagazine/** || speed <= 0.2*/) {
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming) || isFullMagazine/** || speed <= 0.2*/) {
             console.log(`ability `);
             leftClickAbility(player, firearmContainerSlot, firearmObject);
         }
@@ -70,7 +70,8 @@ function leftClickAbility(player, firearmContainerSlot, firearmObject) {
            firearmContainerSlot.getDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom) === 1) {
             firearmContainerSlot.setDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom, 2);
             AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.switchScopeZoomToAlternate);
-            player.setDynamicProperty(Global.PlayerDynamicProperties.script.isAiming, false);
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, false);
+            //AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming); don't need animation link to stop stuttering
             FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearmObject);
             player.sendMessage(`Switched scope zoom to level [§a${firearmObject.leftClickAbilityAttributes.alternateScopeAttributes.slowness}§f]`);
             console.log("set dynamic prop to scope 2");
@@ -78,7 +79,8 @@ function leftClickAbility(player, firearmContainerSlot, firearmObject) {
         else {
             firearmContainerSlot.setDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom, 1);
             AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.switchScopeZoomToDefault);
-            player.setDynamicProperty(Global.PlayerDynamicProperties.script.isAiming, false);
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, false);
+            //AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming); don't need animation link to stop stuttering
             FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearmObject);
             player.sendMessage(`Switched scope zoom to level [§a${firearmObject.leftClickAbilityAttributes.defaultScopeAttributes.slowness}§f]`);
             console.log("set dynamic prop to scope 1");

@@ -199,7 +199,7 @@ function calculateShootDirection(player, firearm) {
     if(recoil === undefined || recoil === null || Number.isNaN(recoil)) { recoil = 0; }
     
     let recoilMultiplier = 1.0;
-    if(player.getDynamicProperty(Global.PlayerDynamicProperties.script.isAiming)) {
+    if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming)) {
         recoilMultiplier = firearm.scopeAttributes.recoilMultiplier;
     }
 

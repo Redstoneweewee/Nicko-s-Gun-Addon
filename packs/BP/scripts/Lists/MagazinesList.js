@@ -66,7 +66,15 @@ var magazinesList = {
                                                         6,
                                                         new ItemStack("yes:shotgun_magazine_6", 1),
                                                         Def.BulletTypes.shotgunShell,
-                                                        true)
+                                                        true),
+
+    "yes:12_gauge_shotgun_shells_6":          new Def.Magazine("yes:12_gauge_shotgun_shells_6",
+                                                                "12-Gauge Shell Batch [§a6§7/§a6 Shells§f]",
+                                                                AmmoTypes.Shotgun,
+                                                                6,
+                                                                new ItemStack("yes:12_gauge_shotgun_shells_6", 1),
+                                                                Def.BulletTypes.shotgunShell,
+                                                                true)
 }
 
 
@@ -79,7 +87,8 @@ const MagazineTags = {
     "yes:p90_magazine_50":            "yes:p90_magazine_50",
     "yes:sniper_magazine_3":          "yes:sniper_magazine_3",
     "yes:pistol_magazine_8":          "yes:pistol_magazine_8",
-    "yes:shotgun_magazine_6":         "yes:shotgun_magazine_6"
+    "yes:shotgun_magazine_6":         "yes:shotgun_magazine_6",
+    "yes:12_gauge_shotgun_shells_6":          "yes:12_gauge_shotgun_shells_6"
 }
 
 
@@ -91,6 +100,7 @@ Global.magazines.set(MagazineTags["yes:p90_magazine_50"],            magazinesLi
 Global.magazines.set(MagazineTags["yes:sniper_magazine_3"],          magazinesList["yes:sniper_magazine_3"]);
 Global.magazines.set(MagazineTags["yes:pistol_magazine_8"],          magazinesList["yes:pistol_magazine_8"]);
 Global.magazines.set(MagazineTags["yes:shotgun_magazine_6"],         magazinesList["yes:shotgun_magazine_6"]);
+Global.magazines.set(MagazineTags["yes:12_gauge_shotgun_shells_6"],          magazinesList["yes:12_gauge_shotgun_shells_6"]);
 
 export { magazinesList, MagazineTags };
 console.log("Magazines initialized with no errors.");
