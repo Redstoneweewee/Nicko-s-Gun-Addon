@@ -46,8 +46,8 @@ class Gun extends Firearm {
      * @param {string}           firingMode 
      * @param {number}           firingRate 
      * @param {number}           bulletsPerShot 
-     * @param {number}           normalBulletDamage
-     * @param {number}           headshotBulletDamage
+     * @param {DropOffDamage}    damage
+     * @param {number}           headshotMultiplier
      * @param {number}           pierce 
      * @param {import("@minecraft/server").Vector2} knockbackAmount
      * @param {number}           range
@@ -60,7 +60,7 @@ class Gun extends Firearm {
      * @param {RecoilAttributes} residualRecoilAttributes 
      * @param {AnimationAttributes[]} animationsAttributes
      */
-    constructor(tag, normalName, firingMode, firingRate, bulletsPerShot, normalBulletDamage, headshotBulletDamage, pierce, knockbackAmount, range,
+    constructor(tag, normalName, firingMode, firingRate, bulletsPerShot, damage, headshotMultiplier, pierce, knockbackAmount, range,
                 ammoType, defaultMagazine, scopeAttributes, 
                 minSpreadDegrees, maxSpreadDegrees, mainRecoilAttributes, residualRecoilAttributes,
                 animationsAttributes) {
@@ -70,8 +70,8 @@ class Gun extends Firearm {
               animationsAttributes);
 
         this.bulletsPerShot       = bulletsPerShot;
-        this.normalBulletDamage   = normalBulletDamage;
-        this.headshotBulletDamage = headshotBulletDamage;
+        this.damage               = damage;
+        this.headshotMultiplier   = headshotMultiplier;
         this.pierce               = pierce;
         this.knockbackAmount      = knockbackAmount;
         this.range                = range;
@@ -84,8 +84,8 @@ class GunWithAbility extends Gun {
      * @param {string}           firingMode 
      * @param {number}           firingRate 
      * @param {number}           bulletsPerShot
-     * @param {number}           normalBulletDamage
-     * @param {number}           headshotBulletDamage
+     * @param {DropOffDamage}    damage
+     * @param {number}           headshotMultiplier
      * @param {number}           pierce 
      * @param {import("@minecraft/server").Vector2} knockbackAmount
      * @param {number}           range
@@ -99,11 +99,11 @@ class GunWithAbility extends Gun {
      * @param {AnimationAttributes[]} animationsAttributes
      * @param {LeftClickAbilityAttributes} leftClickAbilityAttributes
      */
-    constructor(tag, normalName, firingMode, firingRate, bulletsPerShot, normalBulletDamage, headshotBulletDamage, pierce, knockbackAmount, range,
+    constructor(tag, normalName, firingMode, firingRate, bulletsPerShot, damage, headshotMultiplier, pierce, knockbackAmount, range,
                 ammoType, defaultMagazine, scopeAttributes, 
                 minSpreadDegrees, maxSpreadDegrees, mainRecoilAttributes, residualRecoilAttributes,
                 animationsAttributes, leftClickAbilityAttributes) {
-        super(tag, normalName, firingMode, firingRate, bulletsPerShot, normalBulletDamage, headshotBulletDamage, pierce, knockbackAmount, range,
+        super(tag, normalName, firingMode, firingRate, bulletsPerShot, damage, headshotMultiplier, pierce, knockbackAmount, range,
               ammoType, defaultMagazine, scopeAttributes, 
               minSpreadDegrees, maxSpreadDegrees, mainRecoilAttributes, residualRecoilAttributes,
               animationsAttributes)
@@ -250,18 +250,35 @@ class MainRecoilAttributes extends RecoilAttributes {
     }
 }
 
+
+class DropOffDamage {
+    /**
+     * 
+     * @param {number} maxDamage 
+     * @param {number} minDamage 
+     * @param {number} dropOffMinRange 
+     * @param {number} dropOffMaxRange 
+     */
+    constructor(maxDamage, minDamage, dropOffMinRange, dropOffMaxRange) {
+        this.maxDamage       = maxDamage;
+        this.minDamage       = minDamage;
+        this.dropOffMinRange = dropOffMinRange;
+        this.dropOffMaxRange = dropOffMaxRange;
+    }
+}
+
 class ExplosiveDamage {
     /**
      * 
      * @param {number} maxDamage 
-     * @param {number} lowDamage 
+     * @param {number} minDamage 
      * @param {number} range 
      */
-    constructor(maxDamage, lowDamage, range) {
+    constructor(maxDamage, minDamage, range) {
         this.maxDamage = maxDamage;
-        this.lowDamage = lowDamage;
+        this.minDamage = minDamage;
         this.range     = range;
     }
 }
 
-export { Firearm, Gun, GunWithAbility, Explosive, KnockbackAmounts, FiringModes, AmmoTypes, AmmoNames, ScopeAttributes, RecoilAttributes, MainRecoilAttributes };
+export { Firearm, Gun, GunWithAbility, Explosive, KnockbackAmounts, FiringModes, AmmoTypes, AmmoNames, ScopeAttributes, RecoilAttributes, MainRecoilAttributes, DropOffDamage };

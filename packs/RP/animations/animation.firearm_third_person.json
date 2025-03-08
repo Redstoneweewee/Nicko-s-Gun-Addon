@@ -1892,7 +1892,7 @@
 			"bones": {
 				"waist": {
 					"rotation": ["-5.1799483317+q.target_x_rotation", "12.3913539591+q.target_y_rotation", -1.6575],
-					"position": [0.01, 0, 0]
+					"position": [0.01, -2, 0]
 				},
 				"rightItem": {
 					"rotation": [7.96414, 2.63127, 1.93047],
@@ -1908,6 +1908,14 @@
 				"rightArm_custom": {
 					"rotation": [-98.04841, -14.84456, "23.6254+v.tcos02/160"],
 					"position": [0.4487, "0.0094-v.tcos0/240", 2.98377]
+				},
+				"leftLeg": {
+					"rotation": ["-9.8510761165+variable.tcos0 * -1.4", -1.72794, -9.85108],
+					"position": [0, -1.35, 0]
+				},
+				"rightLeg": {
+					"rotation": ["27.4106286282+variable.tcos0 * 1.4", -2.30644, 4.43745],
+					"position": [0, -1.1, 0]
 				}
 			}
 		},

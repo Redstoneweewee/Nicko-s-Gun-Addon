@@ -1,0 +1,129 @@
+Weapons Data
+=============
+
+Headshots: +100% damage
+
+Pistols:
+--------
+M92F
+  - Damage: 13
+  - Magazine: 15
+  - Fire Rate: 1.5 sec
+  - Knockback: 0
+  - Piercing: 1
+
+USP
+  - Damage: 10
+  - Magazine: 10
+  - Fire Rate: 1.0 sec
+  - Knockback: 0
+  - Piercing: 3
+
+Makarov
+  - Damage: 18
+  - Magazine: 5
+  - Fire Rate: 2.0 sec
+  - Knockback: 1
+  - Piercing: 1
+
+Submachine Guns:
+----------------
+MP5
+  - Damage: 6
+  - Magazine: 30
+  - Fire Rate: 0.2 sec
+  - Knockback: 0
+  - Piercing: 4
+
+Assault Rifles:
+---------------
+M4
+  - Damage: 8
+  - Magazine: 20
+  - Fire Rate: 0.35 sec
+  - Knockback: 1
+  - Piercing: 2
+
+Shotguns:
+---------
+AGM
+  - Damage: 20
+  - Magazine: 6
+  - Fire Rate: 3.0 sec
+  - Knockback: 3
+  - Piercing: 4
+  - Spread: Medium
+  - Damage Modifiers:
+    - Under 5 blocks: +75% (35 damage)
+    - After 5 blocks: -30% (14 damage)
+    - After 10 blocks: -75% (5 damage)
+
+Benelli
+  - Damage: 25
+  - Magazine: 10
+  - Fire Rate: 2.0 sec
+  - Knockback: 4
+  - Piercing: 3
+  - Spread: Low
+  - Damage Modifiers:
+    - Under 5 blocks: +30% (32.5 damage)
+    - After 5 blocks: -10% (22.5 damage)
+    - After 10 blocks: -20% (20 damage)
+
+Striker
+  - Damage: 15
+  - Magazine: 20
+  - Fire Rate: 1.5 sec
+  - Knockback: 2
+  - Piercing: 5
+  - Spread: Very High
+  - Effective Range:
+    - Under 5 blocks: +200% (45 damage)
+    - After 5 blocks: -50% (7.5 damage)
+    - After 10 blocks: -90% (1.5 damage)
+
+Grenade Launcher:
+-----------------
+  - Capacity: Uses grenade type held in left hand
+  - Fire Rate: 4.0 sec
+  - Grenade Types:
+    - Explosive: Damage 40
+    - Flame: Damage 35, Burns for 5 sec
+    - Acid: Damage 30, Applies Poison, Slowness, Weakness for 10 sec
+    - Flash: Disables enemies for 15 sec
+
+Magnum:
+-------
+  - Damage: 80
+  - Magazine: 6
+  - Fire Rate: 3.0 sec
+  - Knockback: 5
+  - Piercing: 4
+
+Tesla Gun:
+----------
+  - Damage Levels:
+    - Level 1: 30
+    - Level 2: 40
+    - Level 3: 60
+  - Magazine: 6
+  - Fire Rate: 3.0 sec
+  - Knockback: 3
+  - Effect: Hits every enemy on screen
+
+RPG:
+----
+  - Damage: 9999
+  - Effect: Instant kill on impact
+
+Ammo Types:
+-----------
+  - 7.62mm: MP5, M4
+  - 9mm: M92F, USP, Makarov
+  - 12 Gauge: AGM, Benelli, Striker
+  - .45 ACP: Magnum
+  - Acid Grenade: Grenade Launcher
+  - Flame Grenade: Grenade Launcher
+  - Flash Grenade: Grenade Launcher
+  - Explosive Grenade: Grenade Launcher
+  - Tesla Ammo: Tesla Gun
