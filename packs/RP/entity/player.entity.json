@@ -330,9 +330,11 @@
         "shotgun_reload_third_person":         "animation.shotgun_reload_third_person",
         "shotgun_reload_cock_third_person":    "animation.shotgun_reload_cock_third_person",
 
+        "agm_hipfire_first_person":  "animation.agm_hipfire_first_person",
         "agm_reload_first_person":         "animation.agm_reload_first_person",
         "agm_reload_open_cock_first_person":    "animation.agm_reload_open_cock_first_person",
         "agm_reload_cock_first_person":    "animation.agm_reload_cock_first_person",
+        "agm_reload_open_cock_third_person":    "animation.agm_reload_open_cock_third_person",
         "agm_reload_third_person":         "animation.agm_reload_third_person",
         "agm_reload_cock_third_person":    "animation.agm_reload_cock_third_person"
 

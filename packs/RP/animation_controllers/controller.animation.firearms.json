@@ -124,8 +124,9 @@
 						{ "rifle_hipfire_third_person":   "!v.is_first_person && v.should_use_rifle_animations" },
 						{ "pistol_hipfire_first_person":  " v.is_first_person && v.should_use_pistol_animations" },
 						{ "pistol_hipfire_third_person":  "!v.is_first_person && v.should_use_pistol_animations" },
-						{ "shotgun_hipfire_first_person": " v.is_first_person && v.should_use_shotgun_animations" },
-						{ "shotgun_hipfire_third_person": "!v.is_first_person && v.should_use_shotgun_animations" }
+						{ "shotgun_hipfire_first_person": "v.is_first_person && v.should_use_shotgun_animations" },
+						{ "shotgun_hipfire_third_person": "!v.is_first_person && v.should_use_shotgun_animations" },
+						{ "agm_hipfire_first_person":	  "v.is_first_person && v.should_use_shotgun_animations && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm')" }
 					],
                     "blend_transition": 0.15,
                     "blend_via_shortest_path": true,
