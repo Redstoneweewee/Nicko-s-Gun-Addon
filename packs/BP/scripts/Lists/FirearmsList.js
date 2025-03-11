@@ -453,6 +453,92 @@ var remington870Attributes = {
 }
 
 
+var m92fAttributes = {
+    tag:                    "yes:m92f",
+    normalName:             "M92F\n§7[Right-Click/Hold to shoot]",
+    fireMode:               Def.FiringModes.semi,
+    fireRate:               0,
+    bulletsPerShot:         1,
+    normalBulletDamage:     4.5,
+    headshotBulletDamage:   12,
+    pierce:                 1,
+    knockbackAmount:        Def.KnockbackAmounts.high,
+    range:                  500,
+    animationAttributes: [
+        new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadSwap,   30),
+        new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadNoSwap, 15),
+        new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadCock,   8),
+        new AnimationAttributes(ShootAnimations.pistol.desertEagleShootWithAmmo),
+        new AnimationAttributes(ShootAnimations.pistol.desertEagleShootOutOfAmmo)
+    ],
+    ammoType:               Def.AmmoTypes.Pistol,
+    defaultMagazine:        magazinesList['yes:pistol_magazine_8'],
+    scopeAttributes: {
+        slowness:           3,
+        speed:              20,
+        recoilMultiplier:   0.75,
+        stopAimOnCooldown: false
+    },
+    minSpreadDegrees:       0.5,
+    maxSpreadDegrees:       1,
+    recoilAttributes: {
+        mainRecoil: {
+            amountPerShot:      30,
+            minCamerashake:     0.04,
+            maxCamerashake:     0.06,
+            camerashakeTime:    0.05
+        },
+        residualRecoil: {
+            minCamerashake:     0.0001,
+            maxCamerashake:     0.0006,
+            minCamerashakeTime: 4,
+            maxCamerashakeTime: 10
+        }
+    }
+}
+
+var m4Attributes = {
+    tag:                    "yes:m4",
+    normalName:             "M4\n§7[Right-Click/Hold to shoot]",
+    fireMode:               Def.FiringModes.auto,
+    fireRate:               172,  //ideally, use multiples of 60
+    bulletsPerShot:         1,
+    normalBulletDamage:     1,
+    headshotBulletDamage:   9.5,
+    pierce:                 1,
+    knockbackAmount:        Def.KnockbackAmounts.high,
+    range:                  500,
+    animationAttributes: [
+        new ReloadAnimationAttributes(ReloadAnimations.rifle.reloadSwapPubg,   35),
+        new ReloadAnimationAttributes(ReloadAnimations.rifle.reloadNoSwapPubg, 18),
+        new ReloadAnimationAttributes(ReloadAnimations.rifle.reloadCockPubg,   8),
+        new AnimationAttributes(ShootAnimations.rifle.m4a1Shoot1)
+    ],
+    ammoType:               Def.AmmoTypes.Rifle,
+    defaultMagazine:        magazinesList['yes:rifle_magazine_30'],
+    scopeAttributes: {
+        slowness:           2,
+        speed:              13,
+        recoilMultiplier:   0.75,
+        stopAimOnCooldown: false
+    },
+    minSpreadDegrees:       0.15,
+    maxSpreadDegrees:       1,
+    recoilAttributes: {
+        mainRecoil: {
+            amountPerShot:      8,
+            minCamerashake:     0.018,
+            maxCamerashake:     0.05,
+            camerashakeTime:    0.08
+        },
+        residualRecoil: {
+            minCamerashake:     0.0001,
+            maxCamerashake:     0.0006,
+            minCamerashakeTime: 4,
+            maxCamerashakeTime: 10
+        }
+    }
+}
 var benelliAttributes = {
     tag:                    "yes:benelli",
     normalName:             "Benelli Shotgun\n§7[Right-Click/Hold to shoot]",
@@ -548,6 +634,66 @@ var agmAttributes = {
     }
 }
 
+const m92f = new Def.Gun(
+    m92fAttributes.tag,
+    m92fAttributes.normalName,
+    m92fAttributes.fireMode,
+    m92fAttributes.fireRate,
+    m92fAttributes.bulletsPerShot,
+    m92fAttributes.damage,
+    m92fAttributes.headshotMultiplier,
+    m92fAttributes.pierce,
+    m92fAttributes.knockbackAmount,
+    m92fAttributes.range,
+    m92fAttributes.ammoType,
+    m92fAttributes.defaultMagazine,
+    new Def.ScopeAttributes(m92fAttributes.scopeAttributes.slowness, 
+                            m92fAttributes.scopeAttributes.speed,
+                            m92fAttributes.scopeAttributes.recoilMultiplier,
+                            m92fAttributes.scopeAttributes.stopAimOnCooldown),
+    m92fAttributes.minSpreadDegrees,
+    m92fAttributes.maxSpreadDegrees,
+    new Def.MainRecoilAttributes(m92fAttributes.recoilAttributes.mainRecoil.amountPerShot,
+                                 m92fAttributes.recoilAttributes.mainRecoil.minCamerashake,
+                                 m92fAttributes.recoilAttributes.mainRecoil.maxCamerashake,
+                                 m92fAttributes.recoilAttributes.mainRecoil.camerashakeTime,
+                                 m92fAttributes.recoilAttributes.mainRecoil.camerashakeTime),
+    new Def.RecoilAttributes(m92fAttributes.recoilAttributes.residualRecoil.minCamerashake,
+                             m92fAttributes.recoilAttributes.residualRecoil.maxCamerashake,
+                             m92fAttributes.recoilAttributes.residualRecoil.minCamerashakeTime,
+                             m92fAttributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
+    m92fAttributes.animationAttributes
+);
+const m4 = new Def.Gun(
+    m4Attributes.tag,
+    m4Attributes.normalName,
+    m4Attributes.fireMode,
+    m4Attributes.fireRate,
+    m4Attributes.bulletsPerShot,
+    m4Attributes.damage,
+    m4Attributes.headshotMultiplier,
+    m4Attributes.pierce,
+    m4Attributes.knockbackAmount,
+    m4Attributes.range,
+    m4Attributes.ammoType,
+    m4Attributes.defaultMagazine,
+    new Def.ScopeAttributes(m4Attributes.scopeAttributes.slowness, 
+                            m4Attributes.scopeAttributes.speed,
+                            m4Attributes.scopeAttributes.recoilMultiplier,
+                            m4Attributes.scopeAttributes.stopAimOnCooldown),
+    m4Attributes.minSpreadDegrees,
+    m4Attributes.maxSpreadDegrees,
+    new Def.MainRecoilAttributes(m4Attributes.recoilAttributes.mainRecoil.amountPerShot,
+                                 m4Attributes.recoilAttributes.mainRecoil.minCamerashake,
+                                 m4Attributes.recoilAttributes.mainRecoil.maxCamerashake,
+                                 m4Attributes.recoilAttributes.mainRecoil.camerashakeTime,
+                                 m4Attributes.recoilAttributes.mainRecoil.camerashakeTime),
+    new Def.RecoilAttributes(m4Attributes.recoilAttributes.residualRecoil.minCamerashake,
+                             m4Attributes.recoilAttributes.residualRecoil.maxCamerashake,
+                             m4Attributes.recoilAttributes.residualRecoil.minCamerashakeTime,
+                             m4Attributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
+    m4Attributes.animationAttributes
+);
 const benelli = new Def.Gun(
     benelliAttributes.tag,
     benelliAttributes.normalName,
@@ -615,11 +761,15 @@ const agm = new Def.Gun(
 
 const FirearmTags = {
     "yes:agm":          "yes:agm",
-    "yes:benelli":      "yes:benelli"
+    "yes:benelli":      "yes:benelli",
+    "yes:m4":           "yes:m4",
+    "yes:m92f":         "yes:m92f"
 }
 
 Global.firearms.set(FirearmTags['yes:agm'], agm);
 Global.firearms.set(FirearmTags['yes:benelli'], benelli);
+Global.firearms.set(FirearmTags['yes:m4'], m4);
+Global.firearms.set(FirearmTags['yes:m92f'], m92f);
 
 export { magazinesList, FirearmTags };
 

@@ -156,10 +156,11 @@
 
 				"aim_state" : {
 					"animations" : [
-						{ "benelli_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:benelli')" },
+						{ "m92f_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m92f')" },
+						{ "benelli_aim_iron_sight_first_person":   " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:benelli')" },
 						{ "agm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm')" },
 						{ "akm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm')" },
-						{ "m4a1_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m4a1')" },
+						{ "m4a1_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m4')" },
 						{ "rifle_aim_red_dot_scope_first_person":  " v.is_first_person && v.is_holding_red_dot_scope_variant_1_firearm && (v.should_use_rifle_animations || v.should_use_shotgun_animations)" },
 						{ "rifle_aim_acog_first_person": 		   " v.is_first_person && v.is_holding_red_dot_scope_variant_2_firearm && (v.should_use_rifle_animations || v.should_use_shotgun_animations)" },
 						{ "rifle_aim_acog_first_person": 		   " v.is_first_person && v.is_holding_acog_firearm                    && (v.should_use_rifle_animations || v.should_use_shotgun_animations)" },

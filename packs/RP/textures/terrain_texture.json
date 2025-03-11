@@ -4,6 +4,51 @@
   "padding": 8,
   "num_mip_levels": 4,
   "texture_data": {
+    "usp": {
+      "textures": [
+        "textures/entity/usp_texture"
+      ]
+    },
+    "tesla_gun": {
+      "textures": [
+        "textures/entity/tesla_gun_texture"
+      ]
+    },
+    "striker": {
+      "textures": [
+        "textures/entity/striker_texture"
+      ]
+    },
+    "rpg": {
+      "textures": [
+        "textures/entity/rpg_texture"
+      ]
+    },
+    "mp5": {
+      "textures": [
+        "textures/entity/mp5_texture"
+      ]
+    },
+    "makarov": {
+      "textures": [
+        "textures/entity/makarov_texture"
+      ]
+    },
+    "magnum": {
+      "textures": [
+        "textures/entity/magnum_texture"
+      ]
+    },
+    "m92f": {
+      "textures": [
+        "textures/entity/m92f_texture"
+      ]
+    },
+    "m4": {
+      "textures": [
+        "textures/entity/m4_texture"
+      ]
+    },
     "benelli": {
       "textures": [
         "textures/entity/benelli_texture"

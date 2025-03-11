@@ -1,0 +1,46 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:item": {
+        "description": {
+            "identifier": "yes:m92f",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "yes:is_firearm",
+                    "yes:m92f",
+                    "yes:use_pistol_animations",
+                    "yes:use_pistol_reload_swap",
+                    "yes:use_pistol_reload_no_swap",
+                    "yes:use_pistol_reload_cock"
+                ]
+            },
+            "minecraft:block_placer": {
+                "block": "yes:m92f",
+                "replace_block_item": true,
+                "use_on": ["yes:null_block"]
+            },
+            "minecraft:hand_equipped": true,
+            "minecraft:max_stack_size": 1,
+            "minecraft:allow_off_hand": false,
+            "minecraft:display_name": {
+                "value": "M92F\n§7[Right-Click/Hold to shoot]\n§7Magazine: §7<§a8 Round Magazine§7>"
+            },
+            "minecraft:can_destroy_in_creative": false,
+            "minecraft:should_despawn": {
+                "value": false
+            },
+            "minecraft:use_modifiers": {
+                "movement_modifier": 1,
+                "use_duration": 9999
+            },
+            "minecraft:cooldown": {
+                "category": "yes:m92f",
+                "duration": 1.5
+            }
+        }
+    }
+}

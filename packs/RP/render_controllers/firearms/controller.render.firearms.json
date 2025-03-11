@@ -1,6 +1,51 @@
 {
 	"format_version": "1.8.0",
 	"render_controllers": {
+		"controller.render.usp": {
+			"textures": [ "Texture.usp" ],
+			"geometry": "Geometry.usp",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.tesla_gun": {
+			"textures": [ "Texture.tesla_gun" ],
+			"geometry": "Geometry.tesla_gun",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.striker": {
+			"textures": [ "Texture.striker" ],
+			"geometry": "Geometry.striker",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.rpg": {
+			"textures": [ "Texture.rpg" ],
+			"geometry": "Geometry.rpg",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.mp5": {
+			"textures": [ "Texture.mp5" ],
+			"geometry": "Geometry.mp5",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.makarov": {
+			"textures": [ "Texture.makarov" ],
+			"geometry": "Geometry.makarov",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.magnum": {
+			"textures": [ "Texture.magnum" ],
+			"geometry": "Geometry.magnum",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.m92f": {
+			"textures": [ "Texture.m92f" ],
+			"geometry": "Geometry.m92f",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.m4": {
+			"textures": [ "Texture.m4" ],
+			"geometry": "Geometry.m4",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
 		"controller.render.benelli": {
 			"textures": [ "Texture.benelli" ],
 			"geometry": "Geometry.benelli",
