@@ -33,7 +33,8 @@
         "ump45": "textures/entity/ump45_texture",
         "desert_eagle": "textures/entity/desert_eagle_texture",
         "remington870": "textures/entity/remington870_texture",
-        "agm": "textures/entity/agm_texture"
+        "agm": "textures/entity/agm_texture",
+        "benelli": "textures/entity/benelli_texture"
       },
       "geometry": {
         "default": "geometry.humanoid.custom",
@@ -57,7 +58,8 @@
         "ump45": "geometry.weeweejuice.ump45",
         "desert_eagle": "geometry.weeweejuice.desert_eagle",
         "remington870": "geometry.weeweejuice.remington870",
-        "agm": "geometry.weeweejuice.agm"
+        "agm": "geometry.weeweejuice.agm",
+        "benelli": "geometry.weeweejuice.benelli"
       },
       "scripts": {
         "scale": "0.9375",
@@ -117,7 +119,7 @@
 					"v.movement_direction_value_fast = math.atan(3*v.movement_clamp2)*2/360;",
 
 
-          "v.is_holding_iron_sight_firearm              = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm', 'yes:m4a1', 'yes:agm');",
+          "v.is_holding_iron_sight_firearm              = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm', 'yes:m4a1', 'yes:agm', 'yes:benelli');",
           "v.is_holding_red_dot_scope_variant_1_firearm = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:ak47', 'yes:ar15', 'yes:ump45', 'yes:desert_eagle');",
           "v.is_holding_red_dot_scope_variant_2_firearm = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:p90', 'yes:remington870');",
           "v.is_holding_acog_firearm                    = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:hk417');",
@@ -291,6 +293,7 @@
         "akm_aim_iron_sight_first_person":    "animation.akm_aim_iron_sight_first_person",
         "m4a1_aim_iron_sight_first_person":   "animation.m4a1_aim_iron_sight_first_person",
         "agm_aim_iron_sight_first_person":   "animation.agm_aim_iron_sight_first_person",
+        "benelli_aim_iron_sight_first_person":   "animation.benelli_aim_iron_sight_first_person",
         "rifle_aim_red_dot_scope_first_person": "animation.rifle_aim_red_dot_scope_first_person",
         "rifle_aim_acog_first_person":          "animation.rifle_aim_acog_first_person",
         "rifle_aim_sniper_scope_first_person":  "animation.rifle_aim_sniper_scope_first_person",
@@ -383,7 +386,8 @@
         { "controller.render.ump45":        "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:ump45') && !query.is_spectator" },
         { "controller.render.desert_eagle": "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:desert_eagle') && !query.is_spectator" },
         { "controller.render.remington870": "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:remington870') && !query.is_spectator" },
-        { "controller.render.agm":          "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm') && !query.is_spectator" }
+        { "controller.render.agm":          "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm') && !query.is_spectator" },
+        { "controller.render.benelli":      "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:benelli') && !query.is_spectator" }
       ],
       "particle_effects": {
           "muzzle_flash": "yes:muzzle_flash",

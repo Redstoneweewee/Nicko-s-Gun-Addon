@@ -1,6 +1,16 @@
 {
 	"format_version": "1.8.0",
 	"render_controllers": {
+		"controller.render.benelli": {
+			"textures": [ "Texture.benelli" ],
+			"geometry": "Geometry.benelli",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
+		"controller.render.agm": {
+			"textures": [ "Texture.agm" ],
+			"geometry": "Geometry.agm",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
 		"controller.render.ak47": {
 			"textures": [ "Texture.ak47" ],
 			"geometry": "Geometry.ak47",
@@ -49,11 +59,6 @@
 		"controller.render.remington870": {
 			"textures": [ "Texture.remington870" ],
 			"geometry": "Geometry.remington870",
-			"materials": [ { "*": "Material.firearm" } ]
-		},
-		"controller.render.agm": {
-			"textures": [ "Texture.agm" ],
-			"geometry": "Geometry.agm",
 			"materials": [ { "*": "Material.firearm" } ]
 		},
 		"controller.render.rpg7": {

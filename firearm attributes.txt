@@ -49,7 +49,8 @@ Shotguns:
 AGM
   - Damage: 20
   - Magazine: 6
-  - Fire Rate: 3.0 sec
+  - Fire Rate: 2.0 sec
+  - Reload Speed: 1.0 sec per shell
   - Knockback: 3
   - Piercing: 4
   - Spread: Medium
@@ -61,7 +62,8 @@ AGM
 Benelli
   - Damage: 25
   - Magazine: 10
-  - Fire Rate: 2.0 sec
+  - Fire Rate: 1.33 sec
+  - Reload Speed: 0.66 sec per shell
   - Knockback: 4
   - Piercing: 3
   - Spread: Low
@@ -73,7 +75,8 @@ Benelli
 Striker
   - Damage: 15
   - Magazine: 20
-  - Fire Rate: 1.5 sec
+  - Fire Rate: 1.0 sec
+  - Reload Speed: 0.5 sec per shell
   - Knockback: 2
   - Piercing: 5
   - Spread: Very High
@@ -86,6 +89,7 @@ Grenade Launcher:
 -----------------
   - Capacity: Uses grenade type held in left hand
   - Fire Rate: 4.0 sec
+  - Reload Speed: 2.0 sec per shell
   - Grenade Types:
     - Explosive: Damage 40
     - Flame: Damage 35, Burns for 5 sec

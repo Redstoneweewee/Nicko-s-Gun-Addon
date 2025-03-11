@@ -452,6 +452,53 @@ var remington870Attributes = {
     }
 }
 
+
+var benelliAttributes = {
+    tag:                    "yes:benelli",
+    normalName:             "Benelli Shotgun\n§7[Right-Click/Hold to shoot]",
+    fireMode:               Def.FiringModes.semi,
+    fireRate:               0,
+    bulletsPerShot:         10,
+    damage: {
+        maxDamage: 35,
+        minDamage: 5,
+        dropOffMinRange: 1.5,
+        dropOffMaxRange: 10
+    },
+    headshotMultiplier:     2,
+    pierce:                 4,
+    knockbackAmount:        Def.KnockbackAmounts.high,
+    range:                  50,
+    animationAttributes: [
+        new ReloadAnimationAttributes(ReloadAnimations.shotgun.shotgunReload,     132),
+        new AnimationAttributes(ShootAnimations.shotgun.agmShootWithAmmo)
+    ],
+    ammoType:               Def.AmmoTypes.Shotgun,
+    defaultMagazine:        magazinesList['yes:12_gauge_shotgun_shells_6'],
+    scopeAttributes: {
+        slowness:           3,
+        speed:              20,
+        recoilMultiplier:   0.75,
+        stopAimOnCooldown:  true
+    },
+    minSpreadDegrees:       2,
+    maxSpreadDegrees:       3,
+    recoilAttributes: {
+        mainRecoil: {
+            amountPerShot:      30,
+            minCamerashake:     0.04,
+            maxCamerashake:     0.08,
+            camerashakeTime:    0.05
+        },
+        residualRecoil: {
+            minCamerashake:     0.0001,
+            maxCamerashake:     0.0006,
+            minCamerashakeTime: 4,
+            maxCamerashakeTime: 10
+        }
+    }
+}
+
 var agmAttributes = {
     tag:                    "yes:agm",
     normalName:             "AGM Shotgun\n§7[Right-Click/Hold to shoot]",
@@ -501,6 +548,36 @@ var agmAttributes = {
     }
 }
 
+const benelli = new Def.Gun(
+    benelliAttributes.tag,
+    benelliAttributes.normalName,
+    benelliAttributes.fireMode,
+    benelliAttributes.fireRate,
+    benelliAttributes.bulletsPerShot,
+    benelliAttributes.damage,
+    benelliAttributes.headshotMultiplier,
+    benelliAttributes.pierce,
+    benelliAttributes.knockbackAmount,
+    benelliAttributes.range,
+    benelliAttributes.ammoType,
+    benelliAttributes.defaultMagazine,
+    new Def.ScopeAttributes(benelliAttributes.scopeAttributes.slowness, 
+                            benelliAttributes.scopeAttributes.speed,
+                            benelliAttributes.scopeAttributes.recoilMultiplier,
+                            benelliAttributes.scopeAttributes.stopAimOnCooldown),
+    benelliAttributes.minSpreadDegrees,
+    benelliAttributes.maxSpreadDegrees,
+    new Def.MainRecoilAttributes(benelliAttributes.recoilAttributes.mainRecoil.amountPerShot,
+                                 benelliAttributes.recoilAttributes.mainRecoil.minCamerashake,
+                                 benelliAttributes.recoilAttributes.mainRecoil.maxCamerashake,
+                                 benelliAttributes.recoilAttributes.mainRecoil.camerashakeTime,
+                                 benelliAttributes.recoilAttributes.mainRecoil.camerashakeTime),
+    new Def.RecoilAttributes(benelliAttributes.recoilAttributes.residualRecoil.minCamerashake,
+                             benelliAttributes.recoilAttributes.residualRecoil.maxCamerashake,
+                             benelliAttributes.recoilAttributes.residualRecoil.minCamerashakeTime,
+                             benelliAttributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
+    benelliAttributes.animationAttributes
+);
 const agm = new Def.Gun(
     agmAttributes.tag,
     agmAttributes.normalName,
@@ -537,10 +614,12 @@ const agm = new Def.Gun(
 
 
 const FirearmTags = {
-    "yes:agm":          "yes:agm"
+    "yes:agm":          "yes:agm",
+    "yes:benelli":      "yes:benelli"
 }
 
 Global.firearms.set(FirearmTags['yes:agm'], agm);
+Global.firearms.set(FirearmTags['yes:benelli'], benelli);
 
 export { magazinesList, FirearmTags };
 

@@ -4,6 +4,11 @@
   "padding": 8,
   "num_mip_levels": 4,
   "texture_data": {
+    "benelli": {
+      "textures": [
+        "textures/entity/benelli_texture"
+      ]
+    },
     "agm": {
       "textures": [
         "textures/entity/agm_texture"

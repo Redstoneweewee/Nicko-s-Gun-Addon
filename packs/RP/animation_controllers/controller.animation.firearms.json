@@ -156,6 +156,7 @@
 
 				"aim_state" : {
 					"animations" : [
+						{ "benelli_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:benelli')" },
 						{ "agm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm')" },
 						{ "akm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm')" },
 						{ "m4a1_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m4a1')" },

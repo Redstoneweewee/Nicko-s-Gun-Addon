@@ -1,0 +1,20 @@
+{
+	"format_version": "1.21.20",
+	"minecraft:block": {
+		"description": {
+			"identifier": "yes:benelli",
+			"menu_category": {
+				"category": "none"
+			}
+		},
+		"components": {
+			"minecraft:geometry": "geometry.weeweejuice.benelli_ground",
+			"minecraft:material_instances": {
+				"*": {
+					"render_method": "alpha_test",
+					"texture": "benelli"
+				}
+			}
+		}
+	}
+}
