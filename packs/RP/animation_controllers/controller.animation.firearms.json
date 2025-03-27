@@ -156,6 +156,7 @@
 
 				"aim_state" : {
 					"animations" : [
+						{ "magnum_aim_iron_sight_first_person":    " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:magnum')" },
 						{ "m92f_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m92f')" },
 						{ "benelli_aim_iron_sight_first_person":   " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:benelli')" },
 						{ "agm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm')" },
@@ -232,11 +233,14 @@
 						{ "p90_reload_no_swap_first_person": " v.is_first_person && !v.is_holding_offhand_magazine && v.should_p90_reload_no_swap" },
 						{ "p90_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine && v.should_p90_reload_no_swap" },
 
-						{ "shotgun_reload_first_person":    " v.is_first_person && v.should_shotgun_reload_swap" },
-						{ "shotgun_reload_third_person":    "!v.is_first_person && v.should_shotgun_reload_swap" },
+						{ "shotgun_reload_first_person":    " v.is_first_person && v.should_shotgun_reload" },
+						{ "shotgun_reload_third_person":    "!v.is_first_person && v.should_shotgun_reload" },
 
-						{ "agm_reload_first_person":    " v.is_first_person && v.should_agm_reload_swap" },
-						{ "agm_reload_third_person":    "!v.is_first_person && v.should_agm_reload_swap" }
+						{ "agm_reload_first_person":    " v.is_first_person && v.should_agm_reload" },
+						{ "agm_reload_third_person":    "!v.is_first_person && v.should_agm_reload" },
+						
+						{ "magnum_reload_first_person":    " v.is_first_person && v.should_magnum_reload" },
+						{ "magnum_reload_third_person":    "!v.is_first_person && v.should_magnum_reload" }
 					],
 					"transitions" : [
 						{

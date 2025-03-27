@@ -453,6 +453,47 @@ var remington870Attributes = {
 }
 
 
+var magnumAttributes = {
+    tag:                    "yes:magnum",
+    normalName:             "Magnum Revolver\n§7[Right-Click/Hold to shoot]",
+    fireMode:               Def.FiringModes.semi,
+    fireRate:               0,
+    bulletsPerShot:         1,
+    normalBulletDamage:     4.5,
+    headshotBulletDamage:   12,
+    pierce:                 1,
+    knockbackAmount:        Def.KnockbackAmounts.high,
+    range:                  500,
+    animationAttributes: [
+        new ReloadAnimationAttributes(ReloadAnimations.pistol.magnumReload,   80),
+        new AnimationAttributes(ShootAnimations.pistol.desertEagleShootWithAmmo),
+        new AnimationAttributes(ShootAnimations.pistol.desertEagleShootOutOfAmmo)
+    ],
+    ammoType:               Def.AmmoTypes.Pistol,
+    defaultMagazine:        magazinesList['yes:pistol_magazine_8'],
+    scopeAttributes: {
+        slowness:           3,
+        speed:              20,
+        recoilMultiplier:   0.75,
+        stopAimOnCooldown: false
+    },
+    minSpreadDegrees:       0.5,
+    maxSpreadDegrees:       1,
+    recoilAttributes: {
+        mainRecoil: {
+            amountPerShot:      30,
+            minCamerashake:     0.04,
+            maxCamerashake:     0.06,
+            camerashakeTime:    0.05
+        },
+        residualRecoil: {
+            minCamerashake:     0.0001,
+            maxCamerashake:     0.0006,
+            minCamerashakeTime: 4,
+            maxCamerashakeTime: 10
+        }
+    }
+}
 var m92fAttributes = {
     tag:                    "yes:m92f",
     normalName:             "M92F\n§7[Right-Click/Hold to shoot]",
@@ -468,8 +509,8 @@ var m92fAttributes = {
         new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadSwap,   30),
         new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadNoSwap, 15),
         new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadCock,   8),
-        new AnimationAttributes(ShootAnimations.pistol.desertEagleShootWithAmmo),
-        new AnimationAttributes(ShootAnimations.pistol.desertEagleShootOutOfAmmo)
+        new AnimationAttributes(ShootAnimations.pistol.m92fShootWithAmmo),
+        new AnimationAttributes(ShootAnimations.pistol.m92fShootOutOfAmmo)
     ],
     ammoType:               Def.AmmoTypes.Pistol,
     defaultMagazine:        magazinesList['yes:pistol_magazine_8'],
@@ -512,7 +553,7 @@ var m4Attributes = {
         new ReloadAnimationAttributes(ReloadAnimations.rifle.reloadSwapPubg,   35),
         new ReloadAnimationAttributes(ReloadAnimations.rifle.reloadNoSwapPubg, 18),
         new ReloadAnimationAttributes(ReloadAnimations.rifle.reloadCockPubg,   8),
-        new AnimationAttributes(ShootAnimations.rifle.m4a1Shoot1)
+        new AnimationAttributes(ShootAnimations.rifle.m4Shoot)
     ],
     ammoType:               Def.AmmoTypes.Rifle,
     defaultMagazine:        magazinesList['yes:rifle_magazine_30'],
@@ -557,7 +598,7 @@ var benelliAttributes = {
     range:                  50,
     animationAttributes: [
         new ReloadAnimationAttributes(ReloadAnimations.shotgun.shotgunReload,     132),
-        new AnimationAttributes(ShootAnimations.shotgun.agmShootWithAmmo)
+        new AnimationAttributes(ShootAnimations.shotgun.benelliShoot)
     ],
     ammoType:               Def.AmmoTypes.Shotgun,
     defaultMagazine:        magazinesList['yes:12_gauge_shotgun_shells_6'],
@@ -565,7 +606,7 @@ var benelliAttributes = {
         slowness:           3,
         speed:              20,
         recoilMultiplier:   0.75,
-        stopAimOnCooldown:  true
+        stopAimOnCooldown:  false
     },
     minSpreadDegrees:       2,
     maxSpreadDegrees:       3,
@@ -634,6 +675,36 @@ var agmAttributes = {
     }
 }
 
+const magnum = new Def.Gun(
+    magnumAttributes.tag,
+    magnumAttributes.normalName,
+    magnumAttributes.fireMode,
+    magnumAttributes.fireRate,
+    magnumAttributes.bulletsPerShot,
+    magnumAttributes.damage,
+    magnumAttributes.headshotMultiplier,
+    magnumAttributes.pierce,
+    magnumAttributes.knockbackAmount,
+    magnumAttributes.range,
+    magnumAttributes.ammoType,
+    magnumAttributes.defaultMagazine,
+    new Def.ScopeAttributes(magnumAttributes.scopeAttributes.slowness, 
+                            magnumAttributes.scopeAttributes.speed,
+                            magnumAttributes.scopeAttributes.recoilMultiplier,
+                            magnumAttributes.scopeAttributes.stopAimOnCooldown),
+    magnumAttributes.minSpreadDegrees,
+    magnumAttributes.maxSpreadDegrees,
+    new Def.MainRecoilAttributes(magnumAttributes.recoilAttributes.mainRecoil.amountPerShot,
+                                 magnumAttributes.recoilAttributes.mainRecoil.minCamerashake,
+                                 magnumAttributes.recoilAttributes.mainRecoil.maxCamerashake,
+                                 magnumAttributes.recoilAttributes.mainRecoil.camerashakeTime,
+                                 magnumAttributes.recoilAttributes.mainRecoil.camerashakeTime),
+    new Def.RecoilAttributes(magnumAttributes.recoilAttributes.residualRecoil.minCamerashake,
+                             magnumAttributes.recoilAttributes.residualRecoil.maxCamerashake,
+                             magnumAttributes.recoilAttributes.residualRecoil.minCamerashakeTime,
+                             magnumAttributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
+    magnumAttributes.animationAttributes
+);
 const m92f = new Def.Gun(
     m92fAttributes.tag,
     m92fAttributes.normalName,
@@ -763,13 +834,15 @@ const FirearmTags = {
     "yes:agm":          "yes:agm",
     "yes:benelli":      "yes:benelli",
     "yes:m4":           "yes:m4",
-    "yes:m92f":         "yes:m92f"
+    "yes:m92f":         "yes:m92f",
+    "yes:magnum":       "yes:magnum"
 }
 
 Global.firearms.set(FirearmTags['yes:agm'], agm);
 Global.firearms.set(FirearmTags['yes:benelli'], benelli);
 Global.firearms.set(FirearmTags['yes:m4'], m4);
 Global.firearms.set(FirearmTags['yes:m92f'], m92f);
+Global.firearms.set(FirearmTags['yes:magnum'], magnum);
 
 export { magazinesList, FirearmTags };
 

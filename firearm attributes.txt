@@ -99,7 +99,7 @@ Grenade Launcher:
 Magnum:
 -------
   - Damage: 80
-  - Magazine: 6
+  - Magazine: 8
   - Fire Rate: 3.0 sec
   - Knockback: 5
   - Piercing: 4

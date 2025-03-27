@@ -402,6 +402,23 @@ const agmReloadCockAttributes = {
     ]
 }
 
+const magnumReloadAttributes = {
+    duration: 51, //in ticks
+    type:     Def.AnimationTypes.reloadBoth,
+    sounds: [
+        {
+            soundDefinition: "firearm.pistol_reload_magazine_out",
+            timeToPlayInTicks: 16,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.pistol_reload_magazine_in",
+            timeToPlayInTicks: 23,
+            soundRange: 40
+        }
+    ]
+}
+
 const rifleReloadSwapLight = new Def.Animation(
     rifleReloadSwapLightAttributes.duration,
     rifleReloadSwapLightAttributes.type,
@@ -528,6 +545,12 @@ const agmReloadCock = new Def.Animation(
     agmReloadCockAttributes.sounds
 )
 
+const magnumReload = new Def.Animation(
+    magnumReloadAttributes.duration,
+    magnumReloadAttributes.type,
+    magnumReloadAttributes.sounds
+)
+
 const ReloadAnimations = {
     rifle: {
         reloadSwapLight:    rifleReloadSwapLight,
@@ -553,7 +576,8 @@ const ReloadAnimations = {
     pistol: {
         reloadSwap:   pistolReloadSwap,
         reloadNoSwap: pistolReloadNoSwap,
-        reloadCock:   pistolReloadCock
+        reloadCock:   pistolReloadCock,
+        magnumReload: magnumReload
     },
     shotgun: {
         shotgunReload: shotgunReload,
@@ -775,6 +799,54 @@ const javelinShootAttributes = {
     animationDefiniton: "animation.javelin_shoot"
 }
 
+const m92fShootWithAmmoAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shootWithAmmo,
+    sounds: [
+        {
+            soundDefinition: "firearm.desert_eagle_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 168.75
+        }
+    ],
+    animationDefiniton: "animation.m92f_shoot_with_ammo"
+}
+const m92fShootOutOfAmmoAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shootOutOfAmmo,
+    sounds: [
+        {
+            soundDefinition: "firearm.desert_eagle_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 168.75
+        }
+    ],
+    animationDefiniton: "animation.m92f_shoot_out_of_ammo"
+}
+const m4ShootAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shoot,
+    sounds: [
+        {
+            soundDefinition: "firearm.ak47_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 150
+        }
+    ],
+    animationDefiniton: "animation.m4_shoot"
+}
+const benelliShootAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shoot,
+    sounds: [
+        {
+            soundDefinition: "firearm.ak47_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 150
+        }
+    ],
+    animationDefiniton: "animation.benelli_shoot"
+}
 const agmShootWithAmmoAttributes = {
     duration: 40, //in ticks
     type:     Def.AnimationTypes.shootWithAmmo,
@@ -915,6 +987,30 @@ const agmShootOutOfAmmo = new Def.Animation(
     agmShootOutOfAmmoAttributes.sounds,
     agmShootOutOfAmmoAttributes.animationDefiniton
 )
+const benelliShoot = new Def.Animation(
+    benelliShootAttributes.duration,
+    benelliShootAttributes.type,
+    benelliShootAttributes.sounds,
+    benelliShootAttributes.animationDefiniton
+)
+const m4Shoot = new Def.Animation(
+    m4ShootAttributes.duration,
+    m4ShootAttributes.type,
+    m4ShootAttributes.sounds,
+    m4ShootAttributes.animationDefiniton
+)
+const m92fShootWithAmmo = new Def.Animation(
+    m92fShootWithAmmoAttributes.duration,
+    m92fShootWithAmmoAttributes.type,
+    m92fShootWithAmmoAttributes.sounds,
+    m92fShootWithAmmoAttributes.animationDefiniton
+)
+const m92fShootOutOfAmmo = new Def.Animation(
+    m92fShootOutOfAmmoAttributes.duration,
+    m92fShootOutOfAmmoAttributes.type,
+    m92fShootOutOfAmmoAttributes.sounds,
+    m92fShootOutOfAmmoAttributes.animationDefiniton
+)
 
 const ShootAnimations = {
     rifle: {
@@ -922,7 +1018,8 @@ const ShootAnimations = {
         akmShoot:           akmShoot,
         m4a1Shoot1:         m4a1Shoot,
         ar15Shoot:          ar15Shoot,
-        hk417Shoot:         hk417Shoot
+        hk417Shoot:         hk417Shoot,
+        m4Shoot:            m4Shoot
     },
     smg: {
         ump45Shoot: ump45Shoot,
@@ -936,11 +1033,14 @@ const ShootAnimations = {
         remington870ShootWithAmmo:  remington870ShootWithAmmo,
         remington870ShootOutOfAmmo: remington870ShootOutOfAmmo,
         agmShootWithAmmo:  agmShootWithAmmo,
-        agmShootOutOfAmmo: agmShootOutOfAmmo
+        agmShootOutOfAmmo: agmShootOutOfAmmo,
+        benelliShoot:      benelliShoot
     },
     pistol: {
         desertEagleShootWithAmmo:  desertEagleShootWithAmmo,
-        desertEagleShootOutOfAmmo: desertEagleShootOutOfAmmo
+        desertEagleShootOutOfAmmo: desertEagleShootOutOfAmmo,
+        m92fShootWithAmmo:         m92fShootWithAmmo,
+        m92fShootOutOfAmmo:        m92fShootOutOfAmmo
     },
     other: {
         rpg7Shoot: rpg7Shoot,

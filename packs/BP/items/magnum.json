@@ -2,7 +2,7 @@
     "format_version": "1.21.50",
     "minecraft:item": {
         "description": {
-            "identifier": "yes:remington870",
+            "identifier": "yes:magnum",
             "menu_category": {
                 "category": "equipment"
             }
@@ -11,14 +11,13 @@
             "minecraft:tags": {
                 "tags": [
                     "yes:is_firearm",
-                    "yes:remington870",
-                    "yes:use_shotgun_animations",
-                    "yes:use_shotgun_reload",
-                    "yes:use_shotgun_reload_cock"
+                    "yes:magnum",
+                    "yes:use_pistol_animations",
+                    "yes:use_magnum_reload"
                 ]
             },
             "minecraft:block_placer": {
-                "block": "yes:remington870",
+                "block": "yes:magnum",
                 "replace_block_item": true,
                 "use_on": ["yes:null_block"]
             },
@@ -26,7 +25,7 @@
             "minecraft:max_stack_size": 1,
             "minecraft:allow_off_hand": false,
             "minecraft:display_name": {
-                "value": "Remington 870\n§7[Right-Click/Hold to shoot]\n§7Magazine: §7<§a6 Shell Batch§7>"
+                "value": "Magnum Revolver\n§7[Right-Click/Hold to shoot]\n§7Magazine: §7<§a8 Round Magazine§7>"
             },
             "minecraft:can_destroy_in_creative": false,
             "minecraft:should_despawn": {
@@ -37,8 +36,8 @@
                 "use_duration": 9999
             },
             "minecraft:cooldown": {
-                "category": "yes:remington870",
-                "duration": 0.75
+                "category": "yes:magnum",
+                "duration": 0
             }
         }
     }

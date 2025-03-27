@@ -1310,6 +1310,185 @@
 					}
 				]
 			}
+		},
+		"animation.m4_shoot": {
+			"animation_length": 1.5,
+			"override_previous_animation": true,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"arm_recoil_pivot": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": ["-v.recoil/70*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
+						]
+					}
+				},
+				"weapon_root": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [0, 0, "0.002*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8))"]
+					}
+				},
+				"slide": {
+					"position": {
+						"0.0": [-0.97, 0, 0],
+						"0.02": {
+							"pre": [-2.57372, 0, 0],
+							"post": [-2.57372, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.04": {
+							"post": [-1.745, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.13": [0, 0, 0]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "bullet_casing",
+						"locator": "m4_shell_eject"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "m4_muzzle"
+					},
+					{
+						"effect": "muzzle_flash",
+						"locator": "m4_muzzle"
+					}
+				]
+			}
+		},
+		"animation.m92f_shoot_with_ammo": {
+			"animation_length": 1.5,
+			"override_previous_animation": true,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"arm_recoil_pivot": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": ["-v.recoil/70*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
+						]
+					}
+				},
+				"pistol_slide": {
+					"position": {
+						"0.0": [0, 0, 0.42],
+						"0.06": {
+							"pre": [0, 0, 1.77372],
+							"post": [0, 0, 1.77372],
+							"lerp_mode": "catmullrom"
+						},
+						"0.12": {
+							"post": [0, 0, 0.945],
+							"lerp_mode": "catmullrom"
+						},
+						"0.19": {
+							"post": [0, 0, 0.1],
+							"lerp_mode": "catmullrom"
+						},
+						"0.24": [0, 0, 0]
+					}
+				},
+				"weapon_root": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.01": ["-v.recoil/3*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.01": [
+							0,
+							"-0.03*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))",
+							"0.015*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))"
+						]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_flash",
+						"locator": "m92f_muzzle"
+					},
+					{
+						"effect": "bullet_casing",
+						"locator": "m92f_shell_eject"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "m92f_muzzle"
+					}
+				]
+			}
+		},
+		"animation.m92f_shoot_out_of_ammo": {
+			"animation_length": 1.5,
+			"override_previous_animation": true,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"arm_recoil_pivot": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": ["-v.recoil/70*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
+						]
+					}
+				},
+				"weapon_root": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.01": ["-v.recoil/3*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.01": [
+							0,
+							"-0.03*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))",
+							"0.015*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))"
+						]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_flash",
+						"locator": "m92f_muzzle"
+					},
+					{
+						"effect": "bullet_casing",
+						"locator": "m92f_shell_eject"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "m92f_muzzle"
+					}
+				]
+			}
 		}
 	}
 }

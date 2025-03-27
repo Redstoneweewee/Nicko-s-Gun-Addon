@@ -624,7 +624,7 @@
 					"position": [0, "-v.tcos0/240", 0]
 				},
 				"arm_scope_pivot": {
-					"position": [0, -5, 0.303]
+					"position": [-0.002, -5, 0.303]
 				},
 				"arm_iron_sight_pivot": {
 					"rotation": ["4.04+math.abs(0.68*(v.movement_direction_value))", "1.96+30*(v.movement_direction_value)", "0.06+2.23*(v.movement_direction_value)"],

@@ -13,7 +13,7 @@
                     "yes:is_firearm",
                     "yes:agm",
                     "yes:use_shotgun_animations",
-                    "yes:use_agm_reload_swap",
+                    "yes:use_agm_reload",
                     "yes:use_agm_reload_cock"
                 ]
             },
