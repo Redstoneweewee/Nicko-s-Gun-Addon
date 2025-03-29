@@ -402,6 +402,140 @@ const agmReloadCockAttributes = {
     ]
 }
 
+const strikerReloadAttributes = {
+    duration: 20*20, //in ticks
+    type:     Def.AnimationTypes.reloadBoth,
+    sounds: [
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 9,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 29,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 49,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 69,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 89,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 109,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 129,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 149,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 169,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 189,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 209,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 229,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 249,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 269,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 289,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 309,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 329,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 349,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 369,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_magazine_in",
+            timeToPlayInTicks: 389,
+            soundRange: 40
+        }
+    ]
+}
+const strikerReloadOpenPortAttributes = {
+    duration: 6, //in ticks
+    type:     Def.AnimationTypes.reloadOpenCock,
+    sounds: [
+        {
+            soundDefinition: "firearm.agm_reload_slide_open",
+            timeToPlayInTicks: 5,
+            soundRange: 40
+        },
+        {
+            soundDefinition: "firearm.agm_reload_cock_toward",
+            timeToPlayInTicks: 5,
+            soundRange: 40
+        }
+    ]
+}
+const strikerReloadClosePortAttributes = {
+    duration: 6, //in ticks
+    type:     Def.AnimationTypes.reloadCock,
+    sounds: [
+        {
+            soundDefinition: "firearm.agm_reload_cock_away",
+            timeToPlayInTicks: 4,
+            soundRange: 40
+        }
+    ]
+}
+
 const magnumReloadAttributes = {
     duration: 51, //in ticks
     type:     Def.AnimationTypes.reloadBoth,
@@ -545,6 +679,22 @@ const agmReloadCock = new Def.Animation(
     agmReloadCockAttributes.sounds
 )
 
+const strikerReload = new Def.Animation(
+    strikerReloadAttributes.duration,
+    strikerReloadAttributes.type,
+    strikerReloadAttributes.sounds
+)
+const strikerReloadOpenPort = new Def.Animation(
+    strikerReloadOpenPortAttributes.duration,
+    strikerReloadOpenPortAttributes.type,
+    strikerReloadOpenPortAttributes.sounds
+)
+const strikerReloadClosePort = new Def.Animation(
+    strikerReloadClosePortAttributes.duration,
+    strikerReloadClosePortAttributes.type,
+    strikerReloadClosePortAttributes.sounds
+)
+
 const magnumReload = new Def.Animation(
     magnumReloadAttributes.duration,
     magnumReloadAttributes.type,
@@ -584,7 +734,10 @@ const ReloadAnimations = {
         shotgunReloadCock: shotgunReloadCock,
         agmReload: agmReload,
         agmReloadOpenCock: agmReloadOpenCock,
-        agmReloadCock: agmReloadCock
+        agmReloadCock: agmReloadCock,
+        strikerReload: strikerReload,
+        strikerReloadOpenPort: strikerReloadOpenPort,
+        strikerReloadClosePort: strikerReloadClosePort
     }
 }
 
@@ -941,6 +1094,18 @@ const agmShootOutOfAmmoAttributes = {
     ],
     animationDefiniton: "animation.agm_shoot_out_of_ammo"
 }
+const strikerShootAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shoot,
+    sounds: [
+        {
+            soundDefinition: "firearm.ak47_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 150
+        }
+    ],
+    animationDefiniton: "animation.striker_shoot"
+}
 
 const ak47Shoot = new Def.Animation(
     ak47ShootAttributes.duration,
@@ -1035,6 +1200,12 @@ const javelinShoot = new Def.Animation(
     javelinShootAttributes.animationDefiniton
 )
 
+const strikerShoot = new Def.Animation(
+    strikerShootAttributes.duration,
+    strikerShootAttributes.type,
+    strikerShootAttributes.sounds,
+    strikerShootAttributes.animationDefiniton
+)
 const agmShootWithAmmo = new Def.Animation(
     agmShootWithAmmoAttributes.duration,
     agmShootWithAmmoAttributes.type,
@@ -1125,7 +1296,8 @@ const ShootAnimations = {
         remington870ShootOutOfAmmo: remington870ShootOutOfAmmo,
         agmShootWithAmmo:  agmShootWithAmmo,
         agmShootOutOfAmmo: agmShootOutOfAmmo,
-        benelliShoot:      benelliShoot
+        benelliShoot:      benelliShoot,
+        strikerShoot:      strikerShoot
     },
     pistol: {
         desertEagleShootWithAmmo:  desertEagleShootWithAmmo,

@@ -803,6 +803,53 @@ var agmAttributes = {
     }
 }
 
+var strikerAttributes = {
+    tag:                    "yes:striker",
+    normalName:             "Striker Shotgun\n§7[Right-Click/Hold to shoot]",
+    fireMode:               Def.FiringModes.auto,
+    fireRate:               200,
+    bulletsPerShot:         1,
+    damage: {
+        maxDamage: 35,
+        minDamage: 5,
+        dropOffMinRange: 1.5,
+        dropOffMaxRange: 10
+    },
+    headshotMultiplier:     2,
+    pierce:                 4,
+    knockbackAmount:        Def.KnockbackAmounts.high,
+    range:                  50,
+    animationAttributes: [
+        new ReloadAnimationAttributes(ReloadAnimations.shotgun.strikerReload,          400),
+        new ReloadAnimationAttributes(ReloadAnimations.shotgun.strikerReloadOpenPort,  8),
+        new ReloadAnimationAttributes(ReloadAnimations.shotgun.strikerReloadClosePort, 8),
+        new AnimationAttributes(ShootAnimations.shotgun.strikerShoot)
+    ],
+    ammoType:               Def.AmmoTypes.Shotgun,
+    defaultMagazine:        magazinesList['yes:12_gauge_shotgun_shells_20'],
+    scopeAttributes: {
+        slowness:           3,
+        speed:              20,
+        recoilMultiplier:   0.75,
+        stopAimOnCooldown:  true
+    },
+    minSpreadDegrees:       2,
+    maxSpreadDegrees:       3,
+    recoilAttributes: {
+        mainRecoil: {
+            amountPerShot:      30,
+            minCamerashake:     0.04,
+            maxCamerashake:     0.08,
+            camerashakeTime:    0.05
+        },
+        residualRecoil: {
+            minCamerashake:     0.0001,
+            maxCamerashake:     0.0006,
+            minCamerashakeTime: 4,
+            maxCamerashakeTime: 10
+        }
+    }
+}
 const usp = new Def.Gun(
     uspAttributes.tag,
     uspAttributes.normalName,
@@ -1043,12 +1090,43 @@ const agm = new Def.Gun(
                              agmAttributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
     agmAttributes.animationAttributes
 );
+const striker = new Def.Gun(
+    strikerAttributes.tag,
+    strikerAttributes.normalName,
+    strikerAttributes.fireMode,
+    strikerAttributes.fireRate,
+    strikerAttributes.bulletsPerShot,
+    strikerAttributes.damage,
+    strikerAttributes.headshotMultiplier,
+    strikerAttributes.pierce,
+    strikerAttributes.knockbackAmount,
+    strikerAttributes.range,
+    strikerAttributes.ammoType,
+    strikerAttributes.defaultMagazine,
+    new Def.ScopeAttributes(strikerAttributes.scopeAttributes.slowness, 
+                            strikerAttributes.scopeAttributes.speed,
+                            strikerAttributes.scopeAttributes.recoilMultiplier,
+                            strikerAttributes.scopeAttributes.stopAimOnCooldown),
+    strikerAttributes.minSpreadDegrees,
+    strikerAttributes.maxSpreadDegrees,
+    new Def.MainRecoilAttributes(strikerAttributes.recoilAttributes.mainRecoil.amountPerShot,
+                                 strikerAttributes.recoilAttributes.mainRecoil.minCamerashake,
+                                 strikerAttributes.recoilAttributes.mainRecoil.maxCamerashake,
+                                 strikerAttributes.recoilAttributes.mainRecoil.camerashakeTime,
+                                 strikerAttributes.recoilAttributes.mainRecoil.camerashakeTime),
+    new Def.RecoilAttributes(strikerAttributes.recoilAttributes.residualRecoil.minCamerashake,
+                             strikerAttributes.recoilAttributes.residualRecoil.maxCamerashake,
+                             strikerAttributes.recoilAttributes.residualRecoil.minCamerashakeTime,
+                             strikerAttributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
+    strikerAttributes.animationAttributes
+);
 
 
 
 
 
 const FirearmTags = {
+    "yes:striker":      "yes:striker",
     "yes:agm":          "yes:agm",
     "yes:benelli":      "yes:benelli",
     "yes:mp5":          "yes:mp5",
@@ -1059,6 +1137,7 @@ const FirearmTags = {
     "yes:usp":          "yes:usp",
 }
 
+Global.firearms.set(FirearmTags['yes:striker'], striker);
 Global.firearms.set(FirearmTags['yes:agm'], agm);
 Global.firearms.set(FirearmTags['yes:benelli'], benelli);
 Global.firearms.set(FirearmTags['yes:mp5'], mp5);

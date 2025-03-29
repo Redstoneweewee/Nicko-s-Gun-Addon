@@ -74,7 +74,8 @@
         "magnum": "geometry.weeweejuice.magnum",
         "makarov": "geometry.weeweejuice.makarov",
         "usp": "geometry.weeweejuice.usp",
-        "mp5": "geometry.weeweejuice.mp5"
+        "mp5": "geometry.weeweejuice.mp5",
+        "striker": "geometry.weeweejuice.striker"
       },
       "scripts": {
         "scale": "0.9375",
@@ -134,7 +135,7 @@
 					"v.movement_direction_value_fast = math.atan(3*v.movement_clamp2)*2/360;",
 
 
-          "v.is_holding_iron_sight_firearm              = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm', 'yes:m4a1', 'yes:agm', 'yes:benelli', 'yes:m4', 'yes:m92f', 'yes:magnum', 'yes:makarov', 'yes:mp5', 'yes:usp');",
+          "v.is_holding_iron_sight_firearm              = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm', 'yes:m4a1', 'yes:agm', 'yes:benelli', 'yes:m4', 'yes:m92f', 'yes:magnum', 'yes:makarov', 'yes:mp5', 'yes:usp', 'yes:striker');",
           "v.is_holding_red_dot_scope_variant_1_firearm = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:ak47', 'yes:ar15', 'yes:ump45', 'yes:desert_eagle');",
           "v.is_holding_red_dot_scope_variant_2_firearm = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:p90', 'yes:remington870');",
           "v.is_holding_acog_firearm                    = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:hk417');",
@@ -157,6 +158,7 @@
           "v.should_shotgun_reload_cock    = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_shotgun_reload_cock');",
           "v.should_agm_reload             = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_agm_reload');",
           "v.should_agm_reload_cock        = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_agm_reload_cock');",
+          "v.should_striker_reload          = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_striker_reload');",
           "v.should_magnum_reload          = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_magnum_reload');",
 
           "v.is_not_shooting_increment = v.is_shooting ? 0 : v.is_not_shooting_increment >= 1 ? 1 : v.is_not_shooting_increment + 0.005;",
@@ -306,6 +308,7 @@
         "shotgun_hipfire_first_person":  "animation.shotgun_hipfire_first_person",
         "shotgun_hipfire_third_person":  "animation.shotgun_hipfire_third_person",
 
+        "striker_aim_iron_sight_first_person":   "animation.striker_aim_iron_sight_first_person",
         "usp_aim_iron_sight_first_person":    "animation.usp_aim_iron_sight_first_person",
         "makarov_aim_iron_sight_first_person":    "animation.makarov_aim_iron_sight_first_person",
         "magnum_aim_iron_sight_first_person":    "animation.m92f_aim_iron_sight_first_person",
@@ -362,6 +365,10 @@
         "agm_reload_third_person":         "animation.agm_reload_third_person",
         "agm_reload_cock_third_person":    "animation.agm_reload_cock_third_person",
         
+        "striker_reload_first_person":         "animation.striker_reload_first_person",
+        "striker_reload_open_port_first_person":    "animation.striker_reload_open_port_first_person",
+        "striker_reload_close_port_first_person":    "animation.striker_reload_close_port_first_person",
+
         "magnum_reload_first_person":         "animation.magnum_reload_first_person",
         "magnum_reload_third_person":         "animation.magnum_reload_third_person"
 

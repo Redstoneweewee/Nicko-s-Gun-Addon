@@ -156,6 +156,7 @@
 
 				"aim_state" : {
 					"animations" : [
+						{ "striker_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:striker')" },
 						{ "usp_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:usp')" },
 						{ "makarov_aim_iron_sight_first_person":   " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:makarov')" },
 						{ "magnum_aim_iron_sight_first_person":    " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:magnum')" },
@@ -205,7 +206,9 @@
                     "blend_via_shortest_path": true,
 					"animations" : [
 						{ "agm_reload_open_cock_first_person": " v.is_first_person && v.should_agm_reload_cock" },
-						{ "agm_reload_open_cock_third_person": "!v.is_first_person && v.should_agm_reload_cock" }
+						{ "agm_reload_open_cock_third_person": "!v.is_first_person && v.should_agm_reload_cock" },
+						{ "striker_reload_open_port_first_person": " v.is_first_person && v.should_striker_reload" },
+						{ "striker_reload_open_port_third_person": "!v.is_first_person && v.should_striker_reload" }
 					],
 					"transitions" : [
 						{
@@ -238,6 +241,9 @@
 
 						{ "shotgun_reload_first_person":    " v.is_first_person && v.should_shotgun_reload" },
 						{ "shotgun_reload_third_person":    "!v.is_first_person && v.should_shotgun_reload" },
+
+						{ "striker_reload_first_person":    " v.is_first_person && v.should_striker_reload" },
+						{ "striker_reload_third_person":    "!v.is_first_person && v.should_striker_reload" },
 
 						{ "agm_reload_first_person":    " v.is_first_person && v.should_agm_reload" },
 						{ "agm_reload_third_person":    "!v.is_first_person && v.should_agm_reload" },
@@ -286,7 +292,10 @@
 						{ "shotgun_reload_cock_third_person": "!v.is_first_person && v.should_shotgun_reload_cock" },
 
 						{ "agm_reload_cock_first_person": " v.is_first_person && v.should_agm_reload_cock" },
-						{ "agm_reload_cock_third_person": "!v.is_first_person && v.should_agm_reload_cock" }
+						{ "agm_reload_cock_third_person": "!v.is_first_person && v.should_agm_reload_cock" },
+
+						{ "striker_reload_close_port_first_person": " v.is_first_person && v.should_striker_reload" },
+						{ "striker_reload_close_port_third_person": "!v.is_first_person && v.should_striker_reload" }
 					],
 					"transitions" : [
 						{
