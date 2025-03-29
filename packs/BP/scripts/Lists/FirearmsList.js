@@ -820,9 +820,9 @@ var strikerAttributes = {
     knockbackAmount:        Def.KnockbackAmounts.high,
     range:                  50,
     animationAttributes: [
-        new ReloadAnimationAttributes(ReloadAnimations.shotgun.strikerReload,          400),
-        new ReloadAnimationAttributes(ReloadAnimations.shotgun.strikerReloadOpenPort,  8),
-        new ReloadAnimationAttributes(ReloadAnimations.shotgun.strikerReloadClosePort, 8),
+        new ReloadAnimationAttributes(ReloadAnimations.shotgun.strikerReload,          200),
+        new ReloadAnimationAttributes(ReloadAnimations.shotgun.strikerReloadOpenPort,  5),
+        new ReloadAnimationAttributes(ReloadAnimations.shotgun.strikerReloadClosePort, 5),
         new AnimationAttributes(ShootAnimations.shotgun.strikerShoot)
     ],
     ammoType:               Def.AmmoTypes.Shotgun,
