@@ -37,7 +37,13 @@
         "benelli": "textures/entity/benelli_texture",
         "m4": "textures/entity/m4_texture",
         "m92f": "textures/entity/m92f_texture",
-        "magnum": "textures/entity/magnum_texture"
+        "magnum": "textures/entity/magnum_texture",
+        "makarov": "textures/entity/makarov_texture",
+        "mp5": "textures/entity/mp5_texture",
+        "rpg": "textures/entity/rpg_texture",
+        "striker": "textures/entity/striker_texture",
+        "tesla_gun": "textures/entity/tesla_gun_texture",
+        "usp": "textures/entity/usp_texture"
       },
       "geometry": {
         "default": "geometry.humanoid.custom",
@@ -65,7 +71,10 @@
         "benelli": "geometry.weeweejuice.benelli",
         "m4": "geometry.weeweejuice.m4",
         "m92f": "geometry.weeweejuice.m92f",
-        "magnum": "geometry.weeweejuice.magnum"
+        "magnum": "geometry.weeweejuice.magnum",
+        "makarov": "geometry.weeweejuice.makarov",
+        "usp": "geometry.weeweejuice.usp",
+        "mp5": "geometry.weeweejuice.mp5"
       },
       "scripts": {
         "scale": "0.9375",
@@ -125,7 +134,7 @@
 					"v.movement_direction_value_fast = math.atan(3*v.movement_clamp2)*2/360;",
 
 
-          "v.is_holding_iron_sight_firearm              = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm', 'yes:m4a1', 'yes:agm', 'yes:benelli', 'yes:m4', 'yes:m92f', 'yes:magnum');",
+          "v.is_holding_iron_sight_firearm              = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm', 'yes:m4a1', 'yes:agm', 'yes:benelli', 'yes:m4', 'yes:m92f', 'yes:magnum', 'yes:makarov', 'yes:mp5', 'yes:usp');",
           "v.is_holding_red_dot_scope_variant_1_firearm = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:ak47', 'yes:ar15', 'yes:ump45', 'yes:desert_eagle');",
           "v.is_holding_red_dot_scope_variant_2_firearm = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:p90', 'yes:remington870');",
           "v.is_holding_acog_firearm                    = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:hk417');",
@@ -297,10 +306,13 @@
         "shotgun_hipfire_first_person":  "animation.shotgun_hipfire_first_person",
         "shotgun_hipfire_third_person":  "animation.shotgun_hipfire_third_person",
 
+        "usp_aim_iron_sight_first_person":    "animation.usp_aim_iron_sight_first_person",
+        "makarov_aim_iron_sight_first_person":    "animation.makarov_aim_iron_sight_first_person",
         "magnum_aim_iron_sight_first_person":    "animation.m92f_aim_iron_sight_first_person",
         "m92f_aim_iron_sight_first_person":    "animation.m92f_aim_iron_sight_first_person",
         "akm_aim_iron_sight_first_person":    "animation.akm_aim_iron_sight_first_person",
-        "m4a1_aim_iron_sight_first_person":   "animation.m4a1_aim_iron_sight_first_person",
+        "mp5_aim_iron_sight_first_person":   "animation.mp5_aim_iron_sight_first_person",
+        "m4_aim_iron_sight_first_person":   "animation.m4_aim_iron_sight_first_person",
         "agm_aim_iron_sight_first_person":   "animation.agm_aim_iron_sight_first_person",
         "benelli_aim_iron_sight_first_person":   "animation.benelli_aim_iron_sight_first_person",
         "rifle_aim_red_dot_scope_first_person": "animation.rifle_aim_red_dot_scope_first_person",

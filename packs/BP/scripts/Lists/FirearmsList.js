@@ -453,6 +453,92 @@ var remington870Attributes = {
 }
 
 
+var uspAttributes = {
+    tag:                    "yes:usp",
+    normalName:             "USP\n§7[Right-Click/Hold to shoot]",
+    fireMode:               Def.FiringModes.semi,
+    fireRate:               0,
+    bulletsPerShot:         1,
+    normalBulletDamage:     4.5,
+    headshotBulletDamage:   12,
+    pierce:                 1,
+    knockbackAmount:        Def.KnockbackAmounts.high,
+    range:                  500,
+    animationAttributes: [
+        new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadSwap,   30),
+        new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadNoSwap, 15),
+        new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadCock,   8),
+        new AnimationAttributes(ShootAnimations.pistol.uspShootWithAmmo),
+        new AnimationAttributes(ShootAnimations.pistol.uspShootOutOfAmmo)
+    ],
+    ammoType:               Def.AmmoTypes.Pistol,
+    defaultMagazine:        magazinesList['yes:pistol_magazine_8'],
+    scopeAttributes: {
+        slowness:           3,
+        speed:              20,
+        recoilMultiplier:   0.75,
+        stopAimOnCooldown: false
+    },
+    minSpreadDegrees:       0.5,
+    maxSpreadDegrees:       1,
+    recoilAttributes: {
+        mainRecoil: {
+            amountPerShot:      30,
+            minCamerashake:     0.04,
+            maxCamerashake:     0.06,
+            camerashakeTime:    0.05
+        },
+        residualRecoil: {
+            minCamerashake:     0.0001,
+            maxCamerashake:     0.0006,
+            minCamerashakeTime: 4,
+            maxCamerashakeTime: 10
+        }
+    }
+}
+var makarovAttributes = {
+    tag:                    "yes:makarov",
+    normalName:             "Makarov\n§7[Right-Click/Hold to shoot]",
+    fireMode:               Def.FiringModes.semi,
+    fireRate:               0,
+    bulletsPerShot:         1,
+    normalBulletDamage:     4.5,
+    headshotBulletDamage:   12,
+    pierce:                 1,
+    knockbackAmount:        Def.KnockbackAmounts.high,
+    range:                  500,
+    animationAttributes: [
+        new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadSwap,   30),
+        new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadNoSwap, 15),
+        new ReloadAnimationAttributes(ReloadAnimations.pistol.reloadCock,   8),
+        new AnimationAttributes(ShootAnimations.pistol.makarovShootWithAmmo),
+        new AnimationAttributes(ShootAnimations.pistol.makarovShootOutOfAmmo)
+    ],
+    ammoType:               Def.AmmoTypes.Pistol,
+    defaultMagazine:        magazinesList['yes:pistol_magazine_8'],
+    scopeAttributes: {
+        slowness:           3,
+        speed:              20,
+        recoilMultiplier:   0.75,
+        stopAimOnCooldown: false
+    },
+    minSpreadDegrees:       0.5,
+    maxSpreadDegrees:       1,
+    recoilAttributes: {
+        mainRecoil: {
+            amountPerShot:      30,
+            minCamerashake:     0.04,
+            maxCamerashake:     0.06,
+            camerashakeTime:    0.05
+        },
+        residualRecoil: {
+            minCamerashake:     0.0001,
+            maxCamerashake:     0.0006,
+            minCamerashakeTime: 4,
+            maxCamerashakeTime: 10
+        }
+    }
+}
 var magnumAttributes = {
     tag:                    "yes:magnum",
     normalName:             "Magnum Revolver\n§7[Right-Click/Hold to shoot]",
@@ -538,6 +624,48 @@ var m92fAttributes = {
     }
 }
 
+var mp5Attributes = {
+    tag:                    "yes:mp5",
+    normalName:             "MP-5\n§7[Right-Click/Hold to shoot]",
+    fireMode:               Def.FiringModes.auto,
+    fireRate:               300,  //ideally, use multiples of 60
+    bulletsPerShot:         1,
+    normalBulletDamage:     1,
+    headshotBulletDamage:   9.5,
+    pierce:                 1,
+    knockbackAmount:        Def.KnockbackAmounts.high,
+    range:                  500,
+    animationAttributes: [
+        new ReloadAnimationAttributes(ReloadAnimations.rifle.reloadSwapPubg,   35),
+        new ReloadAnimationAttributes(ReloadAnimations.rifle.reloadNoSwapPubg, 18),
+        new ReloadAnimationAttributes(ReloadAnimations.rifle.reloadCockPubg,   8),
+        new AnimationAttributes(ShootAnimations.rifle.mp5Shoot)
+    ],
+    ammoType:               Def.AmmoTypes.Rifle,
+    defaultMagazine:        magazinesList['yes:rifle_magazine_30'],
+    scopeAttributes: {
+        slowness:           2,
+        speed:              13,
+        recoilMultiplier:   0.75,
+        stopAimOnCooldown: false
+    },
+    minSpreadDegrees:       0.15,
+    maxSpreadDegrees:       1,
+    recoilAttributes: {
+        mainRecoil: {
+            amountPerShot:      8,
+            minCamerashake:     0.018,
+            maxCamerashake:     0.05,
+            camerashakeTime:    0.08
+        },
+        residualRecoil: {
+            minCamerashake:     0.0001,
+            maxCamerashake:     0.0006,
+            minCamerashakeTime: 4,
+            maxCamerashakeTime: 10
+        }
+    }
+}
 var m4Attributes = {
     tag:                    "yes:m4",
     normalName:             "M4\n§7[Right-Click/Hold to shoot]",
@@ -675,6 +803,66 @@ var agmAttributes = {
     }
 }
 
+const usp = new Def.Gun(
+    uspAttributes.tag,
+    uspAttributes.normalName,
+    uspAttributes.fireMode,
+    uspAttributes.fireRate,
+    uspAttributes.bulletsPerShot,
+    uspAttributes.damage,
+    uspAttributes.headshotMultiplier,
+    uspAttributes.pierce,
+    uspAttributes.knockbackAmount,
+    uspAttributes.range,
+    uspAttributes.ammoType,
+    uspAttributes.defaultMagazine,
+    new Def.ScopeAttributes(uspAttributes.scopeAttributes.slowness, 
+                            uspAttributes.scopeAttributes.speed,
+                            uspAttributes.scopeAttributes.recoilMultiplier,
+                            uspAttributes.scopeAttributes.stopAimOnCooldown),
+    uspAttributes.minSpreadDegrees,
+    uspAttributes.maxSpreadDegrees,
+    new Def.MainRecoilAttributes(uspAttributes.recoilAttributes.mainRecoil.amountPerShot,
+                                 uspAttributes.recoilAttributes.mainRecoil.minCamerashake,
+                                 uspAttributes.recoilAttributes.mainRecoil.maxCamerashake,
+                                 uspAttributes.recoilAttributes.mainRecoil.camerashakeTime,
+                                 uspAttributes.recoilAttributes.mainRecoil.camerashakeTime),
+    new Def.RecoilAttributes(uspAttributes.recoilAttributes.residualRecoil.minCamerashake,
+                             uspAttributes.recoilAttributes.residualRecoil.maxCamerashake,
+                             uspAttributes.recoilAttributes.residualRecoil.minCamerashakeTime,
+                             uspAttributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
+    uspAttributes.animationAttributes
+);
+const makarov = new Def.Gun(
+    makarovAttributes.tag,
+    makarovAttributes.normalName,
+    makarovAttributes.fireMode,
+    makarovAttributes.fireRate,
+    makarovAttributes.bulletsPerShot,
+    makarovAttributes.damage,
+    makarovAttributes.headshotMultiplier,
+    makarovAttributes.pierce,
+    makarovAttributes.knockbackAmount,
+    makarovAttributes.range,
+    makarovAttributes.ammoType,
+    makarovAttributes.defaultMagazine,
+    new Def.ScopeAttributes(makarovAttributes.scopeAttributes.slowness, 
+                            makarovAttributes.scopeAttributes.speed,
+                            makarovAttributes.scopeAttributes.recoilMultiplier,
+                            makarovAttributes.scopeAttributes.stopAimOnCooldown),
+    makarovAttributes.minSpreadDegrees,
+    makarovAttributes.maxSpreadDegrees,
+    new Def.MainRecoilAttributes(makarovAttributes.recoilAttributes.mainRecoil.amountPerShot,
+                                 makarovAttributes.recoilAttributes.mainRecoil.minCamerashake,
+                                 makarovAttributes.recoilAttributes.mainRecoil.maxCamerashake,
+                                 makarovAttributes.recoilAttributes.mainRecoil.camerashakeTime,
+                                 makarovAttributes.recoilAttributes.mainRecoil.camerashakeTime),
+    new Def.RecoilAttributes(makarovAttributes.recoilAttributes.residualRecoil.minCamerashake,
+                             makarovAttributes.recoilAttributes.residualRecoil.maxCamerashake,
+                             makarovAttributes.recoilAttributes.residualRecoil.minCamerashakeTime,
+                             makarovAttributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
+    makarovAttributes.animationAttributes
+);
 const magnum = new Def.Gun(
     magnumAttributes.tag,
     magnumAttributes.normalName,
@@ -734,6 +922,36 @@ const m92f = new Def.Gun(
                              m92fAttributes.recoilAttributes.residualRecoil.minCamerashakeTime,
                              m92fAttributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
     m92fAttributes.animationAttributes
+);
+const mp5 = new Def.Gun(
+    mp5Attributes.tag,
+    mp5Attributes.normalName,
+    mp5Attributes.fireMode,
+    mp5Attributes.fireRate,
+    mp5Attributes.bulletsPerShot,
+    mp5Attributes.damage,
+    mp5Attributes.headshotMultiplier,
+    mp5Attributes.pierce,
+    mp5Attributes.knockbackAmount,
+    mp5Attributes.range,
+    mp5Attributes.ammoType,
+    mp5Attributes.defaultMagazine,
+    new Def.ScopeAttributes(mp5Attributes.scopeAttributes.slowness, 
+                            mp5Attributes.scopeAttributes.speed,
+                            mp5Attributes.scopeAttributes.recoilMultiplier,
+                            mp5Attributes.scopeAttributes.stopAimOnCooldown),
+    mp5Attributes.minSpreadDegrees,
+    mp5Attributes.maxSpreadDegrees,
+    new Def.MainRecoilAttributes(mp5Attributes.recoilAttributes.mainRecoil.amountPerShot,
+                                 mp5Attributes.recoilAttributes.mainRecoil.minCamerashake,
+                                 mp5Attributes.recoilAttributes.mainRecoil.maxCamerashake,
+                                 mp5Attributes.recoilAttributes.mainRecoil.camerashakeTime,
+                                 mp5Attributes.recoilAttributes.mainRecoil.camerashakeTime),
+    new Def.RecoilAttributes(mp5Attributes.recoilAttributes.residualRecoil.minCamerashake,
+                             mp5Attributes.recoilAttributes.residualRecoil.maxCamerashake,
+                             mp5Attributes.recoilAttributes.residualRecoil.minCamerashakeTime,
+                             mp5Attributes.recoilAttributes.residualRecoil.maxCamerashakeTime),
+    mp5Attributes.animationAttributes
 );
 const m4 = new Def.Gun(
     m4Attributes.tag,
@@ -833,16 +1051,22 @@ const agm = new Def.Gun(
 const FirearmTags = {
     "yes:agm":          "yes:agm",
     "yes:benelli":      "yes:benelli",
+    "yes:mp5":          "yes:mp5",
     "yes:m4":           "yes:m4",
     "yes:m92f":         "yes:m92f",
-    "yes:magnum":       "yes:magnum"
+    "yes:magnum":       "yes:magnum",
+    "yes:makarov":      "yes:makarov",
+    "yes:usp":          "yes:usp",
 }
 
 Global.firearms.set(FirearmTags['yes:agm'], agm);
 Global.firearms.set(FirearmTags['yes:benelli'], benelli);
+Global.firearms.set(FirearmTags['yes:mp5'], mp5);
 Global.firearms.set(FirearmTags['yes:m4'], m4);
 Global.firearms.set(FirearmTags['yes:m92f'], m92f);
 Global.firearms.set(FirearmTags['yes:magnum'], magnum);
+Global.firearms.set(FirearmTags['yes:makarov'], makarov);
+Global.firearms.set(FirearmTags['yes:usp'], usp);
 
 export { magazinesList, FirearmTags };
 

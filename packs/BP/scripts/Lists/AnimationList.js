@@ -823,6 +823,66 @@ const m92fShootOutOfAmmoAttributes = {
     ],
     animationDefiniton: "animation.m92f_shoot_out_of_ammo"
 }
+const makarovShootWithAmmoAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shootWithAmmo,
+    sounds: [
+        {
+            soundDefinition: "firearm.desert_eagle_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 168.75
+        }
+    ],
+    animationDefiniton: "animation.m92f_shoot_with_ammo"
+}
+const makarovShootOutOfAmmoAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shootOutOfAmmo,
+    sounds: [
+        {
+            soundDefinition: "firearm.desert_eagle_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 168.75
+        }
+    ],
+    animationDefiniton: "animation.m92f_shoot_out_of_ammo"
+}
+const uspShootWithAmmoAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shootWithAmmo,
+    sounds: [
+        {
+            soundDefinition: "firearm.desert_eagle_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 168.75
+        }
+    ],
+    animationDefiniton: "animation.usp_shoot_with_ammo"
+}
+const uspShootOutOfAmmoAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shootOutOfAmmo,
+    sounds: [
+        {
+            soundDefinition: "firearm.desert_eagle_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 168.75
+        }
+    ],
+    animationDefiniton: "animation.usp_shoot_out_of_ammo"
+}
+const mp5ShootAttributes = {
+    duration: 30, //in ticks
+    type:     Def.AnimationTypes.shoot,
+    sounds: [
+        {
+            soundDefinition: "firearm.ak47_shoot",
+            timeToPlayInTicks: 0,
+            soundRange: 150
+        }
+    ],
+    animationDefiniton: "animation.mp5_shoot"
+}
 const m4ShootAttributes = {
     duration: 30, //in ticks
     type:     Def.AnimationTypes.shoot,
@@ -993,6 +1053,12 @@ const benelliShoot = new Def.Animation(
     benelliShootAttributes.sounds,
     benelliShootAttributes.animationDefiniton
 )
+const mp5Shoot = new Def.Animation(
+    mp5ShootAttributes.duration,
+    mp5ShootAttributes.type,
+    mp5ShootAttributes.sounds,
+    mp5ShootAttributes.animationDefiniton
+)
 const m4Shoot = new Def.Animation(
     m4ShootAttributes.duration,
     m4ShootAttributes.type,
@@ -1011,6 +1077,30 @@ const m92fShootOutOfAmmo = new Def.Animation(
     m92fShootOutOfAmmoAttributes.sounds,
     m92fShootOutOfAmmoAttributes.animationDefiniton
 )
+const makarovShootWithAmmo = new Def.Animation(
+    makarovShootWithAmmoAttributes.duration,
+    makarovShootWithAmmoAttributes.type,
+    makarovShootWithAmmoAttributes.sounds,
+    makarovShootWithAmmoAttributes.animationDefiniton
+)
+const makarovShootOutOfAmmo = new Def.Animation(
+    makarovShootOutOfAmmoAttributes.duration,
+    makarovShootOutOfAmmoAttributes.type,
+    makarovShootOutOfAmmoAttributes.sounds,
+    makarovShootOutOfAmmoAttributes.animationDefiniton
+)
+const uspShootWithAmmo = new Def.Animation(
+    uspShootWithAmmoAttributes.duration,
+    uspShootWithAmmoAttributes.type,
+    uspShootWithAmmoAttributes.sounds,
+    uspShootWithAmmoAttributes.animationDefiniton
+)
+const uspShootOutOfAmmo = new Def.Animation(
+    uspShootOutOfAmmoAttributes.duration,
+    uspShootOutOfAmmoAttributes.type,
+    uspShootOutOfAmmoAttributes.sounds,
+    uspShootOutOfAmmoAttributes.animationDefiniton
+)
 
 const ShootAnimations = {
     rifle: {
@@ -1019,6 +1109,7 @@ const ShootAnimations = {
         m4a1Shoot1:         m4a1Shoot,
         ar15Shoot:          ar15Shoot,
         hk417Shoot:         hk417Shoot,
+        mp5Shoot:           mp5Shoot,
         m4Shoot:            m4Shoot
     },
     smg: {
@@ -1040,7 +1131,11 @@ const ShootAnimations = {
         desertEagleShootWithAmmo:  desertEagleShootWithAmmo,
         desertEagleShootOutOfAmmo: desertEagleShootOutOfAmmo,
         m92fShootWithAmmo:         m92fShootWithAmmo,
-        m92fShootOutOfAmmo:        m92fShootOutOfAmmo
+        m92fShootOutOfAmmo:        m92fShootOutOfAmmo,
+        makarovShootWithAmmo:      makarovShootWithAmmo,
+        makarovShootOutOfAmmo:     makarovShootOutOfAmmo,
+        uspShootWithAmmo:          uspShootWithAmmo,
+        uspShootOutOfAmmo:         uspShootOutOfAmmo
     },
     other: {
         rpg7Shoot: rpg7Shoot,

@@ -7,15 +7,11 @@
              "groups": [
                 {
                    "group_identifier": {
-                      "icon": "yes:akm",
+                      "icon": "yes:m4",
                       "name": "yes:itemGroup.name.rifles"
                    },
                    "items": [
-                      "yes:akm",
-                      "yes:m4a1",
-                      "yes:ak47",
-                      "yes:ar15",
-                      "yes:hk417"
+                      "yes:m4"
                    ]
                 }
              ]
@@ -25,12 +21,11 @@
              "groups": [
                 {
                    "group_identifier": {
-                      "icon": "yes:ump45",
+                      "icon": "yes:mp5",
                       "name": "yes:itemGroup.name.smgs"
                    },
                    "items": [
-                      "yes:ump45",
-                      "yes:p90"
+                      "yes:mp5"
                    ]
                 }
              ]
@@ -40,25 +35,14 @@
              "groups": [
                 {
                    "group_identifier": {
-                      "icon": "yes:mk13",
-                      "name": "yes:itemGroup.name.snipers"
-                   },
-                   "items": [
-                      "yes:mk13"
-                   ]
-                }
-             ]
-          },
-          {
-             "category_name": "equipment",
-             "groups": [
-                {
-                   "group_identifier": {
-                      "icon": "yes:desert_eagle",
+                      "icon": "yes:m92f",
                       "name": "yes:itemGroup.name.pistols"
                    },
                    "items": [
-                      "yes:desert_eagle"
+                      "yes:m92f",
+                      "yes:makarov",
+                      "yes:usp",
+                      "yes:magnum"
                    ]
                 }
              ]
@@ -73,7 +57,7 @@
                    },
                    "items": [
                       "yes:agm",
-                      "yes:remington870"
+                      "yes:benelli"
                    ]
                 }
              ]
@@ -118,6 +102,29 @@
                    "yes:sniper_magazine_3_empty",
                    "yes:pistol_magazine_8_empty",
                    "yes:shotgun_magazine_6_empty"
+                 ]
+              }
+           ]
+        },
+        {
+           "category_name": "nature",
+           "groups": [
+              {
+                 "group_identifier": {
+                    "icon": "yes:akm",
+                    "name": "yes:itemGroup.name.shotguns"
+                 },
+                 "items": [
+                    "yes:akm",
+                    "yes:m4a1",
+                    "yes:ak47",
+                    "yes:ar15",
+                    "yes:hk417",
+                    "yes:ump45",
+                    "yes:p90",
+                    "yes:mk13",
+                    "yes:desert_eagle",
+                    "yes:remington870"
                  ]
               }
            ]
