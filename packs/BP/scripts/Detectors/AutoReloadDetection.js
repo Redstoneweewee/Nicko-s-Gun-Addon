@@ -60,7 +60,7 @@ function automaticReloadDetection(player, itemStack, isTactical) {
 
     //If mostAmmoIndex === -1, then could not find usable magazine
     if(mostAmmoIndex === -1 && player.getGameMode() !== GameMode.creative) { console.log("could not find any usable magazines."); return; }
-    else if(mostAmmoIndex === -1 && player.getGameMode() === GameMode.creative) { FirearmUtil.renewFirearmAmmoOnMagazineChange(player); return; }
+    else if(mostAmmoIndex === -1 && player.getGameMode() === GameMode.creative) { FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player); return; }
     
     //Swaps offhand item with magazine
     const magazineContainerSlot = container.getSlot(mostAmmoIndex);

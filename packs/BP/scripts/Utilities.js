@@ -753,28 +753,63 @@ class FirearmUtil {
     /**
      * 
      * @param {Player} player
-     * @param {typeof MagazineTypeIds[keyof typeof MagazineTypeIds]} newMagazineTypeId
-     * @param {ContainerSlot} firearmContainerSlot
-     * @param {Number} firearmId
-     * @param {Number} ammoCount
      */
-    static setFirearmMagazineToAmmoCount(player, newMagazineTypeId, firearmContainerSlot, firearmId, ammoCount) {
-        if(ammoCount === 0) {
-            FirearmUtil.setFirearmMagazineToEmpty(player, newMagazineTypeId, firearmContainerSlot, firearmId);
+    static tryRenewFirearmAmmoOnMagazineChange(player) {
+        if(!this.isHoldingFirearm(player)) { return; }
+        const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
+        if(firearmContainerSlot === null) { return; }
+        const firearmItemStack = firearmContainerSlot.getItem();
+        if(firearmItemStack === undefined) { return; }
+
+        const firearmId = FirearmIdUtil.getFirearmId(firearmItemStack);
+        const currentMagazineTag = String(firearmItemStack.getDynamicProperty(Global.ItemDynamicProperties.magazineTag));
+        this.tryCopyFirearmAmmoToWorld(player);
+        const currentAmmoCount = this.getWorldAmmoUsingId(firearmId)??0; //Must use world ammo because dynamic prop doesn't change until you stop shooting
+        const isOldMagazineEmpty = Boolean(firearmContainerSlot.getDynamicProperty(Global.ItemDynamicProperties.isMagazineEmpty));
+        const newMagazineItemStack = ItemUtil.getPlayerOffhandContainerSlot(player)?.getItem();
+        const oldMagazineTag = String(firearmContainerSlot.getDynamicProperty(Global.ItemDynamicProperties.magazineTag));
+        const newMagazineTag = newMagazineItemStack ? FirearmUtil.getMagazineObjectFromItemStackBoth(newMagazineItemStack)?.tag??null : null;
+        if(this.isOffhandAmmoTypeEmptyButCorrect(player) && (!isOldMagazineEmpty || oldMagazineTag !== newMagazineTag) && newMagazineTag) {
+            console.log(`1`);
+            //Only used when OldMagazine == any && newMagazine == empty
+            this.setFirearmMagazineToEmpty(player, newMagazineTag, firearmContainerSlot, firearmId);
             return;
         }
-        FirearmUtil.setWorldAmmoUsingId(firearmId, ammoCount);
-        firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId, newMagazineTypeId);
-        const firearmItemStack = firearmContainerSlot.getItem();
-        if(firearmItemStack !== undefined) {
-            Global.playerCurrentFirearmItemStack.set(player.id, firearmItemStack);
+        else if(!this.isOffhandAmmoTypeCorrect(player)) {
+            if((currentAmmoCount !== 0 || currentMagazineTag !== MagazineTags.none) && !this.isOffhandAmmoTypeEmptyButCorrect(player)) {
+                //Only used when OldMagazine == any && newMagazine == none
+                console.log(`set ammoCount to 0 and magazineType to ${MagazineTags.none}`);
+                console.log(`2`);
+                this.setFirearmMagazineToNone(player, firearmContainerSlot, firearmId, false);
+            }
+            return;
         }
-        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_offhand_magazine, true);
-        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_offhand_magazine);
-        const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmContainerSlot.getItem());
-        if(firearmObject === undefined) { return; }
-        FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearmObject);
+
+
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) { return; }
+        if(newMagazineItemStack === undefined) { return; }
+        const newMagazineAmmoCount = FirearmUtil.getAmmoCountFromOffhand(player);
+        if(newMagazineTag === null) { return; }
+        if(newMagazineAmmoCount !== currentAmmoCount || currentMagazineTag !== newMagazineTag) {
+            if(newMagazineAmmoCount === null || newMagazineAmmoCount === undefined) { return; }
+
+            //Is setting up for reload. Gun ammo set to none during reload
+            /**
+             * Instead, we keep the firearm magazine, hold the new magazine in data, and delete any oldMagazine dupes
+             * 1. If on PC, then oldMag --> selectedSLotInv and newMag --> offhand
+             *      so store newMag in data, delete item, and restore oldMag to offhand
+             * 2. If on Mobile, then oldMag --> inv/ground and newMag --> offhand
+             *      so store newMag in data,
+             *      try to delete 1 oldMag from inv
+             *      if unsuccessful, delete as item entity near player instead
+             *      if unsuccessful, throw missing mag error but otherwise whatever
+             *      and finally restore oldMag to offhand
+             */
+            this.setFirearmMagazineToNone(player, firearmContainerSlot, firearmId, true);
+            startReloadCooldown(player, newMagazineTag, currentAmmoCount, newMagazineAmmoCount, newMagazineItemStack);
+        }
     }
+
     /**
      * 
      * @param {Player} player
