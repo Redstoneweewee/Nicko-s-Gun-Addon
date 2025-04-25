@@ -34,8 +34,8 @@ world.beforeEvents.playerLeave.subscribe((eventData) => {
 function shootDetection(player, itemStack) {
     if(!FirearmUtil.isHoldingFirearm(player)) { return; }
     const firearmObject =  FirearmUtil.getFirearmObjectFromItemStack(itemStack);
-    if(firearmObject === undefined) { return; }
-    if(!FirearmUtil.isOffhandMagazineTypeValid(player))              { console.log("no ammo in offhand"); return; }
+    if(firearmObject === null) { return; }
+    if(!FirearmUtil.isOffhandAnAmmoType(player))              { console.log("no ammo in offhand"); return; }
     if(!FirearmUtil.isOffhandMagazineCorrect(player))         { console.log("wrong ammo type"); return; }
     if((FirearmUtil.getAmmoCountFromOffhand(player)??0) <= 0) { console.log("out of ammo"); return; }
     
@@ -68,14 +68,14 @@ world.afterEvents.itemStopUse.subscribe((eventData) => {
 /**
  * 
  * @param {Player} player 
- * @param {ItemStack|undefined} itemStack 
+ * @param {ItemStack|null|undefined} itemStack 
  */
 function stopShooting(player, itemStack) {
     //LoopUtil.stopAsyncLoop(player, Global.playerShootingLoopIds);
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_shooting, false);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_shooting);
     if(!FirearmUtil.isHoldingFirearm(player)) { return; }
-    if(itemStack === undefined) { return; }
+    if(itemStack === undefined || itemStack === null) { return; }
     const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
     if(firearmContainerSlot !== null) { FirearmUtil.tryCopyWorldAmmoToMainhandFirearm(firearmContainerSlot); }
 }

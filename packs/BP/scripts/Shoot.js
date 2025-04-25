@@ -1,24 +1,23 @@
-import { Direction, Entity, EntityComponentTypes, EntityHealthComponent, MolangVariableMap, Player, system, world } from '@minecraft/server';
+import { Direction, Entity, EntityComponentTypes, EntityHealthComponent, GameMode, MolangVariableMap, Player, system, world } from '@minecraft/server';
 import * as FirearmDef from './2Definitions/FirearmDefinition.js';
-import { AnimationUtil, DamageUtil, FirearmUtil, ItemUtil, NumberUtil } from './Utilities.js';
+import { AnimationUtil, DamageUtil, FirearmIdUtil, FirearmUtil, ItemUtil, LoopUtil, NumberUtil, SettingsUtil, SoundsUtil } from './Utilities.js';
 import { Global } from './Global.js';
 //import { automaticMagazineSwap } from './Detectors/AutoMagSwapDetection.js';
 import * as Reload from './Reload.js';
 import { renewAmmoCount } from './AmmoText.js';
-import { glassBlocks } from './1Enums/GlassBlockArrays.js';
+import { glassBlocksList } from './3Lists/glassBlocksList.js';
 import { AnimationTypes } from './1Enums/AnimationEnums.js';
 import { Vector3 } from './Math/Vector3.js';
 import { Mat3, RandVec } from './Math/MADLAD/index.js';
 import { AnimationLink } from './AnimationLink.js';
-import { excludedFamilies, excludedGameModes, excludedTypes } from './1Enums/HitExclusionArrays.js';
-import { ReloadTypes } from './1Enums/ReloadEnums.js';
-import { SettingsTypes } from './1Enums/SettingsEnums.js';
-import { SettingsUtil } from './UtilitiesInit.js';
+import { SettingsTypes } from './3Lists/SettingsList.js';
+import { ReloadTypes } from './2Definitions/ReloadDefinition.js';
+import * as Exclude from './3Lists/HitExclusionList.js';
 //import { Mat3, RandVec } from '@madlad3718/mcveclib';
 
 
 const humanoidHeadSize = 0.5;
-const playerHeadSize = 1.31;
+const playerHeadSize = 0.5;
 const playerHeightUntilHead = 1.31;
 
 const HitMarkerVariants = {
@@ -34,11 +33,11 @@ const HitMarkerVariants = {
  */
 function shoot(player, firearm) {
     const ammoCount = FirearmUtil.getAmmoCountFromOffhand(player);
-    if(ammoCount === undefined || ammoCount <= 0 || player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) { 
+    if(ammoCount === null || ammoCount <= 0 || player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) { 
         //LoopUtil.stopAsyncLoop(player, Global.playerShootingLoopIds);
         const firearmItemStack = ItemUtil.getSelectedItemStack(player);
-        if(firearmItemStack !== undefined) { //Need this here for when the player right-clicks when the magazine is empty & they weren't shooting just before
-            Reload.tryAutomaticReload(player, ReloadTypes.Normal);
+        if(firearmItemStack !== null) { //Need this here for when the player right-clicks when the magazine is empty & they weren't shooting just before
+            Reload.tryAutomaticReload(player, ReloadTypes.normal);
         }
         renewAmmoCount(player);
         console.log("out of ammo");
@@ -66,27 +65,23 @@ function shootGun(player, gun) {
     //console.log("shooting a gun weapon.");
     let anyHits = false;
     let anyHeadshots = false;
-
-    let totalDamage = 0;
     for(let i=0; i<gun.bulletsPerShot; i++) {
         const obj = doShootRayCasts(player, gun);
-        if(obj.anyHits) { anyHits = true; }
-        if(obj.anyHeadshots) { anyHeadshots = true; }
-        totalDamage += obj.damage;
+        if(obj[0]) { anyHits = true; }
+        if(obj[1]) { anyHeadshots = true; }
     }
-    console.log(`totalDamage: ${totalDamage}`);
     playHitSounds(player, anyHits, anyHeadshots);
 
     const newAmmoCount = FirearmUtil.tryConsumeFirearmAmmo(player, gun, 1);
     FirearmUtil.tryAddScreenshakeRecoil(player, gun);
     
-    let playedSound = AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.Shoot) === undefined ? false : true;
+    let playedSound = AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.shoot) === undefined ? false : true;
     if(!playedSound) {
         if(newAmmoCount !== undefined && newAmmoCount > 0) {
-            AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.ShootWithAmmo);
+            AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.shootWithAmmo);
         }
         else if(newAmmoCount === 0) {
-            AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.ShootOutOfAmmo);
+            AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.shootOutOfAmmo);
         }
     }
     //player.setDynamicProperty(Global.PlayerDynamicProperties.script.isFirstShot, false);
@@ -105,7 +100,7 @@ function shootExplosive(player, explosive) {
  * 
  * @param {Player} player 
  * @param {FirearmDef.Gun} gun 
- * @returns {{anyHits: boolean, anyHeadshots: boolean, damage: number}}
+ * @returns {Array<boolean, boolean>}
  */
 function doShootRayCasts(player, gun) {
 
@@ -120,10 +115,10 @@ function doShootRayCasts(player, gun) {
 
     const blockRayCast = player.dimension.getBlockFromRay(headLocation, shootDirection, { maxDistance: gun.range, includeLiquidBlocks: false, includePassableBlocks: false });
 
-    if(blockRayCast !== undefined) {
+    if(blockRayCast !== undefined && SettingsUtil.getSettingsValue(SettingsTypes.GunBreakBlocks) === 1) {
         const glassBlock = blockRayCast.block;
         try {
-            if(glassBlocks.includes(glassBlock.typeId)) {
+            if(glassBlocksList.includes(glassBlock.typeId)) {
                 player.dimension.runCommand(`setblock ${glassBlock.location.x} ${glassBlock.location.y} ${glassBlock.location.z} air destroy`);
                 glassHit++;
             }
@@ -143,20 +138,22 @@ function doShootRayCasts(player, gun) {
     }
 
     const entityRayCast = player.dimension.getEntitiesFromRay(headLocation, shootDirection, { 
+        includeLiquidBlocks: false,
+        includePassableBlocks: false,
         maxDistance: gun.range, 
-        excludeFamilies: excludedFamilies, 
-        excludeTypes: excludedTypes
+        excludeFamilies: Exclude.ExcludedFamilies, 
+        excludeTypes: Exclude.ExcludedTypes
     });
+
 
     let numHit = 0;
     let anyHits = false;
     let anyHeadshots = false;
-    let damage = 0;
     entityRayCast.forEach(rayCastHit => {
         if(numHit >= gun.pierce) { return; }
         const target = rayCastHit.entity;
         if(target === player) { return; }
-        if(target instanceof Player && (excludedGameModes.includes(target.getGameMode()) || world.gameRules.pvp === false)) { return; }
+        if(target instanceof Player && (Exclude.ExcludedGameModes.includes(target.getGameMode()) || world.gameRules.pvp === false)) { return; }
         const healthComponent = target.getComponent(EntityComponentTypes.Health);
         if(healthComponent instanceof EntityHealthComponent) { 
             if(healthComponent.currentValue <= 0) { return; }
@@ -165,16 +162,13 @@ function doShootRayCasts(player, gun) {
         hitBlock = false;
         hitPosition = new Vector3(headLocation.x, headLocation.y, headLocation.z).add(new Vector3(shootDirection.x, shootDirection.y, shootDirection.z).multiplyScalar(rayCastHit.distance));
         const isHeadshotVar = isHeadshot(new Vector3(hitPosition.x, hitPosition.y, hitPosition.z), target, new Vector3(target.getHeadLocation().x, target.getHeadLocation().y, target.getHeadLocation().z));
-        
-        damage = calculateDamage(rayCastHit.distance, gun)/gun.bulletsPerShot;
-
         if(isHeadshotVar) { 
-            damage *= gun.headshotMultiplier;
-            anyHeadshots = true; 
+            DamageUtil.dealDamageWithMultiplier(target, gun.headshotBulletDamage); 
+            anyHeadshots = true;
         }
-        DamageUtil.dealDamageNoMultiplier(target, damage); 
+        else { DamageUtil.dealDamageWithMultiplier(target, gun.normalBulletDamage); }
         DamageUtil.dealKnockbackUsingGun(player, target, gun, true);
-        drawHitEntityParticle(player, shootDirection, hitPosition, target, isHeadshotVar);
+        drawHitEntityParticle(player, shootDirection, hitPosition, isHeadshotVar);
         numHit++;
         anyHits = true;
     });
@@ -186,7 +180,7 @@ function doShootRayCasts(player, gun) {
         const lastBlockRayCast = player.dimension.getBlockFromRay(headLocation, shootDirection, { maxDistance: gun.range, includeLiquidBlocks: false, includePassableBlocks: false  });
         let isGlassBlock = false;
         try {
-            if(lastBlockRayCast !== undefined) { isGlassBlock = glassBlocks.includes(lastBlockRayCast.block.typeId); }
+            if(lastBlockRayCast !== undefined) { isGlassBlock = glassBlocksList.includes(lastBlockRayCast.block.typeId); }
         }
         catch {}
         if(!isGlassBlock) {
@@ -195,26 +189,8 @@ function doShootRayCasts(player, gun) {
         }
     }
 
-    return {anyHits, anyHeadshots, damage};
+    return [anyHits, anyHeadshots];
 }
-
-/**
- * 
- * @param {number} distance 
- * @param {FirearmDef.Gun} gunObject 
- * @returns {number}
- */
-function calculateDamage(distance, gunObject) {
-    
-    if(distance >= gunObject.damage.dropOffMaxRange) {
-        return gunObject.damage.minDamage;
-    }
-    else if(distance >= gunObject.damage.dropOffMinRange) {
-        return Number(MathUtils.mapLinear(distance, gunObject.damage.dropOffMinRange, gunObject.damage.dropOffMaxRange, gunObject.damage.maxDamage, gunObject.damage.minDamage));
-    }
-    return gunObject.damage.maxDamage;
-}
-
 
 /**
  * 
@@ -227,7 +203,7 @@ function calculateShootDirection(player, firearm) {
 
 
     let recoil = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.recoil));
-    if(Number.isNaN(recoil)) { recoil = 0; }
+    if(recoil === undefined || recoil === null || Number.isNaN(recoil)) { recoil = 0; }
     
     let recoilMultiplier = 1.0;
     if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming)) {
@@ -235,7 +211,7 @@ function calculateShootDirection(player, firearm) {
     }
 
     let degrees = firearm.minSpreadDegrees + (firearm.maxSpreadDegrees-firearm.minSpreadDegrees)*(recoil/100);
-    if(degrees > firearm.maxSpreadDegrees) { degrees = firearm.maxSpreadDegrees}
+    if(degrees > firearm.maxSpreadDegrees) { degrees = firearm.maxSpreadDegrees; }
     degrees = degrees*recoilMultiplier;
     //console.log(`degrees: ${degrees}`);
     
@@ -284,7 +260,7 @@ function drawSparkParticle(player, direction, position) {
 /**
  * 
  * @param {Player}  player 
- * @param {Direction?} blockDirection 
+ * @param {Direction | null} blockDirection 
  * @param {Vector3} position 
  */
 function drawShootHoleParticle(player, blockDirection, position) {
@@ -330,19 +306,16 @@ function drawShootHoleParticle(player, blockDirection, position) {
  * @param {Player}  player 
  * @param {Vector3} direction 
  * @param {Vector3} position 
- * @param {Entity} target 
  * @param {boolean} isHeadshotVar 
  */
-function drawHitEntityParticle(player, direction, position, target, isHeadshotVar) {
+function drawHitEntityParticle(player, direction, position, isHeadshotVar) {
     const vars = new MolangVariableMap();
+    let particleAmount = 35;
+    if(isHeadshotVar) { particleAmount = 100; }
     vars.setVector3("direction", direction);
+    vars.setFloat("amount", particleAmount);
     try {
         player.dimension.spawnParticle("yes:bullet_hit_entity", position, vars);
-        if(isHeadshotVar) { 
-            const vars2 = new MolangVariableMap();
-            vars2.setVector3("direction", new Vector3(0, 1, 0));
-            player.dimension.spawnParticle("yes:bullet_hit_entity", target.getHeadLocation(), vars2); 
-        }
     }
     catch {}
 }
@@ -362,7 +335,8 @@ function isHeadshot(hitPosition, target, targetHeadPosition) {
     //console.log(`distanceFromHead: ${distanceFromHead}`);
     //console.log(`distanceFromBottom: ${distanceFromBottom}`);
     if(target instanceof Player) {
-        if(distanceFromHead <= playerHeadSize && distanceFromBottom >= playerHeightUntilHead) {
+        //console.log(`distanceFromHead: ${distanceFromHead}, playerHeadSize: ${playerHeadSize}`);
+        if(distanceFromHead <= playerHeadSize) {
             return true;
         }
     }

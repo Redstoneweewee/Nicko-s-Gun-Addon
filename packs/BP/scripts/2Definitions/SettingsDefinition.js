@@ -1,42 +1,47 @@
-import * as Enums from "../1Enums/SettingsEnums"
+
+const ToggleTypes = {
+    Dropdown: "Dropdown",
+    Toggle: "Toggle"
+}
 
 class Settings {
     /**
-     * @param {{
-     * type:          typeof Enums.SettingsTypes[keyof typeof Enums.SettingsTypes],
-     * displayName:   string,
-     * settingsType:  string,
-     * toggleType:    string,
-     * active:        boolean,
-     * onChangeValue: function?,
-     * onlyActive:    boolean,
-     * }} def
+     * @param {String} displayName
+     * @param {String} settingsType
+     * @param {String} toggleType
+     * @param {boolean} active
+     * @param {function?} onChangeValue
+     * @param {Boolean} onlyActive
      */
-    constructor(def) {
-        this.type          = def.type;
-        this.displayName   = def.displayName;
-        this.settingsType  = def.settingsType;
-        this.toggleType    = def.toggleType;
-        this.active        = def.active;
-        this.onChangeValue = def.onChangeValue;
-        this.onlyActive    = def.onlyActive;
+    constructor(displayName, settingsType, toggleType, active, onChangeValue, onlyActive = false) {
+        this.displayName = displayName;
+        this.settingsType = settingsType;
+        this.toggleType = toggleType;
+        this.active = active;
+        this.onChangeValue = onChangeValue;
+        this.onlyActive = onlyActive;
     }
 }
 
 class RestrictedSettings extends Settings {
     /**
-     * @param {Settings & {
-     * restrictedDropdownText: string,
-     * restrictedMessageText:  string,
-     * availabilityTest:       function,
-     * }} def
+     * @param {String} displayName
+     * @param {String} restrictedDropdownText
+     * @param {String} restrictedMessageText
+     * @param {String} settingsType
+     * @param {String} toggleType
+     * @param {boolean} active
+     * @param {function} availabilityTest
+     * @param {function?} onChangeValue
+     * @param {Boolean} onlyActive
      */
-    constructor(def) {
-        super(def);
-        this.restrictedDropdownText = def.restrictedDropdownText;
-        this.restrictedMessageText  = def.restrictedMessageText;
-        this.availabilityTest       = def.availabilityTest;
+    constructor(displayName, restrictedDropdownText, restrictedMessageText, settingsType, toggleType, active, availabilityTest, onChangeValue, onlyActive = false) {
+        super(displayName, settingsType, toggleType, active, onChangeValue, onlyActive);
+
+        this.restrictedDropdownText = restrictedDropdownText;
+        this.restrictedMessageText = restrictedMessageText;
+        this.availabilityTest = availabilityTest;
     }
 }
 
-export { RestrictedSettings, Settings };
+export { RestrictedSettings, Settings, ToggleTypes };

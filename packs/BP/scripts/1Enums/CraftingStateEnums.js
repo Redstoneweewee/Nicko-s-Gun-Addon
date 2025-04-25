@@ -17,23 +17,4 @@ const CraftingMessageTypes = {
     Confirm:    "Confirm"
 }
 
-
-/**
- * @enum {string}
- * @type {{
-* SelectorCraftingState:   "selectorCraftingState",
-* FirearmCraftingState:    "firearmCraftingState",
-* MagazineCraftingState:   "magazineCraftingState",
-* AmmunitionCraftingState: "ammunitionCraftingState",
-* ConfirmCraftingState:    "confirmCraftingState"
-* }}
-*/
-const CraftingStateTypes = {
-    SelectorCraftingState:   "selectorCraftingState",
-    FirearmCraftingState:    "firearmCraftingState",
-    MagazineCraftingState:   "magazineCraftingState",
-    AmmunitionCraftingState: "ammunitionCraftingState",
-    ConfirmCraftingState:    "confirmCraftingState"
-}
-
-export { CraftingMessageTypes, CraftingStateTypes };
+export { CraftingMessageTypes };

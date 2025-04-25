@@ -4,7 +4,7 @@ import { Global } from '../Global.js';
 import { AnimationLink } from "../AnimationLink.js";
 import { FirearmUtil, ItemUtil } from '../Utilities.js';
 import { Firearm, GunWithAbility } from '../2Definitions/FirearmDefinition.js';
-import { SwitchScopeZoomAttribute } from '../2Definitions/LeftClickAbilityDefinition.js';
+import { LeftClickAbilityTypes, SwitchScopeZoomAttribute } from '../2Definitions/LeftClickAbilityDefinition.js';
 const Vector = new Vector3();
 
 /**
@@ -38,11 +38,11 @@ function aimDetection(player) {
 /**
  * 
  * @param {Player} player 
- * @param {Firearm|undefined} firearmObject 
+ * @param {Firearm?} firearmObject 
  * @returns 
  */
 function tryAddScopeZoom(player, firearmObject) {
-    if(firearmObject === undefined) {
+    if(firearmObject == null) {
         tryRemoveScopeZoom(player);
         return;
     }
@@ -52,11 +52,11 @@ function tryAddScopeZoom(player, firearmObject) {
 /**
  * 
  * @param {Player} player 
- * @param {Firearm|undefined} firearmObject 
+ * @param {Firearm?} firearmObject 
  * @returns 
  */
 function renewScopeZoom(player, firearmObject) {
-    if(firearmObject === undefined) {
+    if(firearmObject == null) {
         tryRemoveScopeZoom(player);
         return;
     }

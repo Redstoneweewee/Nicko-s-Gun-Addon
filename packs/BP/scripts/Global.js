@@ -1,21 +1,19 @@
 import { ItemStack } from "@minecraft/server";
 import { Firearm } from "./2Definitions/FirearmDefinition";
 import { Magazine } from "./2Definitions/MagazineDefinition";
-import { FirearmTypeIds } from "./1Enums/FirearmEnums";
-import { MagazineTypeIds } from "./1Enums/MagazineEnums";
 
 class Global {
     /**
      * A dictionary of all guns
-     * `key: FirearmTypeIds enum {string}`, `value: Firearm Object {Firearm}`
-     * @type {Map<typeof FirearmTypeIds[keyof typeof FirearmTypeIds], Firearm>}
+     * `key: FirearmTags enum {string}`, `value: Firearm Object {Firearm}`
+     * @type {Map<string, Firearm>}
      */
     static firearms = new Map();
 
     /**
      * A dictionary of all guns
-     * `key: MagazineTypeIds enum {string}`, `value: Magazine Object {Magazine}`
-     * @type {Map<typeof MagazineTypeIds[keyof typeof MagazineTypeIds], Magazine>}
+     * `key: MagazineTags enum {string}`, `value: Magazine Object {Magazine}`
+     * @type {Map<string, Magazine>}
      */
     static magazines = new Map();
 
@@ -84,11 +82,12 @@ class Global {
             currentFirearmItemStackSaved: "currentFirearmItemStackSaved", //boolean reset across reload
             currentMultipliersSaved:      "currentMultipliersSaved",      //boolean reset across reload
             isHoldingAbilityFirearm:      "isHoldingAbilityFirearm",      //boolean reset across reload
-            lastShootTick:         "lastShootTick",         //number reset across reload
+            lastShootTick:                "lastShootTick",         //number reset across reload
         },  
 
         "animation": {
             team:                       "team",                        //Team enum ("gold" or "blue"), reset across reload
+            outlines_active:            "outlines_active",             //boolean keep across reload
             hit_marker_variant:         "hit_marker_variant",          //HitMarkerVariants enum ("none", "normal", or "headshot"), reset across reload
             has_offhand_magazine:       "has_offhand_magazine",        //boolean keep across reload
             firearm_firing_mode:        "firearm_firing_mode",         //boolean reset across reload
@@ -118,6 +117,7 @@ class Global {
          */
         loadedOffhandMagazine: "loadedOffhandMagazine",
         /** These are tied to loadedOffhandMagazine from HoldDetection() */
+        outlines_active:       "outlines_active",
         has_offhand_magazine:  "has_offhand_magazine",
         should_open_cock_on_reload: "should_open_cock_on_reload",
         should_cock_on_reload: "should_cock_on_reload",
@@ -138,7 +138,7 @@ class Global {
          *   2. When the player stops shooting
          */
         ammoCount: "ammoCount",            //number {}
-        magazineTypeId: "magazineTypeId",        //MagazineTypeIds enum {string}
+        magazineTag: "magazineTag",        //MagazineTags enum {string}
         isMagazineEmpty: "isMagazineEmpty" //boolean
     }
 

@@ -3,10 +3,11 @@ import { FirearmIdUtil, FirearmNameUtil, FirearmUtil, ItemUtil } from "../Utilit
 import * as FirearmInit from '../FirearmInitialization.js';
 import { Global } from '../Global.js';
 import { Vector3 } from '../Math/Vector3.js';
+import { MagazineTags } from '../3Lists/MagazinesList.js';
 import { renewAmmoCount } from '../AmmoText.js';
 import { AnimationLink } from '../AnimationLink.js';
 import { AnimationTypes } from '../1Enums/AnimationEnums.js';
-import { MagazineTypeIds, MagazineTypes } from '../1Enums/MagazineEnums.js';
+import { MagazineTypes } from '../2Definitions/MagazineDefinition.js';
 
 
 
@@ -119,9 +120,7 @@ function trySaveCurrentFirearmItemStack(player) {
     Global.playerCurrentFirearmItemStack.set(player.id, firearmItemStack);
     const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
     if(firearmObject === undefined) { return; }
-    const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
-    if(firearmContainerSlot === null) { return; }
-    FirearmUtil.setPlayerFiringModeAndfiringRate(player, firearmObject, firearmContainerSlot);
+    FirearmUtil.setPlayerFiringModeAndfiringRate(player, firearmObject);
     //FirearmUtil.printFirearmDynamicProperties(firearmItemStack);
 }
 
@@ -142,11 +141,11 @@ function tryResetOffhandItem(player) {
     const offhandSlot = ItemUtil.getPlayerOffhandContainerSlot(player);
     
     const firearmItemStack = Global.playerCurrentFirearmItemStack.get(player.id);
-    if(firearmItemStack === undefined) { return; }
-    const magazineTypeId = firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId);
+    if(firearmItemStack === null || firearmItemStack === undefined) { return; }
+    const magazineTag = firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTag);
     //console.log(FirearmUtil.getWorldAmmoUsingId(FirearmIdUtil.getFirearmId(firearmItemStack)));
     //if no magazine then don't delete offhand item
-    if(magazineTypeId === MagazineTypeIds.none) {
+    if(magazineTag === MagazineTags.none) {
         player.setDynamicProperty(Global.PlayerDynamicProperties.script.loadedOffhandMagazine, false);
         return;
     }
@@ -165,12 +164,12 @@ function tryReplaceOffhandItem(player) {
     const offhandContainerSlot = ItemUtil.getPlayerOffhandContainerSlot(player);
     if(offhandContainerSlot === null) { return; }
 
-    const magazineTypeId = String(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId));
+    const magazineTag = String(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTag));
 
     const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
     if(firearmObject) {
         for(const attribute of firearmObject.animationAttributes) {
-            if(attribute.staticAnimation.type === AnimationTypes.ReloadOpenCock) {
+            if(attribute.animation.type === AnimationTypes.reloadOpenCock) {
                 player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload, true);
                 AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_open_cock_on_reload);
                 break;
@@ -179,7 +178,7 @@ function tryReplaceOffhandItem(player) {
     }
 
     //If no magazine then don't do anything
-    if(magazineTypeId === MagazineTypeIds.none) {
+    if(magazineTag === MagazineTags.none) {
         player.setDynamicProperty(Global.PlayerDynamicProperties.script.loadedOffhandMagazine, true);
 
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
@@ -193,34 +192,31 @@ function tryReplaceOffhandItem(player) {
     
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_offhand_magazine, true);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_offhand_magazine);
+    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, false);
+    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
+    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, true);
+    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
     
     let magazineItemStack;
     const isMagazineEmpty = Boolean(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty));
-    if(!isMagazineEmpty) {
-        magazineItemStack = new ItemStack(magazineTypeId, firearmObject?.magazineAttribute.maxMagazineItemStackAmount);
-        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, false);
-        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
-        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, true);
-        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
-    }
-    else { 
-        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
-        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
+    if(isMagazineEmpty) {
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, false);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
-        try { magazineItemStack = new ItemStack(magazineTypeId+"_empty", 1); }
-        catch { console.error(`Magazine ${magazineTypeId} does not have an empty counterpart.`); return; }
+        try { magazineItemStack = new ItemStack(magazineTag+"_empty", 1); }
+        catch { console.error(`Magazine ${magazineTag} does not have an empty counterpart.`); return; }
+    }
+    else { 
+        magazineItemStack = new ItemStack(magazineTag, firearmObject?.magazineAttribute.maxMagazineItemStackAmount);
     }
     const ammoCount = FirearmUtil.getWorldAmmoUsingId(FirearmIdUtil.getFirearmId(firearmItemStack));
-    if(ammoCount === undefined) { return; }
+    if(ammoCount === null) { return; }
     const magazineObject = FirearmUtil.getMagazineObjectFromItemStackBoth(magazineItemStack);
     if(magazineObject && magazineObject.maxAmmo !== ammoCount) {
         FirearmNameUtil.renewMagazineName(magazineItemStack, ammoCount);
-        if(magazineObject.magazineType === MagazineTypes.DurabilityBased) {
+        if(magazineObject.magazineType === MagazineTypes.durabilityBased) {
             ItemUtil.trySetDurability(magazineItemStack, ammoCount);
         }
-        else if(magazineObject.magazineType === MagazineTypes.StackBased && ammoCount === 0) { return; }
-        else if(magazineObject.magazineType === MagazineTypes.StackBased) {
+        else if(magazineObject.magazineType === MagazineTypes.stackBased) {
             magazineItemStack.amount = ammoCount;
         }
     }

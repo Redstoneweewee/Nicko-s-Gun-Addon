@@ -1,43 +1,51 @@
 import { ItemStack } from "@minecraft/server"
+import { MagazineClasses } from "./FirearmDefinition";
 import { AmmoClasses } from "../1Enums/AmmoEnums";
-import * as Enums from "../1Enums/MagazineEnums"
-import { TypeUtil } from "../UtilitiesInit";
 
+/**
+ * @typedef {object} MagazineTypesDef
+ * @property {"stackBased"} stackBased
+ * @property {"durabilityBased"} durabilityBased
+ */
+/** @type {MagazineTypesDef} */
+const MagazineTypes = {
+    stackBased: "stackBased",
+    durabilityBased: "durabilityBased"
+}
 class Magazine {
     /**
-     * @param {{
-     * itemTypeId:            typeof Enums.MagazineTypeIds[keyof typeof Enums.MagazineTypeIds],
-     * name:                  string,
-     * magazineClass:         typeof Enums.MagazineClasses[keyof typeof Enums.MagazineClasses],
-     * magazineType:          typeof Enums.MagazineTypes[keyof typeof Enums.MagazineTypes],
-     * maxAmmo:               number,
-     * itemStack:             ItemStack,
-     * fillableByAmmoClasses: typeof AmmoClasses[keyof typeof AmmoClasses][]
-     * }} def
+     * 
+     * @param {string} tag 
+     * @param {string} name 
+     * @param {string} magazineClass 
+     * @param {keyof MagazineTypesDef} magazineType 
+     * @param {number} maxAmmo 
+     * @param {ItemStack} itemStack 
+     * @param {typeof AmmoClasses[keyof typeof AmmoClasses][]} fillableByAmmoClasses
      */
-    constructor(def) {
-        this.itemTypeId            = def.itemTypeId;
-        this.name                  = def.name;
-        this.magazineClass         = def.magazineClass;
-        this.magazineType          = def.magazineType;
-        this.maxAmmo               = def.maxAmmo;
-        this.itemStack             = def.itemStack;
-        this.fillableByAmmoClasses = def.fillableByAmmoClasses;
+    constructor(tag, name, magazineClass, magazineType, maxAmmo, itemStack, fillableByAmmoClasses) {
+        this.tag        = tag;
+        this.name       = name;
+        this.magazineClass   = magazineClass;
+        this.magazineType = magazineType;
+        this.maxAmmo    = maxAmmo;
+        this.itemStack  = itemStack;
+        this.fillableByAmmoClasses = fillableByAmmoClasses;
     }
     
-    /**
-     * @returns {typeof Enums.MagazineTypeIds[keyof typeof Enums.MagazineTypeIds]|undefined}
-     */
-    getMagazineTypeIdEnum() {
-        for(const [, typeId] of TypeUtil.getIterable(Enums.MagazineTypeIds)) {
-            if(typeId === this.itemTypeId) {
-                return typeId;
-            }
-        }
-        console.error(`getMagazineTypeIdEnum() failed: Magazine with itemTypeId ${this.itemTypeId} is not defined in MagazineTypeIds`);
-        return;
-    }
+    ///**
+    // * @returns {import("../3Lists/MagazinesList").MagazineTagsDef[keyof import("../3Lists/MagazinesList").MagazineTagsDef]|undefined}
+    // */
+    //getMagazineTagEnum() {
+    //    for(const pair of MagazineTags) {
+    //        if(pair[1] === this.tag) {
+    //            return pair[1];
+    //        }
+    //    }
+    //    console.error(`getMagazineTagEnum() failed: Magazine with tag ${this.tag} is not defined in MagazineTags`);
+    //    return;
+    //}
 }
 
 
-export { Magazine };
+export { Magazine, MagazineTypes };

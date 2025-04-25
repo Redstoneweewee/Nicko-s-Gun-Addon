@@ -1,78 +1,88 @@
+import { Global } from "../Global";
 import * as Enums from "../1Enums/AnimationEnums";
 
-class StaticAnimation {
+
+class Animation {
+
     /**
-     * @param {{
-    * type:            typeof Enums.AnimationTypes[keyof typeof Enums.AnimationTypes]
-    * duration:     number,
-    * animationSounds: AnimationSound[]
-    * animationId?:    string
-    * }} def
-    */
-    constructor(def) {
-        this.type            = def.type;
-        this.duration        = def.duration;
-        this.animationSounds = def.animationSounds;
-        this.animationId     = def.animationId;
+     * @param {Number} durationInTicks 
+     * @param {keyof typeof Enums.AnimationTypes} type
+     * @param {AnimationSoundAttribute[]} animationSoundAttributes - An array of sounds to be played during the animation at certain times
+     * @param {string} animationDefiniton - Not used in ReloadAnimationAttributes because the animations are played in animation controllers
+     */
+    constructor(durationInTicks, type, animationSoundAttributes, animationDefiniton = "") {
+        this.timeInTicks              = durationInTicks;
+        this.type                     = type;
+        this.animationSoundAttributes = animationSoundAttributes;
+        this.animationDefiniton       = animationDefiniton;
+    }
+}
+
+
+class AnimationAttribute {
+    /**
+     * 
+     * @param {Animation} animation 
+     */
+    constructor(animation) {
+        this.animation  = animation;
     }   
 }
 
-class NormalAnimation {
+class ReloadAnimationAttribute extends AnimationAttribute {
 
     /**
-     * @param {{
-     * staticAnimation: StaticAnimation
-     * }} def
+     * 
+     * @param {Animation} reloadAnimation 
+     * @param {Number} scaleDurationToValue - The number of ticks this animation should scale to (the animation will now take this many ticks to finish)
      */
-    constructor(def) {
-        this.staticAnimation      = def.staticAnimation;
-    }
-}
-class ScaledAnimation extends NormalAnimation{
-
-    /**
-     * @param {{
-     * staticAnimation: StaticAnimation
-     * scaleDurationToValue: number
-     * }} def
-     */
-    constructor(def) {
-        super(def);
-        this.scaleDurationToValue = def.scaleDurationToValue;
-    }
+    constructor(reloadAnimation, scaleDurationToValue) {
+        super(reloadAnimation);
+        this.scaleDurationToValue = scaleDurationToValue;
+    }   
 }
 
-
-class AnimationSound {
+class AnimationSoundAttribute {
 
     /**
-     * @param {{
-     * soundId:    string,
-     * timeout:    number,
-     * soundRange: number
-     * }} def
+     * @param {string} soundDefinition - The string name of the sound, such as "firearm.rifle_reload_magazine_out_light"
+     * @param {Number} timeToPlayInTicks - The time in the animation to play the sound
+     * @param {Number} soundRange
      */
-    constructor(def) {
-        this.soundId    = def.soundId;
-        this.timeout    = def.timeout;
-        this.soundRange = def.soundRange;
+    constructor(soundDefinition, timeToPlayInTicks, soundRange) {
+        this.soundDefinition   = soundDefinition;
+        this.timeToPlayInTicks = timeToPlayInTicks;
+        this.soundRange        = soundRange;
     }
 }
 
+
+class RestrictedAnimationSoundAttribute extends AnimationSoundAttribute {
+
+    /**
+     * @param {string} soundDefinition - The string name of the sound, such as "firearm.rifle_reload_magazine_out_light"
+     * @param {Number} timeToPlayInTicks - The time in the animation to play the sound
+     * @param {Number} restrictedForTicks - The time in ticks that must pass before this animation can be played again
+     * @param {Number} soundRange
+     */
+    constructor(soundDefinition, timeToPlayInTicks, restrictedForTicks, soundRange) {
+        super(soundDefinition, timeToPlayInTicks, soundRange);
+        this.restrictedForTicks   = restrictedForTicks;
+    }
+}
 
 
 class SoundTimeoutIdObject {
     /**
-     * @param {{
-     * timeoutId: number,
-     * animationType: typeof Enums.AnimationTypes[keyof typeof Enums.AnimationTypes]
-     * }} def
+     * 
+     * @param {Number} timeoutId 
+     * @param {string} animationType - An AnimationEnums enum
      */
-    constructor(def) {
-        this.timeoutId     = def.timeoutId;
-        this.animationType = def.animationType;
+    constructor(timeoutId, animationType) {
+        this.timeoutId = timeoutId;
+        this.animationType = animationType;
     }
 }
 
 
-export { StaticAnimation, NormalAnimation, ScaledAnimation, AnimationSound, SoundTimeoutIdObject };
+export { Animation, AnimationSoundAttribute, AnimationAttribute, ReloadAnimationAttribute, RestrictedAnimationSoundAttribute, SoundTimeoutIdObject};

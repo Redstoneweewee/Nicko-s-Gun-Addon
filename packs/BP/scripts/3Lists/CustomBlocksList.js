@@ -1,13 +1,13 @@
 import * as Def from "../2Definitions/CustomBlockDefinition"
 import * as Enums from "../1Enums/CustomBlockEnums"
-import { TypeUtil } from "../UtilitiesInit";
+import { TypeUtil } from "../Utilities";
 
 /**
  * @enum {Def.CustomBlock}
  * @type {Record<keyof typeof Enums.CustomBlockTypes, Def.CustomBlock>}
  */
 const CustomBlocks = {
-    aluminumOre: new Def.CustomBlock({
+    aluminumOre: {
         typeId: Enums.CustomBlockTypes.aluminumOre,
         speedTag: "iron_pick_diggable",
         xpMin: 0,
@@ -19,8 +19,8 @@ const CustomBlocks = {
                 affectedByFortune: true
             }
         ]
-    }),
-    deepslateAluminumOre: new Def.CustomBlock({
+    },
+    deepslateAluminumOre: {
         typeId: Enums.CustomBlockTypes.deepslateAluminumOre,
         speedTag: "iron_pick_diggable",
         xpMin: 0,
@@ -32,8 +32,8 @@ const CustomBlocks = {
                 affectedByFortune: true
             }
         ]
-    }),
-    deepslateTitaniumOre: new Def.CustomBlock({
+    },
+    deepslateTitaniumOre: {
         typeId: Enums.CustomBlockTypes.deepslateTitaniumOre,
         speedTag: "diamond_pick_diggable",
         xpMin: 10,
@@ -45,7 +45,7 @@ const CustomBlocks = {
                 affectedByFortune: true
             }
         ]
-    })
+    }
 }
 
 /** @type {Map<typeof Enums.CustomBlockTypes[keyof typeof Enums.CustomBlockTypes], Def.CustomBlock>} */
