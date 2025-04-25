@@ -7,10 +7,12 @@ import { FirearmUtil, ItemUtil } from '../Utilities.js';
  */
 function offhandStackCheck(player) {
     if(!FirearmUtil.isHoldingFirearm(player)) { return; }
+    const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(ItemUtil.getSelectedItemStack(player));
+    if(firearmObject === undefined) { return; }
     const offhandItemStack = ItemUtil.getPlayerOffhandContainerSlot(player)?.getItem();
-    if(offhandItemStack === null || offhandItemStack === undefined) { return; }
-    if(offhandItemStack.amount > 1) { 
-        ItemUtil.moveOldOffhandItemOff(player, true);
+    if(offhandItemStack === undefined) { return; }
+    if(offhandItemStack.amount > firearmObject.magazineAttribute.maxMagazineItemStackAmount && !FirearmUtil.isSwitchingFirearm(player)) { 
+        ItemUtil.moveOldOffhandItemOff(player, firearmObject.magazineAttribute.maxMagazineItemStackAmount);
     }
 }
 

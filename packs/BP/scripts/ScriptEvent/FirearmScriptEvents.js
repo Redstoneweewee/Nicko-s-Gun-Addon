@@ -1,7 +1,7 @@
 import { Player, system } from "@minecraft/server";
 import { showSettingsForm } from '../UI/SettingsMessage.js';
 import { AnimationUtil, FirearmUtil, ItemUtil, SoundsUtil } from "../Utilities.js";
-import { AnimationTypes } from "../Definitions/AnimationDefinition.js";
+import { AnimationTypes } from "../1Enums/AnimationEnums.js";
 import { shoot } from "../Shoot.js";
 import { onLeftClick } from "../Detectors/LeftClickAbilityDetection.js";
 
@@ -11,12 +11,11 @@ system.afterEvents.scriptEventReceive.subscribe(eventData => {
     const player = eventData.sourceEntity;
     if(id === "yes:firearm_shoot" && player instanceof Player) {
         const firearmItemStack = ItemUtil.getSelectedItemStack(player);
-        if(firearmItemStack === null) { return; }
         const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
-        if(firearmObject === null) { return; }
+        if(firearmObject === undefined) { return; }
         shoot(player, firearmObject);
     }
     else if(id === "yes:firearm_left_click" && player instanceof Player) {
         onLeftClick(player);
     }
-});
+}, { namespaces: ["yes"] } );

@@ -1,9 +1,9 @@
 import "./CustomComponents/Initialization.js";
-import "./Lists/InitializeScoreboards.js";
+import "./3Lists/InitializeScoreboards.js";
 import "./WorldInitialization.js";
 
-import "./Lists/FirearmsList.js";
-import "./Lists/MagazinesList.js";
+import "./3Lists/FirearmsList.js";
+import "./3Lists/MagazinesList.js";
 
 import "./ScriptEvent/Functions.js";
 import "./ScriptEvent/SettingsCommand.js";
@@ -14,22 +14,25 @@ import "./Teams.js";
 //import "./Detectors/ThirdPersonDetection.js";
 
 
-import { world, system, EffectTypes, ItemStack, EntityComponentTypes, EntityRideableComponent } from '@minecraft/server';
+import { world, system, EffectTypes, ItemStack, EntityComponentTypes, EntityRideableComponent, GameMode, Entity, Player } from '@minecraft/server';
 import { Vector3 } from './Math/Vector3.js';
 import { Global } from "./Global.js";
 const Vector = new Vector3();
 
 
 import * as ShootDetection from "./Detectors/ShootDetection.js";
-import * as AutoReloadDetection from "./Detectors/AutoReloadDetection.js";
+import * as AutoReloadDetection from "./Detectors/AutoMagSwapDetection.js";
+import * as Reload from "./Reload.js";
 
 
 world.afterEvents.itemStartUse.subscribe((eventData) => {
     const player = eventData.source;
     const itemStack = eventData.itemStack;
     ShootDetection.shootDetection(player, itemStack);
-    FirearmUtil.renewFirearmAmmoOnMagazineChange(player);
-    AutoReloadDetection.automaticReloadDetection(player, itemStack, false);
+    //FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player);
+    //AutoReloadDetection.automaticMagazineSwap(player, itemStack, false);
+    Reload.tryManualReload(player);
+    Reload.tryAutomaticReload(player, ReloadTypes.normal);
 });
 
 
@@ -42,7 +45,15 @@ import * as LoadMagazineDetection from "./Detectors/LoadMagazineDetection.js";
 import { renewAmmoCount } from "./AmmoText.js";
 import { FirearmUtil } from "./Utilities.js";
 import { AnimationLink } from "./AnimationLink.js";
-import { settingsList } from "./Lists/SettingsList.js";
+import { settingsList } from "./3Lists/SettingsList.js";
+import * as Mining from "./Blocks/Mining.js";
+
+//import { teleportHitboxEntity } from "./Hitbox.js";
+
+
+//world.getAllPlayers().forEach(player => {
+//    teleportHitboxEntity(player);
+//});
 
 system.runInterval(() => {
     world.getAllPlayers().forEach(player => {
@@ -54,6 +65,7 @@ system.runInterval(() => {
         func(); //runs all main loop functions here
     }
     world.getAllPlayers().forEach(player => {
+        player.inputInfo
         HoldDetection.holdingFirearmDetectionPart2(player);
         if(system.currentTick % 15 === 0) { renewAmmoCount(player); }
 
@@ -61,7 +73,8 @@ system.runInterval(() => {
             FirearmUtil.tryDecreaseRecoil(player);
         }
         AimDetection.aimDetection(player);
-        FirearmUtil.renewFirearmAmmoOnMagazineChange(player);
+        //FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player);
+        Reload.tryManualReload(player);
         //LeftClickAbilityDetection.leftClickAbilityDetection(player);
     });
 });
@@ -89,3 +102,4 @@ system.runInterval(() => {
  * Settings and UI stuff run after all other scripts
  */
 import "./UI/SettingsMessage.js";
+import { ReloadType, ReloadTypes } from "./2Definitions/ReloadDefinition.js";

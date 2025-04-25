@@ -36,7 +36,7 @@ function shootDetection(player, itemStack) {
     const firearmObject =  FirearmUtil.getFirearmObjectFromItemStack(itemStack);
     if(firearmObject === null) { return; }
     if(!FirearmUtil.isOffhandAnAmmoType(player))              { console.log("no ammo in offhand"); return; }
-    if(!FirearmUtil.isOffhandAmmoTypeCorrect(player))         { console.log("wrong ammo type"); return; }
+    if(!FirearmUtil.isOffhandMagazineCorrect(player))         { console.log("wrong ammo type"); return; }
     if((FirearmUtil.getAmmoCountFromOffhand(player)??0) <= 0) { console.log("out of ammo"); return; }
     
     //Shooting is now done in the BHV animation shoot for better fire rate control
@@ -71,7 +71,7 @@ world.afterEvents.itemStopUse.subscribe((eventData) => {
  * @param {ItemStack|null|undefined} itemStack 
  */
 function stopShooting(player, itemStack) {
-    LoopUtil.stopAsyncLoop(player, Global.playerShootingLoopIds);
+    //LoopUtil.stopAsyncLoop(player, Global.playerShootingLoopIds);
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_shooting, false);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_shooting);
     if(!FirearmUtil.isHoldingFirearm(player)) { return; }

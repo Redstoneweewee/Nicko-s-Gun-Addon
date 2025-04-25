@@ -1,6 +1,6 @@
 import { Player, system, world } from "@minecraft/server";
-import { ToggleTypes } from "../Definitions/SettingsDefinition";
-import { settingsList, SettingsTypes } from "../Lists/SettingsList";
+import { RestrictedSettings, ToggleTypes } from "../2Definitions/SettingsDefinition";
+import { settingsList, SettingsTypes } from "../3Lists/SettingsList";
 import { Vector3 } from "../Math/Vector3";
 import * as ui from "@minecraft/server-ui";
 import { SettingsUtil } from "../Utilities";

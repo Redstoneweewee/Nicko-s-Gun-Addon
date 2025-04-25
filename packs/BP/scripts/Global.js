@@ -1,6 +1,6 @@
 import { ItemStack } from "@minecraft/server";
-import { Firearm } from "./Definitions/FirearmDefinition";
-import { Magazine } from "./Definitions/MagazineDefinition";
+import { Firearm } from "./2Definitions/FirearmDefinition";
+import { Magazine } from "./2Definitions/MagazineDefinition";
 
 class Global {
     /**
@@ -126,7 +126,7 @@ class Global {
     /**
      * An enum of all item dynamic properties
      */
-    static ItemDynamicProperties = {
+    static FirearmDynamicProperties = {
         id: "id",                          //number
         /**
          * Is a less accurate rep of ammoCount compared to world ammoCount, but is used after world reload.
@@ -138,6 +138,13 @@ class Global {
         ammoCount: "ammoCount",            //number {}
         magazineTag: "magazineTag",        //MagazineTags enum {string}
         isMagazineEmpty: "isMagazineEmpty" //boolean
+    }
+
+    /**
+     * An enum of all item dynamic properties
+     */
+    static MagazineDynamicProperties = {
+        ammoClass: "ammoClass",  //an AmmoClass enum {string}
     }
 
     /**

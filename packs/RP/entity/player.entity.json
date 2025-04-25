@@ -114,7 +114,6 @@
           "v.hit_marker_variant          = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:hit_marker_variant');",
           "v.is_aiming                   = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:is_aiming');",
           "v.is_holding_firearm          = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:is_firearm');",
-          "v.is_holding_magazine         = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:is_magazine');",
           "v.is_holding_offhand_magazine = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:has_offhand_magazine');",
           "v.firearm_has_ammo            = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:firearm_has_ammo');",
           "v.should_open_cock_on_reload  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:should_open_cock_on_reload');",

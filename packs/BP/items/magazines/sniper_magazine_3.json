@@ -10,7 +10,6 @@
         "components": {
             "minecraft:tags": {
                 "tags": [
-                    "yes:is_magazine",
                     "yes:sniper_magazine_3"
                 ]
             },
@@ -21,7 +20,7 @@
             },
             "minecraft:max_stack_size": 10,
             "minecraft:display_name": {
-                "value": "Sniper Magazine [§a3§7/§a3 Rounds§f]"
+                "value": "Sniper Magazine [§a3§7/§a3 Rounds§f]\n§7[Interact to load ammo in]"
             },
             "minecraft:allow_off_hand": true,
             "minecraft:should_despawn": {

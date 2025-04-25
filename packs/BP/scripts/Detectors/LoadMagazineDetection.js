@@ -4,8 +4,8 @@ import { FirearmNameUtil, FirearmUtil, ItemUtil } from '../Utilities';
 world.afterEvents.itemStartUse.subscribe((eventData) => {
 	const magazineItemStack = eventData.itemStack;
     const magazineObject = FirearmUtil.getMagazineObjectFromItemStackBoth(magazineItemStack);
-    if(magazineObject === null) { return; }
-    if(magazineItemStack.amount > 1) { return; }
+    if(magazineObject === undefined) { return; }
+    if(!isEmpty && magazineItemStack.amount > 1) { return; }
 
     const magazineDurability = ItemUtil.tryGetDurability(magazineItemStack);
     if(magazineDurability === null || magazineDurability === magazineObject.maxAmmo) { return; }
@@ -18,20 +18,43 @@ world.afterEvents.itemStartUse.subscribe((eventData) => {
     if(container === undefined) { return; }
 
     for(let i=0; i<inv.inventorySize; i++) {
-        const bulletItemStack = container.getItem(i);
-        if(bulletItemStack === undefined || !FirearmUtil.isBulletType(bulletItemStack, magazineObject.bulletType)) { continue; }
+        const ammoItemStack = container.getItem(i);
+        if(ammoItemStack === undefined || !FirearmUtil.isFillableAmmoType(ammoItemStack, magazineObject)) { continue; }
         
-        if(magazineDurability+1 < magazineObject.maxAmmo) {
-            ItemUtil.trySetDurability(magazineItemStack, magazineDurability+1);
-            FirearmNameUtil.renewMagazineName(magazineItemStack,  magazineDurability+1);
+        let addBulletCount = ammoItemStack.amount;
+        let removeBulletCount = ammoItemStack.amount;
+        if(ammoItemStack.amount >= 5) {
+            addBulletCount = 5;
+            removeBulletCount = 5;
+        }
+
+
+        //add up to 5 bullets to magazine
+        if(isEmpty) {
+            let newMagazineItemStack = new ItemStack(magazineObject.tag);
+            ItemUtil.trySetDurability(newMagazineItemStack, addBulletCount);
+            FirearmNameUtil.renewMagazineName(newMagazineItemStack, addBulletCount);
+            container.setItem(player.selectedSlotIndex, newMagazineItemStack);
+        }
+        else if(magazineDurability+addBulletCount < magazineObject.maxAmmo) {
+            ItemUtil.trySetDurability(magazineItemStack, magazineDurability+addBulletCount);
+            FirearmNameUtil.renewMagazineName(magazineItemStack,  magazineDurability+addBulletCount);
             container.setItem(player.selectedSlotIndex, magazineItemStack);
         }
         else {
             container.setItem(player.selectedSlotIndex, magazineObject.itemStack);
+            removeBulletCount = magazineObject.maxAmmo - magazineDurability;
         }
-        if(bulletItemStack.amount >= 2) {
-            bulletItemStack.amount -= 1;
-            container.setItem(i, bulletItemStack);
+
+        //move empty stack off & keep only 1 in mainhand
+        if(moveEmptyOff) {
+            container.addItem(new ItemStack(magazineObject.tag+"_empty", magazineItemStack.amount-1));
+        }
+
+        //remove 1 bullet
+        if(ammoItemStack.amount >= removeBulletCount+1) {
+            ammoItemStack.amount -= removeBulletCount;
+            container.setItem(i, ammoItemStack);
         }
         else {
             container.setItem(i);

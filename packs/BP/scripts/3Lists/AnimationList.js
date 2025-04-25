@@ -1,12 +1,13 @@
 import { Global } from '../Global.js';
-import * as Def from '../Definitions/AnimationDefinition.js';
+import * as Def from '../2Definitions/AnimationDefinition.js';
+import * as Enums from "../1Enums/AnimationEnums.js";
 
 //-----------------------------------------------------------------------------------------------------
 //----------------------------------------- Reload Animations -----------------------------------------
 //-----------------------------------------------------------------------------------------------------
 const rifleReloadSwapLightAttributes = {
     duration: 40, //in ticks
-    type:     Def.AnimationTypes.reloadSwap,
+    type:     Enums.AnimationTypes.reloadSwap,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_out_light",
@@ -22,7 +23,7 @@ const rifleReloadSwapLightAttributes = {
 }
 const rifleReloadSwapMediumAttributes = {
     duration: 40, //in ticks
-    type:     Def.AnimationTypes.reloadSwap,
+    type:     Enums.AnimationTypes.reloadSwap,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_out_medium",
@@ -38,7 +39,7 @@ const rifleReloadSwapMediumAttributes = {
 }
 const rifleReloadSwapHeavyAttributes = {
     duration: 40, //in ticks
-    type:     Def.AnimationTypes.reloadSwap,
+    type:     Enums.AnimationTypes.reloadSwap,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_out_heavy",
@@ -54,7 +55,7 @@ const rifleReloadSwapHeavyAttributes = {
 }
 const rifleReloadSwapPubgAttributes = {
     duration: 40, //in ticks
-    type:     Def.AnimationTypes.reloadSwap,
+    type:     Enums.AnimationTypes.reloadSwap,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_out_pubg",
@@ -71,7 +72,7 @@ const rifleReloadSwapPubgAttributes = {
 
 const rifleReloadNoSwapLightAttributes = {
     duration: 20, //in ticks
-    type:     Def.AnimationTypes.reloadNoSwap,
+    type:     Enums.AnimationTypes.reloadNoSwap,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_in_light",
@@ -82,7 +83,7 @@ const rifleReloadNoSwapLightAttributes = {
 }
 const rifleReloadNoSwapMediumAttributes = {
     duration: 20, //in ticks
-    type:     Def.AnimationTypes.reloadNoSwap,
+    type:     Enums.AnimationTypes.reloadNoSwap,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_in_medium",
@@ -93,7 +94,7 @@ const rifleReloadNoSwapMediumAttributes = {
 }
 const rifleReloadNoSwapHeavyAttributes = {
     duration: 20, //in ticks
-    type:     Def.AnimationTypes.reloadNoSwap,
+    type:     Enums.AnimationTypes.reloadNoSwap,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_in_heavy",
@@ -104,7 +105,7 @@ const rifleReloadNoSwapHeavyAttributes = {
 }
 const rifleReloadNoSwapPubgAttributes = {
     duration: 20, //in ticks
-    type:     Def.AnimationTypes.reloadNoSwap,
+    type:     Enums.AnimationTypes.reloadNoSwap,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_in_pubg",
@@ -116,7 +117,7 @@ const rifleReloadNoSwapPubgAttributes = {
 
 const rifleReloadCockLightAttributes = {
     duration: 10, //in ticks
-    type:     Def.AnimationTypes.reloadCock,
+    type:     Enums.AnimationTypes.reloadCock,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_cock_toward_light",
@@ -132,7 +133,7 @@ const rifleReloadCockLightAttributes = {
 }
 const rifleReloadCockHeavyAttributes = {
     duration: 10, //in ticks
-    type:     Def.AnimationTypes.reloadCock,
+    type:     Enums.AnimationTypes.reloadCock,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_cock_toward_heavy",
@@ -148,7 +149,7 @@ const rifleReloadCockHeavyAttributes = {
 }
 const rifleReloadCockPubgAttributes = {
     duration: 10, //in ticks
-    type:     Def.AnimationTypes.reloadCock,
+    type:     Enums.AnimationTypes.reloadCock,
     sounds: [
         {
             soundDefinition: "firearm.rifle_reload_magazine_cock_toward_pubg",
@@ -165,7 +166,7 @@ const rifleReloadCockPubgAttributes = {
 
 const sniperReloadCockAttributes = {
     duration: 10, //in ticks
-    type:     Def.AnimationTypes.reloadCock,
+    type:     Enums.AnimationTypes.reloadCock,
     sounds: [
         {
             soundDefinition: "firearm.sniper_reload_bolt_pull_toward",
@@ -183,7 +184,7 @@ const sniperReloadCockAttributes = {
 
 const pistolReloadSwapAttributes = {
     duration: 40, //in ticks
-    type:     Def.AnimationTypes.reloadSwap,
+    type:     Enums.AnimationTypes.reloadSwap,
     sounds: [
         {
             soundDefinition: "firearm.pistol_reload_magazine_out",
@@ -199,7 +200,7 @@ const pistolReloadSwapAttributes = {
 }
 const pistolReloadNoSwapAttributes = {
     duration: 20, //in ticks
-    type:     Def.AnimationTypes.reloadNoSwap,
+    type:     Enums.AnimationTypes.reloadNoSwap,
     sounds: [
         {
             soundDefinition: "firearm.p90_reload_magazine_in",
@@ -215,7 +216,7 @@ const pistolReloadNoSwapAttributes = {
 }
 const pistolReloadCockAttributes = {
     duration: 10, //in ticks
-    type:     Def.AnimationTypes.reloadCock,
+    type:     Enums.AnimationTypes.reloadCock,
     sounds: [
         {
             soundDefinition: "firearm.pistol_reload_cock_toward",
@@ -232,7 +233,7 @@ const pistolReloadCockAttributes = {
 
 const p90ReloadSwapAttributes = {
     duration: 45, //in ticks
-    type:     Def.AnimationTypes.reloadSwap,
+    type:     Enums.AnimationTypes.reloadSwap,
     sounds: [
         {
             soundDefinition: "firearm.p90_reload_magazine_out",
@@ -253,7 +254,7 @@ const p90ReloadSwapAttributes = {
 }
 const p90ReloadNoSwapAttributes = {
     duration: 32, //in ticks
-    type:     Def.AnimationTypes.reloadNoSwap,
+    type:     Enums.AnimationTypes.reloadNoSwap,
     sounds: [
         {
             soundDefinition: "firearm.p90_reload_magazine_in",
@@ -269,7 +270,7 @@ const p90ReloadNoSwapAttributes = {
 }
 const p90ReloadCockAttributes = {
     duration: 10, //in ticks
-    type:     Def.AnimationTypes.reloadCock,
+    type:     Enums.AnimationTypes.reloadCock,
     sounds: [
         {
             soundDefinition: "firearm.p90_reload_cock_toward",
@@ -286,44 +287,19 @@ const p90ReloadCockAttributes = {
 
 
 const shotgunReloadAttributes = {
-    duration: 15*6, //in ticks
-    type:     Def.AnimationTypes.reloadBoth,
+    duration: 15, //in ticks
+    type:     Enums.AnimationTypes.reloadBoth,
     sounds: [
         {
             soundDefinition: "firearm.shotgun_reload_magazine_in",
             timeToPlayInTicks: 10,
-            soundRange: 40
-        },
-        {
-            soundDefinition: "firearm.shotgun_reload_magazine_in",
-            timeToPlayInTicks: 25,
-            soundRange: 40
-        },
-        {
-            soundDefinition: "firearm.shotgun_reload_magazine_in",
-            timeToPlayInTicks: 40,
-            soundRange: 40
-        },
-        {
-            soundDefinition: "firearm.shotgun_reload_magazine_in",
-            timeToPlayInTicks: 55,
-            soundRange: 40
-        },
-        {
-            soundDefinition: "firearm.shotgun_reload_magazine_in",
-            timeToPlayInTicks: 70,
-            soundRange: 40
-        },
-        {
-            soundDefinition: "firearm.shotgun_reload_magazine_in",
-            timeToPlayInTicks: 85,
             soundRange: 40
         }
     ]
 }
 const shotgunReloadCockAttributes = {
     duration: 8, //in ticks
-    type:     Def.AnimationTypes.reloadCock,
+    type:     Enums.AnimationTypes.reloadCock,
     sounds: [
         {
             soundDefinition: "firearm.shotgun_reload_cock_toward",
@@ -753,7 +729,7 @@ const ReloadAnimations = {
 //----------------------------------------------------------------------------------------------------
 const ak47ShootAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shoot,
+    type:     Enums.AnimationTypes.shoot,
     sounds: [
         {
             soundDefinition: "firearm.ak47_shoot",
@@ -765,7 +741,7 @@ const ak47ShootAttributes = {
 }
 const akmShootAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shoot,
+    type:     Enums.AnimationTypes.shoot,
     sounds: [
         {
             soundDefinition: "firearm.akm_shoot",
@@ -777,7 +753,7 @@ const akmShootAttributes = {
 }
 const m4a1ShootAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shoot,
+    type:     Enums.AnimationTypes.shoot,
     sounds: [
         {
             soundDefinition: "firearm.m4a1_shoot",
@@ -789,7 +765,7 @@ const m4a1ShootAttributes = {
 }
 const ar15ShootAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shoot,
+    type:     Enums.AnimationTypes.shoot,
     sounds: [
         {
             soundDefinition: "firearm.ar15_shoot",
@@ -801,7 +777,7 @@ const ar15ShootAttributes = {
 }
 const hk417ShootAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shoot,
+    type:     Enums.AnimationTypes.shoot,
     sounds: [
         {
             soundDefinition: "firearm.hk417_shoot",
@@ -813,7 +789,7 @@ const hk417ShootAttributes = {
 }
 const ump45ShootAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shoot,
+    type:     Enums.AnimationTypes.shoot,
     sounds: [
         {
             soundDefinition: "firearm.ump45_shoot",
@@ -825,7 +801,7 @@ const ump45ShootAttributes = {
 }
 const p90ShootAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shoot,
+    type:     Enums.AnimationTypes.shoot,
     sounds: [
         {
             soundDefinition: "firearm.p90_shoot",
@@ -837,7 +813,7 @@ const p90ShootAttributes = {
 }
 const mk13ShootWithAmmoAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shootWithAmmo,
+    type:     Enums.AnimationTypes.shootWithAmmo,
     sounds: [
         {
             soundDefinition: "firearm.mk13_shoot",
@@ -859,7 +835,7 @@ const mk13ShootWithAmmoAttributes = {
 }
 const mk13ShootOutOfAmmoAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shootOutOfAmmo,
+    type:     Enums.AnimationTypes.shootOutOfAmmo,
     sounds: [
         {
             soundDefinition: "firearm.mk13_shoot",
@@ -871,7 +847,7 @@ const mk13ShootOutOfAmmoAttributes = {
 }
 const remington870ShootWithAmmoAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shootWithAmmo,
+    type:     Enums.AnimationTypes.shootWithAmmo,
     sounds: [
         {
             soundDefinition: "firearm.remington870_shoot",
@@ -893,7 +869,7 @@ const remington870ShootWithAmmoAttributes = {
 }
 const remington870ShootOutOfAmmoAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shootOutOfAmmo,
+    type:     Enums.AnimationTypes.shootOutOfAmmo,
     sounds: [
         {
             soundDefinition: "firearm.remington870_shoot",
@@ -905,7 +881,7 @@ const remington870ShootOutOfAmmoAttributes = {
 }
 const desertEagleShootWithAmmoAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shootWithAmmo,
+    type:     Enums.AnimationTypes.shootWithAmmo,
     sounds: [
         {
             soundDefinition: "firearm.desert_eagle_shoot",
@@ -917,7 +893,7 @@ const desertEagleShootWithAmmoAttributes = {
 }
 const desertEagleShootOutOfAmmoAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shootOutOfAmmo,
+    type:     Enums.AnimationTypes.shootOutOfAmmo,
     sounds: [
         {
             soundDefinition: "firearm.desert_eagle_shoot",
@@ -929,7 +905,7 @@ const desertEagleShootOutOfAmmoAttributes = {
 }
 const rpg7ShootAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shoot,
+    type:     Enums.AnimationTypes.shoot,
     sounds: [
         {
             soundDefinition: "firearm.rpg7_shoot",
@@ -941,7 +917,7 @@ const rpg7ShootAttributes = {
 }
 const javelinShootAttributes = {
     duration: 30, //in ticks
-    type:     Def.AnimationTypes.shoot,
+    type:     Enums.AnimationTypes.shoot,
     sounds: [
         {
             soundDefinition: "firearm.javelin_shoot",
@@ -1327,7 +1303,7 @@ export { ReloadAnimations, ShootAnimations };
 //-----------------------------------------------------------------------------------------------------
 const switchFiringModeToSemiAttributes = {
     duration: 9, //in ticks
-    type:     Def.AnimationTypes.switchFiringModeToDefault,
+    type:     Enums.AnimationTypes.switchFiringModeToDefault,
     sounds: [
         {
             soundDefinition: "firearm.switch_firing_mode_to_default",
@@ -1339,7 +1315,7 @@ const switchFiringModeToSemiAttributes = {
 }
 const switchFiringModeToAutoAttributes = {
     duration: 9, //in ticks
-    type:     Def.AnimationTypes.switchFiringModeToAlternate,
+    type:     Enums.AnimationTypes.switchFiringModeToAlternate,
     sounds: [
         {
             soundDefinition: "firearm.switch_firing_mode_to_alternate",
@@ -1352,7 +1328,7 @@ const switchFiringModeToAutoAttributes = {
 
 const switchScopeZoomToDefaultAttributes = {
     duration: 12, //in ticks
-    type:     Def.AnimationTypes.switchScopeZoomToDefault,
+    type:     Enums.AnimationTypes.switchScopeZoomToDefault,
     sounds: [
         {
             soundDefinition: "firearm.switch_scope_zoom_to_default",
@@ -1364,7 +1340,7 @@ const switchScopeZoomToDefaultAttributes = {
 }
 const switchScopeZoomToAlternateAttributes = {
     duration: 12, //in ticks
-    type:     Def.AnimationTypes.switchScopeZoomToAlternate,
+    type:     Enums.AnimationTypes.switchScopeZoomToAlternate,
     sounds: [
         {
             soundDefinition: "firearm.switch_scope_zoom_to_alternate",

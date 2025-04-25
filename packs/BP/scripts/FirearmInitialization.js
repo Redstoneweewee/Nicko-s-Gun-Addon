@@ -1,7 +1,8 @@
 import { ContainerSlot, Player, world } from "@minecraft/server";
 import { Global } from "./Global.js";
-import { Firearm } from './Definitions/FirearmDefinition.js';
+import { Firearm } from './2Definitions/FirearmDefinition.js';
 import { FirearmUtil, ItemUtil, FirearmIdUtil, IdUtil } from './Utilities.js';
+import { MagazineTypes } from "./2Definitions/MagazineDefinition.js";
 
 
 
@@ -10,7 +11,7 @@ import { FirearmUtil, ItemUtil, FirearmIdUtil, IdUtil } from './Utilities.js';
  */
 function tryInitializeFirearm(player) {
     const firearmItemStack = ItemUtil.getSelectedItemStack(player);
-    if(firearmItemStack === null) { return; }
+    if(firearmItemStack === undefined) { return; }
     const id = FirearmIdUtil.getFirearmId(firearmItemStack);
     if(findFirearmIdInWorldDynamicProperties(id)) { return; }
     const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
@@ -29,14 +30,14 @@ function initializeFirearm(player, firearm, firearmContainerSlot) {
     if(firearmContainerSlot === null) { return; }
 
 
-    firearmContainerSlot.setDynamicProperty(Global.ItemDynamicProperties.magazineTag, firearm.defaultMagazine.tag);
-    firearmContainerSlot.setDynamicProperty(Global.ItemDynamicProperties.isMagazineEmpty, false);
-    console.log(`set magazineTag to ${firearm.defaultMagazine.tag}`);
-    const ammoCount = firearm.defaultMagazine.maxAmmo;
+    firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTag, firearm.magazineAttribute.defaultMagazine.tag);
+    firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty, false);
+    console.log(`set magazineTag to ${firearm.magazineAttribute.defaultMagazine.tag}`);
+    const ammoCount = firearm.magazineAttribute.defaultMagazine.magazineType === MagazineTypes.durabilityBased ? firearm.magazineAttribute.defaultMagazine.maxAmmo : firearm.magazineAttribute.maxMagazineItemStackAmount;
     
     const newId = IdUtil.getRandomId();
     FirearmIdUtil.initializeFirearmIdAndAmmo(newId, firearmContainerSlot, ammoCount);
-    console.log(`item has new id: ${firearmContainerSlot.getDynamicProperty(Global.ItemDynamicProperties.id)}`);
+    console.log(`item has new id: ${firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.id)}`);
 
     checkInitialization(firearmContainerSlot);
 }
@@ -65,8 +66,8 @@ function findFirearmIdInWorldDynamicProperties(firearmId) {
  * @param {ContainerSlot} firearmContainerSlot 
  */
 function checkInitialization(firearmContainerSlot) {
-    for(const property in Global.ItemDynamicProperties) {
-        if (Object.prototype.hasOwnProperty.call(Global.ItemDynamicProperties, property)) {
+    for(const property in Global.FirearmDynamicProperties) {
+        if (Object.prototype.hasOwnProperty.call(Global.FirearmDynamicProperties, property)) {
             if(firearmContainerSlot.getDynamicProperty(property) === undefined) {
                 console.error(`Item dynamic property ${property} on ${firearmContainerSlot.typeId} is not defined on initialization.`);
             }

@@ -3,8 +3,8 @@ import { Vector3 } from '../Math/Vector3.js';
 import { Global } from '../Global.js';
 import { AnimationLink } from "../AnimationLink.js";
 import { FirearmUtil, ItemUtil } from '../Utilities.js';
-import { Firearm, GunWithAbility } from '../Definitions/FirearmDefinition.js';
-import { LeftClickAbilityTypes, SwitchScopeZoomAttributes } from '../Definitions/LeftClickAbilityDefinition.js';
+import { Firearm, GunWithAbility } from '../2Definitions/FirearmDefinition.js';
+import { LeftClickAbilityTypes, SwitchScopeZoomAttribute } from '../2Definitions/LeftClickAbilityDefinition.js';
 const Vector = new Vector3();
 
 /**
@@ -15,7 +15,7 @@ function aimDetection(player) {
     if(!FirearmUtil.isHoldingFirearm(player) && player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming) === false) { return; }
     const firearmItemStack = ItemUtil.getSelectedItemStack(player);
     const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
-    if(firearmItemStack === null || firearmObject === null) {
+    if(firearmItemStack === undefined || firearmObject === undefined) {
         tryRemoveScopeZoom(player);
         return;
     }
@@ -26,7 +26,7 @@ function aimDetection(player) {
     else if(FirearmUtil.isHoldingFirearm(player) && 
             player.isSneaking && 
             !player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading) && 
-            (!firearmObject.scopeAttributes.stopAimOnCooldown || player.getItemCooldown(firearmItemStack.typeId) === 0)) {
+            (!firearmObject.scopeAttribute.stopAimOnCooldown || player.getItemCooldown(firearmItemStack.typeId) === 0)) {
         tryAddScopeZoom(player, firearmObject);
         //Does not apply night vision for javelin yet
     }
@@ -62,21 +62,21 @@ function renewScopeZoom(player, firearmObject) {
     }
     player.removeEffect("speed");
     player.removeEffect("slowness");
-    //player.onScreenDisplay.setHudVisibility(HudVisibility.Hide, [HudElement.Crosshair]);
-    if(firearmObject instanceof GunWithAbility && firearmObject.leftClickAbilityAttributes instanceof SwitchScopeZoomAttributes) {
+    player.onScreenDisplay.setHudVisibility(HudVisibility.Hide, [HudElement.Crosshair]);
+    if(firearmObject instanceof GunWithAbility && firearmObject.leftClickAbilityAttribute instanceof SwitchScopeZoomAttribute) {
         const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
         if(firearmContainerSlot !== null && (firearmContainerSlot.getDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom) === 1 || firearmContainerSlot.getDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom) === undefined)) {
-            if(firearmObject.leftClickAbilityAttributes instanceof SwitchScopeZoomAttributes) {
-                player.addEffect("speed", 20000000, {amplifier: firearmObject.leftClickAbilityAttributes.defaultScopeAttributes.speed, showParticles: false});
-                player.addEffect("slowness", 20000000, {amplifier: firearmObject.leftClickAbilityAttributes.defaultScopeAttributes.slowness, showParticles: false});
+            if(firearmObject.leftClickAbilityAttribute instanceof SwitchScopeZoomAttribute) {
+                player.addEffect("speed", 20000000, {amplifier: firearmObject.scopeAttribute.speed, showParticles: false});
+                player.addEffect("slowness", 20000000, {amplifier: firearmObject.scopeAttribute.slowness, showParticles: false});
                 player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, true);
                 AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming);
             }
         }
         else if(firearmContainerSlot !== null && firearmContainerSlot.getDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom) === 2) {
-            if(firearmObject.leftClickAbilityAttributes instanceof SwitchScopeZoomAttributes) {
-                player.addEffect("speed", 20000000, {amplifier: firearmObject.leftClickAbilityAttributes.alternateScopeAttributes.speed, showParticles: false});
-                player.addEffect("slowness", 20000000, {amplifier: firearmObject.leftClickAbilityAttributes.alternateScopeAttributes.slowness, showParticles: false});
+            if(firearmObject.leftClickAbilityAttribute instanceof SwitchScopeZoomAttribute) {
+                player.addEffect("speed", 20000000, {amplifier: firearmObject.leftClickAbilityAttribute.alternateScopeAttribute.speed, showParticles: false});
+                player.addEffect("slowness", 20000000, {amplifier: firearmObject.leftClickAbilityAttribute.alternateScopeAttribute.slowness, showParticles: false});
                 player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, true);
                 AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming);
             }
@@ -86,8 +86,8 @@ function renewScopeZoom(player, firearmObject) {
         }
     }
     else {
-        player.addEffect("speed", 20000000, {amplifier: firearmObject.scopeAttributes.speed, showParticles: false});
-        player.addEffect("slowness", 20000000, {amplifier: firearmObject.scopeAttributes.slowness, showParticles: false});
+        player.addEffect("speed", 20000000, {amplifier: firearmObject.scopeAttribute.speed, showParticles: false});
+        player.addEffect("slowness", 20000000, {amplifier: firearmObject.scopeAttribute.slowness, showParticles: false});
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, true);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming);
     }

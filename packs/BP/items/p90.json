@@ -27,7 +27,7 @@
             "minecraft:max_stack_size": 1,
             "minecraft:allow_off_hand": false,
             "minecraft:display_name": {
-                "value": "P90\n§7[Right-Click/Hold to shoot]\n§7Magazine: §7<§a50 Round Magazine§7>"
+                "value": "P90\n§7[Interact to shoot]\n§7Magazine: §7<§a50 Round Magazine§7>"
             },
             "minecraft:can_destroy_in_creative": false,
             "minecraft:should_despawn": {

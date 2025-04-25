@@ -10,7 +10,6 @@
         "components": {
             "minecraft:tags": {
                 "tags": [
-                    "yes:is_magazine",
                     "yes:rifle_magazine_30_empty"
                 ]
             },
@@ -21,7 +20,7 @@
             },
             "minecraft:max_stack_size": 10,
             "minecraft:display_name": {
-                "value": "§cEmpty§f Rifle Magazine [§c0§7/§a30 Rounds§f]"
+                "value": "§cEmpty§f Rifle Magazine [§c0§7/§a30 Rounds§f]\n§7[Interact to load ammo in]"
             },
             "minecraft:allow_off_hand": true,
             "minecraft:should_despawn": {

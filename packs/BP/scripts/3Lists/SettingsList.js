@@ -1,6 +1,8 @@
 import { world } from '@minecraft/server';
 import { Global } from '../Global.js';
-import * as Def from '../Definitions/SettingsDefinition.js';
+import * as Def from '../2Definitions/SettingsDefinition.js';
+import { SettingsUtil } from '../Utilities.js';
+import { AnimationLink } from '../AnimationLink.js';
 
 const SettingsTypes = {
     MultiplayerSupport: "MultiplayerSupport",

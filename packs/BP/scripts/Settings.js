@@ -1,6 +1,7 @@
 import { world, system } from "@minecraft/server";
-import { settingsList, SettingsTypes } from "./Lists/SettingsList.js";
+import { settingsList, SettingsTypes } from "./3Lists/SettingsList.js";
 import { SettingsUtil } from "./Utilities.js";
+import { RestrictedSettings } from "./2Definitions/SettingsDefinition.js";
 
 if (world.scoreboard.getObjective("Settings") === undefined) {
     world.scoreboard.addObjective("Settings");

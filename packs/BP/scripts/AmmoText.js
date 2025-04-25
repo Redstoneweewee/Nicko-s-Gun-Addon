@@ -1,7 +1,8 @@
 import { Player } from "@minecraft/server";
 import { Global } from './Global.js';
 import { ItemUtil, FirearmUtil} from './Utilities.js';
-import { MagazineTags } from './Lists/MagazinesList.js';
+import { MagazineTags } from './3Lists/MagazinesList.js';
+import { MagazineTypes } from "./2Definitions/MagazineDefinition.js";
 /**
  * 
  * @param {Player} player 
@@ -12,27 +13,29 @@ function renewAmmoCount(player) {
     if(isReloading) { return; }
     const firearmItemStack = ItemUtil.getSelectedItemStack(player);
     const firearm = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
-    if(firearmItemStack === null) { return; }
-    const firearmId = Number(firearmItemStack.getDynamicProperty(Global.ItemDynamicProperties.id));
+    if(firearmItemStack === undefined) { return; }
+    const firearmId = Number(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.id));
 
     const magazineItemStack = ItemUtil.getPlayerOffhandContainerSlot(player)?.getItem();
-    const magazineObject = FirearmUtil.getMagazineObjectFromItemStack(magazineItemStack??null);
-    const maxAmmo = magazineObject?.maxAmmo;
+    const magazineObject = FirearmUtil.getMagazineObjectFromItemStack(magazineItemStack);
 
     const ammoCount = FirearmUtil.getWorldAmmoUsingId(firearmId);
-    const isMagazineEmpty = Boolean(firearmItemStack.getDynamicProperty(Global.ItemDynamicProperties.isMagazineEmpty));
-    //const magazineTag     = String(firearmItemStack.getDynamicProperty(Global.ItemDynamicProperties.magazineTag));
+    const isMagazineEmpty = Boolean(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty));
+    //const magazineTag     = String(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTag));
     if(ammoCount === null || isMagazineEmpty === undefined) { return; }
     if(isMagazineEmpty) {
         player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§eOut of Ammo§e§l>`);
     }
-    else if(magazineObject === null) {
+    else if(magazineObject === undefined) {
         player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§cNo Magazine§e§l>`);
     }
-    else if(firearm?.ammoType !== magazineObject.ammoType) {
+    else if(firearm?.magazineAttribute.magazineClass !== magazineObject.magazineClass) {
         player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§eWrong Magazine Type§e§l>`);
     }
-    else if(ammoCount && maxAmmo) {
+    else {
+        const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
+        if(firearmObject === undefined) { return; }
+        const maxAmmo = magazineObject.magazineType === MagazineTypes.durabilityBased ? magazineObject.maxAmmo : firearmObject.magazineAttribute.maxMagazineItemStackAmount;
         player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§a${ammoCount}/${maxAmmo}§e§l>`);
     }
 }

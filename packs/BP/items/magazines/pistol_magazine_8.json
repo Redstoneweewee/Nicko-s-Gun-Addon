@@ -10,7 +10,6 @@
         "components": {
             "minecraft:tags": {
                 "tags": [
-                    "yes:is_magazine",
                     "yes:pistol_magazine_8"
                 ]
             },
@@ -21,7 +20,7 @@
             },
             "minecraft:max_stack_size": 10,
             "minecraft:display_name": {
-                "value": "Pistol Magazine [§a8§7/§a8 Rounds§f]"
+                "value": "Pistol Magazine [§a8§7/§a8 Rounds§f]\n§7[Interact to load ammo in]"
             },
             "minecraft:allow_off_hand": true,
             "minecraft:should_despawn": {

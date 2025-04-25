@@ -1,12 +1,12 @@
 import { Global } from "../Global";
-
+import * as Enums from "../1Enums/AnimationEnums";
 
 
 class Animation {
 
     /**
      * @param {Number} durationInTicks 
-     * @param {string} type - An AnimationTypes enum, can be `swap`, `noSwap`, `cock`, or `shoot`
+     * @param {keyof typeof Enums.AnimationTypes} type
      * @param {AnimationSoundAttribute[]} animationSoundAttributes - An array of sounds to be played during the animation at certain times
      * @param {string} animationDefiniton - Not used in ReloadAnimationAttributes because the animations are played in animation controllers
      */
@@ -19,7 +19,7 @@ class Animation {
 }
 
 
-class AnimationAttributes {
+class AnimationAttribute {
     /**
      * 
      * @param {Animation} animation 
@@ -29,7 +29,7 @@ class AnimationAttributes {
     }   
 }
 
-class ReloadAnimationAttributes extends AnimationAttributes {
+class ReloadAnimationAttribute extends AnimationAttribute {
 
     /**
      * 
@@ -76,7 +76,7 @@ class SoundTimeoutIdObject {
     /**
      * 
      * @param {Number} timeoutId 
-     * @param {string} animationType - An AnimationTypes enum
+     * @param {string} animationType - An AnimationEnums enum
      */
     constructor(timeoutId, animationType) {
         this.timeoutId = timeoutId;
@@ -84,22 +84,5 @@ class SoundTimeoutIdObject {
     }
 }
 
-const AnimationTypes = {
-    reloadSwap:          "reloadSwap",
-    reloadNoSwap:        "reloadNoSwap",
-    reloadBoth:          "reloadBoth",
-    reloadOpenCock:     "reloadOpenCock",
-    reloadCock:          "reloadCock",
-    shoot:               "shoot",
-    shootWithAmmo:       "shootWithAmmo",
-    shootOutOfAmmo:      "shootOutOfAmmo",
-    shootFirstShot:      "shootFirstShot",
-    shootAfterFirstShot: "shootAfterFirstShot",
-    switchFiringModeToDefault:    "switchFiringModeToDefault",
-    switchFiringModeToAlternate:  "switchFiringModeToAlternate",
-    switchScopeZoomToDefault:  "switchScopeZoomToDefault",
-    switchScopeZoomToAlternate:  "switchScopeZoomToAlternate"
-}
 
-
-export { AnimationTypes, Animation, AnimationSoundAttribute, AnimationAttributes, ReloadAnimationAttributes, RestrictedAnimationSoundAttribute, SoundTimeoutIdObject};
+export { Animation, AnimationSoundAttribute, AnimationAttribute, ReloadAnimationAttribute, RestrictedAnimationSoundAttribute, SoundTimeoutIdObject};

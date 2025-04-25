@@ -10,7 +10,6 @@
         "components": {
             "minecraft:tags": {
                 "tags": [
-                    "yes:is_magazine",
                     "yes:rifle_magazine_50"
                 ]
             },
@@ -21,7 +20,7 @@
             },
             "minecraft:max_stack_size": 8,
             "minecraft:display_name": {
-                "value": "Rifle Magazine [§a50§7/§a50 Rounds§f]"
+                "value": "Rifle Magazine [§a50§7/§a50 Rounds§f]\n§7[Interact to load ammo in]"
             },
             "minecraft:allow_off_hand": true,
             "minecraft:should_despawn": {

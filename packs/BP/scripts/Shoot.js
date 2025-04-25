@@ -1,15 +1,18 @@
 import { Direction, Entity, EntityComponentTypes, EntityHealthComponent, GameMode, MolangVariableMap, Player, system, world } from '@minecraft/server';
-import * as FirearmDef from './Definitions/FirearmDefinition.js';
-import { AnimationUtil, DamageUtil, FirearmIdUtil, FirearmUtil, ItemUtil, LoopUtil, NumberUtil, SoundsUtil } from './Utilities.js';
+import * as FirearmDef from './2Definitions/FirearmDefinition.js';
+import { AnimationUtil, DamageUtil, FirearmIdUtil, FirearmUtil, ItemUtil, LoopUtil, NumberUtil, SettingsUtil, SoundsUtil } from './Utilities.js';
 import { Global } from './Global.js';
-import { automaticReloadDetection } from './Detectors/AutoReloadDetection.js';
+//import { automaticMagazineSwap } from './Detectors/AutoMagSwapDetection.js';
+import * as Reload from './Reload.js';
 import { renewAmmoCount } from './AmmoText.js';
-import { glassBlocksList } from './Lists/glassBlocksList.js';
-import { AnimationTypes } from './Definitions/AnimationDefinition.js';
+import { glassBlocksList } from './3Lists/glassBlocksList.js';
+import { AnimationTypes } from './1Enums/AnimationEnums.js';
 import { Vector3 } from './Math/Vector3.js';
 import { Mat3, RandVec } from './Math/MADLAD/index.js';
 import { AnimationLink } from './AnimationLink.js';
-import { MathUtils } from './Math/MathUtils.js';
+import { SettingsTypes } from './3Lists/SettingsList.js';
+import { ReloadTypes } from './2Definitions/ReloadDefinition.js';
+import * as Exclude from './3Lists/HitExclusionList.js';
 //import { Mat3, RandVec } from '@madlad3718/mcveclib';
 
 
@@ -31,10 +34,10 @@ const HitMarkerVariants = {
 function shoot(player, firearm) {
     const ammoCount = FirearmUtil.getAmmoCountFromOffhand(player);
     if(ammoCount === null || ammoCount <= 0 || player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) { 
-        LoopUtil.stopAsyncLoop(player, Global.playerShootingLoopIds);
+        //LoopUtil.stopAsyncLoop(player, Global.playerShootingLoopIds);
         const firearmItemStack = ItemUtil.getSelectedItemStack(player);
-        if(firearmItemStack !== null) {
-            automaticReloadDetection(player, firearmItemStack, false);
+        if(firearmItemStack !== null) { //Need this here for when the player right-clicks when the magazine is empty & they weren't shooting just before
+            Reload.tryAutomaticReload(player, ReloadTypes.normal);
         }
         renewAmmoCount(player);
         console.log("out of ammo");
@@ -78,7 +81,7 @@ function shootGun(player, gun) {
     
     let playedSound = AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.shoot) === undefined ? false : true;
     if(!playedSound) {
-        if(newAmmoCount !== null && newAmmoCount > 0) {
+        if(newAmmoCount !== undefined && newAmmoCount > 0) {
             AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.shootWithAmmo);
         }
         else if(newAmmoCount === 0) {
@@ -140,8 +143,8 @@ function doShootRayCasts(player, gun) {
 
     const entityRayCast = player.dimension.getEntitiesFromRay(headLocation, shootDirection, { 
         maxDistance: gun.range, 
-        excludeFamilies: DamageUtil.getHitExcludedFamilies(), 
-        excludeTypes: DamageUtil.getHitExcludedTypes()
+        excludeFamilies: Exclude.ExcludedFamilies, 
+        excludeTypes: Exclude.ExcludedTypes
     });
 
     let numHit = 0;
@@ -152,7 +155,7 @@ function doShootRayCasts(player, gun) {
         if(numHit >= gun.pierce) { return; }
         const target = rayCastHit.entity;
         if(target === player) { return; }
-        if(target instanceof Player && (DamageUtil.getHitExcludeGameModes().includes(target.getGameMode()) || world.gameRules.pvp === false)) { return; }
+        if(target instanceof Player && (Exclude.ExcludedGameModes.includes(target.getGameMode()) || world.gameRules.pvp === false)) { return; }
         const healthComponent = target.getComponent(EntityComponentTypes.Health);
         if(healthComponent instanceof EntityHealthComponent) { 
             if(healthComponent.currentValue <= 0) { return; }
@@ -227,7 +230,7 @@ function calculateShootDirection(player, firearm) {
     
     let recoilMultiplier = 1.0;
     if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming)) {
-        recoilMultiplier = firearm.scopeAttributes.recoilMultiplier;
+        recoilMultiplier = firearm.scopeAttribute.recoilMultiplier;
     }
 
     let degrees = firearm.minSpreadDegrees + (firearm.maxSpreadDegrees-firearm.minSpreadDegrees)*(recoil/100);
