@@ -1,17 +1,16 @@
 import { ContainerSlot, Entity, ItemStack } from "@minecraft/server"
-import { FiringModes, ScopeAttribute, GunWithAbility } from "./FirearmDefinition";
+import { ScopeAttribute } from "./FirearmDefinition";
 import { Global } from "../Global";
+import { FiringModes } from "../1Enums/FirearmEnums";
+import * as Enums from "../1Enums/LeftClickAbilityEnums"
 
-/**
- * @typedef {{
- * leftClickAbilityType: keyof LeftClickAbilityTypes
- * }} LeftClickAbilityAttributeDef
- */
 class LeftClickAbilityAttribute {
 
     /**
      * 
-     * @param {LeftClickAbilityAttributeDef} def
+     * @param {{
+     * leftClickAbilityType: typeof Enums.LeftClickAbilityTypes[keyof typeof Enums.LeftClickAbilityTypes]
+     * }} def
      */ 
     constructor(def) {
         this.leftClickAbilityType = def.leftClickAbilityType;
@@ -21,9 +20,8 @@ class LeftClickAbilityAttribute {
 
 class SwitchFiringModeAttribute extends LeftClickAbilityAttribute {
     /**
-     * @param {{
-     * leftClickAbilityType: keyof LeftClickAbilityTypes,
-     * alternateFiringMode:  keyof FiringModes,
+     * @param {LeftClickAbilityAttribute & {
+     * alternateFiringMode:  typeof FiringModes[keyof typeof FiringModes],
      * alternateFiringRate:  number
      * }} def
      */
@@ -36,8 +34,7 @@ class SwitchFiringModeAttribute extends LeftClickAbilityAttribute {
 
 class SwitchScopeZoomAttribute extends LeftClickAbilityAttribute {
     /**
-     * @param {{
-     * leftClickAbilityType:     keyof LeftClickAbilityTypes,
+     * @param {LeftClickAbilityAttribute & {
      * alternateScopeAttribute:  ScopeAttribute
      * }} def
      */
@@ -48,16 +45,4 @@ class SwitchScopeZoomAttribute extends LeftClickAbilityAttribute {
 }
 
 
-/** 
- * @type {{
- * switchFiringMode: "switchFiringMode",
- * switchScopeZoom: "switchScopeZoom"
- *}} 
- */
-const LeftClickAbilityTypes = {
-    switchFiringMode: "switchFiringMode",
-    switchScopeZoom: "switchScopeZoom"
-}
-
-
-export { LeftClickAbilityTypes, LeftClickAbilityAttribute, SwitchFiringModeAttribute, SwitchScopeZoomAttribute };
+export { LeftClickAbilityAttribute, SwitchFiringModeAttribute, SwitchScopeZoomAttribute };

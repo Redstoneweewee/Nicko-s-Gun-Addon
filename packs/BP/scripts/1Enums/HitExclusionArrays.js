@@ -1,13 +1,17 @@
 import { GameMode } from "@minecraft/server";
 
-/** @type {string[]} */
-const ExcludedFamilies = [
+/** 
+ * @type {string[]}
+ */
+const excludedFamilies = [
     "minecraft:inanimate",
     "minecraft:projectile"
 ]
 
-/** @type {string[]} */
-const ExcludedTypes = [
+/** 
+ * @type {string[]}
+ */
+const excludedTypes = [
     "minecraft:item", 
     "minecraft:snowball", 
     "minecraft:arrow", 
@@ -24,10 +28,13 @@ const ExcludedTypes = [
     "minecraft:fishing_hook"
 ]
 
-/** @type {GameMode[]} */
-const ExcludedGameModes = [
+/** 
+ * @type {GameMode[]}
+ */
+const excludedGameModes = [
     GameMode.creative,
     GameMode.spectator
 ]
 
-export { ExcludedFamilies, ExcludedTypes, ExcludedGameModes };
+
+export { excludedFamilies, excludedTypes, excludedGameModes };

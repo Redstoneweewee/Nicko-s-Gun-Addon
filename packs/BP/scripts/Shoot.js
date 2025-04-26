@@ -5,14 +5,14 @@ import { Global } from './Global.js';
 //import { automaticMagazineSwap } from './Detectors/AutoMagSwapDetection.js';
 import * as Reload from './Reload.js';
 import { renewAmmoCount } from './AmmoText.js';
-import { glassBlocksList } from './3Lists/glassBlocksList.js';
+import { glassBlocks } from './1Enums/GlassBlockArrays.js';
 import { AnimationTypes } from './1Enums/AnimationEnums.js';
 import { Vector3 } from './Math/Vector3.js';
 import { Mat3, RandVec } from './Math/MADLAD/index.js';
 import { AnimationLink } from './AnimationLink.js';
-import { SettingsTypes } from './3Lists/SettingsList.js';
-import { ReloadTypes } from './2Definitions/ReloadDefinition.js';
-import * as Exclude from './3Lists/HitExclusionList.js';
+import { excludedFamilies, excludedGameModes, excludedTypes } from './1Enums/HitExclusionArrays.js';
+import { ReloadTypes } from './1Enums/ReloadEnums.js';
+import { SettingsTypes } from './1Enums/SettingsEnums.js';
 //import { Mat3, RandVec } from '@madlad3718/mcveclib';
 
 
@@ -33,11 +33,11 @@ const HitMarkerVariants = {
  */
 function shoot(player, firearm) {
     const ammoCount = FirearmUtil.getAmmoCountFromOffhand(player);
-    if(ammoCount === null || ammoCount <= 0 || player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) { 
+    if(ammoCount === undefined || ammoCount <= 0 || player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) { 
         //LoopUtil.stopAsyncLoop(player, Global.playerShootingLoopIds);
         const firearmItemStack = ItemUtil.getSelectedItemStack(player);
         if(firearmItemStack !== null) { //Need this here for when the player right-clicks when the magazine is empty & they weren't shooting just before
-            Reload.tryAutomaticReload(player, ReloadTypes.normal);
+            Reload.tryAutomaticReload(player, ReloadTypes.Normal);
         }
         renewAmmoCount(player);
         console.log("out of ammo");
@@ -79,13 +79,13 @@ function shootGun(player, gun) {
     const newAmmoCount = FirearmUtil.tryConsumeFirearmAmmo(player, gun, 1);
     FirearmUtil.tryAddScreenshakeRecoil(player, gun);
     
-    let playedSound = AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.shoot) === undefined ? false : true;
+    let playedSound = AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.Shoot) === undefined ? false : true;
     if(!playedSound) {
         if(newAmmoCount !== undefined && newAmmoCount > 0) {
-            AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.shootWithAmmo);
+            AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.ShootWithAmmo);
         }
         else if(newAmmoCount === 0) {
-            AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.shootOutOfAmmo);
+            AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.ShootOutOfAmmo);
         }
     }
     //player.setDynamicProperty(Global.PlayerDynamicProperties.script.isFirstShot, false);
@@ -122,7 +122,7 @@ function doShootRayCasts(player, gun) {
     if(blockRayCast !== undefined) {
         const glassBlock = blockRayCast.block;
         try {
-            if(glassBlocksList.includes(glassBlock.typeId)) {
+            if(glassBlocks.includes(glassBlock.typeId)) {
                 player.dimension.runCommand(`setblock ${glassBlock.location.x} ${glassBlock.location.y} ${glassBlock.location.z} air destroy`);
                 glassHit++;
             }
@@ -143,8 +143,8 @@ function doShootRayCasts(player, gun) {
 
     const entityRayCast = player.dimension.getEntitiesFromRay(headLocation, shootDirection, { 
         maxDistance: gun.range, 
-        excludeFamilies: Exclude.ExcludedFamilies, 
-        excludeTypes: Exclude.ExcludedTypes
+        excludeFamilies: excludedFamilies, 
+        excludeTypes: excludedTypes
     });
 
     let numHit = 0;
@@ -155,7 +155,7 @@ function doShootRayCasts(player, gun) {
         if(numHit >= gun.pierce) { return; }
         const target = rayCastHit.entity;
         if(target === player) { return; }
-        if(target instanceof Player && (Exclude.ExcludedGameModes.includes(target.getGameMode()) || world.gameRules.pvp === false)) { return; }
+        if(target instanceof Player && (excludedGameModes.includes(target.getGameMode()) || world.gameRules.pvp === false)) { return; }
         const healthComponent = target.getComponent(EntityComponentTypes.Health);
         if(healthComponent instanceof EntityHealthComponent) { 
             if(healthComponent.currentValue <= 0) { return; }
@@ -185,7 +185,7 @@ function doShootRayCasts(player, gun) {
         const lastBlockRayCast = player.dimension.getBlockFromRay(headLocation, shootDirection, { maxDistance: gun.range, includeLiquidBlocks: false, includePassableBlocks: false  });
         let isGlassBlock = false;
         try {
-            if(lastBlockRayCast !== undefined) { isGlassBlock = glassBlocksList.includes(lastBlockRayCast.block.typeId); }
+            if(lastBlockRayCast !== undefined) { isGlassBlock = glassBlocks.includes(lastBlockRayCast.block.typeId); }
         }
         catch {}
         if(!isGlassBlock) {

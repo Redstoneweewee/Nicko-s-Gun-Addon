@@ -1,14 +1,15 @@
 import { Entity, EntityDamageCause, EntityHealthComponent, EntityInventoryComponent, GameMode, ContainerSlot, Player, system, ItemStack, ItemDurabilityComponent, EntityEquippableComponent, EquipmentSlot, EntityComponentTypes, ItemComponentTypes, world, EntityTypeFamilyComponent } from '@minecraft/server';
 import { Vector3 } from './Math/Vector3.js';
 import { Global } from './Global.js';
-import { Firearm, MagazineClasses, MagazineClassNames, Gun, Explosive, GunWithAbility, FiringModes } from './2Definitions/FirearmDefinition.js';
-import { Magazine, MagazineTypes } from './2Definitions/MagazineDefinition.js';
-import { MagazineTags } from './3Lists/MagazinesList.js';
+import { Firearm, Gun, Explosive, GunWithAbility } from './2Definitions/FirearmDefinition.js';
+import { FiringModes } from './1Enums/FirearmEnums.js';
+import { Magazine } from './2Definitions/MagazineDefinition.js';
+import { DurabilityMagazineClasses, MagazineClasses, MagazineTypeIds, MagazineTypes } from './1Enums/MagazineEnums.js';
 //import { startReloadCooldown } from './Reload.js';
 import { AnimationLink } from './AnimationLink.js';
-import { LeftClickAbilityAttribute, LeftClickAbilityTypes, SwitchFiringModeAttribute, SwitchScopeZoomAttribute } from './2Definitions/LeftClickAbilityDefinition.js';
+import { LeftClickAbilityAttribute, SwitchFiringModeAttribute, SwitchScopeZoomAttribute } from './2Definitions/LeftClickAbilityDefinition.js';
 import { Settings } from './2Definitions/SettingsDefinition.js';
-import { AnimationAttribute, ReloadAnimationAttribute, SoundTimeoutIdObject } from './2Definitions/AnimationDefinition.js';
+import { NormalAnimation, ScaledAnimation, SoundTimeoutIdObject } from './2Definitions/AnimationDefinition.js';
 import { AnimationTypes } from './1Enums/AnimationEnums.js';
 import { Crafting } from './2Definitions/CraftingDefinition.js';
 import { linkName } from './UI/SettingsMessage.js';
@@ -18,6 +19,7 @@ import { MaxHeap } from './Imports/MaxHeap.js';
 import { AmmoMap } from './3Lists/AmmoList.js';
 import { AmmoTypes } from './1Enums/AmmoEnums.js';
 import { AmmoClasses } from './1Enums/AmmoEnums.js';
+import { SettingsTypes } from './1Enums/SettingsEnums.js';
 //import { settingsList, SettingsTypes } from './Lists/SettingsList.js';
 const Vector = new Vector3();
 
@@ -43,6 +45,48 @@ class NumberUtil {
 
 export { NumberUtil };
 
+class StringUtil {
+
+    /**
+     * @param {string|undefined} text
+     * @param {string} color - a section sign color, like §a, §c
+     * @returns {string}
+     */
+    static forceTextColor(text, color) {
+        if(text === undefined) { return ""; }
+        let newText = "";
+        let split = text.split('§');
+        for(let i=0; i<split.length; i++) {
+            if(i != 0) {
+                split[i] = split[i].substring(1);
+            }
+            newText += split[i];
+        }
+        newText = color + newText;
+        return newText;
+    }
+
+
+    /**
+     * @param {string|undefined} text
+     * @param {string|undefined} color - a section sign color, like §a, §c
+     * @param {boolean} removeNewLines
+     * @returns {string}
+     */
+    static reformat(text, color, removeNewLines = false) {
+        if(text === undefined) { return ""; }
+        let output = "";
+        if(color !== undefined) {
+            output = StringUtil.forceTextColor(text, color);
+        }
+        if(removeNewLines) {
+            output = output.split('\n').join(' ');
+        }
+        return output;
+    }
+}
+
+export { StringUtil };
 class IdUtil {
 
     /**
@@ -181,12 +225,12 @@ class ItemUtil {
     /**
      * 
      * @param {ItemStack} itemStack 
-     * @returns {number?}
+     * @returns {number|undefined}
      */
     static tryGetDurability(itemStack) {
-        if(itemStack === null || itemStack === undefined) { return null; }
+        if(itemStack === null || itemStack === undefined) { return; }
         const durabilityComponent = itemStack.getComponent(ItemComponentTypes.Durability);
-        if(!(durabilityComponent instanceof ItemDurabilityComponent)) { return null; }
+        if(!(durabilityComponent instanceof ItemDurabilityComponent)) { return; }
         return durabilityComponent.maxDurability - durabilityComponent.damage;
     }
 
@@ -194,13 +238,12 @@ class ItemUtil {
      * 
      * @param {ItemStack} itemStack 
      * @param {number} durability 
-     * @returns {ItemStack?}
+     * @returns {ItemStack|undefined}
      */
     static trySetDurability(itemStack, durability) {
-        if(itemStack === null || itemStack === undefined) { return null; }
         const durabilityComponent = itemStack.getComponent(ItemComponentTypes.Durability);
-        if(!(durabilityComponent instanceof ItemDurabilityComponent)) { return null; }
-        if(durabilityComponent.maxDurability - durability < 0) { return null; }
+        if(!(durabilityComponent instanceof ItemDurabilityComponent)) { return; }
+        if(durabilityComponent.maxDurability - durability < 0) { return; }
         durabilityComponent.damage = durabilityComponent.maxDurability - durability;
         return itemStack;
     }
@@ -454,7 +497,7 @@ class FirearmUtil {
         
         const firearmId = FirearmIdUtil.getFirearmId(firearmItemStack);
         this.#consumeAmmoUsingId(firearmId, ammoCount);
-        if(firearm.magazineAttribute.defaultMagazine.magazineType === MagazineTypes.durabilityBased) {
+        if(firearm.magazineAttribute.defaultMagazine.magazineType === MagazineTypes.DurabilityBased) {
             return ItemUtil.tryDealDurabilityDamageToOffhandMagazine(player, ammoCount);
         }
         else {
@@ -464,29 +507,10 @@ class FirearmUtil {
     }
     /**
      * 
-     * @param {Number} id 
-     * @param {Number} ammoCount 
+     * @param {number} id 
+     * @param {number} ammoCount 
      */
     static #consumeAmmoUsingId(id, ammoCount) {
-        /*
-        let found = false;
-        let newMap = new Map();
-        for(let i=Global.worldFirearmIds.length-1; i>=0; i--) {
-            for(const entry of Global.worldFirearmIds[i]) {
-                if(entry[0] === id) {
-                    found = true;
-                    newMap.set(entry[0], entry[1] - ammoCount);
-                    break;
-                }
-            }
-            if(found) {
-                Global.worldFirearmIds.splice(i, 1);
-                Global.worldFirearmIds.push(newMap);
-                //FirearmIdUtil.printFirearmIds();
-                break;
-            }
-        }
-        */
         const firearmIdString = FirearmIdUtil.firearmIdToString(id);
         const oldAmmoCount = Number(world.getDynamicProperty(firearmIdString));
         if(oldAmmoCount === undefined || oldAmmoCount === null || Number.isNaN(oldAmmoCount)) {
@@ -531,46 +555,29 @@ class FirearmUtil {
     }
     /**
      * 
-     * @param {Number} id 
-     * @param {Number} ammoCount 
+     * @param {number} id 
+     * @param {number} ammoCount 
      */
     static setWorldAmmoUsingId(id, ammoCount) {
-        /*
-        let found = false;
-        let newMap = new Map();
-        for(let i=Global.worldFirearmIds.length-1; i>=0; i--) {
-            for(const entry of Global.worldFirearmIds[i]) {
-                if(entry[0] === id) {
-                    found = true;
-                    newMap.set(entry[0], ammoCount);
-                    break;
-                }
-            }
-            if(found) { 
-                Global.worldFirearmIds[i] = newMap;
-                break; 
-            }
-        }
-        */
         world.setDynamicProperty(FirearmIdUtil.firearmIdToString(id), ammoCount);
     }
     /**
      * 
      * @param {ItemStack} itemStack
-     * @returns {Number?}
+     * @returns {number|undefined}
      */
     static getItemAmmoUsingItemStack(itemStack) {
         const ammoCount = Number(itemStack.getDynamicProperty(Global.FirearmDynamicProperties.ammoCount));
         if(ammoCount === undefined || ammoCount === null || Number.isNaN(ammoCount)) { 
             console.error(`itemDynamicProperty ammoCount of ${itemStack.typeId} is undefined`);
-            return null;
+            return;
         }
         return ammoCount;
     }
     /**
      * 
      * @param {Number} id 
-     * @returns {Number?}
+     * @returns {Number|undefined}
      */
     static getWorldAmmoUsingId(id) {
         /*
@@ -587,7 +594,7 @@ class FirearmUtil {
         const ammoCount = Number(world.getDynamicProperty(firearmIdString));
         if(ammoCount === undefined || ammoCount === null || Number.isNaN(ammoCount)) {
             console.error(`Firearm with id ${id} has an undefined amount of ammo`);
-            return null;
+            return;
         } 
         return ammoCount;
     }
@@ -595,20 +602,20 @@ class FirearmUtil {
     /**
      * 
      * @param {Player} player 
-     * @returns {number?}
+     * @returns {number|undefined}
      */
     static getAmmoCountFromOffhand(player) {
         const offhandItemStack = ItemUtil.getPlayerOffhandContainerSlot(player)?.getItem();
-        if(offhandItemStack === null || offhandItemStack === undefined) { return null; }
+        if(offhandItemStack === null || offhandItemStack === undefined) { return; }
         const magazineObject = this.getMagazineObjectFromItemStack(offhandItemStack);
-        if(magazineObject === null || magazineObject === undefined) { return null; }
-        if(magazineObject.magazineType === MagazineTypes.durabilityBased) {
+        if(magazineObject === null || magazineObject === undefined) { return; }
+        if(magazineObject.magazineType === MagazineTypes.DurabilityBased) {
             return ItemUtil.tryGetDurability(offhandItemStack);
         }
-        else if(magazineObject.magazineType === MagazineTypes.stackBased) {
+        else if(magazineObject.magazineType === MagazineTypes.StackBased) {
             return offhandItemStack.amount;
         }
-        return null;
+        return;
     }
 
     /**
@@ -630,7 +637,11 @@ class FirearmUtil {
         return false;
     }
     
-
+    /**
+     * 
+     * @param {Player} player 
+     * @returns {boolean}
+     */
     static isOffhandMagazineEmptyButCorrect(player) {
         const firearmItemStack = ItemUtil.getSelectedItemStack(player);
         const offhandItemStack = ItemUtil.getPlayerOffhandContainerSlot(player)?.getItem();
@@ -714,24 +725,6 @@ class FirearmUtil {
     }
 
     
-    /**
-     * 
-     * @param {Player} player 
-     * @param {LeftClickAbilityAttribute} abilityType 
-     */
-    /*
-    static isHoldingFirearmWithSpecificAbility(player, abilityType) {
-        if(!this.isHoldingFirearmWithAbility(player)) { return; }
-        const itemStack = ItemUtil.getSelectedItemStack(player);
-        const firearmObject = this.getFirearmObjectFromItemStack(itemStack);
-        if(firearmObject === null) { return false; }
-        if(!(firearmObject instanceof GunWithAbility)) { return false; }
-        if(typeof(firearmObject.leftClickAbilityAttribute) === typeof(abilityType)) {
-            return true;
-        }
-        return false;
-    }
-    */
 
     /**
      * @param {Player} player 
@@ -749,77 +742,16 @@ class FirearmUtil {
     }
 
     /**
-     * @param {Player} player
-     */
-    // static tryRenewFirearmAmmoOnMagazineChange(player) {
-    //     if(!this.isHoldingFirearm(player)) { return; }
-    //     const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
-    //     if(firearmContainerSlot === null) { return; }
-    //     const firearmItemStack = firearmContainerSlot.getItem();
-    //     if(firearmItemStack === undefined) { return; }
-
-    //     const firearmId = FirearmIdUtil.getFirearmId(firearmItemStack);
-    //     const currentMagazineTag = String(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTag));
-    //     this.tryCopyFirearmAmmoToWorld(player);
-    //     const currentAmmoCount = this.getWorldAmmoUsingId(firearmId)??0; //Must use world ammo because dynamic prop doesn't change until you stop shooting
-    //     const isOldMagazineEmpty = Boolean(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty));
-    //     const newMagazineItemStack = ItemUtil.getPlayerOffhandContainerSlot(player)?.getItem();
-    //     const oldMagazineTag = String(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.magazineTag));
-    //     const newMagazineTag = newMagazineItemStack ? FirearmUtil.getMagazineObjectFromItemStackBoth(newMagazineItemStack)?.tag??null : null;
-    //     if(this.isOffhandMagazineEmptyButCorrect(player) && (!isOldMagazineEmpty || oldMagazineTag !== newMagazineTag) && newMagazineTag) {
-    //         console.log(`1`);
-    //         //Only used when OldMagazine == any && newMagazine == empty
-    //         this.setFirearmMagazineToEmpty(player, newMagazineTag, firearmContainerSlot, firearmId);
-    //         return;
-    //     }
-    //     else if(!this.isOffhandMagazineCorrect(player)) {
-    //         if((currentAmmoCount !== 0 || currentMagazineTag !== MagazineTags.none) && !this.isOffhandMagazineEmptyButCorrect(player)) {
-    //             //Only used when OldMagazine == any && newMagazine == none
-    //             console.log(`set ammoCount to 0 and magazineType to ${MagazineTags.none}`);
-    //             console.log(`2`);
-    //             this.setFirearmMagazineToNone(player, firearmContainerSlot, firearmId, false);
-    //         }
-    //         return;
-    //     }
-
-
-    //     if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) { return; }
-    //     if(newMagazineItemStack === undefined) { return; }
-    //     const newMagazineAmmoCount = FirearmUtil.getAmmoCountFromOffhand(player);
-    //     if(newMagazineTag === null) { return; }
-    //     if(newMagazineAmmoCount !== currentAmmoCount || currentMagazineTag !== newMagazineTag) {
-    //         if(newMagazineAmmoCount === null || newMagazineAmmoCount === undefined) { return; }
-
-    //         //Is setting up for reload. Gun ammo set to none during reload
-    //         /**
-    //          * Instead, we keep the firearm magazine, hold the new magazine in data, and delete any oldMagazine dupes
-    //          * 1. If on PC, then oldMag --> selectedSLotInv and newMag --> offhand
-    //          *      so store newMag in data, delete item, and restore oldMag to offhand
-    //          * 2. If on Mobile, then oldMag --> inv/ground and newMag --> offhand
-    //          *      so store newMag in data,
-    //          *      try to delete 1 oldMag from inv
-    //          *      if unsuccessful, delete as item entity near player instead
-    //          *      if unsuccessful, throw missing mag error but otherwise whatever
-    //          *      and finally restore oldMag to offhand
-    //          */
-    //         this.setFirearmMagazineToNone(player, firearmContainerSlot, firearmId, true);
-
-
-    //         startReloadCooldown(player, newMagazineTag, currentAmmoCount, newMagazineAmmoCount, newMagazineItemStack);
-    //     }
-    // }
-
-    /**
      * 
      * @param {Player} player
-     * @param {string} newMagazineTag
+     * @param {string} newMagazineTypeId
      * @param {ContainerSlot} firearmContainerSlot
      * @param {Number} firearmId
      */
-    static setFirearmMagazineToEmpty(player, newMagazineTag, firearmContainerSlot, firearmId) {
+    static setFirearmMagazineToEmpty(player, newMagazineTypeId, firearmContainerSlot, firearmId) {
         FirearmUtil.setWorldAmmoUsingId(firearmId, 0);
         firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty, true);
-        firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTag, newMagazineTag);
+        firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId, newMagazineTypeId);
         const firearmItemStack = firearmContainerSlot.getItem();
         if(firearmItemStack !== undefined) {
             Global.playerCurrentFirearmItemStack.set(player.id, firearmItemStack);
@@ -843,7 +775,7 @@ class FirearmUtil {
 
         FirearmUtil.setWorldAmmoUsingId(firearmId, 0);
         firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty, false);
-        firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTag, MagazineTags.none);
+        firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId, MagazineTypeIds.none);
         const firearmItemStack = firearmContainerSlot.getItem();
         if(firearmItemStack !== undefined) {
             Global.playerCurrentFirearmItemStack.set(player.id, firearmItemStack);
@@ -1064,18 +996,18 @@ class FirearmUtil {
         let openCockMultiplier = 1;
         let cockMultiplier = 1;
         firearmObject.animationAttributes.forEach(attributes => {
-            if(!(attributes instanceof ReloadAnimationAttribute)) { return; }
-            if(attributes.animation.type === AnimationTypes.reloadSwap || attributes.animation.type === AnimationTypes.reloadBoth) {
-                normalMultiplier = attributes.animation.timeInTicks/attributes.scaleDurationToValue;
+            if(!(attributes instanceof ScaledAnimation)) { return; }
+            if(attributes.staticAnimation.type === AnimationTypes.ReloadSwap || attributes.staticAnimation.type === AnimationTypes.ReloadBoth) {
+                normalMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
             }
-            else if(attributes.animation.type === AnimationTypes.reloadNoSwap) {
-                noSwapMultiplier = attributes.animation.timeInTicks/attributes.scaleDurationToValue;
+            else if(attributes.staticAnimation.type === AnimationTypes.ReloadNoSwap) {
+                noSwapMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
             }
-            else if(attributes.animation.type === AnimationTypes.reloadOpenCock) {
-                openCockMultiplier = attributes.animation.timeInTicks/attributes.scaleDurationToValue;
+            else if(attributes.staticAnimation.type === AnimationTypes.ReloadOpenCock) {
+                openCockMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
             }
-            else if(attributes.animation.type === AnimationTypes.reloadCock) {
-                cockMultiplier = attributes.animation.timeInTicks/attributes.scaleDurationToValue;
+            else if(attributes.staticAnimation.type === AnimationTypes.ReloadCock) {
+                cockMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
             }
         });
         if(firearmObject instanceof Gun) {
@@ -1183,12 +1115,12 @@ class FirearmUtil {
 
     /**
      * @param {Firearm} firearmObject
-     * @param {(keyof typeof AnimationTypes)[]} animationType
-     * @returns {AnimationAttribute|undefined}
+     * @param {(typeof AnimationTypes[keyof typeof AnimationTypes])[]} animationType
+     * @returns {NormalAnimation|undefined}
      */
     static tryGetAnimationAttribute(firearmObject, animationType) {
         for(const attribute of firearmObject.animationAttributes) {
-            if(animationType.includes(attribute.animation.type)) {
+            if(animationType.includes(attribute.staticAnimation.type)) {
                 return attribute;
             }
         }
@@ -1221,7 +1153,7 @@ class FirearmUtil {
             if(firearmObject.magazineAttribute.magazineClass !== magazine.magazineClass) { continue; }
 
             const magazineAmmoCount = ItemUtil.tryGetDurability(itemStack);
-            if(magazineAmmoCount === null) { continue; }
+            if(magazineAmmoCount === undefined) { continue; }
             if(magazineAmmoCount > mostAmmoCount) {
                 mostAmmoIndex = i;
                 mostAmmoCount = magazineAmmoCount;
@@ -1236,19 +1168,19 @@ class FirearmUtil {
      * @param {Player} player 
      * @param {ItemStack|undefined} oldMagazineItemStack
      * @returns {{
-     * magazineTag: import('./3Lists/MagazinesList.js').MagazineTagsDef[keyof import('./3Lists/MagazinesList.js').MagazineTagsDef],
-     * amount: number }
-     * |undefined }
+     * magazineTypeId: typeof MagazineTypeIds[keyof typeof MagazineTypeIds],
+     * amount: number }|undefined
+     * }
      */
     static tryGetBestStackMagazineForReload(player, oldMagazineItemStack) {
         if(oldMagazineItemStack !== undefined) {
             const oldMagazineObject = FirearmUtil.getMagazineObjectFromItemStackBoth(oldMagazineItemStack);
             if(oldMagazineObject === undefined) { return; }
-            const magazineTag = oldMagazineObject.getMagazineTagEnum();
-            if(magazineTag === undefined) { return; }
+            const magazineTypeId = oldMagazineObject.getMagazineTypeIdEnum();
+            if(magazineTypeId === undefined) { return; }
             return {
-                magazineTag: magazineTag,
-                amount: CraftingUtil.getItemCountInInventory(player, oldMagazineObject.tag)
+                magazineTypeId: magazineTypeId,
+                amount: CraftingUtil.getItemCountInInventory(player, oldMagazineObject.itemTypeId)
             }
         }
 
@@ -1260,8 +1192,8 @@ class FirearmUtil {
         const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(ItemUtil.getSelectedContainerSlot(player)?.getItem());
         if(firearmObject === undefined) { return; }
 
-        /** @type {MaxHeap<import('./3Lists/MagazinesList.js').MagazineTagsDef[keyof import('./3Lists/MagazinesList.js').MagazineTagsDef], number>} */
-        let magazineTagAndCounts = new MaxHeap();
+        /** @type {MaxHeap<typeof MagazineTypeIds[keyof typeof MagazineTypeIds], number>} */
+        let magazineTypeIdAndCounts = new MaxHeap();
 
         for(let i=0; i<inv.inventorySize; i++) {
             const itemStack = container.getItem(i);
@@ -1361,7 +1293,7 @@ class FirearmIdUtil {
      * @param {Number} ammoCount 
      */
     static initializeFirearmIdAndAmmo(id, firearmContainerSlot, ammoCount) {
-        this.#addIdAndAmmoToContainerSlot(firearmContainerSlot, id, ammoCount);
+        this.#addIdAndAmmoToFirearmContainerSlot(firearmContainerSlot, id, ammoCount);
         this.#addIdAndAmmoToWorld(id, ammoCount);
         //this.addIdAndAmmoToGlobalList(id, ammoCount);
     }
@@ -1441,7 +1373,7 @@ class FirearmIdUtil {
      * @param {Number} id 
      * @param {Number} ammoCount
      */
-    static #addIdAndAmmoToContainerSlot(containerSlot, id, ammoCount) {
+    static #addIdAndAmmoToFirearmContainerSlot(containerSlot, id, ammoCount) {
         containerSlot.setDynamicProperty(Global.FirearmDynamicProperties.id, id);
         containerSlot.setDynamicProperty(Global.FirearmDynamicProperties.ammoCount, ammoCount);
     }
@@ -1475,10 +1407,10 @@ class FirearmNameUtil {
      * @param {Firearm} firearm
      */
     static renewFirearmName(firearmContainerSlot, firearm) {
-        const magazineTag = String(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.magazineTag));
+        const magazineTypeId = TypeUtil.getValueFromList(MagazineTypeIds, String(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId)));
         const isMagazineEmpty = Boolean(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty));
-        if(magazineTag === null || magazineTag === undefined) { return; }
-        const magazineName = this.#convertMagazineTagToName(magazineTag, isMagazineEmpty);
+        if(magazineTypeId === null || magazineTypeId === undefined) { return; }
+        const magazineName = this.#convertMagazineTypeIdToName(magazineTypeId, isMagazineEmpty);
         //firearmContainerSlot.setLore([`§r§f${firearm.normalName}\n§r§7Magazine: ${magazineName}`]);
         firearmContainerSlot.nameTag = `§r§f${firearm.normalName}`;
         firearmContainerSlot.nameTag += `\n§r§7Magazine: ${magazineName}`;
@@ -1489,13 +1421,13 @@ class FirearmNameUtil {
                 if(firingMode === undefined) {
                     firingMode = firearm.firingMode;
                 }
-                else if(firingMode === FiringModes.semi) {
+                else if(firingMode === FiringModes.Semi) {
                     firearmContainerSlot.nameTag += `\n§r§7Firing Mode: <§aSemi Auto§7>`;
                 }
-                else if(firingMode === FiringModes.auto) {
+                else if(firingMode === FiringModes.Auto) {
                     firearmContainerSlot.nameTag += `\n§r§7Firing Mode: <§aFull Auto§7>`;
                 }
-                else if(firingMode === FiringModes.burst) {
+                else if(firingMode === FiringModes.Burst) {
                     firearmContainerSlot.nameTag += `\n§r§7Firing Mode: <§aBurst§7>`;
                 }
                 else {
@@ -1529,26 +1461,24 @@ class FirearmNameUtil {
 
     /**
      * 
-     * @param {string} magazineTag 
+     * @param {typeof MagazineTypeIds[keyof typeof MagazineTypeIds]} magazineTypeId
      * @param {boolean} isMagazineEmpty 
      * @returns {string}
      */
-    static #convertMagazineTagToName(magazineTag, isMagazineEmpty) {
-        if(magazineTag === MagazineTags.none) { return "§7<§cNone§r§7>"; }
-        const magazineClass = this.#convertMagazineTagToAmmoType(magazineTag);
+    static #convertMagazineTypeIdToName(magazineTypeId, isMagazineEmpty) {
+        if(magazineTypeId === MagazineTypeIds.none) { return "§7<§cNone§r§7>"; }
+        const magazineClass = this.#convertMagazineTypeIdToMagazineClass(magazineTypeId);
         if(magazineClass === null) { return "§7<§cNone§r§7>"; }
         let name = "";
-        let numbers = magazineTag.match(/\d+/g);
+        let numbers = magazineTypeId.match(/\d+/g);
         let ammoCount = 0;
         if(numbers) {
             ammoCount = Number(numbers[numbers.length-1]);
         }
         name += ammoCount.toString()+" ";
-        for(const key of MagazineClassNames) {
-            for(let i=0; i<key.Types.length; i++) {
-                if(key.Types[i] === magazineClass) {
-                    name += key.Name;
-                }
+        for(const [, magClass] of TypeUtil.getIterable(DurabilityMagazineClasses)) {
+            if(magazineClass === magClass) {
+                name += "Round Magazine";
             }
         }
         if(isMagazineEmpty) {
@@ -1559,7 +1489,7 @@ class FirearmNameUtil {
         }
         return name;
         /*
-        const parts = magazineTag.split(":")[1].split("_");
+        const parts = magazineTypeId.split(":")[1].split("_");
         let magazineName = "";
         if(!isMagazineEmpty) {
           parts.forEach(substring => {
@@ -1581,19 +1511,17 @@ class FirearmNameUtil {
 
     /**
      * 
-     * @param {string} magazineTag 
-     * @returns {string?}
+     * @param {typeof MagazineTypeIds[keyof typeof MagazineTypeIds]} magazineTypeId
+     * @returns {typeof MagazineClasses[keyof typeof MagazineClasses]|undefined}
      */
-    static #convertMagazineTagToAmmoType(magazineTag) {
-        magazineTag = magazineTag.toLowerCase();
-        for(const type in MagazineClasses) {
-            const lowercaseType = type.toLowerCase();
-            if(magazineTag.includes(lowercaseType)) {
-                return type;
+    static #convertMagazineTypeIdToMagazineClass(magazineTypeId) {
+        for(const [, magClass] of TypeUtil.getIterable(MagazineClasses)) {
+            if(magazineTypeId.includes(magClass)) {
+                return magClass;
             }
         }
-        console.error(`Could not convert magazineTag [${magazineTag}] to any AmmoType.`);
-        return null;
+        console.error(`Could not convert magazineTypeId [${magazineTypeId}] to any AmmoType.`);
+        return;
     }
 
     /**
@@ -1630,14 +1558,14 @@ class SoundsUtil {
     /**
      * 
      * @param {Player} fromPlayer 
-     * @param {string} soundDefinition 
+     * @param {string} soundId 
      * @param {import('@minecraft/server').Vector3} location 
      * @param {Number} maxDistance
      * @param {Number} maxVolume 
      * @param {Number} minPitch 
      * @param {Number} maxPitch 
      */
-    static playSound(fromPlayer, soundDefinition, location, maxDistance, maxVolume, minPitch, maxPitch) {
+    static playSound(fromPlayer, soundId, location, maxDistance, maxVolume, minPitch, maxPitch) {
         const players = fromPlayer.dimension.getPlayers({location: location, maxDistance: maxDistance});
         players.forEach(player => {
             const distanceVector = Vector.subVectors(location, player.getHeadLocation());
@@ -1661,14 +1589,14 @@ class SoundsUtil {
                     playLocation = distanceVector.divideScalar(distance).multiplyScalar(15).add(player.getHeadLocation());
                 }
             }
-            player.playSound(soundDefinition, {location: playLocation, volume: volume, pitch: NumberUtil.getRandomFloat(minPitch, maxPitch)});
+            player.playSound(soundId, {location: playLocation, volume: volume, pitch: NumberUtil.getRandomFloat(minPitch, maxPitch)});
         });
     }
 
     /**
      * 
      * @param {SoundTimeoutIdObject[]} SoundTimeoutIdObjects 
-     * @param {string[]} [animationTypes] 
+     * @param {typeof AnimationTypes[keyof typeof AnimationTypes][]} [animationTypes] 
      */
     static stopSounds(SoundTimeoutIdObjects, animationTypes) {
         SoundTimeoutIdObjects.forEach(obj => {
@@ -1684,6 +1612,14 @@ class SoundsUtil {
             }
         });
     }
+
+    /**
+     * 
+     * @param {Player} player 
+     */
+    static playErrorSound(player) {
+        player.playSound("note.bass");
+    }
 }
 
 export { SoundsUtil };
@@ -1695,13 +1631,14 @@ class AnimationUtil {
      * 
      * @param {Player} player 
      * @param {Firearm} firearm 
-     * @param {string} animationType - an AnimationTypes enum, from AnimationDefinition
+     * @param {typeof AnimationTypes[keyof typeof AnimationTypes]} animationType
      */
     static playAnimation(player, firearm, animationType) {
         let playedAnimation = false;
         firearm.animationAttributes.forEach(attributes => {
-            if(attributes.animation.type === animationType) {
-                player.playAnimation(attributes.animation.animationDefiniton);
+            if(attributes.staticAnimation.type === animationType) {
+                if(attributes.staticAnimation.animationId === undefined) { return; }
+                player.playAnimation(attributes.staticAnimation.animationId);
                 playedAnimation = true;
             }
         })
@@ -1714,7 +1651,7 @@ class AnimationUtil {
      * 
      * @param {Player} player 
      * @param {Firearm} firearm 
-     * @param {string} animationType - an AnimationTypes enum, from AnimationDefinition
+     * @param {typeof AnimationTypes[keyof typeof AnimationTypes]} animationType
      * @param {Number} timeMultiplier
      * @param {Number} startDelay
      * @returns {SoundTimeoutIdObject[] | undefined} - returns an array of sound timeoutIds
@@ -1723,22 +1660,30 @@ class AnimationUtil {
         /**@type {SoundTimeoutIdObject[]} */
         let timeoutObjects = [];
         for(let attributes of firearm.animationAttributes) {
-            if(attributes.animation.type !== animationType) { continue; }
+            if(attributes.staticAnimation.type !== animationType) { continue; }
 
-            if(startDelay <= 0) { player.playAnimation(attributes.animation.animationDefiniton); }
+            if(startDelay <= 0 && attributes.staticAnimation.animationId != undefined) { player.playAnimation(attributes.staticAnimation.animationId); }
             else {
                 const delayId = system.runTimeout(() => {
-                    player.playAnimation(attributes.animation.animationDefiniton);
+                    if(attributes.staticAnimation.animationId != undefined) {
+                        player.playAnimation(attributes.staticAnimation.animationId);
+                    }
                 }, startDelay);
-                timeoutObjects.push(new SoundTimeoutIdObject(delayId, attributes.animation.type));
+                timeoutObjects.push(new SoundTimeoutIdObject({
+                    timeoutId: delayId,
+                    animationType: attributes.staticAnimation.type
+                }));
             }
 
-            attributes.animation.animationSoundAttributes.forEach(sound => {
-                const timeoutTime = Math.floor(sound.timeToPlayInTicks/timeMultiplier);
+            attributes.staticAnimation.animationSounds.forEach(sound => {
+                const timeoutTime = Math.floor(sound.timeout/timeMultiplier);
                 const timeoutId = system.runTimeout(() => {
-                    SoundsUtil.playSound(player, sound.soundDefinition, player.getHeadLocation(), sound.soundRange, 1, 0.9, 1.1);
+                    SoundsUtil.playSound(player, sound.soundId, player.getHeadLocation(), sound.soundRange, 1, 0.9, 1.1);
                 }, timeoutTime+startDelay);
-                timeoutObjects.push(new SoundTimeoutIdObject(timeoutId, attributes.animation.type));
+                timeoutObjects.push(new SoundTimeoutIdObject({
+                    timeoutId: timeoutId,
+                    animationType: attributes.staticAnimation.type
+                }));
             });
             return timeoutObjects;
         }
@@ -1749,13 +1694,13 @@ class AnimationUtil {
      * 
      * @param {Player} player 
      * @param {Firearm} firearm 
-     * @param {string} animationType - an AnimationTypes enum, from AnimationDefinition
+     * @param {typeof AnimationTypes[keyof typeof AnimationTypes]} animationType
      */
     static stopAllAnimationSounds(player, firearm, animationType) {
         for(let attributes of firearm.animationAttributes) {
-            if(attributes.animation.type !== animationType) { continue; }
-            attributes.animation.animationSoundAttributes.forEach(sound => {
-                player.runCommandAsync(`stopsound @s ${sound.soundDefinition}`);
+            if(attributes.staticAnimation.type !== animationType) { continue; }
+            attributes.staticAnimation.animationSounds.forEach(sound => {
+                player.runCommandAsync(`stopsound @s ${sound.soundId}`);
             });
             return;
         }
@@ -1767,7 +1712,7 @@ export { AnimationUtil };
 class SettingsUtil {
     /**
      * 
-     * @param {String} settingType - a settingsType enum
+     * @param {typeof SettingsTypes[keyof typeof SettingsTypes]} settingType
      * @returns {Number | undefined}
      */
     static getSettingsValue(settingType) {
@@ -1777,11 +1722,23 @@ class SettingsUtil {
     
     /**
      * 
-     * @param {String} settingType - a settingsType enum
+     * @param {Settings} setting
+     * @param {typeof SettingsTypes[keyof typeof SettingsTypes]} settingType
      * @param {Number} value
      */
-    static setSettingsValue(settingType, value) {
+    static setSettingsValue(setting, settingType, value) {
         world.scoreboard.getObjective("Settings")?.setScore(settingType, value);
+        if(setting.onChangeValue != null) {
+            setting.onChangeValue();
+        }
+    }
+
+    /**
+     * 
+     * @param {Player} player 
+     */
+    static sendDownloadMessage(player) {
+        player.sendMessage(`Link to full downloads: ${linkName}`);
     }
 }
 
@@ -1893,6 +1850,20 @@ class TypeUtil {
 
         // Step 2: Safely access the map (TS knows input is EnumValue<TEnum> here)
         return map.get(/** @type {EnumValue<TEnum>} */(input));
+    }
+    
+    /**
+     * Converts a string to a value from the given enum object.
+     * @template T
+     * @param {Record<string, T>} enumObj - The enum object to look in.
+     * @param {string} str - The string to match against enum values.
+     * @returns {T | undefined} - The matching enum value, or undefined if not found.
+     */
+    static getValueFromList(enumObj, str) {
+        for (const key in enumObj) {
+            if (enumObj[key] === str) return enumObj[key];
+        }
+        return undefined;
     }
 }
 

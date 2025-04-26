@@ -12,7 +12,7 @@ class Global {
 
     /**
      * A dictionary of all guns
-     * `key: MagazineTags enum {string}`, `value: Magazine Object {Magazine}`
+     * `key: MagazineTypeIds enum {string}`, `value: Magazine Object {Magazine}`
      * @type {Map<string, Magazine>}
      */
     static magazines = new Map();
@@ -136,7 +136,7 @@ class Global {
          *   2. When the player stops shooting
          */
         ammoCount: "ammoCount",            //number {}
-        magazineTag: "magazineTag",        //MagazineTags enum {string}
+        magazineTypeId: "magazineTypeId",        //MagazineTypeIds enum {string}
         isMagazineEmpty: "isMagazineEmpty" //boolean
     }
 

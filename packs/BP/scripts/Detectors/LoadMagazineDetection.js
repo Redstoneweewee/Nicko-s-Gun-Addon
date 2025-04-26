@@ -3,12 +3,26 @@ import { FirearmNameUtil, FirearmUtil, ItemUtil } from '../Utilities';
 
 world.afterEvents.itemStartUse.subscribe((eventData) => {
 	const magazineItemStack = eventData.itemStack;
+    let isEmpty = false;
+    if(FirearmUtil.getMagazineObjectFromItemStackEmpty(magazineItemStack)) {
+        isEmpty = true;
+    }
+
     const magazineObject = FirearmUtil.getMagazineObjectFromItemStackBoth(magazineItemStack);
     if(magazineObject === undefined) { return; }
     if(!isEmpty && magazineItemStack.amount > 1) { return; }
 
-    const magazineDurability = ItemUtil.tryGetDurability(magazineItemStack);
-    if(magazineDurability === null || magazineDurability === magazineObject.maxAmmo) { return; }
+    let moveEmptyOff = false;
+    if(isEmpty && magazineItemStack.amount > 1) {
+        moveEmptyOff = true;
+    }
+
+    let magazineDurability = ItemUtil.tryGetDurability(magazineItemStack);
+    if(magazineDurability === magazineObject.maxAmmo) { return; }
+    if(magazineDurability === undefined && isEmpty) {
+        magazineDurability = 0;
+    }
+    if(magazineDurability === undefined) { return; }
     
     const player = eventData.source;
     const inv = player.getComponent(EntityComponentTypes.Inventory);
@@ -31,7 +45,7 @@ world.afterEvents.itemStartUse.subscribe((eventData) => {
 
         //add up to 5 bullets to magazine
         if(isEmpty) {
-            let newMagazineItemStack = new ItemStack(magazineObject.tag);
+            let newMagazineItemStack = new ItemStack(magazineObject.itemTypeId);
             ItemUtil.trySetDurability(newMagazineItemStack, addBulletCount);
             FirearmNameUtil.renewMagazineName(newMagazineItemStack, addBulletCount);
             container.setItem(player.selectedSlotIndex, newMagazineItemStack);
@@ -48,7 +62,7 @@ world.afterEvents.itemStartUse.subscribe((eventData) => {
 
         //move empty stack off & keep only 1 in mainhand
         if(moveEmptyOff) {
-            container.addItem(new ItemStack(magazineObject.tag+"_empty", magazineItemStack.amount-1));
+            container.addItem(new ItemStack(magazineObject.itemTypeId+"_empty", magazineItemStack.amount-1));
         }
 
         //remove 1 bullet
