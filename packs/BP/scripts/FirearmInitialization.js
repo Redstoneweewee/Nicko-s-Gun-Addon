@@ -2,7 +2,7 @@ import { ContainerSlot, Player, world } from "@minecraft/server";
 import { Global } from "./Global.js";
 import { Firearm } from './2Definitions/FirearmDefinition.js';
 import { FirearmUtil, ItemUtil, FirearmIdUtil, IdUtil } from './Utilities.js';
-import { MagazineTypes } from "./2Definitions/MagazineDefinition.js";
+import { MagazineTypes } from "./1Enums/MagazineEnums.js";
 
 
 
@@ -30,10 +30,10 @@ function initializeFirearm(player, firearm, firearmContainerSlot) {
     if(firearmContainerSlot === null) { return; }
 
 
-    firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTag, firearm.magazineAttribute.defaultMagazine.tag);
+    firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId, firearm.magazineAttribute.defaultMagazine.itemTypeId);
     firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty, false);
-    console.log(`set magazineTag to ${firearm.magazineAttribute.defaultMagazine.tag}`);
-    const ammoCount = firearm.magazineAttribute.defaultMagazine.magazineType === MagazineTypes.durabilityBased ? firearm.magazineAttribute.defaultMagazine.maxAmmo : firearm.magazineAttribute.maxMagazineItemStackAmount;
+    console.log(`set magazineTypeId to ${firearm.magazineAttribute.defaultMagazine.itemTypeId}`);
+    const ammoCount = firearm.magazineAttribute.defaultMagazine.magazineType === MagazineTypes.DurabilityBased ? firearm.magazineAttribute.defaultMagazine.maxAmmo : firearm.magazineAttribute.maxMagazineItemStackAmount;
     
     const newId = IdUtil.getRandomId();
     FirearmIdUtil.initializeFirearmIdAndAmmo(newId, firearmContainerSlot, ammoCount);

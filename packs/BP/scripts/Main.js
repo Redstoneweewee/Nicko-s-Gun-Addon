@@ -22,6 +22,7 @@ const Vector = new Vector3();
 
 import * as ShootDetection from "./Detectors/ShootDetection.js";
 import * as AutoReloadDetection from "./Detectors/AutoMagSwapDetection.js";
+import { ReloadTypes } from "./1Enums/ReloadEnums.js";
 import * as Reload from "./Reload.js";
 
 
@@ -32,7 +33,7 @@ world.afterEvents.itemStartUse.subscribe((eventData) => {
     //FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player);
     //AutoReloadDetection.automaticMagazineSwap(player, itemStack, false);
     Reload.tryManualReload(player);
-    Reload.tryAutomaticReload(player, ReloadTypes.normal);
+    Reload.tryAutomaticReload(player, ReloadTypes.Normal);
 });
 
 
@@ -45,7 +46,6 @@ import * as LoadMagazineDetection from "./Detectors/LoadMagazineDetection.js";
 import { renewAmmoCount } from "./AmmoText.js";
 import { FirearmUtil } from "./Utilities.js";
 import { AnimationLink } from "./AnimationLink.js";
-import { settingsList } from "./3Lists/SettingsList.js";
 import * as Mining from "./Blocks/Mining.js";
 
 //import { teleportHitboxEntity } from "./Hitbox.js";
@@ -112,4 +112,3 @@ system.runInterval(() => {
  * Settings and UI stuff run after all other scripts
  */
 import "./UI/SettingsMessage.js";
-import { ReloadType, ReloadTypes } from "./2Definitions/ReloadDefinition.js";

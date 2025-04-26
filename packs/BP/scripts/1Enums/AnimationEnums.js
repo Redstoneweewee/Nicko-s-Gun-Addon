@@ -2,37 +2,38 @@
 /** 
  * @enum {string}
  * @type {{
-* reloadSwap:                  "reloadSwap",
-* reloadNoSwap:                "reloadNoSwap",
-* reloadBoth:                  "reloadBoth",
-* reloadOpenCock:              "reloadOpenCock",
-* reloadCock:                  "reloadCock",
-* shoot:                       "shoot",
-* shootWithAmmo:               "shootWithAmmo",
-* shootOutOfAmmo:              "shootOutOfAmmo",
-* shootFirstShot:              "shootFirstShot",
-* shootAfterFirstShot:         "shootAfterFirstShot",
-* switchFiringModeToDefault:   "switchFiringModeToDefault",
-* switchFiringModeToAlternate: "switchFiringModeToAlternate",
-* switchScopeZoomToDefault:    "switchScopeZoomToDefault",
-* switchScopeZoomToAlternate:  "switchScopeZoomToAlternate"
+* ReloadSwap:                  "reloadSwap",
+* ReloadNoSwap:                "reloadNoSwap",
+* ReloadBoth:                  "reloadBoth",
+* ReloadOpenCock:              "reloadOpenCock",
+* ReloadCock:                  "reloadCock",
+* Shoot:                       "shoot",
+* ShootWithAmmo:               "shootWithAmmo",
+* ShootOutOfAmmo:              "shootOutOfAmmo",
+* ShootFirstShot:              "shootFirstShot",
+* ShootAfterFirstShot:         "shootAfterFirstShot",
+* SwitchFiringModeToDefault:   "switchFiringModeToDefault",
+* SwitchFiringModeToAlternate: "switchFiringModeToAlternate",
+* SwitchScopeZoomToDefault:    "switchScopeZoomToDefault",
+* SwitchScopeZoomToAlternate:  "switchScopeZoomToAlternate"
 * }}
 */
 const AnimationTypes = {
-   reloadSwap:                  "reloadSwap",
-   reloadNoSwap:                "reloadNoSwap",
-   reloadBoth:                  "reloadBoth",
-   reloadOpenCock:              "reloadOpenCock",
-   reloadCock:                  "reloadCock",
-   shoot:                       "shoot",
-   shootWithAmmo:               "shootWithAmmo",
-   shootOutOfAmmo:              "shootOutOfAmmo",
-   shootFirstShot:              "shootFirstShot",
-   shootAfterFirstShot:         "shootAfterFirstShot",
-   switchFiringModeToDefault:   "switchFiringModeToDefault",
-   switchFiringModeToAlternate: "switchFiringModeToAlternate",
-   switchScopeZoomToDefault:    "switchScopeZoomToDefault",
-   switchScopeZoomToAlternate:  "switchScopeZoomToAlternate"
+   ReloadSwap:                  "reloadSwap",
+   ReloadNoSwap:                "reloadNoSwap",
+   ReloadBoth:                  "reloadBoth",
+   ReloadOpenCock:              "reloadOpenCock",
+   ReloadCock:                  "reloadCock",
+   Shoot:                       "shoot",
+   ShootWithAmmo:               "shootWithAmmo",
+   ShootOutOfAmmo:              "shootOutOfAmmo",
+   ShootFirstShot:              "shootFirstShot",
+   ShootAfterFirstShot:         "shootAfterFirstShot",
+   SwitchFiringModeToDefault:   "switchFiringModeToDefault",
+   SwitchFiringModeToAlternate: "switchFiringModeToAlternate",
+   SwitchScopeZoomToDefault:    "switchScopeZoomToDefault",
+   SwitchScopeZoomToAlternate:  "switchScopeZoomToAlternate"
 }
+
 
 export { AnimationTypes }

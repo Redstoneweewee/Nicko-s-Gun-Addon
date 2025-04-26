@@ -1,7 +1,6 @@
 import { EntityComponentTypes, EntityInventoryComponent, GameMode, ItemStack, Player, world } from "@minecraft/server";
 import { FirearmUtil, ItemUtil } from '../Utilities.js';
 import { Global } from "../Global.js";
-import { MagazineTags } from "../3Lists/MagazinesList.js";
 
 
 
@@ -92,7 +91,7 @@ function tryRenewCreativeAmmo(player, isTactical) {
     if(offhandItemStack === undefined) { return false; }
     const magazineObject = isTactical ? FirearmUtil.getMagazineObjectFromItemStackBoth(offhandItemStack) : FirearmUtil.getMagazineObjectFromItemStackEmpty(offhandItemStack);
     if(magazineObject === undefined) { return false; }
-    offhandContainerSlot.setItem(new ItemStack(magazineObject.tag, 1));
+    offhandContainerSlot.setItem(new ItemStack(magazineObject.itemTypeId, 1));
     return true;
 }
 

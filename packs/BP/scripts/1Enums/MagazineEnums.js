@@ -91,26 +91,8 @@ const MagazineClasses = {
 }
 
 
-/** 
- * @enum {string} 
- * @type {Record<typeof MagazineClasses[keyof typeof MagazineClasses], string>}
- */
-const MagazineClassTextNames = {
-   sniper:        "Round Magazine",
-   rifle:         "Round Magazine",
-   marksmanRifle: "Round Magazine",
-   smg:           "Round Magazine",
-   pistol:        "Round Magazine",
-   p90:           "Round Magazine",
-   minigun:       "Round Magazine",
-
-   shotgun: "Shotgun Shells",
-   rpg:     "RPG Rockets",
-   javelin: "Javelin Missiles",
-   mgl:     "MGL Shells",
-}
 
 
 
 
-export { MagazineTypeIds, MagazineTypes, DurabilityMagazineClasses, StackMagazineClasses, MagazineClasses, MagazineClassTextNames }
+export { MagazineTypeIds, MagazineTypes, DurabilityMagazineClasses, StackMagazineClasses, MagazineClasses }
