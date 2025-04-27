@@ -2,8 +2,8 @@ import { world } from '@minecraft/server';
 import { Global } from '../Global.js';
 import * as Def from '../2Definitions/SettingsDefinition.js';
 import * as Enums from "../1Enums/SettingsEnums.js"
-import { SettingsUtil, TypeUtil } from '../Utilities.js';
 import { AnimationLink } from '../AnimationLink.js';
+import { SettingsUtil, TypeUtil } from '../UtilitiesInit.js';
 
 /**
  * @returns {boolean}
@@ -34,6 +34,7 @@ const SettingsList = {
 
     //All settings are declared as their default states
     MultiplayerSupport: new Def.Settings({
+        type:          Enums.SettingsTypes.MultiplayerSupport,
         displayName:   "Multiplayer Support",
         settingsType:  Enums.SettingsTypes.MultiplayerSupport,
         toggleType:    Enums.ToggleTypes.Dropdown,
@@ -42,6 +43,7 @@ const SettingsList = {
         onlyActive:    true
     }),
     CraftingRecipes: new Def.RestrictedSettings({
+        type:                   Enums.SettingsTypes.CraftingRecipes,
         displayName:            "Crafting Recipes",
         settingsType:           Enums.SettingsTypes.CraftingRecipes,
         toggleType:             Enums.ToggleTypes.Dropdown,
@@ -53,6 +55,7 @@ const SettingsList = {
         availabilityTest:       craftingRecipesAvailabilityTest
     }),
     GunBreakBlocks: new Def.Settings({
+        type:          Enums.SettingsTypes.GunBreakBlocks,
         displayName:   "Guns Breaking Blocks",
         settingsType:  Enums.SettingsTypes.GunBreakBlocks,
         toggleType:    Enums.ToggleTypes.Dropdown,
@@ -61,6 +64,7 @@ const SettingsList = {
         onlyActive:    false
     }),
     ShowPlayerOutlines: new Def.Settings({
+        type:          Enums.SettingsTypes.ShowPlayerOutlines,
         displayName:   "Show Player Outlines",
         settingsType:  Enums.SettingsTypes.ShowPlayerOutlines,
         toggleType:    Enums.ToggleTypes.Dropdown,
@@ -69,6 +73,7 @@ const SettingsList = {
         onlyActive:    false
     }),
     ShowSettingsOnEnterWorld: new Def.Settings({
+        type:          Enums.SettingsTypes.ShowSettingsOnEnterWorld,
         displayName:   "Show Settings After Entering World",
         settingsType:  Enums.SettingsTypes.ShowSettingsOnEnterWorld,
         toggleType:    Enums.ToggleTypes.Dropdown,

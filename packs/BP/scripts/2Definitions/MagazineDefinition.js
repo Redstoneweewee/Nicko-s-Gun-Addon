@@ -1,7 +1,7 @@
 import { ItemStack } from "@minecraft/server"
 import { AmmoClasses } from "../1Enums/AmmoEnums";
 import * as Enums from "../1Enums/MagazineEnums"
-import { TypeUtil } from "../Utilities";
+import { TypeUtil } from "../UtilitiesInit";
 
 class Magazine {
     /**
@@ -34,7 +34,7 @@ class Magazine {
                 return typeId;
             }
         }
-        console.error(`getMagazineTypeIdEnum() failed: Magazine with tag ${this.itemTypeId} is not defined in MagazineTypeIds`);
+        console.error(`getMagazineTypeIdEnum() failed: Magazine with itemTypeId ${this.itemTypeId} is not defined in MagazineTypeIds`);
         return;
     }
 }

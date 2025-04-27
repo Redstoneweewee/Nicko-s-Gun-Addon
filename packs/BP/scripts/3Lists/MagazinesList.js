@@ -4,7 +4,7 @@ import * as Enums from "../1Enums/MagazineEnums.js"
 import { ItemStack } from '@minecraft/server';
 import { MagazineClasses } from '../1Enums/MagazineEnums.js';
 import { BulletClasses } from '../1Enums/AmmoEnums.js';
-import { TypeUtil } from '../Utilities.js';
+import { TypeUtil } from '../UtilitiesInit.js';
 
 /**
  * @enum {Def.Magazine}
@@ -21,7 +21,7 @@ const MagazineObjects = {
         fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
     }),
 
-    rifleMagazine30:           new Def.Magazine({
+    rifleMagazine30: new Def.Magazine({
         itemTypeId:            Enums.MagazineTypeIds.rifleMagazine30,
         name:                  "Rifle Magazine [§a30§7/§a30 Rounds§f]\n§7[Interact to load ammo in]",
         magazineClass:         MagazineClasses.Rifle,

@@ -12,7 +12,7 @@ system.runInterval(() => {
         const itemStack = ItemUtil.getSelectedItemStack(player);
 
 
-        if(itemStack === undefined || itemStack === null) { tryRemoveThirdPersonCamera(player, false); return; }
+        if(itemStack === undefined) { tryRemoveThirdPersonCamera(player, false); return; }
         if(!FirearmUtil.isHoldingFirearm(player)) { tryRemoveThirdPersonCamera(player, false); return; }
         trySetThirdPersonCamera(player, false);
     });

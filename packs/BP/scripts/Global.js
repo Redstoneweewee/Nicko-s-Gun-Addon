@@ -1,19 +1,21 @@
 import { ItemStack } from "@minecraft/server";
 import { Firearm } from "./2Definitions/FirearmDefinition";
 import { Magazine } from "./2Definitions/MagazineDefinition";
+import { FirearmTypeIds } from "./1Enums/FirearmEnums";
+import { MagazineTypeIds } from "./1Enums/MagazineEnums";
 
 class Global {
     /**
      * A dictionary of all guns
-     * `key: FirearmTags enum {string}`, `value: Firearm Object {Firearm}`
-     * @type {Map<string, Firearm>}
+     * `key: FirearmTypeIds enum {string}`, `value: Firearm Object {Firearm}`
+     * @type {Map<typeof FirearmTypeIds[keyof typeof FirearmTypeIds], Firearm>}
      */
     static firearms = new Map();
 
     /**
      * A dictionary of all guns
      * `key: MagazineTypeIds enum {string}`, `value: Magazine Object {Magazine}`
-     * @type {Map<string, Magazine>}
+     * @type {Map<typeof MagazineTypeIds[keyof typeof MagazineTypeIds], Magazine>}
      */
     static magazines = new Map();
 

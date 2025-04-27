@@ -1,6 +1,6 @@
-import { Direction, Entity, EntityComponentTypes, EntityHealthComponent, GameMode, MolangVariableMap, Player, system, world } from '@minecraft/server';
+import { Direction, Entity, EntityComponentTypes, EntityHealthComponent, MolangVariableMap, Player, system, world } from '@minecraft/server';
 import * as FirearmDef from './2Definitions/FirearmDefinition.js';
-import { AnimationUtil, DamageUtil, FirearmIdUtil, FirearmUtil, ItemUtil, LoopUtil, NumberUtil, SettingsUtil, SoundsUtil } from './Utilities.js';
+import { AnimationUtil, DamageUtil, FirearmUtil, ItemUtil, NumberUtil } from './Utilities.js';
 import { Global } from './Global.js';
 //import { automaticMagazineSwap } from './Detectors/AutoMagSwapDetection.js';
 import * as Reload from './Reload.js';
@@ -13,6 +13,7 @@ import { AnimationLink } from './AnimationLink.js';
 import { excludedFamilies, excludedGameModes, excludedTypes } from './1Enums/HitExclusionArrays.js';
 import { ReloadTypes } from './1Enums/ReloadEnums.js';
 import { SettingsTypes } from './1Enums/SettingsEnums.js';
+import { SettingsUtil } from './UtilitiesInit.js';
 //import { Mat3, RandVec } from '@madlad3718/mcveclib';
 
 
@@ -36,7 +37,7 @@ function shoot(player, firearm) {
     if(ammoCount === undefined || ammoCount <= 0 || player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) { 
         //LoopUtil.stopAsyncLoop(player, Global.playerShootingLoopIds);
         const firearmItemStack = ItemUtil.getSelectedItemStack(player);
-        if(firearmItemStack !== null) { //Need this here for when the player right-clicks when the magazine is empty & they weren't shooting just before
+        if(firearmItemStack !== undefined) { //Need this here for when the player right-clicks when the magazine is empty & they weren't shooting just before
             Reload.tryAutomaticReload(player, ReloadTypes.Normal);
         }
         renewAmmoCount(player);
@@ -226,7 +227,7 @@ function calculateShootDirection(player, firearm) {
 
 
     let recoil = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.recoil));
-    if(recoil === undefined || recoil === null || Number.isNaN(recoil)) { recoil = 0; }
+    if(Number.isNaN(recoil)) { recoil = 0; }
     
     let recoilMultiplier = 1.0;
     if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming)) {
@@ -283,7 +284,7 @@ function drawSparkParticle(player, direction, position) {
 /**
  * 
  * @param {Player}  player 
- * @param {Direction | null} blockDirection 
+ * @param {Direction?} blockDirection 
  * @param {Vector3} position 
  */
 function drawShootHoleParticle(player, blockDirection, position) {

@@ -4,20 +4,19 @@ import * as Enums from "../1Enums/FirearmEnums.js"
 import { SwitchFiringModeAttribute, SwitchScopeZoomAttribute } from '../2Definitions/LeftClickAbilityDefinition.js';
 import { MagazineObjects } from './MagazinesList.js';
 import { BulletClasses, ShotgunShellClasses } from '../1Enums/AmmoEnums.js';
-import { TypeUtil } from '../Utilities.js';
 import { MagazineClasses } from '../1Enums/MagazineEnums.js';
 import { LeftClickAbilityTypes } from '../1Enums/LeftClickAbilityEnums.js';
 import { NormalAnimation, ScaledAnimation } from '../2Definitions/AnimationDefinition.js';
 import { StaticReloadAnimations, StaticShootAnimations, StaticOtherAnimations } from './AnimationList.js';
+import { TypeUtil } from '../UtilitiesInit.js';
 
 /**
  * @enum {Def.Firearm}
  * @type {Record<keyof typeof Enums.FirearmTypeIds, Def.Firearm>}
  */
 const FirearmObjects = {
-    /**@type {Def.Gun} */
-    ak47: {
-        tag:                    Enums.FirearmTypeIds.ak47,
+    ak47: new Def.Gun({
+        itemTypeId:             Enums.FirearmTypeIds.ak47,
         normalName:             "AK-47\n§7[Interact to shoot]",
         firingMode:             Enums.FiringModes.Auto,
         firingRate:             600,  //ideally, use multiples of 60
@@ -48,38 +47,37 @@ const FirearmObjects = {
                 staticAnimation: StaticShootAnimations.rifle.ak47Shoot
             })
         ],
-        magazineAttribute: {
+        magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Rifle,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.exploding],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   30,
             defaultMagazine:        MagazineObjects.rifleMagazine30,
-        },
-        scopeAttribute: {
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
             slowness:           4,
             speed:              35,
             recoilMultiplier:   0.75,
             stopAimOnCooldown: false
-        },
-        recoilAttribute: {
+        }),
+        recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 5,
-            mainCamerashakeAttribute: {
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.02,
                 maxCamerashake:     0.04,
                 minCamerashakeTime: 0.05,
                 maxCamerashakeTime: 0.05
-            },
-            residualCamerashakeAttribute: {
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,
                 maxCamerashake:     0.0006,
                 minCamerashakeTime: 4,
                 maxCamerashakeTime: 10
-            }
-        }
-    },
-    /**@type {Def.Gun} */
-    akm: {
-        tag:                    Enums.FirearmTypeIds.akm,
+            })
+        })
+    }),
+    akm: new Def.Gun({
+        itemTypeId:             Enums.FirearmTypeIds.akm,
         normalName:             "AKM\n§7[Interact to shoot]",
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               600,  //ideally, use multiples of 60
@@ -110,38 +108,37 @@ const FirearmObjects = {
                 staticAnimation: StaticShootAnimations.rifle.akmShoot
             })
         ],
-        magazineAttribute: {
+        magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Rifle,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.armorPiercing],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   30,
             defaultMagazine:        MagazineObjects.rifleMagazine30,
-        },
-        scopeAttribute: {
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
             slowness:           2,
             speed:              13,
             recoilMultiplier:   0.75,
             stopAimOnCooldown: false
-        },
-        recoilAttribute: {
+        }),
+        recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 8,
-            mainCamerashakeAttribute: {
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.025,
                 maxCamerashake:     0.05,
                 minCamerashakeTime: 0.05,
                 maxCamerashakeTime: 0.05
-            },
-            residualCamerashakeAttribute: {
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,
                 maxCamerashake:     0.0006,
                 minCamerashakeTime: 4,
                 maxCamerashakeTime: 10
-            }
-        }
-    },
-    /**@type {Def.Gun} */
-    m4a1: {
-        tag:                    Enums.FirearmTypeIds.m4a1,
+            })
+        })
+    }),
+    m4a1: new Def.Gun({
+        itemTypeId:             Enums.FirearmTypeIds.m4a1,
         normalName:             "M4A1\n§7[Interact to shoot]",
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               960,  //ideally, use multiples of 60
@@ -172,38 +169,37 @@ const FirearmObjects = {
                 staticAnimation: StaticShootAnimations.rifle.m4a1Shoot
             })
         ],
-        magazineAttribute: {
+        magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Rifle,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.armorPiercing, BulletClasses.antiMaterial],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   30,
             defaultMagazine:        MagazineObjects.rifleMagazine30,
-        },
-        scopeAttribute: {
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
             slowness:           2,
             speed:              13,
             recoilMultiplier:   0.75,
             stopAimOnCooldown: false
-        },
-        recoilAttribute: {
+        }),
+        recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 8,
-            mainCamerashakeAttribute: {
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.018,
                 maxCamerashake:     0.05,
                 minCamerashakeTime: 0.08,
                 maxCamerashakeTime: 0.08
-            },
-            residualCamerashakeAttribute: {
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,
                 maxCamerashake:     0.0006,
                 minCamerashakeTime: 4,
                 maxCamerashakeTime: 10
-            }
-        }
-    },
-    /**@type {Def.Gun} */
-    ar15: {
-        tag:                    Enums.FirearmTypeIds.ar15,
+            })
+        })
+    }),
+    ar15: new Def.Gun({
+        itemTypeId:             Enums.FirearmTypeIds.ar15,
         normalName:             "AR-15\n§7[Interact to shoot]",
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
@@ -234,44 +230,42 @@ const FirearmObjects = {
                 staticAnimation: StaticShootAnimations.rifle.ar15Shoot
             })
         ],
-        magazineAttribute: {
+        magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.MarksmanRifle,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   15,
             defaultMagazine:        MagazineObjects.marksmanRifleMagazine15,
-        },
-        scopeAttribute: {
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
             slowness:           4,
             speed:              35,
             recoilMultiplier:   0.75,
             stopAimOnCooldown: false
-        },
-        recoilAttribute: {
+        }),
+        recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 10,
-            mainCamerashakeAttribute: {
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.025,
                 maxCamerashake:     0.07,
                 minCamerashakeTime: 0.05,
                 maxCamerashakeTime: 0.05
-            },
-            residualCamerashakeAttribute: {
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,
                 maxCamerashake:     0.0006,
                 minCamerashakeTime: 4,
                 maxCamerashakeTime: 10
-            }
-        }
-    },
-    /**@type {Def.GunWithAbility} */
-    hk417: {
-        /**@type {SwitchFiringModeAttribute} */
-        leftClickAbilityAttribute: {
+            })
+        })
+    }),
+    hk417: new Def.GunWithAbility({
+        leftClickAbilityAttribute: new SwitchFiringModeAttribute({
             leftClickAbilityType: LeftClickAbilityTypes.SwitchFiringMode,
             alternateFiringMode:  Enums.FiringModes.Auto,
             alternateFiringRate:  300
-        },
-        tag:                    Enums.FirearmTypeIds.hk417,
+        }),
+        itemTypeId:             Enums.FirearmTypeIds.hk417,
         normalName:             "HK417\n§7[Interact to shoot]",
         firingMode:             Enums.FiringModes.Semi,
         firingRate:             0,
@@ -308,48 +302,46 @@ const FirearmObjects = {
                 staticAnimation: StaticOtherAnimations.switchFiringModeToAuto
             })
         ],
-        magazineAttribute: {
+        magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.MarksmanRifle,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.antiMaterial],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   15,
             defaultMagazine:        MagazineObjects.marksmanRifleMagazine15,
-        },
-        scopeAttribute: {
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
             slowness:           5,
             speed:              95,
             recoilMultiplier:   0.75,
             stopAimOnCooldown: false
-        },
-        recoilAttribute: {
+        }),
+        recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 20,
-            mainCamerashakeAttribute: {
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.04,
                 maxCamerashake:     0.08,
                 minCamerashakeTime: 0.05,
                 maxCamerashakeTime: 0.05
-            },
-            residualCamerashakeAttribute: {
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,
                 maxCamerashake:     0.0006,
                 minCamerashakeTime: 4,
                 maxCamerashakeTime: 10
-            }
-        }
-    },
-    /**@type {Def.GunWithAbility} */
-    mk13: {
-        /** @type {SwitchScopeZoomAttribute} */
-        leftClickAbilityAttribute: {
+            })
+        })
+    }),
+    mk13: new Def.GunWithAbility({
+        leftClickAbilityAttribute: new SwitchScopeZoomAttribute({
             leftClickAbilityType: LeftClickAbilityTypes.SwitchScopeZoom,
-            alternateScopeAttribute: {
+            alternateScopeAttribute: new Def.ScopeAttribute({
                 slowness:           9,
                 speed:              0,
                 recoilMultiplier:   0.5,
                 stopAimOnCooldown: false
-            }
-        },
-        tag:                    Enums.FirearmTypeIds.mk13,
+            })
+        }),
+        itemTypeId:             Enums.FirearmTypeIds.mk13,
         normalName:             "MK13\n§7[Interact to shoot]",
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
@@ -389,38 +381,37 @@ const FirearmObjects = {
                 staticAnimation: StaticOtherAnimations.switchScopeZoomToAlternate
             })
         ],
-        magazineAttribute: {
+        magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Sniper,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.antiMaterial],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   3,
             defaultMagazine:        MagazineObjects.sniperMagazine3,
-        },
-        scopeAttribute: {
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
             slowness:           5,
             speed:              95,
             recoilMultiplier:   0.75,
             stopAimOnCooldown: false
-        },
-        recoilAttribute: {
+        }),
+        recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 50,
-            mainCamerashakeAttribute: {
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.05,
                 maxCamerashake:     0.08,
                 minCamerashakeTime: 0.05,
                 maxCamerashakeTime: 0.05
-            },
-            residualCamerashakeAttribute: {
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,
                 maxCamerashake:     0.0006,
                 minCamerashakeTime: 4,
                 maxCamerashakeTime: 10
-            }
-        }
-    },
-    /**@type {Def.Gun} */
-    p90: {
-        tag:                    Enums.FirearmTypeIds.p90,
+            })
+        })
+    }),
+    p90: new Def.Gun({
+        itemTypeId:             Enums.FirearmTypeIds.p90,
         normalName:             "P90\n§7[Interact to shoot]",
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               1200,  //ideally, use multiples of 60
@@ -451,38 +442,37 @@ const FirearmObjects = {
                 staticAnimation: StaticShootAnimations.smg.p90Shoot
             })
         ],
-        magazineAttribute: {
+        magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.P90,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.exploding],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   50,
             defaultMagazine:        MagazineObjects.p90Magazine50,
-        },
-        scopeAttribute: {
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
             stopAimOnCooldown: false
-        },
-        recoilAttribute: {
+        }),
+        recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 2,
-            mainCamerashakeAttribute: {
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.025,
                 maxCamerashake:     0.04,
                 minCamerashakeTime: 0.05,
                 maxCamerashakeTime: 0.05
-            },
-            residualCamerashakeAttribute: {
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,
                 maxCamerashake:     0.0006,
                 minCamerashakeTime: 4,
                 maxCamerashakeTime: 10
-            }
-        }
-    },
-    /**@type {Def.Gun} */
-    ump45: {
-        tag:                    Enums.FirearmTypeIds.ump45,
+            })
+        })
+    }),
+    ump45: new Def.Gun({
+        itemTypeId:             Enums.FirearmTypeIds.ump45,
         normalName:             "UMP-45\n§7[Interact to shoot]",
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               540,  //ideally, use multiples of 60
@@ -509,38 +499,37 @@ const FirearmObjects = {
                 staticAnimation: StaticShootAnimations.smg.ump45Shoot
             })
         ],
-        magazineAttribute: {
+        magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Smg,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.armorPiercing],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   24,
             defaultMagazine:        MagazineObjects.smgMagazine24,
-        },
-        scopeAttribute: {
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
             stopAimOnCooldown: false
-        },
-        recoilAttribute: {
+        }),
+        recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 4,
-            mainCamerashakeAttribute: {
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.025,
                 maxCamerashake:     0.06,
                 minCamerashakeTime: 0.05,
                 maxCamerashakeTime: 0.05
-            },
-            residualCamerashakeAttribute: {
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,
                 maxCamerashake:     0.0006,
                 minCamerashakeTime: 4,
                 maxCamerashakeTime: 10
-            }
-        }
-    },
-    /**@type {Def.Gun} */
-    desertEagle: {
-        tag:                    Enums.FirearmTypeIds.desertEagle,
+            })
+        })
+    }),
+    desertEagle: new Def.Gun({
+        itemTypeId:             Enums.FirearmTypeIds.desertEagle,
         normalName:             "Desert Eagle\n§7[Interact to shoot]",
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
@@ -574,38 +563,37 @@ const FirearmObjects = {
                 staticAnimation: StaticShootAnimations.pistol.desertEagleShootOutOfAmmo
             })
         ],
-        magazineAttribute: {
+        magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Pistol,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.antiMaterial, BulletClasses.exploding],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   8,
             defaultMagazine:        MagazineObjects.pistolMagazine8,
-        },
-        scopeAttribute: {
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
             stopAimOnCooldown: false
-        },
-        recoilAttribute: {
+        }),
+        recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
-            mainCamerashakeAttribute: {
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.04,
                 maxCamerashake:     0.06,
                 minCamerashakeTime: 0.05,
                 maxCamerashakeTime: 0.05
-            },
-            residualCamerashakeAttribute: {
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,
                 maxCamerashake:     0.0006,
                 minCamerashakeTime: 4,
                 maxCamerashakeTime: 10
-            }
-        }
-    },
-    /**@type {Def.Gun} */
-    remington870: {
-        tag:                    Enums.FirearmTypeIds.remington870,
+            })
+        })
+    }),
+    remington870: new Def.Gun({
+        itemTypeId:             Enums.FirearmTypeIds.remington870,
         normalName:             "Remington 870\n§7[Interact to shoot]",
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
@@ -635,35 +623,35 @@ const FirearmObjects = {
                 staticAnimation: StaticShootAnimations.shotgun.remington870ShootOutOfAmmo
             })
         ],
-        magazineAttribute: {
+        magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Shotgun,
             usableAmmoClasses:      [ShotgunShellClasses.birdshot, ShotgunShellClasses.buckshot],
             maxMagazineItemStackAmount: 6,
             maxMagazineAmmoCount:   1,
             defaultMagazine:        MagazineObjects.shotgunShell,
-        },
-        scopeAttribute: {
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
             stopAimOnCooldown:  false
-        },
-        recoilAttribute: {
+        }),
+        recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
-            mainCamerashakeAttribute: {
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.04,
                 maxCamerashake:     0.08,
                 minCamerashakeTime: 0.05,
                 maxCamerashakeTime: 0.05
-            },
-            residualCamerashakeAttribute: {
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,
                 maxCamerashake:     0.0006,
                 minCamerashakeTime: 4,
                 maxCamerashakeTime: 10
-            }
-        }
-    }
+            })
+        })
+    })
 }
 
 

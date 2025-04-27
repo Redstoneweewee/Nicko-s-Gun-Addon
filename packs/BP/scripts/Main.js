@@ -1,5 +1,4 @@
 import "./CustomComponents/Initialization.js";
-import "./3Lists/InitializeScoreboards.js";
 import "./WorldInitialization.js";
 
 import "./3Lists/FirearmsList.js";
@@ -11,17 +10,15 @@ import "./ScriptEvent/FirearmScriptEvents.js";
 import "./Settings.js";
 import "./Teams.js";
 
-//import "./Detectors/ThirdPersonDetection.js";
 
 
-import { world, system, EffectTypes, ItemStack, EntityComponentTypes, EntityRideableComponent, GameMode, Entity, Player } from '@minecraft/server';
+import { world, system } from '@minecraft/server';
 import { Vector3 } from './Math/Vector3.js';
 import { Global } from "./Global.js";
 const Vector = new Vector3();
 
 
 import * as ShootDetection from "./Detectors/ShootDetection.js";
-import * as AutoReloadDetection from "./Detectors/AutoMagSwapDetection.js";
 import { ReloadTypes } from "./1Enums/ReloadEnums.js";
 import * as Reload from "./Reload.js";
 
@@ -41,11 +38,8 @@ import * as HoldDetection from "./Detectors/HoldDetection.js";
 import * as DirectionDetection from "./Detectors/DirectionDetection.js";
 import * as OffhandStackCheck from "./Detectors/OffhandStackDetection.js";
 import * as AimDetection from "./Detectors/AimDetection.js";
-import * as LeftClickAbilityDetection from "./Detectors/LeftClickAbilityDetection.js";
-import * as LoadMagazineDetection from "./Detectors/LoadMagazineDetection.js";
 import { renewAmmoCount } from "./AmmoText.js";
 import { FirearmUtil } from "./Utilities.js";
-import { AnimationLink } from "./AnimationLink.js";
 import * as Mining from "./Blocks/Mining.js";
 
 //import { teleportHitboxEntity } from "./Hitbox.js";
@@ -84,17 +78,17 @@ system.runInterval(() => {
 //},0);
 
 /**
- * |---------------------------------------------------------|
- * |                                                         |
- * | Make sure all firearms have the "yes:is_firearmgun" tag |
- * |     and the tag of their own variant like "yes:ak47"    |
- * |                                                         |
- * |---------------------------------------------------------|
- * |                                                         |
- * |  Make sure all magazines have the "yes:is_magazine" tag |
- * |  and of their own variant like "yes:rifle_magazine_30"  |
- * |                                                         |
- * |---------------------------------------------------------|
+ * |------------------------------------------------------------|
+ * |                                                            |
+ * | Make sure all firearms have the "yes:is_firearmgun" typeId |
+ * |     and the typeId of their own variant like "yes:ak47"    |
+ * |                                                            |
+ * |------------------------------------------------------------|
+ * |                                                            |
+ * |  Make sure all magazines have the "yes:is_magazine" typeId |
+ * |  and of their own variant like "yes:rifle_magazine_30"     |
+ * |                                                            |
+ * |------------------------------------------------------------|
  */
 
 

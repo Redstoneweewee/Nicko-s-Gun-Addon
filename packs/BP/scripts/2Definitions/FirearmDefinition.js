@@ -8,7 +8,7 @@ import { NormalAnimation } from "./AnimationDefinition.js";
 class Firearm {
     /**
      * @param {{
-     * tag:                 string,
+     * itemTypeId:          string,
      * normalName:          string,
      * firingMode:          string,
      * firingRate:          number,
@@ -21,7 +21,7 @@ class Firearm {
      * }} def
      */
     constructor(def) {
-        this.tag              = def.tag;
+        this.itemTypeId       = def.itemTypeId;
         this.normalName       = def.normalName;
         this.firingMode       = def.firingMode;
         this.firingRate       = def.firingRate;

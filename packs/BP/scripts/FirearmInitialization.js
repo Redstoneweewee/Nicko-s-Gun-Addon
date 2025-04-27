@@ -44,12 +44,12 @@ function initializeFirearm(player, firearm, firearmContainerSlot) {
 
 /**
  * 
- * @param {Number?} firearmId 
+ * @param {Number|undefined} firearmId 
  * @returns {boolean}
  */
 
 function findFirearmIdInWorldDynamicProperties(firearmId) {
-    if(Number.isNaN(firearmId) || firearmId === undefined || firearmId === null) { return false; }
+    if(Number.isNaN(firearmId) || firearmId === undefined) { return false; }
     const worldProperties = world.getDynamicPropertyIds();
     
     for(let i=0; i<worldProperties.length; i++) {

@@ -76,27 +76,3 @@ world.afterEvents.itemStartUse.subscribe((eventData) => {
         break;
     }  
 });
-
-
-/*
-world.afterEvents.itemStartUse.subscribe((eventData) => {
-    const itemStack = eventData.itemStack;
-    let attributes = "\n";
-    attributes += `amount: ${itemStack.amount}\n`;
-    attributes += `getCanDestroy: ${itemStack.getCanDestroy()}\n`;
-    attributes += `getCanPlaceOn: ${itemStack.getCanPlaceOn()}\n`;
-    attributes += `components: [`;
-    itemStack.getComponents().forEach(comp => { attributes += `${comp.typeId}, `; });
-    attributes += `]\n`;
-    attributes += `getDynamicPropertyIds: ${itemStack.getDynamicPropertyIds()}\n`;
-    attributes += `getLore: ${itemStack.getLore()}\n`;
-    attributes += `tags: ${itemStack.getTags()}\n`;
-    attributes += `isStackable: ${itemStack.isStackable}\n`;
-    attributes += `keepOnDeath: ${itemStack.keepOnDeath}\n`;
-    attributes += `lockMode: ${itemStack.lockMode}\n`;
-    attributes += `maxAmount: ${itemStack.maxAmount}\n`;
-    attributes += `nameTag: ${itemStack.nameTag}\n`;
-    attributes += `typeId: ${itemStack.typeId}\n`;
-    console.log(`attributes: ${attributes}`);
-});
-*/

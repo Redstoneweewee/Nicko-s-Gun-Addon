@@ -15,7 +15,7 @@ function onLeftClick(player) {
     const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
     if(firearmContainerSlot === null) { return; }
     const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmContainerSlot.getItem());
-    if(firearmObject === null) { return; }
+    if(firearmObject === undefined) { return; }
     const firearmItemStack = firearmContainerSlot.getItem();
     if(firearmItemStack === undefined) { return; }
 

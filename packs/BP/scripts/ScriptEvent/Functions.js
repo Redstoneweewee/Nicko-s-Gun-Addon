@@ -86,38 +86,38 @@ system.afterEvents.scriptEventReceive.subscribe(eventData => {
             if(type2 !== "s") {
                 if(type1 === "r" && direction === "x") {
                     const oldAmount = Number(player.getProperty("yes:rotation_offset_x"));
-                    if(oldAmount === null || oldAmount === undefined || Number.isNaN(oldAmount)) { return; }
+                    if(Number.isNaN(oldAmount)) { return; }
                     player.setProperty("yes:rotation_offset_x", oldAmount+amount);
                     world.sendMessage(`oldAmount: ${oldAmount}, newAmount: ${oldAmount+amount}, direction: ${direction}, type: ${type2}, amount: ${amount}`);
                 }
                 else if(type1 === "r" && direction === "y") {
                     const oldAmount = Number(player.getProperty("yes:rotation_offset_y"));
-                    if(oldAmount === null || oldAmount === undefined || Number.isNaN(oldAmount)) { return; }
+                    if(Number.isNaN(oldAmount)) { return; }
                     player.setProperty("yes:rotation_offset_y", oldAmount+amount);
                     world.sendMessage(`oldAmount: ${oldAmount}, newAmount: ${oldAmount+amount}, direction: ${direction}, type: ${type2}, amount: ${amount}`);
                 }
                 else if(type1 === "r" && direction === "z") {
                     const oldAmount = Number(player.getProperty("yes:rotation_offset_z"));
-                    if(oldAmount === null || oldAmount === undefined || Number.isNaN(oldAmount)) { return; }
+                    if(Number.isNaN(oldAmount)) { return; }
                     player.setProperty("yes:rotation_offset_z", oldAmount+amount);
                     world.sendMessage(`oldAmount: ${oldAmount}, newAmount: ${oldAmount+amount}, direction: ${direction}, type: ${type2}, amount: ${amount}`);
                 }
 
                 else if(type1 === "t" && direction === "x") {
                     const oldAmount = Number(player.getProperty("yes:transform_offset_x"));
-                    if(oldAmount === null || oldAmount === undefined || Number.isNaN(oldAmount)) { return; }
+                    if(Number.isNaN(oldAmount)) { return; }
                     player.setProperty("yes:transform_offset_x", oldAmount+amount);
                     world.sendMessage(`oldAmount: ${oldAmount}, newAmount: ${oldAmount+amount}, direction: ${direction}, type: ${type2}, amount: ${amount}`);
                 }
                 else if(type1 === "t" && direction === "y") {
                     const oldAmount = Number(player.getProperty("yes:transform_offset_y"));
-                    if(oldAmount === null || oldAmount === undefined || Number.isNaN(oldAmount)) { return; }
+                    if(Number.isNaN(oldAmount)) { return; }
                     player.setProperty("yes:transform_offset_y", oldAmount+amount);
                     world.sendMessage(`oldAmount: ${oldAmount}, newAmount: ${oldAmount+amount}, direction: ${direction}, type: ${type2}, amount: ${amount}`);
                 }
                 else if(type1 === "t" && direction === "z") {
                     const oldAmount = Number(player.getProperty("yes:transform_offset_z"));
-                    if(oldAmount === null || oldAmount === undefined || Number.isNaN(oldAmount)) { return; }
+                    if(Number.isNaN(oldAmount)) { return; }
                     player.setProperty("yes:transform_offset_z", oldAmount+amount);
                     world.sendMessage(`oldAmount: ${oldAmount}, newAmount: ${oldAmount+amount}, direction: ${direction}, type: ${type2}, amount: ${amount}`);
                 }
