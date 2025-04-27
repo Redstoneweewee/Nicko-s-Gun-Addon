@@ -38,11 +38,11 @@ function aimDetection(player) {
 /**
  * 
  * @param {Player} player 
- * @param {Firearm?} firearmObject 
+ * @param {Firearm|undefined} firearmObject 
  * @returns 
  */
 function tryAddScopeZoom(player, firearmObject) {
-    if(firearmObject == null) {
+    if(firearmObject === undefined) {
         tryRemoveScopeZoom(player);
         return;
     }
@@ -52,11 +52,11 @@ function tryAddScopeZoom(player, firearmObject) {
 /**
  * 
  * @param {Player} player 
- * @param {Firearm?} firearmObject 
+ * @param {Firearm|undefined} firearmObject 
  * @returns 
  */
 function renewScopeZoom(player, firearmObject) {
-    if(firearmObject == null) {
+    if(firearmObject === undefined) {
         tryRemoveScopeZoom(player);
         return;
     }

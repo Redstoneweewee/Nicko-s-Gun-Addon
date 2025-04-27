@@ -1,20 +1,23 @@
 
 import { Player } from "@minecraft/server";
 import { FormResponse } from "@minecraft/server-ui";
+import * as Enums from "../1Enums/CraftingStateEnums"
 
 class CraftingState {
 
     /**
-     * @param {string} type 
-     * @param {(player: Player, craftingObject?: Crafting) => Promise<FormResponse>} showForm
-     * @param {null | ((player: Player) => void)} onEnter 
-     * @param {null | ((player: Player) => void)} onExit 
+     * @param {{
+     * messageType: typeof Enums.CraftingMessageTypes[keyof typeof Enums.CraftingMessageTypes]
+     * showForm:    (player: Player, craftingObject?: Crafting) => Promise<FormResponse>
+     * onEnter?:    null | ((player: Player) => void)
+     * onExit?:     null | ((player: Player) => void)
+     * }} def
      */
-    constructor(type, showForm, onEnter = null, onExit = null) {
-        this.type = type;
-        this.showForm = showForm;
-        this.onEnter = onEnter;
-        this.onExit = onExit;
+    constructor(def) {
+        this.messageType = def.messageType;
+        this.showForm    = def.showForm;
+        this.onEnter     = def.onEnter;
+        this.onExit      = def.onExit;
     }
 }
 

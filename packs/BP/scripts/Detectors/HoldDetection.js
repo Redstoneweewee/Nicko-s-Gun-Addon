@@ -119,7 +119,9 @@ function trySaveCurrentFirearmItemStack(player) {
     Global.playerCurrentFirearmItemStack.set(player.id, firearmItemStack);
     const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
     if(firearmObject === undefined) { return; }
-    FirearmUtil.setPlayerFiringModeAndfiringRate(player, firearmObject);
+    const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
+    if(firearmContainerSlot === null) { return; }
+    FirearmUtil.setPlayerFiringModeAndfiringRate(player, firearmObject, firearmContainerSlot);
     //FirearmUtil.printFirearmDynamicProperties(firearmItemStack);
 }
 
@@ -140,7 +142,7 @@ function tryResetOffhandItem(player) {
     const offhandSlot = ItemUtil.getPlayerOffhandContainerSlot(player);
     
     const firearmItemStack = Global.playerCurrentFirearmItemStack.get(player.id);
-    if(firearmItemStack === null || firearmItemStack === undefined) { return; }
+    if(firearmItemStack === undefined) { return; }
     const magazineTypeId = firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId);
     //console.log(FirearmUtil.getWorldAmmoUsingId(FirearmIdUtil.getFirearmId(firearmItemStack)));
     //if no magazine then don't delete offhand item
@@ -191,21 +193,23 @@ function tryReplaceOffhandItem(player) {
     
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_offhand_magazine, true);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_offhand_magazine);
-    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, false);
-    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
-    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, true);
-    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
     
     let magazineItemStack;
     const isMagazineEmpty = Boolean(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty));
-    if(isMagazineEmpty) {
+    if(!isMagazineEmpty) {
+        magazineItemStack = new ItemStack(magazineTypeId, firearmObject?.magazineAttribute.maxMagazineItemStackAmount);
+        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, false);
+        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
+        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, true);
+        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
+    }
+    else { 
+        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
+        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, false);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
         try { magazineItemStack = new ItemStack(magazineTypeId+"_empty", 1); }
         catch { console.error(`Magazine ${magazineTypeId} does not have an empty counterpart.`); return; }
-    }
-    else { 
-        magazineItemStack = new ItemStack(magazineTypeId, firearmObject?.magazineAttribute.maxMagazineItemStackAmount);
     }
     const ammoCount = FirearmUtil.getWorldAmmoUsingId(FirearmIdUtil.getFirearmId(firearmItemStack));
     if(ammoCount === undefined) { return; }
@@ -215,6 +219,7 @@ function tryReplaceOffhandItem(player) {
         if(magazineObject.magazineType === MagazineTypes.DurabilityBased) {
             ItemUtil.trySetDurability(magazineItemStack, ammoCount);
         }
+        else if(magazineObject.magazineType === MagazineTypes.StackBased && ammoCount === 0) { return; }
         else if(magazineObject.magazineType === MagazineTypes.StackBased) {
             magazineItemStack.amount = ammoCount;
         }

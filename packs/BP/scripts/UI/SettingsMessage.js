@@ -1,9 +1,10 @@
 import { Player, system, world } from "@minecraft/server";
-import { RestrictedSettings, ToggleTypes } from "../2Definitions/SettingsDefinition";
-import { settingsList, SettingsTypes } from "../3Lists/SettingsList";
+import { RestrictedSettings } from "../2Definitions/SettingsDefinition";
 import { Vector3 } from "../Math/Vector3";
 import * as ui from "@minecraft/server-ui";
-import { SettingsUtil } from "../Utilities";
+import { SettingsTypes, ToggleTypes } from "../1Enums/SettingsEnums";
+import { SettingsList } from "../3Lists/SettingsList";
+import { SettingsUtil, TypeUtil } from "../UtilitiesInit";
 
 const addonName = `§e§l<§r§eSimple Arsenal§l> §r§g[Premium Pack]`;
 const addonNameLeftWhiteSpace = `    `;
@@ -84,23 +85,23 @@ function showSettingsForm(player) {
 
 
     let first = true;
-    for(const setting of settingsList) {
+    for(const [, setting] of TypeUtil.getIterable(SettingsList)) {
         if(setting === undefined) { continue; }
-        const score = SettingsUtil.getSettingsValue(setting.name);
-        let options = setting.object.onlyActive ? ["§qActive"] : ["§qActive", "§mInactive"];
+        const score = SettingsUtil.getSettingsValue(setting.type);
+        let options = setting.onlyActive ? ["§qActive"] : ["§qActive", "§mInactive"];
         let defaultIndex = score ? 0 : 1;
-        if(setting.object instanceof RestrictedSettings && !setting.object.availabilityTest()) {
-            options = [setting.object.restrictedDropdownText];
+        if(setting instanceof RestrictedSettings && !setting.availabilityTest()) {
+            options = [setting.restrictedDropdownText];
         }
-        if(setting.object instanceof RestrictedSettings) {
+        if(setting instanceof RestrictedSettings) {
             defaultIndex = 0;
         }
         if(first) {
-            if(setting.object.toggleType === ToggleTypes.Dropdown) {
-                settingsForm.dropdown(settingsMesssage+beforeSettingName+setting.object.displayName, options, defaultIndex);
+            if(setting.toggleType === ToggleTypes.Dropdown) {
+                settingsForm.dropdown(settingsMesssage+beforeSettingName+setting.displayName, options, defaultIndex);
             }
-            else if(setting.object.toggleType === ToggleTypes.Toggle) {
-                settingsForm.toggle(settingsMesssage+beforeSettingName+setting.object.displayName, Boolean(defaultIndex ? 0 : 1));
+            else if(setting.toggleType === ToggleTypes.Toggle) {
+                settingsForm.toggle(settingsMesssage+beforeSettingName+setting.displayName, Boolean(defaultIndex ? 0 : 1));
             }
             else {
                 console.error("Settings only support dropdowns and toggles at the moment");
@@ -108,17 +109,17 @@ function showSettingsForm(player) {
             first = false;
         }
         else {
-            if(setting.object.toggleType === ToggleTypes.Dropdown) {
-                settingsForm.dropdown(beforeSettingName+setting.object.displayName, options, defaultIndex);
+            if(setting.toggleType === ToggleTypes.Dropdown) {
+                settingsForm.dropdown(beforeSettingName+setting.displayName, options, defaultIndex);
             }
-            else if(setting.object.toggleType === ToggleTypes.Toggle) {
-                settingsForm.toggle(beforeSettingName+setting.object.displayName, Boolean(defaultIndex ? 0 : 1));
+            else if(setting.toggleType === ToggleTypes.Toggle) {
+                settingsForm.toggle(beforeSettingName+setting.displayName, Boolean(defaultIndex ? 0 : 1));
             }
             else {
                 console.error("Settings only support dropdowns and toggles at the moment");
             }
         }
-        console.log(`${setting.name} is ${setting.object.active}`);
+        console.log(`${setting.type} is ${setting.active}`);
     }
 
 
@@ -128,7 +129,7 @@ function showSettingsForm(player) {
         if (response.formValues) {
             let formValues = response.formValues.slice(1); //delete the first one, which is a ref to the download link          
             let index = 0;
-            for(const setting of settingsList) {
+            for(const [, setting] of TypeUtil.getIterable(SettingsList)) {
                 if(setting === undefined) { index++; continue; }
                 let value;
                 const formValue = formValues[index];
@@ -138,7 +139,7 @@ function showSettingsForm(player) {
                      * if available,     0 = active, 1 = inactive
                      * if not available, 0 = inactive
                      */
-                    if(setting.object instanceof RestrictedSettings && !setting.object.availabilityTest()) {
+                    if(setting instanceof RestrictedSettings && !setting.availabilityTest()) {
                         value = 0;
                     }
                     else {
@@ -153,20 +154,20 @@ function showSettingsForm(player) {
                     continue;
                 }
 
-                SettingsUtil.setSettingsValue(setting.object, setting.name, value);
+                SettingsUtil.setSettingsValue(setting, setting.type, value);
                 let activityText = "§r§f[§cInactive§r§f]";
                 //if(setting.object instanceof RestrictedSettings && setting.object.availabilityTest()) {
-                    if(!setting.object.onlyActive) {
+                    if(!setting.onlyActive) {
                         activityText = value == 1 ? "§r§f[§aActive§r§f]" : "§r§f[§cInactive§r§f]";
                     }
                     else {
                         activityText = "§r§f[§aActive§r§f]";
                     }
                 //}
-                if(setting.object instanceof RestrictedSettings && !setting.object.availabilityTest()) {
-                    downloadPrompt += `§l·§r ${setting.object.restrictedMessageText}\n`;
+                if(setting instanceof RestrictedSettings && !setting.availabilityTest()) {
+                    downloadPrompt += `§l·§r ${setting.restrictedMessageText}\n`;
                 }
-                player.sendMessage(`§l·§r ${setting.object.displayName}: ${activityText}`);
+                player.sendMessage(`§l·§r ${setting.displayName}: ${activityText}`);
                 index++;
             }
         }

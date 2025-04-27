@@ -7,13 +7,28 @@ import { CraftingUtil, SoundsUtil, StringUtil } from "../Utilities.js";
 import * as Enums from "../1Enums/CraftingStateEnums.js"
 
 
-/** @type {Record<string, Def.CraftingState>} */
+/** @type {Record<typeof Enums.CraftingStateTypes[keyof typeof Enums.CraftingStateTypes], Def.CraftingState>} */
 const CraftingStatesList = {
-    SelectorCraftingState:   new Def.CraftingState(Enums.CraftingMessageTypes.Selector, showSelectorForm),
-    FirearmCraftingState:    new Def.CraftingState(Enums.CraftingMessageTypes.Firearm, showFirearmsForm),
-    MagazineCraftingState:   new Def.CraftingState(Enums.CraftingMessageTypes.Magazine, showMagazinesForm),
-    AmmunitionCraftingState: new Def.CraftingState(Enums.CraftingMessageTypes.Ammunition, showAmmunitionForm),
-    ConfirmCraftingState:    new Def.CraftingState(Enums.CraftingMessageTypes.Confirm, showConfirmationForm),
+    selectorCraftingState: new Def.CraftingState({
+        messageType: Enums.CraftingMessageTypes.Selector,
+        showForm:    showSelectorForm
+    }),
+    firearmCraftingState: new Def.CraftingState({
+        messageType: Enums.CraftingMessageTypes.Firearm,
+        showForm:    showFirearmsForm
+    }),
+    magazineCraftingState: new Def.CraftingState({
+        messageType: Enums.CraftingMessageTypes.Magazine,
+        showForm:    showMagazinesForm
+    }),
+    ammunitionCraftingState: new Def.CraftingState({
+        messageType: Enums.CraftingMessageTypes.Ammunition,
+        showForm:    showAmmunitionForm
+    }),
+    confirmCraftingState: new Def.CraftingState({
+        messageType: Enums.CraftingMessageTypes.Confirm,
+        showForm:    showConfirmationForm
+    }),
 }
 
 
@@ -77,12 +92,12 @@ for(const object of AmmunitionCraftingObjects) {
  * @returns {Promise<ui.ActionFormResponse>}
  */
 function showSelectorForm(player) {
-    if(CraftingStatesList.SelectorCraftingState.onEnter) {
-        CraftingStatesList.SelectorCraftingState.onEnter(player);
+    if(CraftingStatesList.selectorCraftingState.onEnter) {
+        CraftingStatesList.selectorCraftingState.onEnter(player);
     }
     return selectorForm.show(player).then(response => {
-        if(CraftingStatesList.SelectorCraftingState.onExit) {
-            CraftingStatesList.SelectorCraftingState.onExit(player);
+        if(CraftingStatesList.selectorCraftingState.onExit) {
+            CraftingStatesList.selectorCraftingState.onExit(player);
         }
         return response;
     });
@@ -95,12 +110,12 @@ function showSelectorForm(player) {
  * @returns {Promise<ui.ActionFormResponse>}
  */
 function showFirearmsForm(player) {
-    if(CraftingStatesList.FirearmCraftingState.onEnter) {
-        CraftingStatesList.FirearmCraftingState.onEnter(player);
+    if(CraftingStatesList.firearmCraftingState.onEnter) {
+        CraftingStatesList.firearmCraftingState.onEnter(player);
     }
     return firearmForm.show(player).then(response => {
-        if(CraftingStatesList.FirearmCraftingState.onExit) {
-            CraftingStatesList.FirearmCraftingState.onExit(player);
+        if(CraftingStatesList.firearmCraftingState.onExit) {
+            CraftingStatesList.firearmCraftingState.onExit(player);
         }
         return response;
     });
@@ -113,12 +128,12 @@ function showFirearmsForm(player) {
  * @returns {Promise<ui.ActionFormResponse>}
  */
 function showMagazinesForm(player) {
-    if(CraftingStatesList.MagazineCraftingState.onEnter) {
-        CraftingStatesList.MagazineCraftingState.onEnter(player);
+    if(CraftingStatesList.magazineCraftingState.onEnter) {
+        CraftingStatesList.magazineCraftingState.onEnter(player);
     }
     return magazineForm.show(player).then(response => {
-        if(CraftingStatesList.MagazineCraftingState.onExit) {
-            CraftingStatesList.MagazineCraftingState.onExit(player);
+        if(CraftingStatesList.magazineCraftingState.onExit) {
+            CraftingStatesList.magazineCraftingState.onExit(player);
         }
         return response;
     });
@@ -130,12 +145,12 @@ function showMagazinesForm(player) {
  * @returns {Promise<ui.ActionFormResponse>}
  */
 function showAmmunitionForm(player) {
-    if(CraftingStatesList.AmmunitionCraftingState.onEnter) {
-        CraftingStatesList.AmmunitionCraftingState.onEnter(player);
+    if(CraftingStatesList.ammunitionCraftingState.onEnter) {
+        CraftingStatesList.ammunitionCraftingState.onEnter(player);
     }
     return ammunitionForm.show(player).then(response => {
-        if(CraftingStatesList.AmmunitionCraftingState.onExit) {
-            CraftingStatesList.AmmunitionCraftingState.onExit(player);
+        if(CraftingStatesList.ammunitionCraftingState.onExit) {
+            CraftingStatesList.ammunitionCraftingState.onExit(player);
         }
         return response;
     });
@@ -164,8 +179,8 @@ function showAmmunitionForm(player) {
  * @returns {Promise<ui.ActionFormResponse>}
  */
 function showConfirmationForm(player, crafingObject) {
-    if(CraftingStatesList.ConfirmCraftingState.onEnter) {
-        CraftingStatesList.ConfirmCraftingState.onEnter(player);
+    if(CraftingStatesList.confirmCraftingState.onEnter) {
+        CraftingStatesList.confirmCraftingState.onEnter(player);
     }
 
     const confirmTitle = `§jCraft ${crafingObject?.name}:`;
@@ -213,8 +228,8 @@ function showConfirmationForm(player, crafingObject) {
 
 
     return confirmForm.show(player).then(response => {
-        if(CraftingStatesList.ConfirmCraftingState.onExit) {
-            CraftingStatesList.ConfirmCraftingState.onExit(player);
+        if(CraftingStatesList.confirmCraftingState.onExit) {
+            CraftingStatesList.confirmCraftingState.onExit(player);
         }
         if(!response.canceled) {
             if(obj.canCraft && CraftingUtil.craftItem(player, crafingObject)) {

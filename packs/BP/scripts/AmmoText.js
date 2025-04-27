@@ -20,8 +20,7 @@ function renewAmmoCount(player) {
 
     const ammoCount = FirearmUtil.getWorldAmmoUsingId(firearmId);
     const isMagazineEmpty = Boolean(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty));
-    //const magazineTypeId     = String(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId));
-    if(ammoCount === null || isMagazineEmpty === undefined) { return; }
+    if(ammoCount === undefined || isMagazineEmpty === undefined) { return; }
     if(isMagazineEmpty) {
         player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§eOut of Ammo§e§l>`);
     }

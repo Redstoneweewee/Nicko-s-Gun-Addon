@@ -1,6 +1,9 @@
+import * as Enums from "../1Enums/SettingsEnums"
+
 class Settings {
     /**
      * @param {{
+     * type:          typeof Enums.SettingsTypes[keyof typeof Enums.SettingsTypes],
      * displayName:   string,
      * settingsType:  string,
      * toggleType:    string,
@@ -10,6 +13,7 @@ class Settings {
      * }} def
      */
     constructor(def) {
+        this.type          = def.type;
         this.displayName   = def.displayName;
         this.settingsType  = def.settingsType;
         this.toggleType    = def.toggleType;
