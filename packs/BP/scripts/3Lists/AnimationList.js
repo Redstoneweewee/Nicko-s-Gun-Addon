@@ -366,7 +366,7 @@ const StaticReloadAnimations = {
             ]
         }),
         agmReload: new Def.StaticAnimation({
-            duration: 15*6, //in ticks
+            duration: 15, //in ticks
             type:     Enums.AnimationTypes.ReloadBoth,
             animationSounds: [
                 {

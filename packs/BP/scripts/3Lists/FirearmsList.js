@@ -1060,7 +1060,7 @@ const FirearmObjects = {
         animationAttributes: [
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.shotgun.shotgunReload,
-                scaleDurationToValue: 132
+                scaleDurationToValue: 15
             }),
             new NormalAnimation({
                 staticAnimation: StaticShootAnimations.shotgun.benelliShoot
@@ -1116,7 +1116,7 @@ const FirearmObjects = {
         animationAttributes: [
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.shotgun.agmReload,
-                scaleDurationToValue: 120
+                scaleDurationToValue: 20
             }),
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.shotgun.agmReloadOpenCock,
@@ -1183,7 +1183,7 @@ const FirearmObjects = {
         animationAttributes: [
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.shotgun.strikerReload,
-                scaleDurationToValue: 200
+                scaleDurationToValue: 13
             }),
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.shotgun.strikerReloadOpenPort,

@@ -122,7 +122,7 @@ function tryManualReload(player) {
     }
     //the only time it goes through to manual reload
     //console.log("maual reload");
-    handleBeforeReload(player, ReloadTypes.ManualSwap, oldMagazineItemStack, newMagazineItemStack);
+    handleBeforeReload(1, player, ReloadTypes.ManualSwap, oldMagazineItemStack, newMagazineItemStack);
 }
 
 /**
@@ -165,7 +165,7 @@ function tryAutomaticReload(player, reloadType) {
                 newMagazineItemStack = FirearmUtil.getMagazineObjectFromItemStackBoth(oldMagazineItemStack)?.itemStack;
             }
             if(newMagazineItemStack !== undefined) {
-                handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazineItemStack);
+                handleBeforeReload(1, player, reloadType, oldMagazineItemStack, newMagazineItemStack);
             }
             return;
         }
@@ -176,7 +176,7 @@ function tryAutomaticReload(player, reloadType) {
                 console.log("could not find any usable magazines."); 
                 return; 
             }
-            handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazineItemStack);
+            handleBeforeReload(1, player, reloadType, oldMagazineItemStack, newMagazineItemStack);
         }
     }
 
@@ -185,7 +185,7 @@ function tryAutomaticReload(player, reloadType) {
             if(player.getGameMode() === GameMode.creative) {
                 const newMagazineItemStack = new ItemStack(oldMagazineItemStack.typeId, oldMagazineItemStack.amount);
                 newMagazineItemStack.amount = firearmObject.magazineAttribute.maxMagazineItemStackAmount;
-                handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazineItemStack);
+                handleBeforeReload(1, player, reloadType, oldMagazineItemStack, newMagazineItemStack);
             }
             else {
                 let additionalAmmoCount = FirearmUtil.tryGetBestStackMagazineForReload(player, oldMagazineItemStack)?.amount;
@@ -195,7 +195,7 @@ function tryAutomaticReload(player, reloadType) {
                 const newMagazineItemStack = new ItemStack(oldMagazineItemStack.typeId, oldMagazineItemStack.amount + addAmount);
                 const removeItemStack = new ItemStack(oldMagazineItemStack.typeId, addAmount);
                 ItemUtil.removeItemStackFromInventory(player, removeItemStack);
-                handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazineItemStack);
+                handleBeforeReload(1, player, reloadType, oldMagazineItemStack, newMagazineItemStack);
             }
         }
         else {
@@ -206,11 +206,11 @@ function tryAutomaticReload(player, reloadType) {
                 let newMagazineItemStack;
                 if(bestMagazineTypeIdAndAmount === undefined) {
                     newMagazineItemStack = new ItemStack(firearmObject.magazineAttribute.defaultMagazine.itemTypeId, firearmObject.magazineAttribute.maxMagazineItemStackAmount);
-                    handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazineItemStack);
+                    handleBeforeReload(1, player, reloadType, oldMagazineItemStack, newMagazineItemStack);
                 }
                 else {
                     newMagazineItemStack = new ItemStack(bestMagazineTypeIdAndAmount.magazineTypeId, firearmObject.magazineAttribute.maxMagazineItemStackAmount);
-                    handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazineItemStack);
+                    handleBeforeReload(1, player, reloadType, oldMagazineItemStack, newMagazineItemStack);
                 }
             }
             else {
@@ -220,7 +220,7 @@ function tryAutomaticReload(player, reloadType) {
                 const newMagazineItemStack = new ItemStack(bestMagazineTypeIdAndAmount.magazineTypeId, addAmount);
                 const removeItemStack = new ItemStack(bestMagazineTypeIdAndAmount.magazineTypeId, addAmount);
                 ItemUtil.removeItemStackFromInventory(player, removeItemStack);
-                handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazineItemStack);
+                handleBeforeReload(1, player, reloadType, oldMagazineItemStack, newMagazineItemStack);
             }
         }
     }
@@ -230,12 +230,13 @@ function tryAutomaticReload(player, reloadType) {
 
 /**
  * 
+ * @param {number} iteration 
  * @param {Player} player 
  * @param {typeof ReloadTypes[keyof typeof ReloadTypes]} reloadType 
  * @param {ItemStack|undefined} oldMagazineItemStack 
  * @param {ItemStack} newMagazineItemStack 
  */
-function handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazineItemStack) {
+function handleBeforeReload(iteration, player, reloadType, oldMagazineItemStack, newMagazineItemStack) {
     const oldIsEmpty = oldMagazineItemStack === undefined ? true : FirearmUtil.isMagazineItemStackEmpty(oldMagazineItemStack);
     const newIsEmpty = FirearmUtil.isMagazineItemStackEmpty(newMagazineItemStack);
     const newMagazineTypeId = FirearmUtil.getMagazineObjectFromItemStackBoth(newMagazineItemStack)?.itemTypeId;
@@ -289,7 +290,7 @@ function handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazin
                 }
             }
         }
-        handleReloadAnimation(player, newMagazineTypeId, oldAmmoCount, newAmmoCount, reloadType, oldMagazineItemStack, newMagazineItemStack);
+        handleReloadAnimation(iteration, player, newMagazineTypeId, oldAmmoCount, newAmmoCount, reloadType, oldMagazineItemStack, newMagazineItemStack);
 
     }
     else if(magazineType === MagazineTypes.StackBased) {
@@ -317,12 +318,12 @@ function handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazin
         if(oldMagazineItemStack === undefined) {
             const actualNewMagazineItemStack = new ItemStack(newMagazineItemStack.typeId);
             actualNewMagazineItemStack.amount = 1;
-            handleReloadAnimation(player, newMagazineTypeId, oldAmmoCount, newAmmoCount, reloadType, oldMagazineItemStack, actualNewMagazineItemStack, newMagazineItemStack);
+            handleReloadAnimation(iteration, player, newMagazineTypeId, oldAmmoCount, newAmmoCount, reloadType, oldMagazineItemStack, actualNewMagazineItemStack, newMagazineItemStack);
         }
         else {
             const actualNewMagazineItemStack = new ItemStack(oldMagazineItemStack.typeId, oldMagazineItemStack.amount);
             actualNewMagazineItemStack.amount += 1;
-            handleReloadAnimation(player, newMagazineTypeId, oldAmmoCount, newAmmoCount, reloadType, oldMagazineItemStack, actualNewMagazineItemStack, newMagazineItemStack);
+            handleReloadAnimation(iteration, player, newMagazineTypeId, oldAmmoCount, newAmmoCount, reloadType, oldMagazineItemStack, actualNewMagazineItemStack, newMagazineItemStack);
         }
     }
 }
@@ -333,6 +334,7 @@ function handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazin
 
 /**
  * 
+ * @param {number} iteration 
  * @param {Player} player 
  * @param {string} newMagazineTypeId
  * @param {Number} oldAmmoCount
@@ -342,7 +344,7 @@ function handleBeforeReload(player, reloadType, oldMagazineItemStack, newMagazin
  * @param {ItemStack} newMagazineItemStack
  * @param {ItemStack} [finalMagazineItemStack] - used only for stack-based reloading to iterate through until we get to the desire amount of ammo
  */
-function handleReloadAnimation(player, newMagazineTypeId, oldAmmoCount, newAmmoCount, reloadType, oldMagazineItemStack, newMagazineItemStack, finalMagazineItemStack) {
+function handleReloadAnimation(iteration, player, newMagazineTypeId, oldAmmoCount, newAmmoCount, reloadType, oldMagazineItemStack, newMagazineItemStack, finalMagazineItemStack) {
     //console.log(`player: ${player.name}, newTypeId: ${newMagazineTypeId}, oldAmmo: ${oldAmmoCount}, newAmmo: ${newAmmoCount}, oldItem: ${oldMagazineItemStack?.typeId}, newItem: ${newMagazineItemStack.typeId}`);
     const firearmItemStack = ItemUtil.getSelectedItemStack(player);
     const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
@@ -364,8 +366,11 @@ function handleReloadAnimation(player, newMagazineTypeId, oldAmmoCount, newAmmoC
     //        return;
     //    }
     //}
+    console.log(`iteration: ${iteration}`);
     if(firearmObject instanceof Gun) {
-        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload) === true) {
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload) === true && 
+        (magazineObject.magazineType === MagazineTypes.DurabilityBased || 
+         magazineObject.magazineType === MagazineTypes.StackBased && iteration === 1)) {
             player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
             AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
 
@@ -463,7 +468,7 @@ function handleReloadAnimation(player, newMagazineTypeId, oldAmmoCount, newAmmoC
     const startingTick = system.currentTick;
     const newMainLoopId = IdUtil.getRandomId();
     LoopUtil.startMainLoop(newMainLoopId, function() { 
-        return reloading(newMainLoopId, player, 
+        return reloading(iteration, newMainLoopId, player, 
                         firearmObject, reloadTimeInTicks, magazineReloadTime,
                         oldMagazineItemStack, newMagazineItemStack, newMagazineTypeId, oldAmmoCount, newAmmoCount, 
                         startingTick, soundTimeoutIdObjects, reloadType, finalMagazineItemStack); 
@@ -472,6 +477,7 @@ function handleReloadAnimation(player, newMagazineTypeId, oldAmmoCount, newAmmoC
 
 /**
  * 
+ * @param {Number} iteration 
  * @param {Number} mainLoopId 
  * @param {Player} player 
  * @param {Firearm} firearm
@@ -487,7 +493,7 @@ function handleReloadAnimation(player, newMagazineTypeId, oldAmmoCount, newAmmoC
  * @param {typeof ReloadTypes[keyof typeof ReloadTypes]} reloadType
  * @param {ItemStack} [finalMagazineItemStack]
  */
-function reloading(mainLoopId, player, firearm, reloadTimeInTicks, magazineReloadTime, oldMagazineItemStack, newMagazineItemStack, newMagazineTypeId, oldAmmoCount, newAmmoCount, startingTick, soundTimeoutIdObjects, reloadType, finalMagazineItemStack) {
+function reloading(iteration, mainLoopId, player, firearm, reloadTimeInTicks, magazineReloadTime, oldMagazineItemStack, newMagazineItemStack, newMagazineTypeId, oldAmmoCount, newAmmoCount, startingTick, soundTimeoutIdObjects, reloadType, finalMagazineItemStack) {
     if(tryCancelReload(mainLoopId, player, firearm, oldMagazineItemStack, newMagazineItemStack, oldAmmoCount, soundTimeoutIdObjects, reloadType, finalMagazineItemStack)) { return; }
     
     const currentReloadTime = system.currentTick - startingTick;
@@ -495,7 +501,7 @@ function reloading(mainLoopId, player, firearm, reloadTimeInTicks, magazineReloa
     player.onScreenDisplay.setActionBar(`Reloading: §l§e<§r§7Reload: §a[${Math.round(remainingReloadTime/2)/10}]§e§l>`);
     
     if(remainingReloadTime <= 0) {
-        finishedReloading(mainLoopId, player, firearm, oldMagazineItemStack, newMagazineItemStack, newMagazineTypeId, oldAmmoCount, newAmmoCount, soundTimeoutIdObjects, reloadType, finalMagazineItemStack);
+        finishedReloading(iteration, mainLoopId, player, firearm, oldMagazineItemStack, newMagazineItemStack, newMagazineTypeId, oldAmmoCount, newAmmoCount, soundTimeoutIdObjects, reloadType, finalMagazineItemStack);
     }
     else if((magazineReloadTime - currentReloadTime) <= 0) {
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_start_cock, true);
@@ -508,6 +514,7 @@ function reloading(mainLoopId, player, firearm, reloadTimeInTicks, magazineReloa
 
 /**
  * 
+ * @param {number} iteration 
  * @param {Number|null} mainLoopId 
  * @param {Player} player 
  * @param {Firearm} firearm
@@ -520,7 +527,7 @@ function reloading(mainLoopId, player, firearm, reloadTimeInTicks, magazineReloa
  * @param {typeof ReloadTypes[keyof typeof ReloadTypes]} reloadType 
  * @param {ItemStack} [finalMagazineItemStack]
  */
-function finishedReloading(mainLoopId, player, firearm, oldMagazineItemStack, newMagazineItemStack, newMagazineTypeId, oldAmmoCount, newAmmoCount, soundTimeoutIdObjects, reloadType, finalMagazineItemStack) {
+function finishedReloading(iteration, mainLoopId, player, firearm, oldMagazineItemStack, newMagazineItemStack, newMagazineTypeId, oldAmmoCount, newAmmoCount, soundTimeoutIdObjects, reloadType, finalMagazineItemStack) {
     player.onScreenDisplay.setActionBar(`Reloading: §l§e<§r§7Reload: §aFinished§e§l>`);
     const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
     if(firearmContainerSlot === null) {
@@ -567,7 +574,7 @@ function finishedReloading(mainLoopId, player, firearm, oldMagazineItemStack, ne
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_start_cock);
 
     if(magazineType === MagazineTypes.StackBased && finalMagazineItemStack !== undefined && newMagazineItemStack.amount < finalMagazineItemStack.amount) {
-        handleBeforeReload(player, reloadType, newMagazineItemStack, finalMagazineItemStack);
+        handleBeforeReload(++iteration, player, reloadType, newMagazineItemStack, finalMagazineItemStack);
     }
 }
 

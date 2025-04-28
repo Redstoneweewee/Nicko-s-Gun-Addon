@@ -110,6 +110,16 @@
       ]
     },
 
+    "bullet": {
+      "textures": [
+        "textures/entity/ammunition/bullet_texture"
+      ]
+    },
+    "shotgun_shell": {
+      "textures": [
+        "textures/entity/ammunition/shotgun_shell_texture"
+      ]
+    },
 
     "rifle_magazine_30": {
       "textures": [
