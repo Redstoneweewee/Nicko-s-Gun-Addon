@@ -3,7 +3,7 @@
     "header": {
         "description": "Nicko's Gun Addon (Development Pack)",
         "name": "Nicko's Gun Addon [BP] (Development Pack)",
-		"uuid": "ed2f29ca-7ac8-4908-a9ef-61f4fc0944ff",
+		"uuid": "7b7ef19e-d5e4-4ef1-a5e8-cce7ad3f2a38",
         "version": [ 1, 0, 0 ],
         "min_engine_version": [ 1, 19, 70 ]
     },
@@ -11,14 +11,14 @@
 		{
 			"type": "script",
 			"language": "javascript",
-			"uuid": "f4b503e7-bd0b-4371-a783-cf31b011621e",
+			"uuid": "af5631f6-1868-4338-b004-622226ca0d8d",
 			"entry": "scripts/Main.js",
 			"version": [ 1, 0, 0 ]
 		}
 	],
 	"dependencies": [
 		{
-			"uuid": "4649fa0a-981d-4c15-90df-69c3f2485545",
+			"uuid": "540125a8-5ade-4ac6-aacb-6ac871b93e9e",
 			"version": [ 1, 0, 0 ]
 		},
 		{

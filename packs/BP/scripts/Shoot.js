@@ -14,6 +14,7 @@ import { excludedFamilies, excludedGameModes, excludedTypes } from './1Enums/Hit
 import { ReloadTypes } from './1Enums/ReloadEnums.js';
 import { SettingsTypes } from './1Enums/SettingsEnums.js';
 import { SettingsUtil } from './UtilitiesInit.js';
+import { MathUtils } from './Math/MathUtils.js';
 //import { Mat3, RandVec } from '@madlad3718/mcveclib';
 
 
@@ -66,11 +67,14 @@ function shootGun(player, gun) {
     //console.log("shooting a gun weapon.");
     let anyHits = false;
     let anyHeadshots = false;
+    let totalDamage = 0;
     for(let i=0; i<gun.bulletsPerShot; i++) {
         const obj = doShootRayCasts(player, gun);
-        if(obj[0]) { anyHits = true; }
-        if(obj[1]) { anyHeadshots = true; }
+        if(obj.anyHits) { anyHits = true; }
+        if(obj.anyHeadshots) { anyHeadshots = true; }
+        totalDamage += obj.damage;
     }
+    console.log(`totalDamage: ${totalDamage}`);
     playHitSounds(player, anyHits, anyHeadshots);
 
     const newAmmoCount = FirearmUtil.tryConsumeFirearmAmmo(player, gun, 1);
@@ -101,7 +105,7 @@ function shootExplosive(player, explosive) {
  * 
  * @param {Player} player 
  * @param {FirearmDef.Gun} gun 
- * @returns {Array<boolean, boolean>}
+ * @returns {{anyHits: boolean, anyHeadshots: boolean, damage: number}}
  */
 function doShootRayCasts(player, gun) {
 
@@ -150,6 +154,7 @@ function doShootRayCasts(player, gun) {
     let numHit = 0;
     let anyHits = false;
     let anyHeadshots = false;
+    let damage = 0;
     entityRayCast.forEach(rayCastHit => {
         if(numHit >= gun.pierce) { return; }
         const target = rayCastHit.entity;
@@ -163,11 +168,14 @@ function doShootRayCasts(player, gun) {
         hitBlock = false;
         hitPosition = new Vector3(headLocation.x, headLocation.y, headLocation.z).add(new Vector3(shootDirection.x, shootDirection.y, shootDirection.z).multiplyScalar(rayCastHit.distance));
         const isHeadshotVar = isHeadshot(new Vector3(hitPosition.x, hitPosition.y, hitPosition.z), target, new Vector3(target.getHeadLocation().x, target.getHeadLocation().y, target.getHeadLocation().z));
+
+        damage = calculateDamage(rayCastHit.distance, gun)/gun.bulletsPerShot;
+
         if(isHeadshotVar) { 
-            DamageUtil.dealDamageWithMultiplier(target, gun.headshotBulletDamage); 
-            anyHeadshots = true;
+            damage *= gun.headshotMultiplier;
+            anyHeadshots = true; 
         }
-        else { DamageUtil.dealDamageWithMultiplier(target, gun.normalBulletDamage); }
+        DamageUtil.dealDamageNoMultiplier(target, damage); 
         DamageUtil.dealKnockbackUsingGun(player, target, gun, true);
         drawHitEntityParticle(player, shootDirection, hitPosition, isHeadshotVar);
         numHit++;
@@ -190,8 +198,25 @@ function doShootRayCasts(player, gun) {
         }
     }
 
-    return [anyHits, anyHeadshots];
+    return {anyHits, anyHeadshots, damage};
 }
+/**
+ * 
+ * @param {number} distance 
+ * @param {FirearmDef.Gun} gunObject 
+ * @returns {number}
+ */
+function calculateDamage(distance, gunObject) {
+    
+    if(distance >= gunObject.damageDropoff.maxDropOffRange) {
+        return gunObject.damageDropoff.minDamage;
+    }
+    else if(distance >= gunObject.damageDropoff.minDropOffRange) {
+        return Number(MathUtils.mapLinear(distance, gunObject.damageDropoff.minDropOffRange, gunObject.damageDropoff.maxDropOffRange, gunObject.damageDropoff.maxDamage, gunObject.damageDropoff.minDamage));
+    }
+    return gunObject.damageDropoff.maxDamage;
+}
+
 
 /**
  * 

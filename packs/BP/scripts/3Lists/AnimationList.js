@@ -7,34 +7,41 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  * }} SniperReloadAnimations
  * 
  * @typedef {{
- *   reloadSwapLight: Def.StaticAnimation,
- *   reloadSwapMedium: Def.StaticAnimation,
- *   reloadSwapHeavy: Def.StaticAnimation,
- *   reloadSwapPubg: Def.StaticAnimation,
- *   reloadNoSwapLight: Def.StaticAnimation,
- *   reloadNoSwapMedium: Def.StaticAnimation,
- *   reloadNoSwapHeavy: Def.StaticAnimation,
- *   reloadNoSwapPubg: Def.StaticAnimation,
- *   reloadCockLight: Def.StaticAnimation,
- *   reloadCockHeavy: Def.StaticAnimation,
- *   reloadCockPubg: Def.StaticAnimation
+ * reloadSwapLight: Def.StaticAnimation,
+ * reloadSwapMedium: Def.StaticAnimation,
+ * reloadSwapHeavy: Def.StaticAnimation,
+ * reloadSwapPubg: Def.StaticAnimation,
+ * reloadNoSwapLight: Def.StaticAnimation,
+ * reloadNoSwapMedium: Def.StaticAnimation,
+ * reloadNoSwapHeavy: Def.StaticAnimation,
+ * reloadNoSwapPubg: Def.StaticAnimation,
+ * reloadCockLight: Def.StaticAnimation,
+ * reloadCockHeavy: Def.StaticAnimation,
+ * reloadCockPubg: Def.StaticAnimation
  * }} RifleReloadAnimations
  * 
  * @typedef {{
- *   p90ReloadSwap: Def.StaticAnimation,
- *   p90ReloadNoSwap: Def.StaticAnimation,
- *   p90ReloadCock: Def.StaticAnimation
+ * p90ReloadSwap: Def.StaticAnimation,
+ * p90ReloadNoSwap: Def.StaticAnimation,
+ * p90ReloadCock: Def.StaticAnimation
  * }} SmgReloadAnimations
  * 
  * @typedef {{
- *   reloadSwap: Def.StaticAnimation,
- *   reloadNoSwap: Def.StaticAnimation,
- *   reloadCock: Def.StaticAnimation
+ * reloadSwap: Def.StaticAnimation,
+ * reloadNoSwap: Def.StaticAnimation,
+ * magnumReload: Def.StaticAnimation,
+ * reloadCock: Def.StaticAnimation
  * }} PistolReloadAnimations
  * 
  * @typedef {{
- *   shotgunReload: Def.StaticAnimation,
- *   shotgunReloadCock: Def.StaticAnimation
+ * shotgunReload:          Def.StaticAnimation,
+ * agmReload:              Def.StaticAnimation,
+ * strikerReload:          Def.StaticAnimation,
+ * shotgunReloadCock:      Def.StaticAnimation,
+ * agmReloadCock:          Def.StaticAnimation,
+ * agmReloadOpenCock:      Def.StaticAnimation,
+ * strikerReloadOpenPort:  Def.StaticAnimation,
+ * strikerReloadClosePort: Def.StaticAnimation,
  * }} ShotgunReloadAnimations
  */
 
@@ -313,6 +320,22 @@ const StaticReloadAnimations = {
                 }
             ]
         }),
+        magnumReload: new Def.StaticAnimation({
+            duration: 51, //in ticks
+            type:     Enums.AnimationTypes.ReloadBoth,
+            animationSounds: [
+                {
+                    soundId: "firearm.pistol_reload_magazine_out",
+                    timeout: 16,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.pistol_reload_magazine_in",
+                    timeout: 23,
+                    soundRange: 40
+                }
+            ]
+        }),
         reloadCock: new Def.StaticAnimation({
             duration: 10, //in ticks
             type:     Enums.AnimationTypes.ReloadCock,
@@ -342,6 +365,28 @@ const StaticReloadAnimations = {
                 }
             ]
         }),
+        agmReload: new Def.StaticAnimation({
+            duration: 15*6, //in ticks
+            type:     Enums.AnimationTypes.ReloadBoth,
+            animationSounds: [
+                {
+                    soundId: "firearm.agm_reload_magazine_in",
+                    timeout: 10,
+                    soundRange: 40
+                }
+            ]
+        }),
+        strikerReload: new Def.StaticAnimation({
+            duration: 20, //in ticks
+            type:     Enums.AnimationTypes.ReloadBoth,
+            animationSounds: [
+                {
+                    soundId: "firearm.agm_reload_magazine_in",
+                    timeout: 9,
+                    soundRange: 40
+                }
+            ]
+        }),
         shotgunReloadCock: new Def.StaticAnimation({
             duration: 8, //in ticks
             type:     Enums.AnimationTypes.ReloadCock,
@@ -357,7 +402,61 @@ const StaticReloadAnimations = {
                     soundRange: 40
                 }
             ]
-        })
+        }),
+        agmReloadCock: new Def.StaticAnimation({
+            duration: 8, //in ticks
+            type:     Enums.AnimationTypes.ReloadCock,
+            animationSounds: [
+                {
+                    soundId: "firearm.agm_reload_cock_away",
+                    timeout: 4,
+                    soundRange: 40
+                }
+            ]
+        }),
+        agmReloadOpenCock: new Def.StaticAnimation({
+            duration: 8, //in ticks
+            type:     Enums.AnimationTypes.ReloadOpenCock,
+            animationSounds: [
+                {
+                    soundId: "firearm.agm_reload_slide_open",
+                    timeout: 3,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.agm_reload_cock_toward",
+                    timeout: 5,
+                    soundRange: 40
+                }
+            ]
+        }),
+        strikerReloadOpenPort: new Def.StaticAnimation({
+            duration: 6, //in ticks
+            type:     Enums.AnimationTypes.ReloadOpenCock,
+            animationSounds: [
+                {
+                    soundId: "firearm.agm_reload_slide_open",
+                    timeout: 5,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.agm_reload_cock_toward",
+                    timeout: 5,
+                    soundRange: 40
+                }
+            ]
+        }),
+        strikerReloadClosePort: new Def.StaticAnimation({
+            duration: 6, //in ticks
+            type:     Enums.AnimationTypes.ReloadCock,
+            animationSounds: [
+                {
+                    soundId: "firearm.agm_reload_cock_away",
+                    timeout: 4,
+                    soundRange: 40
+                }
+            ]
+        }),
     }
 }
 
@@ -365,36 +464,48 @@ const StaticReloadAnimations = {
 
 /**
  * @typedef {{
- *   ak47Shoot: Def.StaticAnimation,
- *   akmShoot: Def.StaticAnimation,
- *   m4a1Shoot: Def.StaticAnimation,
- *   ar15Shoot: Def.StaticAnimation,
- *   hk417Shoot: Def.StaticAnimation
+ * ak47Shoot: Def.StaticAnimation,
+ * akmShoot: Def.StaticAnimation,
+ * m4a1Shoot: Def.StaticAnimation,
+ * ar15Shoot: Def.StaticAnimation,
+ * hk417Shoot: Def.StaticAnimation,
+ * m4Shoot: Def.StaticAnimation
  * }} RifleShootAnimations
  * 
  * @typedef {{
- *   ump45Shoot: Def.StaticAnimation,
- *   p90Shoot: Def.StaticAnimation
+ * ump45Shoot: Def.StaticAnimation,
+ * p90Shoot: Def.StaticAnimation
+ * mp5Shoot: Def.StaticAnimation
  * }} SmgShootAnimations
  * 
  * @typedef {{
- *   mk13ShootWithAmmo: Def.StaticAnimation,
- *   mk13ShootOutOfAmmo: Def.StaticAnimation
+ * mk13ShootWithAmmo: Def.StaticAnimation,
+ * mk13ShootOutOfAmmo: Def.StaticAnimation
  * }} SniperShootAnimations
  * 
  * @typedef {{
- *   remington870ShootWithAmmo: Def.StaticAnimation,
- *   remington870ShootOutOfAmmo: Def.StaticAnimation
+ * remington870ShootWithAmmo: Def.StaticAnimation,
+ * remington870ShootOutOfAmmo: Def.StaticAnimation,
+ * agmShootWithAmmo: Def.StaticAnimation,
+ * agmShootOutOfAmmo: Def.StaticAnimation,
+ * benelliShoot: Def.StaticAnimation,
+ * strikerShoot: Def.StaticAnimation
  * }} ShotgunShootAnimations
  * 
  * @typedef {{
- *   desertEagleShootWithAmmo: Def.StaticAnimation,
- *   desertEagleShootOutOfAmmo: Def.StaticAnimation
+ * desertEagleShootWithAmmo: Def.StaticAnimation,
+ * desertEagleShootOutOfAmmo: Def.StaticAnimation,
+ * m92fShootWithAmmo: Def.StaticAnimation,
+ * m92fShootOutOfAmmo: Def.StaticAnimation,
+ * makarovShootWithAmmo: Def.StaticAnimation,
+ * makarovShootOutOfAmmo: Def.StaticAnimation,
+ * uspShootWithAmmo: Def.StaticAnimation,
+ * uspShootOutOfAmmo: Def.StaticAnimation
  * }} PistolShootAnimations
  * 
  * @typedef {{
- *   rpg7Shoot: Def.StaticAnimation,
- *   javelinShoot: Def.StaticAnimation
+ * rpg7Shoot: Def.StaticAnimation,
+ * javelinShoot: Def.StaticAnimation
  * }} OtherShootAnimations
  */
 
@@ -470,6 +581,18 @@ const StaticShootAnimations = {
                 }
             ],
             animationId: "animation.hk417_shoot"
+        }),
+        m4Shoot: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.Shoot,
+            animationSounds: [
+                {
+                    soundId: "firearm.ak47_shoot",
+                    timeout: 0,
+                    soundRange: 150
+                }
+            ],
+            animationId: "animation.m4_shoot"
         })
     },
     smg: {
@@ -496,6 +619,18 @@ const StaticShootAnimations = {
                 }
             ],
             animationId: "animation.p90_shoot"
+        }),
+        mp5Shoot: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.Shoot,
+            animationSounds: [
+                {
+                    soundId: "firearm.ak47_shoot",
+                    timeout: 0,
+                    soundRange: 150
+                }
+            ],
+            animationId: "animation.mp5_shoot"
         })
     },
     sniper: {
@@ -568,6 +703,64 @@ const StaticShootAnimations = {
                 }
             ],
             animationId: "animation.remington870_shoot_out_of_ammo"
+        }),
+        agmShootWithAmmo: new Def.StaticAnimation({
+            duration: 40, //in ticks
+            type:     Enums.AnimationTypes.ShootWithAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.agm_shoot",
+                    timeout: 0,
+                    soundRange: 150
+                },
+                {
+                    soundId: "firearm.agm_reload_cock_toward",
+                    timeout: 11,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.agm_reload_cock_away",
+                    timeout: 23,
+                    soundRange: 40
+                }
+            ],
+            animationId: "animation.agm_shoot_with_ammo"
+        }),
+        agmShootOutOfAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootOutOfAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.agm_shoot",
+                    timeout: 0,
+                    soundRange: 150
+                }
+            ],
+            animationId: "animation.agm_shoot_out_of_ammo"
+        }),
+        benelliShoot: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.Shoot,
+            animationSounds: [
+                {
+                    soundId: "firearm.ak47_shoot",
+                    timeout: 0,
+                    soundRange: 150
+                }
+            ],
+            animationId: "animation.benelli_shoot"
+        }),
+        strikerShoot: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.Shoot,
+            animationSounds: [
+                {
+                    soundId: "firearm.ak47_shoot",
+                    timeout: 0,
+                    soundRange: 150
+                }
+            ],
+            animationId: "animation.striker_shoot"
         })
     },
     pistol: {
@@ -594,6 +787,78 @@ const StaticShootAnimations = {
                 }
             ],
             animationId: "animation.desert_eagle_shoot_out_of_ammo"
+        }),
+        m92fShootWithAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootWithAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.desert_eagle_shoot",
+                    timeout: 0,
+                    soundRange: 168.75
+                }
+            ],
+            animationId: "animation.m92f_shoot_with_ammo"
+        }),
+        m92fShootOutOfAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootOutOfAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.desert_eagle_shoot",
+                    timeout: 0,
+                    soundRange: 168.75
+                }
+            ],
+            animationId: "animation.m92f_shoot_out_of_ammo"
+        }),
+        makarovShootWithAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootWithAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.desert_eagle_shoot",
+                    timeout: 0,
+                    soundRange: 168.75
+                }
+            ],
+            animationId: "animation.m92f_shoot_with_ammo"
+        }),
+        makarovShootOutOfAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootOutOfAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.desert_eagle_shoot",
+                    timeout: 0,
+                    soundRange: 168.75
+                }
+            ],
+            animationId: "animation.m92f_shoot_out_of_ammo"
+        }),
+        uspShootWithAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootWithAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.desert_eagle_shoot",
+                    timeout: 0,
+                    soundRange: 168.75
+                }
+            ],
+            animationId: "animation.usp_shoot_with_ammo"
+        }),
+        uspShootOutOfAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootOutOfAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.desert_eagle_shoot",
+                    timeout: 0,
+                    soundRange: 168.75
+                }
+            ],
+            animationId: "animation.usp_shoot_out_of_ammo"
         })
     },
     other: {
@@ -691,3 +956,4 @@ const StaticOtherAnimations = {
     })
 }
 export { StaticReloadAnimations, StaticShootAnimations, StaticOtherAnimations };
+

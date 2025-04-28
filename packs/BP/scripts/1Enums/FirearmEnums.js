@@ -2,29 +2,27 @@
 /** 
  * @enum {string}
  * @type {{
- * ak47:         "yes:ak47",
- * akm:          "yes:akm",
- * m4a1:         "yes:m4a1",
- * ar15:         "yes:ar15",
- * hk417:        "yes:hk417",
- * mk13:         "yes:mk13",
- * p90:          "yes:p90",
- * ump45:        "yes:ump45",
- * desertEagle:  "yes:desert_eagle",
- * remington870: "yes:remington870"
+ * usp:          "yes:usp",
+ * makarov:      "yes:makarov",
+ * magnum:       "yes:magnum",
+ * m92f:         "yes:m92f",
+ * mp5:          "yes:mp5",
+ * m4:           "yes:m4",
+ * benelli:      "yes:benelli",
+ * agm:          "yes:agm",
+ * striker:      "yes:striker"
  * }} 
  * */
 const FirearmTypeIds = {
-   ak47:         "yes:ak47",
-   akm:          "yes:akm",
-   m4a1:         "yes:m4a1",
-   ar15:         "yes:ar15",
-   hk417:        "yes:hk417",
-   mk13:         "yes:mk13",
-   p90:          "yes:p90",
-   ump45:        "yes:ump45",
-   desertEagle:  "yes:desert_eagle",
-   remington870: "yes:remington870"
+    usp:          "yes:usp",
+    makarov:      "yes:makarov",
+    magnum:       "yes:magnum",
+    m92f:         "yes:m92f",
+    mp5:          "yes:mp5",
+    m4:           "yes:m4",
+    benelli:      "yes:benelli",
+    agm:          "yes:agm",
+    striker:      "yes:striker"
 }
 
 

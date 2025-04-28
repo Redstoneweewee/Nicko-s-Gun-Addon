@@ -3,7 +3,7 @@
     "header": {
         "description": "Nicko's Gun Addon (Development Pack)",
         "name": "Nicko's Gun Addon [RP] (Development Pack)",
-		"uuid": "4649fa0a-981d-4c15-90df-69c3f2485545",
+		"uuid": "c2c66b17-6e8f-422f-afad-f567ae331a6b",
         "version": [ 1, 0, 0 ],
         "min_engine_version": [ 1, 19, 70 ]
     },
@@ -11,13 +11,13 @@
         {
             "description": "Made by Warden Creations",
             "type": "resources",
-			"uuid": "0fc15aa7-2c27-4267-a858-535257aae446",
+			"uuid": "bdb67e50-ff93-4613-aecb-ce81f85d5357",
             "version": [ 1, 0, 0 ]
         }
     ],
 	"dependencies": [
 		{
-			"uuid": "ed2f29ca-7ac8-4908-a9ef-61f4fc0944ff",
+			"uuid": "7b7ef19e-d5e4-4ef1-a5e8-cce7ad3f2a38",
             "version": [ 1, 0, 0 ]
 		}
 	]

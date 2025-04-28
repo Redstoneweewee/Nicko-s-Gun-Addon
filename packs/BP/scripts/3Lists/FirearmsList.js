@@ -15,6 +15,7 @@ import { TypeUtil } from '../UtilitiesInit.js';
  * @type {Record<keyof typeof Enums.FirearmTypeIds, Def.Firearm>}
  */
 const FirearmObjects = {
+    /*
     ak47: new Def.Gun({
         itemTypeId:             Enums.FirearmTypeIds.ak47,
         normalName:             "AK-47\n§7[Interact to shoot]",
@@ -651,8 +652,584 @@ const FirearmObjects = {
                 maxCamerashakeTime: 10
             })
         })
+    }),
+    */
+    usp: new Def.Gun({
+        itemTypeId:             "yes:usp",
+        normalName:             "USP\n§7[Right-Click/Hold to shoot]",
+        firingMode:             Enums.FiringModes.Semi,
+        firingRate:             0,
+        bulletsPerShot:         1,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 10,
+            maxDamage: 10,
+            minDropOffRange: 0,
+            maxDropOffRange: 0
+        }),
+        headshotMultiplier: 2,
+        pierce:                 1,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  500,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadSwap,
+                scaleDurationToValue: 30
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadNoSwap,
+                scaleDurationToValue: 15
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadCock,
+                scaleDurationToValue: 8
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.pistol.uspShootWithAmmo
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.pistol.uspShootOutOfAmmo
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Pistol,
+            usableAmmoClasses:      [BulletClasses.normal],
+            maxMagazineItemStackAmount: 1,
+            maxMagazineAmmoCount:   8,
+            defaultMagazine:        MagazineObjects.pistolMagazine8,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown: false
+        }),
+        minSpreadDegrees:       0.5,
+        maxSpreadDegrees:       1,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.04,
+                maxCamerashake:     0.06,
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
+    }),
+    makarov: new Def.Gun({
+        itemTypeId:                    "yes:makarov",
+        normalName:             "Makarov\n§7[Right-Click/Hold to shoot]",
+        firingMode:               Enums.FiringModes.Semi,
+        firingRate:               0,
+        bulletsPerShot:         1,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 10,
+            maxDamage: 10,
+            minDropOffRange: 0,
+            maxDropOffRange: 0
+        }),
+        headshotMultiplier: 2,
+        pierce:                 1,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  500,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadSwap,
+                scaleDurationToValue: 30
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadNoSwap,
+                scaleDurationToValue: 15
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadCock,
+                scaleDurationToValue: 8
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.pistol.makarovShootWithAmmo
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.pistol.makarovShootOutOfAmmo
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Pistol,
+            usableAmmoClasses:      [BulletClasses.normal],
+            maxMagazineItemStackAmount: 1,
+            maxMagazineAmmoCount:   8,
+            defaultMagazine:        MagazineObjects.pistolMagazine8,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown: false
+        }),
+        minSpreadDegrees:       0.5,
+        maxSpreadDegrees:       1,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.04,
+                maxCamerashake:     0.06,
+                minCamerashakeTime: 0.5,
+                maxCamerashakeTime: 0.5
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
+    }),
+    magnum: new Def.Gun({
+        itemTypeId:                    "yes:magnum",
+        normalName:             "Magnum Revolver\n§7[Right-Click/Hold to shoot]",
+        firingMode:               Enums.FiringModes.Semi,
+        firingRate:               0,
+        bulletsPerShot:         1,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 10,
+            maxDamage: 10,
+            minDropOffRange: 0,
+            maxDropOffRange: 0
+        }),
+        headshotMultiplier: 2,
+        pierce:                 1,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  500,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.magnumReload,
+                scaleDurationToValue: 80
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.pistol.desertEagleShootWithAmmo
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.pistol.desertEagleShootOutOfAmmo
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Pistol,
+            usableAmmoClasses:      [BulletClasses.normal],
+            maxMagazineItemStackAmount: 1,
+            maxMagazineAmmoCount:   8,
+            defaultMagazine:        MagazineObjects.pistolMagazine8,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown: false
+        }),
+        minSpreadDegrees:       0.5,
+        maxSpreadDegrees:       1,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.04,
+                maxCamerashake:     0.06,
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
+    }),
+    m92f: new Def.Gun({
+        itemTypeId:                    "yes:m92f",
+        normalName:             "M92F\n§7[Right-Click/Hold to shoot]",
+        firingMode:               Enums.FiringModes.Semi,
+        firingRate:               0,
+        bulletsPerShot:         1,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 10,
+            maxDamage: 10,
+            minDropOffRange: 0,
+            maxDropOffRange: 0
+        }),
+        headshotMultiplier: 2,
+        pierce:                 1,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  500,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadSwap,
+                scaleDurationToValue: 30
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadNoSwap,
+                scaleDurationToValue: 15
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadCock,
+                scaleDurationToValue: 8
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.pistol.m92fShootWithAmmo
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.pistol.m92fShootOutOfAmmo
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Pistol,
+            usableAmmoClasses:      [BulletClasses.normal],
+            maxMagazineItemStackAmount: 1,
+            maxMagazineAmmoCount:   8,
+            defaultMagazine:        MagazineObjects.pistolMagazine8,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown: false
+        }),
+        minSpreadDegrees:       0.5,
+        maxSpreadDegrees:       1,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.04,
+                maxCamerashake:     0.06,
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
+    }),
+    mp5: new Def.Gun({
+        itemTypeId:                    "yes:mp5",
+        normalName:             "MP-5\n§7[Right-Click/Hold to shoot]",
+        firingMode:               Enums.FiringModes.Auto,
+        firingRate:               300,  //ideally, use multiples of 60
+        bulletsPerShot:         1,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 10,
+            maxDamage: 10,
+            minDropOffRange: 0,
+            maxDropOffRange: 0
+        }),
+        headshotMultiplier: 2,
+        pierce:                 1,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  500,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.rifle.reloadSwapPubg,
+                scaleDurationToValue: 35
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.rifle.reloadNoSwapPubg,
+                scaleDurationToValue: 18
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.rifle.reloadCockPubg,
+                scaleDurationToValue: 8
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.smg.mp5Shoot})
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Smg,
+            usableAmmoClasses:      [BulletClasses.normal],
+            maxMagazineItemStackAmount: 1,
+            maxMagazineAmmoCount:   24,
+            defaultMagazine:        MagazineObjects.smgMagazine24,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           2,
+            speed:              13,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown: false
+        }),
+        minSpreadDegrees:       0.15,
+        maxSpreadDegrees:       1,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 8,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.018,
+                maxCamerashake:     0.05,
+                minCamerashakeTime: 0.08,
+                maxCamerashakeTime: 0.08
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
+    }),
+    m4: new Def.Gun({
+        itemTypeId:                    "yes:m4",
+        normalName:             "M4\n§7[Right-Click/Hold to shoot]",
+        firingMode:               Enums.FiringModes.Auto,
+        firingRate:               172,  //ideally, use multiples of 60
+        bulletsPerShot:         1,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 10,
+            maxDamage: 10,
+            minDropOffRange: 0,
+            maxDropOffRange: 0
+        }),
+        headshotMultiplier: 2,
+        pierce:                 1,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  500,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.rifle.reloadSwapPubg,
+                scaleDurationToValue: 35
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.rifle.reloadNoSwapPubg,
+                scaleDurationToValue: 18
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.rifle.reloadCockPubg,
+                scaleDurationToValue: 8
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.rifle.m4Shoot
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Rifle,
+            usableAmmoClasses:      [BulletClasses.normal],
+            maxMagazineItemStackAmount: 1,
+            maxMagazineAmmoCount:   30,
+            defaultMagazine:        MagazineObjects.rifleMagazine30,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           2,
+            speed:              13,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown: false
+        }),
+        minSpreadDegrees:       0.15,
+        maxSpreadDegrees:       1,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 8,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.018,
+                maxCamerashake:     0.05,
+                minCamerashakeTime: 0.08,
+                maxCamerashakeTime: 0.08
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
+    }),
+    benelli: new Def.Gun({
+        itemTypeId:                    "yes:benelli",
+        normalName:             "Benelli Shotgun\n§7[Right-Click/Hold to shoot]",
+        firingMode:               Enums.FiringModes.Semi,
+        firingRate:               0,
+        bulletsPerShot:         10,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 5,
+            maxDamage: 35,
+            minDropOffRange: 1.5,
+            maxDropOffRange: 10
+        }),
+        headshotMultiplier:     2,
+        pierce:                 4,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  50,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.shotgun.shotgunReload,
+                scaleDurationToValue: 132
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.shotgun.benelliShoot
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Shotgun,
+            usableAmmoClasses:      [BulletClasses.normal],
+            maxMagazineItemStackAmount: 10,
+            maxMagazineAmmoCount:   1,
+            defaultMagazine:        MagazineObjects.shotgunShell,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown:  false
+        }),
+        minSpreadDegrees:       2,
+        maxSpreadDegrees:       3,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.04,
+                maxCamerashake:     0.08,
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
+    }),
+    agm: new Def.Gun({
+        itemTypeId:                    "yes:agm",
+        normalName:             "AGM Shotgun\n§7[Right-Click/Hold to shoot]",
+        firingMode:               Enums.FiringModes.Semi,
+        firingRate:               0,
+        bulletsPerShot:         10,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 5,
+            maxDamage: 35,
+            minDropOffRange: 1.5,
+            maxDropOffRange: 10
+        }),
+        headshotMultiplier:     2,
+        pierce:                 4,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  50,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.shotgun.agmReload,
+                scaleDurationToValue: 120
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.shotgun.agmReloadOpenCock,
+                scaleDurationToValue: 12
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.shotgun.agmReloadCock,
+                scaleDurationToValue: 12
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.shotgun.agmShootWithAmmo
+            }), 
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.shotgun.agmShootOutOfAmmo
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Shotgun,
+            usableAmmoClasses:      [BulletClasses.normal],
+            maxMagazineItemStackAmount: 6,
+            maxMagazineAmmoCount:   1,
+            defaultMagazine:        MagazineObjects.shotgunShell,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown:  true
+        }),
+        minSpreadDegrees:       2,
+        maxSpreadDegrees:       3,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.04,
+                maxCamerashake:     0.08,
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
+    }),
+    striker: new Def.Gun({
+        itemTypeId:                    "yes:striker",
+        normalName:             "Striker Shotgun\n§7[Right-Click/Hold to shoot]",
+        firingMode:               Enums.FiringModes.Auto,
+        firingRate:               200,
+        bulletsPerShot:         1,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 5,
+            maxDamage: 35,
+            minDropOffRange: 1.5,
+            maxDropOffRange: 10
+        }),
+        headshotMultiplier:     2,
+        pierce:                 4,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  50,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.shotgun.strikerReload,
+                scaleDurationToValue: 200
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.shotgun.strikerReloadOpenPort,
+                scaleDurationToValue: 5
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.shotgun.strikerReloadClosePort,
+                scaleDurationToValue: 5
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.shotgun.strikerShoot
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Shotgun,
+            usableAmmoClasses:      [BulletClasses.normal],
+            maxMagazineItemStackAmount: 20,
+            maxMagazineAmmoCount:   1,
+            defaultMagazine:        MagazineObjects.shotgunShell,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown:  true
+        }),
+        minSpreadDegrees:       2,
+        maxSpreadDegrees:       3,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.04,
+                maxCamerashake:     0.08,
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
     })
 }
+
 
 
 for(const [type, typeId] of TypeUtil.getIterable(Enums.FirearmTypeIds)) {

@@ -40,7 +40,6 @@ import * as OffhandStackCheck from "./Detectors/OffhandStackDetection.js";
 import * as AimDetection from "./Detectors/AimDetection.js";
 import { renewAmmoCount } from "./AmmoText.js";
 import { FirearmUtil } from "./Utilities.js";
-import * as Mining from "./Blocks/Mining.js";
 
 //import { teleportHitboxEntity } from "./Hitbox.js";
 
@@ -72,10 +71,6 @@ system.runInterval(() => {
         Reload.tryManualReload(player);
         //LeftClickAbilityDetection.leftClickAbilityDetection(player);
 
-        
-        //---------- block & pickaxe destroy time ----------
-        Mining.miningRaycast(player);
-        //--------------------------------------------------
     });
 });
 

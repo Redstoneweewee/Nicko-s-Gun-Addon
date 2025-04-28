@@ -38,23 +38,23 @@ class Firearm {
 class Gun extends Firearm {
     /**
      * @param {Firearm & {
-     * bulletsPerShot:       number,
-     * normalBulletDamage:   number,
-     * headshotBulletDamage: number,
-     * pierce:               number,
-     * knockbackAmount:      import("@minecraft/server").Vector2,
-     * range:                number
+     * bulletsPerShot:     number,
+     * damageDropoff:      DamageDropoffAttribute,
+     * headshotMultiplier: number,
+     * pierce:             number,
+     * knockbackAmount:    import("@minecraft/server").Vector2,
+     * range:              number
      * }} def
      */
     constructor(def) {
         super(def);
 
-        this.bulletsPerShot       = def.bulletsPerShot;
-        this.normalBulletDamage   = def.normalBulletDamage;
-        this.headshotBulletDamage = def.headshotBulletDamage;
-        this.pierce               = def.pierce;
-        this.knockbackAmount      = def.knockbackAmount;
-        this.range                = def.range;
+        this.bulletsPerShot     = def.bulletsPerShot;
+        this.damageDropoff      = def.damageDropoff;
+        this.headshotMultiplier = def.headshotMultiplier;
+        this.pierce             = def.pierce;
+        this.knockbackAmount    = def.knockbackAmount;
+        this.range              = def.range;
     }
 }
 
@@ -160,6 +160,23 @@ class RecoilAttribute {
     }
 }
 
+class DamageDropoffAttribute {
+    /**
+     * @param {{
+     * minDamage:       number,
+     * maxDamage:       number,
+     * minDropOffRange: number,
+     * maxDropOffRange: number
+     * }} def
+     */
+    constructor(def) {
+        this.minDamage       = def.minDamage;
+        this.maxDamage       = def.maxDamage;
+        this.minDropOffRange = def.minDropOffRange;
+        this.maxDropOffRange = def.maxDropOffRange;
+    }
+}
+
 class ExplosiveDamage {
     /**
      * @param {{
@@ -175,4 +192,4 @@ class ExplosiveDamage {
     }
 }
 
-export { Firearm, Gun, GunWithAbility, Explosive, MagazineAttribute, ScopeAttribute, CamerashakeAttribute, RecoilAttribute, ExplosiveDamage };
+export { Firearm, Gun, GunWithAbility, Explosive, MagazineAttribute, ScopeAttribute, CamerashakeAttribute, RecoilAttribute, DamageDropoffAttribute, ExplosiveDamage };
