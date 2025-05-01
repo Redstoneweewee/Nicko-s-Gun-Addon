@@ -745,7 +745,10 @@ class FirearmUtil {
         const itemStack = ItemUtil.getSelectedItemStack(player);
         if(itemStack === undefined) { return false; }
         const newFirearmId = Number(itemStack.getDynamicProperty(Global.FirearmDynamicProperties.id));
-        if(Number.isNaN(newFirearmId)) { return false; }
+        /**
+         * if newFirearmId is NaN and not equal to oldFirearmId, then it is still a switch
+         * because it means the new firearm has just been initialized
+         */
         if(oldFirearmId !== newFirearmId) { return true; }
         return false;
     }

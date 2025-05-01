@@ -146,10 +146,7 @@ function tryResetOffhandItem(player) {
     const magazineTypeId = firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId);
     //console.log(FirearmUtil.getWorldAmmoUsingId(FirearmIdUtil.getFirearmId(firearmItemStack)));
     //if no magazine then don't delete offhand item
-    if(magazineTypeId === MagazineTypeIds.none) {
-        player.setDynamicProperty(Global.PlayerDynamicProperties.script.loadedOffhandMagazine, false);
-        return;
-    }
+    if(magazineTypeId === MagazineTypeIds.none) { return; }
     offhandSlot?.setItem();
 }
 
