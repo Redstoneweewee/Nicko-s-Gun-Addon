@@ -701,7 +701,7 @@ class FirearmUtil {
         //Later, must make sure all magazines initialize to dynaProp of "Normal"
         //NOTE: Doesn't work with shotgun shells yet cuz they would become "Normal"
         //if(magazineClass === undefined) { return; }
-        if(ammoClass === undefined) { return AmmoClasses.normal; }
+        if(ammoClass === undefined) { return AmmoClasses.Normal; }
         return ammoClass;
     }
 
@@ -814,7 +814,7 @@ class FirearmUtil {
 
         FirearmUtil.setWorldAmmoUsingId(firearmId, 0);
         firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty, false);
-        firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId, MagazineTypeIds.none);
+        firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId, MagazineTypeIds.None);
         const firearmItemStack = firearmContainerSlot.getItem();
         if(firearmItemStack !== undefined) {
             Global.playerCurrentFirearmItemStack.set(player.id, firearmItemStack);
@@ -1519,7 +1519,7 @@ class FirearmNameUtil {
      * @returns {string}
      */
     static #convertMagazineTypeIdToName(magazineTypeId, isMagazineEmpty) {
-        if(magazineTypeId === MagazineTypeIds.none) { return "§7<§cNone§r§7>"; }
+        if(magazineTypeId === MagazineTypeIds.None) { return "§7<§cNone§r§7>"; }
         const magazineClass = this.#convertMagazineTypeIdToMagazineClass(magazineTypeId);
         if(magazineClass === undefined) { return "§7<§cNone§r§7>"; }
         let name = "";
@@ -1531,14 +1531,14 @@ class FirearmNameUtil {
         if(ammoCount !== undefined) {
             name += ammoCount.toString()+" ";
         }
-        for(const [, magClass] of TypeUtil.getIterable(MagazineClasses)) {
+        for(const [key, magClass] of TypeUtil.getIterable(MagazineClasses)) {
             if(magazineClass === magClass) {
-                const className = MagazineClassTextNames[magClass];
+                const className = MagazineClassTextNames[key];
                 if(ammoCount === 1 && className.endsWith("s")) {
                     name += className.substring(0, className.length-1);
                 }
                 else {
-                    name += MagazineClassTextNames[magClass];
+                    name += className;
                 }
             }
         }

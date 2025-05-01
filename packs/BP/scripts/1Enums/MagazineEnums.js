@@ -4,27 +4,27 @@
 /**
  * @enum {string}
  * @type {{
- * none: "none",
- * arMagazine30:    "yes:ar_magazine_30",
- * arMagazine50:    "yes:ar_magazine_50",
- * dmrMagazine15:   "yes:dmr_magazine_15",
- * smgMagazine24:   "yes:smg_magazine_24",
- * p90Magazine50:   "yes:p90_magazine_50",
- * sniperMagazine3: "yes:sniper_magazine_3",
- * pistolMagazine8: "yes:pistol_magazine_8",
- * shotgunShell:    "yes:shotgun_shell"
+ * None:            "none",
+ * ARMagazine30:    "yes:ar_magazine_30",
+ * ARMagazine50:    "yes:ar_magazine_50",
+ * DMRMagazine15:   "yes:dmr_magazine_15",
+ * SMGMagazine24:   "yes:smg_magazine_24",
+ * P90Magazine50:   "yes:p90_magazine_50",
+ * SniperMagazine3: "yes:sniper_magazine_3",
+ * PistolMagazine8: "yes:pistol_magazine_8",
+ * ShotgunShell:    "yes:shotgun_shell"
  * }}
  */
 const MagazineTypeIds = {
-   none: "none",
-   arMagazine30:    "yes:ar_magazine_30",
-   arMagazine50:    "yes:ar_magazine_50",
-   dmrMagazine15:   "yes:dmr_magazine_15",
-   smgMagazine24:   "yes:smg_magazine_24",
-   p90Magazine50:   "yes:p90_magazine_50",
-   sniperMagazine3: "yes:sniper_magazine_3",
-   pistolMagazine8: "yes:pistol_magazine_8",
-   shotgunShell:    "yes:shotgun_shell"
+   None:            "none",
+   ARMagazine30:    "yes:ar_magazine_30",
+   ARMagazine50:    "yes:ar_magazine_50",
+   DMRMagazine15:   "yes:dmr_magazine_15",
+   SMGMagazine24:   "yes:smg_magazine_24",
+   P90Magazine50:   "yes:p90_magazine_50",
+   SniperMagazine3: "yes:sniper_magazine_3",
+   PistolMagazine8: "yes:pistol_magazine_8",
+   ShotgunShell:    "yes:shotgun_shell"
 };
 
 
@@ -33,12 +33,12 @@ const MagazineTypeIds = {
  * @enum {string}
  * @type {{
  * DurabilityBased: "durabilityBased",
- * StackBased: "stackBased"
+ * StackBased:      "stackBased"
  * }}
  */
 const MagazineTypes = {
-    DurabilityBased: "durabilityBased",
-    StackBased: "stackBased"
+   DurabilityBased: "durabilityBased",
+   StackBased:      "stackBased"
 }
 
 
@@ -93,21 +93,21 @@ const MagazineClasses = {
 
 /** 
  * @enum {string} 
- * @type {Record<typeof MagazineClasses[keyof typeof MagazineClasses], string>}
+ * @type {Record<keyof typeof MagazineClasses, string>}
  */
 const MagazineClassTextNames = {
-   sniper:  "Round Magazine",
-   ar:      "Round Magazine",
-   dmr:     "Round Magazine",
-   smg:     "Round Magazine",
-   pistol:  "Round Magazine",
-   p90:     "Round Magazine",
-   minigun: "Round Magazine",
+   Sniper:  "Round Magazine",
+   AR:      "Round Magazine",
+   DMR:     "Round Magazine",
+   SMG:     "Round Magazine",
+   Pistol:  "Round Magazine",
+   P90:     "Round Magazine",
+   Minigun: "Round Magazine",
 
-   shotgun: "Shotgun Shells",
-   rpg:     "RPG Rockets",
-   javelin: "Javelin Missiles",
-   mgl:     "MGL Shells",
+   Shotgun: "Shotgun Shells",
+   RPG:     "RPG Rockets",
+   Javelin: "Javelin Missiles",
+   MGL:     "MGL Shells",
 }
 
 

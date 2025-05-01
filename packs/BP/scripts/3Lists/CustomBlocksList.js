@@ -7,8 +7,8 @@ import { TypeUtil } from "../UtilitiesInit";
  * @type {Record<keyof typeof Enums.CustomBlockTypes, Def.CustomBlock>}
  */
 const CustomBlocks = {
-    aluminumOre: new Def.CustomBlock({
-        typeId: Enums.CustomBlockTypes.aluminumOre,
+    AluminumOre: new Def.CustomBlock({
+        typeId: Enums.CustomBlockTypes.AluminumOre,
         speedTag: "iron_pick_diggable",
         xpMin: 0,
         xpMax: 3,
@@ -20,8 +20,8 @@ const CustomBlocks = {
             }
         ]
     }),
-    deepslateAluminumOre: new Def.CustomBlock({
-        typeId: Enums.CustomBlockTypes.deepslateAluminumOre,
+    DeepslateAluminumOre: new Def.CustomBlock({
+        typeId: Enums.CustomBlockTypes.DeepslateAluminumOre,
         speedTag: "iron_pick_diggable",
         xpMin: 0,
         xpMax: 4,
@@ -33,8 +33,8 @@ const CustomBlocks = {
             }
         ]
     }),
-    deepslateTitaniumOre: new Def.CustomBlock({
-        typeId: Enums.CustomBlockTypes.deepslateTitaniumOre,
+    DeepslateTitaniumOre: new Def.CustomBlock({
+        typeId: Enums.CustomBlockTypes.DeepslateTitaniumOre,
         speedTag: "diamond_pick_diggable",
         xpMin: 10,
         xpMax: 15,

@@ -11,88 +11,88 @@ import { TypeUtil } from '../UtilitiesInit.js';
  * @type {Record<keyof typeof Enums.MagazineTypeIds, Def.Magazine>}
  */
 const MagazineObjects = {
-    none: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.arMagazine30,
+    None: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.ARMagazine30,
         name:                  "AR Magazine [§a30§7/§a30 Rounds§f]\n§7[Interact to load ammo in]",
         magazineClass:         MagazineClasses.AR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               30,
         itemStack:             new ItemStack("yes:ar_magazine_30", 1),
-        fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
+        fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
     }),
 
-    arMagazine30: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.arMagazine30,
+    ARMagazine30: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.ARMagazine30,
         name:                  "AR Magazine [§a30§7/§a30 Rounds§f]\n§7[Interact to load ammo in]",
         magazineClass:         MagazineClasses.AR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               30,
         itemStack:             new ItemStack("yes:ar_magazine_30", 1),
-        fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
+        fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
     }),
 
-    arMagazine50: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.arMagazine50,
+    ARMagazine50: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.ARMagazine50,
         name:                  "AR Magazine [§a50§7/§a50 Rounds§f]\n§7[Interact to load ammo in]",
         magazineClass:         MagazineClasses.AR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               50,
         itemStack:             new ItemStack("yes:ar_magazine_50", 1),
-        fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
+        fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
     }),
 
-    dmrMagazine15: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.dmrMagazine15,
+    DMRMagazine15: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.DMRMagazine15,
         name:                  "DMR Magazine [§a15§7/§a15 Rounds§f]\n§7[Interact to load ammo in]",
         magazineClass:         MagazineClasses.DMR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               15,
         itemStack:             new ItemStack("yes:dmr_magazine_15", 1),
-        fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
+        fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
     }),
 
-    smgMagazine24: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.smgMagazine24,
+    SMGMagazine24: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.SMGMagazine24,
         name:                  "SMG Magazine [§a24§7/§a24 Rounds§f]\n§7[Interact to load ammo in]",
         magazineClass:         MagazineClasses.SMG,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               24,
         itemStack:             new ItemStack("yes:smg_magazine_24", 1),
-        fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
+        fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
     }),
 
-    p90Magazine50: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.p90Magazine50,
+    P90Magazine50: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.P90Magazine50,
         name:                  "P90 Magazine [§a50§7/§a50 Rounds§f]\n§7[Interact to load ammo in]",
         magazineClass:         MagazineClasses.P90,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               50,
         itemStack:             new ItemStack("yes:p90_magazine_50", 1),
-        fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
+        fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
     }),
 
-    sniperMagazine3: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.sniperMagazine3,
+    SniperMagazine3: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.SniperMagazine3,
         name:                  "Sniper Magazine [§a3§7/§a3 Rounds§f]\n§7[Interact to load ammo in]",
         magazineClass:         MagazineClasses.Sniper,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               3,
         itemStack:             new ItemStack("yes:sniper_magazine_3", 1),
-        fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
+        fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
     }),
 
-    pistolMagazine8: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.pistolMagazine8,
+    PistolMagazine8: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.PistolMagazine8,
         name:                  "Pistol Magazine [§a8§7/§a8 Rounds§f]\n§7[Interact to load ammo in]",
         magazineClass:         MagazineClasses.Pistol,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               8,
         itemStack:             new ItemStack("yes:pistol_magazine_8", 1),
-        fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
+        fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
     }),
     
-    shotgunShell: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.shotgunShell,
+    ShotgunShell: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.ShotgunShell,
         name:                  "Shotgun Shell",
         magazineClass:         MagazineClasses.Shotgun,
         magazineType:          Enums.MagazineTypes.StackBased,
@@ -104,7 +104,7 @@ const MagazineObjects = {
 
 
 for(const [type, typeId] of TypeUtil.getIterable(Enums.MagazineTypeIds)) {
-    if(typeId === Enums.MagazineTypeIds.none) { continue; }
+    if(typeId === Enums.MagazineTypeIds.None) { continue; }
     Global.magazines.set(typeId, MagazineObjects[type]);
 }
 

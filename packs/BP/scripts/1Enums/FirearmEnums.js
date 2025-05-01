@@ -2,27 +2,27 @@
 /** 
  * @enum {string}
  * @type {{
- * usp:          "yes:usp",
- * makarov:      "yes:makarov",
- * magnum:       "yes:magnum",
- * m92f:         "yes:m92f",
- * mp5:          "yes:mp5",
- * m4:           "yes:m4",
- * benelli:      "yes:benelli",
- * agm:          "yes:agm",
- * striker:      "yes:striker"
+ * USP:          "yes:usp",
+ * Makarov:      "yes:makarov",
+ * Magnum:       "yes:magnum",
+ * M92F:         "yes:m92f",
+ * MP5:          "yes:mp5",
+ * M4:           "yes:m4",
+ * Benelli:      "yes:benelli",
+ * AGM:          "yes:agm",
+ * Striker:      "yes:striker"
  * }} 
  * */
 const FirearmTypeIds = {
-    usp:          "yes:usp",
-    makarov:      "yes:makarov",
-    magnum:       "yes:magnum",
-    m92f:         "yes:m92f",
-    mp5:          "yes:mp5",
-    m4:           "yes:m4",
-    benelli:      "yes:benelli",
-    agm:          "yes:agm",
-    striker:      "yes:striker"
+    USP:          "yes:usp",
+    Makarov:      "yes:makarov",
+    Magnum:       "yes:magnum",
+    M92F:         "yes:m92f",
+    MP5:          "yes:mp5",
+    M4:           "yes:m4",
+    Benelli:     "yes:benelli",
+    AGM:          "yes:agm",
+    Striker:      "yes:striker"
 }
 
 

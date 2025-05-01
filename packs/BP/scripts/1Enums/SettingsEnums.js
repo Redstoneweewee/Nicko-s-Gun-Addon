@@ -3,12 +3,12 @@
  * @enum {string}
  * @type {{
  * Dropdown: "dropdown",
- * Toggle: "toggle"
+ * Toggle:   "toggle"
  * }}
  */
 const ToggleTypes = {
     Dropdown: "dropdown",
-    Toggle: "toggle"
+    Toggle:   "toggle"
 }
 
 /**

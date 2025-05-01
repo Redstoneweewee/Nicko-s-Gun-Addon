@@ -146,7 +146,7 @@ function tryResetOffhandItem(player) {
     const magazineTypeId = firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId);
     //console.log(FirearmUtil.getWorldAmmoUsingId(FirearmIdUtil.getFirearmId(firearmItemStack)));
     //if no magazine then don't delete offhand item
-    if(magazineTypeId === MagazineTypeIds.none) { return; }
+    if(magazineTypeId === MagazineTypeIds.None) { return; }
     offhandSlot?.setItem();
 }
 
@@ -175,7 +175,7 @@ function tryReplaceOffhandItem(player) {
     }
 
     //If no magazine then don't do anything
-    if(magazineTypeId === MagazineTypeIds.none) {
+    if(magazineTypeId === MagazineTypeIds.None) {
         player.setDynamicProperty(Global.PlayerDynamicProperties.script.loadedOffhandMagazine, true);
 
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);

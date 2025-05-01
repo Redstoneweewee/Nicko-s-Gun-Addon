@@ -7,18 +7,18 @@ import { TypeUtil } from "../UtilitiesInit.js";
  * @type {Record<keyof typeof Enums.AmmoTypes, Def.Ammo>}
  */
 const AmmoList = {
-    bullet: new Def.Ammo({
+    Bullet: new Def.Ammo({
         itemTypeId: "yes:bullet",
-        type: Enums.AmmoClasses.normal,
+        type: Enums.AmmoClasses.Normal,
         entityPierce: 1,
         blockPierce: 0,
         blockBreakPotency: 0,
         incendiaryChance: 0,
         multipliers: []
     }),
-    shotgunShell: new Def.Ammo({
+    ShotgunShell: new Def.Ammo({
         itemTypeId: "yes:shotgun_shell",
-        type: Enums.AmmoClasses.birdshot,
+        type: Enums.AmmoClasses.Birdshot,
         entityPierce: 1,
         blockPierce: 0,
         blockBreakPotency: 0,

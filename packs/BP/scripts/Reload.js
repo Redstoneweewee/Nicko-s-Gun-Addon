@@ -81,7 +81,7 @@ function tryManualReload(player) {
         return;
     }
     else if(!FirearmUtil.isOffhandMagazineCorrect(player)) {
-        if((oldAmmoCount !== 0 || currentMagazineTypeId !== MagazineTypeIds.none) && !FirearmUtil.isOffhandMagazineEmptyButCorrect(player)) {
+        if((oldAmmoCount !== 0 || currentMagazineTypeId !== MagazineTypeIds.None) && !FirearmUtil.isOffhandMagazineEmptyButCorrect(player)) {
             //Only used when OldMagazine == any && newMagazine == none
             FirearmUtil.setFirearmMagazineToNone(player, firearmContainerSlot, firearmId, false);
         }
@@ -105,7 +105,7 @@ function tryManualReload(player) {
 
     const oldMagazineName = isOldMagazineEmpty ? oldMagazineTypeId+"_empty" : oldMagazineTypeId;
     /** @type {ItemStack|undefined} */
-    const oldMagazineItemStack = oldMagazineName === MagazineTypeIds.none ? undefined : new ItemStack(oldMagazineName);
+    const oldMagazineItemStack = oldMagazineName === MagazineTypeIds.None ? undefined : new ItemStack(oldMagazineName);
     if(oldMagazineItemStack != undefined) {
         const oldMagazineObject = FirearmUtil.getMagazineObjectFromItemStackBoth(oldMagazineItemStack);
         if(oldMagazineObject === undefined) { return; }

@@ -468,7 +468,8 @@ const StaticReloadAnimations = {
  *   akmShoot: Def.StaticAnimation,
  *   m4a1Shoot: Def.StaticAnimation,
  *   ar15Shoot: Def.StaticAnimation,
- *   hk417Shoot: Def.StaticAnimation
+ *   hk417Shoot: Def.StaticAnimation,
+ *   m4Shoot: Def.StaticAnimation
  * }} ARShootAnimations
  * 
  * @typedef {{

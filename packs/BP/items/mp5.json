@@ -12,10 +12,10 @@
                 "tags": [
                     "yes:is_firearm",
                     "yes:mp5",
-                    "yes:use_rifle_animations",
-                    "yes:use_rifle_reload_swap",
-                    "yes:use_rifle_reload_no_swap",
-                    "yes:use_rifle_reload_cock"
+                    "yes:use_ar_animations",
+                    "yes:use_ar_reload_swap",
+                    "yes:use_ar_reload_no_swap",
+                    "yes:use_ar_reload_cock"
                 ]
             },
             "minecraft:block_placer": {

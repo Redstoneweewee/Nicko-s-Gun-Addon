@@ -1,35 +1,35 @@
 /** 
  * @enum {string}
  * @type {{
- * normal: "Normal",
- * hollowPoint: "HollowPoint",
- * armorPiercing: "ArmorPiercing",
- * antiMaterial: "AntiMaterial",
- * exploding: "Exploding",
- * incendiary: "Incendiary"
+ * Normal:        "normal",
+ * HollowPoint:   "hollowPoint",
+ * ArmorPiercing: "armorPiercing",
+ * AntiMaterial:  "antiMaterial",
+ * Exploding:     "exploding",
+ * Incendiary:    "incendiary"
  * }}
  */
 const BulletClasses = {
-    normal: "Normal",
-    hollowPoint: "HollowPoint",
-    armorPiercing: "ArmorPiercing",
-    antiMaterial: "AntiMaterial",
-    exploding: "Exploding",
-    incendiary: "Incendiary"
+    Normal:        "normal",
+    HollowPoint:   "hollowPoint",
+    ArmorPiercing: "armorPiercing",
+    AntiMaterial:  "antiMaterial",
+    Exploding:     "exploding",
+    Incendiary:    "incendiary"
 }
 
 /** 
  * @enum {string}
  * @type {{
- * birdshot: "Birdshot",
- * buckshot: "Buckshot",
- * slug: "Slug"
+ * Birdshot: "birdshot",
+ * Buckshot: "buckshot",
+ * Slug:     "slug"
  * }}
  */
 const ShotgunShellClasses = {
-    birdshot: "Birdshot",
-    buckshot: "Buckshot",
-    slug: "Slug"
+    Birdshot: "birdshot",
+    Buckshot: "buckshot",
+    Slug:     "slug"
 }
 
 /** 
@@ -58,23 +58,23 @@ const AmmoClasses = {
 /**
  * @enum {string}
  * @type {{
- * spread: "Spread",
- * camerashake: "Camerashake",
- * bodyshotDamage: "BodyshotDamage",
- * headshotDamage: "HeadshotDamage",
- * riotShieldDamage: "RiotShieldDamage",
- * armorEffectiveness: "ArmorEffectiveness",
- * helmetEffectiveness: "HelmetEffectiveness"
+ * Spread:              "spread",
+ * Camerashake:         "camerashake",
+ * BodyshotDamage:      "bodyshotDamage",
+ * HeadshotDamage:      "headshotDamage",
+ * RiotShieldDamage:    "riotShieldDamage",
+ * ArmorEffectiveness:  "armorEffectiveness",
+ * HelmetEffectiveness: "helmetEffectiveness"
  * }} 
  */
 const AmmoMultiplierTypes = {
-   spread: "Spread",
-   camerashake: "Camerashake",
-   bodyshotDamage: "BodyshotDamage",
-   headshotDamage: "HeadshotDamage",
-   riotShieldDamage: "RiotShieldDamage",
-   armorEffectiveness: "ArmorEffectiveness",
-   helmetEffectiveness: "HelmetEffectiveness"
+   Spread:              "spread",
+   Camerashake:         "camerashake",
+   BodyshotDamage:      "bodyshotDamage",
+   HeadshotDamage:      "headshotDamage",
+   RiotShieldDamage:    "riotShieldDamage",
+   ArmorEffectiveness:  "armorEffectiveness",
+   HelmetEffectiveness: "helmetEffectiveness"
 };
 
 
@@ -85,13 +85,13 @@ const AmmoMultiplierTypes = {
 /** 
  * @enum {string}
  * @type {{
- * bullet:        "yes:bullet",
- * shotgunShell: "yes:shotgun_shell"
+ * Bullet:       "yes:bullet",
+ * ShotgunShell: "yes:shotgun_shell"
  * }}
  */
 const AmmoTypes = {
-   bullet:        "yes:bullet",
-   shotgunShell: "yes:shotgun_shell",
+   Bullet:        "yes:bullet",
+   ShotgunShell: "yes:shotgun_shell",
 };
 
 
