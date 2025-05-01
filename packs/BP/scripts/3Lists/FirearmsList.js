@@ -33,27 +33,27 @@ const FirearmObjects = {
     
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadSwapMedium,
+                staticAnimation:      StaticReloadAnimations.ar.reloadSwapMedium,
                 scaleDurationToValue: 30
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadNoSwapMedium,
+                staticAnimation:      StaticReloadAnimations.ar.reloadNoSwapMedium,
                 scaleDurationToValue: 15
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadCockLight,
+                staticAnimation:      StaticReloadAnimations.ar.reloadCockLight,
                 scaleDurationToValue: 8
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.rifle.ak47Shoot
+                staticAnimation: StaticShootAnimations.ar.ak47Shoot
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Rifle,
+            magazineClass:          MagazineClasses.AR,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.exploding],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   30,
-            defaultMagazine:        MagazineObjects.rifleMagazine30,
+            defaultMagazine:        MagazineObjects.arMagazine30,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           4,
@@ -94,27 +94,27 @@ const FirearmObjects = {
     
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadSwapPubg, 
+                staticAnimation:      StaticReloadAnimations.ar.reloadSwapPubg, 
                 scaleDurationToValue: 35
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadNoSwapPubg,
+                staticAnimation:      StaticReloadAnimations.ar.reloadNoSwapPubg,
                 scaleDurationToValue: 18
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadCockPubg,
+                staticAnimation:      StaticReloadAnimations.ar.reloadCockPubg,
                 scaleDurationToValue: 8
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.rifle.akmShoot
+                staticAnimation: StaticShootAnimations.ar.akmShoot
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Rifle,
+            magazineClass:          MagazineClasses.AR,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.armorPiercing],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   30,
-            defaultMagazine:        MagazineObjects.rifleMagazine30,
+            defaultMagazine:        MagazineObjects.arMagazine30,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           2,
@@ -155,27 +155,27 @@ const FirearmObjects = {
     
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadSwapPubg,
+                staticAnimation:      StaticReloadAnimations.ar.reloadSwapPubg,
                 scaleDurationToValue: 35
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadNoSwapPubg,
+                staticAnimation:      StaticReloadAnimations.ar.reloadNoSwapPubg,
                 scaleDurationToValue: 18
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadCockPubg,
+                staticAnimation:      StaticReloadAnimations.ar.reloadCockPubg,
                 scaleDurationToValue: 8
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.rifle.m4a1Shoot
+                staticAnimation: StaticShootAnimations.ar.m4a1Shoot
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Rifle,
+            magazineClass:          MagazineClasses.AR,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.armorPiercing, BulletClasses.antiMaterial],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   30,
-            defaultMagazine:        MagazineObjects.rifleMagazine30,
+            defaultMagazine:        MagazineObjects.arMagazine30,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           2,
@@ -216,27 +216,27 @@ const FirearmObjects = {
         
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadSwapMedium,
+                staticAnimation:      StaticReloadAnimations.ar.reloadSwapMedium,
                 scaleDurationToValue: 38
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadNoSwapMedium,
+                staticAnimation:      StaticReloadAnimations.ar.reloadNoSwapMedium,
                 scaleDurationToValue: 19
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadCockLight,
+                staticAnimation:      StaticReloadAnimations.ar.reloadCockLight,
                 scaleDurationToValue: 8
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.rifle.ar15Shoot
+                staticAnimation: StaticShootAnimations.ar.ar15Shoot
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.MarksmanRifle,
+            magazineClass:          MagazineClasses.DMR,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   15,
-            defaultMagazine:        MagazineObjects.marksmanRifleMagazine15,
+            defaultMagazine:        MagazineObjects.dmrMagazine15,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           4,
@@ -282,19 +282,19 @@ const FirearmObjects = {
 
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadSwapHeavy,
+                staticAnimation:      StaticReloadAnimations.ar.reloadSwapHeavy,
                 scaleDurationToValue: 38
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadNoSwapHeavy,
+                staticAnimation:      StaticReloadAnimations.ar.reloadNoSwapHeavy,
                 scaleDurationToValue: 19
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadCockHeavy,
+                staticAnimation:      StaticReloadAnimations.ar.reloadCockHeavy,
                 scaleDurationToValue: 8
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.rifle.hk417Shoot
+                staticAnimation: StaticShootAnimations.ar.hk417Shoot
             }),
             new NormalAnimation({
                 staticAnimation: StaticOtherAnimations.switchFiringModeToSemi
@@ -304,11 +304,11 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.MarksmanRifle,
+            magazineClass:          MagazineClasses.DMR,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.antiMaterial],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   15,
-            defaultMagazine:        MagazineObjects.marksmanRifleMagazine15,
+            defaultMagazine:        MagazineObjects.dmrMagazine15,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           5,
@@ -358,11 +358,11 @@ const FirearmObjects = {
 
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadSwapHeavy,
+                staticAnimation:      StaticReloadAnimations.ar.reloadSwapHeavy,
                 scaleDurationToValue: 38
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadNoSwapHeavy,
+                staticAnimation:      StaticReloadAnimations.ar.reloadNoSwapHeavy,
                 scaleDurationToValue: 28
             }),
             new ScaledAnimation({
@@ -489,11 +489,11 @@ const FirearmObjects = {
     
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadSwapLight,
+                staticAnimation:      StaticReloadAnimations.ar.reloadSwapLight,
                 scaleDurationToValue: 26
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.rifle.reloadNoSwapLight,
+                staticAnimation:      StaticReloadAnimations.ar.reloadNoSwapLight,
                 scaleDurationToValue: 13
             }),
             new NormalAnimation({
@@ -501,7 +501,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Smg,
+            magazineClass:          MagazineClasses.SMG,
             usableAmmoClasses:      [BulletClasses.normal, BulletClasses.armorPiercing],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:   24,

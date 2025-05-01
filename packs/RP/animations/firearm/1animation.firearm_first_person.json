@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.rifle_hold_first_person": {
+		"animation.ar_hold_first_person": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.34,
 			"override_previous_animation": true,
@@ -42,7 +42,7 @@
 				}
 			}
 		},
-		"animation.rifle_hold_run_first_person": {
+		"animation.ar_hold_run_first_person": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.25,
 			"override_previous_animation": true,
@@ -82,7 +82,7 @@
 				}
 			}
 		},
-		"animation.rifle_hipfire_first_person": {
+		"animation.ar_hipfire_first_person": {
 			"loop": "hold_on_last_frame",
 			"override_previous_animation": true,
 			"bones": {
@@ -312,7 +312,7 @@
 				}
 			}
 		},
-		"animation.rifle_aim_red_dot_scope_first_person": {
+		"animation.ar_aim_red_dot_scope_first_person": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.25,
 			"override_previous_animation": true,
@@ -343,7 +343,7 @@
 				}
 			}
 		},
-		"animation.rifle_aim_acog_first_person": {
+		"animation.ar_aim_acog_first_person": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.25,
 			"override_previous_animation": true,
@@ -373,7 +373,7 @@
 				}
 			}
 		},
-		"animation.rifle_aim_sniper_scope_first_person": {
+		"animation.ar_aim_sniper_scope_first_person": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.25,
 			"override_previous_animation": true,

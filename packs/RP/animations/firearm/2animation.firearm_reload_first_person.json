@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.rifle_reload_swap_first_person": {
+		"animation.ar_reload_swap_first_person": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 2,
 			"override_previous_animation": true,
@@ -238,7 +238,7 @@
 				}
 			}
 		},
-		"animation.rifle_reload_no_swap_first_person": {
+		"animation.ar_reload_no_swap_first_person": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 1,
 			"override_previous_animation": true,

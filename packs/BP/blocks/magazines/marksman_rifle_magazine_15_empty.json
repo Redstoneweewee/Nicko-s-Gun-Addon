@@ -2,17 +2,17 @@
 	"format_version": "1.21.20",
 	"minecraft:block": {
 		"description": {
-			"identifier": "yes:marksman_rifle_magazine_15_empty",
+			"identifier": "yes:dmr_magazine_15_empty",
 			"menu_category": {
 				"category": "none"
 			}
 		},
 		"components": {
-			"minecraft:geometry": "geometry.weeweejuice.marksman_rifle_magazine_15_ground",
+			"minecraft:geometry": "geometry.weeweejuice.dmr_magazine_15_ground",
 			"minecraft:material_instances": {
 				"*": {
 					"render_method": "alpha_test",
-					"texture": "marksman_rifle_magazine_15_empty"
+					"texture": "dmr_magazine_15_empty"
 				}
 			}
 		}

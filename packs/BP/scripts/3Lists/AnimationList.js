@@ -7,18 +7,18 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  * }} SniperReloadAnimations
  * 
  * @typedef {{
- * reloadSwapLight: Def.StaticAnimation,
- * reloadSwapMedium: Def.StaticAnimation,
- * reloadSwapHeavy: Def.StaticAnimation,
- * reloadSwapPubg: Def.StaticAnimation,
- * reloadNoSwapLight: Def.StaticAnimation,
- * reloadNoSwapMedium: Def.StaticAnimation,
- * reloadNoSwapHeavy: Def.StaticAnimation,
- * reloadNoSwapPubg: Def.StaticAnimation,
- * reloadCockLight: Def.StaticAnimation,
- * reloadCockHeavy: Def.StaticAnimation,
- * reloadCockPubg: Def.StaticAnimation
- * }} RifleReloadAnimations
+ *   reloadSwapLight: Def.StaticAnimation,
+ *   reloadSwapMedium: Def.StaticAnimation,
+ *   reloadSwapHeavy: Def.StaticAnimation,
+ *   reloadSwapPubg: Def.StaticAnimation,
+ *   reloadNoSwapLight: Def.StaticAnimation,
+ *   reloadNoSwapMedium: Def.StaticAnimation,
+ *   reloadNoSwapHeavy: Def.StaticAnimation,
+ *   reloadNoSwapPubg: Def.StaticAnimation,
+ *   reloadCockLight: Def.StaticAnimation,
+ *   reloadCockHeavy: Def.StaticAnimation,
+ *   reloadCockPubg: Def.StaticAnimation
+ * }} ARReloadAnimations
  * 
  * @typedef {{
  * p90ReloadSwap: Def.StaticAnimation,
@@ -49,7 +49,7 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  * @enum {Record<string, Def.StaticAnimation>}
  * @type {{
  *   sniper:  SniperReloadAnimations,
- *   rifle:   RifleReloadAnimations,
+ *   ar:   ARReloadAnimations,
  *   smg:     SmgReloadAnimations,
  *   pistol:  PistolReloadAnimations,
  *   shotgun: ShotgunReloadAnimations
@@ -74,18 +74,18 @@ const StaticReloadAnimations = {
             ]
         })
     },
-    rifle: {
+    ar: {
         reloadSwapLight: new Def.StaticAnimation({
             duration: 40, //in ticks
             type:     Enums.AnimationTypes.ReloadSwap,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_out_light",
+                    soundId: "firearm.ar_reload_magazine_out_light",
                     timeout: 14,
                     soundRange: 40
                 },
                 {
-                    soundId: "firearm.rifle_reload_magazine_in_light",
+                    soundId: "firearm.ar_reload_magazine_in_light",
                     timeout: 22,
                     soundRange: 40
                 }
@@ -96,12 +96,12 @@ const StaticReloadAnimations = {
             type:     Enums.AnimationTypes.ReloadSwap,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_out_medium",
+                    soundId: "firearm.ar_reload_magazine_out_medium",
                     timeout: 14,
                     soundRange: 40
                 },
                 {
-                    soundId: "firearm.rifle_reload_magazine_in_medium",
+                    soundId: "firearm.ar_reload_magazine_in_medium",
                     timeout: 22,
                     soundRange: 40
                 }
@@ -112,12 +112,12 @@ const StaticReloadAnimations = {
             type:     Enums.AnimationTypes.ReloadSwap,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_out_heavy",
+                    soundId: "firearm.ar_reload_magazine_out_heavy",
                     timeout: 14,
                     soundRange: 40
                 },
                 {
-                    soundId: "firearm.rifle_reload_magazine_in_heavy",
+                    soundId: "firearm.ar_reload_magazine_in_heavy",
                     timeout: 22,
                     soundRange: 40
                 }
@@ -128,12 +128,12 @@ const StaticReloadAnimations = {
             type:     Enums.AnimationTypes.ReloadSwap,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_out_pubg",
+                    soundId: "firearm.ar_reload_magazine_out_pubg",
                     timeout: 14,
                     soundRange: 40
                 },
                 {
-                    soundId: "firearm.rifle_reload_magazine_in_pubg",
+                    soundId: "firearm.ar_reload_magazine_in_pubg",
                     timeout: 22,
                     soundRange: 40
                 }
@@ -144,7 +144,7 @@ const StaticReloadAnimations = {
             type:     Enums.AnimationTypes.ReloadNoSwap,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_in_light",
+                    soundId: "firearm.ar_reload_magazine_in_light",
                     timeout: 13,
                     soundRange: 40
                 }
@@ -155,7 +155,7 @@ const StaticReloadAnimations = {
             type:     Enums.AnimationTypes.ReloadNoSwap,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_in_medium",
+                    soundId: "firearm.ar_reload_magazine_in_medium",
                     timeout: 13,
                     soundRange: 40
                 }
@@ -166,7 +166,7 @@ const StaticReloadAnimations = {
             type:     Enums.AnimationTypes.ReloadNoSwap,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_in_heavy",
+                    soundId: "firearm.ar_reload_magazine_in_heavy",
                     timeout: 13,
                     soundRange: 40
                 }
@@ -177,7 +177,7 @@ const StaticReloadAnimations = {
             type:     Enums.AnimationTypes.ReloadNoSwap,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_in_pubg",
+                    soundId: "firearm.ar_reload_magazine_in_pubg",
                     timeout: 13,
                     soundRange: 40
                 }
@@ -188,12 +188,12 @@ const StaticReloadAnimations = {
             type:     Enums.AnimationTypes.ReloadCock,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_cock_toward_light",
+                    soundId: "firearm.ar_reload_magazine_cock_toward_light",
                     timeout: 2,
                     soundRange: 40
                 },
                 {
-                    soundId: "firearm.rifle_reload_magazine_cock_away_light",
+                    soundId: "firearm.ar_reload_magazine_cock_away_light",
                     timeout: 6,
                     soundRange: 40
                 }
@@ -204,12 +204,12 @@ const StaticReloadAnimations = {
             type:     Enums.AnimationTypes.ReloadCock,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_cock_toward_heavy",
+                    soundId: "firearm.ar_reload_magazine_cock_toward_heavy",
                     timeout: 2,
                     soundRange: 40
                 },
                 {
-                    soundId: "firearm.rifle_reload_magazine_cock_away_heavy",
+                    soundId: "firearm.ar_reload_magazine_cock_away_heavy",
                     timeout: 6,
                     soundRange: 40
                 }
@@ -220,12 +220,12 @@ const StaticReloadAnimations = {
             type:     Enums.AnimationTypes.ReloadCock,
             animationSounds: [
                 {
-                    soundId: "firearm.rifle_reload_magazine_cock_toward_pubg",
+                    soundId: "firearm.ar_reload_magazine_cock_toward_pubg",
                     timeout: 2,
                     soundRange: 40
                 },
                 {
-                    soundId: "firearm.rifle_reload_magazine_cock_away_pubg",
+                    soundId: "firearm.ar_reload_magazine_cock_away_pubg",
                     timeout: 6,
                     soundRange: 40
                 }
@@ -464,13 +464,12 @@ const StaticReloadAnimations = {
 
 /**
  * @typedef {{
- * ak47Shoot: Def.StaticAnimation,
- * akmShoot: Def.StaticAnimation,
- * m4a1Shoot: Def.StaticAnimation,
- * ar15Shoot: Def.StaticAnimation,
- * hk417Shoot: Def.StaticAnimation,
- * m4Shoot: Def.StaticAnimation
- * }} RifleShootAnimations
+ *   ak47Shoot: Def.StaticAnimation,
+ *   akmShoot: Def.StaticAnimation,
+ *   m4a1Shoot: Def.StaticAnimation,
+ *   ar15Shoot: Def.StaticAnimation,
+ *   hk417Shoot: Def.StaticAnimation
+ * }} ARShootAnimations
  * 
  * @typedef {{
  * ump45Shoot: Def.StaticAnimation,
@@ -512,7 +511,7 @@ const StaticReloadAnimations = {
 /**
  * @enum {Record<string, Def.StaticAnimation>}
  * @type {{
- *   rifle: RifleShootAnimations,
+ *   ar: ARShootAnimations,
  *   smg: SmgShootAnimations,
  *   sniper: SniperShootAnimations,
  *   shotgun: ShotgunShootAnimations,
@@ -521,7 +520,7 @@ const StaticReloadAnimations = {
  * }}
  */
 const StaticShootAnimations = {
-    rifle: {
+    ar: {
         ak47Shoot: new Def.StaticAnimation({
             duration: 30, //in ticks
             type:     Enums.AnimationTypes.Shoot,

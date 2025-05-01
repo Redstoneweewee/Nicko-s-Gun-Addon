@@ -5,26 +5,26 @@
  * @enum {string}
  * @type {{
  * none: "none",
- * rifleMagazine30:         "yes:rifle_magazine_30",
- * rifleMagazine50:         "yes:rifle_magazine_50",
- * marksmanRifleMagazine15: "yes:marksman_rifle_magazine_15",
- * smgMagazine24:           "yes:smg_magazine_24",
- * p90Magazine50:           "yes:p90_magazine_50",
- * sniperMagazine3:         "yes:sniper_magazine_3",
- * pistolMagazine8:         "yes:pistol_magazine_8",
- * shotgunShell:            "yes:shotgun_shell",
+ * arMagazine30:    "yes:ar_magazine_30",
+ * arMagazine50:    "yes:ar_magazine_50",
+ * dmrMagazine15:   "yes:dmr_magazine_15",
+ * smgMagazine24:   "yes:smg_magazine_24",
+ * p90Magazine50:   "yes:p90_magazine_50",
+ * sniperMagazine3: "yes:sniper_magazine_3",
+ * pistolMagazine8: "yes:pistol_magazine_8",
+ * shotgunShell:    "yes:shotgun_shell"
  * }}
  */
 const MagazineTypeIds = {
    none: "none",
-   rifleMagazine30:         "yes:rifle_magazine_30",
-   rifleMagazine50:         "yes:rifle_magazine_50",
-   marksmanRifleMagazine15: "yes:marksman_rifle_magazine_15",
-   smgMagazine24:           "yes:smg_magazine_24",
-   p90Magazine50:           "yes:p90_magazine_50",
-   sniperMagazine3:         "yes:sniper_magazine_3",
-   pistolMagazine8:         "yes:pistol_magazine_8",
-   shotgunShell:            "yes:shotgun_shell"
+   arMagazine30:    "yes:ar_magazine_30",
+   arMagazine50:    "yes:ar_magazine_50",
+   dmrMagazine15:   "yes:dmr_magazine_15",
+   smgMagazine24:   "yes:smg_magazine_24",
+   p90Magazine50:   "yes:p90_magazine_50",
+   sniperMagazine3: "yes:sniper_magazine_3",
+   pistolMagazine8: "yes:pistol_magazine_8",
+   shotgunShell:    "yes:shotgun_shell"
 };
 
 
@@ -46,40 +46,40 @@ const MagazineTypes = {
 /** 
  * @enum {string}
  * @type {{
-* Sniper:        "sniper",
-* Rifle:         "rifle",
-* MarksmanRifle: "marksmanRifle",
-* Smg:           "smg",
-* Pistol:        "pistol",
-* P90:           "p90",
-* Minigun:       "minigun"
+* Sniper:  "sniper",
+* AR:      "ar",
+* DMR:     "dmr",
+* SMG:     "smg",
+* Pistol:  "pistol",
+* P90:     "p90",
+* Minigun: "minigun"
 * }} 
 */
 const DurabilityMagazineClasses = {
-   Sniper:        "sniper",
-   Rifle:         "rifle",
-   MarksmanRifle: "marksmanRifle",
-   Smg:           "smg",
-   Pistol:        "pistol",
-   P90:           "p90",
-   Minigun:       "minigun"
+   Sniper:  "sniper",
+   AR:      "ar",
+   DMR:     "dmr",
+   SMG:     "smg",
+   Pistol:  "pistol",
+   P90:     "p90",
+   Minigun: "minigun"
 }
 
 /** 
 * @enum {string}
 * @type {{
 * Shotgun: "shotgun",
-* Rpg:     "rpg",
+* RPG:     "rpg",
 * Javelin: "javelin",
-* Mgl:     "mgl"
+* MGL:     "mgl"
 * }} 
 */
 const StackMagazineClasses = {
    //specific weapons
    Shotgun: "shotgun",
-   Rpg:     "rpg",
+   RPG:     "rpg",
    Javelin: "javelin",
-   Mgl:     "mgl"
+   MGL:     "mgl"
 }
 
 /** 
@@ -96,13 +96,13 @@ const MagazineClasses = {
  * @type {Record<typeof MagazineClasses[keyof typeof MagazineClasses], string>}
  */
 const MagazineClassTextNames = {
-   sniper:        "Round Magazine",
-   rifle:         "Round Magazine",
-   marksmanRifle: "Round Magazine",
-   smg:           "Round Magazine",
-   pistol:        "Round Magazine",
-   p90:           "Round Magazine",
-   minigun:       "Round Magazine",
+   sniper:  "Round Magazine",
+   ar:      "Round Magazine",
+   dmr:     "Round Magazine",
+   smg:     "Round Magazine",
+   pistol:  "Round Magazine",
+   p90:     "Round Magazine",
+   minigun: "Round Magazine",
 
    shotgun: "Shotgun Shells",
    rpg:     "RPG Rockets",

@@ -297,9 +297,9 @@ const FirearmCraftingObjects = [
 /** @type {Def.Crafting[]} */
 const MagazineCraftingObjects = [
     new Def.Crafting({
-        itemTypeId: "yes:rifle_magazine_30",
-        name: "Rifle Magazine\n[§q30 Rounds§r]",
-        imagePath: "textures/scripting_ui/magazines/rifle_30",
+        itemTypeId: "yes:ar_magazine_30",
+        name: "AR Magazine\n[§q30 Rounds§r]",
+        imagePath: "textures/scripting_ui/magazines/ar_30",
         amount: 1,
         craftingItems: [
             new Def.CraftingItem({
@@ -317,9 +317,9 @@ const MagazineCraftingObjects = [
         ]
     }),
     new Def.Crafting({
-        itemTypeId: "yes:rifle_magazine_50",
-        name: "Rifle Magazine\n[§q50 Rounds§r]",
-        imagePath: "textures/scripting_ui/magazines/rifle_50",
+        itemTypeId: "yes:ar_magazine_50",
+        name: "AR Magazine\n[§q50 Rounds§r]",
+        imagePath: "textures/scripting_ui/magazines/ar_50",
         amount: 1,
         craftingItems: [
             new Def.CraftingItem({
@@ -337,8 +337,8 @@ const MagazineCraftingObjects = [
         ]
     }),
     new Def.Crafting({
-        itemTypeId: "yes:marksman_rifle_magazine_15",
-        name: "Marksman Rifle Magazine\n[§q15 Rounds§r]",
+        itemTypeId: "yes:dmr_magazine_15",
+        name: "DMR Magazine\n[§q15 Rounds§r]",
         imagePath: "textures/scripting_ui/magazines/dmr_15",
         amount: 1,
         craftingItems: [

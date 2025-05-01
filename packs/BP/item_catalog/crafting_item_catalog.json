@@ -7,8 +7,8 @@
              "groups": [
                 {
                    "group_identifier": {
-                      "icon": "yes:m4",
-                      "name": "yes:itemGroup.name.rifles"
+                      "icon": "yes:akm",
+                      "name": "yes:itemGroup.name.ars"
                    },
                    "items": [
                       "yes:m4"
@@ -70,13 +70,13 @@
             "groups": [
                {
                   "group_identifier": {
-                     "icon": "yes:rifle_magazine_30",
+                     "icon": "yes:ar_magazine_30",
                      "name": "yes:itemGroup.name.magazines"
                   },
                   "items": [
-                     "yes:rifle_magazine_30",
-                     "yes:rifle_magazine_50",
-                     "yes:marksman_rifle_magazine_15",
+                     "yes:ar_magazine_30",
+                     "yes:ar_magazine_50",
+                     "yes:dmr_magazine_15",
                      "yes:smg_magazine_24",
                      "yes:p90_magazine_50",
                      "yes:sniper_magazine_3",
@@ -91,41 +91,18 @@
            "groups": [
               {
                  "group_identifier": {
-                    "icon": "yes:rifle_magazine_30_empty",
+                    "icon": "yes:ar_magazine_30_empty",
                     "name": "yes:itemGroup.name.empty_magazines"
                  },
                  "items": [
-                   "yes:rifle_magazine_30_empty",
-                   "yes:rifle_magazine_50_empty",
-                   "yes:marksman_rifle_magazine_15_empty",
+                   "yes:ar_magazine_30_empty",
+                   "yes:ar_magazine_50_empty",
+                   "yes:dmr_magazine_15_empty",
                    "yes:smg_magazine_24_empty",
                    "yes:p90_magazine_50_empty",
                    "yes:sniper_magazine_3_empty",
                    "yes:pistol_magazine_8_empty",
                    "yes:shotgun_magazine_6_empty"
-                 ]
-              }
-           ]
-        },
-        {
-           "category_name": "nature",
-           "groups": [
-              {
-                 "group_identifier": {
-                    "icon": "yes:akm",
-                    "name": "yes:itemGroup.name.shotguns"
-                 },
-                 "items": [
-                    "yes:akm",
-                    "yes:m4a1",
-                    "yes:ak47",
-                    "yes:ar15",
-                    "yes:hk417",
-                    "yes:ump45",
-                    "yes:p90",
-                    "yes:mk13",
-                    "yes:desert_eagle",
-                    "yes:remington870"
                  ]
               }
            ]

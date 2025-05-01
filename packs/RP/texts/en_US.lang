@@ -1,8 +1,11 @@
-yes:itemGroup.name.rifles=Rifles
-yes:itemGroup.name.smgs=SMGs
-yes:itemGroup.name.snipers=Snipers
-yes:itemGroup.name.pistols=Pistols
-yes:itemGroup.name.shotguns=Shotguns
+yes:itemGroup.name.ars=§e§l<§r§eSimple Arsenal§e§l>§r ARs!
+yes:itemGroup.name.smgs=§e§l<§r§eSimple Arsenal§e§l>§r SMGs!
+yes:itemGroup.name.snipers=§e§l<§r§eSimple Arsenal§e§l>§r Snipers!
+yes:itemGroup.name.pistols=§e§l<§r§eSimple Arsenal§e§l>§r Pistols!
+yes:itemGroup.name.shotguns=§e§l<§r§eSimple Arsenal§e§l>§r Shotguns!
 
-yes:itemGroup.name.magazines=Magazines
-yes:itemGroup.name.empty_magazines=Empty Magazines
+yes:itemGroup.name.crafting_materials=§e§l<§r§eSimple Arsenal§e§l>§r Crafting Materials!
+yes:itemGroup.name.crafting_alloys=§e§l<§r§eSimple Arsenal§e§l>§r Alloys & Metals!
+yes:itemGroup.name.magazines=§e§l<§r§eSimple Arsenal§e§l>§r Magazines!
+yes:itemGroup.name.empty_magazines=§e§l<§r§eSimple Arsenal§e§l>§r Empty Magazines!
+yes:itemGroup.name.ammunition=§e§l<§r§eSimple Arsenal§e§l>§r Ammunition!

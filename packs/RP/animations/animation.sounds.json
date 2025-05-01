@@ -1,47 +1,47 @@
 {
 	"format_version": "1.10.0",
 	"animations": {
-		"animation.sound.rifle_reload_magazine_out_light": {
+		"animation.sound.ar_reload_magazine_out_light": {
 			"loop": true,
 			"animation_length": 1.25,
 			"sound_effects": {
 				"0.0": {
-					"effect": "rifle_reload_magazine_out_light"
+					"effect": "ar_reload_magazine_out_light"
 				}
 			},
 			"timeline": {
 				"0.1667": "v.test = 0;"
 			}
 		},
-		"animation.sound.rifle_reload_magazine_out_medium": {
+		"animation.sound.ar_reload_magazine_out_medium": {
 			"loop": true,
 			"animation_length": 0.375,
 			"sound_effects": {
 				"0.0": {
-					"effect": "rifle_reload_magazine_out_medium"
+					"effect": "ar_reload_magazine_out_medium"
 				}
 			},
 			"timeline": {
 				"0.0417": "v.play_take_magazine_off_firearm_sound = 0.0;"
 			}
 		},
-		"animation.sound.rifle_reload_magazine_out_heavy": {
+		"animation.sound.ar_reload_magazine_out_heavy": {
 			"animation_length": 0.25,
 			"sound_effects": {
 				"0.0": {
-					"effect": "rifle_reload_magazine_out_heavy"
+					"effect": "ar_reload_magazine_out_heavy"
 				}
 			},
 			"timeline": {
 				"0.0417": "v.play_take_magazine_off_firearm_sound = 0.0;"
 			}
 		},
-		"animation.sound.rifle_reload_magazine_in_light": {
+		"animation.sound.ar_reload_magazine_in_light": {
 			"loop": true,
 			"animation_length": 1.25,
 			"sound_effects": {
 				"0.0": {
-					"effect": "rifle_reload_magazine_in_light"
+					"effect": "ar_reload_magazine_in_light"
 				}
 			},
 			"timeline": {
@@ -59,45 +59,45 @@
 				"1.1667": "v.play_put_magazine_into_firearm_sound = -1;"
 			}
 		},
-		"animation.sound.rifle_reload_magazine_in_medium": {
+		"animation.sound.ar_reload_magazine_in_medium": {
 			"animation_length": 0.375,
 			"sound_effects": {
 				"0.0": {
-					"effect": "rifle_reload_magazine_in_medium"
+					"effect": "ar_reload_magazine_in_medium"
 				}
 			},
 			"timeline": {
 				"0.0417": "v.play_put_magazine_into_firearm_sound = 0.0;"
 			}
 		},
-		"animation.sound.rifle_reload_magazine_in_heavy": {
+		"animation.sound.ar_reload_magazine_in_heavy": {
 			"animation_length": 0.2917,
 			"sound_effects": {
 				"0.0": {
-					"effect": "rifle_reload_magazine_in_heavy"
+					"effect": "ar_reload_magazine_in_heavy"
 				}
 			},
 			"timeline": {
 				"0.0417": "v.play_put_magazine_into_firearm_sound = 0.0;"
 			}
 		},
-		"animation.sound.rifle_reload_magazine_cock_light": {
+		"animation.sound.ar_reload_magazine_cock_light": {
 			"loop": true,
 			"animation_length": 0.5,
 			"sound_effects": {
 				"0.0": {
-					"effect": "rifle_reload_magazine_cock_light"
+					"effect": "ar_reload_magazine_cock_light"
 				}
 			},
 			"timeline": {
 				"0.4167": "v.play_reload_cock_sound = -1;"
 			}
 		},
-		"animation.sound.rifle_reload_magazine_cock_heavy": {
+		"animation.sound.ar_reload_magazine_cock_heavy": {
 			"animation_length": 0.5,
 			"sound_effects": {
 				"0.0": {
-					"effect": "rifle_reload_magazine_cock_heavy"
+					"effect": "ar_reload_magazine_cock_heavy"
 				}
 			},
 			"timeline": {

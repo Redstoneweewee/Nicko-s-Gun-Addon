@@ -91,7 +91,7 @@ system.runInterval(() => {
  * |------------------------------------------------------------|
  * |                                                            |
  * |  Make sure all magazines have the "yes:is_magazine" typeId |
- * |  and of their own variant like "yes:rifle_magazine_30"     |
+ * |  and of their own variant like "yes:ar_magazine_30"     |
  * |                                                            |
  * |------------------------------------------------------------|
  */

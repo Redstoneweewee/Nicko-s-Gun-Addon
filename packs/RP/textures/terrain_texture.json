@@ -121,34 +121,34 @@
       ]
     },
 
-    "rifle_magazine_30": {
+    "ar_magazine_30": {
       "textures": [
-        "textures/entity/magazines/rifle_magazine_30_texture"
+        "textures/entity/magazines/ar_magazine_30_texture"
       ]
     },
-    "rifle_magazine_30_empty": {
+    "ar_magazine_30_empty": {
       "textures": [
-        "textures/entity/magazines/rifle_magazine_30_empty_texture"
+        "textures/entity/magazines/ar_magazine_30_empty_texture"
       ]
     },
-    "rifle_magazine_50": {
+    "ar_magazine_50": {
       "textures": [
-        "textures/entity/magazines/rifle_magazine_50_texture"
+        "textures/entity/magazines/ar_magazine_50_texture"
       ]
     },
-    "rifle_magazine_50_empty": {
+    "ar_magazine_50_empty": {
       "textures": [
-        "textures/entity/magazines/rifle_magazine_50_empty_texture"
+        "textures/entity/magazines/ar_magazine_50_empty_texture"
       ]
     },
-    "marksman_rifle_magazine_15": {
+    "dmr_magazine_15": {
       "textures": [
-        "textures/entity/magazines/marksman_rifle_magazine_15_texture"
+        "textures/entity/magazines/dmr_magazine_15_texture"
       ]
     },
-    "marksman_rifle_magazine_15_empty": {
+    "dmr_magazine_15_empty": {
       "textures": [
-        "textures/entity/magazines/marksman_rifle_magazine_15_empty_texture"
+        "textures/entity/magazines/dmr_magazine_15_empty_texture"
       ]
     },
     "smg_magazine_24": {

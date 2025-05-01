@@ -12,49 +12,49 @@ import { TypeUtil } from '../UtilitiesInit.js';
  */
 const MagazineObjects = {
     none: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.rifleMagazine30,
-        name:                  "Rifle Magazine [§a30§7/§a30 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.Rifle,
+        itemTypeId:            Enums.MagazineTypeIds.arMagazine30,
+        name:                  "AR Magazine [§a30§7/§a30 Rounds§f]\n§7[Interact to load ammo in]",
+        magazineClass:         MagazineClasses.AR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               30,
-        itemStack:             new ItemStack("yes:rifle_magazine_30", 1),
+        itemStack:             new ItemStack("yes:ar_magazine_30", 1),
         fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
     }),
 
-    rifleMagazine30: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.rifleMagazine30,
-        name:                  "Rifle Magazine [§a30§7/§a30 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.Rifle,
+    arMagazine30: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.arMagazine30,
+        name:                  "AR Magazine [§a30§7/§a30 Rounds§f]\n§7[Interact to load ammo in]",
+        magazineClass:         MagazineClasses.AR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               30,
-        itemStack:             new ItemStack("yes:rifle_magazine_30", 1),
+        itemStack:             new ItemStack("yes:ar_magazine_30", 1),
         fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
     }),
 
-    rifleMagazine50: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.rifleMagazine50,
-        name:                  "Rifle Magazine [§a50§7/§a50 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.Rifle,
+    arMagazine50: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.arMagazine50,
+        name:                  "AR Magazine [§a50§7/§a50 Rounds§f]\n§7[Interact to load ammo in]",
+        magazineClass:         MagazineClasses.AR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               50,
-        itemStack:             new ItemStack("yes:rifle_magazine_50", 1),
+        itemStack:             new ItemStack("yes:ar_magazine_50", 1),
         fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
     }),
 
-    marksmanRifleMagazine15: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.marksmanRifleMagazine15,
-        name:                  "Marksman Rifle Magazine [§a15§7/§a15 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.MarksmanRifle,
+    dmrMagazine15: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.dmrMagazine15,
+        name:                  "DMR Magazine [§a15§7/§a15 Rounds§f]\n§7[Interact to load ammo in]",
+        magazineClass:         MagazineClasses.DMR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               15,
-        itemStack:             new ItemStack("yes:marksman_rifle_magazine_15", 1),
+        itemStack:             new ItemStack("yes:dmr_magazine_15", 1),
         fillableByAmmoClasses: [BulletClasses.normal, BulletClasses.hollowPoint, BulletClasses.armorPiercing, BulletClasses.antiMaterial, BulletClasses.exploding, BulletClasses.incendiary]
     }),
 
     smgMagazine24: new Def.Magazine({
         itemTypeId:            Enums.MagazineTypeIds.smgMagazine24,
         name:                  "SMG Magazine [§a24§7/§a24 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.Smg,
+        magazineClass:         MagazineClasses.SMG,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               24,
         itemStack:             new ItemStack("yes:smg_magazine_24", 1),

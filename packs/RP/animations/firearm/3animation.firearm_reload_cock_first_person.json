@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.rifle_reload_cock_first_person": {
+		"animation.ar_reload_cock_first_person": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.5,
 			"override_previous_animation": true,

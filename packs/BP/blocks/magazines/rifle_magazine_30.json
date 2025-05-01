@@ -2,17 +2,17 @@
 	"format_version": "1.21.20",
 	"minecraft:block": {
 		"description": {
-			"identifier": "yes:rifle_magazine_30",
+			"identifier": "yes:ar_magazine_30",
 			"menu_category": {
 				"category": "none"
 			}
 		},
 		"components": {
-			"minecraft:geometry": "geometry.weeweejuice.rifle_magazine_30_ground",
+			"minecraft:geometry": "geometry.weeweejuice.ar_magazine_30_ground",
 			"minecraft:material_instances": {
 				"*": {
 					"render_method": "alpha_test",
-					"texture": "rifle_magazine_30"
+					"texture": "ar_magazine_30"
 				}
 			}
 		}
