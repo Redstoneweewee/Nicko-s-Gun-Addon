@@ -165,13 +165,12 @@ function tryReplaceOffhandItem(player) {
     const magazineTypeId = String(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId));
 
     const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
-    if(firearmObject) {
-        for(const attribute of firearmObject.animationAttributes) {
-            if(attribute.staticAnimation.type === AnimationTypes.ReloadOpenCock) {
-                player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload, true);
-                AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_open_cock_on_reload);
-                break;
-            }
+    if(firearmObject === undefined) { return; }
+    for(const attribute of firearmObject.animationAttributes) {
+        if(attribute.staticAnimation.type === AnimationTypes.ReloadOpenCock) {
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload, true);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_open_cock_on_reload);
+            break;
         }
     }
 
@@ -194,7 +193,8 @@ function tryReplaceOffhandItem(player) {
     let magazineItemStack;
     const isMagazineEmpty = Boolean(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty));
     if(!isMagazineEmpty) {
-        magazineItemStack = new ItemStack(magazineTypeId, firearmObject?.magazineAttribute.maxMagazineItemStackAmount);
+        try { magazineItemStack = new ItemStack(magazineTypeId, firearmObject?.magazineAttribute.maxMagazineItemStackAmount); }
+        catch { magazineItemStack = new ItemStack(firearmObject?.magazineAttribute.defaultMagazine.itemTypeId, firearmObject?.magazineAttribute.maxMagazineItemStackAmount); }
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, false);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, true);
