@@ -16,8 +16,8 @@ const AmmoList = {
         incendiaryChance: 0,
         multipliers: []
     }),
-    ShotgunShell: new Def.Ammo({
-        itemTypeId: "yes:shotgun_shell",
+    Ammo12Gauge: new Def.Ammo({
+        itemTypeId: "yes:ammo_12gauge",
         type: Enums.AmmoClasses.Birdshot,
         entityPierce: 1,
         blockPierce: 0,

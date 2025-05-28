@@ -3,7 +3,7 @@ import * as Def from '../2Definitions/FirearmDefinition.js';
 import * as Enums from "../1Enums/FirearmEnums.js"
 import { SwitchFiringModeAttribute, SwitchScopeZoomAttribute } from '../2Definitions/LeftClickAbilityDefinition.js';
 import { MagazineObjects } from './MagazinesList.js';
-import { BulletClasses, ShotgunShellClasses } from '../1Enums/AmmoEnums.js';
+import { BulletClasses, Ammo12GaugeClasses } from '../1Enums/AmmoEnums.js';
 import { MagazineClasses } from '../1Enums/MagazineEnums.js';
 import { LeftClickAbilityTypes } from '../1Enums/LeftClickAbilityEnums.js';
 import { NormalAnimation, ScaledAnimation } from '../2Definitions/AnimationDefinition.js';
@@ -626,10 +626,10 @@ const FirearmObjects = {
         ],
         magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Shotgun,
-            usableAmmoClasses:      [ShotgunShellClasses.Birdshot, ShotgunShellClasses.Buckshot],
+            usableAmmoClasses:      [Ammo12GaugeClasses.Birdshot, Ammo12GaugeClasses.Buckshot],
             maxMagazineItemStackAmount: 6,
             maxMagazineAmmoCount:   1,
-            defaultMagazine:        MagazineObjects.ShotgunShell,
+            defaultMagazine:        MagazineObjects.Ammo12Gauge,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
@@ -693,9 +693,9 @@ const FirearmObjects = {
         magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Pistol,
             usableAmmoClasses:      [BulletClasses.Normal],
-            maxMagazineItemStackAmount: 1,
-            maxMagazineAmmoCount:   8,
-            defaultMagazine:        MagazineObjects.PistolMagazine8,
+            maxMagazineItemStackAmount: 10,
+            maxMagazineAmmoCount:   1,
+            defaultMagazine:        MagazineObjects.Ammo9MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
@@ -760,9 +760,9 @@ const FirearmObjects = {
         magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Pistol,
             usableAmmoClasses:      [BulletClasses.Normal],
-            maxMagazineItemStackAmount: 1,
-            maxMagazineAmmoCount:   8,
-            defaultMagazine:        MagazineObjects.PistolMagazine8,
+            maxMagazineItemStackAmount: 5,
+            maxMagazineAmmoCount:   1,
+            defaultMagazine:        MagazineObjects.Ammo9MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
@@ -817,11 +817,11 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Pistol,
+            magazineClass:          MagazineClasses.Magnum,
             usableAmmoClasses:      [BulletClasses.Normal],
-            maxMagazineItemStackAmount: 1,
-            maxMagazineAmmoCount:   8,
-            defaultMagazine:        MagazineObjects.PistolMagazine8,
+            maxMagazineItemStackAmount: 8,
+            maxMagazineAmmoCount:   1,
+            defaultMagazine:        MagazineObjects.Ammo45ACP,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
@@ -886,9 +886,9 @@ const FirearmObjects = {
         magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.Pistol,
             usableAmmoClasses:      [BulletClasses.Normal],
-            maxMagazineItemStackAmount: 1,
-            maxMagazineAmmoCount:   8,
-            defaultMagazine:        MagazineObjects.PistolMagazine8,
+            maxMagazineItemStackAmount: 15,
+            maxMagazineAmmoCount:   1,
+            defaultMagazine:        MagazineObjects.Ammo9MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
@@ -947,11 +947,11 @@ const FirearmObjects = {
                 staticAnimation: StaticShootAnimations.smg.mp5Shoot})
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.SMG,
+            magazineClass:          MagazineClasses.AR,
             usableAmmoClasses:      [BulletClasses.Normal],
-            maxMagazineItemStackAmount: 1,
-            maxMagazineAmmoCount:   24,
-            defaultMagazine:        MagazineObjects.SMGMagazine24,
+            maxMagazineItemStackAmount: 30,
+            maxMagazineAmmoCount:   1,
+            defaultMagazine:        MagazineObjects.Ammo762MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           2,
@@ -1013,9 +1013,9 @@ const FirearmObjects = {
         magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.AR,
             usableAmmoClasses:      [BulletClasses.Normal],
-            maxMagazineItemStackAmount: 1,
-            maxMagazineAmmoCount:   30,
-            defaultMagazine:        MagazineObjects.ARMagazine30,
+            maxMagazineItemStackAmount: 20,
+            maxMagazineAmmoCount:   1,
+            defaultMagazine:        MagazineObjects.Ammo762MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           2,
@@ -1071,7 +1071,7 @@ const FirearmObjects = {
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 10,
             maxMagazineAmmoCount:   1,
-            defaultMagazine:        MagazineObjects.ShotgunShell,
+            defaultMagazine:        MagazineObjects.Ammo12Gauge,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
@@ -1138,7 +1138,7 @@ const FirearmObjects = {
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 6,
             maxMagazineAmmoCount:   1,
-            defaultMagazine:        MagazineObjects.ShotgunShell,
+            defaultMagazine:        MagazineObjects.Ammo12Gauge,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,
@@ -1202,7 +1202,7 @@ const FirearmObjects = {
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 20,
             maxMagazineAmmoCount:   1,
-            defaultMagazine:        MagazineObjects.ShotgunShell,
+            defaultMagazine:        MagazineObjects.Ammo12Gauge,
         }),
         scopeAttribute: new Def.ScopeAttribute({
             slowness:           3,

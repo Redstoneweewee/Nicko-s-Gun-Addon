@@ -1,0 +1,32 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:item": {
+        "description": {
+            "identifier": "yes:ammo_9mm",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "yes:is_bullet_type",
+                    "yes:ammo_9mm"
+                ]
+            },
+            "minecraft:block_placer": {
+                "block": "yes:ammo_9mm",
+                "replace_block_item": true,
+                "use_on": ["yes:null_block"]
+            },
+            "minecraft:max_stack_size": 64,
+            "minecraft:display_name": {
+                "value": "9mm Bullet"
+            },
+            "minecraft:allow_off_hand": true,
+            "minecraft:should_despawn": {
+                "value": false
+            }
+        }
+    }
+}

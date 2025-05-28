@@ -110,14 +110,59 @@
       ]
     },
 
+
+
+
+
+    
     "bullet": {
       "textures": [
         "textures/entity/ammunition/bullet_texture"
       ]
     },
-    "shotgun_shell": {
+    "ammo_12gauge": {
       "textures": [
-        "textures/entity/ammunition/shotgun_shell_texture"
+        "textures/entity/ammunition/ammo_12gauge_texture"
+      ]
+    },
+    "ammo_762mm": {
+      "textures": [
+        "textures/entity/ammunition/ammo_762mm_texture"
+      ]
+    },
+    "ammo_9mm": {
+      "textures": [
+        "textures/entity/ammunition/ammo_9mm_texture"
+      ]
+    },
+    "ammo_45acp": {
+      "textures": [
+        "textures/entity/ammunition/ammo_45acp_texture"
+      ]
+    },
+    "explosive_grenade": {
+      "textures": [
+        "textures/entity/ammunition/explosive_grenade_texture"
+      ]
+    },
+    "flash_grenade": {
+      "textures": [
+        "textures/entity/ammunition/flash_grenade_texture"
+      ]
+    },
+    "flame_grenade": {
+      "textures": [
+        "textures/entity/ammunition/flame_grenade_texture"
+      ]
+    },
+    "acid_grenade": {
+      "textures": [
+        "textures/entity/ammunition/acid_grenade_texture"
+      ]
+    },
+    "tesla_ammo": {
+      "textures": [
+        "textures/entity/ammunition/tesla_ammo_texture"
       ]
     },
 
@@ -199,16 +244,6 @@
     "shotgun_magazine_6_empty": {
       "textures": [
         "textures/entity/magazines/shotgun_magazine_6_empty_texture"
-      ]
-    },
-    "shotgun_shells_6": {
-      "textures": [
-        "textures/entity/magazines/shotgun_shells_6_texture"
-      ]
-    },
-    "shotgun_shells_6_empty": {
-      "textures": [
-        "textures/entity/magazines/shotgun_shells_6_texture"
       ]
     }
   }

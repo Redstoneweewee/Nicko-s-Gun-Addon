@@ -554,11 +554,11 @@
       },
 
 
-      "firearm.shotgun_shell_ground" : {
+      "firearm.ammo_12gauge_ground" : {
          "max_distance" : 200.0,
          "sounds" : [
 				{
-            "name": "sounds/ground/shotgun_shell_ground",
+            "name": "sounds/ground/ammo_12gauge_ground",
             "volume" : 1.0
             }
          ]

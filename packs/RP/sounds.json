@@ -3,7 +3,7 @@
       "events" : {
          "fall" : {
             "pitch" : [ 0.8, 1.2 ],
-            "sound" : "firearm.shotgun_shell_ground",
+            "sound" : "firearm.ammo_12gauge_ground",
             "volume" : [ 0.5 ]
          },
          "default" : {

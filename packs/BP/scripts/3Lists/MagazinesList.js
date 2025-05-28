@@ -61,16 +61,6 @@ const MagazineObjects = {
         fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
     }),
 
-    P90Magazine50: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.P90Magazine50,
-        name:                  "P90 Magazine [§a50§7/§a50 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.P90,
-        magazineType:          Enums.MagazineTypes.DurabilityBased,
-        maxAmmo:               50,
-        itemStack:             new ItemStack("yes:p90_magazine_50", 1),
-        fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
-    }),
-
     SniperMagazine3: new Def.Magazine({
         itemTypeId:            Enums.MagazineTypeIds.SniperMagazine3,
         name:                  "Sniper Magazine [§a3§7/§a3 Rounds§f]\n§7[Interact to load ammo in]",
@@ -91,15 +81,95 @@ const MagazineObjects = {
         fillableByAmmoClasses: [BulletClasses.Normal, BulletClasses.HollowPoint, BulletClasses.ArmorPiercing, BulletClasses.AntiMaterial, BulletClasses.Exploding, BulletClasses.Incendiary]
     }),
     
-    ShotgunShell: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.ShotgunShell,
+    Ammo12Gauge: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.Ammo12Gauge,
         name:                  "Shotgun Shell",
         magazineClass:         MagazineClasses.Shotgun,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:shotgun_shell", 1),
+        itemStack:             new ItemStack("yes:ammo_12gauge", 1),
         fillableByAmmoClasses: []
     }),
+    
+    Ammo9MM: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.Ammo9MM,
+        name:                  "9mm Bullet",
+        magazineClass:         MagazineClasses.Pistol,
+        magazineType:          Enums.MagazineTypes.StackBased,
+        maxAmmo:               64,
+        itemStack:             new ItemStack("yes:ammo_9mm", 1),
+        fillableByAmmoClasses: []
+    }),
+    
+    Ammo762MM: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.Ammo762MM,
+        name:                  "7.62mm Bullet",
+        magazineClass:         MagazineClasses.AR,
+        magazineType:          Enums.MagazineTypes.StackBased,
+        maxAmmo:               64,
+        itemStack:             new ItemStack("yes:ammo_762mm", 1),
+        fillableByAmmoClasses: []
+    }),
+    
+    Ammo45ACP: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.Ammo45ACP,
+        name:                  ".45 ACP Bullet",
+        magazineClass:         MagazineClasses.Magnum,
+        magazineType:          Enums.MagazineTypes.StackBased,
+        maxAmmo:               64,
+        itemStack:             new ItemStack("yes:ammo_45acp", 1),
+        fillableByAmmoClasses: []
+    }),
+    
+    ExplosiveGrenade: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.ExplosiveGrenade,
+        name:                  "Explosive Grenade",
+        magazineClass:         MagazineClasses.GrenadeLauncher,
+        magazineType:          Enums.MagazineTypes.StackBased,
+        maxAmmo:               64,
+        itemStack:             new ItemStack("yes:explosive_grenade", 1),
+        fillableByAmmoClasses: []
+    }),
+    
+    FlameGrenade: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.FlameGrenade,
+        name:                  "Flame Grenade",
+        magazineClass:         MagazineClasses.GrenadeLauncher,
+        magazineType:          Enums.MagazineTypes.StackBased,
+        maxAmmo:               64,
+        itemStack:             new ItemStack("yes:flame_grenade", 1),
+        fillableByAmmoClasses: []
+    }),
+    
+    FlashGrenade: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.FlashGrenade,
+        name:                  "Flash Grenade",
+        magazineClass:         MagazineClasses.GrenadeLauncher,
+        magazineType:          Enums.MagazineTypes.StackBased,
+        maxAmmo:               64,
+        itemStack:             new ItemStack("yes:flash_grenade", 1),
+        fillableByAmmoClasses: []
+    }),
+    
+    AcidGrenade: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.AcidGrenade,
+        name:                  "Acid Grenade",
+        magazineClass:         MagazineClasses.GrenadeLauncher,
+        magazineType:          Enums.MagazineTypes.StackBased,
+        maxAmmo:               64,
+        itemStack:             new ItemStack("yes:acid_grenade", 1),
+        fillableByAmmoClasses: []
+    }),
+    
+    TeslaAmmo: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.TeslaAmmo,
+        name:                  "Tesla Ammo",
+        magazineClass:         MagazineClasses.TeslaGun,
+        magazineType:          Enums.MagazineTypes.StackBased,
+        maxAmmo:               64,
+        itemStack:             new ItemStack("yes:tesla_ammo", 1),
+        fillableByAmmoClasses: []
+    })
 }
 
 

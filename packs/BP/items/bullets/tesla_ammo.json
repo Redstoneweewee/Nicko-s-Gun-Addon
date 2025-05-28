@@ -1,0 +1,32 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:item": {
+        "description": {
+            "identifier": "yes:tesla_ammo",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "yes:is_bullet_type",
+                    "yes:tesla_ammo"
+                ]
+            },
+            "minecraft:block_placer": {
+                "block": "yes:tesla_ammo",
+                "replace_block_item": true,
+                "use_on": ["yes:null_block"]
+            },
+            "minecraft:max_stack_size": 64,
+            "minecraft:display_name": {
+                "value": "Tesla Ammo"
+            },
+            "minecraft:allow_off_hand": true,
+            "minecraft:should_despawn": {
+                "value": false
+            }
+        }
+    }
+}

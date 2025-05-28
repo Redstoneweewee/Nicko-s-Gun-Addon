@@ -26,7 +26,7 @@ const BulletClasses = {
  * Slug:     "slug"
  * }}
  */
-const ShotgunShellClasses = {
+const Ammo12GaugeClasses = {
     Birdshot: "birdshot",
     Buckshot: "buckshot",
     Slug:     "slug"
@@ -37,7 +37,7 @@ const ShotgunShellClasses = {
 */
 const AmmoClasses = {
    ...BulletClasses,
-   ...ShotgunShellClasses
+   ...Ammo12GaugeClasses
 };
 
 
@@ -86,12 +86,12 @@ const AmmoMultiplierTypes = {
  * @enum {string}
  * @type {{
  * Bullet:       "yes:bullet",
- * ShotgunShell: "yes:shotgun_shell"
+ * Ammo12Gauge: "yes:ammo_12gauge"
  * }}
  */
 const AmmoTypes = {
    Bullet:        "yes:bullet",
-   ShotgunShell: "yes:shotgun_shell",
+   Ammo12Gauge: "yes:ammo_12gauge",
 };
 
 
@@ -105,4 +105,4 @@ const AmmoTypes = {
        return;
    }
  */
-export { BulletClasses, ShotgunShellClasses, AmmoClasses, AmmoMultiplierTypes, AmmoTypes };
+export { BulletClasses, Ammo12GaugeClasses, AmmoClasses, AmmoMultiplierTypes, AmmoTypes };

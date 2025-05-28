@@ -77,11 +77,11 @@ const CustomMaterials = {
         imagePath: "textures/scripting_ui/ammunition/bullet",
         hexIcon: ""
     }),
-    shotgunShell: new Def.CustomMaterial({
-        itemTypeId: "yes:shotgun_shell",
+    Ammo12Gauge: new Def.CustomMaterial({
+        itemTypeId: "yes:ammo_12gauge",
         nameNormal: "Shotgun Shell",
         namePlural: "Shotgun Shells",
-        imagePath: "textures/scripting_ui/ammunition/shotgun_shell",
+        imagePath: "textures/scripting_ui/ammunition/ammo_12gauge",
         hexIcon: ""
     })
 }
@@ -443,7 +443,7 @@ const MagazineCraftingObjects = [
         amount: 1,
         craftingItems: [
             new Def.CraftingItem({
-                customMaterial: CustomMaterials.shotgunShell,
+                customMaterial: CustomMaterials.Ammo12Gauge,
                 amount: 6
             })
         ]
@@ -476,9 +476,9 @@ const AmmunitionCraftingObjects = [
         ]
     }),
     new Def.Crafting({
-        itemTypeId: "yes:shotgun_shell",
+        itemTypeId: "yes:ammo_12gauge",
         name: "Shotgun Shell §r[§qx32§r]",
-        imagePath: "textures/scripting_ui/ammunition/shotgun_shell",
+        imagePath: "textures/scripting_ui/ammunition/ammo_12gauge",
         amount: 32,
         craftingItems: [
             new Def.CraftingItem({

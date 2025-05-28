@@ -2,7 +2,7 @@
     "format_version": "1.21.50",
     "minecraft:item": {
         "description": {
-            "identifier": "yes:shotgun_magazine_6_empty",
+            "identifier": "yes:ammo_12gauge",
             "menu_category": {
                 "category": "items"
             }
@@ -10,29 +10,22 @@
         "components": {
             "minecraft:tags": {
                 "tags": [
-                    "yes:shotgun_magazine_6_empty"
+                    "yes:is_bullet_type",
+                    "yes:ammo_12gauge"
                 ]
             },
             "minecraft:block_placer": {
-                "block": "yes:shotgun_magazine_6_empty",
+                "block": "yes:ammo_12gauge",
                 "replace_block_item": true,
                 "use_on": ["yes:null_block"]
             },
-            "minecraft:max_stack_size": 10,
+            "minecraft:max_stack_size": 64,
             "minecraft:display_name": {
-                "value": "§cEmpty§f Shotgun Shell Batch [§c0§7/§a6 Shells§f]\n§7[Interact to load ammo in]"
+                "value": "12-Gauge Shotgun Shell"
             },
             "minecraft:allow_off_hand": true,
             "minecraft:should_despawn": {
                 "value": false
-            },
-            "minecraft:use_modifiers": {
-                "movement_modifier": 1,
-                "use_duration": 0.05
-            },
-            "minecraft:cooldown": {
-                "category": "yes:shotgun_magazine_6_empty",
-                "duration": 0
             }
         }
     }

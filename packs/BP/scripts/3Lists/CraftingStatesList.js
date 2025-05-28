@@ -170,7 +170,7 @@ function showAmmunitionForm(player) {
  * @property {number} gunpowder - Count of gunpowder.
  * @property {number} ironIngot - Count of iron ingots.
  * @property {number} bullet - Count of bullets.
- * @property {number} shotgunShell - Count of shotgun shells.
+ * @property {number} Ammo12Gauge - Count of shotgun shells.
  */
 /**
  * Shows a selector form to the player and returns the response asynchronously.
@@ -201,7 +201,7 @@ function showConfirmationForm(player, crafingObject) {
         ironIngot: CraftingUtil.getItemCountInInventory(player, CustomMaterials.ironIngot.itemTypeId),
 
         bullet: CraftingUtil.getItemCountInInventory(player, CustomMaterials.bullet.itemTypeId),
-        shotgunShell: CraftingUtil.getItemCountInInventory(player, CustomMaterials.shotgunShell.itemTypeId),
+        Ammo12Gauge: CraftingUtil.getItemCountInInventory(player, CustomMaterials.Ammo12Gauge.itemTypeId),
         
         [Symbol.iterator]() {
             return Object.entries(this)[Symbol.iterator]();
@@ -359,10 +359,10 @@ function getMaterialsNeeded(crafingObject, counts) {
                 output += `${craftingitem.amount} ${CustomMaterials.bullet.hexIcon} §r` + (craftingitem.amount <= 1 ? CustomMaterials.bullet.nameNormal : CustomMaterials.bullet.namePlural) + "\n";
                 break;
 
-            case "yes:shotgun_shell":
-                if(counts.shotgunShell >= craftingitem.amount) { output += enough; }
+            case "yes:ammo_12gauge":
+                if(counts.Ammo12Gauge >= craftingitem.amount) { output += enough; }
                 else { output += missing; canCraft = false; }
-                output += `${craftingitem.amount} ${CustomMaterials.shotgunShell.hexIcon} §r` + (craftingitem.amount <= 1 ? CustomMaterials.shotgunShell.nameNormal : CustomMaterials.shotgunShell.namePlural) + "\n";
+                output += `${craftingitem.amount} ${CustomMaterials.Ammo12Gauge.hexIcon} §r` + (craftingitem.amount <= 1 ? CustomMaterials.Ammo12Gauge.nameNormal : CustomMaterials.Ammo12Gauge.namePlural) + "\n";
                 break;
 
             default:
