@@ -44,6 +44,11 @@
         "textures/entity/m92f_texture"
       ]
     },
+    "kar98": {
+      "textures": [
+        "textures/entity/kar98_texture"
+      ]
+    },
     "m4": {
       "textures": [
         "textures/entity/m4_texture"

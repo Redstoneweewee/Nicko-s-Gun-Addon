@@ -12,6 +12,7 @@
                 "tags": [
                     "yes:is_firearm",
                     "yes:magnum",
+                    "yes:use_old_first_person",
                     "yes:use_pistol_animations",
                     "yes:use_magnum_reload"
                 ]

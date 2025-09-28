@@ -12,6 +12,7 @@
                 "tags": [
                     "yes:is_firearm",
                     "yes:benelli",
+                    "yes:use_old_first_person",
                     "yes:use_shotgun_animations",
                     "yes:use_shotgun_reload",
                     "yes:use_shotgun_reload_swap"

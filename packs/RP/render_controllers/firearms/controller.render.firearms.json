@@ -41,6 +41,11 @@
 			"geometry": "Geometry.m92f",
 			"materials": [ { "*": "Material.firearm" } ]
 		},
+		"controller.render.kar98": {
+			"textures": [ "Texture.kar98" ],
+			"geometry": "Geometry.kar98",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
 		"controller.render.m4": {
 			"textures": [ "Texture.m4" ],
 			"geometry": "Geometry.m4",

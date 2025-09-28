@@ -1,13 +1,23 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.first_person_base": {
+		"animation.first_person_base_old": {
 			"loop": true,
 			"override_previous_animation": true,
 			"bones": {
 				"root": {
 					"rotation": [-87.6, 228.4, -63.1],
 					"position": [12, 23.1, 39.5]
+				}
+			}
+		},
+		"animation.first_person_base_new": {
+			"loop": true,
+			"override_previous_animation": true,
+			"bones": {
+				"root": {
+					"rotation": [90, 360, -180],
+					"position": [-10, 16.5, 22.5]
 				}
 			}
 		}

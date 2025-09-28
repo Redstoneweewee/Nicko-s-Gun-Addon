@@ -17,7 +17,11 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  *   reloadNoSwapPubg: Def.StaticAnimation,
  *   reloadCockLight: Def.StaticAnimation,
  *   reloadCockHeavy: Def.StaticAnimation,
- *   reloadCockPubg: Def.StaticAnimation
+ *   reloadCockPubg: Def.StaticAnimation,
+ *   kar98ReloadSwap: Def.StaticAnimation,
+ *   kar98ReloadNoSwap: Def.StaticAnimation,
+ *   kar98ReloadOpenCock: Def.StaticAnimation,
+ *   kar98ReloadCock: Def.StaticAnimation,
  * }} ARReloadAnimations
  * 
  * @typedef {{
@@ -49,7 +53,7 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  * @enum {Record<string, Def.StaticAnimation>}
  * @type {{
  *   sniper:  SniperReloadAnimations,
- *   ar:   ARReloadAnimations,
+ *   ar:      ARReloadAnimations,
  *   smg:     SmgReloadAnimations,
  *   pistol:  PistolReloadAnimations,
  *   shotgun: ShotgunReloadAnimations
@@ -229,6 +233,31 @@ const StaticReloadAnimations = {
                     timeout: 6,
                     soundRange: 40
                 }
+            ]
+        }),
+        
+        kar98ReloadSwap: new Def.StaticAnimation({
+            duration: 18, //in ticks
+            type:     Enums.AnimationTypes.ReloadSwap,
+            animationSounds: [
+            ]
+        }),
+        kar98ReloadNoSwap: new Def.StaticAnimation({
+            duration: 33, //in ticks
+            type:     Enums.AnimationTypes.ReloadNoSwap,
+            animationSounds: [
+            ]
+        }),
+        kar98ReloadOpenCock: new Def.StaticAnimation({
+            duration: 20, //in ticks
+            type:     Enums.AnimationTypes.ReloadOpenCock,
+            animationSounds: [
+            ]
+        }),
+        kar98ReloadCock: new Def.StaticAnimation({
+            duration: 20, //in ticks
+            type:     Enums.AnimationTypes.ReloadCock,
+            animationSounds: [
             ]
         })
     },

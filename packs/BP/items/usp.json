@@ -12,6 +12,7 @@
                 "tags": [
                     "yes:is_firearm",
                     "yes:usp",
+                    "yes:use_old_first_person",
                     "yes:use_pistol_animations",
                     "yes:use_pistol_reload_swap",
                     "yes:use_pistol_reload_no_swap",

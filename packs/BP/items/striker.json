@@ -12,6 +12,7 @@
                 "tags": [
                     "yes:is_firearm",
                     "yes:striker",
+                    "yes:use_old_first_person",
                     "yes:use_shotgun_animations",
                     "yes:use_striker_reload"
                 ]

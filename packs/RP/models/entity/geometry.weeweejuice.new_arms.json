@@ -1,0 +1,243 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.weeweejuice.new_arms",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 5,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "waist",
+					"parent": "root",
+					"pivot": [0, 12, 0]
+				},
+				{
+					"name": "body",
+					"parent": "waist",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "leftArm",
+					"parent": "body",
+					"pivot": [5, 22, 0]
+				},
+				{
+					"name": "rightArm",
+					"parent": "body",
+					"pivot": [-5, 22, 0]
+				},
+				{
+					"name": "first_person_pivot",
+					"parent": "body",
+					"pivot": [0, 22, 0]
+				},
+				{
+					"name": "bob_pivot",
+					"parent": "first_person_pivot",
+					"pivot": [0, 22, 0]
+				},
+				{
+					"name": "hipfire_lean_pivot",
+					"parent": "bob_pivot",
+					"pivot": [-3, 21.5, 0]
+				},
+				{
+					"name": "aim_lean_pivot",
+					"parent": "hipfire_lean_pivot",
+					"pivot": [-6, 9.245, -5.115]
+				},
+				{
+					"name": "aim_offset",
+					"parent": "aim_lean_pivot",
+					"pivot": [-6, 9.245, -5.115]
+				},
+				{
+					"name": "recoil_pivot",
+					"parent": "aim_offset",
+					"pivot": [-6.025, 21.5, -2.875]
+				},
+				{
+					"name": "rightArm_and_firearm",
+					"parent": "recoil_pivot",
+					"pivot": [-5, 22, 0]
+				},
+				{
+					"name": "body_rightArm",
+					"parent": "rightArm_and_firearm",
+					"pivot": [-5, 22, 0],
+					"cubes": [
+						{
+							"origin": [-8, 12, -2],
+							"size": [4, 12, 4],
+							"uv": {
+								"north": {"uv": [44, 20], "uv_size": [4, 12]},
+								"east": {"uv": [40, 20], "uv_size": [4, 12]},
+								"south": {"uv": [52, 20], "uv_size": [4, 12]},
+								"west": {"uv": [48, 20], "uv_size": [4, 12]},
+								"up": {"uv": [44, 16], "uv_size": [4, 4]},
+								"down": {"uv": [48, 20], "uv_size": [4, -4]}
+							}
+						},
+						{
+							"origin": [-8, 12, -2],
+							"size": [4, 12, 4],
+							"inflate": 0.25,
+							"uv": {
+								"north": {"uv": [44, 36], "uv_size": [4, 12]},
+								"east": {"uv": [40, 36], "uv_size": [4, 12]},
+								"south": {"uv": [52, 36], "uv_size": [4, 12]},
+								"west": {"uv": [48, 36], "uv_size": [4, 12]},
+								"up": {"uv": [44, 32], "uv_size": [4, 4]},
+								"down": {"uv": [48, 36], "uv_size": [4, -4]}
+							}
+						}
+					]
+				},
+				{
+					"name": "rightItem",
+					"parent": "rightArm_and_firearm",
+					"pivot": [-6, 15, 1]
+				},
+				{
+					"name": "firearm",
+					"parent": "rightItem",
+					"pivot": [-6, 15, 1],
+					"rotation": [90, 0, 0]
+				},
+				{
+					"name": "leftArm_and_magazine",
+					"parent": "firearm",
+					"pivot": [5, 16, 8]
+				},
+				{
+					"name": "magazine_leftArm",
+					"parent": "leftArm_and_magazine",
+					"pivot": [5, 16, 8],
+					"cubes": [
+						{
+							"origin": [4, 6, 6],
+							"size": [4, 12, 4],
+							"pivot": [5, 16, 8],
+							"rotation": [-90, 0, 0],
+							"uv": {
+								"north": {"uv": [36, 52], "uv_size": [4, 12]},
+								"east": {"uv": [32, 52], "uv_size": [4, 12]},
+								"south": {"uv": [44, 52], "uv_size": [4, 12]},
+								"west": {"uv": [40, 52], "uv_size": [4, 12]},
+								"up": {"uv": [36, 48], "uv_size": [4, 4]},
+								"down": {"uv": [40, 52], "uv_size": [4, -4]}
+							}
+						},
+						{
+							"origin": [4, 6, 6],
+							"size": [4, 12, 4],
+							"inflate": 0.25,
+							"pivot": [5, 16, 8],
+							"rotation": [-90, 0, 0],
+							"uv": {
+								"north": {"uv": [52, 52], "uv_size": [4, 12]},
+								"east": {"uv": [48, 52], "uv_size": [4, 12]},
+								"south": {"uv": [60, 52], "uv_size": [4, 12]},
+								"west": {"uv": [56, 52], "uv_size": [4, 12]},
+								"up": {"uv": [52, 48], "uv_size": [4, 4]},
+								"down": {"uv": [56, 52], "uv_size": [4, -4]}
+							}
+						}
+					]
+				},
+				{
+					"name": "rightArm_and_charge",
+					"parent": "firearm",
+					"pivot": [-5, 16, 8]
+				},
+				{
+					"name": "rightArm_and_magazine",
+					"parent": "rightArm_and_charge",
+					"pivot": [-5, 16, 8]
+				},
+				{
+					"name": "charge_rightArm",
+					"parent": "rightArm_and_magazine",
+					"pivot": [-5, 16, 8],
+					"cubes": [
+						{
+							"origin": [-8, 6, 6],
+							"size": [4, 12, 4],
+							"pivot": [-5, 16, 8],
+							"rotation": [-90, 0, 0],
+							"uv": {
+								"north": {"uv": [44, 20], "uv_size": [4, 12]},
+								"east": {"uv": [40, 20], "uv_size": [4, 12]},
+								"south": {"uv": [52, 20], "uv_size": [4, 12]},
+								"west": {"uv": [48, 20], "uv_size": [4, 12]},
+								"up": {"uv": [44, 16], "uv_size": [4, 4]},
+								"down": {"uv": [48, 20], "uv_size": [4, -4]}
+							}
+						},
+						{
+							"origin": [-8, 6, 6],
+							"size": [4, 12, 4],
+							"inflate": 0.25,
+							"pivot": [-5, 16, 8],
+							"rotation": [-90, 0, 0],
+							"uv": {
+								"north": {"uv": [44, 36], "uv_size": [4, 12]},
+								"east": {"uv": [40, 36], "uv_size": [4, 12]},
+								"south": {"uv": [52, 36], "uv_size": [4, 12]},
+								"west": {"uv": [48, 36], "uv_size": [4, 12]},
+								"up": {"uv": [44, 32], "uv_size": [4, 4]},
+								"down": {"uv": [48, 36], "uv_size": [4, -4]}
+							}
+						}
+					]
+				},
+				{
+					"name": "body_leftArm",
+					"parent": "recoil_pivot",
+					"pivot": [5, 22, 0],
+					"cubes": [
+						{
+							"origin": [4, 12, -2],
+							"size": [4, 12, 4],
+							"uv": {
+								"north": {"uv": [36, 52], "uv_size": [4, 12]},
+								"east": {"uv": [32, 52], "uv_size": [4, 12]},
+								"south": {"uv": [44, 52], "uv_size": [4, 12]},
+								"west": {"uv": [40, 52], "uv_size": [4, 12]},
+								"up": {"uv": [36, 48], "uv_size": [4, 4]},
+								"down": {"uv": [40, 52], "uv_size": [4, -4]}
+							}
+						},
+						{
+							"origin": [4, 12, -2],
+							"size": [4, 12, 4],
+							"inflate": 0.25,
+							"uv": {
+								"north": {"uv": [52, 52], "uv_size": [4, 12]},
+								"east": {"uv": [48, 52], "uv_size": [4, 12]},
+								"south": {"uv": [60, 52], "uv_size": [4, 12]},
+								"west": {"uv": [56, 52], "uv_size": [4, 12]},
+								"up": {"uv": [52, 48], "uv_size": [4, 4]},
+								"down": {"uv": [56, 52], "uv_size": [4, -4]}
+							}
+						}
+					]
+				},
+				{
+					"name": "leftItem",
+					"parent": "body_leftArm",
+					"pivot": [6, 15, 1]
+				}
+			]
+		}
+	]
+}

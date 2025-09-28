@@ -12,6 +12,7 @@
                 "tags": [
                     "yes:is_firearm",
                     "yes:agm",
+                    "yes:use_old_first_person",
                     "yes:use_shotgun_animations",
                     "yes:use_agm_reload",
                     "yes:use_agm_reload_cock"

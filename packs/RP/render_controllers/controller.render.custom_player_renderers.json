@@ -1,9 +1,14 @@
 {
 	"format_version": "1.8.0",
 	"render_controllers": {
-		"controller.render.player.arms": {
+		"controller.render.player.old_arms": {
 			"textures": [ "Texture.default" ],
-			"geometry": "Geometry.arms",
+			"geometry": "Geometry.old_arms",
+			"materials": [ { "*": "Material.default" } ]
+		},
+		"controller.render.player.new_arms": {
+			"textures": [ "Texture.default" ],
+			"geometry": "Geometry.new_arms",
 			"materials": [ { "*": "Material.default" } ]
 		},
 		"controller.render.player.hit_markers": {
