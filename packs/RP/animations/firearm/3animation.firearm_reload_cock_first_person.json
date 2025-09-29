@@ -985,23 +985,14 @@
 						"0.0": [0.6, 0.6, 1],
 						"0.73": [0.6, 0.6, 1],
 						"0.99": [1, 1, 1],
-						"1.0": {
-							"pre": [1, 1, 1],
-							"post": [0, 0, 0]
-						}
+						"1.0": {"pre": [1, 1, 1], "post": [0, 0, 0]}
 					}
 				},
 				"body_rightArm": {
 					"scale": {
 						"0.0": [0, 0, 0],
-						"0.99": {
-							"pre": [0, 0, 0],
-							"post": [0, 0, 0]
-						},
-						"1.0": {
-							"pre": [0, 0, 0],
-							"post": [1, 1, 1]
-						}
+						"0.99": {"pre": [0, 0, 0], "post": [0, 0, 0]},
+						"1.0": {"pre": [0, 0, 0], "post": [1, 1, 1]}
 					}
 				},
 				"rightArm_and_charge": {
@@ -1080,17 +1071,15 @@
 						"1.0": [-12.00829, -5.10981, -24.56631]
 					},
 					"scale": {
-						"0.55": ["!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine"],
+						"0.0": ["!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine"],
+						"0.55": {"pre": ["!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine"], "post": ["!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine"]},
 						"1.0": [0, 0, 0]
 					}
 				},
 				"old_bullet": {
 					"position": {
 						"0.0": [0, 0, 0],
-						"0.4": {
-							"pre": [0, 0, 0],
-							"post": [0, 0, 0]
-						}
+						"0.4": {"pre": [0, 0, 0], "post": [0, 0, 0]}
 					}
 				},
 				"in_bullet": {
@@ -1101,10 +1090,7 @@
 					},
 					"scale": {
 						"0.39": [0, 0, 0],
-						"0.4": {
-							"pre": [0, 0, 0],
-							"post": [1, 1, 1]
-						}
+						"0.4": {"pre": [0, 0, 0], "post": [1, 1, 1]}
 					}
 				},
 				"bullets": {
