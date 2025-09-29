@@ -210,8 +210,9 @@
 						{ "agm_reload_open_cock_third_person": "!v.is_first_person && v.should_agm_reload_cock" },
 						{ "striker_reload_open_port_first_person": " v.is_first_person && v.should_striker_reload" },
 						{ "striker_reload_open_port_third_person": "!v.is_first_person && v.should_striker_reload" },
-						{ "kar98_reload_open_cock_first_person": " v.is_first_person && v.should_kar98_reload && !v.has_shell_in_chamber" },
-						{ "kar98_reload_open_cock_with_shell_first_person": " v.is_first_person && v.should_kar98_reload && v.has_shell_in_chamber" }
+						{ "kar98_reload_open_cock_first_person": 			"v.should_kar98_reload && !v.has_shell_in_chamber" },
+						{ "kar98_reload_open_cock_with_shell_first_person": "v.should_kar98_reload && v.has_shell_in_chamber" },
+						{ "kar98_reload_open_cock_third_person": 			"!v.is_first_person && v.should_kar98_reload" }
 					],
 					"transitions" : [
 						{
@@ -232,8 +233,10 @@
 						{ "ar_reload_no_swap_first_person": " v.is_first_person && !v.is_holding_offhand_magazine && v.should_ar_reload_no_swap" },
 						{ "ar_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine && v.should_ar_reload_no_swap" },
 
-						{ "kar98_reload_swap_first_person":    " v.is_first_person &&  v.is_holding_offhand_magazine && v.should_kar98_reload" },
-						{ "kar98_reload_no_swap_first_person": " v.is_first_person && !v.is_holding_offhand_magazine && v.should_kar98_reload" },
+						{ "kar98_reload_swap_first_person":    " v.is_holding_offhand_magazine && v.should_kar98_reload" },
+						{ "kar98_reload_no_swap_first_person": "!v.is_holding_offhand_magazine && v.should_kar98_reload" },
+						{ "kar98_reload_swap_third_person":    "!v.is_first_person &&  v.is_holding_offhand_magazine && v.should_kar98_reload" },
+						{ "kar98_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine && v.should_kar98_reload" },
 
 						{ "pistol_reload_swap_first_person":    " v.is_first_person &&  v.is_holding_offhand_magazine && v.should_pistol_reload_swap" },
 						{ "pistol_reload_swap_third_person":    "!v.is_first_person &&  v.is_holding_offhand_magazine && v.should_pistol_reload_swap" },
@@ -303,7 +306,8 @@
 						{ "striker_reload_close_port_first_person": " v.is_first_person && v.should_striker_reload" },
 						{ "striker_reload_close_port_third_person": "!v.is_first_person && v.should_striker_reload" },
 
-						{ "kar98_reload_cock_first_person": " v.is_first_person && v.should_kar98_reload" }
+						{ "kar98_reload_cock_first_person": "v.should_kar98_reload" },
+						{ "kar98_reload_cock_third_person": "!v.is_first_person && v.should_kar98_reload" }
 					],
 					"transitions" : [
 						{

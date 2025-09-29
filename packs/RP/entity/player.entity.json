@@ -355,6 +355,11 @@
         "kar98_reload_no_swap_first_person":    "animation.kar98_reload_no_swap_first_person",
         "kar98_reload_cock_first_person":    "animation.kar98_reload_cock_first_person",
 
+        "kar98_reload_open_cock_third_person":    "animation.kar98_reload_open_cock_third_person",
+        "kar98_reload_swap_third_person":    "animation.kar98_reload_swap_third_person",
+        "kar98_reload_no_swap_third_person":    "animation.kar98_reload_no_swap_third_person",
+        "kar98_reload_cock_third_person":    "animation.kar98_reload_cock_third_person",
+
         "pistol_reload_swap_first_person":    "animation.pistol_reload_swap_first_person",
         "pistol_reload_no_swap_first_person": "animation.pistol_reload_no_swap_first_person",
         "pistol_reload_cock_first_person":    "animation.pistol_reload_cock_first_person",

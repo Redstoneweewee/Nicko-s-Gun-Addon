@@ -36,8 +36,13 @@
 					"pivot": [-5, 22, 0]
 				},
 				{
-					"name": "first_person_pivot",
+					"name": "third_person_pivot",
 					"parent": "body",
+					"pivot": [0, 22, 0]
+				},
+				{
+					"name": "first_person_pivot",
+					"parent": "third_person_pivot",
 					"pivot": [0, 22, 0]
 				},
 				{

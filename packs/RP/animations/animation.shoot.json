@@ -935,7 +935,7 @@
 		},
 		"animation.kar98_shoot_with_ammo": {
 			"loop": "hold_on_last_frame",
-			"animation_length": 1.5,
+			"animation_length": 1,
 			"override_previous_animation": true,
 			"anim_time_update": "q.anim_time + q.delta_time*v.reload_open_cock_animation_multiplier",
 			"bones": {
@@ -945,6 +945,7 @@
 				"rightArm_and_firearm": {
 					"rotation": {
 						"0.0": [0, 0, 0],
+						"0.15": [0, 11.5, 0],
 						"0.38": [0, -7.5, 0],
 						"0.51": {
 							"pre": [0, -6.34, 0],
@@ -961,29 +962,26 @@
 					},
 					"position": {
 						"0.0": [0, 0, 0],
-						"0.15": {
-							"pre": [-0.375, -3, 0.075],
-							"post": [-0.375, -3, 0.075],
-							"lerp_mode": "catmullrom"
-						},
+						"0.15": [0.24498, 0, -0.04984],
 						"0.38": {
-							"post": [-0.52, -3.555, 0.115],
+							"pre": [0.38, -0.055, -0.71],
+							"post": [0.38, -0.055, -0.71],
 							"lerp_mode": "catmullrom"
 						},
 						"0.51": {
-							"post": [-0.52, -2.255, 0.115],
+							"post": [0.38, 0.945, -0.71],
 							"lerp_mode": "catmullrom"
 						},
 						"0.58": {
-							"post": [-0.52, -2.505, 0.115],
+							"post": [0.38, 0.945, -0.71],
 							"lerp_mode": "catmullrom"
 						},
 						"0.68": {
-							"post": [-0.52, -3.555, 0.115],
+							"post": [0.38, -0.38, -0.71],
 							"lerp_mode": "catmullrom"
 						},
 						"0.78": {
-							"post": [-0.52, -3.555, 0.115],
+							"post": [0.38, -0.055, -0.71],
 							"lerp_mode": "catmullrom"
 						},
 						"1.0": [0, 0, 0]
