@@ -576,6 +576,12 @@ function finishedReloading(iteration, mainLoopId, player, firearm, oldMagazineIt
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_start_cock, false);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_start_cock);
+    
+    if(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber)) {
+        firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber, false);
+        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_shell_in_chamber, false);
+        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_shell_in_chamber);
+    }
 
     //loop reloading for stack-based ammo types
     if(magazineType === MagazineTypes.StackBased && finalMagazineItemStack !== undefined && newMagazineItemStack.amount < finalMagazineItemStack.amount) {

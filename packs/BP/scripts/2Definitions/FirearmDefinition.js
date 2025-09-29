@@ -12,7 +12,8 @@ class Firearm {
      * normalName:           string,
      * firingMode:           string,
      * firingRate:           number,
-     * hasMagazineWhenEmpty: boolean
+     * hasMagazineWhenEmpty: boolean,
+     * lastBulletInChamber:  boolean,
      * minSpreadDegrees:     number,
      * maxSpreadDegrees:     number,
      * magazineAttribute:    MagazineAttribute,
@@ -27,6 +28,7 @@ class Firearm {
         this.firingMode           = def.firingMode;
         this.firingRate           = def.firingRate;
         this.hasMagazineWhenEmpty = def.hasMagazineWhenEmpty;
+        this.lastBulletInChamber  = def.lastBulletInChamber;
         this.minSpreadDegrees     = def.minSpreadDegrees;
         this.maxSpreadDegrees     = def.maxSpreadDegrees;
         

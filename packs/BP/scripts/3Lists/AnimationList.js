@@ -498,7 +498,9 @@ const StaticReloadAnimations = {
  *   m4a1Shoot: Def.StaticAnimation,
  *   ar15Shoot: Def.StaticAnimation,
  *   hk417Shoot: Def.StaticAnimation,
- *   m4Shoot: Def.StaticAnimation
+ *   m4Shoot: Def.StaticAnimation,
+ *   kar98ShootWithAmmo: Def.StaticAnimation,
+ *   kar98ShootOutOfAmmo: Def.StaticAnimation
  * }} ARShootAnimations
  * 
  * @typedef {{
@@ -622,6 +624,20 @@ const StaticShootAnimations = {
                 }
             ],
             animationId: "animation.m4_shoot"
+        }),
+        kar98ShootWithAmmo: new Def.StaticAnimation({
+            duration: 20, //in ticks
+            type:     Enums.AnimationTypes.ShootWithAmmo,
+            animationSounds: [
+            ],
+            animationId: "animation.kar98_shoot_with_ammo"
+        }),
+        kar98ShootOutOfAmmo: new Def.StaticAnimation({
+            duration: 20, //in ticks
+            type:     Enums.AnimationTypes.ShootOutOfAmmo,
+            animationSounds: [
+            ],
+            animationId: "animation.kar98_shoot_out_of_ammo"
         })
     },
     smg: {

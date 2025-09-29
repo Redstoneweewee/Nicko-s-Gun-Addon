@@ -161,6 +161,10 @@ function tryReplaceOffhandItem(player) {
     if(firearmItemStack === undefined) { return; }
     const offhandContainerSlot = ItemUtil.getPlayerOffhandContainerSlot(player);
     if(offhandContainerSlot === null) { return; }
+    
+    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_shell_in_chamber, firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber));
+    console.log(`firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber): ${firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber)}`);
+    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_shell_in_chamber);
 
     const magazineTypeId = String(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId));
 
@@ -221,5 +225,6 @@ function tryReplaceOffhandItem(player) {
             magazineItemStack.amount = ammoCount;
         }
     }
+
     offhandContainerSlot.setItem(magazineItemStack);
 }

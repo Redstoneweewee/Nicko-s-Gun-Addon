@@ -15,7 +15,8 @@ function tryInitializeFirearm(player) {
     const id = FirearmIdUtil.getFirearmId(firearmItemStack);
     if(findFirearmIdInWorldDynamicProperties(id)) { return; }
     const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
-    this.initializeFirearm(player, firearmObject, ItemUtil.getSelectedContainerSlot(player));
+    if(firearmObject === undefined) { return; }
+    initializeFirearm(player, firearmObject, ItemUtil.getSelectedContainerSlot(player));
 }
 
 
@@ -32,6 +33,7 @@ function initializeFirearm(player, firearm, firearmContainerSlot) {
 
     firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId, firearm.magazineAttribute.defaultMagazine.itemTypeId);
     firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty, false);
+    firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber, false);
     console.log(`set magazineTypeId to ${firearm.magazineAttribute.defaultMagazine.itemTypeId}`);
     const ammoCount = firearm.magazineAttribute.defaultMagazine.magazineType === MagazineTypes.DurabilityBased ? firearm.magazineAttribute.defaultMagazine.maxAmmo : firearm.magazineAttribute.maxMagazineItemStackAmount;
     

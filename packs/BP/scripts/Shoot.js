@@ -35,15 +35,24 @@ const HitMarkerVariants = {
  */
 function shoot(player, firearm) {
     const ammoCount = FirearmUtil.getAmmoCountFromOffhand(player);
+    const firearmItemStack = ItemUtil.getSelectedItemStack(player);
     if(ammoCount === undefined || ammoCount <= 0 || player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) { 
         //LoopUtil.stopAsyncLoop(player, Global.playerShootingLoopIds);
-        const firearmItemStack = ItemUtil.getSelectedItemStack(player);
         if(firearmItemStack !== undefined) { //Need this here for when the player right-clicks when the magazine is empty & they weren't shooting just before
             Reload.tryAutomaticReload(player, ReloadTypes.Normal);
         }
         renewAmmoCount(player);
         console.log("out of ammo");
         return;
+    }
+
+    if(ammoCount === 1 && firearm.lastBulletInChamber === true) {
+        const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
+        if(firearmContainerSlot !== null) {
+            firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber, true);
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_shell_in_chamber, true);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_shell_in_chamber);
+        }
     }
     //console.log(`ammoCount: ${ammoCount}, isReloading: ${player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)}`);
 

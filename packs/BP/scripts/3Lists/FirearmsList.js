@@ -658,6 +658,7 @@ const FirearmObjects = {
         itemTypeId:             "yes:usp",
         normalName:             "USP\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
+        lastBulletInChamber:      false,
         firingMode:             Enums.FiringModes.Semi,
         firingRate:             0,
         bulletsPerShot:         1,
@@ -728,6 +729,7 @@ const FirearmObjects = {
         itemTypeId:                    "yes:makarov",
         normalName:             "Makarov\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
+        lastBulletInChamber:      false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -798,6 +800,7 @@ const FirearmObjects = {
         itemTypeId:                    "yes:magnum",
         normalName:             "Magnum Revolver\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
+        lastBulletInChamber:      false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -860,6 +863,7 @@ const FirearmObjects = {
         itemTypeId:                    "yes:m92f",
         normalName:             "M92F\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
+        lastBulletInChamber:      false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -930,6 +934,7 @@ const FirearmObjects = {
         itemTypeId:                    "yes:kar98",
         normalName:             "Kar98\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     false,
+        lastBulletInChamber:      true,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -961,10 +966,10 @@ const FirearmObjects = {
                 scaleDurationToValue: 20
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.pistol.m92fShootWithAmmo
+                staticAnimation: StaticShootAnimations.ar.kar98ShootWithAmmo
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.pistol.m92fShootOutOfAmmo
+                staticAnimation: StaticShootAnimations.ar.kar98ShootOutOfAmmo
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
@@ -1004,6 +1009,7 @@ const FirearmObjects = {
         itemTypeId:                    "yes:mp5",
         normalName:             "MP-5\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
+        lastBulletInChamber:      false,
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               300,  //ideally, use multiples of 60
         bulletsPerShot:         1,
@@ -1070,6 +1076,7 @@ const FirearmObjects = {
         itemTypeId:                    "yes:m4",
         normalName:             "M4\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
+        lastBulletInChamber:      false,
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               172,  //ideally, use multiples of 60
         bulletsPerShot:         1,
@@ -1137,6 +1144,7 @@ const FirearmObjects = {
         itemTypeId:                    "yes:benelli",
         normalName:             "Benelli Shotgun\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     false,
+        lastBulletInChamber:      false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         10,
@@ -1196,6 +1204,7 @@ const FirearmObjects = {
         itemTypeId:                    "yes:agm",
         normalName:             "AGM Shotgun\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     false,
+        lastBulletInChamber:      false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         10,
@@ -1266,6 +1275,7 @@ const FirearmObjects = {
         itemTypeId:                    "yes:striker",
         normalName:             "Striker Shotgun\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     false,
+        lastBulletInChamber:      false,
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               200,
         bulletsPerShot:         1,
