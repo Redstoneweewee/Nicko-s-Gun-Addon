@@ -635,7 +635,6 @@ class FirearmUtil {
         const firearmObject = this.getFirearmObjectFromItemStack(firearmItemStack);
         const magazineObject = this.getMagazineObjectFromItemStackBoth(offhandItemStack);
         if(firearmObject === undefined || magazineObject === undefined) { return false; }
-
         if(firearmObject.magazineAttribute.magazineClass === magazineObject.magazineClass) { return true; }
         return false;
     }
@@ -795,13 +794,18 @@ class FirearmUtil {
         }
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, false);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
-        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_offhand_magazine, true);
-        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_offhand_magazine);
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
         const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmContainerSlot.getItem());
         if(firearmObject === undefined) { return; }
         FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearmObject);
+        if(firearmObject.hasMagazineWhenEmpty) {
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_offhand_magazine, true);
+        }
+        else {
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_offhand_magazine, false);
+        }
+        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_offhand_magazine);
     }
     /**
      * 
@@ -811,7 +815,6 @@ class FirearmUtil {
      * @param {boolean} isSwappingOrReloading
      */
     static setFirearmMagazineToNone(player, firearmContainerSlot, firearmId, isSwappingOrReloading) {
-
         FirearmUtil.setWorldAmmoUsingId(firearmId, 0);
         firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty, false);
         firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId, MagazineTypeIds.None);

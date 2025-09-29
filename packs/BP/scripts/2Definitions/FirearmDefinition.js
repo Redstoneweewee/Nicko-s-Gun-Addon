@@ -8,25 +8,27 @@ import { NormalAnimation } from "./AnimationDefinition.js";
 class Firearm {
     /**
      * @param {{
-     * itemTypeId:          string,
-     * normalName:          string,
-     * firingMode:          string,
-     * firingRate:          number,
-     * minSpreadDegrees:    number,
-     * maxSpreadDegrees:    number,
-     * magazineAttribute:   MagazineAttribute,
-     * scopeAttribute:      ScopeAttribute,
-     * recoilAttribute:     RecoilAttribute,
-     * animationAttributes: NormalAnimation[]
+     * itemTypeId:           string,
+     * normalName:           string,
+     * firingMode:           string,
+     * firingRate:           number,
+     * hasMagazineWhenEmpty: boolean
+     * minSpreadDegrees:     number,
+     * maxSpreadDegrees:     number,
+     * magazineAttribute:    MagazineAttribute,
+     * scopeAttribute:       ScopeAttribute,
+     * recoilAttribute:      RecoilAttribute,
+     * animationAttributes:  NormalAnimation[]
      * }} def
      */
     constructor(def) {
-        this.itemTypeId       = def.itemTypeId;
-        this.normalName       = def.normalName;
-        this.firingMode       = def.firingMode;
-        this.firingRate       = def.firingRate;
-        this.minSpreadDegrees = def.minSpreadDegrees;
-        this.maxSpreadDegrees = def.maxSpreadDegrees;
+        this.itemTypeId           = def.itemTypeId;
+        this.normalName           = def.normalName;
+        this.firingMode           = def.firingMode;
+        this.firingRate           = def.firingRate;
+        this.hasMagazineWhenEmpty = def.hasMagazineWhenEmpty;
+        this.minSpreadDegrees     = def.minSpreadDegrees;
+        this.maxSpreadDegrees     = def.maxSpreadDegrees;
         
         this.magazineAttribute   = def.magazineAttribute;
         this.scopeAttribute      = def.scopeAttribute;
@@ -95,14 +97,18 @@ class MagazineAttribute {
      * usableAmmoClasses:          (typeof AmmoClasses[keyof typeof AmmoClasses])[],
      * maxMagazineItemStackAmount: number,
      * maxMagazineAmmoCount:       number,
+     * maxAmmoPerReloadCount:      number,
+     * maxEmptyAmmoPerReloadCount: number,
      * defaultMagazine:            Magazine
      * }} def
      */
     constructor(def) {
-        this.magazineClass               = def.magazineClass;
+        this.magazineClass              = def.magazineClass;
         this.usableAmmoClasses          = def.usableAmmoClasses;
         this.maxMagazineItemStackAmount = def.maxMagazineItemStackAmount;
         this.maxMagazineAmmoCount       = def.maxMagazineAmmoCount;
+        this.maxAmmoPerReloadCount      = def.maxAmmoPerReloadCount;
+        this.maxEmptyAmmoPerReloadCount = def.maxEmptyAmmoPerReloadCount;
         this.defaultMagazine            = def.defaultMagazine;
     }
 }

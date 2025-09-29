@@ -657,6 +657,7 @@ const FirearmObjects = {
     USP: new Def.Gun({
         itemTypeId:             "yes:usp",
         normalName:             "USP\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     true,
         firingMode:             Enums.FiringModes.Semi,
         firingRate:             0,
         bulletsPerShot:         1,
@@ -694,7 +695,9 @@ const FirearmObjects = {
             magazineClass:          MagazineClasses.Pistol,
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 10,
-            maxMagazineAmmoCount:   1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      10,
+            maxEmptyAmmoPerReloadCount: 10,
             defaultMagazine:        MagazineObjects.Ammo9MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
@@ -724,6 +727,7 @@ const FirearmObjects = {
     Makarov: new Def.Gun({
         itemTypeId:                    "yes:makarov",
         normalName:             "Makarov\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     true,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -761,7 +765,9 @@ const FirearmObjects = {
             magazineClass:          MagazineClasses.Pistol,
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 5,
-            maxMagazineAmmoCount:   1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      5,
+            maxEmptyAmmoPerReloadCount: 5,
             defaultMagazine:        MagazineObjects.Ammo9MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
@@ -791,6 +797,7 @@ const FirearmObjects = {
     Magnum: new Def.Gun({
         itemTypeId:                    "yes:magnum",
         normalName:             "Magnum Revolver\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     true,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -820,7 +827,9 @@ const FirearmObjects = {
             magazineClass:          MagazineClasses.Magnum,
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 8,
-            maxMagazineAmmoCount:   1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      8,
+            maxEmptyAmmoPerReloadCount: 8,
             defaultMagazine:        MagazineObjects.Ammo45ACP,
         }),
         scopeAttribute: new Def.ScopeAttribute({
@@ -850,6 +859,7 @@ const FirearmObjects = {
     M92F: new Def.Gun({
         itemTypeId:                    "yes:m92f",
         normalName:             "M92F\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     true,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -887,7 +897,9 @@ const FirearmObjects = {
             magazineClass:          MagazineClasses.Pistol,
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 15,
-            maxMagazineAmmoCount:   1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      15,
+            maxEmptyAmmoPerReloadCount: 15,
             defaultMagazine:        MagazineObjects.Ammo9MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
@@ -917,6 +929,7 @@ const FirearmObjects = {
     Kar98: new Def.Gun({
         itemTypeId:                    "yes:kar98",
         normalName:             "Kar98\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -958,7 +971,9 @@ const FirearmObjects = {
             magazineClass:          MagazineClasses.AR,
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 5,
-            maxMagazineAmmoCount:   1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      1,
+            maxEmptyAmmoPerReloadCount: 5,
             defaultMagazine:        MagazineObjects.Ammo762MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
@@ -988,6 +1003,7 @@ const FirearmObjects = {
     MP5: new Def.Gun({
         itemTypeId:                    "yes:mp5",
         normalName:             "MP-5\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     true,
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               300,  //ideally, use multiples of 60
         bulletsPerShot:         1,
@@ -1021,7 +1037,9 @@ const FirearmObjects = {
             magazineClass:          MagazineClasses.AR,
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 30,
-            maxMagazineAmmoCount:   1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      30,
+            maxEmptyAmmoPerReloadCount: 30,
             defaultMagazine:        MagazineObjects.Ammo762MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
@@ -1051,6 +1069,7 @@ const FirearmObjects = {
     M4: new Def.Gun({
         itemTypeId:                    "yes:m4",
         normalName:             "M4\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     true,
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               172,  //ideally, use multiples of 60
         bulletsPerShot:         1,
@@ -1085,7 +1104,9 @@ const FirearmObjects = {
             magazineClass:          MagazineClasses.AR,
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 20,
-            maxMagazineAmmoCount:   1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      20,
+            maxEmptyAmmoPerReloadCount: 20,
             defaultMagazine:        MagazineObjects.Ammo762MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
@@ -1115,6 +1136,7 @@ const FirearmObjects = {
     Benelli: new Def.Gun({
         itemTypeId:                    "yes:benelli",
         normalName:             "Benelli Shotgun\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         10,
@@ -1141,7 +1163,9 @@ const FirearmObjects = {
             magazineClass:          MagazineClasses.Shotgun,
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 10,
-            maxMagazineAmmoCount:   1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      1,
+            maxEmptyAmmoPerReloadCount: 1,
             defaultMagazine:        MagazineObjects.Ammo12Gauge,
         }),
         scopeAttribute: new Def.ScopeAttribute({
@@ -1171,6 +1195,7 @@ const FirearmObjects = {
     AGM: new Def.Gun({
         itemTypeId:                    "yes:agm",
         normalName:             "AGM Shotgun\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         10,
@@ -1208,7 +1233,9 @@ const FirearmObjects = {
             magazineClass:          MagazineClasses.Shotgun,
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 6,
-            maxMagazineAmmoCount:   1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      1,
+            maxEmptyAmmoPerReloadCount: 1,
             defaultMagazine:        MagazineObjects.Ammo12Gauge,
         }),
         scopeAttribute: new Def.ScopeAttribute({
@@ -1238,6 +1265,7 @@ const FirearmObjects = {
     Striker: new Def.Gun({
         itemTypeId:                    "yes:striker",
         normalName:             "Striker Shotgun\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     false,
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               200,
         bulletsPerShot:         1,
@@ -1272,7 +1300,9 @@ const FirearmObjects = {
             magazineClass:          MagazineClasses.Shotgun,
             usableAmmoClasses:      [BulletClasses.Normal],
             maxMagazineItemStackAmount: 20,
-            maxMagazineAmmoCount:   1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      1,
+            maxEmptyAmmoPerReloadCount: 1,
             defaultMagazine:        MagazineObjects.Ammo12Gauge,
         }),
         scopeAttribute: new Def.ScopeAttribute({
