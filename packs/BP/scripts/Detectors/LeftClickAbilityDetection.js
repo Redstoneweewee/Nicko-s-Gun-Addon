@@ -11,6 +11,10 @@ import * as Reload from '../Reload.js';
 import { ReloadTypes } from '../1Enums/ReloadEnums.js';
 const Vector = new Vector3();
 
+/**
+ * 
+ * @param {Player} player 
+ */
 function onLeftClick(player) {
     const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
     if(firearmContainerSlot === null) { return; }
@@ -28,13 +32,13 @@ function onLeftClick(player) {
             console.log(`ability `);
             leftClickAbility(player, firearmContainerSlot, firearmObject);
         }
-        else {
+        else if(player.getItemCooldown(firearmItemStack.typeId) === 0) {
             console.log("tactical reload");
             Reload.tryAutomaticReload(player, ReloadTypes.Tactical);
             //automaticMagazineSwap(player, firearmItemStack, true);
         }
     }
-    else {
+    else if(player.getItemCooldown(firearmItemStack.typeId) === 0) {
         console.log("tactical reload");
         Reload.tryAutomaticReload(player, ReloadTypes.Tactical);
         //automaticMagazineSwap(player, firearmItemStack, true);
