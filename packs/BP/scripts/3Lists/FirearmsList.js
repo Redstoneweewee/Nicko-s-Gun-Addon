@@ -705,7 +705,8 @@ const FirearmObjects = {
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown: false
+            stopAimOnCooldown: false,
+            stopAimDelay:       0
         }),
         minSpreadDegrees:       0.5,
         maxSpreadDegrees:       1,
@@ -776,7 +777,8 @@ const FirearmObjects = {
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown: false
+            stopAimOnCooldown: false,
+            stopAimDelay:       0
         }),
         minSpreadDegrees:       0.5,
         maxSpreadDegrees:       1,
@@ -839,7 +841,8 @@ const FirearmObjects = {
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown: false
+            stopAimOnCooldown: false,
+            stopAimDelay:       0
         }),
         minSpreadDegrees:       0.5,
         maxSpreadDegrees:       1,
@@ -910,7 +913,8 @@ const FirearmObjects = {
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown: false
+            stopAimOnCooldown: false,
+            stopAimDelay:       0
         }),
         minSpreadDegrees:       0.5,
         maxSpreadDegrees:       1,
@@ -985,7 +989,8 @@ const FirearmObjects = {
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown:  true
+            stopAimOnCooldown:  true,
+            stopAimDelay:       4
         }),
         minSpreadDegrees:       0.5,
         maxSpreadDegrees:       1,
@@ -1052,7 +1057,8 @@ const FirearmObjects = {
             slowness:           2,
             speed:              13,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown: false
+            stopAimOnCooldown: false,
+            stopAimDelay:       0
         }),
         minSpreadDegrees:       0.15,
         maxSpreadDegrees:       1,
@@ -1120,7 +1126,8 @@ const FirearmObjects = {
             slowness:           2,
             speed:              13,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown: false
+            stopAimOnCooldown: false,
+            stopAimDelay:       0
         }),
         minSpreadDegrees:       0.15,
         maxSpreadDegrees:       1,
@@ -1180,7 +1187,8 @@ const FirearmObjects = {
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown:  false
+            stopAimOnCooldown:  false,
+            stopAimDelay:       0
         }),
         minSpreadDegrees:       2,
         maxSpreadDegrees:       3,
@@ -1251,7 +1259,8 @@ const FirearmObjects = {
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown:  true
+            stopAimOnCooldown:  true,
+            stopAimDelay:       2
         }),
         minSpreadDegrees:       2,
         maxSpreadDegrees:       3,
@@ -1319,7 +1328,8 @@ const FirearmObjects = {
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown:  true
+            stopAimOnCooldown:  true,
+            stopAimDelay:       0
         }),
         minSpreadDegrees:       2,
         maxSpreadDegrees:       3,

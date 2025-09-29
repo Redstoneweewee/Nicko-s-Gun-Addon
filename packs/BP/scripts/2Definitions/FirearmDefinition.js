@@ -122,7 +122,8 @@ class ScopeAttribute {
      * slowness: number,
      * speed: number,
      * recoilMultiplier: number,
-     * stopAimOnCooldown: boolean
+     * stopAimOnCooldown: boolean,
+     * stopAimDelay: number
      * }} def
      */
     constructor(def) {
@@ -130,6 +131,7 @@ class ScopeAttribute {
         this.speed             = def.speed;
         this.recoilMultiplier  = def.recoilMultiplier;
         this.stopAimOnCooldown = def.stopAimOnCooldown;
+        this.stopAimDelay      = def.stopAimDelay;
     }
 }
 

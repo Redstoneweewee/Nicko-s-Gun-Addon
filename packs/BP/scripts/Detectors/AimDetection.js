@@ -1,4 +1,4 @@
-import { HudElement, HudVisibility, Player, system } from '@minecraft/server';
+import { HudElement, HudVisibility, ItemComponentTypes, Player, system } from '@minecraft/server';
 import { Vector3 } from '../Math/Vector3.js';
 import { Global } from '../Global.js';
 import { AnimationLink } from "../AnimationLink.js";
@@ -19,14 +19,23 @@ function aimDetection(player) {
         tryRemoveScopeZoom(player);
         return;
     }
+    const cooldownComponent = firearmItemStack.getComponent(ItemComponentTypes.Cooldown);
+    const maxCooldown = cooldownComponent === undefined ? 0 : cooldownComponent.cooldownTicks;
+
 
     if(FirearmUtil.isSwitchingFirearm(player) && player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming)) {
         renewScopeZoom(player, firearmObject);
     }
-    else if(FirearmUtil.isHoldingFirearm(player) && 
-            player.isSneaking && 
-            !player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading) && 
-            (!firearmObject.scopeAttribute.stopAimOnCooldown || player.getItemCooldown(firearmItemStack.typeId) === 0)) {
+    else if(
+        FirearmUtil.isHoldingFirearm(player) && 
+        player.isSneaking && 
+        !player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading) && 
+        (
+            !firearmObject.scopeAttribute.stopAimOnCooldown || 
+            player.getItemCooldown(firearmItemStack.typeId) === 0 || 
+            player.getItemCooldown(firearmItemStack.typeId) >= (maxCooldown - firearmObject.scopeAttribute.stopAimDelay)
+        )
+    ) {
         tryAddScopeZoom(player, firearmObject);
         //Does not apply night vision for javelin yet
     }

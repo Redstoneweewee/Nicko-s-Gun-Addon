@@ -70,7 +70,6 @@ system.runInterval(() => {
         //FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player);
         Reload.tryManualReload(player);
         //LeftClickAbilityDetection.leftClickAbilityDetection(player);
-
     });
 });
 
