@@ -934,10 +934,8 @@
 			}
 		},
 		"animation.kar98_shoot_with_ammo": {
-			"loop": "hold_on_last_frame",
 			"animation_length": 1,
-			"override_previous_animation": true,
-			"anim_time_update": "q.anim_time + q.delta_time*v.reload_open_cock_animation_multiplier",
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
 			"bones": {
 				"body_leftArm": {
 					"scale": 0
@@ -990,8 +988,8 @@
 				"charge_rightArm": {
 					"scale": {
 						"0.12": [1, 1, 1],
-						"0.28": [0.6, 0.6, 1],
-						"0.85": [0.6, 0.6, 1],
+						"0.28": ["v.is_first_person ? 0.6 : 1", "v.is_first_person ? 0.6 : 1", 1],
+						"0.85": ["v.is_first_person ? 0.6 : 1", "v.is_first_person ? 0.6 : 1", 1],
 						"1.0": [1, 1, 1]
 					}
 				},
@@ -1125,10 +1123,8 @@
 			}
 		},
 		"animation.kar98_shoot_out_of_ammo": {
-			"loop": "hold_on_last_frame",
 			"animation_length": 1,
-			"override_previous_animation": true,
-			"anim_time_update": "q.anim_time + q.delta_time*v.reload_open_cock_animation_multiplier",
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
 			"bones": {
 				"body_leftArm": {
 					"scale": 0

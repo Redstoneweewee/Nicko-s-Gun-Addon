@@ -55,10 +55,10 @@
 					"rotation": [-1.43, 43.64, -6.35],
 					"position": [-5.34211, 0.34202, -8.50558]
 				},
-				"charge_rightArm": {
+				"body_leftArm": {
 					"scale": 0
 				},
-				"body_leftArm": {
+				"body_rightArm": {
 					"scale": 0
 				}
 			}
@@ -116,10 +116,10 @@
 					"rotation": [-1.42993, 43.64432, -6.35305],
 					"position": [-5.34211, 0.34202, -8.50558]
 				},
-				"charge_rightArm": {
+				"body_leftArm": {
 					"scale": 0
 				},
-				"body_leftArm": {
+				"body_rightArm": {
 					"scale": 0
 				}
 			}
@@ -164,10 +164,10 @@
 					"rotation": [-1.42993, 43.64432, -6.35305],
 					"position": [-5.34211, 0.34202, -8.50558]
 				},
-				"charge_rightArm": {
+				"body_leftArm": {
 					"scale": 0
 				},
-				"body_leftArm": {
+				"body_rightArm": {
 					"scale": 0
 				}
 			}
