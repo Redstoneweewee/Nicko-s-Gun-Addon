@@ -46,7 +46,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_out_light",
+            "name": "sounds/reload/rifle/rifle_out_light",
             "volume" : 1.0
             }
          ]
@@ -55,7 +55,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_out_medium",
+            "name": "sounds/reload/rifle/rifle_out_medium",
             "volume" : 1.0
             }
          ]
@@ -64,7 +64,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_out_heavy",
+            "name": "sounds/reload/rifle/rifle_out_heavy",
             "volume" : 1.0
             }
          ]
@@ -73,7 +73,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_out_pubg",
+            "name": "sounds/reload/rifle/rifle_out_pubg",
             "volume" : 1.0
             }
          ]
@@ -82,7 +82,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_in_light",
+            "name": "sounds/reload/rifle/rifle_in_light",
             "volume" : 0.8
             }
          ]
@@ -91,7 +91,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_in_medium",
+            "name": "sounds/reload/rifle/rifle_in_medium",
             "volume" : 1.0
             }
          ]
@@ -100,7 +100,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_in_heavy",
+            "name": "sounds/reload/rifle/rifle_in_heavy",
             "volume" : 1.0
             }
          ]
@@ -109,7 +109,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_in_pubg",
+            "name": "sounds/reload/rifle/rifle_in_pubg",
             "volume" : 1.0
             }
          ]
@@ -118,7 +118,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_cock_toward_light",
+            "name": "sounds/reload/rifle/rifle_cock_toward_light",
             "volume" : 0.9
             }
          ]
@@ -127,7 +127,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_cock_away_light",
+            "name": "sounds/reload/rifle/rifle_cock_away_light",
             "volume" : 0.9
             }
          ]
@@ -136,7 +136,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_cock_toward_heavy",
+            "name": "sounds/reload/rifle/rifle_cock_toward_heavy",
             "pitch": 1.2,
             "volume" : 1.3
             }
@@ -146,7 +146,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_cock_away_heavy",
+            "name": "sounds/reload/rifle/rifle_cock_away_heavy",
             "pitch": 1.2,
             "volume" : 1.3
             }
@@ -156,7 +156,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_cock_toward_pubg",
+            "name": "sounds/reload/rifle/rifle_cock_toward_pubg",
             "pitch": 1.0
             }
          ]
@@ -165,7 +165,7 @@
          "max_distance" : 80.0,
          "sounds" : [
 				{
-            "name": "sounds/reload/ar/ar_cock_away_pubg",
+            "name": "sounds/reload/rifle/rifle_cock_away_pubg",
             "pitch": 1.0
             }
          ]
@@ -344,6 +344,54 @@
       },
 
 
+      
+      "firearm.kar98_bolt_pull_toward" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/kar98/kar98_bolt_pull_toward",
+            "volume" : 1.5
+            }
+         ]
+      },
+      "firearm.kar98_bolt_pull_away" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/kar98/kar98_bolt_pull_away",
+            "volume" : 1.5
+            }
+         ]
+      },
+      "firearm.kar98_clip_in" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/kar98/kar98_clip_in",
+            "volume" : 1.5
+            }
+         ]
+      },
+      "firearm.kar98_bullet_in_single" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/kar98/kar98_in_single",
+            "volume" : 1.5
+            }
+         ]
+      },
+      "firearm.kar98_bullet_in_full" : {
+         "max_distance" : 80.0,
+         "sounds" : [
+				{
+            "name": "sounds/reload/kar98/kar98_in_full",
+            "volume" : 1.5
+            }
+         ]
+      },
+
+
       "firearm.ak47_shoot" : {
          "max_distance" : 200.0,
          "sounds" : [
@@ -417,6 +465,15 @@
 				{
             "name": "sounds/shoot/hk417_shoot",
             "volume" : 0.85
+            }
+         ]
+      },
+      "firearm.kar98_shoot" : {
+         "max_distance" : 200.0,
+         "sounds" : [
+				{
+            "name": "sounds/shoot/kar98_shoot",
+            "volume" : 3.0
             }
          ]
       },

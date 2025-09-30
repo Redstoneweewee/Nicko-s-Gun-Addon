@@ -995,10 +995,10 @@ const FirearmObjects = {
         minSpreadDegrees:       0.5,
         maxSpreadDegrees:       1,
         recoilAttribute: new Def.RecoilAttribute({
-            amountPerShot: 30,
+            amountPerShot: 40,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.06,
+                minCamerashake:     0.1,
+                maxCamerashake:     0.16,
                 minCamerashakeTime: 0.05,
                 maxCamerashakeTime: 0.05
             }),

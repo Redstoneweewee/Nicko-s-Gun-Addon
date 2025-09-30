@@ -101,7 +101,7 @@
 					"locators": {
 						"kar98_muzzle": {
 							"offset": [-6.025, -15.2, -2.975],
-							"rotation": [90, 0, 0]
+							"rotation": [180, 0, 0]
 						},
 						"kar98_shell_eject": {
 							"offset": [-6.00355, 7.42145, -3.1],

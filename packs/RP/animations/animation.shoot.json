@@ -1120,6 +1120,36 @@
 				}
 			},
 			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_flash",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					}
+				],
 				"0.43": {
 					"effect": "bullet_casing",
 					"locator": "kar98_shell_eject"
@@ -1150,6 +1180,38 @@
 						]
 					}
 				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_flash",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					}
+				]
 			}
 		},
 		"animation.agm_shoot_with_ammo": {

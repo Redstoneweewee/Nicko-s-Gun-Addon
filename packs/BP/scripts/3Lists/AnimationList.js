@@ -240,24 +240,49 @@ const StaticReloadAnimations = {
             duration: 18, //in ticks
             type:     Enums.AnimationTypes.ReloadSwap,
             animationSounds: [
+                {
+                    soundId: "firearm.kar98_bullet_in_single",
+                    timeout: 10,
+                    soundRange: 40
+                }
             ]
         }),
         kar98ReloadNoSwap: new Def.StaticAnimation({
             duration: 33, //in ticks
             type:     Enums.AnimationTypes.ReloadNoSwap,
             animationSounds: [
+                {
+                    soundId: "firearm.kar98_clip_in",
+                    timeout: 14,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.kar98_bullet_in_full",
+                    timeout: 21,
+                    soundRange: 40
+                }
             ]
         }),
         kar98ReloadOpenCock: new Def.StaticAnimation({
             duration: 20, //in ticks
             type:     Enums.AnimationTypes.ReloadOpenCock,
             animationSounds: [
+                {
+                    soundId: "firearm.kar98_bolt_pull_toward",
+                    timeout: 13,
+                    soundRange: 40
+                }
             ]
         }),
         kar98ReloadCock: new Def.StaticAnimation({
             duration: 20, //in ticks
             type:     Enums.AnimationTypes.ReloadCock,
             animationSounds: [
+                {
+                    soundId: "firearm.kar98_bolt_pull_away",
+                    timeout: 9,
+                    soundRange: 40
+                }
             ]
         })
     },
@@ -629,6 +654,21 @@ const StaticShootAnimations = {
             duration: 20, //in ticks
             type:     Enums.AnimationTypes.ShootWithAmmo,
             animationSounds: [
+                {
+                    soundId: "firearm.kar98_shoot",
+                    timeout: 0,
+                    soundRange: 200
+                },
+                {
+                    soundId: "firearm.kar98_bolt_pull_toward",
+                    timeout: 9,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.kar98_bolt_pull_away",
+                    timeout: 12,
+                    soundRange: 40
+                }
             ],
             animationId: "animation.kar98_shoot_with_ammo"
         }),
@@ -636,6 +676,11 @@ const StaticShootAnimations = {
             duration: 20, //in ticks
             type:     Enums.AnimationTypes.ShootOutOfAmmo,
             animationSounds: [
+                {
+                    soundId: "firearm.kar98_shoot",
+                    timeout: 0,
+                    soundRange: 200
+                }
             ],
             animationId: "animation.kar98_shoot_out_of_ammo"
         })
