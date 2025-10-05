@@ -144,48 +144,12 @@
 				{
 					"name": "magazine",
 					"parent": "leftArm_and_magazine",
-					"pivot": [-6, 19, -8.925]
-				},
-				{
-					"name": "rightArm_and_charge",
-					"parent": "firearm",
-					"pivot": [-5, 16, 8]
-				},
-				{
-					"name": "rightArm_and_magazine",
-					"parent": "rightArm_and_charge",
-					"pivot": [-5, 16, 8]
-				},
-				{
-					"name": "charge_rightArm",
-					"parent": "rightArm_and_magazine",
-					"pivot": [-5, 16, 8],
-					"cubes": [
-						{
-							"origin": [-8, 6, 6],
-							"size": [4, 12, 4],
-							"pivot": [-5, 16, 8],
-							"rotation": [-90, 0, 0],
-							"uv": {
-								"north": {"uv": [48, 0], "uv_size": [16, 48]},
-								"east": {"uv": [16, 48], "uv_size": [16, 48]},
-								"south": {"uv": [32, 48], "uv_size": [16, 48]},
-								"west": {"uv": [48, 48], "uv_size": [16, 48]},
-								"up": {"uv": [48, 100], "uv_size": [16, 16]},
-								"down": {"uv": [64, 116], "uv_size": [16, -16]}
-							}
-						}
-					]
-				},
-				{
-					"name": "magazine_new",
-					"parent": "rightArm_and_magazine",
 					"pivot": [-6, 14.25, 1.6],
 					"rotation": [30.25, 0, 0]
 				},
 				{
 					"name": "rotation",
-					"parent": "magazine_new",
+					"parent": "magazine",
 					"pivot": [-6, 14.25, 1.6],
 					"rotation": [-30.25, 0, 0],
 					"cubes": [
@@ -406,7 +370,7 @@
 					]
 				},
 				{
-					"name": "hexadecagon",
+					"name": "circle3",
 					"parent": "rotation",
 					"pivot": [-6, 14.25, 1.6],
 					"cubes": [
@@ -523,7 +487,7 @@
 				{
 					"name": "bullet",
 					"parent": "rotation",
-					"pivot": [-6, 20.625, -0.4]
+					"pivot": [-6, 19.15, -1.225]
 				},
 				{
 					"name": "casing3",
@@ -1929,6 +1893,37 @@
 					"pivot": [-6, 20.625, -0.4]
 				},
 				{
+					"name": "rightArm_and_charge",
+					"parent": "firearm",
+					"pivot": [-5, 16, 8]
+				},
+				{
+					"name": "rightArm_and_magazine",
+					"parent": "rightArm_and_charge",
+					"pivot": [-5, 16, 8]
+				},
+				{
+					"name": "charge_rightArm",
+					"parent": "rightArm_and_magazine",
+					"pivot": [-5, 16, 8],
+					"cubes": [
+						{
+							"origin": [-8, 6, 6],
+							"size": [4, 12, 4],
+							"pivot": [-5, 16, 8],
+							"rotation": [-90, 0, 0],
+							"uv": {
+								"north": {"uv": [48, 0], "uv_size": [16, 48]},
+								"east": {"uv": [16, 48], "uv_size": [16, 48]},
+								"south": {"uv": [32, 48], "uv_size": [16, 48]},
+								"west": {"uv": [48, 48], "uv_size": [16, 48]},
+								"up": {"uv": [48, 100], "uv_size": [16, 16]},
+								"down": {"uv": [64, 116], "uv_size": [16, -16]}
+							}
+						}
+					]
+				},
+				{
 					"name": "charge",
 					"parent": "rightArm_and_charge",
 					"pivot": [-6, 19, -2.7]
@@ -2105,7 +2100,7 @@
 					}
 				},
 				{
-					"name": "hexadecagon",
+					"name": "circle5",
 					"parent": "back_joint",
 					"pivot": [-6.125, 19.325, 1.875],
 					"cubes": [
@@ -2438,7 +2433,7 @@
 					]
 				},
 				{
-					"name": "hexadecagon8",
+					"name": "circle6",
 					"parent": "back_joint",
 					"pivot": [1.825, 11.375, 30.8],
 					"cubes": [
@@ -2584,7 +2579,7 @@
 					]
 				},
 				{
-					"name": "hexadecagon",
+					"name": "circle4",
 					"parent": "middle_joint",
 					"pivot": [-5.9875, 19.375, 0.325],
 					"cubes": [
@@ -2756,7 +2751,7 @@
 					]
 				},
 				{
-					"name": "hexadecagon",
+					"name": "circle7",
 					"parent": "front_point",
 					"pivot": [-5.8875, 19.375, -1.6],
 					"cubes": [

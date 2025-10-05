@@ -746,16 +746,16 @@ const FirearmObjects = {
         range:                  500,
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.pistol.reloadSwap,
-                scaleDurationToValue: 30
+                staticAnimation:      StaticReloadAnimations.pistol.lugerReloadSwap,
+                scaleDurationToValue: 32
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.pistol.reloadNoSwap,
+                staticAnimation:      StaticReloadAnimations.pistol.lugerReloadNoSwap,
+                scaleDurationToValue: 20
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.lugerReloadCock,
                 scaleDurationToValue: 15
-            }),
-            new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.pistol.reloadCock,
-                scaleDurationToValue: 8
             }),
             new NormalAnimation({
                 staticAnimation: StaticShootAnimations.pistol.lugerShootWithAmmo
@@ -859,8 +859,8 @@ const FirearmObjects = {
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.04,
                 maxCamerashake:     0.06,
-                minCamerashakeTime: 0.5,
-                maxCamerashakeTime: 0.5
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.0001,

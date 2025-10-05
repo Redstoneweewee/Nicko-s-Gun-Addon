@@ -1,0 +1,18 @@
+
+{
+	"format_version" : "1.10.0",
+	"animation_controllers" : {
+		"controller.animation.firearms_slide_back" : {
+			"initial_state" : "default",
+			"states" : {
+				"default" : {
+					"animations" : [
+						{ "luger_slide_back": "v.is_holding_firearm && !v.is_reloading && !v.firearm_has_ammo && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:luger')" },
+						{ "pistol_slide_back": "v.is_holding_firearm && !v.is_reloading && !v.firearm_has_ammo && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m92f', 'yes:usp', 'yes:makarov')" },
+						{ "shotgun_slide_back": "v.is_holding_firearm && !v.is_reloading && !v.firearm_has_ammo && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm')" }
+					]
+				}
+			}
+		}
+	}
+}

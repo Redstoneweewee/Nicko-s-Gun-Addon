@@ -14,9 +14,7 @@
                     "yes:luger",
                     "yes:use_new_first_person",
                     "yes:use_pistol_animations",
-                    "yes:use_pistol_reload_swap",
-                    "yes:use_pistol_reload_no_swap",
-                    "yes:use_pistol_reload_cock"
+                    "yes:use_luger_reload"
                 ]
             },
             "minecraft:block_placer": {

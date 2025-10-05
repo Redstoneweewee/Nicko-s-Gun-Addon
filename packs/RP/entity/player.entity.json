@@ -169,6 +169,7 @@
           "v.should_striker_reload         = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_striker_reload');",
           "v.should_magnum_reload          = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_magnum_reload');",
           "v.should_kar98_reload           = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_kar98_reload');",
+          "v.should_luger_reload           = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_luger_reload');",
 
           "v.is_not_shooting_increment = v.is_shooting ? 0 : v.is_not_shooting_increment >= 1 ? 1 : v.is_not_shooting_increment + 0.005;",
           
@@ -208,18 +209,13 @@
             "hide_firearm_magazine": "v.is_holding_firearm && !v.is_holding_offhand_magazine && !v.is_reloading"
           },
           {
-            "pistol_slide_back": "v.is_holding_firearm && !v.firearm_has_ammo"
-          },
-          {
-            "shotgun_slide_back": "v.is_holding_firearm && !v.firearm_has_ammo && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm')"
-          },
-          {
             "third_person_no_crouch": "!v.is_first_person && v.is_holding_firearm"
           },
           {
             "player_outline_size": "!v.is_first_person && !q.is_spectator && q.distance_from_camera > 4.5"
           },
-          "firearms_controller"
+          "firearms_controller",
+          "firearms_slide_back_controller"
         ]
       },
       "animations": {
@@ -294,10 +290,13 @@
 				"hide_arms": "animation.hide_arms",
         "hide_magazines": "animation.hide_magazines",
         "hide_firearm_magazine": "animation.hide_firearm_magazine",
+        "luger_slide_back": "animation.luger_slide_back",
         "pistol_slide_back": "animation.pistol_slide_back",
         "shotgun_slide_back": "animation.shotgun_slide_back",
 
         "firearms_controller": "controller.animation.firearms",
+        "firearms_slide_back_controller": "controller.animation.firearms_slide_back",
+
 
         "ar_hold_first_person":     "animation.ar_hold_first_person",
         "ar_hold_third_person":     "animation.ar_hold_third_person",
@@ -395,7 +394,11 @@
         "striker_reload_close_port_first_person":    "animation.striker_reload_close_port_first_person",
 
         "magnum_reload_first_person":         "animation.magnum_reload_first_person",
-        "magnum_reload_third_person":         "animation.magnum_reload_third_person"
+        "magnum_reload_third_person":         "animation.magnum_reload_third_person",
+
+        "luger_reload_swap_first_person":         "animation.luger_reload_swap_first_person",
+        "luger_reload_no_swap_first_person":         "animation.luger_reload_no_swap_first_person",
+        "luger_reload_cock_first_person":         "animation.luger_reload_cock_first_person"
 
       },
       "render_controllers": [

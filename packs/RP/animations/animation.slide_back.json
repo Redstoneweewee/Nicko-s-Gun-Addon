@@ -1,10 +1,43 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
+		"animation.luger_slide_back": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.06,
+			"override_previous_animation": true,
+			"bones": {
+				"back_joint": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.04": [-85, 0, 0]
+					}
+				},
+				"middle_joint": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.01": [35.15, 0, 0],
+						"0.02": [69.39, 0, 0],
+						"0.03": [100.38, 0, 0],
+						"0.04": [126.6156, 0, 0]
+					}
+				},
+				"front_point": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.01": [-13.65, 0, 0],
+						"0.02": [-26.97, 0, 0],
+						"0.03": [-36.54, 0, 0],
+						"0.04": [-41.6156, 0, 0]
+					}
+				}
+			},
+			"timeline": {
+				"0.0": ["v.delay = 0.0;", "v.upt = 0.04;", "v.downt = 0.1;"]
+			}
+		},
 		"animation.pistol_slide_back": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.32,
-			"override_previous_animation": true,
 			"bones": {
 				"pistol_slide": {
 					"position": {

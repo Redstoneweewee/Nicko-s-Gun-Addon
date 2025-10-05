@@ -1780,17 +1780,16 @@
 						"locator": "luger_muzzle"
 					}
 				],
-				"0.05": {
+				"0.03": {
 					"effect": "bullet_casing",
 					"locator": "luger_shell_eject"
 				}
 			},
 			"timeline": {
-				"0.0": ["v.delay = 0.0;", "v.upt = 0.08;", "v.downt = 0.2;"]
+				"0.0": ["v.delay = 0.0;", "v.upt = 0.04;", "v.downt = 0.1;"]
 			}
 		},
 		"animation.luger_shoot_out_of_ammo": {
-			"loop": "hold_on_last_frame",
 			"animation_length": 1.5,
 			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
 			"bones": {
@@ -1831,23 +1830,6 @@
 							"v.is_first_person ?   -0.015*(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4)) :  0"
 						]
 					}
-				},
-				"back_joint": {
-					"rotation": ["(q.anim_time >= v.delay)  ? ((q.anim_time - v.delay) <= v.upt      ? (-(q.anim_time - v.delay) / v.upt * 85)      : -85)  : 0;", 0, 0]
-				},
-				"middle_joint": {
-					"rotation": [
-						"-(math.asin(1/1.5*math.sin(  ((q.anim_time >= v.delay) ? ((q.anim_time - v.delay) <= v.upt ? (-(q.anim_time - v.delay) / v.upt * 85) : -85) : 0)))+ ((q.anim_time >= v.delay) ? ((q.anim_time - v.delay) <= v.upt ? (-(q.anim_time - v.delay) / v.upt * 85) : -85) : 0))",
-						0,
-						0
-					]
-				},
-				"front_point": {
-					"rotation": [
-						"math.asin(1/1.5*math.sin(  (q.anim_time >= v.delay) ? ((q.anim_time - v.delay) <= v.upt ? (-(q.anim_time - v.delay) / v.upt * 85) : -85) : 0))",
-						0,
-						0
-					]
 				}
 			},
 			"particle_effects": {
@@ -1865,13 +1847,10 @@
 						"locator": "luger_muzzle"
 					}
 				],
-				"0.05": {
+				"0.03": {
 					"effect": "bullet_casing",
 					"locator": "luger_shell_eject"
 				}
-			},
-			"timeline": {
-				"0.0": ["v.delay = 0.0;", "v.upt = 0.08;", "v.downt = 0.2;"]
 			}
 		},
 		"animation.kar98_shoot_with_ammo": {

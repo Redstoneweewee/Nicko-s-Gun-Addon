@@ -40,7 +40,7 @@
             },
             "minecraft:cooldown": {
                 "category": "yes:m92f",
-                "duration": 1.5
+                "duration": 0.2
             }
         }
     }

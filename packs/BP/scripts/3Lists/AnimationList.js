@@ -34,7 +34,10 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  * reloadSwap: Def.StaticAnimation,
  * reloadNoSwap: Def.StaticAnimation,
  * magnumReload: Def.StaticAnimation,
- * reloadCock: Def.StaticAnimation
+ * lugerReloadSwap: Def.StaticAnimation,
+ * lugerReloadNoSwap: Def.StaticAnimation,
+ * reloadCock: Def.StaticAnimation,
+ * lugerReloadCock: Def.StaticAnimation
  * }} PistolReloadAnimations
  * 
  * @typedef {{
@@ -390,6 +393,33 @@ const StaticReloadAnimations = {
                 }
             ]
         }),
+        lugerReloadSwap: new Def.StaticAnimation({
+            duration: 45, //in ticks
+            type:     Enums.AnimationTypes.ReloadSwap,
+            animationSounds: [
+                {
+                    soundId: "firearm.pistol_reload_magazine_out",
+                    timeout: 10,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.pistol_reload_magazine_in",
+                    timeout: 30,
+                    soundRange: 40
+                }
+            ]
+        }),
+        lugerReloadNoSwap: new Def.StaticAnimation({
+            duration: 27, //in ticks
+            type:     Enums.AnimationTypes.ReloadNoSwap,
+            animationSounds: [
+                {
+                    soundId: "firearm.pistol_reload_magazine_in",
+                    timeout: 13,
+                    soundRange: 40
+                }
+            ]
+        }),
         reloadCock: new Def.StaticAnimation({
             duration: 10, //in ticks
             type:     Enums.AnimationTypes.ReloadCock,
@@ -402,6 +432,17 @@ const StaticReloadAnimations = {
                 {
                     soundId: "firearm.pistol_reload_cock_away",
                     timeout: 6,
+                    soundRange: 40
+                }
+            ]
+        }),
+        lugerReloadCock: new Def.StaticAnimation({
+            duration: 10, //in ticks
+            type:     Enums.AnimationTypes.ReloadCock,
+            animationSounds: [
+                {
+                    soundId: "firearm.pistol_reload_cock_away",
+                    timeout: 4,
                     soundRange: 40
                 }
             ]
