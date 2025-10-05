@@ -1084,7 +1084,7 @@
 							"post": [0.41, -4.74, -0.02],
 							"lerp_mode": "catmullrom"
 						},
-						"0.98": [20, 0, -20]
+						"1.0": [0.4098, -4.73657, -0.0223]
 					},
 					"position": {
 						"0.0": {
@@ -1095,11 +1095,14 @@
 							"post": [-6.72, 2.25, -4.495],
 							"lerp_mode": "catmullrom"
 						},
-						"0.98": [-10, 1, -6.75]
+						"1.0": [-6.725, 3.1, -4.375]
 					}
 				},
 				"body_leftArm": {
-					"scale": 0
+					"scale": {
+						"0.0": [0, 0, 0],
+						"1.0": [0, 0, 0]
+					}
 				},
 				"rightArm_and_firearm": {
 					"rotation": {
@@ -1141,12 +1144,14 @@
 					"rotation": {
 						"0.0": [-8.11781, 13.47161, -2.38981],
 						"0.25": [-6.41607, 16.72501, -29.75618],
-						"0.73": [-1.42993, 43.64432, -6.35305]
+						"0.73": [-1.42993, 43.64432, -6.35305],
+						"1.0": [-1.42993, 43.64432, -6.35305]
 					},
 					"position": {
 						"0.0": [-7.8252, 1.28714, -6.83702],
 						"0.25": [-7.37835, 1.5999, -7.46206],
-						"0.73": [-5.34211, 0.34202, -8.50558]
+						"0.73": [-5.34211, 0.34202, -8.50558],
+						"1.0": [-5.34211, 0.34202, -8.50558]
 					},
 					"scale": {
 						"0.0": ["v.is_first_person ? 0.6 : 1", "v.is_first_person ? 0.6 : 1", 1],
@@ -1209,23 +1214,14 @@
 						"0.0": ["v.is_first_person ? 0.6 : 1", "v.is_first_person ? 0.6 : 1", 1],
 						"0.73": ["v.is_first_person ? 0.6 : 1", "v.is_first_person ? 0.6 : 1", 1],
 						"0.99": [1, 1, 1],
-						"1.0": {
-							"pre": [1, 1, 1],
-							"post": [0, 0, 0]
-						}
+						"1.0": [0, 0, 0]
 					}
 				},
 				"body_rightArm": {
 					"scale": {
 						"0.0": [0, 0, 0],
-						"0.99": {
-							"pre": [0, 0, 0],
-							"post": [0, 0, 0]
-						},
-						"1.0": {
-							"pre": [0, 0, 0],
-							"post": [1, 1, 1]
-						}
+						"0.99": [0, 0, 0],
+						"1.0": [1, 1, 1]
 					}
 				},
 				"rightArm_and_charge": {
@@ -1306,20 +1302,14 @@
 					},
 					"scale": {
 						"0.0": ["!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine"],
-						"0.55": {
-							"pre": ["!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine"],
-							"post": ["!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine"]
-						},
+						"0.55": ["!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine", "!v.is_holding_offhand_magazine"],
 						"1.0": [0, 0, 0]
 					}
 				},
 				"old_bullet": {
 					"position": {
 						"0.0": [0, 0, 0],
-						"0.4": {
-							"pre": [0, 0, 0],
-							"post": [0, 0, 0]
-						}
+						"0.4": [0, 0, 0]
 					}
 				},
 				"in_bullet": {
@@ -1330,10 +1320,7 @@
 					},
 					"scale": {
 						"0.39": [0, 0, 0],
-						"0.4": {
-							"pre": [0, 0, 0],
-							"post": [1, 1, 1]
-						}
+						"0.4": [1, 1, 1]
 					}
 				},
 				"bullets": {
