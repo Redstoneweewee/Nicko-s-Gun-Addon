@@ -437,12 +437,12 @@ const StaticReloadAnimations = {
             ]
         }),
         lugerReloadCock: new Def.StaticAnimation({
-            duration: 10, //in ticks
+            duration: 15, //in ticks
             type:     Enums.AnimationTypes.ReloadCock,
             animationSounds: [
                 {
                     soundId: "firearm.pistol_reload_cock_away",
-                    timeout: 4,
+                    timeout: 5,
                     soundRange: 40
                 }
             ]

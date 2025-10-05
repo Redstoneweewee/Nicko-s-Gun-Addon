@@ -788,6 +788,100 @@
 					"scale": 1
 				}
 			}
+		},
+		"animation.luger_reload_cock_third_person": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.75,
+			"override_previous_animation": true,
+			"anim_time_update": "q.anim_time + q.delta_time*v.reload_cock_animation_multiplier",
+			"bones": {
+				"waist": {
+					"rotation": {
+						"0.24": [0, 0, 0],
+						"0.29": {
+							"pre": [-3, -2.5, 0],
+							"post": [-3, -2.5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.39": {
+							"post": [-2.4, -2, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.62": [0, 0, 0]
+					},
+					"position": {
+						"0.24": [0, 0, 0],
+						"0.29": {
+							"pre": [0, 0, 0.025],
+							"post": [0, 0, 0.025],
+							"lerp_mode": "catmullrom"
+						},
+						"0.39": {
+							"post": [0, 0, 0.05],
+							"lerp_mode": "catmullrom"
+						},
+						"0.62": [0, 0, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.17": {
+							"pre": [7.2769, 8.34264, 1.73595],
+							"post": [7.2769, 8.34264, 1.73595],
+							"lerp_mode": "catmullrom"
+						},
+						"0.24": {
+							"post": [7.28, 8.34, 1.74],
+							"lerp_mode": "catmullrom"
+						},
+						"0.29": {
+							"post": [9.80292, 8.26429, 1.99543],
+							"lerp_mode": "catmullrom"
+						},
+						"0.62": {
+							"post": [2.43436, 5.95564, 1.03287],
+							"lerp_mode": "catmullrom"
+						},
+						"0.75": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.17": {
+							"pre": [0, 0, 0],
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.24": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.29": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.62": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.75": [0, 0, 0]
+					}
+				},
+				"third_person_pivot": {
+					"rotation": {
+						"0.0": [-83.3591, -12.26727, 14.6127],
+						"0.17": [-78.10943, 1.18405, 31.48982],
+						"0.42": [-78.10943, 1.18405, 31.48982],
+						"0.75": [-87.46148, 9.99038, 0.44067]
+					},
+					"position": {
+						"0.0": [6.175, -5.55, 3],
+						"0.17": [6.18, -7.55, 0.75],
+						"0.42": [6.18, -7.55, 0.75],
+						"0.75": [10.175, -5.55, 0]
+					}
+				}
+			}
 		}
 	}
 }

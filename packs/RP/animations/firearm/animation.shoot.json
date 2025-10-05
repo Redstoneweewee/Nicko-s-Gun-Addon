@@ -1705,9 +1705,6 @@
 			"animation_length": 1.5,
 			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
 			"bones": {
-				"body_leftArm": {
-					"scale": 0
-				},
 				"rightArm_and_firearm": {
 					"rotation": [0, 0, 0],
 					"position": [0, 0, 0]
@@ -1793,9 +1790,6 @@
 			"animation_length": 1.5,
 			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
 			"bones": {
-				"body_leftArm": {
-					"scale": 0
-				},
 				"rightArm_and_firearm": {
 					"rotation": [0, 0, 0],
 					"position": [0, 0, 0]
