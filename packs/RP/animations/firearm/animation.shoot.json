@@ -1729,7 +1729,7 @@
 						]
 					}
 				},
-				"firearm": {
+				"rightItem": {
 					"rotation": {
 						"0.0": [0, 0, 0],
 						"0.02": ["-(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))", 0, 0]
@@ -1818,7 +1818,7 @@
 						]
 					}
 				},
-				"firearm": {
+				"rightItem": {
 					"rotation": {
 						"0.0": [0, 0, 0],
 						"0.02": ["-(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))", 0, 0]
@@ -2042,20 +2042,20 @@
 					},
 					"scale": {
 						"0.57": [0, 0, 0],
-						"0.58": {"pre": [0, 0, 0], "post": [1, 1, 1]}
+						"0.58": [0, 0, 0]
 					}
 				},
 				"recoil_pivot": {
 					"rotation": {
 						"0.0": [0, 0, 0],
-						"0.02": [0, 0, 0]
+						"0.02": ["-(v.recoil < 60 ? 60 : v.recoil)/10*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))", 0, 0]
 					},
 					"position": {
 						"0.0": [0, 0, 0],
 						"0.02": [
 							0,
 							"v.is_first_person ? 0.045*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
-							"(!v.is_first_person) ? 0.045*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
+							"(!v.is_first_person) ? 0.045*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8))  :  0.092*(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))"
 						]
 					}
 				}
@@ -2068,10 +2068,6 @@
 					},
 					{
 						"effect": "muzzle_flash",
-						"locator": "kar98_muzzle"
-					},
-					{
-						"effect": "muzzle_blast",
 						"locator": "kar98_muzzle"
 					},
 					{
@@ -2106,14 +2102,14 @@
 				"recoil_pivot": {
 					"rotation": {
 						"0.0": [0, 0, 0],
-						"0.02": [0, 0, 0]
+						"0.02": ["-(v.recoil < 60 ? 60 : v.recoil)/10*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))", 0, 0]
 					},
 					"position": {
 						"0.0": [0, 0, 0],
 						"0.02": [
 							0,
 							"v.is_first_person ? 0.045*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
-							"(!v.is_first_person) ? 0.045*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
+							"(!v.is_first_person) ? 0.045*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8))  :  0.092*(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))"
 						]
 					}
 				}
