@@ -556,7 +556,9 @@ const StaticReloadAnimations = {
  * makarovShootWithAmmo: Def.StaticAnimation,
  * makarovShootOutOfAmmo: Def.StaticAnimation,
  * uspShootWithAmmo: Def.StaticAnimation,
- * uspShootOutOfAmmo: Def.StaticAnimation
+ * uspShootOutOfAmmo: Def.StaticAnimation,
+ * lugerShootWithAmmo: Def.StaticAnimation,
+ * lugerShootOutOfAmmo: Def.StaticAnimation
  * }} PistolShootAnimations
  * 
  * @typedef {{
@@ -949,6 +951,30 @@ const StaticShootAnimations = {
                 }
             ],
             animationId: "animation.usp_shoot_out_of_ammo"
+        }),
+        lugerShootWithAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootWithAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.desert_eagle_shoot",
+                    timeout: 0,
+                    soundRange: 168.75
+                }
+            ],
+            animationId: "animation.luger_shoot_with_ammo"
+        }),
+        lugerShootOutOfAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootOutOfAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.desert_eagle_shoot",
+                    timeout: 0,
+                    soundRange: 168.75
+                }
+            ],
+            animationId: "animation.luger_shoot_out_of_ammo"
         })
     },
     other: {

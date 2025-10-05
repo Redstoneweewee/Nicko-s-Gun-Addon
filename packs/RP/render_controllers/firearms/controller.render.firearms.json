@@ -6,6 +6,11 @@
 			"geometry": "Geometry.usp",
 			"materials": [ { "*": "Material.firearm" } ]
 		},
+		"controller.render.luger": {
+			"textures": [ "Texture.luger" ],
+			"geometry": "Geometry.luger",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
 		"controller.render.tesla_gun": {
 			"textures": [ "Texture.tesla_gun" ],
 			"geometry": "Geometry.tesla_gun",

@@ -9,6 +9,11 @@
         "textures/entity/usp_texture"
       ]
     },
+    "luger": {
+      "textures": [
+        "textures/entity/luger_texture"
+      ]
+    },
     "tesla_gun": {
       "textures": [
         "textures/entity/tesla_gun_texture"

@@ -726,6 +726,78 @@ const FirearmObjects = {
             })
         })
     }),
+    Luger: new Def.Gun({
+        itemTypeId:             "yes:luger",
+        normalName:             "Luger\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     true,
+        lastBulletInChamber:      false,
+        firingMode:             Enums.FiringModes.Semi,
+        firingRate:             0,
+        bulletsPerShot:         1,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 10,
+            maxDamage: 10,
+            minDropOffRange: 0,
+            maxDropOffRange: 0
+        }),
+        headshotMultiplier: 2,
+        pierce:                 1,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  500,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadSwap,
+                scaleDurationToValue: 30
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadNoSwap,
+                scaleDurationToValue: 15
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.pistol.reloadCock,
+                scaleDurationToValue: 8
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.pistol.lugerShootWithAmmo
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.pistol.lugerShootOutOfAmmo
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Pistol,
+            usableAmmoClasses:      [BulletClasses.Normal],
+            maxMagazineItemStackAmount: 8,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      8,
+            maxEmptyAmmoPerReloadCount: 8,
+            defaultMagazine:        MagazineObjects.Ammo9MM,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown: false,
+            stopAimDelay:       0
+        }),
+        minSpreadDegrees:       0.5,
+        maxSpreadDegrees:       1,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.04,
+                maxCamerashake:     0.06,
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
+    }),
     Makarov: new Def.Gun({
         itemTypeId:                    "yes:makarov",
         normalName:             "Makarov\n§7[Right-Click/Hold to shoot]",

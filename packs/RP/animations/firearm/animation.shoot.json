@@ -338,145 +338,6 @@
 				]
 			}
 		},
-		"animation.desert_eagle_shoot_with_ammo": {
-			"animation_length": 1.5,
-			"override_previous_animation": true,
-			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
-			"bones": {
-				"arm_recoil_pivot": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.02": ["-v.recoil/70*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),4))", 0, 0]
-					},
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.02": [
-							0,
-							"v.is_first_person ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
-							"(!v.is_first_person) ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
-						]
-					}
-				},
-				"pistol_slide": {
-					"position": {
-						"0.0": [0, 0, 1.37],
-						"0.06": {
-							"pre": [0, 0, 2.77372],
-							"post": [0, 0, 2.77372],
-							"lerp_mode": "catmullrom"
-						},
-						"0.12": {
-							"post": [0, 0, 1.945],
-							"lerp_mode": "catmullrom"
-						},
-						"0.24": {
-							"post": [0, 0, 0.1],
-							"lerp_mode": "catmullrom"
-						},
-						"0.29": [0, 0, 0]
-					}
-				},
-				"hammer": {
-					"rotation": {
-						"0.0": [-80, 0, 0],
-						"0.14": [-80, 0, 0],
-						"0.24": [10, 0, 0],
-						"0.27": [0, 0, 0],
-						"0.29": [-5, 0, 0],
-						"0.32": [0, 0, 0]
-					},
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.14": [0, 0, 0],
-						"0.24": [0, 0, 0],
-						"0.27": [0, 0, 0],
-						"0.29": [0, 0, 0],
-						"0.32": [0, 0, 0]
-					}
-				},
-				"weapon_root": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.01": ["-v.recoil/3*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),4))", 0, 0]
-					},
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.01": [
-							0,
-							"-0.03*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))",
-							"0.015*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))"
-						]
-					}
-				}
-			},
-			"particle_effects": {
-				"0.0": [
-					{
-						"effect": "muzzle_flash",
-						"locator": "desert_eagle_muzzle"
-					},
-					{
-						"effect": "bullet_casing",
-						"locator": "desert_eagle_shell_eject"
-					},
-					{
-						"effect": "muzzle_blast",
-						"locator": "desert_eagle_muzzle"
-					}
-				]
-			}
-		},
-		"animation.desert_eagle_shoot_out_of_ammo": {
-			"animation_length": 1.5,
-			"override_previous_animation": true,
-			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
-			"bones": {
-				"arm_recoil_pivot": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.02": ["-v.recoil/70*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),4))", 0, 0]
-					},
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.02": [
-							0,
-							"v.is_first_person ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
-							"(!v.is_first_person) ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
-						]
-					}
-				},
-				"weapon_root": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.01": ["-v.recoil/3*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),4))", 0, 0]
-					},
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.01": [
-							0,
-							"-0.03*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))",
-							"0.015*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))"
-						]
-					}
-				}
-			},
-			"particle_effects": {
-				"0.0": [
-					{
-						"effect": "muzzle_flash",
-						"locator": "desert_eagle_muzzle"
-					},
-					{
-						"effect": "bullet_casing",
-						"locator": "desert_eagle_shell_eject"
-					},
-					{
-						"effect": "muzzle_blast",
-						"locator": "desert_eagle_muzzle"
-					}
-				]
-			}
-		},
 		"animation.remington870_shoot_with_ammo": {
 			"animation_length": 1.5,
 			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
@@ -1836,6 +1697,595 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "striker_muzzle"
+					}
+				]
+			}
+		},
+		"animation.luger_shoot_with_ammo": {
+			"animation_length": 1.5,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"body_leftArm": {
+					"scale": 0
+				},
+				"rightArm_and_firearm": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"charge_rightArm": {
+					"scale": 0
+				},
+				"rightArm_and_magazine": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"recoil_pivot": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ?   0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) :  0"
+						]
+					}
+				},
+				"firearm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": ["-(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							0,
+							"v.is_first_person ?   -0.015*(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4)) :  0"
+						]
+					}
+				},
+				"back_joint": {
+					"rotation": [
+						"((q.anim_time >= v.delay && q.anim_time <= (v.delay + v.upt + v.downt))  ? (      (q.anim_time - v.delay) <= v.upt        ? (-(q.anim_time - v.delay) / v.upt * 85)        : (-85 + ((q.anim_time - v.delay) - v.upt) / v.downt * 85)    )  : 0)",
+						0,
+						0
+					]
+				},
+				"middle_joint": {
+					"rotation": [
+						"-(math.asin(1/1.5*math.sin(  ((q.anim_time >= v.delay && q.anim_time <= (v.delay+v.upt+v.downt)) ? ((q.anim_time-v.delay) <= v.upt ? (-(q.anim_time-v.delay)/v.upt*85) : (-85+((q.anim_time-v.delay)-v.upt)/v.downt*85)) : 0)))+ ((q.anim_time >= v.delay && q.anim_time <= (v.delay+v.upt+v.downt)) ? ((q.anim_time-v.delay) <= v.upt ? (-(q.anim_time-v.delay)/v.upt*85) : (-85+((q.anim_time-v.delay)-v.upt)/v.downt*85)) : 0))",
+						0,
+						0
+					]
+				},
+				"front_point": {
+					"rotation": [
+						"math.asin(1/1.5*math.sin(  ((q.anim_time >= v.delay && q.anim_time <= (v.delay+v.upt+v.downt)) ? ((q.anim_time-v.delay) <= v.upt ? (-(q.anim_time-v.delay)/v.upt*85) : (-85+((q.anim_time-v.delay)-v.upt)/v.downt*85)) : 0)))",
+						0,
+						0
+					]
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_blast",
+						"locator": "luger_muzzle"
+					},
+					{
+						"effect": "muzzle_flash",
+						"locator": "luger_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "luger_muzzle"
+					}
+				],
+				"0.05": {
+					"effect": "bullet_casing",
+					"locator": "luger_shell_eject"
+				}
+			},
+			"timeline": {
+				"0.0": ["v.delay = 0.0;", "v.upt = 0.08;", "v.downt = 0.2;"]
+			}
+		},
+		"animation.luger_shoot_out_of_ammo": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 1.5,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"body_leftArm": {
+					"scale": 0
+				},
+				"rightArm_and_firearm": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"charge_rightArm": {
+					"scale": 0
+				},
+				"rightArm_and_magazine": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"recoil_pivot": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ?   0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) :  0"
+						]
+					}
+				},
+				"firearm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": ["-(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							0,
+							"v.is_first_person ?   -0.015*(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4)) :  0"
+						]
+					}
+				},
+				"back_joint": {
+					"rotation": ["(q.anim_time >= v.delay)  ? ((q.anim_time - v.delay) <= v.upt      ? (-(q.anim_time - v.delay) / v.upt * 85)      : -85)  : 0;", 0, 0]
+				},
+				"middle_joint": {
+					"rotation": [
+						"-(math.asin(1/1.5*math.sin(  ((q.anim_time >= v.delay) ? ((q.anim_time - v.delay) <= v.upt ? (-(q.anim_time - v.delay) / v.upt * 85) : -85) : 0)))+ ((q.anim_time >= v.delay) ? ((q.anim_time - v.delay) <= v.upt ? (-(q.anim_time - v.delay) / v.upt * 85) : -85) : 0))",
+						0,
+						0
+					]
+				},
+				"front_point": {
+					"rotation": [
+						"math.asin(1/1.5*math.sin(  (q.anim_time >= v.delay) ? ((q.anim_time - v.delay) <= v.upt ? (-(q.anim_time - v.delay) / v.upt * 85) : -85) : 0))",
+						0,
+						0
+					]
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_blast",
+						"locator": "luger_muzzle"
+					},
+					{
+						"effect": "muzzle_flash",
+						"locator": "luger_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "luger_muzzle"
+					}
+				],
+				"0.05": {
+					"effect": "bullet_casing",
+					"locator": "luger_shell_eject"
+				}
+			},
+			"timeline": {
+				"0.0": ["v.delay = 0.0;", "v.upt = 0.08;", "v.downt = 0.2;"]
+			}
+		},
+		"animation.kar98_shoot_with_ammo": {
+			"animation_length": 1,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"body_leftArm": {
+					"scale": 0
+				},
+				"rightArm_and_firearm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.15": [0, 11.5, 0],
+						"0.38": [0, -7.5, 0],
+						"0.51": {
+							"pre": [0, -6.34, 0],
+							"post": [0, -6.34, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.58": {
+							"post": [0, -6.34, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.68": [0, -7.5, 0],
+						"0.78": [0, -7.5, 0],
+						"1.0": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.15": [0.24498, 0, -0.04984],
+						"0.38": {
+							"pre": [0.38, -0.055, -0.71],
+							"post": [0.38, -0.055, -0.71],
+							"lerp_mode": "catmullrom"
+						},
+						"0.51": {
+							"post": [0.38, 0.945, -0.71],
+							"lerp_mode": "catmullrom"
+						},
+						"0.58": {
+							"post": [0.38, 0.945, -0.71],
+							"lerp_mode": "catmullrom"
+						},
+						"0.68": {
+							"post": [0.38, -0.38, -0.71],
+							"lerp_mode": "catmullrom"
+						},
+						"0.78": {
+							"post": [0.38, -0.055, -0.71],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": [0, 0, 0]
+					}
+				},
+				"charge_rightArm": {
+					"scale": {
+						"0.12": [1, 1, 1],
+						"0.28": ["v.is_first_person ? 0.6 : 1", "v.is_first_person ? 0.6 : 1", 1],
+						"0.85": ["v.is_first_person ? 0.6 : 1", "v.is_first_person ? 0.6 : 1", 1],
+						"1.0": [1, 1, 1]
+					}
+				},
+				"body_rightArm": {
+					"scale": 0
+				},
+				"rightArm_and_charge": {
+					"position": {
+						"0.43": [0, 0, 0],
+						"0.51": [0, 0, 2.5],
+						"0.58": [0, 0, 2.5],
+						"0.68": [0, 0, 0]
+					}
+				},
+				"charge": {
+					"rotation": {
+						"0.28": [0, 0, 0],
+						"0.43": [0, 0, 70],
+						"0.68": [0, 0, 70],
+						"0.85": [0, 0, 0]
+					},
+					"position": {
+						"0.28": [0, 0, 0],
+						"0.43": [0, 0, 1],
+						"0.68": [0, 0, 1],
+						"0.85": [0, 0, 0]
+					}
+				},
+				"rightArm_and_magazine": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.12": {
+							"pre": [0, 0, 0],
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.28": {
+							"post": [1.14676, -3.73356, -52.44518],
+							"lerp_mode": "catmullrom"
+						},
+						"0.43": {
+							"post": [-12.63269, 1.54644, 29.85409],
+							"lerp_mode": "catmullrom"
+						},
+						"0.51": {
+							"post": [-8.88054, 9.62507, 59.16496],
+							"lerp_mode": "catmullrom"
+						},
+						"0.68": {
+							"post": [-8.88054, 9.62507, 59.16496],
+							"lerp_mode": "catmullrom"
+						},
+						"0.78": {
+							"post": [-3.88269, 1.54644, 29.85409],
+							"lerp_mode": "catmullrom"
+						},
+						"0.85": {
+							"post": [0.73674, -2.48569, 15.15759],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.12": {
+							"pre": [0, 0, 0],
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.28": {
+							"post": [-2.11787, 1.20218, -2.12085],
+							"lerp_mode": "catmullrom"
+						},
+						"0.43": {
+							"post": [-3.41054, 1.39131, -1.68751],
+							"lerp_mode": "catmullrom"
+						},
+						"0.51": {
+							"post": [-3.41, 1.39, -1.69],
+							"lerp_mode": "catmullrom"
+						},
+						"0.68": {
+							"post": [-3.41, 1.39, -1.69],
+							"lerp_mode": "catmullrom"
+						},
+						"0.78": {
+							"post": [-3.41054, 1.39131, -1.68751],
+							"lerp_mode": "catmullrom"
+						},
+						"0.85": {
+							"post": [-2.11787, 1.20218, -2.12085],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": [0, 0, 0]
+					}
+				},
+				"old_bullet": {
+					"position": [0, 0, 0]
+				},
+				"in_bullet": {
+					"position": {
+						"0.28": [0, 0, 0],
+						"0.43": [0, 0, 1],
+						"0.51": [0, 0, 3.5],
+						"0.58": [0, -0.45, 3.5],
+						"0.63": [0, 0, 2.25],
+						"0.68": [0, 0, 1],
+						"0.85": [0, 0, 0]
+					},
+					"scale": {
+						"0.57": [0, 0, 0],
+						"0.58": {"pre": [0, 0, 0], "post": [1, 1, 1]}
+					}
+				},
+				"recoil_pivot": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.045*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ? 0.045*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
+						]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_flash",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					}
+				],
+				"0.43": {
+					"effect": "bullet_casing",
+					"locator": "kar98_shell_eject"
+				}
+			}
+		},
+		"animation.kar98_shoot_out_of_ammo": {
+			"animation_length": 1,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"body_leftArm": {
+					"scale": 0
+				},
+				"body_rightArm": {
+					"scale": 0
+				},
+				"recoil_pivot": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.045*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ? 0.045*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
+						]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_flash",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					}
+				]
+			}
+		},
+		"animation.desert_eagle_shoot_with_ammo": {
+			"animation_length": 1.5,
+			"override_previous_animation": true,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"arm_recoil_pivot": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": ["-v.recoil/70*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
+						]
+					}
+				},
+				"pistol_slide": {
+					"position": {
+						"0.0": [0, 0, 1.37],
+						"0.06": {
+							"pre": [0, 0, 2.77372],
+							"post": [0, 0, 2.77372],
+							"lerp_mode": "catmullrom"
+						},
+						"0.12": {
+							"post": [0, 0, 1.945],
+							"lerp_mode": "catmullrom"
+						},
+						"0.24": {
+							"post": [0, 0, 0.1],
+							"lerp_mode": "catmullrom"
+						},
+						"0.29": [0, 0, 0]
+					}
+				},
+				"hammer": {
+					"rotation": {
+						"0.0": [-80, 0, 0],
+						"0.14": [-80, 0, 0],
+						"0.24": [10, 0, 0],
+						"0.27": [0, 0, 0],
+						"0.29": [-5, 0, 0],
+						"0.32": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.14": [0, 0, 0],
+						"0.24": [0, 0, 0],
+						"0.27": [0, 0, 0],
+						"0.29": [0, 0, 0],
+						"0.32": [0, 0, 0]
+					}
+				},
+				"weapon_root": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.01": ["-v.recoil/3*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.01": [
+							0,
+							"-0.03*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))",
+							"0.015*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))"
+						]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_flash",
+						"locator": "desert_eagle_muzzle"
+					},
+					{
+						"effect": "bullet_casing",
+						"locator": "desert_eagle_shell_eject"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "desert_eagle_muzzle"
+					}
+				]
+			}
+		},
+		"animation.desert_eagle_shoot_out_of_ammo": {
+			"animation_length": 1.5,
+			"override_previous_animation": true,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"arm_recoil_pivot": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": ["-v.recoil/70*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ? 0.02*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0"
+						]
+					}
+				},
+				"weapon_root": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.01": ["-v.recoil/3*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.01": [
+							0,
+							"-0.03*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))",
+							"0.015*(v.recoil < 40 ? 40 : v.recoil)*(math.pow(((q.anim_time-0.3 > 0 ? 0 : q.anim_time-0.3)/-0.3),8))"
+						]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_flash",
+						"locator": "desert_eagle_muzzle"
+					},
+					{
+						"effect": "bullet_casing",
+						"locator": "desert_eagle_shell_eject"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "desert_eagle_muzzle"
 					}
 				]
 			}

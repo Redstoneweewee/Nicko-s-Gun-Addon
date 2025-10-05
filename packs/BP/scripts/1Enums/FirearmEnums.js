@@ -3,6 +3,7 @@
  * @enum {string}
  * @type {{
  * USP:          "yes:usp",
+ * Luger:        "yes:luger",
  * Makarov:      "yes:makarov",
  * Magnum:       "yes:magnum",
  * M92F:         "yes:m92f",
@@ -16,6 +17,7 @@
  * */
 const FirearmTypeIds = {
     USP:          "yes:usp",
+    Luger:        "yes:luger",
     Makarov:      "yes:makarov",
     Magnum:       "yes:magnum",
     M92F:         "yes:m92f",
