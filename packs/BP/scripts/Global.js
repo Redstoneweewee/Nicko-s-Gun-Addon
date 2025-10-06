@@ -108,7 +108,7 @@ class Global {
             reload_no_swap_animation_multiplier: "reload_no_swap_animation_multiplier",       //float reset across reload
             reload_open_cock_animation_multiplier: "reload_open_cock_animation_multiplier", //float reset across reload
             reload_cock_animation_multiplier: "reload_cock_animation_multiplier",              //float reset across reload
-            has_shell_in_chamber: "has_shell_in_chamber"                                            //float reset across reload
+            has_last_casing_in_chamber: "has_last_casing_in_chamber"                                            //float reset across reload
         }
     }
 
@@ -143,7 +143,7 @@ class Global {
         ammoCount: "ammoCount",            //number {}
         magazineTypeId: "magazineTypeId",        //MagazineTypeIds enum {string}
         isMagazineEmpty: "isMagazineEmpty", //boolean
-        hasShellInChamber: "hasShellInChamber" //boolean
+        hasLastCasingInChamber: "hasLastCasingInChamber" //boolean
     }
 
     /**

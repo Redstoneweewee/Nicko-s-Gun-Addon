@@ -211,8 +211,8 @@
 						{ "agm_reload_open_cock_third_person": "!v.is_first_person && v.should_agm_reload_cock" },
 						{ "striker_reload_open_port_first_person": " v.is_first_person && v.should_striker_reload" },
 						{ "striker_reload_open_port_third_person": "!v.is_first_person && v.should_striker_reload" },
-						{ "kar98_reload_open_cock_first_person": 			"v.should_kar98_reload && !v.has_shell_in_chamber" },
-						{ "kar98_reload_open_cock_with_shell_first_person": "v.should_kar98_reload && v.has_shell_in_chamber" },
+						{ "kar98_reload_open_cock_first_person": 			"v.should_kar98_reload && !v.has_last_casing_in_chamber" },
+						{ "kar98_reload_open_cock_with_shell_first_person": "v.should_kar98_reload && v.has_last_casing_in_chamber" },
 						{ "kar98_reload_open_cock_third_person": 			"!v.is_first_person && v.should_kar98_reload" }
 					],
 					"transitions" : [

@@ -50,7 +50,7 @@
           "default": 0.0,
           "client_sync": true
         },
-        "yes:has_shell_in_chamber": {
+        "yes:has_last_casing_in_chamber": {
           "type": "bool",
           "default": false,
           "client_sync": true

@@ -573,7 +573,6 @@ function reloading(iteration, mainLoopId, player, firearm, totalReloadTimeInTick
  * @param {ItemStack} [finalMagazineItemStack]
  */
 function finishedReloading(iteration, mainLoopId, player, firearm, totalReloadTimeInTicks, oldMagazineItemStack, newMagazineItemStack, newMagazineTypeId, oldAmmoCount, newAmmoCount, soundTimeoutIdObjects, reloadType, finalMagazineItemStack) {
-    player.onScreenDisplay.setActionBar(`Reloading: §l§e<§r§7Reload: §aFinished§e§l>`);
     const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
     if(firearmContainerSlot === null) {
         stopReloading(mainLoopId, player, firearm, soundTimeoutIdObjects);
@@ -618,15 +617,19 @@ function finishedReloading(iteration, mainLoopId, player, firearm, totalReloadTi
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_start_cock, false);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_start_cock);
     
-    if(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber)) {
-        firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber, false);
-        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_shell_in_chamber, false);
-        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_shell_in_chamber);
+    if(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber)) {
+        firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber, false);
+        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_last_casing_in_chamber, false);
+        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_last_casing_in_chamber);
     }
 
     //loop reloading for stack-based ammo types
     if(magazineType === MagazineTypes.StackBased && finalMagazineItemStack !== undefined && newMagazineItemStack.amount < finalMagazineItemStack.amount) {
         handleBeforeReload(++iteration, player, totalReloadTimeInTicks, reloadType, newMagazineItemStack, finalMagazineItemStack, firearmObject);
+    }
+    //finished for real
+    else {
+        player.onScreenDisplay.setActionBar(`Reloading: §l§e<§r§7Reload: §aFinished§e§l>`);
     }
 }
 

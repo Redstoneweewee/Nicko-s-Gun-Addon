@@ -46,12 +46,12 @@ function shoot(player, firearm) {
         return;
     }
 
-    if(ammoCount === 1 && firearm.lastBulletInChamber === true) {
+    if(ammoCount === 1 && firearm.manualAmmoEject === true) {
         const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
         if(firearmContainerSlot !== null) {
-            firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber, true);
-            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_shell_in_chamber, true);
-            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_shell_in_chamber);
+            firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber, true);
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_last_casing_in_chamber, true);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_last_casing_in_chamber);
         }
     }
     //console.log(`ammoCount: ${ammoCount}, isReloading: ${player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)}`);

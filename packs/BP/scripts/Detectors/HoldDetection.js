@@ -162,9 +162,9 @@ function tryReplaceOffhandItem(player) {
     const offhandContainerSlot = ItemUtil.getPlayerOffhandContainerSlot(player);
     if(offhandContainerSlot === null) { return; }
     
-    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_shell_in_chamber, firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber));
-    console.log(`firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber): ${firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasShellInChamber)}`);
-    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_shell_in_chamber);
+    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_last_casing_in_chamber, firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber));
+    console.log(`firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber): ${firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber)}`);
+    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_last_casing_in_chamber);
 
     const magazineTypeId = String(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId));
 

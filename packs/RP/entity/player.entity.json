@@ -128,7 +128,7 @@
           "v.should_start_cock           = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:should_start_cock');",
           "v.recoil                      = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:recoil');",
           "v.is_running                  = q.is_sprinting;",
-          "v.has_shell_in_chamber        = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:has_shell_in_chamber');",
+          "v.has_last_casing_in_chamber        = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:has_last_casing_in_chamber');",
 
           "v.movement_direction            = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:movement_direction');",
           "v.movement_direction_prop_val   = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:movement_direction_value')/1.5;",
