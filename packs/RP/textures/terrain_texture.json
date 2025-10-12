@@ -54,6 +54,11 @@
         "textures/entity/kar98_texture"
       ]
     },
+    "stg44": {
+      "textures": [
+        "textures/entity/stg44_texture"
+      ]
+    },
     "m4": {
       "textures": [
         "textures/entity/m4_texture"

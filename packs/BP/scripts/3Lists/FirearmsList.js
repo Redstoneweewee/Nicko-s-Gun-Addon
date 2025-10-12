@@ -1082,6 +1082,82 @@ const FirearmObjects = {
             })
         })
     }),
+    Stg44: new Def.Gun({
+        itemTypeId:                    "yes:stg44",
+        normalName:             "StG 44\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:     true,
+        manualAmmoEject:      false,
+        firingMode:               Enums.FiringModes.Semi,
+        firingRate:               540,  //ideally, use multiples of 60
+        bulletsPerShot:         1,
+        damageDropoff: new Def.DamageDropoffAttribute({
+            minDamage: 10,
+            maxDamage: 10,
+            minDropOffRange: 0,
+            maxDropOffRange: 0
+        }),
+        headshotMultiplier: 2,
+        pierce:                 1,
+        knockbackAmount:        Enums.KnockbackAmounts.High,
+        range:                  500,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.ar.kar98ReloadSwap,
+                scaleDurationToValue: 18
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.ar.kar98ReloadNoSwap,
+                scaleDurationToValue: 33
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.ar.kar98ReloadOpenCock,
+                scaleDurationToValue: 20
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.ar.kar98ReloadCock,
+                scaleDurationToValue: 20
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.ar.kar98ShootWithAmmo
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.ar.kar98ShootOutOfAmmo
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.AR,
+            usableAmmoClasses:      [BulletClasses.Normal],
+            maxMagazineItemStackAmount: 30,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      30,
+            maxEmptyAmmoPerReloadCount: 30,
+            defaultMagazine:        MagazineObjects.Ammo762MM,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown:  true,
+            stopAimDelay:       4
+        }),
+        minSpreadDegrees:       0.5,
+        maxSpreadDegrees:       1,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 40,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.1,
+                maxCamerashake:     0.16,
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
+    }),
     MP5: new Def.Gun({
         itemTypeId:                    "yes:mp5",
         normalName:             "MP-5\n§7[Right-Click/Hold to shoot]",
