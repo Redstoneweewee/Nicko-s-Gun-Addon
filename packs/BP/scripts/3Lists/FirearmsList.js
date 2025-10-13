@@ -1102,26 +1102,22 @@ const FirearmObjects = {
         range:                  500,
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.ar.kar98ReloadSwap,
-                scaleDurationToValue: 18
+                staticAnimation:      StaticReloadAnimations.ar.stg44ReloadSwap,
+                scaleDurationToValue: 30
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.ar.kar98ReloadNoSwap,
-                scaleDurationToValue: 33
-            }),
-            new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.ar.kar98ReloadOpenCock,
+                staticAnimation:      StaticReloadAnimations.ar.stg44ReloadNoSwap,
                 scaleDurationToValue: 20
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.ar.kar98ReloadCock,
-                scaleDurationToValue: 20
+                staticAnimation:      StaticReloadAnimations.ar.stg44ReloadCock,
+                scaleDurationToValue: 15
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.ar.kar98ShootWithAmmo
+                staticAnimation: StaticShootAnimations.ar.stg44ShootWithAmmo
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.ar.kar98ShootOutOfAmmo
+                staticAnimation: StaticShootAnimations.ar.stg44ShootOutOfAmmo
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
@@ -1143,7 +1139,7 @@ const FirearmObjects = {
         minSpreadDegrees:       0.5,
         maxSpreadDegrees:       1,
         recoilAttribute: new Def.RecoilAttribute({
-            amountPerShot: 40,
+            amountPerShot: 8,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.1,
                 maxCamerashake:     0.16,

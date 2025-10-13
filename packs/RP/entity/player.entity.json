@@ -142,7 +142,7 @@
 					"v.movement_direction_value_fast = math.atan(3*v.movement_clamp2)*2/360;",
 
 
-          "v.is_holding_iron_sight_firearm              = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm', 'yes:m4a1', 'yes:agm', 'yes:benelli', 'yes:m4', 'yes:m92f', 'yes:kar98', 'yes:magnum', 'yes:makarov', 'yes:mp5', 'yes:usp', 'yes:luger', 'yes:striker');",
+          "v.is_holding_iron_sight_firearm              = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm', 'yes:m4a1', 'yes:agm', 'yes:benelli', 'yes:m4', 'yes:m92f', 'yes:kar98', 'yes:stg44', 'yes:magnum', 'yes:makarov', 'yes:mp5', 'yes:usp', 'yes:luger', 'yes:striker');",
           "v.is_holding_red_dot_scope_variant_1_firearm = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:ak47', 'yes:ar15', 'yes:ump45', 'yes:desert_eagle');",
           "v.is_holding_red_dot_scope_variant_2_firearm = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:p90', 'yes:remington870');",
           "v.is_holding_acog_firearm                    = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:hk417');",
@@ -172,6 +172,7 @@
           "v.should_magnum_reload          = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_magnum_reload');",
           "v.should_kar98_reload           = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_kar98_reload');",
           "v.should_luger_reload           = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_luger_reload');",
+          "v.should_stg44_reload           = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_stg44_reload');",
 
           "v.is_not_shooting_increment = v.is_shooting ? 0 : v.is_not_shooting_increment >= 1 ? 1 : v.is_not_shooting_increment + 0.005;",
           
@@ -328,6 +329,7 @@
         "magnum_aim_iron_sight_first_person":    "animation.m92f_aim_iron_sight_first_person",
         "m92f_aim_iron_sight_first_person":    "animation.m92f_aim_iron_sight_first_person",
         "kar98_aim_iron_sight_first_person":    "animation.kar98_aim_iron_sight_first_person",
+        "stg44_aim_iron_sight_first_person":    "animation.stg44_aim_iron_sight_first_person",
         "akm_aim_iron_sight_first_person":    "animation.akm_aim_iron_sight_first_person",
         "mp5_aim_iron_sight_first_person":   "animation.mp5_aim_iron_sight_first_person",
         "m4_aim_iron_sight_first_person":   "animation.m4_aim_iron_sight_first_person",
@@ -404,7 +406,15 @@
 
         "luger_reload_swap_third_person":         "animation.luger_reload_swap_third_person",
         "luger_reload_no_swap_third_person":         "animation.luger_reload_no_swap_third_person",
-        "luger_reload_cock_third_person":         "animation.luger_reload_cock_third_person"
+        "luger_reload_cock_third_person":         "animation.luger_reload_cock_third_person",
+
+        "stg44_reload_swap_first_person":         "animation.stg44_reload_swap_first_person",
+        "stg44_reload_no_swap_first_person":         "animation.stg44_reload_no_swap_first_person",
+        "stg44_reload_cock_first_person":         "animation.stg44_reload_cock_first_person",
+
+        "stg44_reload_swap_third_person":         "animation.stg44_reload_swap_third_person",
+        "stg44_reload_no_swap_third_person":         "animation.stg44_reload_no_swap_third_person",
+        "stg44_reload_cock_third_person":         "animation.stg44_reload_cock_third_person"
 
       },
       "render_controllers": [

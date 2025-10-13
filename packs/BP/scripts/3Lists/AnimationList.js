@@ -22,6 +22,9 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  *   kar98ReloadNoSwap: Def.StaticAnimation,
  *   kar98ReloadOpenCock: Def.StaticAnimation,
  *   kar98ReloadCock: Def.StaticAnimation,
+ *   stg44ReloadSwap: Def.StaticAnimation,
+ *   stg44ReloadNoSwap: Def.StaticAnimation,
+ *   stg44ReloadCock: Def.StaticAnimation,
  * }} ARReloadAnimations
  * 
  * @typedef {{
@@ -284,6 +287,49 @@ const StaticReloadAnimations = {
                 {
                     soundId: "firearm.kar98_bolt_pull_away",
                     timeout: 9,
+                    soundRange: 40
+                }
+            ]
+        }),
+        stg44ReloadSwap: new Def.StaticAnimation({
+            duration: 36, //in ticks
+            type:     Enums.AnimationTypes.ReloadSwap,
+            animationSounds: [
+                {
+                    soundId: "firearm.ar_reload_magazine_out_medium",
+                    timeout: 10,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.ar_reload_magazine_in_medium",
+                    timeout: 32,
+                    soundRange: 40
+                }
+            ]
+        }),
+        stg44ReloadNoSwap: new Def.StaticAnimation({
+            duration: 22, //in ticks
+            type:     Enums.AnimationTypes.ReloadNoSwap,
+            animationSounds: [
+                {
+                    soundId: "firearm.ar_reload_magazine_in_medium",
+                    timeout: 18,
+                    soundRange: 40
+                }
+            ]
+        }),
+        stg44ReloadCock: new Def.StaticAnimation({
+            duration: 15, //in ticks
+            type:     Enums.AnimationTypes.ReloadCock,
+            animationSounds: [
+                {
+                    soundId: "firearm.ar_reload_magazine_cock_toward_light",
+                    timeout: 5,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.ar_reload_magazine_cock_away_light",
+                    timeout: 11,
                     soundRange: 40
                 }
             ]
@@ -566,7 +612,9 @@ const StaticReloadAnimations = {
  *   hk417Shoot: Def.StaticAnimation,
  *   m4Shoot: Def.StaticAnimation,
  *   kar98ShootWithAmmo: Def.StaticAnimation,
- *   kar98ShootOutOfAmmo: Def.StaticAnimation
+ *   kar98ShootOutOfAmmo: Def.StaticAnimation,
+ *   stg44ShootWithAmmo: Def.StaticAnimation,
+ *   stg44ShootOutOfAmmo: Def.StaticAnimation
  * }} ARShootAnimations
  * 
  * @typedef {{
@@ -726,7 +774,31 @@ const StaticShootAnimations = {
                 }
             ],
             animationId: "animation.kar98_shoot_out_of_ammo"
-        })
+        }),
+        stg44ShootWithAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootWithAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.ak47_shoot",
+                    timeout: 0,
+                    soundRange: 150
+                }
+            ],
+            animationId: "animation.stg44_shoot_with_ammo"
+        }),
+        stg44ShootOutOfAmmo: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.ShootOutOfAmmo,
+            animationSounds: [
+                {
+                    soundId: "firearm.ak47_shoot",
+                    timeout: 0,
+                    soundRange: 150
+                }
+            ],
+            animationId: "animation.stg44_shoot_out_of_ammo"
+        }),
     },
     smg: {
         ump45Shoot: new Def.StaticAnimation({

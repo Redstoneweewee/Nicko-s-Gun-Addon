@@ -1011,6 +1011,36 @@
 					"position": [-5.34211, 0.34202, -2.10558]
 				}
 			}
+		},
+		"animation.stg44_aim_iron_sight_first_person": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.25,
+			"override_previous_animation": true,
+			"bones": {
+				"first_person_pivot": {
+					"position": [-4, 0, -5.91]
+				},
+				"body_leftArm": {
+					"scale": 0
+				},
+				"aim_lean_pivot": {
+					"rotation": [0, "30*(v.movement_direction_value)", 0]
+				},
+				"bob_pivot": {
+					"rotation": [0, 0, "v.tcos02/160"],
+					"position": [0, "-v.tcos0/240", 0]
+				},
+				"aim_offset": {
+					"position": [0, 9.8, -0.715]
+				},
+				"magazine_leftArm": {
+					"rotation": [-1.42993, 43.64432, -6.35305],
+					"position": [-5.34211, 0.34202, -8.50558]
+				},
+				"body_rightArm": {
+					"scale": 0
+				}
+			}
 		}
 	}
 }
