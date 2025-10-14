@@ -161,6 +161,16 @@ const MagazineObjects = {
         fillableByAmmoClasses: []
     }),
     
+    Rocket: new Def.Magazine({
+        itemTypeId:            Enums.MagazineTypeIds.Rocket,
+        name:                  "Rocket",
+        magazineClass:         MagazineClasses.Rocket,
+        magazineType:          Enums.MagazineTypes.StackBased,
+        maxAmmo:               64,
+        itemStack:             new ItemStack("yes:rocket", 1),
+        fillableByAmmoClasses: []
+    }),
+    
     TeslaAmmo: new Def.Magazine({
         itemTypeId:            Enums.MagazineTypeIds.TeslaAmmo,
         name:                  "Tesla Ammo",

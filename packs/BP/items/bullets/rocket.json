@@ -1,0 +1,32 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:item": {
+        "description": {
+            "identifier": "yes:rocket",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "yes:is_bullet_type",
+                    "yes:rocket"
+                ]
+            },
+            "minecraft:block_placer": {
+                "block": "yes:rocket",
+                "replace_block_item": true,
+                "use_on": ["yes:null_block"]
+            },
+            "minecraft:max_stack_size": 64,
+            "minecraft:display_name": {
+                "value": "Rocket"
+            },
+            "minecraft:allow_off_hand": true,
+            "minecraft:should_despawn": {
+                "value": false
+            }
+        }
+    }
+}

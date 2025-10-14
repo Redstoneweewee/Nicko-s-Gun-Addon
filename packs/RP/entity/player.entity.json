@@ -42,7 +42,7 @@
         "magnum": "textures/entity/magnum_texture",
         "makarov": "textures/entity/makarov_texture",
         "mp5": "textures/entity/mp5_texture",
-        "rpg": "textures/entity/rpg_texture",
+        "rpg7": "textures/entity/rpg7_texture",
         "striker": "textures/entity/striker_texture",
         "tesla_gun": "textures/entity/tesla_gun_texture",
         "usp": "textures/entity/usp_texture",
@@ -82,7 +82,8 @@
         "usp": "geometry.weeweejuice.usp",
         "luger": "geometry.weeweejuice.luger",
         "mp5": "geometry.weeweejuice.mp5",
-        "striker": "geometry.weeweejuice.striker"
+        "striker": "geometry.weeweejuice.striker",
+        "rpg7": "geometry.weeweejuice.rpg7"
       },
       "scripts": {
         "scale": "0.9375",
@@ -473,7 +474,7 @@
         { "controller.render.magnum":           "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:magnum') && !query.is_spectator" },
         { "controller.render.makarov":           "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:makarov') && !query.is_spectator" },
         { "controller.render.mp5":           "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:mp5') && !query.is_spectator" },
-        { "controller.render.rpg":           "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:rpg') && !query.is_spectator" },
+        { "controller.render.rpg7":           "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:rpg7') && !query.is_spectator" },
         { "controller.render.striker":           "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:striker') && !query.is_spectator" },
         { "controller.render.tesla_gun":           "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:tesla_gun') && !query.is_spectator" },
         { "controller.render.usp":           "q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:usp') && !query.is_spectator" },
@@ -487,9 +488,9 @@
           "shotgun_bullet_casing": "yes:shotgun_bullet_casing",
 
           "breech_flash": "yes:breech_flash",
-          "rpg_smoke": "yes:rpg_smoke",
-          "rpg_blast": "yes:rpg_blast",
-          "rpg_blast2": "yes:rpg_blast2"
+          "rpg7_smoke": "yes:rpg7_smoke",
+          "rpg7_blast": "yes:rpg7_blast",
+          "rpg7_blast2": "yes:rpg7_blast2"
       },
       "enable_attachables": true
     }

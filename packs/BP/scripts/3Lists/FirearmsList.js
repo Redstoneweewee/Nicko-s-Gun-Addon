@@ -1492,6 +1492,71 @@ const FirearmObjects = {
                 maxCamerashakeTime: 10
             })
         })
+    }),
+    Rpg7: new Def.Explosive({
+        itemTypeId:             "yes:rpg7",
+        normalName:             "RPG-7\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:   false,
+        manualAmmoEject:        false,
+        projectileTypeId: "minecraft:arrow", 
+        projectileSpeed: 2,
+        explosiveDamage: new Def.ExplosiveDamage({
+            maxDamage: 20,
+            minDamage: 10,
+            range:     8 
+        }),
+        firingMode:               Enums.FiringModes.Semi,
+        firingRate:               0,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.shotgun.strikerReload,
+                scaleDurationToValue: 13
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.shotgun.strikerReloadOpenPort,
+                scaleDurationToValue: 5
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.shotgun.strikerReloadClosePort,
+                scaleDurationToValue: 5
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.shotgun.strikerShoot
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.Rocket,
+            usableAmmoClasses:      [BulletClasses.Normal],
+            maxMagazineItemStackAmount: 1,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      1,
+            maxEmptyAmmoPerReloadCount: 1,
+            defaultMagazine:        MagazineObjects.Rocket,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown:  true,
+            stopAimDelay:       0
+        }),
+        minSpreadDegrees:       2,
+        maxSpreadDegrees:       3,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.04,
+                maxCamerashake:     0.08,
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
     })
 }
 

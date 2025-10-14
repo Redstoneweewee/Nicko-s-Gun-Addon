@@ -124,6 +124,11 @@
         "textures/entity/remington870_texture"
       ]
     },
+    "rpg7": {
+      "textures": [
+        "textures/entity/rpg7_texture"
+      ]
+    },
 
 
 
@@ -173,6 +178,11 @@
     "acid_grenade": {
       "textures": [
         "textures/entity/ammunition/acid_grenade_texture"
+      ]
+    },
+    "rocket": {
+      "textures": [
+        "textures/entity/ammunition/rocket_texture"
       ]
     },
     "tesla_ammo": {

@@ -191,13 +191,13 @@ class ExplosiveDamage {
     /**
      * @param {{
      * maxDamage: number,
-     * lowDamage: number,
+     * minDamage: number,
      * range: number
      * }} def 
      */
     constructor(def) {
         this.maxDamage = def.maxDamage;
-        this.lowDamage = def.lowDamage;
+        this.minDamage = def.minDamage;
         this.range     = def.range;
     }
 }

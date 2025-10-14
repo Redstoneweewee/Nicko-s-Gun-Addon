@@ -19,6 +19,7 @@
  * FlameGrenade:     "yes:flame_grenade",
  * FlashGrenade:     "yes:flash_grenade",
  * AcidGrenade:      "yes:acid_grenade",
+ * Rocket:           "yes:rocket",
  * TeslaAmmo:        "yes:tesla_ammo"
  * }}
  */
@@ -38,6 +39,7 @@ const MagazineTypeIds = {
    FlameGrenade:     "yes:flame_grenade",
    FlashGrenade:     "yes:flash_grenade",
    AcidGrenade:      "yes:acid_grenade",
+   Rocket:           "yes:rocket",
    TeslaAmmo:        "yes:tesla_ammo"
 };
 
@@ -90,6 +92,7 @@ const DurabilityMagazineClasses = {
 * Shotgun:         "shotgun",
 * Magnum:          "magnum",
 * GrenadeLauncher: "grenadeLauncher",
+* Rocket:          "rocket",
 * TeslaGun:        "teslaGun"
 * }} 
 */
@@ -102,6 +105,7 @@ const StackMagazineClasses = {
    Shotgun:         "shotgun",
    Magnum:          "magnum",
    GrenadeLauncher: "grenadeLauncher",
+   Rocket:          "rocket",
    TeslaGun:        "teslaGun"
 }
 
@@ -126,6 +130,7 @@ const MagazineClassTextNames = {
    Shotgun: "Shotgun Shells",
    Magnum:  ".45 ACP Bullets",
    GrenadeLauncher: "Grenades",
+   Rocket:          "Rockets",
    TeslaGun: "Tesla Ammo"
 }
 
