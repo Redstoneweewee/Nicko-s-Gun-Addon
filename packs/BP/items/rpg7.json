@@ -12,7 +12,8 @@
                 "tags": [
                     "yes:is_firearm",
                     "yes:rpg7",
-                    "yes:use_new_first_person"
+                    "yes:use_new_first_person",
+                    "yes:use_rpg7_animations"
                 ]
             },
             "minecraft:block_placer": {
