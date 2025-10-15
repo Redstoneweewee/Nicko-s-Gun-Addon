@@ -106,7 +106,65 @@ function shootGun(player, gun) {
  * @param {FirearmDef.Explosive} explosive
  */
 function shootExplosive(player, explosive) {
-    console.log("shooting an explosive weapon.");
+    console.log("shooting an explosive weapons.");
+    const shootDirection = calculateShootDirection(player, explosive, {x:explosive.projectileAttribute.shootDirectionOffset.x, y:explosive.projectileAttribute.shootDirectionOffset.y});
+
+
+    const spawnLocation = new Vector3(player.getHeadLocation().x, player.getHeadLocation().y, player.getHeadLocation().z);
+    const forward = new Vector3(player.getViewDirection().x, player.getViewDirection().y, player.getViewDirection().z);
+    const right = new Vector3(-player.getViewDirection().z, 0, player.getViewDirection().x);
+    const down = new Vector3(forward.x, forward.y, forward.z).cross(right);
+
+    spawnLocation.add(forward.multiplyScalar(explosive.projectileAttribute.spawnOffset.z)).add(down.multiplyScalar(-explosive.projectileAttribute.spawnOffset.y)).add(right.multiplyScalar(explosive.projectileAttribute.spawnOffset.x));
+
+    let shootRotX;
+    let shootRotY;
+
+    if(Math.abs(shootDirection.y) <= 1) {
+        shootRotX = -Math.asin(shootDirection.y)/Math.PI*180;  //y
+        const shootDirectionXZ = new Vector3(shootDirection.x, 0, shootDirection.z).normalize();
+        shootRotY = -Math.asin(shootDirectionXZ.x/(shootDirectionXZ.length()))/Math.PI*180;  //x and z
+        if(shootDirectionXZ.z < 0 && shootDirectionXZ.x < 0) {
+            shootRotY = 180-shootRotY;
+        }
+        else if(shootDirectionXZ.z < 0 && shootDirectionXZ.x > 0) {
+            shootRotY = -180-shootRotY;
+        }
+    }
+    else { //unrealistic situation
+        shootRotX = 0;
+        shootRotY = 0;
+    }
+
+
+
+    //console.log(`norm: ${player.getRotation().x}, ${player.getRotation().y}, new: ${shootRotX}, ${shootRotY}`);
+    const projectile = player.dimension.spawnEntity(explosive.projectileAttribute.typeId, spawnLocation);
+    projectile.setRotation({x: -shootRotX, y: -shootRotY});
+    projectile.applyImpulse(shootDirection.multiplyScalar(explosive.projectileAttribute.speed));
+
+
+    /**
+     * down = +X
+     * up = -X
+     * +z = 0 deg Y
+     * +x = -90 deg Y
+     */
+
+    
+
+    //const newAmmoCount = FirearmUtil.tryConsumeFirearmAmmo(player, explosive, 1);
+    FirearmUtil.tryAddScreenshakeRecoil(player, explosive);
+    
+    let playedSound = AnimationUtil.playAnimationWithSound(player, explosive, AnimationTypes.Shoot) === undefined ? false : true;
+    if(!playedSound) {
+        if(newAmmoCount !== undefined && newAmmoCount > 0) {
+            AnimationUtil.playAnimationWithSound(player, explosive, AnimationTypes.ShootWithAmmo);
+        }
+        else if(newAmmoCount === 0) {
+            AnimationUtil.playAnimationWithSound(player, explosive, AnimationTypes.ShootOutOfAmmo);
+        }
+    }
 }
 
 
@@ -231,9 +289,10 @@ function calculateDamage(distance, gunObject) {
  * 
  * @param {Player} player 
  * @param {FirearmDef.Firearm} firearm
+ * @param {import('@minecraft/server').Vector2} initialOffset
  * @returns {Vector3}
  */
-function calculateShootDirection(player, firearm) {    
+function calculateShootDirection(player, firearm, initialOffset = {x:0, y:0}) {    
     const view = player.getViewDirection();
 
 
@@ -256,11 +315,13 @@ function calculateShootDirection(player, firearm) {
     const offset = new Vector3(randDir2.x, 0, randDir2.y);
     const mag = Math.tan(theta);
     offset.multiplyScalar(mag);
+    offset.add(new Vector3(-initialOffset.x, 0, -initialOffset.y));
     const basis = Mat3.buildTNB(view);
 
     //const basisStr = `[${basis.m11}, ${basis.m12}, ${basis.m13}]\n[${basis.m21}, ${basis.m22}, ${basis.m23}]\n[${basis.m31}, ${basis.m32}, ${basis.m33}]`
     //console.log(`basis: \n${basisStr}`);
     const offsetVector = Mat3.mul(basis, offset);
+    //console.log(`offsetVector: ${offsetVector.x}, ${offsetVector.y}, ${offsetVector.z}`);
     //console.log(`view: ${view.x}, ${view.y}, ${view.z}`);
     return new Vector3(view.x, view.y, view.z).add(offsetVector);
 }

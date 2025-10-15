@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "yes:rocket",
+      "materials": {
+        "default": "arrow"
+      },
+      "textures": {
+        "default": "textures/entity/rpg7_texture"
+      },
+      "geometry": {
+        "default": "geometry.weeweejuice.rocket"
+      },
+      "animations": {
+        "turn": "animation.weeweejuice.rocket.turn"
+      },
+      "scripts": {
+				"animate": [
+					"turn"
+				]
+      },
+      "particle_effects": {
+          "rpg_smoke_trail": "yes:rpg_smoke_trail"
+      },
+      "render_controllers": [ "controller.render.default" ]
+    }
+  }
+} 

@@ -1,0 +1,157 @@
+{
+	"format_version": "1.19.70",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "yes:rocket",
+			"runtime_identifier": "minecraft:snowball",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false
+		  },
+		"component_groups": {
+			"yes:despawn_timer": {
+				"minecraft:timer": {
+					"time": 20,
+					"looping": true,
+					"time_down_event": {
+						"event": "yes:on_hit",
+						"target": "self"
+					}
+				}
+			},
+			"yes:explode": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 3
+				}
+			},
+			"yes:explode_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 3
+				}
+			}
+		},
+		"components": {
+			"minecraft:tick_world": {
+				"distance_to_players": 500,
+				"never_despawn": false,
+				"radius": 1
+			},
+			"minecraft:projectile": {
+				"on_hit": {
+					"impact_damage": {
+						"damage": [
+							0,
+							0
+						],
+						"knockback": true
+					},
+					"stick_in_ground": {},
+					"definition_event": {
+						"affect_target": true,
+						"affect_projectile": true,
+						"event_trigger": {
+							"event": "yes:on_hit",
+							"target": "self"
+						}
+					}
+				},
+				"power": 1,
+				"gravity": 0.004,
+				"inertia": 1,
+				"liquid_inertia": 0.92,
+				"anchor": 1,
+				"offset": [
+					0,
+					0.1,
+					0
+				],
+				"catch_fire": false
+			},
+			"minecraft:type_family": {
+				"family": [
+					"weeweejuice",
+					"weeweejuice_projectile",
+					"rocket"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0.01,
+				"height": 0.01
+			},
+			"minecraft:health": {
+			  "value": 1,
+			  "max": 1
+			},
+			"minecraft:physics": {}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"yes:despawn_timer"
+					]
+				}
+			},
+			"yes:despawn": {
+				"queue_command": {
+					"command": [
+						"kill @s",
+						"say killed"
+					]
+				}
+			},
+			"yes:on_hit": {
+				"sequence": [
+					{
+						"queue_command": {
+							"command": [
+								"event entity @s yes:explode_no_break"
+							]
+						}
+					},
+					{
+						"queue_command": {
+							"command": [
+								"particle yes:explosion_flash ~~~",
+								"camerashake add @a[r=10] 0.008 10 rotational",
+								"camerashake add @a[r=5] 0.02 5 rotational",
+								"title @a[r=5] times 0 10 180",
+								"title @a[r=5] subtitle ",
+								"title @a[r=8] title ",
+								"title @a[r=5] reset"
+							]
+						}
+					}
+				]
+			},
+			"yes:explode": {
+				"add": {
+					"component_groups": [
+						"yes:explode"
+					]
+				}
+			},
+			"yes:explode_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_no_break"
+					]
+				}
+			}
+		}
+	}
+}

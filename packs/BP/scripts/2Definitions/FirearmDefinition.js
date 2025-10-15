@@ -77,20 +77,34 @@ class GunWithAbility extends Gun {
 class Explosive extends Firearm {
     /**
      * @param {Firearm & {
-     * explosiveDamage: ExplosiveDamage,
-     * projectileTypeId: string,
-     * projectileSpeed: number
+     * projectileAttribute: ProjectileAttribute
      * }} def
      */
     constructor(def) {
         super(def);
 
-        this.explosiveDamage  = def.explosiveDamage;
-        this.projectileTypeId = def.projectileTypeId;
-        this.projectileSpeed  = def.projectileSpeed;
+        this.projectileAttribute  = def.projectileAttribute;
     }
 }
 
+class ProjectileAttribute {
+    /**
+     * @param {{
+     * explosiveDamage: ExplosiveDamage,
+     * typeId: string,
+     * speed: number,
+     * spawnOffset: import("@minecraft/server").Vector3,
+     * shootDirectionOffset: import("@minecraft/server").Vector2
+     * }} def
+     */
+    constructor(def) {
+        this.explosiveDamage        = def.explosiveDamage;
+        this.typeId                 = def.typeId;
+        this.speed                  = def.speed;
+        this.spawnOffset            = def.spawnOffset;
+        this.shootDirectionOffset   = def.shootDirectionOffset;
+    }
+}
 
 class MagazineAttribute {
     /**
@@ -202,4 +216,4 @@ class ExplosiveDamage {
     }
 }
 
-export { Firearm, Gun, GunWithAbility, Explosive, MagazineAttribute, ScopeAttribute, CamerashakeAttribute, RecoilAttribute, DamageDropoffAttribute, ExplosiveDamage };
+export { Firearm, Gun, GunWithAbility, Explosive, MagazineAttribute, ScopeAttribute, CamerashakeAttribute, RecoilAttribute, DamageDropoffAttribute, ProjectileAttribute, ExplosiveDamage };

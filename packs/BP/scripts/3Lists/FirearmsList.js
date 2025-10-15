@@ -1498,12 +1498,16 @@ const FirearmObjects = {
         normalName:             "RPG-7\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:   false,
         manualAmmoEject:        false,
-        projectileTypeId: "minecraft:arrow", 
-        projectileSpeed: 2,
-        explosiveDamage: new Def.ExplosiveDamage({
-            maxDamage: 20,
-            minDamage: 10,
-            range:     8 
+        projectileAttribute: new Def.ProjectileAttribute({
+            explosiveDamage: new Def.ExplosiveDamage({
+                maxDamage: 20,
+                minDamage: 10,
+                range:     8 
+            }),
+            typeId: "yes:rocket", 
+            speed: 4.5,
+            spawnOffset: {x: 0.05, y:-0.15, z:2.1}, //x:left-right, y:up-down, z:forward-backward
+            shootDirectionOffset: {x:0, y:0.0075}, //x:left-right, y:up-down
         }),
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
@@ -1540,8 +1544,8 @@ const FirearmObjects = {
             stopAimOnCooldown:  true,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       2,
-        maxSpreadDegrees:       3,
+        minSpreadDegrees:       0.05,
+        maxSpreadDegrees:       0.15,
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
