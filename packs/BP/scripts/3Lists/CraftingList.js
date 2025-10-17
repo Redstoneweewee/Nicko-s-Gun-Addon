@@ -71,14 +71,14 @@ const CustomMaterials = {
     }),
 
     bullet: new Def.CustomMaterial({
-        itemTypeId: "yes:bullet",
+        itemTypeId: "yes:normal_bullet",
         nameNormal: "Bullet",
         namePlural: "Bullets",
         imagePath: "textures/scripting_ui/ammunition/bullet",
         hexIcon: ""
     }),
-    Ammo12Gauge: new Def.CustomMaterial({
-        itemTypeId: "yes:ammo_12gauge",
+    Birdshot: new Def.CustomMaterial({
+        itemTypeId: "yes:birdshot",
         nameNormal: "Shotgun Shell",
         namePlural: "Shotgun Shells",
         imagePath: "textures/scripting_ui/ammunition/ammo_12gauge",
@@ -443,7 +443,7 @@ const MagazineCraftingObjects = [
         amount: 1,
         craftingItems: [
             new Def.CraftingItem({
-                customMaterial: CustomMaterials.Ammo12Gauge,
+                customMaterial: CustomMaterials.Birdshot,
                 amount: 6
             })
         ]
@@ -456,7 +456,7 @@ const MagazineCraftingObjects = [
 /** @type {Def.Crafting[]} */
 const AmmunitionCraftingObjects = [
     new Def.Crafting({
-        itemTypeId: "yes:bullet",
+        itemTypeId: "yes:normal_bullet",
         name: "Bullet §r[§qx64§r]",
         imagePath: "textures/scripting_ui/ammunition/bullet",
         amount: 64,
@@ -476,7 +476,7 @@ const AmmunitionCraftingObjects = [
         ]
     }),
     new Def.Crafting({
-        itemTypeId: "yes:ammo_12gauge",
+        itemTypeId: "yes:birdshot",
         name: "Shotgun Shell §r[§qx32§r]",
         imagePath: "textures/scripting_ui/ammunition/ammo_12gauge",
         amount: 32,

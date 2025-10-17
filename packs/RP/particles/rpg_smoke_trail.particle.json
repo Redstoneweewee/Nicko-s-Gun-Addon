@@ -13,6 +13,11 @@
 				"creation_expression": "v.size = 0;",
 				"per_update_expression": "v.size = v.size+0.2;"
 			},
+			"minecraft:emitter_local_space": {
+				"position": true,
+				"rotation": true,
+				"velocity": true
+			},
 			"minecraft:emitter_rate_instant": {
 				"num_particles": 3
 			},
@@ -20,14 +25,13 @@
 				"active_time": 5
 			},
 			"minecraft:emitter_shape_point": {
-				"direction": [14, "Math.random(-1,1)", "Math.random(-1,1)"]
+				"direction": ["v.direction.x+math.random(-0.07,0.07)", "v.direction.y+math.random(-0.07,0.07)", "v.direction.z+math.random(-0.07,0.07)"]
 			},
 			"minecraft:particle_lifetime_expression": {
 				"max_lifetime": "12/math.random_integer(3,20) + 2"
 			},
 			"minecraft:particle_initial_speed": "Math.random(3,10)",
 			"minecraft:particle_motion_dynamic": {
-				"linear_acceleration": [0.4, 0.7, 0.4],
 				"linear_drag_coefficient": 1
 			},
 			"minecraft:particle_appearance_billboard": {

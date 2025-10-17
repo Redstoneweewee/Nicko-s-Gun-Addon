@@ -1,0 +1,37 @@
+{
+  "namespace": "hud",
+
+  //---------------------------------------------------------------------------
+  // Hud Screen
+  //---------------------------------------------------------------------------
+
+	  //WeeweeJuice Changes:
+  //anim_item_name_text_alpha_stay: wait_duration  to  0.0
+  //anim_item_name_background_alpha_stay: wait_duration  to  0.0
+  //anim_actionbar_text_background_alpha_out: 0.6  to  1.0
+
+  "anim_title_background_alpha_in": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "duration": "$title_fade_in_time",
+    "from": 0,
+    "to": 0,
+    "next": "@hud.anim_title_background_alpha_stay"
+  },
+
+  "anim_title_background_alpha_stay": {
+    "anim_type": "wait",
+    "duration": "$title_stay_time",
+    "next": "@hud.anim_title_background_alpha_out"
+  },
+
+  "anim_title_background_alpha_out": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "duration": "$title_fade_out_time",
+    "from": 0,
+    "to": 0,
+    "destroy_at_end": "hud_title_text",
+    "end_event": "hud_title_text_complete"
+  }
+}

@@ -122,19 +122,6 @@
 								"event entity @s yes:explode_no_break"
 							]
 						}
-					},
-					{
-						"queue_command": {
-							"command": [
-								"particle yes:explosion_flash ~~~",
-								"camerashake add @a[r=10] 0.008 10 rotational",
-								"camerashake add @a[r=5] 0.02 5 rotational",
-								"title @a[r=5] times 0 10 180",
-								"title @a[r=5] subtitle ",
-								"title @a[r=8] title ",
-								"title @a[r=5] reset"
-							]
-						}
 					}
 				]
 			},

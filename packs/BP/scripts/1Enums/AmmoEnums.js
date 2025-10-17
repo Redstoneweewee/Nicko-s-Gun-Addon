@@ -9,7 +9,7 @@
  * Incendiary:    "incendiary"
  * }}
  */
-const BulletClasses = {
+const BulletAmmoClasses = {
     Normal:        "normal",
     HollowPoint:   "hollowPoint",
     ArmorPiercing: "armorPiercing",
@@ -26,18 +26,36 @@ const BulletClasses = {
  * Slug:     "slug"
  * }}
  */
-const Ammo12GaugeClasses = {
+const ShotgunAmmoClasses = {
     Birdshot: "birdshot",
     Buckshot: "buckshot",
     Slug:     "slug"
 }
 
 /** 
+ * @enum {string}
+ * @type {{
+ * Exploding:     "exploding",
+ * Fragmentation: "fragmentation"
+ * Incendiary:    "incendiary",
+ * Flashing:      "flashing",
+ * Acidic:        "acidic"
+ * }}
+ */
+const ExploiveAmmoClasses = {
+    Exploding:     "exploding",
+    Fragmentation: "fragmentation",
+    Incendiary:    "incendiary",
+    Flashing:      "flashing",
+    Acidic:        "acidic"
+}
+
+/** 
 * @enum {string}
 */
-const AmmoClasses = {
-   ...BulletClasses,
-   ...Ammo12GaugeClasses
+const FirearmAmmoClasses = {
+   ...BulletAmmoClasses,
+   ...ShotgunAmmoClasses
 };
 
 
@@ -85,13 +103,13 @@ const AmmoMultiplierTypes = {
 /** 
  * @enum {string}
  * @type {{
- * Bullet:       "yes:bullet",
- * Ammo12Gauge: "yes:ammo_12gauge"
+ * NormalBullet:  "yes:normal_bullet",
+ * Birdshot: "yes:birdshot"
  * }}
  */
 const AmmoTypes = {
-   Bullet:        "yes:bullet",
-   Ammo12Gauge: "yes:ammo_12gauge",
+   NormalBullet:  "yes:normal_bullet",
+   Birdshot: "yes:birdshot"
 };
 
 
@@ -105,4 +123,4 @@ const AmmoTypes = {
        return;
    }
  */
-export { BulletClasses, Ammo12GaugeClasses, AmmoClasses, AmmoMultiplierTypes, AmmoTypes };
+export { BulletAmmoClasses, ShotgunAmmoClasses, FirearmAmmoClasses, ExploiveAmmoClasses, AmmoMultiplierTypes, AmmoTypes };

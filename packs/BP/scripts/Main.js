@@ -9,6 +9,7 @@ import "./ScriptEvent/SettingsCommand.js";
 import "./ScriptEvent/FirearmScriptEvents.js";
 import "./Settings.js";
 import "./Teams.js";
+import "./Projectiles.js";
 
 
 
@@ -59,13 +60,13 @@ system.runInterval(() => {
         func(); //runs all main loop functions here
     }
     world.getAllPlayers().forEach(player => {
-        player.inputInfo
         HoldDetection.holdingFirearmDetectionPart2(player);
         if(system.currentTick % 15 === 0) { renewAmmoCount(player); }
 
         if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_shooting) === false) {
             FirearmUtil.tryDecreaseRecoil(player);
         }
+        FirearmUtil.tryDecreaseAimRestriction(player);
         AimDetection.aimDetection(player);
         //FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player);
         Reload.tryManualReload(player);

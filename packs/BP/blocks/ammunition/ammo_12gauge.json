@@ -2,7 +2,7 @@
 	"format_version": "1.21.20",
 	"minecraft:block": {
 		"description": {
-			"identifier": "yes:ammo_12gauge",
+			"identifier": "yes:birdshot",
 			"menu_category": {
 				"category": "none"
 			}

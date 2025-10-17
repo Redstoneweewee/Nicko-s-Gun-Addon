@@ -85,6 +85,7 @@ class Global {
             currentMultipliersSaved:      "currentMultipliersSaved",      //boolean reset across reload
             isHoldingAbilityFirearm:      "isHoldingAbilityFirearm",      //boolean reset across reload
             lastShootTick:                "lastShootTick",         //number reset across reload
+            aimRestrictionNumber:         "aimRestrictionNumber"   //number keep across reload 
         },  
 
         "animation": {
@@ -119,6 +120,7 @@ class Global {
          * because the game will think the magazine in their hand was not a part of the firearm.
          */
         loadedOffhandMagazine: "loadedOffhandMagazine",
+        aimRestrictionNumber: "aimRestrictionNumber",
         /** These are tied to loadedOffhandMagazine from HoldDetection() */
         outlines_active:       "outlines_active",
         has_offhand_magazine:  "has_offhand_magazine",
@@ -159,6 +161,10 @@ class Global {
     static ItemAbilityDynamicProperties = {
         currentScopeZoom: "currentScopeZoom",      //number, can either be 1 or 2, for switchScopeZoom LeftClickAbility 
         currentFiringMode: "currentFiringMode",    //string, FiringMode enum, for switchFiringMode LeftClickAbility
+    }
+
+    static ProjectileDynamicProperties = {
+        magazineObjectTypeId: "magazineObjectTypeId"
     }
 }
 

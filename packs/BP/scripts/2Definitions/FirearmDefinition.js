@@ -1,7 +1,7 @@
 import { Magazine } from "./MagazineDefinition.js";
 import { LeftClickAbilityAttribute, SwitchFiringModeAttribute, SwitchScopeZoomAttribute } from "./LeftClickAbilityDefinition.js";
 import { ItemStack } from "@minecraft/server";
-import { AmmoClasses } from "../1Enums/AmmoEnums.js";
+import { FirearmAmmoClasses } from "../1Enums/AmmoEnums.js";
 import * as Enums from "../1Enums/FirearmEnums.js"
 import { MagazineClasses } from "../1Enums/MagazineEnums.js";
 import { NormalAnimation } from "./AnimationDefinition.js";
@@ -76,41 +76,19 @@ class GunWithAbility extends Gun {
 
 class Explosive extends Firearm {
     /**
-     * @param {Firearm & {
-     * projectileAttribute: ProjectileAttribute
-     * }} def
+     * @param {Firearm} def
      */
     constructor(def) {
         super(def);
-
-        this.projectileAttribute  = def.projectileAttribute;
     }
 }
 
-class ProjectileAttribute {
-    /**
-     * @param {{
-     * explosiveDamage: ExplosiveDamage,
-     * typeId: string,
-     * speed: number,
-     * spawnOffset: import("@minecraft/server").Vector3,
-     * shootDirectionOffset: import("@minecraft/server").Vector2
-     * }} def
-     */
-    constructor(def) {
-        this.explosiveDamage        = def.explosiveDamage;
-        this.typeId                 = def.typeId;
-        this.speed                  = def.speed;
-        this.spawnOffset            = def.spawnOffset;
-        this.shootDirectionOffset   = def.shootDirectionOffset;
-    }
-}
 
 class MagazineAttribute {
     /**
      * @param {{
      * magazineClass:              typeof MagazineClasses[keyof typeof MagazineClasses],
-     * usableAmmoClasses:          (typeof AmmoClasses[keyof typeof AmmoClasses])[],
+     * usableAmmoClasses:          (typeof FirearmAmmoClasses[keyof typeof FirearmAmmoClasses])[],
      * maxMagazineItemStackAmount: number,
      * maxMagazineAmmoCount:       number,
      * maxAmmoPerReloadCount:      number,
@@ -201,19 +179,4 @@ class DamageDropoffAttribute {
     }
 }
 
-class ExplosiveDamage {
-    /**
-     * @param {{
-     * maxDamage: number,
-     * minDamage: number,
-     * range: number
-     * }} def 
-     */
-    constructor(def) {
-        this.maxDamage = def.maxDamage;
-        this.minDamage = def.minDamage;
-        this.range     = def.range;
-    }
-}
-
-export { Firearm, Gun, GunWithAbility, Explosive, MagazineAttribute, ScopeAttribute, CamerashakeAttribute, RecoilAttribute, DamageDropoffAttribute, ProjectileAttribute, ExplosiveDamage };
+export { Firearm, Gun, GunWithAbility, Explosive, MagazineAttribute, ScopeAttribute, CamerashakeAttribute, RecoilAttribute, DamageDropoffAttribute };

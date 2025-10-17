@@ -73,11 +73,11 @@ class TypeUtil {
     /**
      * Is equivalent to `mapObject.get("some string");`
      * @example // Basic usage
-     * const AmmoTypes = { bullet: "yes:bullet" };
+     * const AmmoTypes = { bullet: "yes:normal_bullet" };
      * const AmmoMap = new Map();
      * AmmoMap.set(AmmoTypes.bullet, new Ammo());
      * 
-     * getValueFromMap(AmmoMap, AmmoTypes, "yes:bullet"); //returns the Ammo object
+     * getValueFromMap(AmmoMap, AmmoTypes, "yes:normal_bullet"); //returns the Ammo object
      * @template {Record<string, string | number | symbol>} TEnum
      * @template TValue
      * @param {Map<EnumValue<TEnum>, TValue>} map - Map with enum keys

@@ -15,6 +15,7 @@ import { ReloadTypes } from './1Enums/ReloadEnums.js';
 import { SettingsTypes } from './1Enums/SettingsEnums.js';
 import { SettingsUtil } from './UtilitiesInit.js';
 import { MathUtils } from './Math/MathUtils.js';
+import { ExplosiveMagazineAmmo } from './2Definitions/MagazineDefinition.js';
 //import { Mat3, RandVec } from '@madlad3718/mcveclib';
 
 
@@ -107,7 +108,9 @@ function shootGun(player, gun) {
  */
 function shootExplosive(player, explosive) {
     console.log("shooting an explosive weapons.");
-    const shootDirection = calculateShootDirection(player, explosive, {x:explosive.projectileAttribute.shootDirectionOffset.x, y:explosive.projectileAttribute.shootDirectionOffset.y});
+    const magazineObject = FirearmUtil.getMagazineObjectFromItemStack(ItemUtil.getPlayerOffhandContainerSlot(player)?.getItem());
+    if(magazineObject === undefined || !(magazineObject instanceof ExplosiveMagazineAmmo)) return;
+    const shootDirection = calculateShootDirection(player, explosive, {x:magazineObject.projectileAttribute.shootDirectionOffset.x, y:magazineObject.projectileAttribute.shootDirectionOffset.y});
 
 
     const spawnLocation = new Vector3(player.getHeadLocation().x, player.getHeadLocation().y, player.getHeadLocation().z);
@@ -115,7 +118,7 @@ function shootExplosive(player, explosive) {
     const right = new Vector3(-player.getViewDirection().z, 0, player.getViewDirection().x);
     const down = new Vector3(forward.x, forward.y, forward.z).cross(right);
 
-    spawnLocation.add(forward.multiplyScalar(explosive.projectileAttribute.spawnOffset.z)).add(down.multiplyScalar(-explosive.projectileAttribute.spawnOffset.y)).add(right.multiplyScalar(explosive.projectileAttribute.spawnOffset.x));
+    spawnLocation.add(forward.multiplyScalar(magazineObject.projectileAttribute.spawnOffset.z)).add(down.multiplyScalar(-magazineObject.projectileAttribute.spawnOffset.y)).add(right.multiplyScalar(magazineObject.projectileAttribute.spawnOffset.x));
 
     let shootRotX;
     let shootRotY;
@@ -139,10 +142,10 @@ function shootExplosive(player, explosive) {
 
 
     //console.log(`norm: ${player.getRotation().x}, ${player.getRotation().y}, new: ${shootRotX}, ${shootRotY}`);
-    const projectile = player.dimension.spawnEntity(explosive.projectileAttribute.typeId, spawnLocation);
+    const projectile = player.dimension.spawnEntity(magazineObject.projectileAttribute.typeId, spawnLocation);
     projectile.setRotation({x: -shootRotX, y: -shootRotY});
-    projectile.applyImpulse(shootDirection.multiplyScalar(explosive.projectileAttribute.speed));
-
+    projectile.applyImpulse(shootDirection.multiplyScalar(magazineObject.projectileAttribute.speed));
+    projectile.setDynamicProperty(Global.ProjectileDynamicProperties.magazineObjectTypeId, magazineObject.itemTypeId);
 
     /**
      * down = +X

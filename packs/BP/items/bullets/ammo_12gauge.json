@@ -2,7 +2,7 @@
     "format_version": "1.21.50",
     "minecraft:item": {
         "description": {
-            "identifier": "yes:ammo_12gauge",
+            "identifier": "yes:birdshot",
             "menu_category": {
                 "category": "items"
             }
@@ -11,11 +11,11 @@
             "minecraft:tags": {
                 "tags": [
                     "yes:is_bullet_type",
-                    "yes:ammo_12gauge"
+                    "yes:birdshot"
                 ]
             },
             "minecraft:block_placer": {
-                "block": "yes:ammo_12gauge",
+                "block": "yes:birdshot",
                 "replace_block_item": true,
                 "use_on": ["yes:null_block"]
             },

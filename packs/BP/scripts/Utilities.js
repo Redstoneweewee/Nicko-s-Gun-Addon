@@ -14,7 +14,7 @@ import { Crafting } from './2Definitions/CraftingDefinition.js';
 import { MaxHeap } from './Imports/MaxHeap.js';
 import { AmmoMap } from './3Lists/AmmoList.js';
 import { AmmoTypes } from './1Enums/AmmoEnums.js';
-import { AmmoClasses } from './1Enums/AmmoEnums.js';
+import { FirearmAmmoClasses } from './1Enums/AmmoEnums.js';
 import { TypeUtil } from './UtilitiesInit.js';
 //import { settingsList, SettingsTypes } from './Lists/SettingsList.js';
 const Vector = new Vector3();
@@ -691,16 +691,16 @@ class FirearmUtil {
 
     /**
      * @param {ItemStack} magazineItemStack 
-     * @returns {typeof AmmoClasses[keyof typeof AmmoClasses]}
+     * @returns {typeof FirearmAmmoClasses[keyof typeof FirearmAmmoClasses]}
      */
     static getMagazineAmmoClassFromDynamicProperty(magazineItemStack) {
         const ammoClassString = String(magazineItemStack.getDynamicProperty(Global.MagazineDynamicProperties.ammoClass));
-        const ammoClass = TypeUtil.getValueFromList(AmmoClasses, ammoClassString);
+        const ammoClass = TypeUtil.getValueFromList(FirearmAmmoClasses, ammoClassString);
         //for now, just make all undefined "Normal"
         //Later, must make sure all magazines initialize to dynaProp of "Normal"
         //NOTE: Doesn't work with shotgun shells yet cuz they would become "Normal"
         //if(magazineClass === undefined) { return; }
-        if(ammoClass === undefined) { return AmmoClasses.Normal; }
+        if(ammoClass === undefined) { return FirearmAmmoClasses.Normal; }
         return ammoClass;
     }
 
@@ -953,6 +953,19 @@ class FirearmUtil {
         //console.log(`decreaseAmount: ${decreaseAmount}, newRecoil: ${newRecoil}`);
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.recoil, newRecoil);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.recoil);
+    }
+
+    /**
+     * @param {Player} player 
+     */
+    static tryDecreaseAimRestriction(player) {
+        let oldRest = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.script.aimRestrictionNumber));
+        if(oldRest === 0) { return; }
+        if(oldRest === undefined || Number.isNaN(oldRest)) {
+            oldRest = 0;
+        }
+        oldRest--;
+        player.setDynamicProperty(Global.PlayerDynamicProperties.script.aimRestrictionNumber, oldRest);
     }
 
     /**

@@ -30,6 +30,7 @@ function aimDetection(player) {
         FirearmUtil.isHoldingFirearm(player) && 
         player.isSneaking && 
         !player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading) && 
+        Number(player.getDynamicProperty(Global.PlayerDynamicProperties.script.aimRestrictionNumber)) === 0 &&
         (
             !firearmObject.scopeAttribute.stopAimOnCooldown || 
             player.getItemCooldown(firearmItemStack.typeId) === 0 || 
