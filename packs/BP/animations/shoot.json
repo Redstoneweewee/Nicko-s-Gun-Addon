@@ -4,7 +4,7 @@
       "animation.shoot": {
         "loop": true,
         "animation_length": 60,
-        "anim_time_update": "(q.property('yes:firearm_has_ammo') && q.is_using_item) ? (q.anim_time + q.delta_time*(q.property('yes:firearm_fire_rate')+0.1)) : -0.000001",
+        "anim_time_update": "(q.property('yes:firearm_has_ammo') && q.is_using_item && q.cooldown_time_remaining('slot.weapon.mainhand') == 0.0) ? (q.anim_time + q.delta_time*(q.property('yes:firearm_fire_rate')+0.1)) : -0.000001",
         "timeline": {
           "0.00": [
             "/scriptevent yes:firearm_shoot"
