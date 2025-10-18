@@ -499,7 +499,7 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
     }
 
 
-    if(iteration === 1) { player.startItemCooldown(firearmObject.itemTypeId, totalReloadTimeInTicks); }
+    if(iteration === 1) { player.startItemCooldown(firearmObject.itemTypeId, totalReloadTimeInTicks+2); }
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading, true);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_reloading);
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_start_cock, false);
