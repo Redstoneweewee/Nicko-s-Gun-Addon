@@ -1502,19 +1502,19 @@ const FirearmObjects = {
         firingRate:               0,
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.shotgun.strikerReload,
-                scaleDurationToValue: 13
+                staticAnimation:      StaticReloadAnimations.ar.stg44ReloadSwap,
+                scaleDurationToValue: 30
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.shotgun.strikerReloadOpenPort,
-                scaleDurationToValue: 5
+                staticAnimation:      StaticReloadAnimations.ar.stg44ReloadNoSwap,
+                scaleDurationToValue: 20
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.shotgun.strikerReloadClosePort,
-                scaleDurationToValue: 5
+                staticAnimation:      StaticReloadAnimations.ar.stg44ReloadCock,
+                scaleDurationToValue: 15
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.shotgun.strikerShoot
+                staticAnimation: StaticShootAnimations.other.rpg7Shoot
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({

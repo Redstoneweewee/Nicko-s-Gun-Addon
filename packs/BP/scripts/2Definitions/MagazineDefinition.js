@@ -66,18 +66,22 @@ class ProjectileAttribute {
      * explosiveStun: ExplosiveStunAttribute,
      * typeId: string,
      * speed: number,
+     * explosionPower: 3,
      * spawnOffset: import("@minecraft/server").Vector3,
      * shootDirectionOffset: import("@minecraft/server").Vector2
+     * shooterKnockback: import("@minecraft/server").Vector2
      * }} def
      */
     constructor(def) {
         this.explosiveDamage        = def.explosiveDamage;
         this.explosiveCamerashakes  = def.explosiveCamerashakes;
         this.explosiveStun          = def.explosiveStun;
+        this.explosionPower         = def.explosionPower;
         this.typeId                 = def.typeId;
         this.speed                  = def.speed;
         this.spawnOffset            = def.spawnOffset;
         this.shootDirectionOffset   = def.shootDirectionOffset;
+        this.shooterKnockback       = def.shooterKnockback;
     }
 }
 
@@ -85,14 +89,18 @@ class ProjectileAttribute {
 class ExplosiveDamage {
     /**
      * @param {{
-     * maxDamage: number,
      * minDamage: number,
+     * maxDamage: number,
+     * minKnockback: import('@minecraft/server').Vector2
+     * maxKnockback: import('@minecraft/server').Vector2
      * range: number
      * }} def 
      */
     constructor(def) {
-        this.maxDamage = def.maxDamage;
         this.minDamage = def.minDamage;
+        this.maxDamage = def.maxDamage;
+        this.minKnockback = def.minKnockback;
+        this.maxKnockback = def.maxKnockback;
         this.range     = def.range;
     }
 }

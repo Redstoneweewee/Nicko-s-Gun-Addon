@@ -170,9 +170,17 @@ const MagazineObjects = {
         itemStack:             new ItemStack("yes:rocket", 1),
         fillableByAmmoClasses: [],
         projectileAttribute: new Def.ProjectileAttribute({
+            typeId: "yes:rocket", 
+            speed: 3.5,
+            explosionPower: 3,
+            spawnOffset: {x: 0.05, y:-0.15, z:2.1}, //x:left-right, y:up-down, z:forward-backward
+            shootDirectionOffset: {x:0, y:0.0075}, //x:left-right, y:up-down
+            shooterKnockback: {x:-1, y:-0.1}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
+                minDamage: 3,
                 maxDamage: 20,
-                minDamage: 10,
+                minKnockback: {x:0.7, y:0.2},
+                maxKnockback: {x:1.2, y:0.3},
                 range:     8 
             }),
             explosiveCamerashakes: [
@@ -195,11 +203,7 @@ const MagazineObjects = {
                 minScreenDebrisDuration: 20,  //unused
                 maxScreenDebrisDuration: 150,
                 range: 15
-            }),
-            typeId: "yes:rocket", 
-            speed: 3.5,
-            spawnOffset: {x: 0.05, y:-0.15, z:2.1}, //x:left-right, y:up-down, z:forward-backward
-            shootDirectionOffset: {x:0, y:0.0075} //x:left-right, y:up-down
+            })
         })
     }),
     

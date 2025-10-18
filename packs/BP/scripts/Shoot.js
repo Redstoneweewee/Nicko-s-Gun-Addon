@@ -65,6 +65,7 @@ function shoot(player, firearm) {
     else {
         console.error(`Could not find firearmObject of type ${typeof(firearm)} in Shoot()`);
     }
+    console.log(`cooldown: ${player.getItemCooldown(firearm.itemTypeId)}`);
     renewAmmoCount(player);
 }   
 
@@ -107,7 +108,7 @@ function shootGun(player, gun) {
  * @param {FirearmDef.Explosive} explosive
  */
 function shootExplosive(player, explosive) {
-    console.log("shooting an explosive weapons.");
+    console.log("shooting an explosive weapon.");
     const magazineObject = FirearmUtil.getMagazineObjectFromItemStack(ItemUtil.getPlayerOffhandContainerSlot(player)?.getItem());
     if(magazineObject === undefined || !(magazineObject instanceof ExplosiveMagazineAmmo)) return;
     const shootDirection = calculateShootDirection(player, explosive, {x:magazineObject.projectileAttribute.shootDirectionOffset.x, y:magazineObject.projectileAttribute.shootDirectionOffset.y});
@@ -156,8 +157,12 @@ function shootExplosive(player, explosive) {
 
     
 
-    //const newAmmoCount = FirearmUtil.tryConsumeFirearmAmmo(player, explosive, 1);
+    const newAmmoCount = FirearmUtil.tryConsumeFirearmAmmo(player, explosive, 1);
     FirearmUtil.tryAddScreenshakeRecoil(player, explosive);
+
+    const knockbackDirection = new Vector3(player.getViewDirection().x, player.getViewDirection().y, player.getViewDirection().z).multiplyScalar(magazineObject.projectileAttribute.shooterKnockback.x).add(new Vector3(0, magazineObject.projectileAttribute.shooterKnockback.y, 0));
+    player.applyImpulse(knockbackDirection);
+    //player.applyKnockback(player.getViewDirection().x, player.getViewDirection().z, magazineObject.projectileAttribute.shooterKnockback.x, magazineObject.projectileAttribute.shooterKnockback.y)
     
     let playedSound = AnimationUtil.playAnimationWithSound(player, explosive, AnimationTypes.Shoot) === undefined ? false : true;
     if(!playedSound) {

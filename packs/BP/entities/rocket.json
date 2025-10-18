@@ -8,47 +8,16 @@
 			"is_summonable": true,
 			"is_experimental": false
 		  },
-		"component_groups": {
-			"yes:despawn_timer": {
-				"minecraft:timer": {
-					"time": 20,
-					"looping": true,
-					"time_down_event": {
-						"event": "yes:on_hit",
-						"target": "self"
-					}
-				}
-			},
-			"yes:explode": {
-				"minecraft:explode": {
-					"breaks_blocks": true,
-					"causes_fire": false,
-					"destroy_affected_by_griefing": false,
-					"fire_affected_by_griefing": false,
-					"fuse_length": [0.0, 0.0],
-					"fuse_lit": true,
-					"max_resistance": 3.40282e+38,
-					"power": 3
-				}
-			},
-			"yes:explode_no_break": {
-				"minecraft:explode": {
-					"breaks_blocks": false,
-					"causes_fire": false,
-					"destroy_affected_by_griefing": false,
-					"fire_affected_by_griefing": false,
-					"fuse_length": [0.0, 0.0],
-					"fuse_lit": true,
-					"max_resistance": 3.40282e+38,
-					"power": 3
-				}
+		  "component_groups": {
+			"yes:despawn": {
+				"minecraft:instant_despawn": {}
 			}
-		},
+		  },
 		"components": {
 			"minecraft:tick_world": {
-				"distance_to_players": 500,
+				"distance_to_players": 200,
 				"never_despawn": false,
-				"radius": 1
+				"radius": 2
 			},
 			"minecraft:projectile": {
 				"on_hit": {
@@ -57,16 +26,12 @@
 							0,
 							0
 						],
-						"knockback": true
+						"knockback": false
 					},
 					"stick_in_ground": {},
 					"definition_event": {
 						"affect_target": true,
-						"affect_projectile": true,
-						"event_trigger": {
-							"event": "yes:on_hit",
-							"target": "self"
-						}
+						"affect_projectile": true
 					}
 				},
 				"power": 1,
@@ -85,6 +50,7 @@
 				"family": [
 					"weeweejuice",
 					"weeweejuice_projectile",
+					"minecraft:projectile",
 					"rocket"
 				]
 			},
@@ -99,43 +65,10 @@
 			"minecraft:physics": {}
 		},
 		"events": {
-			"minecraft:entity_spawned": {
-				"add": {
-					"component_groups": [
-						"yes:despawn_timer"
-					]
-				}
-			},
 			"yes:despawn": {
-				"queue_command": {
-					"command": [
-						"kill @s",
-						"say killed"
-					]
-				}
-			},
-			"yes:on_hit": {
-				"sequence": [
-					{
-						"queue_command": {
-							"command": [
-								"event entity @s yes:explode_no_break"
-							]
-						}
-					}
-				]
-			},
-			"yes:explode": {
 				"add": {
 					"component_groups": [
-						"yes:explode"
-					]
-				}
-			},
-			"yes:explode_no_break": {
-				"add": {
-					"component_groups": [
-						"yes:explode_no_break"
+						"yes:despawn"
 					]
 				}
 			}

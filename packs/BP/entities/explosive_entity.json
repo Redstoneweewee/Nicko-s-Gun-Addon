@@ -1,0 +1,94 @@
+{
+	"format_version": "1.19.70",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "yes:explosive_entity",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false
+		  },
+		"component_groups": {
+			"yes:despawn_timer": {
+				"minecraft:timer": {
+					"time": 1,
+					"time_down_event": {
+						"event": "yes:despawn",
+						"target": "self"
+					}
+				}
+			},
+			"yes:explode_3_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 3,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_3_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 3,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"weeweejuice",
+					"minecraft:inanimate",
+					"explosive_entity"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0.01,
+				"height": 0.01
+			},
+			"minecraft:health": {
+			  "value": 1,
+			  "max": 1
+			},
+			"minecraft:physics": {}
+		},
+		"events": {
+			"yes:despawn": {
+				"add": {
+					"component_groups": [
+						"yes:despawn"
+					]
+				}
+			},
+			"explode_3_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_3_no_damage"
+					]
+				}
+			},
+			"explode_3_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_3_no_damage_no_break"
+					]
+				}
+			}
+		}
+	}
+}

@@ -16,6 +16,8 @@ import { AmmoMap } from './3Lists/AmmoList.js';
 import { AmmoTypes } from './1Enums/AmmoEnums.js';
 import { FirearmAmmoClasses } from './1Enums/AmmoEnums.js';
 import { TypeUtil } from './UtilitiesInit.js';
+import { excludedFamilies, excludedGameModes, excludedTypes } from './1Enums/HitExclusionArrays.js';
+import { MathUtils } from './Math/MathUtils.js';
 //import { settingsList, SettingsTypes } from './Lists/SettingsList.js';
 const Vector = new Vector3();
 
@@ -265,6 +267,8 @@ class ItemUtil {
         if(durabilityComponent.damage === durabilityComponent.maxDurability) {
             try {
                 //console.log(`set magazine to ${itemStack.typeId}_empty`);
+                player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, false);
+                AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
                 const emptyMagazineItemStack = new ItemStack(magazineItemStack.typeId+"_empty", 1);
                 magazineContainerSlot.setItem(emptyMagazineItemStack);
                 const magazineTypeId = TypeUtil.getValueFromList(MagazineTypeIds, magazineItemStack.typeId);
@@ -1334,6 +1338,63 @@ class DamageUtil {
             target.applyKnockback(knockbackVectorXZ.x, knockbackVectorXZ.z, gun.knockbackAmount.x, gun.knockbackAmount.y);
         }
         //console.log(`applied knockback: ${knockbackVectorXZ.x*gun.knockbackAmount.x}, ${gun.knockbackAmount.y}, ${knockbackVectorXZ.z*gun.knockbackAmount.x}`);
+    }
+
+
+    /**
+     * 
+     * @param {Entity} source 
+     * @param {import('@minecraft/server').Vector3} location 
+     * @param {Number} range 
+     * @param {Number} minDamage 
+     * @param {Number} maxDamage 
+     * @param {import('@minecraft/server').Vector2} minKnockback 
+     * @param {import('@minecraft/server').Vector2} maxKnockback 
+     */
+    static dealExplosionDamageAndKnockback(source, location, range, minDamage, maxDamage, minKnockback, maxKnockback) {
+
+        const targets = source.dimension.getEntities({
+            location: location, 
+            maxDistance: range, 
+            excludeFamilies: excludedFamilies,
+            excludeTypes: excludedTypes
+        });
+        targets.forEach(target => {
+            const distance = new Vector3(target.location.x, target.location.y, target.location.z).sub(new Vector3(location.x, location.y, location.z)).length();
+            const distanceFromHead = new Vector3(target.getHeadLocation().x, target.getHeadLocation().y, target.getHeadLocation().z).sub(new Vector3(location.x, location.y, location.z)).length();
+
+            const isPlayer = (target instanceof Player);
+            console.log(isPlayer);
+            if(isPlayer && (excludedGameModes.includes(target.getGameMode()) || !world.gameRules.pvp)) return;
+            /** @type {Number} */
+            let damage = Math.floor(MathUtils.mapLinear(Math.max((range - distance), range - distanceFromHead), 0, range, minDamage, maxDamage)) * (isPlayer ? 1 : 1.5);
+            
+            const blockInTheWayOfFeet = source.dimension.getBlockFromRay(location, new Vector3(target.location.x, target.location.y, target.location.z).sub(new Vector3(location.x, location.y, location.z)), {maxDistance: range});
+            const blockInTheWayOfHead = source.dimension.getBlockFromRay(location, new Vector3(target.getHeadLocation().x, target.getHeadLocation().y, target.getHeadLocation().z).sub(new Vector3(location.x, location.y, location.z)), {maxDistance: range});
+            if(blockInTheWayOfFeet && blockInTheWayOfHead) {
+                const hitLocationFeet = new Vector3(blockInTheWayOfFeet.block.location.x+blockInTheWayOfFeet.faceLocation.x, blockInTheWayOfFeet.block.location.y+blockInTheWayOfFeet.faceLocation.y, blockInTheWayOfFeet.block.location.z+blockInTheWayOfFeet.faceLocation.z);
+                const hitLocationHead = new Vector3(blockInTheWayOfHead.block.location.x+blockInTheWayOfHead.faceLocation.x, blockInTheWayOfHead.block.location.y+blockInTheWayOfHead.faceLocation.y, blockInTheWayOfHead.block.location.z+blockInTheWayOfHead.faceLocation.z);
+                console.log(`block: ${blockInTheWayOfFeet.block.typeId}, block dist: ${new Vector3(hitLocationFeet.x, hitLocationFeet.y, hitLocationFeet.z).sub(new Vector3(location.x, location.y, location.z)).length()} vs. ${distance}`);
+                
+                if(new Vector3(hitLocationFeet.x, hitLocationFeet.y, hitLocationFeet.z).sub(new Vector3(location.x, location.y, location.z)).length() < distance
+                   &&
+                   new Vector3(hitLocationHead.x, hitLocationHead.y, hitLocationHead.z).sub(new Vector3(location.x, location.y, location.z)).length() < distanceFromHead) {
+                    damage *= 0.1;
+                    damage = Math.ceil(damage);
+                }
+            }
+            DamageUtil.dealDamageNoMultiplier(target, damage);
+            console.log(`damage: ${damage}`);
+
+
+
+            const knockbackX = MathUtils.mapLinear((range - distance), 0, range, minKnockback.x, maxKnockback.x);
+            const knockbackY = MathUtils.mapLinear((range - distance), 0, range, minKnockback.y, maxKnockback.y);
+
+            const knockbackDirection = new Vector3(target.location.x, 0, target.location.z).sub(new Vector3(location.x, 0, location.z)).normalize();
+            //target.applyKnockback(knockbackDirection.x, knockbackDirection.z, knockbackX, knockbackY);
+            target.applyImpulse(new Vector3(knockbackDirection.x, knockbackDirection.y, knockbackDirection.z).multiplyScalar(knockbackX).add(new Vector3(0, 1, 0).multiplyScalar(knockbackY)));
+        });
     }
 }
 

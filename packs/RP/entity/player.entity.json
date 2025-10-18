@@ -499,8 +499,7 @@
 
           "breech_flash": "yes:breech_flash",
           "rpg7_smoke": "yes:rpg7_smoke",
-          "rpg7_blast": "yes:rpg7_blast",
-          "rpg7_blast2": "yes:rpg7_blast2"
+          "rpg7_blast": "yes:rpg7_blast"
       },
       "enable_attachables": true
     }

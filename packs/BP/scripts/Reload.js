@@ -277,8 +277,8 @@ function handleBeforeReload(iteration, player, totalReloadTimeInTicks, reloadTyp
             let newNum = Math.min(oldMagazineItemStack.amount+firearmObject.magazineAttribute.maxAmmoPerReloadCount, newMagazineItemStack.amount);
             newAmmoCount = newNum <= firearmObject.magazineAttribute.maxMagazineItemStackAmount ? newNum : firearmObject.magazineAttribute.maxMagazineItemStackAmount;
         }
-        console.log(`new mag count: ${newMagazineItemStack.amount}`);
-        console.log(`old: ${oldAmmoCount}, new ammo count: ${newAmmoCount}`);
+        //console.log(`new mag count: ${newMagazineItemStack.amount}`);
+        //console.log(`old: ${oldAmmoCount}, new ammo count: ${newAmmoCount}`);
     }
     //----------------------------
 
@@ -287,7 +287,7 @@ function handleBeforeReload(iteration, player, totalReloadTimeInTicks, reloadTyp
         //remove old magazine if normal or tactical swap
         if(reloadType === ReloadTypes.Normal || reloadType === ReloadTypes.Tactical) {
             if(player.getGameMode() !== GameMode.creative) { ItemUtil.removeItemStackFromInventory(player, newMagazineItemStack); }
-            console.log(`cleared  ${newMagazineItemStack.typeId} ${newAmmoCount}`);
+            //console.log(`cleared  ${newMagazineItemStack.typeId} ${newAmmoCount}`);
             ItemUtil.getPlayerOffhandContainerSlot(player)?.setItem(newMagazineItemStack);
         }
         //run loop to make sure magazine is always removed on manual reload
@@ -372,7 +372,7 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
     //        return;
     //    }
     //}
-    console.log(`iteration: ${iteration}`);
+    //console.log(`iteration: ${iteration}`);
     if(firearmObject instanceof Gun) {
 
         //--------------------- open cock --------------------- 
