@@ -1,0 +1,18 @@
+{
+    "format_version": "1.16.100",
+    "animations": {
+      "animation.test": {
+        "loop": true,
+        "animation_length": 1,
+        "anim_time_update": "(q.is_using_item) ? (q.anim_time + q.delta_time) : -0.000001",
+        "timeline": {
+          "0.00": [
+            "/say yo"
+          ],
+          "0.50": [
+            "/say ma"
+          ]
+        }
+      }
+    }
+  }			

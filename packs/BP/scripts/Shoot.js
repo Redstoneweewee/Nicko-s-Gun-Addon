@@ -37,13 +37,15 @@ const HitMarkerVariants = {
 function shoot(player, firearm) {
     const ammoCount = FirearmUtil.getAmmoCountFromOffhand(player);
     const firearmItemStack = ItemUtil.getSelectedItemStack(player);
-    if(ammoCount === undefined || ammoCount <= 0 || player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) { 
-        //LoopUtil.stopAsyncLoop(player, Global.playerShootingLoopIds);
+    if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)) {
+        renewAmmoCount(player);
+        return;
+    }
+    if(ammoCount === undefined || ammoCount <= 0) { 
+        renewAmmoCount(player);
         if(firearmItemStack !== undefined) { //Need this here for when the player right-clicks when the magazine is empty & they weren't shooting just before
             Reload.tryAutomaticReload(player, ReloadTypes.Normal);
         }
-        renewAmmoCount(player);
-        console.log("out of ammo");
         return;
     }
 
@@ -57,6 +59,8 @@ function shoot(player, firearm) {
     }
     //console.log(`ammoCount: ${ammoCount}, isReloading: ${player.getDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading)}`);
 
+    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_shooting, true);
+    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_shooting);
 
     FirearmUtil.tryIncreaseRecoil(player, firearm);
     player.setDynamicProperty(Global.PlayerDynamicProperties.script.lastShootTick, system.currentTick);
@@ -65,7 +69,6 @@ function shoot(player, firearm) {
     else {
         console.error(`Could not find firearmObject of type ${typeof(firearm)} in Shoot()`);
     }
-    console.log(`cooldown: ${player.getItemCooldown(firearm.itemTypeId)}`);
     renewAmmoCount(player);
 }   
 

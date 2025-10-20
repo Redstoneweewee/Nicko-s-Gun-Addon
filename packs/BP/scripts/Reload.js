@@ -153,7 +153,6 @@ function tryAutomaticReload(player, reloadType) {
        reloadType === ReloadTypes.Tactical && ammoCount === oldMagazineObject?.maxAmmo) { return; } //left-click reload would stop here if full mag
     if(firearmObject.magazineAttribute.defaultMagazine.magazineType === MagazineTypes.StackBased && 
         reloadType === ReloadTypes.Tactical && ammoCount === firearmObject.magazineAttribute.maxMagazineItemStackAmount) { return; } //left-click reload would stop here if full mag
-
     //console.log("automatic reload");
 
     const magazineType = firearmObject.magazineAttribute.defaultMagazine.magazineType;
@@ -373,7 +372,7 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
     //    }
     //}
     //console.log(`iteration: ${iteration}`);
-    if(firearmObject instanceof Gun) {
+    //if(firearmObject instanceof Gun) {
 
         //--------------------- open cock --------------------- 
         if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload) === true && 
@@ -437,7 +436,7 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
                 if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
                 idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.ReloadBoth, noSwapMultiplier, reloadTimeInTicks);
                 if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
-                
+                console.log(`no swap: ${noSwapMultiplier}`);
 
                 if(iteration === 1) {
                     if(magazineObject.magazineType === MagazineTypes.StackBased && 
@@ -477,29 +476,28 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
                 totalReloadTimeInTicks += attribute.scaleDurationToValue;
             }
         }
-    }
+    //}
 
 
-    else if(firearmObject instanceof Explosive) {
-        //untested, probably needs changing once explosives are added
-        const attribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadSwap]);
-        if(attribute instanceof ScaledAnimation) {
-            let normalMultiplier = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_normal_animation_multiplier));
-            if(Number.isNaN(normalMultiplier) ) { normalMultiplier = 1.0; }
-            let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.ReloadSwap, normalMultiplier);
-            if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
+    // else if(firearmObject instanceof Explosive) {
+    //     //untested, probably needs changing once explosives are added
+    //     const attribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadSwap]);
+    //     if(attribute instanceof ScaledAnimation) {
+    //         let normalMultiplier = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_normal_animation_multiplier));
+    //         if(Number.isNaN(normalMultiplier) ) { normalMultiplier = 1.0; }
+    //         let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.ReloadSwap, normalMultiplier);
+    //         if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
 
-            if(iteration === 1) { totalReloadTimeInTicks += attribute.scaleDurationToValue; }
-            magazineReloadTime += attribute.scaleDurationToValue;
-            reloadTimeInTicks  += attribute.scaleDurationToValue;
-        }
-    }
-    else {
-        console.error(`Could not find firearmObject of type ${typeof(firearmObject)} in handleReloadAnimation()`);
-    }
+    //         if(iteration === 1) { totalReloadTimeInTicks += attribute.scaleDurationToValue; }
+    //         magazineReloadTime += attribute.scaleDurationToValue;
+    //         reloadTimeInTicks  += attribute.scaleDurationToValue;
+    //     }
+    // }
+    // else {
+    //     console.error(`Could not find firearmObject of type ${typeof(firearmObject)} in handleReloadAnimation()`);
+    // }
 
-
-    if(iteration === 1) { player.startItemCooldown(firearmObject.itemTypeId, totalReloadTimeInTicks+2); }
+    if(iteration === 1) { player.startItemCooldown(firearmObject.itemTypeId, totalReloadTimeInTicks); }
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_reloading, true);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_reloading);
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_start_cock, false);
