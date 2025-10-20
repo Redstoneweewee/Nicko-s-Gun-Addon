@@ -1123,10 +1123,10 @@ const FirearmObjects = {
         magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.AR,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
-            maxMagazineItemStackAmount: 30,
+            maxMagazineItemStackAmount: 5,
             maxMagazineAmmoCount:       1,
-            maxAmmoPerReloadCount:      30,
-            maxEmptyAmmoPerReloadCount: 30,
+            maxAmmoPerReloadCount:      5,
+            maxEmptyAmmoPerReloadCount: 5,
             defaultMagazine:        MagazineObjects.Ammo762MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
@@ -1502,16 +1502,12 @@ const FirearmObjects = {
         firingRate:               0,
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.ar.stg44ReloadSwap,
-                scaleDurationToValue: 30
+                staticAnimation:      StaticReloadAnimations.other.rpg7ReloadSwap,
+                scaleDurationToValue: 40
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.ar.stg44ReloadNoSwap,
-                scaleDurationToValue: 20
-            }),
-            new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.ar.stg44ReloadCock,
-                scaleDurationToValue: 15
+                staticAnimation:      StaticReloadAnimations.other.rpg7ReloadNoSwap,
+                scaleDurationToValue: 40
             }),
             new NormalAnimation({
                 staticAnimation: StaticShootAnimations.other.rpg7Shoot

@@ -27,11 +27,11 @@ import * as Reload from "./Reload.js";
 world.afterEvents.itemStartUse.subscribe((eventData) => {
     const player = eventData.source;
     const itemStack = eventData.itemStack;
-    ShootDetection.shootDetection(player, itemStack);
-    //FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player);
-    //AutoReloadDetection.automaticMagazineSwap(player, itemStack, false);
     Reload.tryManualReload(player);
     Reload.tryAutomaticReload(player, ReloadTypes.Normal);
+    //ShootDetection.shootDetection(player, itemStack);
+    //FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player);
+    //AutoReloadDetection.automaticMagazineSwap(player, itemStack, false);
 });
 
 

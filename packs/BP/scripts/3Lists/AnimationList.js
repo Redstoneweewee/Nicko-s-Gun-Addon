@@ -53,6 +53,11 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  * strikerReloadOpenPort:  Def.StaticAnimation,
  * strikerReloadClosePort: Def.StaticAnimation,
  * }} ShotgunReloadAnimations
+ * 
+ * @typedef {{
+ * rpg7ReloadSwap:       Def.StaticAnimation,
+ * rpg7ReloadNoSwap:       Def.StaticAnimation,
+ * }} OtherReloadAnimations
  */
 
 /**
@@ -62,7 +67,8 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  *   ar:      ARReloadAnimations,
  *   smg:     SmgReloadAnimations,
  *   pistol:  PistolReloadAnimations,
- *   shotgun: ShotgunReloadAnimations
+ *   shotgun: ShotgunReloadAnimations,
+ *   other:   OtherReloadAnimations
  * }}
  */
 const StaticReloadAnimations = {
@@ -596,6 +602,20 @@ const StaticReloadAnimations = {
                     timeout: 4,
                     soundRange: 40
                 }
+            ]
+        }),
+    },
+    other: {
+        rpg7ReloadSwap: new Def.StaticAnimation({
+            duration: 40, //in ticks
+            type:     Enums.AnimationTypes.ReloadSwap,
+            animationSounds: [
+            ]
+        }),
+        rpg7ReloadNoSwap: new Def.StaticAnimation({
+            duration: 40, //in ticks
+            type:     Enums.AnimationTypes.ReloadNoSwap,
+            animationSounds: [
             ]
         }),
     }

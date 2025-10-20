@@ -175,6 +175,7 @@
           "v.should_kar98_reload           = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_kar98_reload');",
           "v.should_luger_reload           = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_luger_reload');",
           "v.should_stg44_reload           = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_stg44_reload');",
+          "v.should_rpg7_reload            = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:use_rpg7_reload');",
 
           "v.is_not_shooting_increment = v.is_shooting ? 0 : v.is_not_shooting_increment >= 1 ? 1 : v.is_not_shooting_increment + 0.005;",
           
@@ -425,8 +426,13 @@
 
         "stg44_reload_swap_third_person":         "animation.stg44_reload_swap_third_person",
         "stg44_reload_no_swap_third_person":         "animation.stg44_reload_no_swap_third_person",
-        "stg44_reload_cock_third_person":         "animation.stg44_reload_cock_third_person"
+        "stg44_reload_cock_third_person":         "animation.stg44_reload_cock_third_person",
 
+        "rpg7_reload_swap_first_person": "animation.rpg7_reload_swap_first_person",
+        "rpg7_reload_no_swap_first_person": "animation.rpg7_reload_no_swap_first_person",
+
+        "rpg7_reload_swap_third_person": "animation.rpg7_reload_swap_third_person",
+        "rpg7_reload_no_swap_third_person": "animation.rpg7_reload_no_swap_third_person"
       },
       "render_controllers": [
         {

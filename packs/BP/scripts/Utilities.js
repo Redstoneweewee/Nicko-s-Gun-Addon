@@ -1070,21 +1070,21 @@ class FirearmUtil {
                 cockMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
             }
         });
-        if(firearmObject instanceof Gun) {
-            this.#trySetReloadNormalAnimationMultiplierValue(player, normalMultiplier);
-            this.#trySetReloadNoSwapAnimationMultiplierValue(player, noSwapMultiplier);
-            this.#trySetReloadOpenCockAnimationMultiplierValue(player, openCockMultiplier);
-            this.#trySetReloadCockAnimationMultiplierValue(player, cockMultiplier);
-        }
-        else if(firearmObject instanceof Explosive) {
-            this.#trySetReloadNormalAnimationMultiplierValue(player, normalMultiplier);
-            this.#trySetReloadNoSwapAnimationMultiplierValue(player, 1.0);
-            this.#trySetReloadOpenCockAnimationMultiplierValue(player, 1.0);
-            this.#trySetReloadCockAnimationMultiplierValue(player, 1.0);
-        }
-        else {
-            console.error(`Could not find firearmObject of type ${typeof(firearmObject)} in renewReloadAnimationMultiplier()`);
-        }
+        //if(firearmObject instanceof Gun) {
+        this.#trySetReloadNormalAnimationMultiplierValue(player, normalMultiplier);
+        this.#trySetReloadNoSwapAnimationMultiplierValue(player, noSwapMultiplier);
+        this.#trySetReloadOpenCockAnimationMultiplierValue(player, openCockMultiplier);
+        this.#trySetReloadCockAnimationMultiplierValue(player, cockMultiplier);
+        // }
+        // else if(firearmObject instanceof Explosive) {
+        //     this.#trySetReloadNormalAnimationMultiplierValue(player, normalMultiplier);
+        //     this.#trySetReloadNoSwapAnimationMultiplierValue(player, 1.0);
+        //     this.#trySetReloadOpenCockAnimationMultiplierValue(player, 1.0);
+        //     this.#trySetReloadCockAnimationMultiplierValue(player, 1.0);
+        // }
+        // else {
+        //     console.error(`Could not find firearmObject of type ${typeof(firearmObject)} in renewReloadAnimationMultiplier()`);
+        // }
     }
 
     /**
@@ -1360,23 +1360,23 @@ class DamageUtil {
             excludeTypes: excludedTypes
         });
         targets.forEach(target => {
-            const distance = new Vector3(target.location.x, target.location.y, target.location.z).sub(new Vector3(location.x, location.y, location.z)).length();
+            const distanceFromFeet = new Vector3(target.location.x, target.location.y, target.location.z).sub(new Vector3(location.x, location.y, location.z)).length();
             const distanceFromHead = new Vector3(target.getHeadLocation().x, target.getHeadLocation().y, target.getHeadLocation().z).sub(new Vector3(location.x, location.y, location.z)).length();
 
             const isPlayer = (target instanceof Player);
             console.log(isPlayer);
             if(isPlayer && (excludedGameModes.includes(target.getGameMode()) || !world.gameRules.pvp)) return;
             /** @type {Number} */
-            let damage = Math.floor(MathUtils.mapLinear(Math.max((range - distance), range - distanceFromHead), 0, range, minDamage, maxDamage)) * (isPlayer ? 1 : 1.5);
+            let damage = Math.floor(MathUtils.mapLinear(Math.max((range - distanceFromFeet), range - distanceFromHead), 0, range, minDamage, maxDamage)) * (isPlayer ? 1 : 1.5);
             
             const blockInTheWayOfFeet = source.dimension.getBlockFromRay(location, new Vector3(target.location.x, target.location.y, target.location.z).sub(new Vector3(location.x, location.y, location.z)), {maxDistance: range});
             const blockInTheWayOfHead = source.dimension.getBlockFromRay(location, new Vector3(target.getHeadLocation().x, target.getHeadLocation().y, target.getHeadLocation().z).sub(new Vector3(location.x, location.y, location.z)), {maxDistance: range});
             if(blockInTheWayOfFeet && blockInTheWayOfHead) {
                 const hitLocationFeet = new Vector3(blockInTheWayOfFeet.block.location.x+blockInTheWayOfFeet.faceLocation.x, blockInTheWayOfFeet.block.location.y+blockInTheWayOfFeet.faceLocation.y, blockInTheWayOfFeet.block.location.z+blockInTheWayOfFeet.faceLocation.z);
                 const hitLocationHead = new Vector3(blockInTheWayOfHead.block.location.x+blockInTheWayOfHead.faceLocation.x, blockInTheWayOfHead.block.location.y+blockInTheWayOfHead.faceLocation.y, blockInTheWayOfHead.block.location.z+blockInTheWayOfHead.faceLocation.z);
-                console.log(`block: ${blockInTheWayOfFeet.block.typeId}, block dist: ${new Vector3(hitLocationFeet.x, hitLocationFeet.y, hitLocationFeet.z).sub(new Vector3(location.x, location.y, location.z)).length()} vs. ${distance}`);
-                
-                if(new Vector3(hitLocationFeet.x, hitLocationFeet.y, hitLocationFeet.z).sub(new Vector3(location.x, location.y, location.z)).length() < distance
+                console.log(`block: ${blockInTheWayOfFeet.block.typeId}, block dist: ${new Vector3(hitLocationFeet.x, hitLocationFeet.y, hitLocationFeet.z).sub(new Vector3(location.x, location.y, location.z)).length()} vs. ${distanceFromFeet}`);
+
+                if(new Vector3(hitLocationFeet.x, hitLocationFeet.y, hitLocationFeet.z).sub(new Vector3(location.x, location.y, location.z)).length() < distanceFromFeet
                    &&
                    new Vector3(hitLocationHead.x, hitLocationHead.y, hitLocationHead.z).sub(new Vector3(location.x, location.y, location.z)).length() < distanceFromHead) {
                     damage *= 0.1;
@@ -1388,8 +1388,8 @@ class DamageUtil {
 
 
 
-            const knockbackX = MathUtils.mapLinear((range - distance), 0, range, minKnockback.x, maxKnockback.x);
-            const knockbackY = MathUtils.mapLinear((range - distance), 0, range, minKnockback.y, maxKnockback.y);
+            const knockbackX = MathUtils.mapLinear((range - distanceFromFeet), 0, range, minKnockback.x, maxKnockback.x);
+            const knockbackY = MathUtils.mapLinear((range - distanceFromFeet), 0, range, minKnockback.y, maxKnockback.y);
 
             const knockbackDirection = new Vector3(target.location.x, 0, target.location.z).sub(new Vector3(location.x, 0, location.z)).normalize();
             //target.applyKnockback(knockbackDirection.x, knockbackDirection.z, knockbackX, knockbackY);
