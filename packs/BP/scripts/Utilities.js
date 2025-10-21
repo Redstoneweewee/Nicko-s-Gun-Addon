@@ -1,4 +1,4 @@
-import { Entity, EntityDamageCause, EntityHealthComponent, EntityInventoryComponent, GameMode, ContainerSlot, Player, system, ItemStack, ItemDurabilityComponent, EntityEquippableComponent, EquipmentSlot, EntityComponentTypes, ItemComponentTypes, world, EntityTypeFamilyComponent } from '@minecraft/server';
+import { Entity, EntityDamageCause, EntityHealthComponent, EntityInventoryComponent, GameMode, ContainerSlot, Player, system, ItemStack, ItemDurabilityComponent, EntityEquippableComponent, EquipmentSlot, EntityComponentTypes, ItemComponentTypes, world, EntityTypeFamilyComponent, Block } from '@minecraft/server';
 import { Vector3 } from './Math/Vector3.js';
 import { Global } from './Global.js';
 import { Firearm, Gun, Explosive, GunWithAbility } from './2Definitions/FirearmDefinition.js';
@@ -18,6 +18,7 @@ import { FirearmAmmoClasses } from './1Enums/AmmoEnums.js';
 import { TypeUtil } from './UtilitiesInit.js';
 import { excludedFamilies, excludedGameModes, excludedTypes } from './1Enums/HitExclusionArrays.js';
 import { MathUtils } from './Math/MathUtils.js';
+import * as BlockColors from './3Lists/BlockColorsList.js';
 //import { settingsList, SettingsTypes } from './Lists/SettingsList.js';
 const Vector = new Vector3();
 
@@ -1350,8 +1351,10 @@ class DamageUtil {
      * @param {Number} maxDamage 
      * @param {import('@minecraft/server').Vector2} minKnockback 
      * @param {import('@minecraft/server').Vector2} maxKnockback 
+     * @returns {number}
      */
     static dealExplosionDamageAndKnockback(source, location, range, minDamage, maxDamage, minKnockback, maxKnockback) {
+        let numberOfTargets = 0;
 
         const targets = source.dimension.getEntities({
             location: location, 
@@ -1394,7 +1397,9 @@ class DamageUtil {
             const knockbackDirection = new Vector3(target.location.x, 0, target.location.z).sub(new Vector3(location.x, 0, location.z)).normalize();
             //target.applyKnockback(knockbackDirection.x, knockbackDirection.z, knockbackX, knockbackY);
             target.applyImpulse(new Vector3(knockbackDirection.x, knockbackDirection.y, knockbackDirection.z).multiplyScalar(knockbackX).add(new Vector3(0, 1, 0).multiplyScalar(knockbackY)));
+            numberOfTargets++;
         });
+        return numberOfTargets;
     }
 }
 
@@ -1899,3 +1904,62 @@ class CraftingUtil {
 }
 
 export { CraftingUtil };
+
+
+class ColorUtil {
+    /**
+     * 
+     * @param {Block} block 
+     * @returns {import('@minecraft/server').RGB}
+     */
+    static getBlockColor(block) {
+        let blockColor = (BlockColors.blockColorsMap.get(block.typeId));
+
+        if(blockColor === undefined) {
+            console.log(`block parts: [${block.typeId.split(":")[1].split("_")}]`);
+            for(const part of block.typeId.split(":")[1].split("_")) {
+                if(BlockColors.partialNameColorsMap.get(part) !== undefined) {
+                    blockColor = BlockColors.partialNameColorsMap.get(part);
+                    break;
+                }
+            }
+        }
+        if(blockColor === undefined) {
+            for(const tag of block.getTags()) {
+                if(BlockColors.tagColorsMap.get(tag) !== undefined) {
+                    blockColor = BlockColors.tagColorsMap.get(tag);
+                    break;
+                }
+            }
+        }
+        if(blockColor === undefined) {
+            blockColor = BlockColors.defaultColor;
+        }
+        console.log(`color: #${ColorUtil.rgbToHex(blockColor)}`);
+        return blockColor;
+    }
+
+    /**
+     * 
+     * @param {number} c 
+     * @returns {string}
+     */
+    static #componentToHex(c) {
+        c = Math.floor(c*255);
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    /**
+     * 
+     * @param {import('@minecraft/server').RGB|undefined} rgb
+     * @returns {string}
+     */
+    static rgbToHex(rgb) {
+        if(!rgb) {
+            return "#000000"
+        }
+        return "#" + ColorUtil.#componentToHex(rgb.red) + ColorUtil.#componentToHex(rgb.green) + ColorUtil.#componentToHex(rgb.blue);
+    }
+}
+export { ColorUtil };

@@ -50,22 +50,49 @@
 			}
 		},
 		"components": {
+			"minecraft:knockback_resistance": {
+				"value": 1.0
+			},
+			"minecraft:collision_box": {
+				"width": 0.0001,
+				"height": 0.0001
+			},
+			"minecraft:custom_hit_test": {
+				"hitboxes": [
+					{
+						"pivot": [
+							0,
+							0,
+							0
+						],
+						"width": 0.45,
+						"height": 0.45
+					}
+				]
+			},
+			"minecraft:damage_sensor": {
+				"triggers": {
+					"cause": "all",
+					"deals_damage": false
+				}
+			},
+			"minecraft:health": {
+				"value": 9999999,
+				"max": 9999999
+			},
+			"minecraft:vibration_damper": {},
+			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
 			"minecraft:type_family": {
 				"family": [
 					"weeweejuice",
 					"minecraft:inanimate",
 					"explosive_entity"
 				]
-			},
-			"minecraft:collision_box": {
-				"width": 0.01,
-				"height": 0.01
-			},
-			"minecraft:health": {
-			  "value": 1,
-			  "max": 1
-			},
-			"minecraft:physics": {}
+			}
 		},
 		"events": {
 			"yes:despawn": {

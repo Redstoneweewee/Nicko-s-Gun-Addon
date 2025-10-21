@@ -2,10 +2,10 @@
 	"format_version": "1.10.0",
 	"particle_effect": {
 		"description": {
-			"identifier": "yes:explosion_flash",
+			"identifier": "yes:explosion_flash_middle",
 			"basic_render_parameters": {
 				"material": "particles_add",
-				"texture": "textures/particle/muzzle_flash"
+				"texture": "textures/particle/muzzle_flash3"
 			}
 		},
 		"components": {
@@ -17,31 +17,25 @@
 			},
 			"minecraft:emitter_shape_point": {},
 			"minecraft:particle_lifetime_expression": {
-				"max_lifetime": 0.25
+				"max_lifetime": 0.3
 			},
 			"minecraft:particle_initial_speed": 1.5,
 			"minecraft:particle_appearance_billboard": {
-				"size": [24, 15],
+				"size": ["7+math.pow(v.particle_age*30,0.5)", "5+math.pow(v.particle_age*30,0.5)"],
 				"facing_camera_mode": "rotate_xyz",
 				"uv": {
-					"texture_width": 480,
-					"texture_height": 80,
-					"flipbook": {
-						"base_UV": [0, 0],
-						"size_UV": [80, 80],
-						"step_UV": [80, 0],
-						"frames_per_second": 6,
-						"max_frame": 6,
-						"stretch_to_lifetime": true
-					}
+					"texture_width": 89,
+					"texture_height": 89,
+					"uv": [0, 0],
+					"uv_size": [89, 89]
 				}
 			},
 			"minecraft:particle_appearance_tinting": {
 				"color": {
 					"interpolant": "v.particle_age / v.particle_lifetime",
 					"gradient": {
-						"0.0": "#FFFFDB06",
-						"0.46": "#8FEE9B02",
+						"0.0": "#FFFFE5B5",
+						"0.47": "#99D6AA59",
 						"1.0": "#00F19828"
 					}
 				}

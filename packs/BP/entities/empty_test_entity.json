@@ -34,28 +34,22 @@
 					"deals_damage": false
 				}
 			},
+			"minecraft:health": {
+				"value": 9999999,
+				"max": 9999999
+			},
+			"minecraft:vibration_damper": {},
+			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
 			"minecraft:type_family": {
 				"family": [
 					"inanimate",
 					"weeweejuice",
 					"empty_test_entity"
 				]
-			},
-			"minecraft:health": {
-				"value": 9999999,
-				"max": 9999999
-			},
-			"minecraft:vibration_damper": {},
-			"minecraft:navigation.walk": {
-				"is_amphibious": false,
-				"can_pass_doors": false,
-				"can_walk": false,
-				"can_break_doors": false
-			},
-			"minecraft:conditional_bandwidth_optimization": {},
-			"minecraft:pushable": {
-				"is_pushable": false,
-				"is_pushable_by_piston": false
 			}
 		},
 		"events": {

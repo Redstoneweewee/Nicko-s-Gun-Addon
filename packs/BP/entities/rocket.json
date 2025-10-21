@@ -15,7 +15,7 @@
 		  },
 		"components": {
 			"minecraft:tick_world": {
-				"distance_to_players": 200,
+				"distance_to_players": 500,
 				"never_despawn": false,
 				"radius": 2
 			},

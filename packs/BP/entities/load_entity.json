@@ -1,13 +1,30 @@
 {
-	"format_version": "1.16.0",
+	"format_version": "1.19.70",
 	"minecraft:entity": {
 		"description": {
-			"identifier": "yes:empty_test_entity2",
+			"identifier": "yes:load_entity",
 			"is_spawnable": false,
 			"is_summonable": true,
 			"is_experimental": false
-		},
+		  },
+		  "component_groups": {
+			"yes:despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		  },
 		"components": {
+			"minecraft:timer": {
+				"time": 1,
+				"time_down_event": {
+					"event": "yes:despawn",
+					"target": "self"
+				}
+			},
+			"minecraft:tick_world": {
+				"distance_to_players": 500,
+				"never_despawn": false,
+				"radius": 6
+			},
 			"minecraft:knockback_resistance": {
 				"value": 1.0
 			},
@@ -46,14 +63,18 @@
 			},
 			"minecraft:type_family": {
 				"family": [
-					"inanimate",
 					"weeweejuice",
-					"empty_test_entity2"
+					"load_entity"
 				]
 			}
 		},
 		"events": {
 			"yes:despawn": {
+				"add": {
+					"component_groups": [
+						"yes:despawn"
+					]
+				}
 			}
 		}
 	}

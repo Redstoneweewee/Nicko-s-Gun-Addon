@@ -1,6 +1,7 @@
 import { system, world } from "@minecraft/server";
 import { FirearmIdUtil } from "../Utilities";
 import { Global } from "../Global";
+import { Vector3 } from "../Math/Vector3";
 
 const listOfEvents = {
     "yes:resetWorldDynamicProperties": "resets all world dynamic properties. Usage: '/scriptevent yes:resetWorldDynamicProperties'",
@@ -38,6 +39,14 @@ system.afterEvents.scriptEventReceive.subscribe(eventData => {
         world.clearDynamicProperties();
         //Global.worldFirearmIds = [];
         FirearmIdUtil.printFirearmIds();
+    }
+    else if(id === "yes:getBlockBelow") {
+        const player = eventData.sourceEntity;
+        if(!player) return;
+        const block = player.dimension.getBlock(new Vector3(player.location.x, player.location.y-1, player.location.z));
+        if(!block) return;
+        console.log(`Block: ${block.typeId}, tags: [${block.getTags()}]`);
+
     }
     else if(id === "yes:printFirearmIds") {
         FirearmIdUtil.printFirearmIds();

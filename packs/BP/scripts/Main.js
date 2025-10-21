@@ -13,7 +13,7 @@ import "./Projectiles.js";
 
 
 
-import { world, system } from '@minecraft/server';
+import { world, system, BlockComponentTypes } from '@minecraft/server';
 import { Vector3 } from './Math/Vector3.js';
 import { Global } from "./Global.js";
 const Vector = new Vector3();
@@ -27,7 +27,7 @@ import * as Reload from "./Reload.js";
 world.afterEvents.itemStartUse.subscribe((eventData) => {
     const player = eventData.source;
     const itemStack = eventData.itemStack;
-    Reload.tryManualReload(player);
+    //Reload.tryManualReload(player);
     Reload.tryAutomaticReload(player, ReloadTypes.Normal);
     //ShootDetection.shootDetection(player, itemStack);
     //FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player);
@@ -70,6 +70,7 @@ system.runInterval(() => {
         AimDetection.aimDetection(player);
         //FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player);
         Reload.tryManualReload(player);
+
         //LeftClickAbilityDetection.leftClickAbilityDetection(player);
     });
 });

@@ -1,0 +1,69 @@
+{
+	"format_version": "1.10.0",
+	"particle_effect": {
+		"description": {
+			"identifier": "yes:explosion_smoke_flash",
+			"basic_render_parameters": {
+				"material": "particles_add",
+				"texture": "textures/particle/smoke"
+			}
+		},
+		"components": {
+			"minecraft:emitter_initialization": {
+				"creation_expression": "variable.width = 1;variable.height = 1;variable.size_mult = 1;",
+				"per_update_expression": "variable.size_mult = v.emitter_age < 1 ? (math.pow(v.emitter_age, 1.4) + 1) : (0.56*math.ln(v.emitter_age-0.6) + 2-(0.56*math.ln(0.4)));"
+			},
+			"minecraft:emitter_rate_instant": {
+				"num_particles": 10
+			},
+			"minecraft:emitter_lifetime_looping": {
+				"active_time": 8
+			},
+			"minecraft:emitter_shape_point": {
+				"offset": [0, 1, 0],
+				"direction": ["math.random(-1,1)", "math.random(-1,1)", "math.random(-1,1)"]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": "4+ Math.Random(0, 2)"
+			},
+			"minecraft:particle_initial_speed": "math.random(0.5,2)",
+			"minecraft:particle_motion_dynamic": {
+				"linear_acceleration": [0, 1.5, 0],
+				"linear_drag_coefficient": "math.min(math.pow(v.particle_age, 1.2), 1)"
+			},
+			"minecraft:particle_appearance_billboard": {
+				"size": ["variable.width*variable.size_mult/2", "variable.height*variable.size_mult/2"],
+				"facing_camera_mode": "lookat_direction",
+				"direction": {
+					"mode": "derive_from_velocity",
+					"min_speed_threshold": 1
+				},
+				"uv": {
+					"texture_width": 32,
+					"texture_height": 32,
+					"uv": [0, 0],
+					"uv_size": [32, 32]
+				}
+			},
+			"minecraft:particle_motion_collision": {
+				"coefficient_of_restitution": 1,
+				"collision_radius": 0.01
+			},
+			"minecraft:particle_appearance_tinting": {
+				"color": {
+					"interpolant": "v.particle_age / v.particle_lifetime",
+					"gradient": {
+						"0.0": "#00181818",
+						"0.13": "#00181818",
+						"0.14": "#FFFFDE7A",
+						"0.15": "#00181818",
+						"0.28": "#00181818",
+						"0.29": "#85FFB31E",
+						"0.3": "#00FFFFFF",
+						"1.0": "#00121212"
+					}
+				}
+			}
+		}
+	}
+}
