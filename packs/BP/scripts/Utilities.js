@@ -44,6 +44,35 @@ class NumberUtil {
 
 export { NumberUtil };
 
+class VectorUtil {
+    /**
+     * 
+     * @param {Vector3|import('@minecraft/server').Vector3} vec1 
+     * @param {Vector3|import('@minecraft/server').Vector3} vec2 
+     * @returns {number}
+     */
+    static distance(vec1, vec2) {
+        /**@type {Vector3} */
+        let vec1New;
+        let vec2New;
+        if(!(vec1 instanceof Vector3)) { vec1New = VectorUtil.objectToVector3(vec1); }
+        else { vec1New = vec1; }
+        if(!(vec2 instanceof Vector3)) { vec2New = VectorUtil.objectToVector3(vec2); }
+        else { vec2New = vec2; }
+        return new Vector3(vec2New.x, vec2New.y, vec2New.z).sub(new Vector3(vec1New.x, vec1New.y, vec1New.z)).length();
+    }
+
+    /**
+     * 
+     * @param {import('@minecraft/server').Vector3} obj 
+     * @returns {Vector3}
+     */
+    static objectToVector3(obj) {
+        return new Vector3(obj.x, obj.y, obj.z);
+    }
+}
+export { VectorUtil };
+
 class StringUtil {
 
     /**
@@ -1916,7 +1945,7 @@ class ColorUtil {
         let blockColor = (BlockColors.blockColorsMap.get(block.typeId));
 
         if(blockColor === undefined) {
-            console.log(`block parts: [${block.typeId.split(":")[1].split("_")}]`);
+            //console.log(`block parts: [${block.typeId.split(":")[1].split("_")}]`);
             for(const part of block.typeId.split(":")[1].split("_")) {
                 if(BlockColors.partialNameColorsMap.get(part) !== undefined) {
                     blockColor = BlockColors.partialNameColorsMap.get(part);
@@ -1935,7 +1964,7 @@ class ColorUtil {
         if(blockColor === undefined) {
             blockColor = BlockColors.defaultColor;
         }
-        console.log(`color: #${ColorUtil.rgbToHex(blockColor)}`);
+        //console.log(`color: #${ColorUtil.rgbToHex(blockColor)}`);
         return blockColor;
     }
 
@@ -1963,3 +1992,20 @@ class ColorUtil {
     }
 }
 export { ColorUtil };
+
+class BlockUtil {
+    /**
+     * 
+     * @param {import('@minecraft/server').BlockRaycastHit|undefined} blockRayCast 
+     * @returns {Vector3|undefined}
+     */
+    static getLocationFromRayCast(blockRayCast) {
+        if(!blockRayCast) return undefined;
+        return new Vector3(
+            blockRayCast.block.location.x+blockRayCast.faceLocation.x,
+            blockRayCast.block.location.y+blockRayCast.faceLocation.y,
+            blockRayCast.block.location.z+blockRayCast.faceLocation.z
+        );
+    }
+}
+export { BlockUtil };

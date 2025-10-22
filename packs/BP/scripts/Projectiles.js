@@ -138,25 +138,25 @@ function rocketExplode(rocket, location, hitType) {
 
             const color = new MolangVariableMap();
             color.setColorRGB("color", blockColor);
-            console.log(`blockInFront: ${blockInFront.block.typeId}, color: ${blockColor.red}, ${blockColor.green}, ${blockColor.blue}`);
+            //console.log(`blockInFront: ${blockInFront.block.typeId}, color: ${blockColor.red}, ${blockColor.green}, ${blockColor.blue}`);
             dimension.spawnParticle("yes:explosion_debris", location, color);
         }
         else if(hitType === "entity") {
             const vars = new MolangVariableMap();
             vars.setFloat("amount", Math.min(numberOfTargets*100, 500));
-            console.log(`particle count: ${Math.min(numberOfTargets*100, 500)}`);
+            //console.log(`particle count: ${Math.min(numberOfTargets*100, 500)}`);
             dimension.spawnParticle("yes:explosion_blood", location, vars);
         }
         rocket.remove();
     }
     catch(error) {
         if(error instanceof LocationInUnloadedChunkError || error instanceof LocationOutOfWorldBoundariesError) {
+            console.log(`removed unloaded rocket`);
+            rocket.remove();
             const intervalId = entitiesMap.get(rocket);
             if(intervalId == undefined) return; 
             system.clearRun(intervalId);
             entitiesMap.delete(rocket);
-            rocket.remove();
-            console.log(`removed unloaded rocket`);
         }
         else {
             console.trace();

@@ -1,0 +1,45 @@
+{
+	"materials": {
+		"version": "1.0.0",
+		
+		// General
+		"particles_blend_normal:particles_blend": {
+			"blendSrc": "SourceAlpha",
+			"blendDst": "OneMinusSrcAlpha"
+		},
+		"particles_blend_exclusion:particles_blend": {
+			"blendSrc": "OneMinusDestColor",
+			"blendDst": "OneMinusSrcColor"
+		},
+		
+		// Multiply
+		"particles_blend_multiply:particles_blend": {
+			"blendSrc": "DestColor",
+			"blendDst": "Zero"
+		},
+		"particles_blend_double_multiply:particles_blend": {
+			"blendSrc": "DestColor",
+			"blendDst": "SourceColor"
+		},
+		
+		// Additive
+		"particles_blend_additive:particles_blend": {
+			"blendSrc": "One",
+			"blendDst": "One"
+		},
+		"particles_blend_additive_blend:particles_blend": {
+			"blendSrc": "SourceAlpha",
+			"blendDst": "One"
+		},
+		
+		// Alpha
+		"particles_blend_premultiplied_alpha:particles_blend": {
+			"blendSrc": "One",
+			"blendDst": "OneMinusSrcAlpha"
+		},
+		"particles_blend_opaque:particles_blend": {
+			"blendSrc": "One",
+			"blendDst": "Zero"
+		}
+	}
+}

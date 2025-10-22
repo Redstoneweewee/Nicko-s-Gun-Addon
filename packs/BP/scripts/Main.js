@@ -23,18 +23,6 @@ import * as ShootDetection from "./Detectors/ShootDetection.js";
 import { ReloadTypes } from "./1Enums/ReloadEnums.js";
 import * as Reload from "./Reload.js";
 
-
-world.afterEvents.itemStartUse.subscribe((eventData) => {
-    const player = eventData.source;
-    const itemStack = eventData.itemStack;
-    //Reload.tryManualReload(player);
-    Reload.tryAutomaticReload(player, ReloadTypes.Normal);
-    //ShootDetection.shootDetection(player, itemStack);
-    //FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player);
-    //AutoReloadDetection.automaticMagazineSwap(player, itemStack, false);
-});
-
-
 import * as HoldDetection from "./Detectors/HoldDetection.js";
 import * as DirectionDetection from "./Detectors/DirectionDetection.js";
 import * as OffhandStackCheck from "./Detectors/OffhandStackDetection.js";

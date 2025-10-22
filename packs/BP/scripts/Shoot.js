@@ -1,6 +1,6 @@
 import { Direction, Entity, EntityComponentTypes, EntityHealthComponent, MolangVariableMap, Player, system, world } from '@minecraft/server';
 import * as FirearmDef from './2Definitions/FirearmDefinition.js';
-import { AnimationUtil, DamageUtil, FirearmUtil, ItemUtil, NumberUtil } from './Utilities.js';
+import { AnimationUtil, BlockUtil, DamageUtil, FirearmUtil, ItemUtil, NumberUtil, VectorUtil } from './Utilities.js';
 import { Global } from './Global.js';
 //import { automaticMagazineSwap } from './Detectors/AutoMagSwapDetection.js';
 import * as Reload from './Reload.js';
@@ -122,7 +122,12 @@ function shootExplosive(player, explosive) {
     const right = new Vector3(-player.getViewDirection().z, 0, player.getViewDirection().x);
     const down = new Vector3(forward.x, forward.y, forward.z).cross(right);
 
-    spawnLocation.add(forward.multiplyScalar(magazineObject.projectileAttribute.spawnOffset.z)).add(down.multiplyScalar(-magazineObject.projectileAttribute.spawnOffset.y)).add(right.multiplyScalar(magazineObject.projectileAttribute.spawnOffset.x));
+    const blockRayCast = player.dimension.getBlockFromRay(player.getHeadLocation(), shootDirection, {maxDistance: Math.ceil(magazineObject.projectileAttribute.spawnOffset.z)});
+    const hitLocation = BlockUtil.getLocationFromRayCast(blockRayCast);
+    const defaultDistance = magazineObject.projectileAttribute.spawnOffset.z;
+    const blockDistance = hitLocation ? VectorUtil.distance(player.getHeadLocation(), hitLocation) : 999;
+    const forwardOffset = blockDistance < defaultDistance ? blockDistance : defaultDistance;
+    spawnLocation.add(forward.multiplyScalar(forwardOffset)).add(down.multiplyScalar(-magazineObject.projectileAttribute.spawnOffset.y)).add(right.multiplyScalar(magazineObject.projectileAttribute.spawnOffset.x));
 
     let shootRotX;
     let shootRotY;

@@ -20,7 +20,6 @@
 				"active_time": 8
 			},
 			"minecraft:emitter_shape_point": {
-				"offset": [0, 1, 0],
 				"direction": ["math.random(-1,1)", "math.random(-0.5,0.5)", "math.random(-1,1)"]
 			},
 			"minecraft:particle_lifetime_expression": {
@@ -41,17 +40,13 @@
 					"uv_size": [32, 32]
 				}
 			},
-			"minecraft:particle_motion_collision": {
-				"coefficient_of_restitution": 1,
-				"collision_radius": 0.01
-			},
 			"minecraft:particle_appearance_tinting": {
 				"color": {
 					"interpolant": "v.particle_age / v.particle_lifetime",
 					"gradient": {
-						"0.08": "#2B222222",
-						"0.54": "#08181818",
-						"1.0": "#00121212"
+						"0.08": "#2BBDBDBD",
+						"0.54": "#08B4B4B4",
+						"1.0": "#00A2A2A2"
 					}
 				}
 			}

@@ -1,4 +1,4 @@
-import { EntityComponentTypes, EntityInventoryComponent, GameMode, ItemLockMode, ItemStack, Player, PlayerCursorInventoryComponent, system } from '@minecraft/server';
+import { EntityComponentTypes, EntityInventoryComponent, GameMode, ItemLockMode, ItemStack, Player, PlayerCursorInventoryComponent, system, world } from '@minecraft/server';
 import { Explosive, Firearm, Gun } from './2Definitions/FirearmDefinition.js';
 import { LoopUtil, ItemUtil, FirearmUtil, FirearmNameUtil, IdUtil, SoundsUtil, AnimationUtil, FirearmIdUtil, StringUtil, CraftingUtil } from './Utilities.js';
 import { Global } from './Global.js';
@@ -49,6 +49,13 @@ const Vector = new Vector3();
 //         manualSwap: "ManualSwap" 
 //     }
 // }
+
+
+world.afterEvents.itemStopUse.subscribe((eventData) => {
+    const player = eventData.source;
+    tryAutomaticReload(player, ReloadTypes.Normal);
+});
+
 
 
 /**
