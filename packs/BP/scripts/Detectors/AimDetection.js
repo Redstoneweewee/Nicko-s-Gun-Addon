@@ -2,7 +2,7 @@ import { HudElement, HudVisibility, ItemComponentTypes, Player, system } from '@
 import { Vector3 } from '../Math/Vector3.js';
 import { Global } from '../Global.js';
 import { AnimationLink } from "../AnimationLink.js";
-import { FirearmUtil, ItemUtil } from '../Utilities.js';
+import { FirearmUtil, IdUtil, ItemUtil } from '../Utilities.js';
 import { Firearm, GunWithAbility } from '../2Definitions/FirearmDefinition.js';
 import { SwitchScopeZoomAttribute } from '../2Definitions/LeftClickAbilityDefinition.js';
 const Vector = new Vector3();
@@ -34,7 +34,8 @@ function aimDetection(player) {
         (
             !firearmObject.scopeAttribute.stopAimOnCooldown || 
             player.getItemCooldown(firearmItemStack.typeId) === 0 || 
-            player.getItemCooldown(firearmItemStack.typeId) >= (maxCooldown - firearmObject.scopeAttribute.stopAimDelay)
+            player.getItemCooldown(firearmItemStack.typeId) >= (maxCooldown - firearmObject.scopeAttribute.stopAimDelay) ||
+            FirearmUtil.getWorldAmmoUsingId(Number(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.id))) === 0
         )
     ) {
         tryAddScopeZoom(player, firearmObject);

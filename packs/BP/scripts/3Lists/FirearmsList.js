@@ -1133,8 +1133,8 @@ const FirearmObjects = {
             slowness:           3,
             speed:              20,
             recoilMultiplier:   0.75,
-            stopAimOnCooldown:  true,
-            stopAimDelay:       4
+            stopAimOnCooldown:  false,
+            stopAimDelay:       0
         }),
         minSpreadDegrees:       0.5,
         maxSpreadDegrees:       1,
