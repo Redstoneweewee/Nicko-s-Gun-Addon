@@ -239,33 +239,28 @@
 				},
 				
 				"reload_state" : {
-					"variables": {
-						"is_holding_offhand_magazine_for_no_swap": {
-							"input": "v.is_reloading ? v.is_holding_offhand_magazine : !v.is_holding_offhand_magazine"
-						}
-					},
                     "blend_transition": 0.25,
                     "blend_via_shortest_path": true,
 					"animations" : [
-						{ "ar_reload_swap_first_person":    " v.is_first_person &&  v.is_holding_offhand_magazine && v.should_ar_reload_swap" },
-						{ "ar_reload_swap_third_person":    "!v.is_first_person &&  v.is_holding_offhand_magazine && v.should_ar_reload_swap" },
-						{ "ar_reload_no_swap_first_person": " v.is_first_person && !v.is_holding_offhand_magazine_for_no_swap && v.should_ar_reload_no_swap" },
-						{ "ar_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine_for_no_swap && v.should_ar_reload_no_swap" },
+						{ "ar_reload_swap_first_person":    " v.is_first_person &&  v.is_reload_swapping && v.should_ar_reload_swap" },
+						{ "ar_reload_swap_third_person":    "!v.is_first_person &&  v.is_reload_swapping && v.should_ar_reload_swap" },
+						{ "ar_reload_no_swap_first_person": " v.is_first_person && !v.is_reload_swapping && v.should_ar_reload_no_swap" },
+						{ "ar_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_ar_reload_no_swap" },
 
-						{ "kar98_reload_swap_first_person":    " v.is_holding_offhand_magazine && v.should_kar98_reload" },
-						{ "kar98_reload_no_swap_first_person": "!v.is_holding_offhand_magazine_for_no_swap && v.should_kar98_reload" },
-						{ "kar98_reload_swap_third_person":    "!v.is_first_person &&  v.is_holding_offhand_magazine && v.should_kar98_reload" },
-						{ "kar98_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine_for_no_swap && v.should_kar98_reload" },
+						{ "kar98_reload_swap_first_person":    " v.is_reload_swapping && v.should_kar98_reload" },
+						{ "kar98_reload_no_swap_first_person": "!v.is_reload_swapping && v.should_kar98_reload" },
+						{ "kar98_reload_swap_third_person":    "!v.is_first_person &&  v.is_reload_swapping && v.should_kar98_reload" },
+						{ "kar98_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_kar98_reload" },
 
-						{ "pistol_reload_swap_first_person":    " v.is_first_person &&  v.is_holding_offhand_magazine && v.should_pistol_reload_swap" },
-						{ "pistol_reload_swap_third_person":    "!v.is_first_person &&  v.is_holding_offhand_magazine && v.should_pistol_reload_swap" },
-						{ "pistol_reload_no_swap_first_person": " v.is_first_person && !v.is_holding_offhand_magazine_for_no_swap && v.should_pistol_reload_no_swap" },
-						{ "pistol_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine_for_no_swap && v.should_pistol_reload_no_swap" },
+						{ "pistol_reload_swap_first_person":    " v.is_first_person &&  v.is_reload_swapping && v.should_pistol_reload_swap" },
+						{ "pistol_reload_swap_third_person":    "!v.is_first_person &&  v.is_reload_swapping && v.should_pistol_reload_swap" },
+						{ "pistol_reload_no_swap_first_person": " v.is_first_person && !v.is_reload_swapping && v.should_pistol_reload_no_swap" },
+						{ "pistol_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_pistol_reload_no_swap" },
 
-						{ "p90_reload_swap_first_person":    " v.is_first_person &&  v.is_holding_offhand_magazine && v.should_p90_reload_swap" },
-						{ "p90_reload_swap_third_person":    "!v.is_first_person &&  v.is_holding_offhand_magazine && v.should_p90_reload_swap" },
-						{ "p90_reload_no_swap_first_person": " v.is_first_person && !v.is_holding_offhand_magazine_for_no_swap && v.should_p90_reload_no_swap" },
-						{ "p90_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine_for_no_swap && v.should_p90_reload_no_swap" },
+						{ "p90_reload_swap_first_person":    " v.is_first_person &&  v.is_reload_swapping && v.should_p90_reload_swap" },
+						{ "p90_reload_swap_third_person":    "!v.is_first_person &&  v.is_reload_swapping && v.should_p90_reload_swap" },
+						{ "p90_reload_no_swap_first_person": " v.is_first_person && !v.is_reload_swapping && v.should_p90_reload_no_swap" },
+						{ "p90_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_p90_reload_no_swap" },
 
 						{ "shotgun_reload_first_person":    " v.is_first_person && v.should_shotgun_reload" },
 						{ "shotgun_reload_third_person":    "!v.is_first_person && v.should_shotgun_reload" },
@@ -279,20 +274,20 @@
 						{ "magnum_reload_first_person":    " v.is_first_person && v.should_magnum_reload" },
 						{ "magnum_reload_third_person":    "!v.is_first_person && v.should_magnum_reload" },
 
-						{ "luger_reload_swap_first_person":    " v.is_holding_offhand_magazine && v.should_luger_reload" },
-						{ "luger_reload_no_swap_first_person": "!v.is_holding_offhand_magazine_for_no_swap && v.should_luger_reload" },
-						{ "luger_reload_swap_third_person":    "!v.is_first_person && v.is_holding_offhand_magazine && v.should_luger_reload" },
-						{ "luger_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine_for_no_swap && v.should_luger_reload" },
+						{ "luger_reload_swap_first_person":    " v.is_reload_swapping && v.should_luger_reload" },
+						{ "luger_reload_no_swap_first_person": "!v.is_reload_swapping && v.should_luger_reload" },
+						{ "luger_reload_swap_third_person":    "!v.is_first_person && v.is_reload_swapping && v.should_luger_reload" },
+						{ "luger_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_luger_reload" },
 
-						{ "stg44_reload_swap_first_person":    " v.is_holding_offhand_magazine && v.should_stg44_reload" },
-						{ "stg44_reload_no_swap_first_person": "!v.is_holding_offhand_magazine_for_no_swap && v.should_stg44_reload" },
-						{ "stg44_reload_swap_third_person":    "!v.is_first_person && v.is_holding_offhand_magazine && v.should_stg44_reload" },
-						{ "stg44_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine_for_no_swap && v.should_stg44_reload" },
+						{ "stg44_reload_swap_first_person":    "v.is_reload_swapping && v.should_stg44_reload" },
+						{ "stg44_reload_no_swap_first_person": "!v.is_reload_swapping && v.should_stg44_reload" },
+						{ "stg44_reload_swap_third_person":    "!v.is_first_person && v.is_reload_swapping && v.should_stg44_reload" },
+						{ "stg44_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_stg44_reload" },
 
-						{ "rpg7_reload_swap_first_person": "v.is_holding_offhand_magazine && v.should_rpg7_reload" },
-						{ "rpg7_reload_no_swap_first_person": "!v.is_holding_offhand_magazine_for_no_swap && v.should_rpg7_reload" },
-						{ "rpg7_reload_swap_third_person": "!v.is_first_person && v.is_holding_offhand_magazine && v.should_rpg7_reload" },
-						{ "rpg7_reload_no_swap_third_person": "!v.is_first_person && !v.is_holding_offhand_magazine_for_no_swap && v.should_rpg7_reload" }
+						{ "rpg7_reload_swap_first_person": "v.is_reload_swapping && v.should_rpg7_reload" },
+						{ "rpg7_reload_no_swap_first_person": "!v.is_reload_swapping && v.should_rpg7_reload" },
+						{ "rpg7_reload_swap_third_person": "!v.is_first_person && v.is_reload_swapping && v.should_rpg7_reload" },
+						{ "rpg7_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_rpg7_reload" }
 						
 					],
 					"transitions" : [

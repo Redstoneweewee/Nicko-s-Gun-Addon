@@ -107,9 +107,10 @@ class Global {
             movement_direction_value:   "movement_direction_value",    //float reset across reload
             reload_normal_animation_multiplier: "reload_normal_animation_multiplier",         //float reset across reload
             reload_no_swap_animation_multiplier: "reload_no_swap_animation_multiplier",       //float reset across reload
-            reload_open_cock_animation_multiplier: "reload_open_cock_animation_multiplier", //float reset across reload
-            reload_cock_animation_multiplier: "reload_cock_animation_multiplier",              //float reset across reload
-            has_last_casing_in_chamber: "has_last_casing_in_chamber"                                            //float reset across reload
+            reload_open_cock_animation_multiplier: "reload_open_cock_animation_multiplier",   //float reset across reload
+            reload_cock_animation_multiplier: "reload_cock_animation_multiplier",             //float reset across reload
+            has_last_casing_in_chamber: "has_last_casing_in_chamber",                         //float reset across reload
+            is_reload_swapping:         "is_reload_swapping",      //Reload Type enum {swap, no_swap} reset across reload
         }
     }
 

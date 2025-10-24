@@ -100,7 +100,7 @@
 					"pivot": [-6, 15, 1],
 					"locators": {
 						"stg44_muzzle": {
-							"offset": [-6, -8.25, -2.95],
+							"offset": [-6, -8.25, -2.2],
 							"rotation": [180, 0, 0]
 						},
 						"stg44_shell_eject": {
@@ -7474,7 +7474,7 @@
 				},
 				{
 					"name": "hexadecagon4",
-					"parent": "charge",
+					"parent": "bottom",
 					"pivot": [-6, 18.25, -8],
 					"cubes": [
 						{

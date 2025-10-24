@@ -35,6 +35,11 @@
           "default": false,
           "client_sync": true
         },
+        "yes:is_reload_swapping": {
+          "type": "bool",
+          "default": true,
+          "client_sync": true
+        },
         "yes:firearm_firing_mode": {
           "type": "enum",
           "values": ["semi", "auto", "burst"],

@@ -123,6 +123,7 @@
           "v.is_aiming                   = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:is_aiming');",
           "v.is_holding_firearm          = q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:is_firearm');",
           "v.is_holding_offhand_magazine = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:has_offhand_magazine');",
+          "v.is_reload_swapping          = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:is_reload_swapping');",
           "v.firearm_has_ammo            = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:firearm_has_ammo');",
           "v.should_open_cock_on_reload  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:should_open_cock_on_reload');",
           "v.should_cock_on_reload       = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:should_cock_on_reload');",
@@ -498,6 +499,7 @@
       ],
       "particle_effects": {
           "muzzle_flash": "yes:muzzle_flash",
+          "muzzle_flash_middle": "yes:muzzle_flash_middle",
           "muzzle_blast": "yes:muzzle_blast",
           "bullet_casing": "yes:bullet_casing",
           "sniper_bullet_casing": "yes:sniper_bullet_casing",
@@ -505,7 +507,8 @@
 
           "breech_flash": "yes:breech_flash",
           "rpg7_smoke": "yes:rpg7_smoke",
-          "rpg7_blast": "yes:rpg7_blast"
+          "rpg7_blast_back": "yes:rpg7_blast_back",
+          "rpg7_blast_front": "yes:rpg7_blast_front"
       },
       "enable_attachables": true
     }

@@ -404,7 +404,8 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
 
         //--------------------- reload swap / single ammo reloads non-empty --------------------- 
         if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.has_offhand_magazine) === true) {
-            //isSwapping = true;
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_reload_swapping, true);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_reload_swapping);
             
             const attribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadBoth, AnimationTypes.ReloadSwap]);
             if(attribute instanceof ScaledAnimation) {
@@ -433,7 +434,8 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
 
         //--------------------- reload no swap / single ammo reloads empty --------------------- 
         else {
-            //isSwapping = false;
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_reload_swapping, false);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_reload_swapping);
             
             const attribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadBoth, AnimationTypes.ReloadNoSwap]);
             if(attribute instanceof ScaledAnimation) {

@@ -1,6 +1,160 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
+		"animation.luger_shoot_with_ammo": {
+			"animation_length": 1.5,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"rightArm_and_firearm": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"charge_rightArm": {
+					"scale": 0
+				},
+				"rightArm_and_magazine": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"recoil_pivot": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ?   0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) :  0"
+						]
+					}
+				},
+				"rightItem": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": ["-(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							0,
+							"v.is_first_person ?   -0.015*(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4)) :  0"
+						]
+					}
+				},
+				"back_joint": {
+					"rotation": [
+						"((q.anim_time >= v.delay && q.anim_time <= (v.delay + v.upt + v.downt))  ? (      (q.anim_time - v.delay) <= v.upt        ? (-(q.anim_time - v.delay) / v.upt * 85)        : (-85 + ((q.anim_time - v.delay) - v.upt) / v.downt * 85)    )  : 0)",
+						0,
+						0
+					]
+				},
+				"middle_joint": {
+					"rotation": [
+						"-(math.asin(1/1.5*math.sin(  ((q.anim_time >= v.delay && q.anim_time <= (v.delay+v.upt+v.downt)) ? ((q.anim_time-v.delay) <= v.upt ? (-(q.anim_time-v.delay)/v.upt*85) : (-85+((q.anim_time-v.delay)-v.upt)/v.downt*85)) : 0)))+ ((q.anim_time >= v.delay && q.anim_time <= (v.delay+v.upt+v.downt)) ? ((q.anim_time-v.delay) <= v.upt ? (-(q.anim_time-v.delay)/v.upt*85) : (-85+((q.anim_time-v.delay)-v.upt)/v.downt*85)) : 0))",
+						0,
+						0
+					]
+				},
+				"front_point": {
+					"rotation": [
+						"math.asin(1/1.5*math.sin(  ((q.anim_time >= v.delay && q.anim_time <= (v.delay+v.upt+v.downt)) ? ((q.anim_time-v.delay) <= v.upt ? (-(q.anim_time-v.delay)/v.upt*85) : (-85+((q.anim_time-v.delay)-v.upt)/v.downt*85)) : 0)))",
+						0,
+						0
+					]
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_blast",
+						"locator": "luger_muzzle"
+					},
+					{
+						"effect": "muzzle_flash",
+						"locator": "luger_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "luger_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "luger_muzzle"
+					}
+				],
+				"0.03": {
+					"effect": "bullet_casing",
+					"locator": "luger_shell_eject"
+				}
+			},
+			"timeline": {
+				"0.0": ["v.delay = 0.0;", "v.upt = 0.04;", "v.downt = 0.1;"]
+			}
+		},
+		"animation.luger_shoot_out_of_ammo": {
+			"animation_length": 1.5,
+			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
+			"bones": {
+				"rightArm_and_firearm": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"charge_rightArm": {
+					"scale": 0
+				},
+				"rightArm_and_magazine": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"recoil_pivot": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							"v.is_first_person ? 0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
+							"(!v.is_first_person) ?   0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) :  0"
+						]
+					}
+				},
+				"rightItem": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.02": ["-(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.02": [
+							0,
+							0,
+							"v.is_first_person ?   -0.015*(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4)) :  0"
+						]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "muzzle_blast",
+						"locator": "luger_muzzle"
+					},
+					{
+						"effect": "muzzle_flash",
+						"locator": "luger_muzzle"
+					},
+					{
+						"effect": "muzzle_blast",
+						"locator": "luger_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "luger_muzzle"
+					}
+				],
+				"0.03": {
+					"effect": "bullet_casing",
+					"locator": "luger_shell_eject"
+				}
+			}
+		},
 		"animation.ak47_shoot": {
 			"animation_length": 1.5,
 			"override_previous_animation": true,
@@ -54,6 +208,10 @@
 					},
 					{
 						"effect": "muzzle_flash",
+						"locator": "ak47_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
 						"locator": "ak47_muzzle"
 					}
 				]
@@ -113,6 +271,10 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "hk417_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "hk417_muzzle"
 					}
 				]
 			}
@@ -170,6 +332,10 @@
 					},
 					{
 						"effect": "muzzle_flash",
+						"locator": "akm_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
 						"locator": "akm_muzzle"
 					}
 				]
@@ -233,6 +399,10 @@
 					{
 						"effect": "muzzle_flash",
 						"locator": "m4a1_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "m4a1_muzzle"
 					}
 				]
 			}
@@ -275,6 +445,10 @@
 					},
 					{
 						"effect": "muzzle_blast",
+						"locator": "p90_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
 						"locator": "p90_muzzle"
 					}
 				]
@@ -333,6 +507,10 @@
 					},
 					{
 						"effect": "muzzle_blast",
+						"locator": "ump45_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
 						"locator": "ump45_muzzle"
 					}
 				]
@@ -489,6 +667,10 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "remington870_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "remington870_muzzle"
 					}
 				],
 				"0.35": {
@@ -542,6 +724,10 @@
 					},
 					{
 						"effect": "muzzle_blast",
+						"locator": "remington870_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
 						"locator": "remington870_muzzle"
 					}
 				]
@@ -688,6 +874,10 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "mk13_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "mk13_muzzle"
 					}
 				],
 				"0.43": {
@@ -731,6 +921,10 @@
 					},
 					{
 						"effect": "muzzle_blast",
+						"locator": "mk13_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
 						"locator": "mk13_muzzle"
 					}
 				]
@@ -949,7 +1143,11 @@
 					},
 					{
 						"effect": "muzzle_blast",
-						"locator": "remington870_muzzle"
+						"locator": "agm_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "agm_muzzle"
 					}
 				],
 				"0.6": {
@@ -1039,7 +1237,11 @@
 					},
 					{
 						"effect": "muzzle_blast",
-						"locator": "remington870_muzzle"
+						"locator": "agm_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "agm_muzzle"
 					}
 				]
 			}
@@ -1106,6 +1308,10 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "benelli_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "benelli_muzzle"
 					}
 				],
 				"0.07": {
@@ -1168,6 +1374,10 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "ar15_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "ar15_muzzle"
 					}
 				]
 			}
@@ -1225,6 +1435,10 @@
 					},
 					{
 						"effect": "muzzle_flash",
+						"locator": "m4_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
 						"locator": "m4_muzzle"
 					}
 				]
@@ -1296,6 +1510,10 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "m92f_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "m92f_muzzle"
 					}
 				]
 			}
@@ -1346,6 +1564,10 @@
 					},
 					{
 						"effect": "muzzle_blast",
+						"locator": "m92f_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
 						"locator": "m92f_muzzle"
 					}
 				]
@@ -1416,7 +1638,11 @@
 					},
 					{
 						"effect": "muzzle_blast",
-						"locator": "m92f_muzzle"
+						"locator": "makarov_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "makarov_muzzle"
 					}
 				]
 			}
@@ -1467,7 +1693,11 @@
 					},
 					{
 						"effect": "muzzle_blast",
-						"locator": "m92f_muzzle"
+						"locator": "makarov_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "makarov_muzzle"
 					}
 				]
 			}
@@ -1525,7 +1755,11 @@
 					},
 					{
 						"effect": "muzzle_flash",
-						"locator": "m4_muzzle"
+						"locator": "mp5_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "mp5_muzzle"
 					}
 				]
 			}
@@ -1595,7 +1829,11 @@
 					},
 					{
 						"effect": "muzzle_blast",
-						"locator": "m92f_muzzle"
+						"locator": "usp_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "usp_muzzle"
 					}
 				]
 			}
@@ -1646,7 +1884,11 @@
 					},
 					{
 						"effect": "muzzle_blast",
-						"locator": "m92f_muzzle"
+						"locator": "usp_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "usp_muzzle"
 					}
 				]
 			}
@@ -1697,93 +1939,12 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "striker_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "striker_muzzle"
 					}
 				]
-			}
-		},
-		"animation.luger_shoot_with_ammo": {
-			"animation_length": 1.5,
-			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
-			"bones": {
-				"rightArm_and_firearm": {
-					"rotation": [0, 0, 0],
-					"position": [0, 0, 0]
-				},
-				"charge_rightArm": {
-					"scale": 0
-				},
-				"rightArm_and_magazine": {
-					"rotation": [0, 0, 0],
-					"position": [0, 0, 0]
-				},
-				"recoil_pivot": {
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.02": [
-							0,
-							"v.is_first_person ? 0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
-							"(!v.is_first_person) ?   0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) :  0"
-						]
-					}
-				},
-				"rightItem": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.02": ["-(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))", 0, 0]
-					},
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.02": [
-							0,
-							0,
-							"v.is_first_person ?   -0.015*(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4)) :  0"
-						]
-					}
-				},
-				"back_joint": {
-					"rotation": [
-						"((q.anim_time >= v.delay && q.anim_time <= (v.delay + v.upt + v.downt))  ? (      (q.anim_time - v.delay) <= v.upt        ? (-(q.anim_time - v.delay) / v.upt * 85)        : (-85 + ((q.anim_time - v.delay) - v.upt) / v.downt * 85)    )  : 0)",
-						0,
-						0
-					]
-				},
-				"middle_joint": {
-					"rotation": [
-						"-(math.asin(1/1.5*math.sin(  ((q.anim_time >= v.delay && q.anim_time <= (v.delay+v.upt+v.downt)) ? ((q.anim_time-v.delay) <= v.upt ? (-(q.anim_time-v.delay)/v.upt*85) : (-85+((q.anim_time-v.delay)-v.upt)/v.downt*85)) : 0)))+ ((q.anim_time >= v.delay && q.anim_time <= (v.delay+v.upt+v.downt)) ? ((q.anim_time-v.delay) <= v.upt ? (-(q.anim_time-v.delay)/v.upt*85) : (-85+((q.anim_time-v.delay)-v.upt)/v.downt*85)) : 0))",
-						0,
-						0
-					]
-				},
-				"front_point": {
-					"rotation": [
-						"math.asin(1/1.5*math.sin(  ((q.anim_time >= v.delay && q.anim_time <= (v.delay+v.upt+v.downt)) ? ((q.anim_time-v.delay) <= v.upt ? (-(q.anim_time-v.delay)/v.upt*85) : (-85+((q.anim_time-v.delay)-v.upt)/v.downt*85)) : 0)))",
-						0,
-						0
-					]
-				}
-			},
-			"particle_effects": {
-				"0.0": [
-					{
-						"effect": "muzzle_blast",
-						"locator": "luger_muzzle"
-					},
-					{
-						"effect": "muzzle_flash",
-						"locator": "luger_muzzle"
-					},
-					{
-						"effect": "muzzle_blast",
-						"locator": "luger_muzzle"
-					}
-				],
-				"0.03": {
-					"effect": "bullet_casing",
-					"locator": "luger_shell_eject"
-				}
-			},
-			"timeline": {
-				"0.0": ["v.delay = 0.0;", "v.upt = 0.04;", "v.downt = 0.1;"]
 			}
 		},
 		"animation.desert_eagle_shoot_with_ammo": {
@@ -1870,6 +2031,10 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "desert_eagle_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "desert_eagle_muzzle"
 					}
 				]
 			}
@@ -1921,69 +2086,12 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "desert_eagle_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "desert_eagle_muzzle"
 					}
 				]
-			}
-		},
-		"animation.luger_shoot_out_of_ammo": {
-			"animation_length": 1.5,
-			"anim_time_update": "q.is_in_ui || (v.is_paperdoll??0) ? 999999999 : q.anim_time + q.delta_time",
-			"bones": {
-				"rightArm_and_firearm": {
-					"rotation": [0, 0, 0],
-					"position": [0, 0, 0]
-				},
-				"charge_rightArm": {
-					"scale": 0
-				},
-				"rightArm_and_magazine": {
-					"rotation": [0, 0, 0],
-					"position": [0, 0, 0]
-				},
-				"recoil_pivot": {
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.02": [
-							0,
-							"v.is_first_person ? 0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) : 0",
-							"(!v.is_first_person) ?   0.018*(v.recoil < 60 ? 60 : v.recoil)*(math.pow(((q.anim_time-1.5 > 0 ? 0 : q.anim_time-1.5)/-1.5),8)) :  0"
-						]
-					}
-				},
-				"rightItem": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.02": ["-(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4))", 0, 0]
-					},
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.02": [
-							0,
-							0,
-							"v.is_first_person ?   -0.015*(v.recoil < 60 ? 60 : v.recoil)/3*(math.pow(((q.anim_time-0.35 > 0 ? 0 : q.anim_time-0.35)/-0.35),4)) :  0"
-						]
-					}
-				}
-			},
-			"particle_effects": {
-				"0.0": [
-					{
-						"effect": "muzzle_blast",
-						"locator": "luger_muzzle"
-					},
-					{
-						"effect": "muzzle_flash",
-						"locator": "luger_muzzle"
-					},
-					{
-						"effect": "muzzle_blast",
-						"locator": "luger_muzzle"
-					}
-				],
-				"0.03": {
-					"effect": "bullet_casing",
-					"locator": "luger_shell_eject"
-				}
 			}
 		},
 		"animation.kar98_shoot_with_ammo": {
@@ -2193,6 +2301,10 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "kar98_muzzle"
 					}
 				],
 				"0.43": {
@@ -2254,6 +2366,10 @@
 					},
 					{
 						"effect": "muzzle_blast",
+						"locator": "kar98_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
 						"locator": "kar98_muzzle"
 					}
 				]
@@ -2335,6 +2451,10 @@
 					{
 						"effect": "muzzle_blast",
 						"locator": "stg44_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "stg44_muzzle"
 					}
 				],
 				"0.03": {
@@ -2380,8 +2500,16 @@
 						"locator": "rpg7_muzzle"
 					},
 					{
-						"effect": "rpg7_blast",
+						"effect": "rpg7_blast_back",
 						"locator": "rpg7_breech"
+					},
+					{
+						"effect": "muzzle_flash_middle",
+						"locator": "rpg7_muzzle"
+					},
+					{
+						"effect": "rpg7_blast_front",
+						"locator": "rpg7_muzzle"
 					}
 				]
 			}
@@ -2432,6 +2560,10 @@
 					},
 					{
 						"effect": "muzzle_blast",
+						"locator": "stg44_muzzle"
+					},
+					{
+						"effect": "muzzle_flash_middle",
 						"locator": "stg44_muzzle"
 					}
 				],

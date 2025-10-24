@@ -1123,10 +1123,10 @@ const FirearmObjects = {
         magazineAttribute: new Def.MagazineAttribute({
             magazineClass:          MagazineClasses.AR,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
-            maxMagazineItemStackAmount: 5,
+            maxMagazineItemStackAmount: 30,
             maxMagazineAmmoCount:       1,
-            maxAmmoPerReloadCount:      5,
-            maxEmptyAmmoPerReloadCount: 5,
+            maxAmmoPerReloadCount:      30,
+            maxEmptyAmmoPerReloadCount: 30,
             defaultMagazine:        MagazineObjects.Ammo762MM,
         }),
         scopeAttribute: new Def.ScopeAttribute({
