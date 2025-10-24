@@ -40,7 +40,7 @@
             },
             "minecraft:cooldown": {
                 "category": "yes:usp",
-                "duration": 1.0
+                "duration": 0.2
             }
         }
     }

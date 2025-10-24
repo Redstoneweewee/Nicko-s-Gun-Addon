@@ -38,7 +38,7 @@
             },
             "minecraft:cooldown": {
                 "category": "yes:magnum",
-                "duration": 3.0
+                "duration": 0.6
             }
         }
     }

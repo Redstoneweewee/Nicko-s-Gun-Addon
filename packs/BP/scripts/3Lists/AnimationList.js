@@ -1047,7 +1047,7 @@ const StaticShootAnimations = {
                     soundRange: 168.75
                 }
             ],
-            animationId: "animation.m92f_shoot_with_ammo"
+            animationId: "animation.makarov_shoot_with_ammo"
         }),
         makarovShootOutOfAmmo: new Def.StaticAnimation({
             duration: 30, //in ticks
@@ -1059,7 +1059,7 @@ const StaticShootAnimations = {
                     soundRange: 168.75
                 }
             ],
-            animationId: "animation.m92f_shoot_out_of_ammo"
+            animationId: "animation.makarov_shoot_out_of_ammo"
         }),
         uspShootWithAmmo: new Def.StaticAnimation({
             duration: 30, //in ticks

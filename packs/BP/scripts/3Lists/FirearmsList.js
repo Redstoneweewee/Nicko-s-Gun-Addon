@@ -891,7 +891,7 @@ const FirearmObjects = {
         animationAttributes: [
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.pistol.magnumReload,
-                scaleDurationToValue: 80
+                scaleDurationToValue: 51
             }),
             new NormalAnimation({
                 staticAnimation: StaticShootAnimations.pistol.desertEagleShootWithAmmo
@@ -1160,7 +1160,7 @@ const FirearmObjects = {
         hasMagazineWhenEmpty:     true,
         manualAmmoEject:      false,
         firingMode:               Enums.FiringModes.Auto,
-        firingRate:               300,  //ideally, use multiples of 60
+        firingRate:               900,  //ideally, use multiples of 60
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
             minDamage: 10,
@@ -1228,7 +1228,7 @@ const FirearmObjects = {
         hasMagazineWhenEmpty:     true,
         manualAmmoEject:      false,
         firingMode:               Enums.FiringModes.Auto,
-        firingRate:               172,  //ideally, use multiples of 60
+        firingRate:               480,  //ideally, use multiples of 60
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
             minDamage: 10,
