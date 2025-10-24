@@ -43,9 +43,9 @@ function shoot(player, firearm) {
     }
     if(ammoCount === undefined || ammoCount <= 0) { 
         renewAmmoCount(player);
-        if(firearmItemStack !== undefined) { //Need this here for when the player right-clicks when the magazine is empty & they weren't shooting just before
-            Reload.tryAutomaticReload(player, ReloadTypes.Normal);
-        }
+        // if(firearmItemStack !== undefined) { //Need this here for when the player right-clicks when the magazine is empty & they weren't shooting just before
+        //     Reload.tryAutomaticReload(player, ReloadTypes.Normal);
+        // }
         return;
     }
 
