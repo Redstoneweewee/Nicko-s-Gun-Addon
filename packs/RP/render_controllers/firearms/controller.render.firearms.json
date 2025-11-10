@@ -26,6 +26,11 @@
 			"geometry": "Geometry.rpg",
 			"materials": [ { "*": "Material.firearm" } ]
 		},
+		"controller.render.natic": {
+			"textures": [ "Texture.natic" ],
+			"geometry": "Geometry.natic",
+			"materials": [ { "*": "Material.firearm" } ]
+		},
 		"controller.render.mp5": {
 			"textures": [ "Texture.mp5" ],
 			"geometry": "Geometry.mp5",

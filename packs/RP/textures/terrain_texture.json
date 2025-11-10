@@ -129,6 +129,12 @@
         "textures/entity/rpg7_texture"
       ]
     },
+    "natic": {
+      "textures": [
+        "textures/entity/natic_texture"
+      ]
+    },
+
 
 
 

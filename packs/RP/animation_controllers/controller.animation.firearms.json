@@ -39,7 +39,9 @@
 						{ "shotgun_hold_first_person": " v.is_first_person && v.should_use_shotgun_animations" },
 						{ "shotgun_hold_third_person": "!v.is_first_person && v.should_use_shotgun_animations" },
 						{ "rpg7_hold_first_person":   " v.is_first_person && v.should_use_rpg7_animations" },
-						{ "rpg7_hold_third_person":   "!v.is_first_person && v.should_use_rpg7_animations" }
+						{ "rpg7_hold_third_person":   "!v.is_first_person && v.should_use_rpg7_animations" },
+						{ "natic_hold_first_person":   " v.is_first_person && v.should_use_natic_animations" },
+						{ "natic_hold_third_person":   "!v.is_first_person && v.should_use_natic_animations" }
 					],
                     "blend_transition": 0.15,
                     "blend_via_shortest_path": true,
@@ -74,7 +76,9 @@
 						{ "shotgun_hold_run_first_person": " v.is_first_person && v.should_use_shotgun_animations" },
 						{ "shotgun_hold_run_third_person": "!v.is_first_person && v.should_use_shotgun_animations" },
 						{ "rpg7_hold_run_first_person":   " v.is_first_person && v.should_use_rpg7_animations" },
-						{ "rpg7_hold_run_third_person":   "!v.is_first_person && v.should_use_rpg7_animations" }
+						{ "rpg7_hold_run_third_person":   "!v.is_first_person && v.should_use_rpg7_animations" },
+						{ "natic_hold_run_first_person":   " v.is_first_person && v.should_use_natic_animations" },
+						{ "natic_hold_run_third_person":   "!v.is_first_person && v.should_use_natic_animations" }
 					],
                     "blend_transition": 0.15,
                     "blend_via_shortest_path": true,
@@ -118,7 +122,11 @@
 						{ "rpg7_hold_first_person":       " v.is_first_person && !v.is_running && v.should_use_rpg7_animations" },
 						{ "rpg7_hold_run_first_person":   " v.is_first_person &&  v.is_running && v.should_use_rpg7_animations" },
 						{ "rpg7_hold_third_person": 	   "!v.is_first_person && !v.is_running && v.should_use_rpg7_animations" },
-						{ "rpg7_hold_run_third_person":   "!v.is_first_person &&  v.is_running && v.should_use_rpg7_animations" }
+						{ "rpg7_hold_run_third_person":   "!v.is_first_person &&  v.is_running && v.should_use_rpg7_animations" },
+						{ "natic_hold_first_person":       " v.is_first_person && !v.is_running && v.should_use_natic_animations" },
+						{ "natic_hold_run_first_person":   " v.is_first_person &&  v.is_running && v.should_use_natic_animations" },
+						{ "natic_hold_third_person": 	   "!v.is_first_person && !v.is_running && v.should_use_natic_animations" },
+						{ "natic_hold_run_third_person":   "!v.is_first_person &&  v.is_running && v.should_use_natic_animations" }
 					],
                     "blend_transition": 0.05,
                     "blend_via_shortest_path": true,
@@ -136,7 +144,9 @@
 						{ "shotgun_hipfire_third_person": "!v.is_first_person && v.should_use_shotgun_animations" },
 						{ "agm_hipfire_first_person":	  "v.is_first_person && v.should_use_shotgun_animations && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm')" },
 						{ "rpg7_hipfire_first_person":   " v.is_first_person && v.should_use_rpg7_animations" },
-						{ "rpg7_hipfire_third_person":   "!v.is_first_person && v.should_use_rpg7_animations" }
+						{ "rpg7_hipfire_third_person":   "!v.is_first_person && v.should_use_rpg7_animations" },
+						{ "natic_hipfire_first_person":   " v.is_first_person && v.should_use_natic_animations" },
+						{ "natic_hipfire_third_person":   "!v.is_first_person && v.should_use_natic_animations" }
 					],
                     "blend_transition": 0.15,
                     "blend_via_shortest_path": true,
@@ -177,6 +187,7 @@
 						{ "benelli_aim_iron_sight_first_person":   " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:benelli')" },
 						{ "agm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm')" },
 						{ "rpg7_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:rpg7')" },
+						{ "natic_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:natic')" },
 						{ "akm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm')" },
 						{ "mp5_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:mp5')" },
 						{ "m4_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m4')" },
@@ -189,7 +200,8 @@
 						{ "ar_aim_third_person":				   "!v.is_first_person && v.should_use_ar_animations" },
 						{ "pistol_aim_third_person":			   "!v.is_first_person && v.should_use_pistol_animations" },
 						{ "shotgun_aim_third_person":			   "!v.is_first_person && v.should_use_shotgun_animations" },
-						{ "rpg7_aim_third_person":				   "!v.is_first_person && v.should_use_rpg7_animations" }
+						{ "rpg7_aim_third_person":				   "!v.is_first_person && v.should_use_rpg7_animations" },
+						{ "natic_aim_third_person":				   "!v.is_first_person && v.should_use_natic_animations" }
 					],
                     "blend_transition": 0.15,
                     "blend_via_shortest_path": true,

@@ -1546,6 +1546,60 @@ const FirearmObjects = {
                 maxCamerashakeTime: 10
             })
         })
+    }),
+    Natic: new Def.Explosive({
+        itemTypeId:             "yes:natic",
+        normalName:             "NATIC Grenade Launcher\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:   false,
+        manualAmmoEject:        false,
+        firingMode:               Enums.FiringModes.Semi,
+        firingRate:               0,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.other.rpg7ReloadSwap,
+                scaleDurationToValue: 10
+            }),
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.other.rpg7ReloadNoSwap,
+                scaleDurationToValue: 10
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.other.rpg7Shoot
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.GrenadeLauncher,
+            usableAmmoClasses:      [BulletAmmoClasses.Normal],
+            maxMagazineItemStackAmount: 6,
+            maxMagazineAmmoCount:       1,
+            maxAmmoPerReloadCount:      1,
+            maxEmptyAmmoPerReloadCount: 1,
+            defaultMagazine:        MagazineObjects.ExplosiveGrenade,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown:  false,
+            stopAimDelay:       0
+        }),
+        minSpreadDegrees:       0.05,
+        maxSpreadDegrees:       0.15,
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.04,
+                maxCamerashake:     0.08,
+                minCamerashakeTime: 0.05,
+                maxCamerashakeTime: 0.05
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                minCamerashake:     0.0001,
+                maxCamerashake:     0.0006,
+                minCamerashakeTime: 4,
+                maxCamerashakeTime: 10
+            })
+        })
     })
 }
 

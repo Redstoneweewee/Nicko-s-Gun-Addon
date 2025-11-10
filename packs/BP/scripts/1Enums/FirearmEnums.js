@@ -14,7 +14,8 @@
  * Benelli:      "yes:benelli",
  * AGM:          "yes:agm",
  * Striker:      "yes:striker",
- * Rpg7:         "yes:rpg7"
+ * Rpg7:         "yes:rpg7",
+ * Natic:        "yes:natic"
  * }} 
  * */
 const FirearmTypeIds = {
@@ -30,7 +31,8 @@ const FirearmTypeIds = {
     Benelli:     "yes:benelli",
     AGM:          "yes:agm",
     Striker:      "yes:striker",
-    Rpg7:         "yes:rpg7"
+    Rpg7:         "yes:rpg7",
+    Natic:        "yes:natic"
 }
 
 

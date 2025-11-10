@@ -9,12 +9,12 @@
 	"regolith": {
 		"dataPath": "./packs/data",
 		"filterDefinitions": {},
-		"formatVersion": "1.4.0",
+		"formatVersion":"1.4.0",
 		"profiles": {
 			"default": {
 				"export": {
 					"build": "standard",
-					"readOnly": false,
+					"readOnly": true,
 					"target": "development"
 				},
 				"filters": []
