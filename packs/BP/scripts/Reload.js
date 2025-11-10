@@ -4,7 +4,7 @@ import { LoopUtil, ItemUtil, FirearmUtil, FirearmNameUtil, IdUtil, SoundsUtil, A
 import { Global } from './Global.js';
 import { AnimationLink } from './AnimationLink.js';
 import { Vector3 } from './Math/Vector3.js';
-import { ScaledAnimation, SoundTimeoutIdObject } from './2Definitions/AnimationDefinition.js';
+import { NormalAnimation, ScaledAnimation, SoundTimeoutIdObject } from './2Definitions/AnimationDefinition.js';
 import { AnimationTypes } from './1Enums/AnimationEnums.js';
 import { MagazineTypeIds, MagazineTypes } from './1Enums/MagazineEnums.js';
 import { ReloadTypes } from './1Enums/ReloadEnums.js';
@@ -382,20 +382,21 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
     //if(firearmObject instanceof Gun) {
 
         //--------------------- open cock --------------------- 
-        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload) === true && 
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.has_open_cock_animation) === true && 
         (magazineObject.magazineType === MagazineTypes.DurabilityBased || 
          magazineObject.magazineType === MagazineTypes.StackBased && iteration === 1)) {
-            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
-            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
+            //player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
+            //AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
 
             const attribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadOpenCock]);
             if(attribute instanceof ScaledAnimation) {
+                if(iteration === 1) { totalReloadTimeInTicks += attribute.scaleDurationToValue; }
+
                 let openCockMultiplier = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_open_cock_animation_multiplier));
                 if(Number.isNaN(openCockMultiplier)) { openCockMultiplier = 1.0; }
-                let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.ReloadOpenCock, openCockMultiplier);
+                let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, [AnimationTypes.ReloadOpenCock], openCockMultiplier);
                 if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
 
-                if(iteration === 1) { totalReloadTimeInTicks += attribute.scaleDurationToValue; }
                 magazineReloadTime += attribute.scaleDurationToValue;
                 reloadTimeInTicks += attribute.scaleDurationToValue;
             }
@@ -409,13 +410,6 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
             
             const attribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadBoth, AnimationTypes.ReloadSwap]);
             if(attribute instanceof ScaledAnimation) {
-                let normalMultiplier = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_normal_animation_multiplier));
-                if(Number.isNaN(normalMultiplier) ) { normalMultiplier = 1.0; }
-                let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.ReloadSwap, normalMultiplier, reloadTimeInTicks);
-                if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
-                idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.ReloadBoth, normalMultiplier, reloadTimeInTicks);
-                if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
-
                 if(iteration === 1) {
                     if(magazineObject.magazineType === MagazineTypes.StackBased && 
                         finalMagazineItemStack !== undefined &&
@@ -426,6 +420,12 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
                         totalReloadTimeInTicks += attribute.scaleDurationToValue;
                     }
                 }
+
+                let normalMultiplier = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_normal_animation_multiplier));
+                if(Number.isNaN(normalMultiplier) ) { normalMultiplier = 1.0; }
+                let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, [AnimationTypes.ReloadBoth, AnimationTypes.ReloadSwap], normalMultiplier, reloadTimeInTicks);
+                if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
+
                 magazineReloadTime += attribute.scaleDurationToValue;//*reloadTimeMultiplier;
                 reloadTimeInTicks  += attribute.scaleDurationToValue;//*reloadTimeMultiplier;
             }
@@ -437,26 +437,40 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
             player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_reload_swapping, false);
             AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_reload_swapping);
             
-            const attribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadBoth, AnimationTypes.ReloadNoSwap]);
-            if(attribute instanceof ScaledAnimation) {
-                let noSwapMultiplier = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_normal_animation_multiplier));
-                if(Number.isNaN(noSwapMultiplier) ) { noSwapMultiplier = 1.0; }
-                let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.ReloadNoSwap, noSwapMultiplier, reloadTimeInTicks);
-                if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
-                idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.ReloadBoth, noSwapMultiplier, reloadTimeInTicks);
-                if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
-                console.log(`no swap: ${noSwapMultiplier}`);
+            /**@type {NormalAnimation|undefined} */
+            let attribute = undefined;
+            if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.has_first_ammo_animation) && iteration === 1) {
+                attribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadFirstAmmo]);
+            }
+            if(attribute === undefined) {
+                attribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadBoth, AnimationTypes.ReloadNoSwap]);
+            }
 
+            if(attribute instanceof ScaledAnimation) {
                 if(iteration === 1) {
-                    if(magazineObject.magazineType === MagazineTypes.StackBased && 
-                        finalMagazineItemStack !== undefined &&
-                        newMagazineItemStack.amount < finalMagazineItemStack.amount) {
+                    if(magazineObject.magazineType === MagazineTypes.StackBased && finalMagazineItemStack !== undefined && newMagazineItemStack.amount < finalMagazineItemStack.amount) {
+                        if(attribute.staticAnimation.type === AnimationTypes.ReloadFirstAmmo) {
+                            const otherReloadAttribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadBoth, AnimationTypes.ReloadNoSwap]);
+                            totalReloadTimeInTicks += attribute.scaleDurationToValue;
+                            if(otherReloadAttribute instanceof ScaledAnimation) {
+                                totalReloadTimeInTicks += (otherReloadAttribute.scaleDurationToValue*(finalMagazineItemStack.amount-oldAmmoCount-1));
+                            }
+                        }
+                        else {
                             totalReloadTimeInTicks += (attribute.scaleDurationToValue*(finalMagazineItemStack.amount-oldAmmoCount));
                         }
+                    }
                     else {
                         totalReloadTimeInTicks += attribute.scaleDurationToValue;
                     }
                 }
+
+                let noSwapMultiplier = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_normal_animation_multiplier));
+                if(Number.isNaN(noSwapMultiplier) ) { noSwapMultiplier = 1.0; }
+                let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, [AnimationTypes.ReloadBoth, AnimationTypes.ReloadNoSwap, AnimationTypes.ReloadFirstAmmo], noSwapMultiplier, reloadTimeInTicks);
+                if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
+                console.log(`no swap: ${noSwapMultiplier}`);
+
                 magazineReloadTime += attribute.scaleDurationToValue;//*reloadTimeMultiplier;
                 reloadTimeInTicks  += attribute.scaleDurationToValue;//*reloadTimeMultiplier;
             }
@@ -471,7 +485,7 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
             if(attribute instanceof ScaledAnimation) {
                 let cockMultiplier = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_cock_animation_multiplier));
                 if(Number.isNaN(cockMultiplier) ) { cockMultiplier = 1.0; }
-                let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.ReloadCock, cockMultiplier, reloadTimeInTicks);
+                let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, [AnimationTypes.ReloadCock], cockMultiplier, reloadTimeInTicks);
                 if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
 
                 reloadTimeInTicks += attribute.scaleDurationToValue;
@@ -623,6 +637,8 @@ function finishedReloading(iteration, mainLoopId, player, firearm, totalReloadTi
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_start_cock, false);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_start_cock);
+    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_first_ammo_reload, false);
+    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_first_ammo_reload);
     
     if(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber)) {
         firearmContainerSlot.setDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber, false);
@@ -698,6 +714,10 @@ function tryCancelReload(mainLoopId, player, firearm, oldMagazineItemStack, newM
         }
 
         if(!FirearmUtil.isSwitchingFirearm(player)) {
+            if(oldAmmoCount !== 0) {
+                player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_first_ammo_reload, false);
+                AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_first_ammo_reload);
+            }
             player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_offhand_magazine, false);
             AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_offhand_magazine);
             player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);

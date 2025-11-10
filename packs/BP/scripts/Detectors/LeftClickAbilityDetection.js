@@ -59,7 +59,7 @@ function leftClickAbility(player, firearmContainerSlot, firearmObject) {
            firearmContainerSlot.getDynamicProperty(Global.ItemAbilityDynamicProperties.currentFiringMode) === firearmObject.firingMode) {
             firearmContainerSlot.setDynamicProperty(Global.ItemAbilityDynamicProperties.currentFiringMode, firearmObject.leftClickAbilityAttribute.alternateFiringMode);
             FirearmUtil.setPlayerFiringModeAndfiringRate(player, firearmObject, firearmContainerSlot);
-            AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.SwitchFiringModeToAlternate);
+            AnimationUtil.playAnimationWithSound(player, firearmObject, [AnimationTypes.SwitchFiringModeToAlternate]);
             FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearmObject);
             player.sendMessage(`Switched firing mode to [§a${firearmObject.leftClickAbilityAttribute.alternateFiringMode}§f]`);
             console.log("set dynamic prop to alternate");
@@ -67,7 +67,7 @@ function leftClickAbility(player, firearmContainerSlot, firearmObject) {
         else {
             firearmContainerSlot.setDynamicProperty(Global.ItemAbilityDynamicProperties.currentFiringMode, firearmObject.firingMode);
             FirearmUtil.setPlayerFiringModeAndfiringRate(player, firearmObject, firearmContainerSlot);
-            AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.SwitchFiringModeToDefault);
+            AnimationUtil.playAnimationWithSound(player, firearmObject, [AnimationTypes.SwitchFiringModeToDefault]);
             FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearmObject);
             player.sendMessage(`Switched firing mode to [§a${firearmObject.firingMode}§f]`);
             console.log("set dynamic prop to default");
@@ -77,7 +77,7 @@ function leftClickAbility(player, firearmContainerSlot, firearmObject) {
         if(firearmContainerSlot.getDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom) === undefined ||
            firearmContainerSlot.getDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom) === 1) {
             firearmContainerSlot.setDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom, 2);
-            AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.SwitchScopeZoomToAlternate);
+            AnimationUtil.playAnimationWithSound(player, firearmObject, [AnimationTypes.SwitchScopeZoomToAlternate]);
             player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, false);
             //AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming); don't need animation link to stop stuttering
             FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearmObject);
@@ -86,7 +86,7 @@ function leftClickAbility(player, firearmContainerSlot, firearmObject) {
         }
         else {
             firearmContainerSlot.setDynamicProperty(Global.ItemAbilityDynamicProperties.currentScopeZoom, 1);
-            AnimationUtil.playAnimationWithSound(player, firearmObject, AnimationTypes.SwitchScopeZoomToDefault);
+            AnimationUtil.playAnimationWithSound(player, firearmObject, [AnimationTypes.SwitchScopeZoomToDefault]);
             player.setDynamicProperty(Global.PlayerDynamicProperties.animation.is_aiming, false);
             //AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.is_aiming); don't need animation link to stop stuttering
             FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearmObject);

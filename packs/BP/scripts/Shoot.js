@@ -94,13 +94,13 @@ function shootGun(player, gun) {
     const newAmmoCount = FirearmUtil.tryConsumeFirearmAmmo(player, gun, 1);
     FirearmUtil.tryAddScreenshakeRecoil(player, gun);
     
-    let playedSound = AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.Shoot) === undefined ? false : true;
+    let playedSound = AnimationUtil.playAnimationWithSound(player, gun, [AnimationTypes.Shoot]) === undefined ? false : true;
     if(!playedSound) {
         if(newAmmoCount !== undefined && newAmmoCount > 0) {
-            AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.ShootWithAmmo);
+            AnimationUtil.playAnimationWithSound(player, gun, [AnimationTypes.ShootWithAmmo]);
         }
         else if(newAmmoCount === 0) {
-            AnimationUtil.playAnimationWithSound(player, gun, AnimationTypes.ShootOutOfAmmo);
+            AnimationUtil.playAnimationWithSound(player, gun, [AnimationTypes.ShootOutOfAmmo]);
         }
     }
     //player.setDynamicProperty(Global.PlayerDynamicProperties.script.isFirstShot, false);
@@ -172,13 +172,13 @@ function shootExplosive(player, explosive) {
     player.applyImpulse(knockbackDirection);
     //player.applyKnockback(player.getViewDirection().x, player.getViewDirection().z, magazineObject.projectileAttribute.shooterKnockback.x, magazineObject.projectileAttribute.shooterKnockback.y)
     
-    let playedSound = AnimationUtil.playAnimationWithSound(player, explosive, AnimationTypes.Shoot) === undefined ? false : true;
+    let playedSound = AnimationUtil.playAnimationWithSound(player, explosive, [AnimationTypes.Shoot]) === undefined ? false : true;
     if(!playedSound) {
         if(newAmmoCount !== undefined && newAmmoCount > 0) {
-            AnimationUtil.playAnimationWithSound(player, explosive, AnimationTypes.ShootWithAmmo);
+            AnimationUtil.playAnimationWithSound(player, explosive, [AnimationTypes.ShootWithAmmo]);
         }
         else if(newAmmoCount === 0) {
-            AnimationUtil.playAnimationWithSound(player, explosive, AnimationTypes.ShootOutOfAmmo);
+            AnimationUtil.playAnimationWithSound(player, explosive, [AnimationTypes.ShootOutOfAmmo]);
         }
     }
 }

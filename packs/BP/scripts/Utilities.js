@@ -830,6 +830,10 @@ class FirearmUtil {
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.has_first_ammo_animation)) {
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_first_ammo_reload, true);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_first_ammo_reload);
+        }
         const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmContainerSlot.getItem());
         if(firearmObject === undefined) { return; }
         FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearmObject);
@@ -861,6 +865,10 @@ class FirearmUtil {
             AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_offhand_magazine);
             player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
             AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
+            if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.has_first_ammo_animation)) {
+                player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_first_ammo_reload, true);
+                AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_first_ammo_reload);
+            }
         }
 
         //this.printFirearmDynamicProperties(firearmContainerSlot.getItem());
@@ -1083,6 +1091,7 @@ class FirearmUtil {
         }
         let normalMultiplier = 1;
         let noSwapMultiplier = 1;
+        let firstAmmoMultiplier = 1;
         let openCockMultiplier = 1;
         let cockMultiplier = 1;
         firearmObject.animationAttributes.forEach(attributes => {
@@ -1092,6 +1101,9 @@ class FirearmUtil {
             }
             else if(attributes.staticAnimation.type === AnimationTypes.ReloadNoSwap) {
                 noSwapMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
+            }
+            else if(attributes.staticAnimation.type === AnimationTypes.ReloadFirstAmmo) {
+                firstAmmoMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
             }
             else if(attributes.staticAnimation.type === AnimationTypes.ReloadOpenCock) {
                 openCockMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
@@ -1103,6 +1115,7 @@ class FirearmUtil {
         //if(firearmObject instanceof Gun) {
         this.#trySetReloadNormalAnimationMultiplierValue(player, normalMultiplier);
         this.#trySetReloadNoSwapAnimationMultiplierValue(player, noSwapMultiplier);
+        this.#trySetReloadFirstAmmoAnimationMultiplierValue(player, firstAmmoMultiplier);
         this.#trySetReloadOpenCockAnimationMultiplierValue(player, openCockMultiplier);
         this.#trySetReloadCockAnimationMultiplierValue(player, cockMultiplier);
         // }
@@ -1135,6 +1148,16 @@ class FirearmUtil {
         if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_no_swap_animation_multiplier) !== value) {
             player.setDynamicProperty(Global.PlayerDynamicProperties.animation.reload_no_swap_animation_multiplier, value);
             AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.reload_no_swap_animation_multiplier);
+        }
+    }
+    /**
+     * @param {Player} player 
+     * @param {Number} value 
+     */
+    static #trySetReloadFirstAmmoAnimationMultiplierValue(player, value) {
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_first_ammo_animation_multiplier) !== value) {
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.reload_first_ammo_animation_multiplier, value);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.reload_first_ammo_animation_multiplier);
         }
     }
     /**
@@ -1823,16 +1846,16 @@ class AnimationUtil {
      * 
      * @param {Player} player 
      * @param {Firearm} firearm 
-     * @param {typeof AnimationTypes[keyof typeof AnimationTypes]} animationType
+     * @param {typeof AnimationTypes[keyof typeof AnimationTypes][]} animationTypes
      * @param {Number} timeMultiplier
      * @param {Number} startDelay
      * @returns {SoundTimeoutIdObject[] | undefined} - returns an array of sound timeoutIds
      */
-    static playAnimationWithSound(player, firearm, animationType, timeMultiplier = 1, startDelay = 0) {
+    static playAnimationWithSound(player, firearm, animationTypes, timeMultiplier = 1, startDelay = 0) {
         /**@type {SoundTimeoutIdObject[]} */
         let timeoutObjects = [];
         for(let attributes of firearm.animationAttributes) {
-            if(attributes.staticAnimation.type !== animationType) { continue; }
+            if(!animationTypes.includes(attributes.staticAnimation.type)) { continue; }
 
             if(startDelay <= 0 && attributes.staticAnimation.animationId != undefined) { player.playAnimation(attributes.staticAnimation.animationId); }
             else {

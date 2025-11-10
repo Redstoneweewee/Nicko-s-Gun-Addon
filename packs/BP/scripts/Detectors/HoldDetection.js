@@ -137,8 +137,10 @@ function tryResetOffhandItem(player) {
     player.setDynamicProperty(Global.PlayerDynamicProperties.script.currentMultipliersSaved, false);
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_offhand_magazine, false);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_offhand_magazine);
-    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload, false);
-    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_open_cock_on_reload);
+    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_open_cock_animation, false);
+    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_open_cock_animation);
+    player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_first_ammo_animation, false);
+    AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_first_ammo_animation);
     const offhandSlot = ItemUtil.getPlayerOffhandContainerSlot(player);
     
     const firearmItemStack = Global.playerCurrentFirearmItemStack.get(player.id);
@@ -172,9 +174,12 @@ function tryReplaceOffhandItem(player) {
     if(firearmObject === undefined) { return; }
     for(const attribute of firearmObject.animationAttributes) {
         if(attribute.staticAnimation.type === AnimationTypes.ReloadOpenCock) {
-            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_open_cock_on_reload, true);
-            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_open_cock_on_reload);
-            break;
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_open_cock_animation, true);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_open_cock_animation);
+        }
+        else if(attribute.staticAnimation.type === AnimationTypes.ReloadFirstAmmo) {
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_first_ammo_animation, true);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_first_ammo_animation);
         }
     }
 
@@ -184,6 +189,10 @@ function tryReplaceOffhandItem(player) {
 
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.has_first_ammo_animation)) {
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_first_ammo_reload, true);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_first_ammo_reload);
+        }
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, false);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
         return;
@@ -201,12 +210,18 @@ function tryReplaceOffhandItem(player) {
         catch { magazineItemStack = new ItemStack(firearmObject?.magazineAttribute.defaultMagazine.itemTypeId, firearmObject?.magazineAttribute.maxMagazineItemStackAmount); }
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, false);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
+        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_first_ammo_reload, false);
+        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_first_ammo_reload);
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, true);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
     }
     else { 
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.has_first_ammo_animation)) {
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_first_ammo_reload, true);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_first_ammo_reload);
+        }
         player.setDynamicProperty(Global.PlayerDynamicProperties.animation.firearm_has_ammo, false);
         AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.firearm_has_ammo);
         try { magazineItemStack = new ItemStack(magazineTypeId+"_empty", 1); }

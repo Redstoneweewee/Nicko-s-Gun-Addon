@@ -19,10 +19,13 @@
 							"hold_run_state" : "v.is_holding_firearm && v.is_running"
 						},
 						{
-							"reload_open_cock_state" : "v.should_open_cock_on_reload && v.is_reloading"
+							"reload_open_cock_state" : "v.has_open_cock_animation && v.is_reloading"
 						},
 						{
-							"reload_state" : "!v.should_open_cock_on_reload && v.is_reloading"
+							"reload_first_ammo_state" : "v.has_first_ammo_animation && v.should_first_ammo_reload && v.is_reloading"
+						},
+						{
+							"reload_state" : "!v.has_open_cock_animation && v.is_reloading"
 						}
 					]
 				},
@@ -56,10 +59,13 @@
 							"aim_state" : "v.is_aiming"
 						},
 						{
-							"reload_open_cock_state" : "v.should_open_cock_on_reload && v.is_reloading"
+							"reload_open_cock_state" : "v.has_open_cock_animation && v.is_reloading"
 						},
 						{
-							"reload_state" : "!v.should_open_cock_on_reload && v.is_reloading"
+							"reload_first_ammo_state" : "v.has_first_ammo_animation && v.should_first_ammo_reload && v.is_reloading"
+						},
+						{
+							"reload_state" : "!v.has_open_cock_animation && v.is_reloading"
 						},
 						{
 							"default" : "!v.is_holding_firearm"
@@ -93,10 +99,13 @@
 							"aim_state" : "v.is_aiming"
 						},
 						{
-							"reload_open_cock_state" : "v.should_open_cock_on_reload && v.is_reloading"
+							"reload_open_cock_state" : "v.has_open_cock_animation && v.is_reloading"
 						},
 						{
-							"reload_state" : "!v.should_open_cock_on_reload && v.is_reloading"
+							"reload_first_ammo_state" : "v.has_first_ammo_animation && v.should_first_ammo_reload && v.is_reloading"
+						},
+						{
+							"reload_state" : "!v.has_open_cock_animation && v.is_reloading"
 						},
 						{
 							"default" : "!v.is_holding_firearm"
@@ -161,10 +170,13 @@
 							"aim_state" : "v.is_aiming"
 						},
 						{
-							"reload_open_cock_state" : "v.should_open_cock_on_reload && v.is_reloading"
+							"reload_open_cock_state" : "v.has_open_cock_animation && v.is_reloading"
 						},
 						{
-							"reload_state" : "!v.should_open_cock_on_reload && v.is_reloading"
+							"reload_first_ammo_state" : "v.has_first_ammo_animation && v.should_first_ammo_reload && v.is_reloading"
+						},
+						{
+							"reload_state" : "!v.has_open_cock_animation && v.is_reloading"
 						},
 						{
 							"default" : "!v.is_holding_firearm"
@@ -216,10 +228,13 @@
 							"hipfire_state" : "!v.is_aiming && v.is_not_shooting_increment < 1"
 						},
 						{
-							"reload_open_cock_state" : "v.should_open_cock_on_reload && v.is_reloading"
+							"reload_open_cock_state" : "v.has_open_cock_animation && v.is_reloading"
 						},
 						{
-							"reload_state" : "!v.should_open_cock_on_reload && v.is_reloading"
+							"reload_first_ammo_state" : "v.has_first_ammo_animation && v.should_first_ammo_reload && v.is_reloading"
+						},
+						{
+							"reload_state" : "!v.has_open_cock_animation && v.is_reloading"
 						},
 						{
 							"default" : "!v.is_holding_firearm"
@@ -242,6 +257,9 @@
 					],
 					"transitions" : [
 						{
+							"reload_first_ammo_state" : "v.is_holding_firearm && v.has_first_ammo_animation && q.any_animation_finished"
+						},
+						{
 							"reload_state" : "v.is_holding_firearm && q.any_animation_finished"
 						},
 						{
@@ -249,7 +267,35 @@
 						}
 					]
 				},
-				
+
+				"reload_first_ammo_state" : {
+                    "blend_transition": 0.25,
+                    "blend_via_shortest_path": true,
+					"animations" : [
+						{ "natic_reload_first_ammo_first_person": "v.should_natic_reload" }
+					],
+					"transitions" : [
+						{
+							"reload_state" : "v.is_reloading && v.is_holding_firearm && q.any_animation_finished"
+						},
+						{
+							"hold_state" : "!v.is_reloading && !v.is_aiming && !v.is_running && !v.is_shooting && v.is_not_shooting_increment >= 1"
+						},
+						{
+							"hold_run_state" : "!v.is_reloading && !v.is_aiming && v.is_running && !v.is_shooting && v.is_not_shooting_increment >= 1"
+						},
+						{
+							"hipfire_state" : "!v.is_reloading && !v.is_aiming && v.is_not_shooting_increment < 1"
+						},
+						{
+							"aim_state" : "!v.is_reloading && v.is_aiming"
+						},
+						{
+							"default" : "!v.is_holding_firearm"
+						}
+					]
+				},
+
 				"reload_state" : {
                     "blend_transition": 0.25,
                     "blend_via_shortest_path": true,
@@ -299,12 +345,14 @@
 						{ "rpg7_reload_swap_first_person": "v.is_reload_swapping && v.should_rpg7_reload" },
 						{ "rpg7_reload_no_swap_first_person": "!v.is_reload_swapping && v.should_rpg7_reload" },
 						{ "rpg7_reload_swap_third_person": "!v.is_first_person && v.is_reload_swapping && v.should_rpg7_reload" },
-						{ "rpg7_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_rpg7_reload" }
+						{ "rpg7_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_rpg7_reload" },
+
+						{ "natic_reload_first_person": "v.should_natic_reload" }
 						
 					],
 					"transitions" : [
 						{
-							"reload_cock_state" : "v.should_start_cock && v.should_cock_on_reload"
+							"reload_cock_state" : "v.should_cock_on_reload && v.should_start_cock"
 						},
 						{
 							"hold_state" : "!v.is_reloading && !v.is_aiming && !v.is_running && !v.is_shooting && v.is_not_shooting_increment >= 1"
@@ -323,7 +371,6 @@
 						}
 					]
 				},
-
 
 				
 				"reload_cock_state" : {
