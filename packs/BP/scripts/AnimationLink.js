@@ -30,7 +30,7 @@ class AnimationLink {
         if(dynamicValue === undefined) { return; }
         // @ts-ignore
         player.setProperty(clientProperty, dynamicValue);
-        //if(propertyEnum == Global.PlayerDynamicProperties.animation.has_last_casing_in_chamber) {
+        //if(propertyEnum == Global.PlayerDynamicProperties.animation.reload_normal_animation_multiplier) {
         //    console.log(`player ${player.name}'s property ${propertyEnum} has been set to ${dynamicValue}`);
         //    TypeUtil.logStack();
         //}

@@ -135,7 +135,7 @@ const MagazineObjects = {
             explosionPower: 3,
             spawnOffset: {x: 0.05, y:-0.15, z:2.1}, //x:left-right, y:up-down, z:forward-backward
             shootDirectionOffset: {x:0, y:0.0075}, //x:left-right, y:up-down
-            shooterKnockback: {x:-1, y:-0.1}, //x:forwar-backward, y:up-down
+            shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
                 minDamage: 3,
                 maxDamage: 20,

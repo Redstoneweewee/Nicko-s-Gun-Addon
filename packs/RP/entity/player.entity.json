@@ -449,7 +449,9 @@
         "rpg7_reload_no_swap_third_person": "animation.rpg7_reload_no_swap_third_person",
         
         "natic_reload_first_ammo_first_person": "animation.natic_reload_first_ammo_first_person",
-        "natic_reload_first_person": "animation.natic_reload_first_person"
+        "natic_reload_first_person": "animation.natic_reload_first_person",
+        "natic_reload_first_ammo_third_person": "animation.natic_reload_first_ammo_third_person",
+        "natic_reload_third_person": "animation.natic_reload_third_person"
       },
       "render_controllers": [
         {
@@ -521,11 +523,13 @@
           "bullet_casing": "yes:bullet_casing",
           "sniper_bullet_casing": "yes:sniper_bullet_casing",
           "shotgun_bullet_casing": "yes:shotgun_bullet_casing",
+          "grenade_casing": "yes:grenade_casing",
 
           "breech_flash": "yes:breech_flash",
           "rpg7_smoke": "yes:rpg7_smoke",
           "rpg7_blast_back": "yes:rpg7_blast_back",
-          "rpg7_blast_front": "yes:rpg7_blast_front"
+          "rpg7_blast_front": "yes:rpg7_blast_front",
+          "natic_blast_front": "yes:natic_blast_front"
       },
       "enable_attachables": true
     }

@@ -168,22 +168,22 @@
     },
     "explosive_grenade": {
       "textures": [
-        "textures/entity/ammunition/explosive_grenade_texture"
+        "textures/entity/ammunition/explosive_grenade_shell_texture"
       ]
     },
     "flash_grenade": {
       "textures": [
-        "textures/entity/ammunition/flash_grenade_texture"
+        "textures/entity/ammunition/flash_grenade_shell_texture"
       ]
     },
     "flame_grenade": {
       "textures": [
-        "textures/entity/ammunition/flame_grenade_texture"
+        "textures/entity/ammunition/flame_grenade_shell_texture"
       ]
     },
     "acid_grenade": {
       "textures": [
-        "textures/entity/ammunition/acid_grenade_texture"
+        "textures/entity/ammunition/acid_grenade_shell_texture"
       ]
     },
     "rocket": {

@@ -624,7 +624,7 @@
 				},
 				"rightArm_and_firearm": {
 					"rotation": [-65.82438, -22.69048, -9.07739],
-					"position": [-0.69022, 1.8613, 5.63855]
+					"position": [-0.77702, 1.01797, 3.56943]
 				},
 				"body_rightArm": {
 					"scale": 0
@@ -669,7 +669,7 @@
 				},
 				"rightArm_and_firearm": {
 					"rotation": [-51.9557, -12.88266, "-32.5904-v.tcos02_fast/20"],
-					"position": ["-0.3565-v.tcos02_fast/175", 1.23876, "3.7608+v.tcos02_fast/100"]
+					"position": ["-0.7439-v.tcos02_fast/175", 1.44108, "2.9182+v.tcos02_fast/100"]
 				},
 				"body_rightArm": {
 					"scale": 0
@@ -707,15 +707,15 @@
 				},
 				"rightArm_and_firearm": {
 					"rotation": [-73.78493, -18.25305, "-10.8783+v.tcos02/160"],
-					"position": [-0.7577, "0.5797-v.tcos0/360", 5.78653]
+					"position": [-0.7577, "0.5797-v.tcos0/360", 3.78653]
 				},
 				"body_rightArm": {
 					"rotation": [-0.25, 0.75, -0.25],
 					"position": [-0.02522, -0.02511, -0.02467]
 				},
 				"magazine_leftArm": {
-					"rotation": [1.95364, "31.0995+v.tcos02/160", 2.63838],
-					"position": [-6.11176, -2.0811, -14.06953]
+					"rotation": [9.45364, "31.0995+v.tcos02/160", 2.63838],
+					"position": [-5.26176, -0.0811, -14.06953]
 				},
 				"charge_rightArm": {
 					"rotation": [8.5, -6.75, -3.5],
@@ -725,14 +725,6 @@
 					"rotation": [-79.3767, 26.98169, "5.0708+v.tcos02/160"],
 					"position": [-2.21784, "-0.1016-v.tcos0/240", -3.72404],
 					"scale": 0
-				},
-				"leftArm_custom": {
-					"rotation": [-80.20998, 27.60384, "4.3368+v.tcos02/160"],
-					"position": [-2.15185, "-0.1561-v.tcos0/240", -3.75101]
-				},
-				"rightArm_custom": {
-					"rotation": [-73.78493, -18.25305, "-10.8783+v.tcos02/160"],
-					"position": [0.10065, "0.2269-v.tcos0/240", 1.89567]
 				}
 			}
 		},
@@ -755,14 +747,14 @@
 				},
 				"rightArm_and_firearm": {
 					"rotation": [-95.7194, -15.79974, "23.5505+v.tcos02/160"],
-					"position": [-0.59825, "0.3856-v.tcos0/240", 7.72714]
+					"position": [-1.03758, "0.3898-v.tcos0/240", 7.62983]
 				},
 				"body_rightArm": {
 					"scale": 0
 				},
 				"magazine_leftArm": {
-					"rotation": [15.00168, "27.1523+v.tcos02/160", 4.00575],
-					"position": [-5.91971, 0.65001, -13.4991]
+					"rotation": [15.58878, "31.0107+v.tcos02/160", 5.21291],
+					"position": [-5.15926, 0.79948, -13.49691]
 				},
 				"charge_rightArm": {
 					"rotation": [-3.25, -3.5, 11.25],

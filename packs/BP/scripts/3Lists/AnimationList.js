@@ -55,8 +55,10 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  * }} ShotgunReloadAnimations
  * 
  * @typedef {{
- * rpg7ReloadSwap:       Def.StaticAnimation,
+ * rpg7ReloadSwap:         Def.StaticAnimation,
  * rpg7ReloadNoSwap:       Def.StaticAnimation,
+ * naticReloadFirstAmmo:   Def.StaticAnimation,
+ * naticReload:            Def.StaticAnimation,
  * }} OtherReloadAnimations
  */
 
@@ -618,6 +620,18 @@ const StaticReloadAnimations = {
             animationSounds: [
             ]
         }),
+        naticReloadFirstAmmo: new Def.StaticAnimation({
+            duration: 31, //in ticks
+            type:     Enums.AnimationTypes.ReloadFirstAmmo,
+            animationSounds: [
+            ]
+        }),
+        naticReload: new Def.StaticAnimation({
+            duration: 20, //in ticks
+            type:     Enums.AnimationTypes.ReloadBoth,
+            animationSounds: [
+            ]
+        }),
     }
 }
 
@@ -672,6 +686,7 @@ const StaticReloadAnimations = {
  * 
  * @typedef {{
  * rpg7Shoot: Def.StaticAnimation,
+ * naticShoot: Def.StaticAnimation,
  * javelinShoot: Def.StaticAnimation
  * }} OtherShootAnimations
  */
@@ -1122,6 +1137,18 @@ const StaticShootAnimations = {
                 }
             ],
             animationId: "animation.rpg7_shoot"
+        }),
+        naticShoot: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.Shoot,
+            animationSounds: [
+                {
+                    soundId: "firearm.rpg7_shoot",
+                    timeout: 0,
+                    soundRange: 281.25
+                }
+            ],
+            animationId: "animation.natic_shoot"
         }),
         javelinShoot: new Def.StaticAnimation({
             duration: 30, //in ticks

@@ -1556,15 +1556,15 @@ const FirearmObjects = {
         firingRate:               0,
         animationAttributes: [
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.other.rpg7ReloadSwap,
-                scaleDurationToValue: 10
+                staticAnimation:      StaticReloadAnimations.other.naticReloadFirstAmmo,
+                scaleDurationToValue: 30
             }),
             new ScaledAnimation({
-                staticAnimation:      StaticReloadAnimations.other.rpg7ReloadNoSwap,
-                scaleDurationToValue: 10
+                staticAnimation:      StaticReloadAnimations.other.naticReload,
+                scaleDurationToValue: 20
             }),
             new NormalAnimation({
-                staticAnimation: StaticShootAnimations.other.rpg7Shoot
+                staticAnimation: StaticShootAnimations.other.naticShoot
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({

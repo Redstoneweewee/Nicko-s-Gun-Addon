@@ -272,7 +272,8 @@
                     "blend_transition": 0.25,
                     "blend_via_shortest_path": true,
 					"animations" : [
-						{ "natic_reload_first_ammo_first_person": "v.should_natic_reload" }
+						{ "natic_reload_first_ammo_first_person": "v.should_natic_reload" },
+						{ "natic_reload_first_ammo_third_person": "!v.is_first_person && v.should_natic_reload" }
 					],
 					"transitions" : [
 						{
@@ -347,7 +348,8 @@
 						{ "rpg7_reload_swap_third_person": "!v.is_first_person && v.is_reload_swapping && v.should_rpg7_reload" },
 						{ "rpg7_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_rpg7_reload" },
 
-						{ "natic_reload_first_person": "v.should_natic_reload" }
+						{ "natic_reload_first_person": "v.should_natic_reload" },
+						{ "natic_reload_third_person": "!v.is_first_person && v.should_natic_reload" }
 						
 					],
 					"transitions" : [
