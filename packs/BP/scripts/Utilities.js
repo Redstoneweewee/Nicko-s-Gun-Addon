@@ -1,4 +1,4 @@
-import { Entity, EntityDamageCause, EntityHealthComponent, EntityInventoryComponent, GameMode, ContainerSlot, Player, system, ItemStack, ItemDurabilityComponent, EntityEquippableComponent, EquipmentSlot, EntityComponentTypes, ItemComponentTypes, world, EntityTypeFamilyComponent, Block } from '@minecraft/server';
+import { Entity, EntityDamageCause, EntityHealthComponent, EntityInventoryComponent, GameMode, ContainerSlot, Player, system, ItemStack, ItemDurabilityComponent, EntityEquippableComponent, EquipmentSlot, EntityComponentTypes, ItemComponentTypes, world, EntityTypeFamilyComponent, Block, Dimension } from '@minecraft/server';
 import { Vector3 } from './Math/Vector3.js';
 import { Global } from './Global.js';
 import { Firearm, Gun, Explosive, GunWithAbility } from './2Definitions/FirearmDefinition.js';
@@ -2016,7 +2016,8 @@ class ColorUtil {
 }
 export { ColorUtil };
 
-class BlockUtil {
+
+class RayCastUtil {
     /**
      * 
      * @param {import('@minecraft/server').BlockRaycastHit|undefined} blockRayCast 
@@ -2030,5 +2031,33 @@ class BlockUtil {
             blockRayCast.block.location.z+blockRayCast.faceLocation.z
         );
     }
+
+    /**
+     * Excludes self and all excluded families and types from `HitExclusionArrays.js `
+     * @param {Entity} source 
+     * @param {import('@minecraft/server').Vector3} location 
+     * @param {import('@minecraft/server').Vector3} direction 
+     * @param {number} [range] 
+     * @returns {import('@minecraft/server').EntityRaycastHit[]}
+     */
+    static getValidEntitiesFromRayCast(source, location, direction, range) {
+        const entityRaycastHit = source.dimension.getEntitiesFromRay(location, direction, { 
+            includeLiquidBlocks: false,
+            includePassableBlocks: false,
+            maxDistance: range, 
+            excludeFamilies: excludedFamilies, 
+            excludeTypes: excludedTypes
+        });
+        /**@type {import('@minecraft/server').EntityRaycastHit[]} */
+        let output = [];
+        entityRaycastHit.forEach(hit => {
+            if(hit.entity !== source) {
+                output.push(hit);
+            }
+        })
+        return output;
+    }
+
+
 }
-export { BlockUtil };
+export { RayCastUtil };

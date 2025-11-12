@@ -130,8 +130,8 @@ const MagazineObjects = {
         itemStack:             new ItemStack("yes:explosive_grenade", 1),
         fillableByAmmoClasses: [],
         projectileAttribute: new Def.ProjectileAttribute({
-            typeId: "yes:rocket", 
-            speed: 3.5,
+            typeId: "yes:explosive_grenade", 
+            speed: 2,
             explosionPower: 3,
             spawnOffset: {x: 0.05, y:-0.15, z:2.1}, //x:left-right, y:up-down, z:forward-backward
             shootDirectionOffset: {x:0, y:0.0075}, //x:left-right, y:up-down

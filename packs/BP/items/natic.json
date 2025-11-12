@@ -38,7 +38,7 @@
             },
             "minecraft:cooldown": {
                 "category": "yes:natic",
-                "duration": 0
+                "duration": 0.65
             }
         }
     }

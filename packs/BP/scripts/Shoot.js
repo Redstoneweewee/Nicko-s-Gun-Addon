@@ -1,6 +1,6 @@
 import { Direction, Entity, EntityComponentTypes, EntityHealthComponent, MolangVariableMap, Player, system, world } from '@minecraft/server';
 import * as FirearmDef from './2Definitions/FirearmDefinition.js';
-import { AnimationUtil, BlockUtil, DamageUtil, FirearmUtil, ItemUtil, NumberUtil, VectorUtil } from './Utilities.js';
+import { AnimationUtil, DamageUtil, FirearmUtil, ItemUtil, NumberUtil, RayCastUtil, VectorUtil } from './Utilities.js';
 import { Global } from './Global.js';
 //import { automaticMagazineSwap } from './Detectors/AutoMagSwapDetection.js';
 import * as Reload from './Reload.js';
@@ -111,7 +111,7 @@ function shootGun(player, gun) {
  * @param {FirearmDef.Explosive} explosive
  */
 function shootExplosive(player, explosive) {
-    console.log("shooting an explosive weapon.");
+    //console.log("shooting an explosive weapon.");
     const magazineObject = FirearmUtil.getMagazineObjectFromItemStack(ItemUtil.getPlayerOffhandContainerSlot(player)?.getItem());
     if(magazineObject === undefined || !(magazineObject instanceof ExplosiveMagazineAmmo)) return;
     const shootDirection = calculateShootDirection(player, explosive, {x:magazineObject.projectileAttribute.shootDirectionOffset.x, y:magazineObject.projectileAttribute.shootDirectionOffset.y});
@@ -123,10 +123,11 @@ function shootExplosive(player, explosive) {
     const down = new Vector3(forward.x, forward.y, forward.z).cross(right);
 
     const blockRayCast = player.dimension.getBlockFromRay(player.getHeadLocation(), shootDirection, {maxDistance: Math.ceil(magazineObject.projectileAttribute.spawnOffset.z)});
-    const hitLocation = BlockUtil.getLocationFromRayCast(blockRayCast);
+    const hitLocation = RayCastUtil.getLocationFromRayCast(blockRayCast);
     const defaultDistance = magazineObject.projectileAttribute.spawnOffset.z;
     const blockDistance = hitLocation ? VectorUtil.distance(player.getHeadLocation(), hitLocation) : 999;
-    const forwardOffset = blockDistance < defaultDistance ? blockDistance : defaultDistance;
+    const entityDistance = RayCastUtil.getValidEntitiesFromRayCast(player, player.getHeadLocation(), shootDirection, magazineObject.projectileAttribute.spawnOffset.z)[0]?.distance??999;
+    const forwardOffset = Math.min(defaultDistance, blockDistance, entityDistance);
     spawnLocation.add(forward.multiplyScalar(forwardOffset)).add(down.multiplyScalar(-magazineObject.projectileAttribute.spawnOffset.y)).add(right.multiplyScalar(magazineObject.projectileAttribute.spawnOffset.x));
 
     let shootRotX;
@@ -225,13 +226,7 @@ function doShootRayCasts(player, gun) {
         hitPosition.y += 0.1;
     }
 
-    const entityRayCast = player.dimension.getEntitiesFromRay(headLocation, shootDirection, { 
-        includeLiquidBlocks: false,
-        includePassableBlocks: false,
-        maxDistance: gun.range, 
-        excludeFamilies: excludedFamilies, 
-        excludeTypes: excludedTypes
-    });
+    const entityRayCast = RayCastUtil.getValidEntitiesFromRayCast(player, headLocation, shootDirection, gun.range);
 
 
     let numHit = 0;
@@ -241,7 +236,6 @@ function doShootRayCasts(player, gun) {
     entityRayCast.forEach(rayCastHit => {
         if(numHit >= gun.pierce) { return; }
         const target = rayCastHit.entity;
-        if(target === player) { return; }
         if(target instanceof Player && (excludedGameModes.includes(target.getGameMode()) || world.gameRules.pvp === false)) { return; }
         const healthComponent = target.getComponent(EntityComponentTypes.Health);
         if(healthComponent instanceof EntityHealthComponent) { 
