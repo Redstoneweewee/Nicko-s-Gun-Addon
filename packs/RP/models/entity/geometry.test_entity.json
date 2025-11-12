@@ -2,8 +2,8 @@
 	"format_version": "1.10.0",
 	"geometry.test_entity": {
 		"texturewidth": 64,
-		"textureheight": 32,
-		"visible_bounds_width": 2,
+		"textureheight": 64,
+		"visible_bounds_width": 3,
 		"visible_bounds_height": 3,
 		"visible_bounds_offset": [0, 1.5, 0],
 		"bones": [
@@ -11,7 +11,7 @@
 				"name": "bb_main",
 				"pivot": [0, 0, 0],
 				"cubes": [
-					{"origin": [-1, -1, -1], "size": [2, 2, 2], "uv": [9, 9]}
+					{"origin": [-11, -1, -1], "size": [20, 20, 2], "uv": [0, 0]}
 				]
 			}
 		]

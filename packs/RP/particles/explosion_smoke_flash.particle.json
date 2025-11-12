@@ -10,7 +10,7 @@
 		},
 		"components": {
 			"minecraft:emitter_initialization": {
-				"creation_expression": "variable.width = 1;variable.height = 1;variable.size_mult = 1;",
+				"creation_expression": "variable.s = math.pow(v.size_mult??1,1/2);variable.size_mult = 1;variable.width = 1;variable.height = 1;",
 				"per_update_expression": "variable.size_mult = v.emitter_age < 1 ? (math.pow(v.emitter_age, 1.4) + 1) : (0.56*math.ln(v.emitter_age-0.6) + 2-(0.56*math.ln(0.4)));"
 			},
 			"minecraft:emitter_rate_instant": {
@@ -26,13 +26,13 @@
 			"minecraft:particle_lifetime_expression": {
 				"max_lifetime": "4+ Math.Random(0, 2)"
 			},
-			"minecraft:particle_initial_speed": "math.random(0.5,2)",
+			"minecraft:particle_initial_speed": "math.random(0.5*v.s,2*v.s)",
 			"minecraft:particle_motion_dynamic": {
 				"linear_acceleration": [0, 1.5, 0],
-				"linear_drag_coefficient": "math.min(math.pow(v.particle_age, 1.2), 1)"
+				"linear_drag_coefficient": "math.min(math.pow(v.particle_age*v.s, 1.2*v.s), 1)"
 			},
 			"minecraft:particle_appearance_billboard": {
-				"size": ["variable.width*variable.size_mult/2", "variable.height*variable.size_mult/2"],
+				"size": ["variable.width*variable.size_mult/2*v.s", "variable.height*variable.size_mult/2*v.s"],
 				"facing_camera_mode": "lookat_direction",
 				"direction": {
 					"mode": "derive_from_velocity",

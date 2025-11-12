@@ -66,7 +66,7 @@ class ProjectileAttribute {
      * explosiveStun: ExplosiveStunAttribute,
      * typeId: string,
      * speed: number,
-     * explosionPower: 3,
+     * explosionPower: 1|1.5|2|2.5|3|3.5|4|4.5|5|6|7|8|9|10|15|20|25|30|35|40|45|50|60|70|80|90|100,
      * spawnOffset: import("@minecraft/server").Vector3,
      * shootDirectionOffset: import("@minecraft/server").Vector2
      * shooterKnockback: import("@minecraft/server").Vector2

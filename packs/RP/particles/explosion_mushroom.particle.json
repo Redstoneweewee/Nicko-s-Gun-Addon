@@ -10,7 +10,7 @@
 		},
 		"components": {
 			"minecraft:emitter_initialization": {
-				"creation_expression": "variable.width = 1;variable.height = 1;"
+				"creation_expression": "variable.s = math.pow(v.size_mult??1,1/2);variable.width = 1;variable.height = 1;"
 			},
 			"minecraft:emitter_rate_instant": {
 				"num_particles": 100
@@ -23,14 +23,14 @@
 				"direction": ["math.random(-1,1)", "math.random(-1,1)", "math.random(-1,1)"]
 			},
 			"minecraft:particle_lifetime_expression": {
-				"max_lifetime": "1+ Math.Random(0.05, 0.1)"
+				"max_lifetime": "(1+Math.Random(0.05, 0.1))*v.s"
 			},
-			"minecraft:particle_initial_speed": "math.random(1,12)",
+			"minecraft:particle_initial_speed": "math.random(1*v.s,12*v.s)",
 			"minecraft:particle_motion_dynamic": {
 				"linear_drag_coefficient": 4
 			},
 			"minecraft:particle_appearance_billboard": {
-				"size": ["variable.width*math.pow(v.particle_age*3,0.4)", "variable.height*math.pow(v.particle_age*3,0.4)"],
+				"size": ["(variable.width*math.pow(v.particle_age*3,0.4))*v.s", "(variable.height*math.pow(v.particle_age*3,0.4))*v.s"],
 				"facing_camera_mode": "lookat_direction",
 				"uv": {
 					"texture_width": 32,

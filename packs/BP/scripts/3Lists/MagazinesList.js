@@ -132,16 +132,16 @@ const MagazineObjects = {
         projectileAttribute: new Def.ProjectileAttribute({
             typeId: "yes:explosive_grenade", 
             speed: 2,
-            explosionPower: 3,
+            explosionPower: 1.5,
             spawnOffset: {x: 0.05, y:-0.15, z:2.1}, //x:left-right, y:up-down, z:forward-backward
-            shootDirectionOffset: {x:0, y:0.0075}, //x:left-right, y:up-down
+            shootDirectionOffset: {x:0, y:0.035}, //x:left-right, y:up-down
             shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
                 minDamage: 3,
-                maxDamage: 20,
+                maxDamage: 15,
                 minKnockback: {x:0.7, y:0.2},
                 maxKnockback: {x:1.2, y:0.3},
-                range:     8 
+                range:     5
             }),
             explosiveCamerashakes: [
                 new Def.ExplosiveCamerashakeAttribute({
@@ -214,7 +214,7 @@ const MagazineObjects = {
             shooterKnockback: {x:-1, y:-0.1}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
                 minDamage: 3,
-                maxDamage: 20,
+                maxDamage: 24,
                 minKnockback: {x:0.7, y:0.2},
                 maxKnockback: {x:1.2, y:0.3},
                 range:     8 

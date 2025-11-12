@@ -9,6 +9,9 @@
 			}
 		},
 		"components": {
+			"minecraft:emitter_initialization": {
+				"creation_expression": "variable.s = math.pow(v.size_mult??1,1/2);"
+			},
 			"minecraft:emitter_rate_instant": {
 				"num_particles": 1
 			},
@@ -21,7 +24,7 @@
 			},
 			"minecraft:particle_initial_speed": 1.5,
 			"minecraft:particle_appearance_billboard": {
-				"size": ["7+math.pow(v.particle_age*30,0.5)", "5+math.pow(v.particle_age*30,0.5)"],
+				"size": ["(7+math.pow(v.particle_age*30,0.5))*v.s", "(5+math.pow(v.particle_age*30,0.5))*v.s"],
 				"facing_camera_mode": "rotate_xyz",
 				"uv": {
 					"texture_width": 89,

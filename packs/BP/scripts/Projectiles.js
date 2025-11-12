@@ -166,20 +166,32 @@ function explodeExplosive(explosive, location, hitType) {
         const direction = {x:-explosive.getViewDirection().x, y:-explosive.getViewDirection().y, z:explosive.getViewDirection().z };
 
         const blockInFront = dimension.getBlockFromRay(location, direction);
-        dimension.spawnParticle("yes:explosion_flash", location);
-        dimension.spawnParticle("yes:explosion_flash_middle", location);
-        dimension.spawnParticle("yes:explosion_sparks", location);
-        dimension.spawnParticle("yes:explosion_mushroom", location);
-        dimension.spawnParticle("yes:explosion_smoke", location);
-        dimension.spawnParticle("yes:explosion_smoke_flash", location);
+        const sizeMult = attribute.explosionPower/3;
+        const vars1 = new MolangVariableMap();
+        vars1.setFloat("size_mult", sizeMult);
+        console.log(`size_mult: ${sizeMult}`);
+
+        dimension.spawnParticle("yes:explosion_flash", location, vars1);
+        dimension.spawnParticle("yes:explosion_flash_middle", location, vars1);
+        dimension.spawnParticle("yes:explosion_sparks", location, vars1);
+        dimension.spawnParticle("yes:explosion_mushroom", location, vars1);
+        dimension.spawnParticle("yes:explosion_smoke", location, vars1);
+        dimension.spawnParticle("yes:explosion_smoke_flash", location, vars1);
 
         if(hitType === "block" && blockInFront !== undefined) {
             const blockColor = ColorUtil.getBlockColor(blockInFront.block);
+            /**@type {import('@minecraft/server').RGB} */
+            const blockColorNew = {
+                red: MathUtils.lerp(blockColor.red,defaultColor.red,Math.min(sizeMult/100, 1)),
+                green: MathUtils.lerp(blockColor.green,defaultColor.green,Math.min(sizeMult/100, 1)),
+                blue: MathUtils.lerp(blockColor.blue,defaultColor.blue,Math.min(sizeMult/100, 1)),
+            };
 
-            const color = new MolangVariableMap();
-            color.setColorRGB("color", blockColor);
+            const vars2 = new MolangVariableMap();
+            vars2.setColorRGB("color", blockColorNew);
+            vars2.setFloat("size_mult", sizeMult);
             //console.log(`blockInFront: ${blockInFront.block.typeId}, color: ${blockColor.red}, ${blockColor.green}, ${blockColor.blue}`);
-            dimension.spawnParticle("yes:explosion_debris", location, color);
+            dimension.spawnParticle("yes:explosion_debris", location, vars2);
         }
         else if(hitType === "entity") {
             const vars = new MolangVariableMap();

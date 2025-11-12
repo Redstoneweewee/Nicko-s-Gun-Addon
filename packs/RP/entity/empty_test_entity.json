@@ -4,10 +4,10 @@
         "description": {
             "identifier": "yes:empty_test_entity",
             "materials": {
-                "default": "goat"
+                "default": "entity_beam_additive"
             },
             "textures": {
-                "default": "textures/entity/zombie/husk"
+                "default": "textures/entity/zombie/test"
             },
             "geometry": {
                 "default": "geometry.test_entity"

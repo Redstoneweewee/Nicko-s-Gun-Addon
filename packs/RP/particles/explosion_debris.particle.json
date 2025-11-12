@@ -9,8 +9,11 @@
 			}
 		},
 		"components": {
+			"minecraft:emitter_initialization": {
+				"creation_expression": "variable.s = math.pow(v.size_mult??200,1/2);variable.v = math.pow(v.size_mult??200,1/4);v.speed_min = math.min(10*v.v,45);v.speed_max = math.min(30*v.v,135);v.amount_max = math.min((35+math.random(0, 15))*v.s, 250);"
+			},
 			"minecraft:emitter_rate_instant": {
-				"num_particles": "35+math.random(0, 15)"
+				"num_particles": "v.amount_max"
 			},
 			"minecraft:emitter_lifetime_looping": {
 				"active_time": 3
@@ -24,14 +27,14 @@
 			"minecraft:particle_initial_spin": {
 				"rotation_rate": "math.random(-600, 600)"
 			},
-			"minecraft:particle_initial_speed": "math.random(10,30)",
+			"minecraft:particle_initial_speed": "math.random(v.speed_min,v.speed_max)",
 			"minecraft:particle_motion_dynamic": {
 				"linear_acceleration": [0, -9.8, 0],
 				"linear_drag_coefficient": 1,
 				"rotation_drag_coefficient": 0.2
 			},
 			"minecraft:particle_appearance_billboard": {
-				"size": ["0.025+v.particle_random_1*0.1-(v.particle_age/v.particle_lifetime*(v.particle_random_1*0.05+0.075))", "0.025+v.particle_random_1*0.1-(v.particle_age/v.particle_lifetime*(v.particle_random_1*0.05+0.075))"],
+				"size": ["(0.025+v.particle_random_1*0.1-(v.particle_age/v.particle_lifetime*(v.particle_random_1*0.05+0.075)))*v.s", "(0.025+v.particle_random_1*0.1-(v.particle_age/v.particle_lifetime*(v.particle_random_1*0.05+0.075)))*v.s"],
 				"facing_camera_mode": "rotate_xyz"
 			},
 			"minecraft:particle_motion_collision": {

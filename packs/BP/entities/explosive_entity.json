@@ -7,48 +7,6 @@
 			"is_summonable": true,
 			"is_experimental": false
 		  },
-		"component_groups": {
-			"yes:despawn_timer": {
-				"minecraft:timer": {
-					"time": 1,
-					"time_down_event": {
-						"event": "yes:despawn",
-						"target": "self"
-					}
-				}
-			},
-			"yes:explode_3_no_damage": {
-				"minecraft:explode": {
-					"breaks_blocks": true,
-					"causes_fire": false,
-					"destroy_affected_by_griefing": false,
-					"fire_affected_by_griefing": false,
-					"fuse_length": [0.0, 0.0],
-					"fuse_lit": true,
-					"max_resistance": 3.40282e+38,
-					"power": 3,
-					"damage_scaling": 0,
-					"knockback_scaling": 0
-				}
-			},
-			"yes:explode_3_no_damage_no_break": {
-				"minecraft:explode": {
-					"breaks_blocks": false,
-					"causes_fire": false,
-					"destroy_affected_by_griefing": false,
-					"fire_affected_by_griefing": false,
-					"fuse_length": [0.0, 0.0],
-					"fuse_lit": true,
-					"max_resistance": 3.40282e+38,
-					"power": 3,
-					"damage_scaling": 0,
-					"knockback_scaling": 0
-				}
-			},
-			"yes:despawn": {
-				"minecraft:instant_despawn": {}
-			}
-		},
 		"components": {
 			"minecraft:knockback_resistance": {
 				"value": 1.0
@@ -94,11 +52,848 @@
 				]
 			}
 		},
+		"component_groups": {
+			"yes:despawn_timer": {
+				"minecraft:timer": {
+					"time": 1,
+					"time_down_event": {
+						"event": "yes:despawn",
+						"target": "self"
+					}
+				}
+			},
+			"yes:despawn": {
+				"minecraft:instant_despawn": {}
+			},
+			"yes:explode_1_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 1,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_1_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 1,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_1.5_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 1.5,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_1.5_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 1.5,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_2_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 2,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_2_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 2,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_2.5_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 2.5,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_2.5_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 2.5,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_3_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 3,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_3_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 3,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_3.5_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 3.5,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_3.5_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 3.5,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_4_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 4,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_4_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 4,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_4.5_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 4.5,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_4.5_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 4.5,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_5_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 5,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_5_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 5,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_6_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 6,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_6_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 6,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_7_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 7,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_7_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 7,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_8_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 8,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_8_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 8,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_9_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 9,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_9_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 9,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_10_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 10,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_10_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 10,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+
+
+
+
+			
+			"yes:explode_15_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 15,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_15_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 15,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_20_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 20,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_20_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 20,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_25_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 25,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_25_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 25,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_30_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 30,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_30_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 30,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_35_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 35,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_35_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 35,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_40_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 40,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_40_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 40,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_45_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 45,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_45_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 45,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_50_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 50,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_50_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 50,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+
+
+
+
+
+
+			"yes:explode_60_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 60,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_60_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 60,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_70_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 70,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_70_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 70,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_80_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 80,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_80_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 80,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_90_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 90,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_90_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 90,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_100_no_damage": {
+				"minecraft:explode": {
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 100,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			},
+			"yes:explode_100_no_damage_no_break": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": false,
+					"fire_affected_by_griefing": false,
+					"fuse_length": [0.0, 0.0],
+					"fuse_lit": true,
+					"max_resistance": 3.40282e+38,
+					"power": 100,
+					"damage_scaling": 0,
+					"knockback_scaling": 0
+				}
+			}
+		},
 		"events": {
 			"yes:despawn": {
 				"add": {
 					"component_groups": [
 						"yes:despawn"
+					]
+				}
+			},
+			"explode_1_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_1_no_damage"
+					]
+				}
+			},
+			"explode_1_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_1_no_damage_no_break"
+					]
+				}
+			},
+			"explode_1.5_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_1.5_no_damage"
+					]
+				}
+			},
+			"explode_1.5_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_1.5_no_damage_no_break"
+					]
+				}
+			},
+			"explode_2_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_2_no_damage"
+					]
+				}
+			},
+			"explode_2_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_2_no_damage_no_break"
+					]
+				}
+			},
+			"explode_2.5_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_2.5_no_damage"
+					]
+				}
+			},
+			"explode_2.5_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_2.5_no_damage_no_break"
 					]
 				}
 			},
@@ -113,6 +908,327 @@
 				"add": {
 					"component_groups": [
 						"yes:explode_3_no_damage_no_break"
+					]
+				}
+			},
+			"explode_3.5_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_3.5_no_damage"
+					]
+				}
+			},
+			"explode_3.5_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_3.5_no_damage_no_break"
+					]
+				}
+			},
+			"explode_4_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_4_no_damage"
+					]
+				}
+			},
+			"explode_4_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_4_no_damage_no_break"
+					]
+				}
+			},
+			"explode_4.5_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_4.5_no_damage"
+					]
+				}
+			},
+			"explode_4.5_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_4.5_no_damage_no_break"
+					]
+				}
+			},
+			"explode_5_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_5_no_damage"
+					]
+				}
+			},
+			"explode_5_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_5_no_damage_no_break"
+					]
+				}
+			},
+			"explode_6_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_6_no_damage"
+					]
+				}
+			},
+			"explode_6_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_6_no_damage_no_break"
+					]
+				}
+			},
+			"explode_7_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_7_no_damage"
+					]
+				}
+			},
+			"explode_7_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_7_no_damage_no_break"
+					]
+				}
+			},
+			"explode_8_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_8_no_damage"
+					]
+				}
+			},
+			"explode_8_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_8_no_damage_no_break"
+					]
+				}
+			},
+			"explode_9_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_9_no_damage"
+					]
+				}
+			},
+			"explode_9_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_9_no_damage_no_break"
+					]
+				}
+			},
+			"explode_10_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_10_no_damage"
+					]
+				}
+			},
+			"explode_10_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_10_no_damage_no_break"
+					]
+				}
+			},
+
+
+
+
+
+
+			"explode_15_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_15_no_damage"
+					]
+				}
+			},
+			"explode_15_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_15_no_damage_no_break"
+					]
+				}
+			},
+			"explode_20_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_20_no_damage"
+					]
+				}
+			},
+			"explode_20_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_20_no_damage_no_break"
+					]
+				}
+			},
+			"explode_25_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_25_no_damage"
+					]
+				}
+			},
+			"explode_25_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_25_no_damage_no_break"
+					]
+				}
+			},
+			"explode_30_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_30_no_damage"
+					]
+				}
+			},
+			"explode_30_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_30_no_damage_no_break"
+					]
+				}
+			},
+			"explode_35_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_35_no_damage"
+					]
+				}
+			},
+			"explode_35_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_35_no_damage_no_break"
+					]
+				}
+			},
+			"explode_40_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_40_no_damage"
+					]
+				}
+			},
+			"explode_40_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_40_no_damage_no_break"
+					]
+				}
+			},
+			"explode_45_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_45_no_damage"
+					]
+				}
+			},
+			"explode_45_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_45_no_damage_no_break"
+					]
+				}
+			},
+			"explode_50_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_50_no_damage"
+					]
+				}
+			},
+			"explode_50_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_50_no_damage_no_break"
+					]
+				}
+			},
+
+
+
+
+
+
+
+			"explode_60_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_60_no_damage"
+					]
+				}
+			},
+			"explode_60_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_60_no_damage_no_break"
+					]
+				}
+			},
+			"explode_70_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_70_no_damage"
+					]
+				}
+			},
+			"explode_70_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_70_no_damage_no_break"
+					]
+				}
+			},
+			"explode_80_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_80_no_damage"
+					]
+				}
+			},
+			"explode_80_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_80_no_damage_no_break"
+					]
+				}
+			},
+			"explode_90_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_90_no_damage"
+					]
+				}
+			},
+			"explode_90_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_90_no_damage_no_break"
+					]
+				}
+			},
+			"explode_100_no_damage": {
+				"add": {
+					"component_groups": [
+						"yes:explode_100_no_damage"
+					]
+				}
+			},
+			"explode_100_no_damage_no_break": {
+				"add": {
+					"component_groups": [
+						"yes:explode_100_no_damage_no_break"
 					]
 				}
 			}
