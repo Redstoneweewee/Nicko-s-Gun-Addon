@@ -4,7 +4,7 @@
         "description": {
             "identifier": "yes:empty_test_entity",
             "materials": {
-                "default": "entity_beam_additive"
+                "default": "grayscale"
             },
             "textures": {
                 "default": "textures/entity/zombie/test"

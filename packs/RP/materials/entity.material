@@ -39,6 +39,12 @@
       "-defines": [ "FANCY" ],
       "stencilRef": 2,
       "stencilReadMark": 2
+    },
+    "grayscale:entity_static": {
+      "+states": [ "Blending" ],
+      "blendSrc": "OneMinusDestColor",
+      "blendDst": "OneMinusSrcColor",
+      "depthFunc": "Always"
     }
   }
 }
