@@ -285,13 +285,13 @@ function doShootRayCasts(player, gun) {
  */
 function calculateDamage(distance, gunObject) {
     
-    if(distance >= gunObject.damageDropoff.maxDropOffRange) {
-        return gunObject.damageDropoff.minDamage;
+    if(distance >= gunObject.damageDropoff.dropOff.max) {
+        return gunObject.damageDropoff.damage.min;
     }
-    else if(distance >= gunObject.damageDropoff.minDropOffRange) {
-        return Number(MathUtils.mapLinear(distance, gunObject.damageDropoff.minDropOffRange, gunObject.damageDropoff.maxDropOffRange, gunObject.damageDropoff.maxDamage, gunObject.damageDropoff.minDamage));
+    else if(distance >= gunObject.damageDropoff.dropOff.min) {
+        return gunObject.damageDropoff.damage.mapLinear(distance, gunObject.damageDropoff.dropOff.min, gunObject.damageDropoff.dropOff.max);
     }
-    return gunObject.damageDropoff.maxDamage;
+    return gunObject.damageDropoff.damage.max;
 }
 
 
@@ -314,8 +314,8 @@ function calculateShootDirection(player, firearm, initialOffset = {x:0, y:0}) {
         recoilMultiplier = firearm.scopeAttribute.recoilMultiplier;
     }
 
-    let degrees = firearm.minSpreadDegrees + (firearm.maxSpreadDegrees-firearm.minSpreadDegrees)*(recoil/100);
-    if(degrees > firearm.maxSpreadDegrees) { degrees = firearm.maxSpreadDegrees; }
+    let degrees = firearm.spreadDegrees.min + (firearm.spreadDegrees.max-firearm.spreadDegrees.min)*(recoil/100);
+    if(degrees > firearm.spreadDegrees.max) { degrees = firearm.spreadDegrees.max; }
     degrees = degrees*recoilMultiplier;
     //console.log(`degrees: ${degrees}`);
     

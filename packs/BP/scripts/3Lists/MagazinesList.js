@@ -5,6 +5,7 @@ import { ItemStack } from '@minecraft/server';
 import { MagazineClasses } from '../1Enums/MagazineEnums.js';
 import { BulletAmmoClasses } from '../1Enums/AmmoEnums.js';
 import { TypeUtil } from '../UtilitiesInit.js';
+import { NumRange, Vec2Range } from '../2Definitions/GlobalDefinition.js';
 
 /**
  * @enum {Def.Magazine}
@@ -137,10 +138,8 @@ const MagazineObjects = {
             shootDirectionOffset: {x:0, y:0.035}, //x:left-right, y:up-down
             shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
-                minDamage: 3,
-                maxDamage: 15,
-                minKnockback: {x:0.7, y:0.2},
-                maxKnockback: {x:1.2, y:0.3},
+                damage:    new NumRange(3, 15),
+                knockback: new Vec2Range({x:0.7, y:0.2}, {x:1.2, y:0.3}),
                 range:     5
             }),
             explosiveCamerashakes: [
@@ -156,12 +155,9 @@ const MagazineObjects = {
                 })
             ],
             explosiveStun: new Def.ExplosiveStunAttribute({
-                minScreenDuration: 2,
-                maxScreenDuration: 25,
-                minAimRestrictionDuration: 10,
-                maxAimRestrictionDuration: 30,
-                minScreenDebrisDuration: 20,  //unused
-                maxScreenDebrisDuration: 150,
+                screenDuration:         new NumRange(2, 25),
+                aimRestrictionDuration: new NumRange(10, 30),
+                screenDebrisDuration:   new NumRange(20, 150),
                 range: 15
             })
         })
@@ -213,10 +209,8 @@ const MagazineObjects = {
             shootDirectionOffset: {x:0, y:0.0075}, //x:left-right, y:up-down
             shooterKnockback: {x:-1, y:-0.1}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
-                minDamage: 3,
-                maxDamage: 24,
-                minKnockback: {x:0.7, y:0.2},
-                maxKnockback: {x:1.2, y:0.3},
+                damage:    new NumRange(3, 24),
+                knockback: new Vec2Range({x:0.7, y:0.2}, {x:1.2, y:0.3}),
                 range:     8 
             }),
             explosiveCamerashakes: [
@@ -232,12 +226,9 @@ const MagazineObjects = {
                 })
             ],
             explosiveStun: new Def.ExplosiveStunAttribute({
-                minScreenDuration: 2,
-                maxScreenDuration: 25,
-                minAimRestrictionDuration: 10,
-                maxAimRestrictionDuration: 30,
-                minScreenDebrisDuration: 20,  //unused
-                maxScreenDebrisDuration: 150,
+                screenDuration:         new NumRange(2, 25),
+                aimRestrictionDuration: new NumRange(10, 30),
+                screenDebrisDuration:   new NumRange(20, 150),
                 range: 15
             })
         })

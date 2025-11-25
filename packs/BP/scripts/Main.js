@@ -13,7 +13,7 @@ import "./Projectiles.js";
 
 
 
-import { world, system, BlockComponentTypes } from '@minecraft/server';
+import { world, system, BlockComponentTypes, EntityComponentTypes, DimensionTypes, Player } from '@minecraft/server';
 import { Vector3 } from './Math/Vector3.js';
 import { Global } from "./Global.js";
 const Vector = new Vector3();
@@ -60,6 +60,10 @@ system.runInterval(() => {
         Reload.tryManualReload(player);
 
         //LeftClickAbilityDetection.leftClickAbilityDetection(player);
+    });
+    world.getDimension("minecraft:overworld").getEntities().forEach(entity => {
+        if(entity instanceof Player) return;
+        entity.getComponent(EntityComponentTypes.Movement)?.setCurrentValue(entity.getComponent(EntityComponentTypes.Movement)?.defaultValue*0);
     });
 });
 

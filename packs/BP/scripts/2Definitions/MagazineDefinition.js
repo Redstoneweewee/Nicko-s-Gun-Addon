@@ -2,6 +2,7 @@ import { ItemStack } from "@minecraft/server"
 import { FirearmAmmoClasses } from "../1Enums/AmmoEnums";
 import * as Enums from "../1Enums/MagazineEnums"
 import { TypeUtil } from "../UtilitiesInit";
+import { NumRange, Vec2Range } from "./GlobalDefinition";
 
 class Magazine {
     /**
@@ -89,18 +90,14 @@ class ProjectileAttribute {
 class ExplosiveDamage {
     /**
      * @param {{
-     * minDamage: number,
-     * maxDamage: number,
-     * minKnockback: import('@minecraft/server').Vector2
-     * maxKnockback: import('@minecraft/server').Vector2
+     * damage: NumRange,
+     * knockback: Vec2Range,
      * range: number
      * }} def 
      */
     constructor(def) {
-        this.minDamage = def.minDamage;
-        this.maxDamage = def.maxDamage;
-        this.minKnockback = def.minKnockback;
-        this.maxKnockback = def.maxKnockback;
+        this.damage = def.damage;
+        this.knockback = def.knockback;
         this.range     = def.range;
     }
 }
@@ -115,32 +112,26 @@ class ExplosiveCamerashakeAttribute {
      * }} def
      */
     constructor(def) {
-        this.intensity  = def.intensity;
+        this.intensity = def.intensity;
         this.duration  = def.duration;
-        this.range = def.range;
+        this.range     = def.range;
     }
 }
 
 class ExplosiveStunAttribute {
     /**
      * @param {{
-     * minScreenDuration: number,
-     * maxScreenDuration: number,
-     * minAimRestrictionDuration: number,
-     * maxAimRestrictionDuration: number,
-     * minScreenDebrisDuration: number,
-     * maxScreenDebrisDuration: number,
+     * screenDuration: NumRange,
+     * aimRestrictionDuration: NumRange,
+     * screenDebrisDuration: NumRange,
      * range: number
      * }} def
      */
     constructor(def) {
-        this.minScreenDuration = def.minScreenDuration;
-        this.maxScreenDuration = def.maxScreenDuration;
-        this.minAimRestrictionDuration    = def.minAimRestrictionDuration;
-        this.maxAimRestrictionDuration    = def.maxAimRestrictionDuration;
-        this.minScreenDebrisDuration = def.minScreenDebrisDuration;
-        this.maxScreenDebrisDuration = def.maxScreenDebrisDuration;
-        this.range             = def.range;
+        this.screenDuration         = def.screenDuration;
+        this.aimRestrictionDuration = def.aimRestrictionDuration;
+        this.screenDebrisDuration   = def.screenDebrisDuration;
+        this.range                  = def.range;
     }
 }
 

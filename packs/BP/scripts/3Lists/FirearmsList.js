@@ -9,6 +9,7 @@ import { LeftClickAbilityTypes } from '../1Enums/LeftClickAbilityEnums.js';
 import { NormalAnimation, ScaledAnimation } from '../2Definitions/AnimationDefinition.js';
 import { StaticReloadAnimations, StaticShootAnimations, StaticOtherAnimations } from './AnimationList.js';
 import { TypeUtil } from '../UtilitiesInit.js';
+import { NumRange } from '../2Definitions/GlobalDefinition.js';
 
 /**
  * @enum {Def.Firearm}
@@ -66,14 +67,11 @@ const FirearmObjects = {
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.02,
                 maxCamerashake:     0.04,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -127,14 +125,11 @@ const FirearmObjects = {
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.025,
                 maxCamerashake:     0.05,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -188,14 +183,12 @@ const FirearmObjects = {
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.018,
                 maxCamerashake:     0.05,
-                minCamerashakeTime: 0.08,
-                maxCamerashakeTime: 0.08
+                mincamerashakeRandomTime: 0.08,
+                maxcamerashakeRandomTime: 0.08
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -249,14 +242,11 @@ const FirearmObjects = {
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.025,
                 maxCamerashake:     0.07,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -321,14 +311,11 @@ const FirearmObjects = {
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.04,
                 maxCamerashake:     0.08,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -400,14 +387,11 @@ const FirearmObjects = {
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.05,
                 maxCamerashake:     0.08,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -461,14 +445,11 @@ const FirearmObjects = {
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.025,
                 maxCamerashake:     0.04,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -518,14 +499,11 @@ const FirearmObjects = {
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.025,
                 maxCamerashake:     0.06,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -541,8 +519,7 @@ const FirearmObjects = {
         knockbackAmount:        Enums.KnockbackAmounts.High,
         range:                  500,
     
-        minSpreadDegrees:       0.5,
-        maxSpreadDegrees:       1,
+        spreadDegrees: new NumRange(0.5, 1),
     
         animationAttributes: [
             new ScaledAnimation({
@@ -580,16 +557,12 @@ const FirearmObjects = {
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.06,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.06),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -642,14 +615,11 @@ const FirearmObjects = {
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
                 minCamerashake:     0.04,
                 maxCamerashake:     0.08,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -663,10 +633,8 @@ const FirearmObjects = {
         firingRate:             0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 10,
-            maxDamage: 10,
-            minDropOffRange: 0,
-            maxDropOffRange: 0
+            damage:  new NumRange(10, 10),
+            dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -708,21 +676,16 @@ const FirearmObjects = {
             stopAimOnCooldown: false,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       0.5,
-        maxSpreadDegrees:       1,
+        spreadDegrees: new NumRange(0.5, 1),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.06,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.06),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -735,10 +698,7 @@ const FirearmObjects = {
         firingRate:             0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 10,
-            maxDamage: 10,
-            minDropOffRange: 0,
-            maxDropOffRange: 0
+            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -780,21 +740,16 @@ const FirearmObjects = {
             stopAimOnCooldown: false,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       0.5,
-        maxSpreadDegrees:       1,
+        spreadDegrees: new NumRange(0.5, 1),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.06,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.06),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -807,10 +762,7 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 10,
-            maxDamage: 10,
-            minDropOffRange: 0,
-            maxDropOffRange: 0
+            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -852,21 +804,16 @@ const FirearmObjects = {
             stopAimOnCooldown: false,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       0.5,
-        maxSpreadDegrees:       1,
+        spreadDegrees: new NumRange(0.5, 1),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.06,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.06),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -879,10 +826,7 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 10,
-            maxDamage: 10,
-            minDropOffRange: 0,
-            maxDropOffRange: 0
+            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -916,21 +860,16 @@ const FirearmObjects = {
             stopAimOnCooldown: false,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       0.5,
-        maxSpreadDegrees:       1,
+        spreadDegrees: new NumRange(0.5, 1),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.06,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.06),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -943,10 +882,7 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 10,
-            maxDamage: 10,
-            minDropOffRange: 0,
-            maxDropOffRange: 0
+            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -988,21 +924,16 @@ const FirearmObjects = {
             stopAimOnCooldown: false,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       0.5,
-        maxSpreadDegrees:       1,
+        spreadDegrees: new NumRange(0.5, 1),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.06,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.06),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -1015,10 +946,7 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 10,
-            maxDamage: 10,
-            minDropOffRange: 0,
-            maxDropOffRange: 0
+            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -1064,21 +992,16 @@ const FirearmObjects = {
             stopAimOnCooldown:  true,
             stopAimDelay:       4
         }),
-        minSpreadDegrees:       0.5,
-        maxSpreadDegrees:       1,
+        spreadDegrees: new NumRange(0.5, 1),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 40,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.1,
-                maxCamerashake:     0.16,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.1, 0.16),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -1091,10 +1014,7 @@ const FirearmObjects = {
         firingRate:               540,  //ideally, use multiples of 60
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 10,
-            maxDamage: 10,
-            minDropOffRange: 0,
-            maxDropOffRange: 0
+            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -1136,21 +1056,16 @@ const FirearmObjects = {
             stopAimOnCooldown:  false,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       0.5,
-        maxSpreadDegrees:       1,
+        spreadDegrees: new NumRange(0.5, 1),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 8,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.1,
-                maxCamerashake:     0.16,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.1, 0.16),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -1163,10 +1078,7 @@ const FirearmObjects = {
         firingRate:               900,  //ideally, use multiples of 60
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 10,
-            maxDamage: 10,
-            minDropOffRange: 0,
-            maxDropOffRange: 0
+            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -1204,21 +1116,16 @@ const FirearmObjects = {
             stopAimOnCooldown: false,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       0.15,
-        maxSpreadDegrees:       1,
+        spreadDegrees:     new NumRange(0.15, 1),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 8,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.018,
-                maxCamerashake:     0.05,
-                minCamerashakeTime: 0.08,
-                maxCamerashakeTime: 0.08
+                camerashake:     new NumRange(0.018, 0.05),
+                camerashakeRandomTime:     new NumRange(0.08, 0.08)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -1231,10 +1138,7 @@ const FirearmObjects = {
         firingRate:               480,  //ideally, use multiples of 60
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 10,
-            maxDamage: 10,
-            minDropOffRange: 0,
-            maxDropOffRange: 0
+            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -1273,21 +1177,17 @@ const FirearmObjects = {
             stopAimOnCooldown: false,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       0.15,
-        maxSpreadDegrees:       1,
+        
+        spreadDegrees:     new NumRange(0.15, 1),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 8,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.018,
-                maxCamerashake:     0.05,
-                minCamerashakeTime: 0.08,
-                maxCamerashakeTime: 0.08
+                camerashake:     new NumRange(0.018, 0.05),
+                camerashakeRandomTime:     new NumRange(0.08, 0.08)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -1300,10 +1200,8 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         10,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 5,
-            maxDamage: 35,
-            minDropOffRange: 1.5,
-            maxDropOffRange: 10
+            damage:     new NumRange(5, 35),
+            dropOff:     new NumRange(1.5, 10)
         }),
         headshotMultiplier:     2,
         pierce:                 4,
@@ -1334,21 +1232,16 @@ const FirearmObjects = {
             stopAimOnCooldown:  false,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       2,
-        maxSpreadDegrees:       3,
+        spreadDegrees:     new NumRange(2, 3),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.08,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.08),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -1361,10 +1254,8 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         10,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 5,
-            maxDamage: 35,
-            minDropOffRange: 1.5,
-            maxDropOffRange: 10
+            damage:     new NumRange(5, 35),
+            dropOff:     new NumRange(1.5, 10)
         }),
         headshotMultiplier:     2,
         pierce:                 4,
@@ -1406,21 +1297,16 @@ const FirearmObjects = {
             stopAimOnCooldown:  true,
             stopAimDelay:       2
         }),
-        minSpreadDegrees:       2,
-        maxSpreadDegrees:       3,
+        spreadDegrees:     new NumRange(2, 3),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.08,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.08),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -1433,10 +1319,8 @@ const FirearmObjects = {
         firingRate:               200,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            minDamage: 5,
-            maxDamage: 35,
-            minDropOffRange: 1.5,
-            maxDropOffRange: 10
+            damage:     new NumRange(5, 35),
+            dropOff:     new NumRange(1.5, 10)
         }),
         headshotMultiplier:     2,
         pierce:                 4,
@@ -1475,21 +1359,16 @@ const FirearmObjects = {
             stopAimOnCooldown:  true,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       2,
-        maxSpreadDegrees:       3,
+        spreadDegrees:     new NumRange(2, 3),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.08,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.08),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -1529,21 +1408,16 @@ const FirearmObjects = {
             stopAimOnCooldown:  true,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       0.05,
-        maxSpreadDegrees:       0.15,
+        spreadDegrees:     new NumRange(0.05, 0.15),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.08,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.08),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     }),
@@ -1583,21 +1457,17 @@ const FirearmObjects = {
             stopAimOnCooldown:  false,
             stopAimDelay:       0
         }),
-        minSpreadDegrees:       0.05,
-        maxSpreadDegrees:       0.15,
+        
+        spreadDegrees:     new NumRange(0.05, 0.15),
         recoilAttribute: new Def.RecoilAttribute({
             amountPerShot: 30,
             mainCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.04,
-                maxCamerashake:     0.08,
-                minCamerashakeTime: 0.05,
-                maxCamerashakeTime: 0.05
+                camerashake:     new NumRange(0.04, 0.08),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
             }),
             residualCamerashakeAttribute: new Def.CamerashakeAttribute({
-                minCamerashake:     0.0001,
-                maxCamerashake:     0.0006,
-                minCamerashakeTime: 4,
-                maxCamerashakeTime: 10
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
             })
         })
     })

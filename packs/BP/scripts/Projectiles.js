@@ -138,7 +138,7 @@ function explodeExplosive(explosive, location, hitType) {
 
 
         const damageAttribute = attribute.explosiveDamage;
-        const numberOfTargets = DamageUtil.dealExplosionDamageAndKnockback(explosive, location, damageAttribute.range, damageAttribute.minDamage, damageAttribute.maxDamage, damageAttribute.minKnockback, damageAttribute.maxKnockback);
+        const numberOfTargets = DamageUtil.dealExplosionDamageAndKnockback(explosive, location, damageAttribute.range, damageAttribute.damage.min, damageAttribute.damage.max, damageAttribute.knockback.min, damageAttribute.knockback.max);
 
 
         const players = dimension.getPlayers({location: location, maxDistance: attribute.explosiveStun.range});
@@ -147,15 +147,18 @@ function explodeExplosive(explosive, location, hitType) {
             const distance = new Vector3(player.location.x, player.location.y, player.location.z).sub(new Vector3(location.x, location.y, location.z)).length();
 
             /** @type {Number} */
-            const screenDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minScreenDuration, stunAttribute.maxScreenDuration);
+            const screenDuration = stunAttribute.screenDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
+            //const screenDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.screenDuration.min, stunAttribute.screenDuration.max);
             player.addEffect("blindness", Math.floor(screenDuration), {showParticles: false});
 
             /** @type {Number} */
-            const aimRestrictionDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minAimRestrictionDuration, stunAttribute.maxAimRestrictionDuration);
+            const aimRestrictionDuration = stunAttribute.aimRestrictionDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
+            //const aimRestrictionDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minAimRestrictionDuration, stunAttribute.maxAimRestrictionDuration);
             player.setDynamicProperty(Global.PlayerDynamicProperties.script.aimRestrictionNumber, Math.floor(aimRestrictionDuration));
             
             /** @type {Number} */
-            const debrisDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minScreenDebrisDuration, stunAttribute.maxScreenDebrisDuration);
+            const debrisDuration = stunAttribute.screenDebrisDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
+            //const debrisDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minScreenDebrisDuration, stunAttribute.maxScreenDebrisDuration);
             const stayPortion = Math.min(Math.pow(((stunAttribute.range - distance)/stunAttribute.range)/0.8, 3)/2, 0.5);
             const outPortion = 1 - stayPortion;
             //console.log(`debrisDuration: ${debrisDuration}, stay: ${stayPortion}, out: ${outPortion}`);

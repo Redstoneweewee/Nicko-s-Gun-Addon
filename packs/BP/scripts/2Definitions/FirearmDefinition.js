@@ -5,6 +5,7 @@ import { FirearmAmmoClasses } from "../1Enums/AmmoEnums.js";
 import * as Enums from "../1Enums/FirearmEnums.js"
 import { MagazineClasses } from "../1Enums/MagazineEnums.js";
 import { NormalAnimation } from "./AnimationDefinition.js";
+import { NumRange } from "./GlobalDefinition.js";
 class Firearm {
     /**
      * @param {{
@@ -13,9 +14,8 @@ class Firearm {
      * firingMode:           string,
      * firingRate:           number,
      * hasMagazineWhenEmpty: boolean,
-     * manualAmmoEject:  boolean,
-     * minSpreadDegrees:     number,
-     * maxSpreadDegrees:     number,
+     * manualAmmoEject:      boolean,
+     * spreadDegrees:        NumRange,
      * magazineAttribute:    MagazineAttribute,
      * scopeAttribute:       ScopeAttribute,
      * recoilAttribute:      RecoilAttribute,
@@ -28,9 +28,8 @@ class Firearm {
         this.firingMode           = def.firingMode;
         this.firingRate           = def.firingRate;
         this.hasMagazineWhenEmpty = def.hasMagazineWhenEmpty;
-        this.manualAmmoEject  = def.manualAmmoEject;
-        this.minSpreadDegrees     = def.minSpreadDegrees;
-        this.maxSpreadDegrees     = def.maxSpreadDegrees;
+        this.manualAmmoEject      = def.manualAmmoEject;
+        this.spreadDegrees   = def.spreadDegrees;
         
         this.magazineAttribute   = def.magazineAttribute;
         this.scopeAttribute      = def.scopeAttribute;
@@ -131,17 +130,13 @@ class ScopeAttribute {
 class CamerashakeAttribute {
     /**
      * @param {{
-     * minCamerashake: number,
-     * maxCamerashake: number,
-     * minCamerashakeTime: number,
-     * maxCamerashakeTime: number
+     * camerashake: NumRange,
+     * camerashakeRandomTime: NumRange,
      * }} def
      */
     constructor(def) {
-        this.minCamerashake  = def.minCamerashake;
-        this.maxCamerashake  = def.maxCamerashake;
-        this.minCamerashakeTime = def.minCamerashakeTime;
-        this.maxCamerashakeTime = def.maxCamerashakeTime;
+        this.camerashake = def.camerashake;
+        this.camerashakeRandomTime = def.camerashakeRandomTime;
     }
 }
 
@@ -165,17 +160,13 @@ class RecoilAttribute {
 class DamageDropoffAttribute {
     /**
      * @param {{
-     * minDamage:       number,
-     * maxDamage:       number,
-     * minDropOffRange: number,
-     * maxDropOffRange: number
+     * damage:  NumRange,
+     * dropOff: NumRange
      * }} def
      */
     constructor(def) {
-        this.minDamage       = def.minDamage;
-        this.maxDamage       = def.maxDamage;
-        this.minDropOffRange = def.minDropOffRange;
-        this.maxDropOffRange = def.maxDropOffRange;
+        this.damage  = def.damage;
+        this.dropOff = def.dropOff;
     }
 }
 

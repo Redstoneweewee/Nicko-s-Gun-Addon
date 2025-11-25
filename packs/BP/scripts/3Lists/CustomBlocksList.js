@@ -1,6 +1,7 @@
 import * as Def from "../2Definitions/CustomBlockDefinition"
 import * as Enums from "../1Enums/CustomBlockEnums"
 import { TypeUtil } from "../UtilitiesInit";
+import { NumRange } from "../2Definitions/GlobalDefinition";
 
 /**
  * @enum {Def.CustomBlock}
@@ -10,8 +11,7 @@ const CustomBlocks = {
     AluminumOre: new Def.CustomBlock({
         typeId: Enums.CustomBlockTypes.AluminumOre,
         speedTag: "iron_pick_diggable",
-        xpMin: 0,
-        xpMax: 3,
+        xp: new NumRange(0, 3),
         blockLoots: [
             {
                 typeId: "yes:raw_aluminum",
@@ -23,8 +23,7 @@ const CustomBlocks = {
     DeepslateAluminumOre: new Def.CustomBlock({
         typeId: Enums.CustomBlockTypes.DeepslateAluminumOre,
         speedTag: "iron_pick_diggable",
-        xpMin: 0,
-        xpMax: 4,
+        xp: new NumRange(0, 4),
         blockLoots: [
             {
                 typeId: "yes:raw_aluminum",
@@ -36,8 +35,7 @@ const CustomBlocks = {
     DeepslateTitaniumOre: new Def.CustomBlock({
         typeId: Enums.CustomBlockTypes.DeepslateTitaniumOre,
         speedTag: "diamond_pick_diggable",
-        xpMin: 10,
-        xpMax: 15,
+        xp: new NumRange(10, 15),
         blockLoots: [
             {
                 typeId: "yes:raw_titanium",

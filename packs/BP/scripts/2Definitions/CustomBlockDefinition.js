@@ -1,4 +1,5 @@
 import * as Enums from "../1Enums/CustomBlockEnums"
+import { NumRange } from "./GlobalDefinition";
 
 
 class CustomBlock {
@@ -6,16 +7,14 @@ class CustomBlock {
      * @param {{
      * typeId: typeof Enums.CustomBlockTypes[keyof typeof Enums.CustomBlockTypes],
      * speedTag: string,
-     * xpMin: number,
-     * xpMax: number,
+     * xp: NumRange,
      * blockLoots: BlockLoot[]
      * }} def 
      */
     constructor(def) {
         this.typeId     = def.typeId;
         this.speedTag   = def.speedTag;
-        this.xpMin      = def.xpMin;
-        this.xpMax      = def.xpMax;
+        this.xp         = def.xp;
         this.blockLoots = def.blockLoots;
     }
 }

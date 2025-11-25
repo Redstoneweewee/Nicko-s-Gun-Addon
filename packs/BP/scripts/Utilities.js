@@ -1023,23 +1023,26 @@ class FirearmUtil {
             recoilMultiplier = firearm.scopeAttribute.recoilMultiplier;
         }
 
-        const mainMaxS     = firearm.recoilAttribute.mainCamerashakeAttribute.maxCamerashake;
-        const mainMinS     = firearm.recoilAttribute.mainCamerashakeAttribute.minCamerashake;
-        const mainMaxT     = firearm.recoilAttribute.mainCamerashakeAttribute.maxCamerashakeTime;
-        const mainMinT     = firearm.recoilAttribute.mainCamerashakeAttribute.minCamerashakeTime;
+        const mainMaxS     = firearm.recoilAttribute.mainCamerashakeAttribute.camerashake.max;
+        const mainMinS     = firearm.recoilAttribute.mainCamerashakeAttribute.camerashake.min;
+        const mainMaxT     = firearm.recoilAttribute.mainCamerashakeAttribute.camerashakeRandomTime.max;
+        const mainMinT     = firearm.recoilAttribute.mainCamerashakeAttribute.camerashakeRandomTime.min;
 
-        const residualMaxS = firearm.recoilAttribute.residualCamerashakeAttribute.maxCamerashake;
-        const residualMinS = firearm.recoilAttribute.residualCamerashakeAttribute.minCamerashake;
-        const residualMaxT = firearm.recoilAttribute.residualCamerashakeAttribute.maxCamerashakeTime;
-        const residualMinT = firearm.recoilAttribute.residualCamerashakeAttribute.minCamerashakeTime;
+        const residualMaxS = firearm.recoilAttribute.residualCamerashakeAttribute.camerashake.max;
+        const residualMinS = firearm.recoilAttribute.residualCamerashakeAttribute.camerashake.min;
+        const residualMaxT = firearm.recoilAttribute.residualCamerashakeAttribute.camerashakeRandomTime.max;
+        const residualMinT = firearm.recoilAttribute.residualCamerashakeAttribute.camerashakeRandomTime.min;
 
-        let mainCamerashakeAmount = mainMinS + (mainMaxS-mainMinS)*(recoil/100);
-        if(mainCamerashakeAmount > mainMaxS) { mainCamerashakeAmount = mainMaxS; }
+        //let mainCamerashakeAmount = mainMinS + (mainMaxS-mainMinS)*(recoil/100);
+        //if(mainCamerashakeAmount > mainMaxS) { mainCamerashakeAmount = mainMaxS; }
+        let mainCamerashakeAmount = Math.min(mainMaxS, MathUtils.mapLinear(recoil, 0, 100, mainMinS, mainMaxS));
         mainCamerashakeAmount = mainCamerashakeAmount*recoilMultiplier;
 
         
-        let residualCamerashakeAmount = residualMinS + (residualMaxS-residualMinS)*(recoil/100);
-        if(residualCamerashakeAmount > residualMaxS) { residualCamerashakeAmount = residualMaxS; }
+        //let residualCamerashakeAmount = residualMinS + (residualMaxS-residualMinS)*(recoil/100);
+        //if(residualCamerashakeAmount > residualMaxS) { residualCamerashakeAmount = residualMaxS; }
+        
+        let residualCamerashakeAmount = Math.min(residualMaxS, MathUtils.mapLinear(recoil, 0, 100, residualMinS, residualMaxS));
         residualCamerashakeAmount = residualCamerashakeAmount*recoilMultiplier;
 
         const mainCamerashakeTime     = NumberUtil.getRandomFloat(mainMinT, mainMaxT);
