@@ -493,7 +493,9 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
         }
 
         //adding end cock time to totalReloadTimeInTicks
-        if(iteration === 1 && player.getDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload) === true) {
+        if(iteration === 1 && player.getDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload) === true &&
+           (magazineObject.magazineType === MagazineTypes.DurabilityBased || 
+            magazineObject.magazineType === MagazineTypes.StackBased && newAmmoCount === finalMagazineItemStack?.amount)) {
             const attribute = FirearmUtil.tryGetAnimationAttribute(firearmObject, [AnimationTypes.ReloadCock]);
             if(attribute instanceof ScaledAnimation) {
                 totalReloadTimeInTicks += attribute.scaleDurationToValue;

@@ -1,0 +1,66 @@
+{
+	"format_version": "1.19.70",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "yes:flash_grenade",
+			"runtime_identifier": "minecraft:snowball",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false
+		  },
+		  "component_groups": {
+			"yes:despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		  },
+		"components": {
+			"minecraft:tick_world": {
+				"distance_to_players": 500,
+				"never_despawn": false,
+				"radius": 2
+			},
+			"minecraft:projectile": {
+				"on_hit": {
+					"stick_in_ground": {}
+				},
+				"power": 1,
+				"gravity": 0.015,
+				"inertia": 1,
+				"liquid_inertia": 0.92,
+				"anchor": 1,
+				"offset": [
+					0,
+					0.1,
+					0
+				],
+				"catch_fire": false
+			},
+			"minecraft:type_family": {
+				"family": [
+					"weeweejuice",
+					"weeweejuice_projectile",
+					"minecraft:projectile",
+					"flash_grenade"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0.001,
+				"height": 0.001
+			},
+			"minecraft:health": {
+			  "value": 1,
+			  "max": 1
+			},
+			"minecraft:physics": {}
+		},
+		"events": {
+			"yes:despawn": {
+				"add": {
+					"component_groups": [
+						"yes:despawn"
+					]
+				}
+			}
+		}
+	}
+}

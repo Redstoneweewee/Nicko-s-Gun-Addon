@@ -1,4 +1,4 @@
-import { Entity, EntityDamageCause, EntityHealthComponent, EntityInventoryComponent, GameMode, ContainerSlot, Player, system, ItemStack, ItemDurabilityComponent, EntityEquippableComponent, EquipmentSlot, EntityComponentTypes, ItemComponentTypes, world, EntityTypeFamilyComponent, Block, Dimension } from '@minecraft/server';
+import { Entity, EntityDamageCause, EntityHealthComponent, EntityInventoryComponent, GameMode, ContainerSlot, Player, system, ItemStack, ItemDurabilityComponent, EntityEquippableComponent, EquipmentSlot, EntityComponentTypes, ItemComponentTypes, world, EntityTypeFamilyComponent, Block, Dimension, BlockVolume, EntityProjectileComponent, MolangVariableMap } from '@minecraft/server';
 import { Vector3 } from './Math/Vector3.js';
 import { Global } from './Global.js';
 import { Firearm, Gun, Explosive, GunWithAbility } from './2Definitions/FirearmDefinition.js';
@@ -129,24 +129,24 @@ class IdUtil {
 export { IdUtil };
 
 class MapUtil {
-    /**
-     * @param {Map} map
-     */
-    static printMap(map) {
-        const output = this.getMapAsString(map)
-        console.log(output);
-    }
-    /**
-     * @param {Map} map
-     * @returns {string}
-     */
-    static getMapAsString(map) {
-        let output = "";
-        for(const entry of map) {
-            output += `key: ${entry[0]}, value: ${entry[1]}\n`;
-        }
-        return output;
-    }
+    // /**
+    //  * @param {Map} map
+    //  */
+    // static printMap(map) {
+    //     const output = this.getMapAsString(map)
+    //     console.log(output);
+    // }
+    // /**
+    //  * @param {Map} map
+    //  * @returns {string}
+    //  */
+    // static getMapAsString(map) {
+    //     let output = "";
+    //     for(const entry of map) {
+    //         output += `key: ${entry[0]}, value: ${entry[1]}\n`;
+    //     }
+    //     return output;
+    // }
 }
 
 export { MapUtil };
@@ -156,48 +156,48 @@ export { MapUtil };
 
 class LoopUtil {
 
-    /**
-     * @param {Player} player
-     * @param {Map} map - A Global map. Must be a `Global.playerShootingLoopIds`
-     * @param {function} func
-     * @param {number} deltaTime
-     */
-    static startAsyncLoop(player, map, func, deltaTime) {
-        //if(Global.playerShootingLoopIds.get(player.id) != -1) {
-        //    console.warn(`player ${player.name} is already shooting with loop ID ${Global.playerShootingLoopIds.get(player.id)}!`);
-        //    return;
-        //}
-        func(); 
-        const loopId = system.runInterval(() => {
-            func();
-        }, deltaTime);
-        this.#addId(player, map, loopId);
-    }
+    // /**
+    //  * @param {Player} player
+    //  * @param {Map} map - A Global map. Must be a `Global.playerShootingLoopIds`
+    //  * @param {function} func
+    //  * @param {number} deltaTime
+    //  */
+    // static startAsyncLoop(player, map, func, deltaTime) {
+    //     //if(Global.playerShootingLoopIds.get(player.id) != -1) {
+    //     //    console.warn(`player ${player.name} is already shooting with loop ID ${Global.playerShootingLoopIds.get(player.id)}!`);
+    //     //    return;
+    //     //}
+    //     func(); 
+    //     const loopId = system.runInterval(() => {
+    //         func();
+    //     }, deltaTime);
+    //     this.#addId(player, map, loopId);
+    // }
 
-    /**
-     * @param {Player} player
-     * @param {Map} map - A Global map.
-     */
-    static stopAsyncLoop(player, map) {
-        const loopIds = map.get(player.id);
-        //console.log(loopIds);
-        if(loopIds === undefined) { return; }
-        loopIds.forEach(e => {
-            system.clearRun(e);
-        });
-        map.set(player.id, []);
-    }
+    // /**
+    //  * @param {Player} player
+    //  * @param {Map} map - A Global map.
+    //  */
+    // static stopAsyncLoop(player, map) {
+    //     const loopIds = map.get(player.id);
+    //     //console.log(loopIds);
+    //     if(loopIds === undefined) { return; }
+    //     loopIds.forEach(e => {
+    //         system.clearRun(e);
+    //     });
+    //     map.set(player.id, []);
+    // }
 
 
-    /**
-     * @param {Player} player
-     * @param {Map} map - A Global map. Must be a `Global.playerShootingLoopIds`
-     * @param {number} id
-     */
-    static #addId(player, map, id) {
-        const newIds = map.get(player.id)? Array.prototype.concat(id, map.get(player.id)) : [id];
-        map.set(player.id, newIds);
-    }
+    // /**
+    //  * @param {Player} player
+    //  * @param {Map} map - A Global map. Must be a `Global.playerShootingLoopIds`
+    //  * @param {number} id
+    //  */
+    // static #addId(player, map, id) {
+    //     const newIds = map.get(player.id)? Array.prototype.concat(id, map.get(player.id)) : [id];
+    //     map.set(player.id, newIds);
+    // }
 
 
     /**
@@ -1347,6 +1347,16 @@ export { FirearmUtil };
 
 
 class DamageUtil {
+
+    /**
+     * @param {Entity} target 
+     * @param {number} duration in ticks
+     */
+    static restrictMovement(target, duration) {
+        const movementComponent = target.getComponent(EntityComponentTypes.Movement);
+        if(movementComponent === undefined) return;
+        movementComponent.setCurrentValue(0);
+    }
     /**
      * @param {Entity} target 
      * @param {number} damage 
@@ -1398,8 +1408,35 @@ class DamageUtil {
 
 
     /**
+     * Checks if a block is in between the dimension location and the target entity (both feet and head).
+     * @param {Dimension} dimension 
+     * @param {import('@minecraft/server').Vector3} location 
+     * @param {Entity} target 
+     * @param {Number} range 
+     * @returns {boolean} - True if blocks are blocking both paths and are closer than the target
+     */
+    static isBlockObstructingTarget(dimension, location, target, range) {
+        const distanceFromFeet = new Vector3(target.location.x, target.location.y, target.location.z).sub(location).length();
+        const distanceFromHead = new Vector3(target.getHeadLocation().x, target.getHeadLocation().y, target.getHeadLocation().z).sub(location).length();
+
+        const blockInTheWayOfFeet = dimension.getBlockFromRay(location, new Vector3(target.location.x, target.location.y, target.location.z).sub(location), {maxDistance: range});
+        const blockInTheWayOfHead = dimension.getBlockFromRay(location, new Vector3(target.getHeadLocation().x, target.getHeadLocation().y, target.getHeadLocation().z).sub(location), {maxDistance: range});
+        
+        if(!blockInTheWayOfFeet || !blockInTheWayOfHead) {
+            return false;
+        }
+
+        const hitLocationFeet = new Vector3(blockInTheWayOfFeet.block.location.x+blockInTheWayOfFeet.faceLocation.x, blockInTheWayOfFeet.block.location.y+blockInTheWayOfFeet.faceLocation.y, blockInTheWayOfFeet.block.location.z+blockInTheWayOfFeet.faceLocation.z);
+        const hitLocationHead = new Vector3(blockInTheWayOfHead.block.location.x+blockInTheWayOfHead.faceLocation.x, blockInTheWayOfHead.block.location.y+blockInTheWayOfHead.faceLocation.y, blockInTheWayOfHead.block.location.z+blockInTheWayOfHead.faceLocation.z);
+                console.log(`block: ${blockInTheWayOfFeet.block.typeId}, block dist: ${new Vector3(hitLocationFeet.x, hitLocationFeet.y, hitLocationFeet.z).sub(new Vector3(location.x, location.y, location.z)).length()} vs. ${distanceFromFeet}`);
+
+        return hitLocationFeet.sub(location).length() < distanceFromFeet && 
+               hitLocationHead.sub(location).length() < distanceFromHead;
+    }
+
+    /**
      * 
-     * @param {Entity} source 
+     * @param {Dimension} dimension 
      * @param {import('@minecraft/server').Vector3} location 
      * @param {Number} range 
      * @param {Number} minDamage 
@@ -1408,10 +1445,10 @@ class DamageUtil {
      * @param {import('@minecraft/server').Vector2} maxKnockback 
      * @returns {number}
      */
-    static dealExplosionDamageAndKnockback(source, location, range, minDamage, maxDamage, minKnockback, maxKnockback) {
+    static dealExplosionDamageAndKnockback(dimension, location, range, minDamage, maxDamage, minKnockback, maxKnockback) {
         let numberOfTargets = 0;
 
-        const targets = source.dimension.getEntities({
+        const targets = dimension.getEntities({
             location: location, 
             maxDistance: range, 
             excludeFamilies: excludedFamilies,
@@ -1427,30 +1464,36 @@ class DamageUtil {
             /** @type {Number} */
             let damage = Math.floor(MathUtils.mapLinear(Math.max((range - distanceFromFeet), range - distanceFromHead), 0, range, minDamage, maxDamage)) * (isPlayer ? 1 : 1.5);
             
-            const blockInTheWayOfFeet = source.dimension.getBlockFromRay(location, new Vector3(target.location.x, target.location.y, target.location.z).sub(new Vector3(location.x, location.y, location.z)), {maxDistance: range});
-            const blockInTheWayOfHead = source.dimension.getBlockFromRay(location, new Vector3(target.getHeadLocation().x, target.getHeadLocation().y, target.getHeadLocation().z).sub(new Vector3(location.x, location.y, location.z)), {maxDistance: range});
+            /*
+            const blockInTheWayOfFeet = dimension.getBlockFromRay(location, new Vector3(target.location.x, target.location.y, target.location.z).sub(new Vector3(location.x, location.y, location.z)), {maxDistance: range});
+            const blockInTheWayOfHead = dimension.getBlockFromRay(location, new Vector3(target.getHeadLocation().x, target.getHeadLocation().y, target.getHeadLocation().z).sub(new Vector3(location.x, location.y, location.z)), {maxDistance: range});
             if(blockInTheWayOfFeet && blockInTheWayOfHead) {
                 const hitLocationFeet = new Vector3(blockInTheWayOfFeet.block.location.x+blockInTheWayOfFeet.faceLocation.x, blockInTheWayOfFeet.block.location.y+blockInTheWayOfFeet.faceLocation.y, blockInTheWayOfFeet.block.location.z+blockInTheWayOfFeet.faceLocation.z);
                 const hitLocationHead = new Vector3(blockInTheWayOfHead.block.location.x+blockInTheWayOfHead.faceLocation.x, blockInTheWayOfHead.block.location.y+blockInTheWayOfHead.faceLocation.y, blockInTheWayOfHead.block.location.z+blockInTheWayOfHead.faceLocation.z);
                 console.log(`block: ${blockInTheWayOfFeet.block.typeId}, block dist: ${new Vector3(hitLocationFeet.x, hitLocationFeet.y, hitLocationFeet.z).sub(new Vector3(location.x, location.y, location.z)).length()} vs. ${distanceFromFeet}`);
 
                 if(new Vector3(hitLocationFeet.x, hitLocationFeet.y, hitLocationFeet.z).sub(new Vector3(location.x, location.y, location.z)).length() < distanceFromFeet
-                   &&
-                   new Vector3(hitLocationHead.x, hitLocationHead.y, hitLocationHead.z).sub(new Vector3(location.x, location.y, location.z)).length() < distanceFromHead) {
+                    &&
+                    new Vector3(hitLocationHead.x, hitLocationHead.y, hitLocationHead.z).sub(new Vector3(location.x, location.y, location.z)).length() < distanceFromHead) {
                     damage *= 0.1;
                     damage = Math.ceil(damage);
                 }
             }
+            */
+
+
+            if(this.isBlockObstructingTarget(dimension, location, target, range)) {
+                damage *= 0.1;
+                damage = Math.ceil(damage);
+            }
+
             DamageUtil.dealDamageNoMultiplier(target, damage);
             console.log(`damage: ${damage}`);
-
-
 
             const knockbackX = MathUtils.mapLinear((range - distanceFromFeet), 0, range, minKnockback.x, maxKnockback.x);
             const knockbackY = MathUtils.mapLinear((range - distanceFromFeet), 0, range, minKnockback.y, maxKnockback.y);
 
             const knockbackDirection = new Vector3(target.location.x, 0, target.location.z).sub(new Vector3(location.x, 0, location.z)).normalize();
-            //target.applyKnockback(knockbackDirection.x, knockbackDirection.z, knockbackX, knockbackY);
             target.applyImpulse(new Vector3(knockbackDirection.x, knockbackDirection.y, knockbackDirection.z).multiplyScalar(knockbackX).add(new Vector3(0, 1, 0).multiplyScalar(knockbackY)));
             numberOfTargets++;
         });
@@ -1460,6 +1503,131 @@ class DamageUtil {
 
 export { DamageUtil };
 
+
+export class EntityUtil {
+    /**
+     * 
+     * @param {Entity} sourceEntity 
+     * @param {number} maxRange 
+     * @param {number} minRange 
+     * @returns {Entity[]}
+     */
+    static getValidEntitiesNearbyEntity(sourceEntity, maxRange, minRange = 0) {
+        const sourcePos = sourceEntity.location;
+        const nearbyEntities = sourceEntity.dimension.getEntities({
+        location: sourcePos,
+        maxDistance: maxRange,
+        minDistance: minRange,
+        excludeFamilies: excludedFamilies, 
+        excludeTypes: excludedTypes
+        });
+        let output = [];
+        for(const entity of nearbyEntities) {
+        if(entity instanceof Player && excludedGameModes.includes(entity.getGameMode())) continue;
+        if(entity === sourceEntity) continue;
+        output.push(entity);
+        }
+        return output;
+    }
+    /**
+     * 
+     * @param {Entity | undefined | null} entity 
+     * @returns {boolean}
+     */
+    static isActuallyValid(entity) {
+        if(entity === undefined || entity === null) return false;
+        try {
+            if(!EntityUtil.#hasHealthComponent(entity) && !EntityUtil.#hasProjectileComponent(entity)) return false;
+        }
+        catch {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 
+     * @param {Entity} entity 
+     * @returns {boolean}
+     */
+    static isAlive(entity) {
+        const healthComp = entity.getComponent(EntityComponentTypes.Health);
+        if (healthComp === undefined || !(healthComp instanceof EntityHealthComponent)) return false;
+        if (healthComp.currentValue <= 0) return false;
+        return true;
+    }
+
+    /**
+     * 
+     * @param {Entity} entity 
+     * @returns {boolean}
+     */
+    static #hasHealthComponent(entity) {
+        const healthComp = entity.getComponent(EntityComponentTypes.Health);
+        if (healthComp === undefined || !(healthComp instanceof EntityHealthComponent)) return false;
+        return true;
+    }
+
+    /**
+     * 
+     * @param {Entity} entity 
+     * @returns {boolean}
+     */
+    static #hasProjectileComponent(entity) {
+        const projComp = entity.getComponent(EntityComponentTypes.Projectile);
+        if (projComp === undefined || !(projComp instanceof EntityProjectileComponent)) return false;
+        return true;
+    }
+}
+
+export class RangeUtil {
+    
+    /**
+     * 
+     * @param {Vector3} location 
+     * @param {Dimension} dimension 
+     * @param {number} maxRange 
+     * @param {number} minRange 
+     * @returns {Entity[]}
+     */
+    static getValidEntitiesNearbyLocation(location, dimension, maxRange, minRange = 0) {
+        const sourcePos = location;
+        const nearbyEntities = dimension.getEntities({
+        location: sourcePos,
+        maxDistance: maxRange,
+        minDistance: minRange,
+        excludeFamilies: excludedFamilies, 
+        excludeTypes: excludedTypes
+        });
+        let output = [];
+        for(const entity of nearbyEntities) {
+        if(entity instanceof Player && excludedGameModes.includes(entity.getGameMode())) continue;
+        output.push(entity);
+        }
+        return output;
+    }
+}
+
+export class PlayerUtil {
+    /**
+     * Dosn't really work :(
+     * @param {Player} player 
+     * @param {import('@minecraft/server').RGB} color 
+     * @param {{
+     * totalDuration: number,
+     * fadeInPercentage: number,
+     * fadeOutPercentage: number
+     * }} durations percentages are 0-1, not 0-100
+     */
+    static addParticleFog(player, color, durations) {
+        const vars = new MolangVariableMap();
+        vars.setColorRGB("color", color);
+        vars.setFloat("fade_in_duration", durations.totalDuration * durations.fadeInPercentage);
+        vars.setFloat("stay_duration", durations.totalDuration * (1 - durations.fadeInPercentage - durations.fadeOutPercentage));
+        vars.setFloat("fade_out_duration", durations.totalDuration * durations.fadeOutPercentage);
+        player.spawnParticle("yes:custom_fog", player.getHeadLocation(), vars);
+    }
+}
 
 class FirearmIdUtil {
 
@@ -2016,6 +2184,20 @@ class ColorUtil {
         }
         return "#" + ColorUtil.#componentToHex(rgb.red) + ColorUtil.#componentToHex(rgb.green) + ColorUtil.#componentToHex(rgb.blue);
     }
+
+    /**
+     * 
+     * @param {string} hex - A 6-digit hex color with hashtag (e.g., "#FF5733")
+     * @returns {import('@minecraft/server').RGB}
+     */
+    static hexToRgb(hex) {
+        const r = parseInt(hex.substring(1, 3), 16) / 255;
+        const g = parseInt(hex.substring(3, 5), 16) / 255;
+        const b = parseInt(hex.substring(5, 7), 16) / 255;
+        return { red: r, green: g, blue: b };
+    }
+
+    
 }
 export { ColorUtil };
 
@@ -2064,3 +2246,64 @@ class RayCastUtil {
 
 }
 export { RayCastUtil };
+
+
+export class VolumeUtil {
+    /**
+     * 
+     * @param {Vector3} center 
+     * @param {number} width x
+     * @param {number} height y
+     * @param {number} depth z
+     * @returns {BlockVolume}
+     */
+    static createBoxVolume(center, width, height, depth) {
+        const minX = Math.floor(center.x - width/2);
+        const maxX = Math.ceil(center.x + width/2);
+        const minY = Math.floor(center.y - height/2);
+        const maxY = Math.ceil(center.y + height/2);
+        const minZ = Math.floor(center.z - depth/2);
+        const maxZ = Math.ceil(center.z + depth/2);
+        return new BlockVolume(
+            new Vector3(minX, minY, minZ),
+            new Vector3(maxX - 1, maxY - 1, maxZ - 1)
+        );
+    }
+
+    /**
+     * 
+     * @param {Vector3} center 
+     * @param {number} radius 
+     * @param {number} height 
+     * @returns {BlockVolume[]}
+     */
+    static createCylindricalVolume(center, radius, height) {
+        const volumes = [];
+        const minX = Math.floor(center.x - radius);
+        const maxX = Math.ceil(center.x + radius);
+        const minZ = Math.floor(center.z - radius);
+        const maxZ = Math.ceil(center.z + radius);
+        const minY = Math.floor(center.y);
+        const maxY = Math.ceil(center.y + height);
+        
+        for (let x = minX; x < maxX; x++) {
+            for (let z = minZ; z < maxZ; z++) {
+                // Check if this column is within the cylindrical radius
+                const distanceFromCenter = Math.sqrt(
+                    Math.pow(x + 0.5 - center.x, 2) + 
+                    Math.pow(z + 0.5 - center.z, 2)
+                );
+                
+                if (distanceFromCenter <= radius) {
+                    volumes.push(new BlockVolume(
+                        new Vector3(x, minY, z),
+                        new Vector3(x, maxY - 1, z)
+                    ));
+                }
+            }
+        }
+        
+        return volumes;
+    }
+}
+

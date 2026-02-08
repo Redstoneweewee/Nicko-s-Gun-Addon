@@ -158,39 +158,163 @@ const MagazineObjects = {
                 screenDuration:         new NumRange(2, 25),
                 aimRestrictionDuration: new NumRange(10, 30),
                 screenDebrisDuration:   new NumRange(20, 150),
+                screenFlashDuration:    new NumRange(0, 0),
+                movementRestrictionMultiplier: new NumRange(0, 0),
+                movementRestrictionDuration: new NumRange(0, 0),
                 range: 15
             })
+        }),
+        particleAttribute: new Def.ParticleAttribute({
+            explosionSize: 0.5, //usually 1/3 of explosionPower
+            showExplosionFlash:      true,
+            showExplosionSparks:     true,
+            showExplosionMushroom:   true,
+            explosionSmokeType:      "black",
+            showExplosionSmokeFlash: true
         })
     }),
     
-    FlameGrenade: new Def.Magazine({
+
+    FlameGrenade: new Def.ExplosiveMagazineAmmo({
         itemTypeId:            Enums.MagazineTypeIds.FlameGrenade,
         name:                  "Flame Grenade",
         magazineClass:         MagazineClasses.GrenadeLauncher,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         itemStack:             new ItemStack("yes:flame_grenade", 1),
-        fillableByAmmoClasses: []
+        fillableByAmmoClasses: [],
+        projectileAttribute: new Def.ProjectileAttribute({
+            typeId: "yes:flame_grenade", 
+            speed: 2,
+            explosionPower: 1,
+            spawnOffset: {x: 0.05, y:-0.15, z:2.1}, //x:left-right, y:up-down, z:forward-backward
+            shootDirectionOffset: {x:0, y:0.035}, //x:left-right, y:up-down
+            shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
+            explosiveDamage: new Def.ExplosiveDamage({
+                damage:    new NumRange(3, 10),
+                knockback: new Vec2Range({x:0.7, y:0.2}, {x:1.2, y:0.3}),
+                range:     5
+            }),
+            explosiveCamerashakes: [
+                new Def.ExplosiveCamerashakeAttribute({
+                    intensity: 0.02,
+                    duration: 100,
+                    range: 5
+                }),
+                new Def.ExplosiveCamerashakeAttribute({
+                    intensity: 0.008,
+                    duration: 200,
+                    range: 10
+                })
+            ],
+            explosiveEffect: new Def.ExplosiveEffectAttribute({
+                range: 6,
+                setFire: {height: 3, chance: 0.65}
+            })
+        }),
+        particleAttribute: new Def.ParticleAttribute({
+            explosionSize: 0.333, //usually 1/3 of explosionPower
+            showExplosionFlash:      true,
+            showExplosionSparks:     false,
+            showExplosionMushroom:   true,
+            explosionSmokeType:      "black",
+            showExplosionSmokeFlash: true
+        })
     }),
     
-    FlashGrenade: new Def.Magazine({
+    FlashGrenade: new Def.ExplosiveMagazineAmmo({
         itemTypeId:            Enums.MagazineTypeIds.FlashGrenade,
         name:                  "Flash Grenade",
         magazineClass:         MagazineClasses.GrenadeLauncher,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         itemStack:             new ItemStack("yes:flash_grenade", 1),
-        fillableByAmmoClasses: []
+        fillableByAmmoClasses: [],
+        projectileAttribute: new Def.ProjectileAttribute({
+            typeId: "yes:flash_grenade", 
+            speed: 2,
+            explosionPower: 0,
+            spawnOffset: {x: 0.05, y:-0.15, z:2.1}, //x:left-right, y:up-down, z:forward-backward
+            shootDirectionOffset: {x:0, y:0.035}, //x:left-right, y:up-down
+            shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
+            explosiveDamage: new Def.ExplosiveDamage({
+                damage:    new NumRange(0, 0),
+                knockback: new Vec2Range({x:0, y:0}, {x:1, y:0}),
+                range:     0
+            }),
+            explosiveCamerashakes: [
+                new Def.ExplosiveCamerashakeAttribute({
+                    intensity: 0.02,
+                    duration: 100,
+                    range: 15
+                }),
+                new Def.ExplosiveCamerashakeAttribute({
+                    intensity: 0.008,
+                    duration: 200,
+                    range: 25
+                })
+            ],
+            explosiveStun: new Def.ExplosiveStunAttribute({
+                screenDuration:         new NumRange(2, 25),
+                aimRestrictionDuration: new NumRange(10, 30),
+                screenDebrisDuration:   new NumRange(20, 150),
+                screenFlashDuration:    new NumRange(10, 50),
+                movementRestrictionMultiplier: new NumRange(0.5, 1),
+                movementRestrictionDuration: new NumRange(50, 100),
+                range: 12
+            })
+        }),
+        particleAttribute: new Def.ParticleAttribute({
+            explosionSize: 0.5, //usually 1/3 of explosionPower
+            showExplosionFlash:      true,
+            showExplosionSparks:     true,
+            showExplosionMushroom:   false,
+            explosionSmokeType:      "white",
+            showExplosionSmokeFlash: false
+        })
     }),
     
-    AcidGrenade: new Def.Magazine({
+
+    AcidGrenade: new Def.ExplosiveMagazineAmmo({
         itemTypeId:            Enums.MagazineTypeIds.AcidGrenade,
         name:                  "Acid Grenade",
         magazineClass:         MagazineClasses.GrenadeLauncher,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         itemStack:             new ItemStack("yes:acid_grenade", 1),
-        fillableByAmmoClasses: []
+        fillableByAmmoClasses: [],
+        projectileAttribute: new Def.ProjectileAttribute({
+            typeId: "yes:acid_grenade", 
+            speed: 2,
+            explosionPower: 1,
+            spawnOffset: {x: 0.05, y:-0.15, z:2.1}, //x:left-right, y:up-down, z:forward-backward
+            shootDirectionOffset: {x:0, y:0.035}, //x:left-right, y:up-down
+            shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
+            explosiveCamerashakes: [
+                new Def.ExplosiveCamerashakeAttribute({
+                    intensity: 0.02,
+                    duration: 100,
+                    range: 5
+                }),
+                new Def.ExplosiveCamerashakeAttribute({
+                    intensity: 0.008,
+                    duration: 200,
+                    range: 10
+                })
+            ],
+            explosiveEffect: new Def.ExplosiveEffectAttribute({
+                range: 10,
+                applyPoison: {damage: 1, ticksPerDamage: 5, duration: 240}
+            })
+        }),
+        particleAttribute: new Def.ParticleAttribute({
+            explosionSize: 1, //usually 1/3 of explosionPower
+            showExplosionFlash:      true,
+            showExplosionSparks:     false,
+            showExplosionMushroom:   false,
+            explosionSmokeType:      "none",
+            showExplosionSmokeFlash: false
+        })
     }),
     
     Rocket: new Def.ExplosiveMagazineAmmo({
@@ -229,8 +353,19 @@ const MagazineObjects = {
                 screenDuration:         new NumRange(2, 25),
                 aimRestrictionDuration: new NumRange(10, 30),
                 screenDebrisDuration:   new NumRange(20, 150),
+                screenFlashDuration:    new NumRange(0, 0),
+                movementRestrictionMultiplier: new NumRange(1, 1),
+                movementRestrictionDuration: new NumRange(0, 0),
                 range: 15
             })
+        }),
+        particleAttribute: new Def.ParticleAttribute({
+            explosionSize: 1, //usually 1/3 of explosionPower
+            showExplosionFlash:      true,
+            showExplosionSparks:     true,
+            showExplosionMushroom:   true,
+            explosionSmokeType:      "black",
+            showExplosionSmokeFlash: true
         })
     }),
     

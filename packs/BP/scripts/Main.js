@@ -61,10 +61,6 @@ system.runInterval(() => {
 
         //LeftClickAbilityDetection.leftClickAbilityDetection(player);
     });
-    world.getDimension("minecraft:overworld").getEntities().forEach(entity => {
-        if(entity instanceof Player) return;
-        entity.getComponent(EntityComponentTypes.Movement)?.setCurrentValue(entity.getComponent(EntityComponentTypes.Movement)?.defaultValue*0);
-    });
 });
 
 

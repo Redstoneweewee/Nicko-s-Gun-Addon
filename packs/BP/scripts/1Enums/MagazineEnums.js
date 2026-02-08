@@ -136,5 +136,4 @@ const MagazineClassTextNames = {
 
 
 
-
 export { MagazineTypeIds, MagazineTypes, DurabilityMagazineClasses, StackMagazineClasses, MagazineClasses, MagazineClassTextNames }

@@ -1,15 +1,17 @@
 
-import { world, system, EntityInitializationCause, Entity, MolangVariableMap, Player, LocationOutOfWorldBoundariesError, LocationInUnloadedChunkError, Block, ProjectileHitBlockAfterEvent, ProjectileHitEntityAfterEvent, Direction, EntityComponentTypes, EntitySpawnAfterEvent } from '@minecraft/server';
+import { world, system, EntityInitializationCause, Entity, MolangVariableMap, Player, LocationOutOfWorldBoundariesError, LocationInUnloadedChunkError, Block, ProjectileHitBlockAfterEvent, ProjectileHitEntityAfterEvent, Direction, EntityComponentTypes, EntitySpawnAfterEvent, BlockVolume, BlockVolumeBase, Dimension } from '@minecraft/server';
 import { Vector3 } from './Math/Vector3.js';
 import { Global } from "./Global.js";
 import { MagazineTypeIds } from './1Enums/MagazineEnums.js';
-import { ExplosiveMagazineAmmo } from './2Definitions/MagazineDefinition.js';
-import { MathUtils } from './Math/MathUtils.js';
+import { ExplosiveEffectAttribute, ExplosiveMagazineAmmo } from './2Definitions/MagazineDefinition.js';
+import { clamp, MathUtils } from './Math/MathUtils.js';
 import { excludedFamilies, excludedGameModes, excludedTypes } from './1Enums/HitExclusionArrays.js';
-import { ColorUtil, DamageUtil } from './Utilities.js';
+import { ColorUtil, DamageUtil, EntityUtil, NumberUtil, PlayerUtil, RangeUtil, VolumeUtil } from './Utilities.js';
 import { blockColorsMap, defaultColor, tagColorsMap } from './3Lists/BlockColorsList.js';
 import { BlockColor } from './2Definitions/BlockColorsDefinition.js';
 import { MagazineObjects } from './3Lists/MagazinesList.js';
+import { ExplosivesList } from './3Lists/ExplosivesList.js';
+import { SmokeParticleTypes } from './1Enums/ParticleEnums.js';
 const Vector = new Vector3();
 
 /**@type {Map<Entity, Number>}  */
@@ -24,19 +26,19 @@ const grenadePrimedMap = new Map();
 //For Rockets
 world.afterEvents.entitySpawn.subscribe(eventData => {
     if(eventData.cause !== EntityInitializationCause.Loaded && eventData.cause != EntityInitializationCause.Spawned) return;
-    if(eventData.entity.typeId === "yes:rocket") { trackRocket(eventData); }
-    else if(eventData.entity.typeId === "yes:explosive_grenade") { trackGrenade(eventData); }
+    if(ExplosivesList.Rockets.includes(eventData.entity.typeId)) { trackRocket(eventData); }
+    else if(ExplosivesList.Grenades.includes(eventData.entity.typeId)) { trackGrenade(eventData); }
 
 });
 
 world.afterEvents.projectileHitBlock.subscribe(eventData => {
-    if(eventData.projectile.typeId === "yes:rocket") { explodeExplosive(eventData.projectile, eventData.location, "block"); }
-    else if(eventData.projectile.typeId === "yes:explosive_grenade") { tryBounceExplosive(eventData, false); }
+    if(ExplosivesList.Rockets.includes(eventData.projectile.typeId)) { explodeExplosive(eventData.projectile, eventData.location, "block"); }
+    else if(ExplosivesList.Grenades.includes(eventData.projectile.typeId)) { tryBounceExplosive(eventData, false); }
 });
 
 world.afterEvents.projectileHitEntity.subscribe(eventData => {
-    if(eventData.projectile.typeId === "yes:rocket") { explodeExplosive(eventData.projectile, eventData.location, "entity"); }
-    else if(eventData.projectile.typeId === "yes:explosive_grenade") { tryBounceExplosive(eventData, false); }
+    if(ExplosivesList.Rockets.includes(eventData.projectile.typeId)) { explodeExplosive(eventData.projectile, eventData.location, "entity"); }
+    else if(ExplosivesList.Grenades.includes(eventData.projectile.typeId)) { tryBounceExplosive(eventData, false); }
 });
 
 
@@ -59,9 +61,9 @@ function trackRocket(eventData) {
         const location3 = new Vector3(entity.location.x, entity.location.y, entity.location.z).add(new Vector3(direction.x, direction.y, direction.z).multiplyScalar(10.3));
         const vars = new MolangVariableMap();
         vars.setVector3("direction", direction);
-            dimension.spawnParticle("yes:rpg7_smoke_trail", location1, vars);
-            dimension.spawnParticle("yes:rpg7_smoke_trail", location2, vars);
-            dimension.spawnParticle("yes:rpg7_smoke_trail", location3, vars);
+        dimension.spawnParticle("yes:rpg7_smoke_trail", location1, vars);
+        dimension.spawnParticle("yes:rpg7_smoke_trail", location2, vars);
+        dimension.spawnParticle("yes:rpg7_smoke_trail", location3, vars);
         } catch {}
         totalTime++;
         try {
@@ -108,106 +110,213 @@ function trackGrenade(eventData) {
  * @param {"block"|"entity"} hitType
  */
 function explodeExplosive(explosive, location, hitType) {
-    try {
-        
-        const dimension = explosive.dimension;
-        //const tpLocation = new Vector3(location.x, location.y, location.z).add(new Vector3(direction.x, direction.y, direction.z));
-        //explosive.dimension.getPlayers()[0].teleport(tpLocation);
-        //console.log(`tp to ${tpLocation.x}, ${tpLocation.y}, ${tpLocation.z}`);
-        
-        /**@ts-ignore */
-        const magazineObject = Global.magazines.get(String(explosive.getDynamicProperty(Global.ProjectileDynamicProperties.magazineObjectTypeId)));
+    if(!EntityUtil.isActuallyValid(explosive)) {
+        cleanUpExplosion(explosive, "removed unloaded explosive");
+        return;
+    }
+    const dimension = explosive.dimension;
+    //const tpLocation = new Vector3(location.x, location.y, location.z).add(new Vector3(direction.x, direction.y, direction.z));
+    //explosive.dimension.getPlayers()[0].teleport(tpLocation);
+    //console.log(`tp to ${tpLocation.x}, ${tpLocation.y}, ${tpLocation.z}`);
+    
+    /**@ts-ignore */
+    const magazineObject = Global.magazines.get(String(explosive.getDynamicProperty(Global.ProjectileDynamicProperties.magazineObjectTypeId)));
 
 
 
-        if(magazineObject === undefined || !(magazineObject instanceof ExplosiveMagazineAmmo)) return;
+    if(magazineObject === undefined || !(magazineObject instanceof ExplosiveMagazineAmmo)) return;
 
-        const attribute = magazineObject.projectileAttribute;
+    const attribute = magazineObject.projectileAttribute;
+    const particleAttribute = magazineObject.particleAttribute;
 
+    if(attribute.explosionPower !== 0) {
         const explosiveEntity = dimension.spawnEntity("yes:explosive_entity", location);
         explosiveEntity.triggerEvent(world.gameRules.mobGriefing ? `explode_${attribute.explosionPower}_no_damage` : `explode_${attribute.explosionPower}_no_damage_no_break`);
-
-
-
-        attribute.explosiveCamerashakes.forEach(explosiveCamerashake => {
-            const players = dimension.getPlayers({location: location, maxDistance: explosiveCamerashake.range});
-            players.forEach(player => {
-                player.runCommand(`camerashake add @s ${explosiveCamerashake.intensity} ${Math.floor(explosiveCamerashake.duration/20)} rotational`);
-            });
-        });
-
-
-        const damageAttribute = attribute.explosiveDamage;
-        const numberOfTargets = DamageUtil.dealExplosionDamageAndKnockback(explosive, location, damageAttribute.range, damageAttribute.damage.min, damageAttribute.damage.max, damageAttribute.knockback.min, damageAttribute.knockback.max);
-
-
-        const players = dimension.getPlayers({location: location, maxDistance: attribute.explosiveStun.range});
-        const stunAttribute = attribute.explosiveStun;
-        players.forEach(player => {
-            const distance = new Vector3(player.location.x, player.location.y, player.location.z).sub(new Vector3(location.x, location.y, location.z)).length();
-
-            /** @type {Number} */
-            const screenDuration = stunAttribute.screenDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
-            //const screenDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.screenDuration.min, stunAttribute.screenDuration.max);
-            player.addEffect("blindness", Math.floor(screenDuration), {showParticles: false});
-
-            /** @type {Number} */
-            const aimRestrictionDuration = stunAttribute.aimRestrictionDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
-            //const aimRestrictionDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minAimRestrictionDuration, stunAttribute.maxAimRestrictionDuration);
-            player.setDynamicProperty(Global.PlayerDynamicProperties.script.aimRestrictionNumber, Math.floor(aimRestrictionDuration));
-            
-            /** @type {Number} */
-            const debrisDuration = stunAttribute.screenDebrisDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
-            //const debrisDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minScreenDebrisDuration, stunAttribute.maxScreenDebrisDuration);
-            const stayPortion = Math.min(Math.pow(((stunAttribute.range - distance)/stunAttribute.range)/0.8, 3)/2, 0.5);
-            const outPortion = 1 - stayPortion;
-            //console.log(`debrisDuration: ${debrisDuration}, stay: ${stayPortion}, out: ${outPortion}`);
-            player.onScreenDisplay.setTitle("", {fadeInDuration: 0, stayDuration: debrisDuration*stayPortion, fadeOutDuration: debrisDuration*outPortion});            
-        });
-
-
-        const direction = {x:-explosive.getViewDirection().x, y:-explosive.getViewDirection().y, z:explosive.getViewDirection().z };
-
-        const blockInFront = dimension.getBlockFromRay(location, direction);
-        const sizeMult = attribute.explosionPower/3;
-        const vars1 = new MolangVariableMap();
-        vars1.setFloat("size_mult", sizeMult);
-        console.log(`size_mult: ${sizeMult}`);
-
-        dimension.spawnParticle("yes:explosion_flash", location, vars1);
-        dimension.spawnParticle("yes:explosion_flash_middle", location, vars1);
-        dimension.spawnParticle("yes:explosion_sparks", location, vars1);
-        dimension.spawnParticle("yes:explosion_mushroom", location, vars1);
-        dimension.spawnParticle("yes:explosion_smoke", location, vars1);
-        dimension.spawnParticle("yes:explosion_smoke_flash", location, vars1);
-
-        if(hitType === "block" && blockInFront !== undefined) {
-            const blockColor = ColorUtil.getBlockColor(blockInFront.block);
-            /**@type {import('@minecraft/server').RGB} */
-            const blockColorNew = {
-                red: MathUtils.lerp(blockColor.red,defaultColor.red,Math.min(sizeMult/100, 1)),
-                green: MathUtils.lerp(blockColor.green,defaultColor.green,Math.min(sizeMult/100, 1)),
-                blue: MathUtils.lerp(blockColor.blue,defaultColor.blue,Math.min(sizeMult/100, 1)),
-            };
-
-            const vars2 = new MolangVariableMap();
-            vars2.setColorRGB("color", blockColorNew);
-            vars2.setFloat("size_mult", sizeMult);
-            //console.log(`blockInFront: ${blockInFront.block.typeId}, color: ${blockColor.red}, ${blockColor.green}, ${blockColor.blue}`);
-            dimension.spawnParticle("yes:explosion_debris", location, vars2);
-        }
-        else if(hitType === "entity") {
-            const vars = new MolangVariableMap();
-            vars.setFloat("amount", Math.min(numberOfTargets*100, 500));
-            //console.log(`particle count: ${Math.min(numberOfTargets*100, 500)}`);
-            dimension.spawnParticle("yes:explosion_blood", location, vars);
-        }
-        cleanUpExplosion(explosive);
     }
-    catch(error) {
-        cleanUpExplosion(explosive, "removed unloaded explosive");
+
+
+
+    attribute.explosiveCamerashakes.forEach(explosiveCamerashake => {
+        const players = dimension.getPlayers({location: location, maxDistance: explosiveCamerashake.range});
+        players.forEach(player => {
+            player.runCommand(`camerashake add @s ${explosiveCamerashake.intensity} ${Math.floor(explosiveCamerashake.duration/20)} rotational`);
+        });
+    });
+
+
+    let numberOfTargets = 0;
+    const damageAttribute = attribute.explosiveDamage;
+    if(damageAttribute) {
+        numberOfTargets = DamageUtil.dealExplosionDamageAndKnockback(dimension, location, damageAttribute.range, damageAttribute.damage.min, damageAttribute.damage.max, damageAttribute.knockback.min, damageAttribute.knockback.max);
+    }
+    const effectAttribute = attribute.explosiveEffect;
+    if(effectAttribute) {
+        if(effectAttribute.setFire) {
+            const fireAttribute = effectAttribute.setFire;
+            const vars = new MolangVariableMap();
+            vars.setFloat("size_mult", particleAttribute.explosionSize);
+            vars.setFloat("duration", 2);
+            dimension.spawnParticle("yes:explosion_fire_sparks", location, vars);
+
+            const blockVolume = VolumeUtil.createBoxVolume(new Vector3(location.x, location.y, location.z), effectAttribute.range*2, fireAttribute.height, effectAttribute.range*2);
+            system.runJob(fillFireBlocks(dimension, blockVolume, effectAttribute, location));
+        }
+        else if(effectAttribute.applyPoison) {
+            const poisonAttribute = effectAttribute.applyPoison;
+            const startTick = system.currentTick;
+            const vars = new MolangVariableMap();
+            vars.setFloat("range", effectAttribute.range);
+            vars.setFloat("duration", poisonAttribute.duration);
+            dimension.spawnParticle("yes:range_based_poison_smoke", location, vars);
+
+            const intervalId = system.runInterval(() => {
+                if(system.currentTick - startTick >= poisonAttribute.duration) {
+                    system.clearRun(intervalId);
+                    return;
+                }
+                const targets = RangeUtil.getValidEntitiesNearbyLocation( new Vector3(location.x, location.y, location.z), dimension, effectAttribute.range);
+                for(const target of targets) {
+                    if(target instanceof Player) {
+                        target.addEffect("poison", Math.min(poisonAttribute.ticksPerDamage+2, 24), {amplifier: 0, showParticles: false});
+                    }
+                    DamageUtil.dealDamageNoMultiplier(target, 1);
+                }
+            }, poisonAttribute.ticksPerDamage);
+
+        }
+    }
+
+    const stunAttribute = attribute.explosiveStun;
+    if(stunAttribute) {
+        const entities = EntityUtil.getValidEntitiesNearbyEntity(explosive, stunAttribute.range);
+        for(const entity of entities) {
+            const distance = new Vector3(entity.location.x, entity.location.y, entity.location.z).sub(new Vector3(location.x, location.y, location.z)).length();
+
+            if(entity instanceof Player) {
+                const screenDuration = stunAttribute.screenDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
+                //const screenDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.screenDuration.min, stunAttribute.screenDuration.max);
+                entity.addEffect("blindness", Math.floor(screenDuration), {showParticles: false});
+
+                const aimRestrictionDuration = stunAttribute.aimRestrictionDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
+                //const aimRestrictionDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minAimRestrictionDuration, stunAttribute.maxAimRestrictionDuration);
+                entity.setDynamicProperty(Global.PlayerDynamicProperties.script.aimRestrictionNumber, Math.floor(aimRestrictionDuration));
+                
+                const debrisDuration = stunAttribute.screenDebrisDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
+                //const debrisDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minScreenDebrisDuration, stunAttribute.maxScreenDebrisDuration);
+                const stayPortion = Math.min(Math.pow(((stunAttribute.range - distance)/stunAttribute.range)/0.8, 3)/2, 0.5);
+                const outPortion = 1 - stayPortion;
+                //console.log(`debrisDuration: ${debrisDuration}, stay: ${stayPortion}, out: ${outPortion}`);
+                entity.onScreenDisplay.setTitle("", {fadeInDuration: 0, stayDuration: debrisDuration*stayPortion, fadeOutDuration: debrisDuration*outPortion});
+
+
+                const flashDuration = stunAttribute.screenFlashDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
+                //const debrisDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minScreenDebrisDuration, stunAttribute.maxScreenDebrisDuration);
+                
+                console.log(`flashDuration: ${flashDuration}`);
+                if(flashDuration !== 0) entity.camera.fade({fadeColor: {red: 1, green: 1, blue: 1}, fadeTime: {fadeInTime: 0.1, holdTime: flashDuration/20, fadeOutTime: 0.5} })
+            }
+            const movementRestrictionDuration = Math.floor(stunAttribute.movementRestrictionDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range));
+            const movementRestrictionMultiplier = stunAttribute.movementRestrictionMultiplier.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
+            const movementComponent = entity.getComponent(EntityComponentTypes.Movement);
+            if(!movementComponent) continue;
+            movementComponent.setCurrentValue(movementComponent.defaultValue*(1-movementRestrictionMultiplier));
+            let t = 0;
+            const intervalId = system.runInterval(() => {
+                if(!EntityUtil.isActuallyValid(entity)) {
+                    system.clearRun(intervalId);
+                    return;
+                }
+                else if(t >= movementRestrictionDuration) {
+                    movementComponent.setCurrentValue(movementComponent.defaultValue);
+                    system.clearRun(intervalId);
+                    return;
+                }
+
+                movementComponent.setCurrentValue(movementComponent.defaultValue*(1-movementRestrictionMultiplier*(1-t/movementRestrictionDuration)));
+                console.log(`set movement restriction on ${entity.typeId} with multiplier ${movementComponent.defaultValue*(1-movementRestrictionMultiplier*(1-t/movementRestrictionDuration))}`);
+                t+=2;
+            }, 2);
+            world.sendMessage(`set movement restriction on ${entity.typeId} for ${movementRestrictionDuration/20} seconds with multiplier ${1-movementRestrictionMultiplier}`);
+        }
+    }
+
+
+    const direction = {x:-explosive.getViewDirection().x, y:-explosive.getViewDirection().y, z:explosive.getViewDirection().z };
+
+    const blockInFront = dimension.getBlockFromRay(location, direction);
+    const sizeMult = particleAttribute.explosionSize;
+    const vars1 = new MolangVariableMap();
+    vars1.setFloat("size_mult", sizeMult);
+    console.log(`size_mult: ${sizeMult}`);
+
+    if(particleAttribute.showExplosionFlash)                              dimension.spawnParticle("yes:explosion_flash",        location, vars1);
+    if(particleAttribute.showExplosionFlash)                              dimension.spawnParticle("yes:explosion_flash_middle", location, vars1);
+    if(particleAttribute.showExplosionSparks)                             dimension.spawnParticle("yes:explosion_sparks",       location, vars1);
+    if(particleAttribute.showExplosionMushroom)                           dimension.spawnParticle("yes:explosion_mushroom",     location, vars1);
+    if(particleAttribute.explosionSmokeType === SmokeParticleTypes.Black) dimension.spawnParticle("yes:explosion_smoke_black",  location, vars1);
+    if(particleAttribute.explosionSmokeType === SmokeParticleTypes.White) dimension.spawnParticle("yes:explosion_smoke_white",  location, vars1);
+    if(particleAttribute.explosionSmokeType === SmokeParticleTypes.Green) dimension.spawnParticle("yes:explosion_smoke_green",  location, vars1);
+    if(particleAttribute.showExplosionSmokeFlash)                         dimension.spawnParticle("yes:explosion_smoke_flash",  location, vars1);
+
+    if(hitType === "block" && blockInFront !== undefined) {
+        const blockColor = ColorUtil.getBlockColor(blockInFront.block);
+        /**@type {import('@minecraft/server').RGB} */
+        const blockColorNew = {
+            red: MathUtils.lerp(blockColor.red,defaultColor.red,Math.min(sizeMult/100, 1)),
+            green: MathUtils.lerp(blockColor.green,defaultColor.green,Math.min(sizeMult/100, 1)),
+            blue: MathUtils.lerp(blockColor.blue,defaultColor.blue,Math.min(sizeMult/100, 1)),
+        };
+
+        const vars2 = new MolangVariableMap();
+        vars2.setColorRGB("color", blockColorNew);
+        vars2.setFloat("size_mult", sizeMult);
+        //console.log(`blockInFront: ${blockInFront.block.typeId}, color: ${blockColor.red}, ${blockColor.green}, ${blockColor.blue}`);
+        dimension.spawnParticle("yes:explosion_debris", location, vars2);
+    }
+    else if(hitType === "entity") {
+        const vars = new MolangVariableMap();
+        vars.setFloat("amount", Math.min(numberOfTargets*100, 500));
+        //console.log(`particle count: ${Math.min(numberOfTargets*100, 500)}`);
+        dimension.spawnParticle("yes:explosion_blood", location, vars);
+    }
+    cleanUpExplosion(explosive);
+}
+
+/**
+ * 
+ * @param {Dimension} dimension 
+ * @param {BlockVolumeBase} blockVolume
+ * @param {ExplosiveEffectAttribute} effectAttribute
+ * @param {import('@minecraft/server').Vector3} location
+ */
+function* fillFireBlocks(dimension, blockVolume, effectAttribute, location) {
+    const filledBlocks = dimension.fillBlocks(blockVolume, "minecraft:fire", {blockFilter: {includeTypes: ["minecraft:air"]}, ignoreChunkBoundErrors: true});
+
+    for(const blockLocation of filledBlocks.getBlockLocationIterator()) {
+        const rayCastDirUnnorm = new Vector3(blockLocation.x - location.x, blockLocation.y - location.y, blockLocation.z - location.z);
+        const rayCastDirUnnormLength = rayCastDirUnnorm.length();
+
+        if(rayCastDirUnnormLength > effectAttribute.range) {
+            try { dimension.getBlock(blockLocation)?.setType("minecraft:air"); } catch {}
+            yield;
+        }
+        const rayResult = dimension.getBlockFromRay(location, rayCastDirUnnorm, {
+            maxDistance: rayCastDirUnnormLength,
+        });
+        if(rayResult) {
+            try { dimension.getBlock(blockLocation)?.setType("minecraft:air"); } catch {}
+            yield;
+        }
+
+        if(Math.random() > (effectAttribute.setFire?.chance ?? 1)) {
+            try { dimension.getBlock(blockLocation)?.setType("minecraft:air"); } catch {}
+            yield;
+        }
+        yield;
     }
 }
+
+
 
 /**
  * 
@@ -232,6 +341,9 @@ function cleanUpExplosion(explosive, message) {
  */
 function tryBounceExplosive(eventData, bounceOffEntities) {
     const explosive = eventData.projectile;
+    if(!EntityUtil.isActuallyValid(explosive)) {
+        return;
+    }
 
     if(grenadePrimedMap.get(explosive) === true || (!bounceOffEntities && eventData instanceof ProjectileHitEntityAfterEvent)) {
         explodeExplosive(explosive, explosive.location, eventData instanceof ProjectileHitBlockAfterEvent ? "block" : "entity");

@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "yes:flame_grenade",
+      "materials": {
+        "default": "arrow"
+      },
+      "textures": {
+        "default": "textures/entity/ammunition/flame_grenade_shell_texture"
+      },
+      "geometry": {
+        "default": "geometry.weeweejuice.grenade"
+      },
+      "animations": {
+        "turn": "animation.weeweejuice.projectile.turn"
+      },
+      "scripts": {
+				"animate": [
+					"turn"
+				]
+      },
+      "render_controllers": [ "controller.render.default" ]
+    }
+  }
+} 

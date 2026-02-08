@@ -3,6 +3,7 @@ import { FirearmAmmoClasses } from "../1Enums/AmmoEnums";
 import * as Enums from "../1Enums/MagazineEnums"
 import { TypeUtil } from "../UtilitiesInit";
 import { NumRange, Vec2Range } from "./GlobalDefinition";
+import { SmokeParticleTypes } from "../1Enums/ParticleEnums";
 
 class Magazine {
     /**
@@ -50,24 +51,27 @@ class ExplosiveMagazineAmmo extends Magazine {
      * maxAmmo:               number,
      * itemStack:             ItemStack,
      * fillableByAmmoClasses: typeof FirearmAmmoClasses[keyof typeof FirearmAmmoClasses][],
-     * projectileAttribute:   ProjectileAttribute
+     * projectileAttribute:   ProjectileAttribute,
+     * particleAttribute:     ParticleAttribute
      * }} def
      */
     constructor(def) {
         super(def);
         this.projectileAttribute = def.projectileAttribute;
+        this.particleAttribute = def.particleAttribute;
     }
 }
 
 class ProjectileAttribute {
     /**
      * @param {{
-     * explosiveDamage: ExplosiveDamage,
      * explosiveCamerashakes: ExplosiveCamerashakeAttribute[],
-     * explosiveStun: ExplosiveStunAttribute,
+     * explosiveDamage?: ExplosiveDamage,
+     * explosiveStun?: ExplosiveStunAttribute,
+     * explosiveEffect?: ExplosiveEffectAttribute,
      * typeId: string,
      * speed: number,
-     * explosionPower: 1|1.5|2|2.5|3|3.5|4|4.5|5|6|7|8|9|10|15|20|25|30|35|40|45|50|60|70|80|90|100,
+     * explosionPower: 0|1|1.5|2|2.5|3|3.5|4|4.5|5|6|7|8|9|10|15|20|25|30|35|40|45|50|60|70|80|90|100,
      * spawnOffset: import("@minecraft/server").Vector3,
      * shootDirectionOffset: import("@minecraft/server").Vector2
      * shooterKnockback: import("@minecraft/server").Vector2
@@ -77,6 +81,7 @@ class ProjectileAttribute {
         this.explosiveDamage        = def.explosiveDamage;
         this.explosiveCamerashakes  = def.explosiveCamerashakes;
         this.explosiveStun          = def.explosiveStun;
+        this.explosiveEffect        = def.explosiveEffect;
         this.explosionPower         = def.explosionPower;
         this.typeId                 = def.typeId;
         this.speed                  = def.speed;
@@ -124,15 +129,57 @@ class ExplosiveStunAttribute {
      * screenDuration: NumRange,
      * aimRestrictionDuration: NumRange,
      * screenDebrisDuration: NumRange,
+     * screenFlashDuration: NumRange,
+     * movementRestrictionMultiplier: NumRange,
+     * movementRestrictionDuration: NumRange,
      * range: number
      * }} def
      */
     constructor(def) {
-        this.screenDuration         = def.screenDuration;
-        this.aimRestrictionDuration = def.aimRestrictionDuration;
-        this.screenDebrisDuration   = def.screenDebrisDuration;
-        this.range                  = def.range;
+        this.screenDuration                = def.screenDuration;
+        this.aimRestrictionDuration        = def.aimRestrictionDuration;
+        this.screenDebrisDuration          = def.screenDebrisDuration;
+        this.screenFlashDuration           = def.screenFlashDuration;
+        this.movementRestrictionMultiplier = def.movementRestrictionMultiplier;
+        this.movementRestrictionDuration   = def.movementRestrictionDuration;
+        this.range                         = def.range;
     }
 }
 
-export { Magazine, ExplosiveMagazineAmmo, ProjectileAttribute, ExplosiveDamage, ExplosiveCamerashakeAttribute, ExplosiveStunAttribute };
+class ExplosiveEffectAttribute {
+    /**
+     * @param {{
+     * range: number,
+     * setFire?: {height: number, chance: number},
+     * applyPoison?: {damage: number, ticksPerDamage: number, duration: number},
+     * }} def 
+     */
+    constructor(def) {
+        this.range = def.range;
+        this.setFire = def.setFire;
+        this.applyPoison = def.applyPoison;
+    }
+}
+
+class ParticleAttribute {
+    /**
+     * @param {{
+     * explosionSize: number,
+     * showExplosionFlash: boolean,
+     * showExplosionSparks: boolean,
+     * showExplosionMushroom: boolean,
+     * explosionSmokeType: SmokeParticleTypes,
+     * showExplosionSmokeFlash: boolean,
+     * }} def
+     */
+    constructor(def) {
+        this.explosionSize           = def.explosionSize;
+        this.showExplosionFlash      = def.showExplosionFlash;
+        this.showExplosionSparks     = def.showExplosionSparks;
+        this.showExplosionMushroom   = def.showExplosionMushroom;
+        this.explosionSmokeType      = def.explosionSmokeType;
+        this.showExplosionSmokeFlash = def.showExplosionSmokeFlash;
+    }
+}
+
+export { Magazine, ExplosiveMagazineAmmo, ProjectileAttribute, ExplosiveDamage, ExplosiveCamerashakeAttribute, ExplosiveStunAttribute, ExplosiveEffectAttribute, ParticleAttribute };
