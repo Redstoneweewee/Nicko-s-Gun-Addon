@@ -1,5 +1,4 @@
 import { Player, system } from "@minecraft/server";
-import { showSettingsForm } from '../UI/SettingsMessage.js';
 import { AnimationUtil, FirearmUtil, ItemUtil, SoundsUtil } from "../Utilities.js";
 import { AnimationTypes } from "../1Enums/AnimationEnums.js";
 import { shoot } from "../Shoot.js";

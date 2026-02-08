@@ -1,4 +1,3 @@
-import "./CustomComponents/Initialization.js";
 import "./WorldInitialization.js";
 
 import "./3Lists/FirearmsList.js";
@@ -42,7 +41,6 @@ system.runInterval(() => {
         DirectionDetection.directionDetection(player);
         OffhandStackCheck.offhandStackCheck(player);
         HoldDetection.holdingFirearmDetectionPart1(player);
-        //test(player);
     });
     for(const func of Global.mainLoops.values()) {
         func(); //runs all main loop functions here
@@ -85,8 +83,3 @@ system.runInterval(() => {
  * |------------------------------------------------------------|
  */
 
-
-/**
- * Settings and UI stuff run after all other scripts
- */
-import "./UI/SettingsMessage.js";

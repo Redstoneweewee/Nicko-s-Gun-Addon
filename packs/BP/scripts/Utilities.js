@@ -1047,8 +1047,8 @@ class FirearmUtil {
 
         const mainCamerashakeTime     = NumberUtil.getRandomFloat(mainMinT, mainMaxT);
         const residualCamerashakeTime = NumberUtil.getRandomFloat(residualMinT, residualMaxT);
-        player.runCommandAsync(`camerashake add @s ${mainCamerashakeAmount} ${mainCamerashakeTime} rotational`);
-        player.runCommandAsync(`camerashake add @s ${residualCamerashakeAmount} ${residualCamerashakeTime} rotational`);
+        player.runCommand(`camerashake add @s ${mainCamerashakeAmount} ${mainCamerashakeTime} rotational`);
+        player.runCommand(`camerashake add @s ${residualCamerashakeAmount} ${residualCamerashakeTime} rotational`);
     }
 
     /**
@@ -1378,7 +1378,7 @@ class DamageUtil {
         if(!(healthComponent instanceof EntityHealthComponent)) { return; }
 
         if(target instanceof Player) {
-            if(target.getGameMode() !== GameMode.survival && target.getGameMode() !== GameMode.adventure) { return; }
+            if(target.getGameMode() !== GameMode.Survival && target.getGameMode() !== GameMode.Adventure) { return; }
             healthComponent.setCurrentValue(healthComponent.currentValue-damage);
         }
         else {
@@ -1398,10 +1398,10 @@ class DamageUtil {
         knockbackVectorUnscaled.y = 0;
         const knockbackVectorXZ = knockbackVectorUnscaled.divideScalar(knockbackVectorUnscaled.length());
         if(doNotMakeFly && !target.isOnGround) {
-            target.applyKnockback(knockbackVectorXZ.x, knockbackVectorXZ.z, gun.knockbackAmount.x, 0);
+            target.applyKnockback({x: knockbackVectorXZ.x*gun.knockbackAmount.x, z: knockbackVectorXZ.z*gun.knockbackAmount.x}, 0);
         }
         else {
-            target.applyKnockback(knockbackVectorXZ.x, knockbackVectorXZ.z, gun.knockbackAmount.x, gun.knockbackAmount.y);
+            target.applyKnockback({x: knockbackVectorXZ.x*gun.knockbackAmount.x, z: knockbackVectorXZ.z*gun.knockbackAmount.x}, gun.knockbackAmount.y);
         }
         //console.log(`applied knockback: ${knockbackVectorXZ.x*gun.knockbackAmount.x}, ${gun.knockbackAmount.y}, ${knockbackVectorXZ.z*gun.knockbackAmount.x}`);
     }
@@ -2066,7 +2066,7 @@ class AnimationUtil {
         for(let attributes of firearm.animationAttributes) {
             if(attributes.staticAnimation.type !== animationType) { continue; }
             attributes.staticAnimation.animationSounds.forEach(sound => {
-                player.runCommandAsync(`stopsound @s ${sound.soundId}`);
+                player.runCommand(`stopsound @s ${sound.soundId}`);
             });
             return;
         }

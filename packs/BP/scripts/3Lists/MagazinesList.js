@@ -18,7 +18,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.AR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               30,
-        itemStack:             new ItemStack("yes:ar_magazine_30", 1),
         fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
     }),
 
@@ -28,7 +27,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.AR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               30,
-        itemStack:             new ItemStack("yes:ar_magazine_30", 1),
         fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
     }),
 
@@ -38,7 +36,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.AR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               50,
-        itemStack:             new ItemStack("yes:ar_magazine_50", 1),
         fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
     }),
 
@@ -48,7 +45,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.DMR,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               15,
-        itemStack:             new ItemStack("yes:dmr_magazine_15", 1),
         fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
     }),
 
@@ -58,7 +54,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.SMG,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               24,
-        itemStack:             new ItemStack("yes:smg_magazine_24", 1),
         fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
     }),
 
@@ -68,7 +63,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.Sniper,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               3,
-        itemStack:             new ItemStack("yes:sniper_magazine_3", 1),
         fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
     }),
 
@@ -78,7 +72,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.Pistol,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               8,
-        itemStack:             new ItemStack("yes:pistol_magazine_8", 1),
         fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
     }),
     
@@ -88,7 +81,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.Shotgun,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:birdshot", 1),
         fillableByAmmoClasses: []
     }),
     
@@ -98,7 +90,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.Pistol,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:ammo_9mm", 1),
         fillableByAmmoClasses: []
     }),
     
@@ -108,7 +99,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.AR,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:ammo_762mm", 1),
         fillableByAmmoClasses: []
     }),
     
@@ -118,7 +108,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.Magnum,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:ammo_45acp", 1),
         fillableByAmmoClasses: []
     }),
     
@@ -128,7 +117,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.GrenadeLauncher,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:explosive_grenade", 1),
         fillableByAmmoClasses: [],
         projectileAttribute: new Def.ProjectileAttribute({
             typeId: "yes:explosive_grenade", 
@@ -181,7 +169,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.GrenadeLauncher,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:flame_grenade", 1),
         fillableByAmmoClasses: [],
         projectileAttribute: new Def.ProjectileAttribute({
             typeId: "yes:flame_grenade", 
@@ -228,7 +215,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.GrenadeLauncher,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:flash_grenade", 1),
         fillableByAmmoClasses: [],
         projectileAttribute: new Def.ProjectileAttribute({
             typeId: "yes:flash_grenade", 
@@ -260,7 +246,7 @@ const MagazineObjects = {
                 screenDebrisDuration:   new NumRange(20, 150),
                 screenFlashDuration:    new NumRange(10, 50),
                 movementRestrictionMultiplier: new NumRange(0.5, 1),
-                movementRestrictionDuration: new NumRange(50, 100),
+                movementRestrictionDuration: new NumRange(50, 10),
                 range: 12
             })
         }),
@@ -281,7 +267,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.GrenadeLauncher,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:acid_grenade", 1),
         fillableByAmmoClasses: [],
         projectileAttribute: new Def.ProjectileAttribute({
             typeId: "yes:acid_grenade", 
@@ -323,7 +308,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.Rocket,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:rocket", 1),
         fillableByAmmoClasses: [],
         projectileAttribute: new Def.ProjectileAttribute({
             typeId: "yes:rocket", 
@@ -375,7 +359,6 @@ const MagazineObjects = {
         magazineClass:         MagazineClasses.TeslaGun,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
-        itemStack:             new ItemStack("yes:tesla_ammo", 1),
         fillableByAmmoClasses: []
     })
 }

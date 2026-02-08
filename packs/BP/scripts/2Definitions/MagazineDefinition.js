@@ -13,7 +13,6 @@ class Magazine {
      * magazineClass:         typeof Enums.MagazineClasses[keyof typeof Enums.MagazineClasses],
      * magazineType:          typeof Enums.MagazineTypes[keyof typeof Enums.MagazineTypes],
      * maxAmmo:               number,
-     * itemStack:             ItemStack,
      * fillableByAmmoClasses: typeof FirearmAmmoClasses[keyof typeof FirearmAmmoClasses][]
      * }} def
      */
@@ -23,7 +22,6 @@ class Magazine {
         this.magazineClass         = def.magazineClass;
         this.magazineType          = def.magazineType;
         this.maxAmmo               = def.maxAmmo;
-        this.itemStack             = def.itemStack;
         this.fillableByAmmoClasses = def.fillableByAmmoClasses;
     }
     
@@ -49,7 +47,6 @@ class ExplosiveMagazineAmmo extends Magazine {
      * magazineClass:         typeof Enums.MagazineClasses[keyof typeof Enums.MagazineClasses],
      * magazineType:          typeof Enums.MagazineTypes[keyof typeof Enums.MagazineTypes],
      * maxAmmo:               number,
-     * itemStack:             ItemStack,
      * fillableByAmmoClasses: typeof FirearmAmmoClasses[keyof typeof FirearmAmmoClasses][],
      * projectileAttribute:   ProjectileAttribute,
      * particleAttribute:     ParticleAttribute

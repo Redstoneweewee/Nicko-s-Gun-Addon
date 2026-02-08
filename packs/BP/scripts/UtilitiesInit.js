@@ -1,6 +1,5 @@
 import { Player, world } from "@minecraft/server";
 import { SettingsTypes } from "./1Enums/SettingsEnums";
-import { linkName } from './UI/SettingsMessage.js';
 import { Settings } from "./2Definitions/SettingsDefinition";
 
 
@@ -28,13 +27,13 @@ class SettingsUtil {
         }
     }
 
-    /**
-     * 
-     * @param {Player} player 
-     */
-    static sendDownloadMessage(player) {
-        player.sendMessage(`Link to full downloads: ${linkName}`);
-    }
+    // /**
+    //  * 
+    //  * @param {Player} player 
+    //  */
+    // static sendDownloadMessage(player) {
+    //     player.sendMessage(`Link to full downloads: ${linkName}`);
+    // }
 }
 
 export { SettingsUtil };
