@@ -17,7 +17,7 @@ import { AmmoTypes } from './1Enums/AmmoEnums.js';
 import { FirearmAmmoClasses } from './1Enums/AmmoEnums.js';
 import { TypeUtil } from './UtilitiesInit.js';
 import { excludedFamilies, excludedGameModes, excludedTypes } from './1Enums/HitExclusionArrays.js';
-import { MathUtils } from './Math/MathUtils.js';
+import { clamp, MathUtils } from './Math/MathUtils.js';
 import * as BlockColors from './3Lists/BlockColorsList.js';
 //import { settingsList, SettingsTypes } from './Lists/SettingsList.js';
 const Vector = new Vector3();
@@ -1382,7 +1382,7 @@ class DamageUtil {
             healthComponent.setCurrentValue(healthComponent.currentValue-damage);
         }
         else {
-            healthComponent.setCurrentValue(healthComponent.currentValue-damage*1.5/**mobs get dealt 1.5x dmg from all sources*/);
+            healthComponent.setCurrentValue(Math.max(healthComponent.currentValue-damage*1.5, 0)/**mobs get dealt 1.5x dmg from all sources*/);
         }
         target.applyDamage(0.001, {cause: EntityDamageCause.override});
     }
@@ -2307,3 +2307,268 @@ export class VolumeUtil {
     }
 }
 
+export class CustomVectorUtil {
+    /**
+     * 
+     * @param {Vector3} forward 
+     * @returns {{forward: Vector3, right: Vector3, up: Vector3}}
+     */
+    static createBasisFromForward(forward){
+        const upWorld = new Vector3(0, 1, 0)
+        const right = new Vector3(upWorld.x, upWorld.y, upWorld.z).cross(forward).normalize();
+        const up = new Vector3(forward.x, forward.y, forward.z).cross(right).normalize();
+        return { forward, right, up };
+    }
+
+    /**
+     * 
+     * @param {Vector3} v 
+     * @param {Vector3} axis 
+     * @param {number} angle 
+     * @returns {Vector3}
+     */
+    static rotateAroundAxis(v, axis, angle) {
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
+
+        const dot = v.x * axis.x + v.y * axis.y + v.z * axis.z;
+        const crossProd = new Vector3(axis.x, axis.y, axis.z).cross(v);
+
+        return new Vector3(
+        v.x * cos + crossProd.x * sin + axis.x * dot * (1 - cos),
+        v.y * cos + crossProd.y * sin + axis.y * dot * (1 - cos),
+        v.z * cos + crossProd.z * sin + axis.z * dot * (1 - cos),
+        );
+    }
+
+    /**
+     * 
+     * @param {Vector3} point 
+     * @param {{ forward: Vector3; right: Vector3; up: Vector3 }} basis 
+     * @param {Vector3} translation 
+     * @returns {Vector3}
+     */
+    static translateRelativeToBasis(point, basis, translation) {
+        return new Vector3( 
+            point.x +
+            basis.right.x * translation.x +
+            basis.up.x * translation.y +
+            basis.forward.x * translation.z,
+
+            point.y +
+            basis.right.y * translation.x +
+            basis.up.y * translation.y +
+            basis.forward.y * translation.z,
+
+            point.z +
+            basis.right.z * translation.x +
+            basis.up.z * translation.y +
+            basis.forward.z * translation.z,
+        );
+    }
+
+    /**
+     * 
+     * @param {Dimension} dimension 
+     * @param {Vector3} startingPos 
+     * @param {Vector3} forwardDir 
+     * @param {Vector3[]} targetPositions 
+     * @param {Vector3} attackOffset
+     * @param {number} totalHorizontalAngleDeg 
+     * @param {number} totalVerticalAngleDeg 
+     * @param {number} maxRange 
+     * @param {number} minRange
+     * @returns {boolean[]}
+     */
+    static isInFov(dimension, startingPos, forwardDir, targetPositions, attackOffset, totalHorizontalAngleDeg, totalVerticalAngleDeg, maxRange, minRange) {
+        const basis = CustomVectorUtil.createBasisFromForward(forwardDir);
+
+        // Apply attack offset in local space
+        const origin = CustomVectorUtil.translateRelativeToBasis(
+            startingPos,
+            basis,
+            attackOffset
+        );
+        const halfH = (totalHorizontalAngleDeg * Math.PI) / 360;
+        const halfV = (totalVerticalAngleDeg * Math.PI) / 360;
+
+        const results = [];
+
+        for(const targetPos of targetPositions) {
+            const D = new Vector3(targetPos.x, targetPos.y, targetPos.z).sub(origin);
+            const dist = D.length();
+            // Check radial distance
+            if (dist > maxRange || dist < minRange) {
+                results.push(false);
+                continue;
+            }
+
+            if(dimension.getBlockFromRay(origin, D, { maxDistance: dist })) {
+                results.push(false);
+                continue;
+            }
+
+            const DNorm = D.normalize();
+
+            const horizontalDot = new Vector3(DNorm.x, DNorm.y, DNorm.z).dot(basis.right);
+            const verticalDot = new Vector3(DNorm.x, DNorm.y, DNorm.z).dot(basis.up);
+            const forwardDot = new Vector3(DNorm.x, DNorm.y, DNorm.z).dot(basis.forward);
+            const horizontalAngle = Math.atan2(horizontalDot, forwardDot);
+            const verticalAngle = Math.atan2(verticalDot, Math.sqrt(forwardDot * forwardDot + horizontalDot * horizontalDot));
+
+            world.sendMessage(`Horizontal Angle: ${(horizontalAngle * 180 / Math.PI).toFixed(2)}°, Vertical Angle: ${(verticalAngle * 180 / Math.PI).toFixed(2)}°`);
+            world.sendMessage(`Half Horizontal Bound: ${(halfH * 180 / Math.PI).toFixed(2)}°, Half Vertical Bound: ${(halfV * 180 / Math.PI).toFixed(2)}°`);
+            results.push(horizontalAngle >= -halfH && horizontalAngle <= halfH && verticalAngle >= -halfV && verticalAngle <= halfV);
+        }
+        return results;
+    }
+
+    /**
+     * 
+     * @param {Dimension} dimension 
+     * @param {Vector3} pos 
+     * @param {Vector3} forward 
+     * @param {number} numOfParticles 
+     * @param {Vector3} attackOffset
+     * @param {number} totalHorizontalAngleDeg 
+     * @param {number} totalVerticalAngleDeg 
+     * @param {number} maxRange 
+     * @param {number} minRange
+     */
+    static drawEffect(dimension, pos, forward, numOfParticles, attackOffset, totalHorizontalAngleDeg, totalVerticalAngleDeg, maxRange, minRange) {
+        const halfH = (totalHorizontalAngleDeg * Math.PI) / 360;
+        const halfV = (totalVerticalAngleDeg * Math.PI) / 360;
+        
+        const basis = CustomVectorUtil.createBasisFromForward(forward);
+        const right = basis.right, up = basis.up;
+        pos = CustomVectorUtil.translateRelativeToBasis(
+            pos,
+            basis,
+            attackOffset
+        );
+
+        const particlesNum = Math.round(numOfParticles ? numOfParticles : 3*maxRange);
+        const lineParticlesNum = Math.round(numOfParticles ? numOfParticles : 3*(maxRange - minRange));
+        
+        // --- Horizontal boundaries ---
+        const leftVector    = CustomVectorUtil.rotateAroundAxis(forward, up,  halfH);
+        const rightVector  = CustomVectorUtil.rotateAroundAxis(forward, up, -halfH);
+
+        const leftUpVector  = CustomVectorUtil.rotateAroundAxis(CustomVectorUtil.rotateAroundAxis(forward, up, halfH), right, halfV);
+        const leftDownVector = CustomVectorUtil.rotateAroundAxis(CustomVectorUtil.rotateAroundAxis(forward, up, halfH), right, -halfV);
+        const rightUpVector  = CustomVectorUtil.rotateAroundAxis(CustomVectorUtil.rotateAroundAxis(forward, up, -halfH), right, halfV);
+        const rightDownVector = CustomVectorUtil.rotateAroundAxis(CustomVectorUtil.rotateAroundAxis(forward, up, -halfH), right, -halfV);
+
+        // Draw boundary rays from minRadius to maxRadius
+        const rayLength = maxRange - minRange;
+
+        DrawEffects.drawRay(dimension, new Vector3(leftUpVector.x, leftUpVector.y, leftUpVector.z).multiplyScalar(minRange).add(pos), leftUpVector, rayLength, lineParticlesNum);
+        DrawEffects.drawRay(dimension, new Vector3(leftDownVector.x, leftDownVector.y, leftDownVector.z).multiplyScalar(minRange).add(pos), leftDownVector, rayLength, lineParticlesNum);
+        DrawEffects.drawRay(dimension, new Vector3(rightUpVector.x, rightUpVector.y, rightUpVector.z).multiplyScalar(minRange).add(pos), rightUpVector, rayLength, lineParticlesNum);
+        DrawEffects.drawRay(dimension, new Vector3(rightDownVector.x, rightDownVector.y, rightDownVector.z).multiplyScalar(minRange).add(pos), rightDownVector, rayLength, lineParticlesNum);
+        // Outer boundary arcs
+        //Horizontal arc
+        DrawEffects.drawArc(dimension, pos, forward, maxRange, [{rotAxis: up, angleDeg: halfH}], particlesNum);
+        //Vertical arc
+        DrawEffects.drawArc(dimension, pos, forward, maxRange, [{rotAxis: right, angleDeg: halfV}], particlesNum);
+        //Up arc
+        DrawEffects.drawArc(dimension, pos, forward, maxRange, [{rotAxis: up, angleDeg: halfH}, {rotAxis: right, angleDeg: -halfV}], particlesNum);
+        //Down arc
+        DrawEffects.drawArc(dimension, pos, forward, maxRange, [{rotAxis: up, angleDeg: halfH}, {rotAxis: right, angleDeg: halfV}], particlesNum);
+        //Left arc
+        DrawEffects.drawArc(dimension, pos, leftVector, maxRange, [{rotAxis: right, angleDeg: -halfV}], particlesNum);
+        //Right arc
+        DrawEffects.drawArc(dimension, pos, rightVector, maxRange, [{rotAxis: right, angleDeg: halfV}], particlesNum);
+
+        // Draw inner boundary if minAttackRadius > 0
+        if (minRange > 0) {
+            // Inner boundary arcs
+            //Horizontal arc
+            DrawEffects.drawArc(dimension, pos, forward, minRange, [{rotAxis: up, angleDeg: halfH}], particlesNum);
+            //Vertical arc
+            DrawEffects.drawArc(dimension, pos, forward, minRange, [{rotAxis: right, angleDeg: halfV}], particlesNum);
+            //Up arc
+            DrawEffects.drawArc(dimension, pos, forward, minRange, [{rotAxis: up, angleDeg: halfH}, {rotAxis: right, angleDeg: -halfV}], particlesNum);
+            //Down arc
+            DrawEffects.drawArc(dimension, pos, forward, minRange, [{rotAxis: up, angleDeg: halfH}, {rotAxis: right, angleDeg: halfV}], particlesNum);
+            //Left arc
+            DrawEffects.drawArc(dimension, pos, leftVector, minRange, [{rotAxis: right, angleDeg: -halfV}], particlesNum);
+            //Right arc
+            DrawEffects.drawArc(dimension, pos, rightVector, minRange, [{rotAxis: right, angleDeg: halfV}], particlesNum);
+        }
+    }
+}
+
+export class DrawEffects {
+    /**
+     * 
+     * @param {Dimension} dimension 
+     * @param {Vector3} startPos 
+     * @param {Vector3} direction 
+     * @param {number} length 
+     * @param {number} pointsNum 
+     */
+  static drawRay(
+    dimension,
+    startPos,
+    direction,
+    length,
+    pointsNum,
+  ) {
+    for (let i = 0; i < pointsNum; i++) {
+      const t = i / pointsNum;
+      dimension.spawnParticle("minecraft:basic_flame_particle", {
+        x: startPos.x + direction.x * t * length,
+        y: startPos.y + direction.y * t * length,
+        z: startPos.z + direction.z * t * length,
+      });
+    }
+  }
+
+  /**
+   * 
+   * @param {Dimension} dimension 
+   * @param {Vector3} startPos 
+   * @param {Vector3} direction 
+   * @param {number} distance 
+   * @param {{
+   *    rotAxis: Vector3;
+   *    angleDeg: number;
+   * }[]} arcRotation 
+   * @param {number} pointsNum 
+   */
+  static drawArc(
+    dimension,
+    startPos,
+    direction,
+    distance,
+    arcRotation,
+    pointsNum,
+  ) {
+    for (let i = 0; i <= pointsNum; i++) {
+      const a =
+        -arcRotation[0].angleDeg +
+        (i / pointsNum) * (2 * arcRotation[0].angleDeg);
+      let dir = CustomVectorUtil.rotateAroundAxis(
+        direction,
+        arcRotation[0].rotAxis,
+        a,
+      );
+      let r = 1;
+      while (arcRotation.length > r) {
+        dir = CustomVectorUtil.rotateAroundAxis(
+          dir,
+          arcRotation[r].rotAxis,
+          arcRotation[r].angleDeg,
+        );
+        r++;
+      }
+
+      dimension.spawnParticle("minecraft:basic_flame_particle", {
+        x: startPos.x + dir.x * distance,
+        y: startPos.y + dir.y * distance,
+        z: startPos.z + dir.z * distance,
+      });
+    }
+  }
+}

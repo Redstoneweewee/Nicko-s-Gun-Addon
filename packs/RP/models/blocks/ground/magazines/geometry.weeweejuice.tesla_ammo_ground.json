@@ -6,7 +6,7 @@
 				"identifier": "geometry.weeweejuice.tesla_ammo_ground",
 				"texture_width": 128,
 				"texture_height": 128,
-				"visible_bounds_width": 2,
+				"visible_bounds_width": 3,
 				"visible_bounds_height": 2.5,
 				"visible_bounds_offset": [0, 0.75, 0]
 			},
@@ -664,7 +664,7 @@
 					"scale": [0.4, 0.4, 0.4],
 					"rotation_pivot": [0, 0, 0],
 					"scale_pivot": [0, 0, 0],
-					"fit_to_frame": true
+					"fit_to_frame": false
 				},
 				"head": {
 					"rotation": [0, 0, 0],

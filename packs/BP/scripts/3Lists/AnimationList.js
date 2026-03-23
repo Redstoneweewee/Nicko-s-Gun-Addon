@@ -59,6 +59,7 @@ import * as Enums from "../1Enums/AnimationEnums.js";
  * rpg7ReloadNoSwap:       Def.StaticAnimation,
  * naticReloadFirstAmmo:   Def.StaticAnimation,
  * naticReload:            Def.StaticAnimation,
+ * teslaGunReload:         Def.StaticAnimation,
  * }} OtherReloadAnimations
  */
 
@@ -632,6 +633,12 @@ const StaticReloadAnimations = {
             animationSounds: [
             ]
         }),
+        teslaGunReload: new Def.StaticAnimation({
+            duration: 60, //in ticks
+            type:     Enums.AnimationTypes.ReloadBoth,
+            animationSounds: [
+            ]
+        }),
     }
 }
 
@@ -687,7 +694,8 @@ const StaticReloadAnimations = {
  * @typedef {{
  * rpg7Shoot: Def.StaticAnimation,
  * naticShoot: Def.StaticAnimation,
- * javelinShoot: Def.StaticAnimation
+ * javelinShoot: Def.StaticAnimation,
+ * teslaGunShoot: Def.StaticAnimation
  * }} OtherShootAnimations
  */
 
@@ -1161,6 +1169,18 @@ const StaticShootAnimations = {
                 }
             ],
             animationId: "animation.javelin_shoot"
+        }),
+        teslaGunShoot: new Def.StaticAnimation({
+            duration: 30, //in ticks
+            type:     Enums.AnimationTypes.Shoot,
+            animationSounds: [
+                {
+                    soundId: "firearm.rpg7_shoot",
+                    timeout: 0,
+                    soundRange: 281.25
+                }
+            ],
+            animationId: "animation.rpg7_shoot"
         })
     }
 }

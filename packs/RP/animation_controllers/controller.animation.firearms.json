@@ -44,7 +44,9 @@
 						{ "rpg7_hold_first_person":   " v.is_first_person && v.should_use_rpg7_animations" },
 						{ "rpg7_hold_third_person":   "!v.is_first_person && v.should_use_rpg7_animations" },
 						{ "natic_hold_first_person":   " v.is_first_person && v.should_use_natic_animations" },
-						{ "natic_hold_third_person":   "!v.is_first_person && v.should_use_natic_animations" }
+						{ "natic_hold_third_person":   "!v.is_first_person && v.should_use_natic_animations" },
+						{ "tesla_gun_hold_first_person":   " v.is_first_person && v.should_use_tesla_gun_animations" },
+						{ "tesla_gun_hold_third_person":   "!v.is_first_person && v.should_use_tesla_gun_animations" }
 					],
                     "blend_transition": 0.15,
                     "blend_via_shortest_path": true,
@@ -84,7 +86,9 @@
 						{ "rpg7_hold_run_first_person":   " v.is_first_person && v.should_use_rpg7_animations" },
 						{ "rpg7_hold_run_third_person":   "!v.is_first_person && v.should_use_rpg7_animations" },
 						{ "natic_hold_run_first_person":   " v.is_first_person && v.should_use_natic_animations" },
-						{ "natic_hold_run_third_person":   "!v.is_first_person && v.should_use_natic_animations" }
+						{ "natic_hold_run_third_person":   "!v.is_first_person && v.should_use_natic_animations" },
+						{ "tesla_gun_hold_run_first_person":   " v.is_first_person && v.should_use_tesla_gun_animations" },
+						{ "tesla_gun_hold_run_third_person":   "!v.is_first_person && v.should_use_tesla_gun_animations" }
 					],
                     "blend_transition": 0.15,
                     "blend_via_shortest_path": true,
@@ -135,7 +139,13 @@
 						{ "natic_hold_first_person":       " v.is_first_person && !v.is_running && v.should_use_natic_animations" },
 						{ "natic_hold_run_first_person":   " v.is_first_person &&  v.is_running && v.should_use_natic_animations" },
 						{ "natic_hold_third_person": 	   "!v.is_first_person && !v.is_running && v.should_use_natic_animations" },
-						{ "natic_hold_run_third_person":   "!v.is_first_person &&  v.is_running && v.should_use_natic_animations" }
+						{ "natic_hold_run_third_person":   "!v.is_first_person &&  v.is_running && v.should_use_natic_animations" },
+						{ "natic_hold_third_person": 	   "!v.is_first_person && !v.is_running && v.should_use_natic_animations" },
+						{ "natic_hold_run_third_person":   "!v.is_first_person &&  v.is_running && v.should_use_natic_animations" },
+						{ "tesla_gun_hold_third_person": 	   "!v.is_first_person && !v.is_running && v.should_use_tesla_gun_animations" },
+						{ "tesla_gun_hold_run_third_person":   "!v.is_first_person &&  v.is_running && v.should_use_tesla_gun_animations" },
+						{ "tesla_gun_hold_third_person": 	   "!v.is_first_person && !v.is_running && v.should_use_tesla_gun_animations" },
+						{ "tesla_gun_hold_run_third_person":   "!v.is_first_person &&  v.is_running && v.should_use_tesla_gun_animations" }
 					],
                     "blend_transition": 0.05,
                     "blend_via_shortest_path": true,
@@ -155,7 +165,9 @@
 						{ "rpg7_hipfire_first_person":   " v.is_first_person && v.should_use_rpg7_animations" },
 						{ "rpg7_hipfire_third_person":   "!v.is_first_person && v.should_use_rpg7_animations" },
 						{ "natic_hipfire_first_person":   " v.is_first_person && v.should_use_natic_animations" },
-						{ "natic_hipfire_third_person":   "!v.is_first_person && v.should_use_natic_animations" }
+						{ "natic_hipfire_third_person":   "!v.is_first_person && v.should_use_natic_animations" },
+						{ "tesla_gun_hipfire_first_person":   " v.is_first_person && v.should_use_tesla_gun_animations" },
+						{ "tesla_gun_hipfire_third_person":   "!v.is_first_person && v.should_use_tesla_gun_animations" }
 					],
                     "blend_transition": 0.15,
                     "blend_via_shortest_path": true,
@@ -200,6 +212,7 @@
 						{ "agm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:agm')" },
 						{ "rpg7_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:rpg7')" },
 						{ "natic_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:natic')" },
+						{ "tesla_gun_hipfire_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:tesla_gun')" },
 						{ "akm_aim_iron_sight_first_person":       " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:akm')" },
 						{ "mp5_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:mp5')" },
 						{ "m4_aim_iron_sight_first_person":      " v.is_first_person && v.is_holding_iron_sight_firearm              && q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:m4')" },
@@ -213,7 +226,8 @@
 						{ "pistol_aim_third_person":			   "!v.is_first_person && v.should_use_pistol_animations" },
 						{ "shotgun_aim_third_person":			   "!v.is_first_person && v.should_use_shotgun_animations" },
 						{ "rpg7_aim_third_person":				   "!v.is_first_person && v.should_use_rpg7_animations" },
-						{ "natic_aim_third_person":				   "!v.is_first_person && v.should_use_natic_animations" }
+						{ "natic_aim_third_person":				   "!v.is_first_person && v.should_use_natic_animations" },
+						{ "tesla_gun_hipfire_third_person":		   "!v.is_first_person && v.should_use_tesla_gun_animations" }
 					],
                     "blend_transition": 0.15,
                     "blend_via_shortest_path": true,
@@ -349,8 +363,11 @@
 						{ "rpg7_reload_no_swap_third_person": "!v.is_first_person && !v.is_reload_swapping && v.should_rpg7_reload" },
 
 						{ "natic_reload_first_person": "v.should_natic_reload" },
-						{ "natic_reload_third_person": "!v.is_first_person && v.should_natic_reload" }
-						
+						{ "natic_reload_third_person": "!v.is_first_person && v.should_natic_reload" },
+
+						{ "tesla_gun_reload_first_person": "v.should_tesla_gun_reload" },
+						{ "tesla_gun_reload_third_person": "!v.is_first_person && v.should_tesla_gun_reload" }
+
 					],
 					"transitions" : [
 						{

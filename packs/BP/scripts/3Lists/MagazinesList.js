@@ -357,8 +357,8 @@ const MagazineObjects = {
         itemTypeId:            Enums.MagazineTypeIds.TeslaAmmo,
         name:                  "Tesla Ammo",
         magazineClass:         MagazineClasses.TeslaGun,
-        magazineType:          Enums.MagazineTypes.StackBased,
-        maxAmmo:               64,
+        magazineType:          Enums.MagazineTypes.DurabilityBased,
+        maxAmmo:               3,
         fillableByAmmoClasses: []
     })
 }

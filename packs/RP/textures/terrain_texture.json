@@ -193,7 +193,12 @@
     },
     "tesla_ammo": {
       "textures": [
-        "textures/entity/ammunition/tesla_ammo_texture"
+        "textures/entity/magazines/tesla_ammo_texture"
+      ]
+    },
+    "tesla_ammo_empty": {
+      "textures": [
+        "textures/entity/magazines/tesla_ammo_empty_texture"
       ]
     },
 

@@ -1470,7 +1470,56 @@ const FirearmObjects = {
                 camerashakeRandomTime: new NumRange(4, 10)
             })
         })
-    })
+    }),
+    TeslaGun: new Def.TeslaGun({
+        itemTypeId:             "yes:teslagun",
+        normalName:             "Tesla Gun\n§7[Right-Click/Hold to shoot]",
+        hasMagazineWhenEmpty:   false,
+        manualAmmoEject:        false,
+        firingMode:               Enums.FiringModes.Semi,
+        firingRate:               0,
+        damage:                 30, 
+        range:                 25, 
+        horizontalFov:         110,
+        verticalFov:           80,
+        animationAttributes: [
+            new ScaledAnimation({
+                staticAnimation:      StaticReloadAnimations.other.teslaGunReload,
+                scaleDurationToValue: 60
+            }),
+            new NormalAnimation({
+                staticAnimation: StaticShootAnimations.other.teslaGunShoot
+            })
+        ],
+        magazineAttribute: new Def.MagazineAttribute({
+            magazineClass:          MagazineClasses.TeslaGun,
+            usableAmmoClasses:      [BulletAmmoClasses.Normal],
+            maxMagazineItemStackAmount: 1,
+            maxMagazineAmmoCount:       3,
+            maxAmmoPerReloadCount:      1,
+            maxEmptyAmmoPerReloadCount: 1,
+            defaultMagazine:        MagazineObjects.TeslaAmmo,
+        }),
+        scopeAttribute: new Def.ScopeAttribute({
+            slowness:           3,
+            speed:              20,
+            recoilMultiplier:   0.75,
+            stopAimOnCooldown:  true,
+            stopAimDelay:       0
+        }),
+        spreadDegrees:     new NumRange(0.05, 0.15),
+        recoilAttribute: new Def.RecoilAttribute({
+            amountPerShot: 30,
+            mainCamerashakeAttribute: new Def.CamerashakeAttribute({
+                camerashake:     new NumRange(0.04, 0.08),
+                camerashakeRandomTime: new NumRange(0.05, 0.05)
+            }),
+            residualCamerashakeAttribute: new Def.CamerashakeAttribute({
+                camerashake: new NumRange(0.0001, 0.0006),
+                camerashakeRandomTime: new NumRange(4, 10)
+            })
+        })
+    }),
 }
 
 

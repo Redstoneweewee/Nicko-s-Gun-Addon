@@ -82,6 +82,24 @@ class Explosive extends Firearm {
     }
 }
 
+class TeslaGun extends Firearm {
+    /**
+     * @param {Firearm & {
+     * damage: number,
+     * range: number,
+     * horizontalFov: number,
+     * verticalFov: number,
+     * }} def
+     */
+    constructor(def) {
+        super(def);
+        this.damage = def.damage;
+        this.range = def.range;
+        this.horizontalFov = def.horizontalFov;
+        this.verticalFov = def.verticalFov;
+    }
+}
+
 
 class MagazineAttribute {
     /**
@@ -170,4 +188,4 @@ class DamageDropoffAttribute {
     }
 }
 
-export { Firearm, Gun, GunWithAbility, Explosive, MagazineAttribute, ScopeAttribute, CamerashakeAttribute, RecoilAttribute, DamageDropoffAttribute };
+export { Firearm, Gun, GunWithAbility, Explosive, TeslaGun, MagazineAttribute, ScopeAttribute, CamerashakeAttribute, RecoilAttribute, DamageDropoffAttribute };

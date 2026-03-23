@@ -14,7 +14,7 @@
 		"controller.render.tesla_gun": {
 			"textures": [ "Texture.tesla_gun" ],
 			"geometry": "Geometry.tesla_gun",
-			"materials": [ { "*": "Material.firearm" } ]
+			"materials": [ { "*": "Material.tesla_gun" } ]
 		},
 		"controller.render.striker": {
 			"textures": [ "Texture.striker" ],

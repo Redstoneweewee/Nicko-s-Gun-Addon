@@ -1,6 +1,6 @@
 import { Direction, Entity, EntityComponentTypes, EntityHealthComponent, MolangVariableMap, Player, system, world } from '@minecraft/server';
 import * as FirearmDef from './2Definitions/FirearmDefinition.js';
-import { AnimationUtil, DamageUtil, FirearmUtil, ItemUtil, NumberUtil, RayCastUtil, VectorUtil } from './Utilities.js';
+import { AnimationUtil, CustomVectorUtil, DamageUtil, EntityUtil, FirearmUtil, ItemUtil, NumberUtil, RayCastUtil, VectorUtil } from './Utilities.js';
 import { Global } from './Global.js';
 //import { automaticMagazineSwap } from './Detectors/AutoMagSwapDetection.js';
 import * as Reload from './Reload.js';
@@ -66,6 +66,7 @@ function shoot(player, firearm) {
     player.setDynamicProperty(Global.PlayerDynamicProperties.script.lastShootTick, system.currentTick);
     if(firearm instanceof FirearmDef.Gun)            { shootGun(player, firearm); }
     else if(firearm instanceof FirearmDef.Explosive) { shootExplosive(player, firearm); }
+    else if(firearm instanceof FirearmDef.TeslaGun) { shootTeslaGun(player, firearm); }
     else {
         console.error(`Could not find firearmObject of type ${typeof(firearm)} in Shoot()`);
     }
@@ -184,6 +185,61 @@ function shootExplosive(player, explosive) {
     }
 }
 
+/**
+ * 
+ * @param {Player} player 
+ * @param {FirearmDef.TeslaGun} teslaGun
+ */
+function shootTeslaGun(player, teslaGun) {
+    //console.log("shooting a gun weapon.");
+    let anyHits = false;
+    const possibleTargets = EntityUtil.getValidEntitiesNearbyEntity(player, teslaGun.range);
+    const possibleTargetLocations = possibleTargets.map(entity => new Vector3((entity.location.x+entity.getHeadLocation().x)/2, (entity.location.y+entity.getHeadLocation().y)/2, (entity.location.z+entity.getHeadLocation().z)/2));
+    const hitArray = CustomVectorUtil.isInFov(
+        player.dimension,
+        new Vector3(player.getHeadLocation().x, player.getHeadLocation().y, player.getHeadLocation().z),
+        new Vector3(player.getViewDirection().x, player.getViewDirection().y, player.getViewDirection().z),
+        possibleTargetLocations,
+        new Vector3(0, 0, 0),
+        teslaGun.horizontalFov, 
+        teslaGun.verticalFov,
+        teslaGun.range, 
+        0);
+    CustomVectorUtil.drawEffect(
+        player.dimension,
+        new Vector3(player.getHeadLocation().x, player.getHeadLocation().y, player.getHeadLocation().z),
+        new Vector3(player.getViewDirection().x, player.getViewDirection().y, player.getViewDirection().z),
+        30,
+        new Vector3(0, 0, 0),
+        teslaGun.horizontalFov, 
+        teslaGun.verticalFov,
+        teslaGun.range, 
+        0);
+    const targetsHit = possibleTargets.filter((_, index) => hitArray[index]);
+    
+    for(const target of targetsHit) {
+        anyHits = true;
+        DamageUtil.dealDamageWithMultiplier(target, teslaGun.damage);
+    }
+
+    //player.camera.fade({fadeColor: {red: 0.43529, green: 0.88627, blue: 0.98823}, fadeTime: {fadeInTime: 0, holdTime: 0.02, fadeOutTime: 0.1}});
+
+    playHitSounds(player, anyHits, false);
+
+    const newAmmoCount = FirearmUtil.tryConsumeFirearmAmmo(player, teslaGun, 1);
+    FirearmUtil.tryAddScreenshakeRecoil(player, teslaGun);
+    
+    let playedSound = AnimationUtil.playAnimationWithSound(player, teslaGun, [AnimationTypes.Shoot]) === undefined ? false : true;
+    if(!playedSound) {
+        if(newAmmoCount !== undefined && newAmmoCount > 0) {
+            AnimationUtil.playAnimationWithSound(player, teslaGun, [AnimationTypes.ShootWithAmmo]);
+        }
+        else if(newAmmoCount === 0) {
+            AnimationUtil.playAnimationWithSound(player, teslaGun, [AnimationTypes.ShootOutOfAmmo]);
+        }
+    }
+    //player.setDynamicProperty(Global.PlayerDynamicProperties.script.isFirstShot, false);
+}
 
 /**
  * 

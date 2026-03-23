@@ -110,6 +110,15 @@
           "default": false,
           "client_sync": true
         },
+        "yes:tesla_gun_bullet_count": {
+          "type": "int",
+          "range": [
+            0,
+            3
+          ],
+          "default": 0,
+          "client_sync": true
+        },
         "yes:recoil": {
           "type": "float",
           "range": [

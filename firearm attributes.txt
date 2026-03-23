@@ -104,7 +104,7 @@ Magnum:
   - Knockback: 5
   - Piercing: 4
 
-Tesla Gun:
+Tesla Gun:  https://www.youtube.com/watch?v=9wSy0wrkxvo
 ----------
   - Damage Levels:
     - Level 1: 30

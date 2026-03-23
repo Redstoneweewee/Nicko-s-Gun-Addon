@@ -15,7 +15,8 @@
  * AGM:          "yes:agm",
  * Striker:      "yes:striker",
  * Rpg7:         "yes:rpg7",
- * Natic:        "yes:natic"
+ * Natic:        "yes:natic",
+ * TeslaGun:     "yes:tesla_gun"
  * }} 
  * */
 const FirearmTypeIds = {
@@ -32,7 +33,8 @@ const FirearmTypeIds = {
     AGM:          "yes:agm",
     Striker:      "yes:striker",
     Rpg7:         "yes:rpg7",
-    Natic:        "yes:natic"
+    Natic:        "yes:natic",
+    TeslaGun:     "yes:tesla_gun"
 }
 
 

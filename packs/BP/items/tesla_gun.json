@@ -1,0 +1,45 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:item": {
+        "description": {
+            "identifier": "yes:tesla_gun",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "yes:is_firearm",
+                    "yes:tesla_gun",
+                    "yes:use_new_first_person",
+                    "yes:use_tesla_gun_animations",
+                    "yes:use_tesla_gun_reload"
+                ]
+            },
+            "minecraft:block_placer": {
+                "block": "yes:tesla_gun",
+                "replace_block_item": true,
+                "use_on": ["yes:null_block"]
+            },
+            "minecraft:hand_equipped": true,
+            "minecraft:max_stack_size": 1,
+            "minecraft:allow_off_hand": false,
+            "minecraft:display_name": {
+                "value": "Tesla Gun\n§7[Right-Click/Hold to shoot]\n§7Magazine: §7<§a1 Rocket§7>"
+            },
+            "minecraft:can_destroy_in_creative": false,
+            "minecraft:should_despawn": {
+                "value": false
+            },
+            "minecraft:use_modifiers": {
+                "movement_modifier": 1,
+                "use_duration": 9999
+            },
+            "minecraft:cooldown": {
+                "category": "yes:tesla_gun",
+                "duration": 0
+            }
+        }
+    }
+}
