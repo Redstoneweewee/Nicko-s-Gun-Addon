@@ -97,7 +97,7 @@ const MagazineClassTextNames = {
    ShotgunShell:     "Shells",
    Grenade:          "Grenades",
    Rocket:           "Rockets",
-   Tesla:            "Tesla Ammo"
+   Tesla:            "Tesla Shots"
 }
 
 
