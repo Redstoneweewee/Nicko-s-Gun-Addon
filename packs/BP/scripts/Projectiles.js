@@ -221,6 +221,13 @@ function explodeExplosive(explosive, location, hitType, hitEntity) {
                 console.log(`flashDuration: ${flashDuration}`);
                 if(flashDuration !== 0) entity.camera.fade({fadeColor: {red: 1, green: 1, blue: 1}, fadeTime: {fadeInTime: 0.1, holdTime: flashDuration/20, fadeOutTime: 0.5} })
             }
+
+
+            const aimRestrictionDuration = stunAttribute.aimRestrictionDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
+            //const aimRestrictionDuration = MathUtils.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range, stunAttribute.minAimRestrictionDuration, stunAttribute.maxAimRestrictionDuration);
+            entity.addEffect("weakness", Math.floor(aimRestrictionDuration), {amplifier: 255, showParticles: false});
+                
+
             const movementRestrictionDuration = Math.floor(stunAttribute.movementRestrictionDuration.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range));
             const movementRestrictionMultiplier = stunAttribute.movementRestrictionMultiplier.mapLinear((stunAttribute.range - distance), 0, stunAttribute.range);
             const movementComponent = entity.getComponent(EntityComponentTypes.Movement);
