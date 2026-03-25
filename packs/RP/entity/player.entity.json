@@ -108,7 +108,8 @@
           "v.movement_direction_value = 0.0;",
           "v.reload_normal_animation_multiplier = 1.0;",
           "v.reload_no_swap_animation_multiplier = 1.0;",
-          "v.reload_cock_animation_multiplier = 1.0;"
+          "v.reload_cock_animation_multiplier = 1.0;",
+          "v.shoot_animation_multiplier = 1.0;"
         ],
         "pre_animation": [
           "variable.helmet_layer_visible = 1.0;",

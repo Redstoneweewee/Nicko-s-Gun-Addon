@@ -188,6 +188,15 @@
           "default": 1.0,
           "client_sync": true
         },
+        "yes:shoot_animation_multiplier": {
+          "type": "float",
+          "range": [
+            0.0,
+            10.0
+          ],
+          "default": 1.0,
+          "client_sync": true
+        },
 
         "yes:rotation_offset_x": {
           "type": "int",
@@ -226,15 +235,6 @@
           "client_sync": true
         },
         "yes:transform_offset_y": {
-          "type": "int",
-          "range": [
-            -9999,
-            9999
-          ],
-          "default": 0,
-          "client_sync": true
-        },
-        "yes:transform_offset_z": {
           "type": "int",
           "range": [
             -9999,

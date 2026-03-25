@@ -1267,7 +1267,7 @@ const FirearmObjects = {
         normalName:             "AGM Shotgun\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     false,
         manualAmmoEject:      false,
-        alwaysEndCock:        false,
+        alwaysEndCock:        true,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         10,
@@ -1282,23 +1282,23 @@ const FirearmObjects = {
         animationAttributes: [
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.shotgun.agmReload,
-                scaleDurationToValue: 20
+                scaleDurationToValue: 15
             }),
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.shotgun.agmReloadOpenCock,
-                scaleDurationToValue: 12
+                scaleDurationToValue: 6
             }),
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.shotgun.agmReloadCock,
-                scaleDurationToValue: 12
+                scaleDurationToValue: 10
             }),
             new ScaledAnimation({
                 staticAnimation: StaticShootAnimations.shotgun.agmShootWithAmmo,
-                scaleDurationToValue: 12
+                scaleDurationToValue: 20
             }), 
             new ScaledAnimation({
                 staticAnimation: StaticShootAnimations.shotgun.agmShootOutOfAmmo,
-                scaleDurationToValue: 12
+                scaleDurationToValue: 20
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({

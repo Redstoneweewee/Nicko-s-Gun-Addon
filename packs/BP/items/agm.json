@@ -39,7 +39,7 @@
             },
             "minecraft:cooldown": {
                 "category": "yes:agm",
-                "duration": 0.5
+                "duration": 1
             }
         }
     }

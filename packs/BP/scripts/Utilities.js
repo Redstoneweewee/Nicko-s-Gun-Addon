@@ -1097,6 +1097,7 @@ class FirearmUtil {
         let firstAmmoMultiplier = 1;
         let openCockMultiplier = 1;
         let cockMultiplier = 1;
+        let shootMultiplier = 1;
         firearmObject.animationAttributes.forEach(attributes => {
             if(!(attributes instanceof ScaledAnimation)) { return; }
             if(attributes.staticAnimation.type === AnimationTypes.ReloadSwap || attributes.staticAnimation.type === AnimationTypes.ReloadBoth) {
@@ -1114,6 +1115,11 @@ class FirearmUtil {
             else if(attributes.staticAnimation.type === AnimationTypes.ReloadCock) {
                 cockMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
             }
+            else if(attributes.staticAnimation.type === AnimationTypes.Shoot ||
+                    attributes.staticAnimation.type === AnimationTypes.ShootWithAmmo ||
+                    attributes.staticAnimation.type === AnimationTypes.ShootOutOfAmmo) {
+                shootMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
+            }
         });
         //if(firearmObject instanceof Gun) {
         this.#trySetReloadNormalAnimationMultiplierValue(player, normalMultiplier);
@@ -1121,6 +1127,7 @@ class FirearmUtil {
         this.#trySetReloadFirstAmmoAnimationMultiplierValue(player, firstAmmoMultiplier);
         this.#trySetReloadOpenCockAnimationMultiplierValue(player, openCockMultiplier);
         this.#trySetReloadCockAnimationMultiplierValue(player, cockMultiplier);
+        this.#trySetShootAnimationMultiplierValue(player, shootMultiplier);
         // }
         // else if(firearmObject instanceof Explosive) {
         //     this.#trySetReloadNormalAnimationMultiplierValue(player, normalMultiplier);
@@ -1181,6 +1188,16 @@ class FirearmUtil {
         if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.reload_cock_animation_multiplier) !== value) {
             player.setDynamicProperty(Global.PlayerDynamicProperties.animation.reload_cock_animation_multiplier, value);
             AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.reload_cock_animation_multiplier);
+        }
+    }
+    /**
+     * @param {Player} player 
+     * @param {Number} value 
+     */
+    static #trySetShootAnimationMultiplierValue(player, value) {
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.shoot_animation_multiplier) !== value) {
+            player.setDynamicProperty(Global.PlayerDynamicProperties.animation.shoot_animation_multiplier, value);
+            AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.shoot_animation_multiplier);
         }
     }
 

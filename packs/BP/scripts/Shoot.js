@@ -96,15 +96,8 @@ function shootGun(player, gun) {
     const newAmmoCount = FirearmUtil.tryConsumeFirearmAmmo(player, gun, 1);
     FirearmUtil.tryAddScreenshakeRecoil(player, gun);
 
-    /**@type {typeof AnimationTypes[keyof typeof AnimationTypes][]} */
-    const animationTypes = [AnimationTypes.Shoot, AnimationTypes.ShootWithAmmo, AnimationTypes.ShootOutOfAmmo];    
-    let timeMultiplier = 1;
-    for(let attributes of gun.animationAttributes) {
-        if(!animationTypes.includes(attributes.staticAnimation.type) || !(attributes instanceof ScaledAnimation)) { continue; }
-        timeMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
-    }
+    const timeMultiplier = Number(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.shoot_animation_multiplier) ?? 1);
 
-    
     let playedSound = AnimationUtil.playAnimationWithSound(player, gun, [AnimationTypes.Shoot], timeMultiplier) === undefined ? false : true;
     if(!playedSound) {
         if(newAmmoCount !== undefined && newAmmoCount > 0) {
