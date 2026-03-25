@@ -220,6 +220,7 @@ function shootTeslaGun(player, teslaGun) {
     for(const target of targetsHit) {
         anyHits = true;
         DamageUtil.dealDamageWithMultiplier(target, teslaGun.damage);
+        DamageUtil.dealKnockbackUsingGun(player, target, teslaGun, true);
         SoundsUtil.playSound(player, "firearm.tesla_gun_hit", target.location, teslaGun.range, 1, 0.9, 1.1);
     }
 

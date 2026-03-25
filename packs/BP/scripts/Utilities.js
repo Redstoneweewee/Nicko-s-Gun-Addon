@@ -1,7 +1,7 @@
 import { Entity, EntityDamageCause, EntityHealthComponent, EntityInventoryComponent, GameMode, ContainerSlot, Player, system, ItemStack, ItemDurabilityComponent, EntityEquippableComponent, EquipmentSlot, EntityComponentTypes, ItemComponentTypes, world, EntityTypeFamilyComponent, Block, Dimension, BlockVolume, EntityProjectileComponent, MolangVariableMap } from '@minecraft/server';
 import { Vector3 } from './Math/Vector3.js';
 import { Global } from './Global.js';
-import { Firearm, Gun, Explosive, GunWithAbility } from './2Definitions/FirearmDefinition.js';
+import { Firearm, Gun, Explosive, GunWithAbility, TeslaGun } from './2Definitions/FirearmDefinition.js';
 import { FirearmTypeIds, FiringModes } from './1Enums/FirearmEnums.js';
 import { Magazine } from './2Definitions/MagazineDefinition.js';
 import { DurabilityMagazineClasses, MagazineClasses, MagazineClassTextNames, MagazineTypeIds, MagazineTypes, StackMagazineClasses } from './1Enums/MagazineEnums.js';
@@ -1391,7 +1391,7 @@ class DamageUtil {
     /**
      * @param {Entity} source 
      * @param {Entity} target 
-     * @param {Gun} gun 
+     * @param {Gun|TeslaGun} gun 
      * @param {Boolean} doNotMakeFly 
      */
     static dealKnockbackUsingGun(source, target, gun, doNotMakeFly) {

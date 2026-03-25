@@ -41,19 +41,19 @@ const FirearmTypeIds = {
 /**
  * @enum {import("@minecraft/server").Vector2}
  * @type {{
- * VeryLow:  { x: 0.1, y: 0.1 },
- * Low:      { x: 0.25, y: 0.13 },
- * Medium:   { x: 0.4, y: 0.2 },
- * High:     { x: 0.5, y: 0.25 },
- * VeryHigh: { x: 0.7, y: 0.3 }
+ * VeryLow:  { x: 0.4, y: 0.1 },
+ * Low:      { x: 0.8, y: 0.13 },
+ * Medium:   { x: 1.2, y: 0.2 },
+ * High:     { x: 1.8, y: 0.25 },
+ * VeryHigh: { x: 2.2, y: 0.3 }
  * }}
  */
 const KnockbackAmounts = {
-    VeryLow:  { x: 0.1, y: 0.1 },
-    Low:      { x: 0.25, y: 0.13 },
-    Medium:   { x: 0.4, y: 0.2 },
-    High:     { x: 0.5, y: 0.25 },
-    VeryHigh: { x: 0.7, y: 0.3 }
+    VeryLow:  { x: 0.4, y: 0.1 },
+    Low:      { x: 0.8, y: 0.13 },
+    Medium:   { x: 1.2, y: 0.2 },
+    High:     { x: 1.8, y: 0.25 },
+    VeryHigh: { x: 2.2, y: 0.3 }
 }
 
 /** 

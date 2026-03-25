@@ -91,6 +91,7 @@ class TeslaGun extends Firearm {
      * range: number,
      * horizontalFov: number,
      * verticalFov: number,
+     * knockbackAmount:    import("@minecraft/server").Vector2,
      * }} def
      */
     constructor(def) {
@@ -99,6 +100,7 @@ class TeslaGun extends Firearm {
         this.range = def.range;
         this.horizontalFov = def.horizontalFov;
         this.verticalFov = def.verticalFov;
+        this.knockbackAmount = def.knockbackAmount;
     }
 }
 

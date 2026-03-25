@@ -639,7 +639,7 @@ const FirearmObjects = {
         }),
         headshotMultiplier: 2,
         pierce:                 1,
-        knockbackAmount:        Enums.KnockbackAmounts.High,
+        knockbackAmount:        Enums.KnockbackAmounts.VeryLow,
         range:                  500,
         animationAttributes: [
             new ScaledAnimation({
@@ -769,7 +769,7 @@ const FirearmObjects = {
         }),
         headshotMultiplier: 2,
         pierce:                 1,
-        knockbackAmount:        Enums.KnockbackAmounts.High,
+        knockbackAmount:        Enums.KnockbackAmounts.Low,
         range:                  500,
         animationAttributes: [
             new ScaledAnimation({
@@ -834,7 +834,7 @@ const FirearmObjects = {
         }),
         headshotMultiplier: 2,
         pierce:                 1,
-        knockbackAmount:        Enums.KnockbackAmounts.High,
+        knockbackAmount:        Enums.KnockbackAmounts.VeryHigh,
         range:                  500,
         animationAttributes: [
             new ScaledAnimation({
@@ -1090,7 +1090,7 @@ const FirearmObjects = {
         }),
         headshotMultiplier: 2,
         pierce:                 1,
-        knockbackAmount:        Enums.KnockbackAmounts.High,
+        knockbackAmount:        Enums.KnockbackAmounts.VeryLow,
         range:                  500,
         animationAttributes: [
             new ScaledAnimation({
@@ -1151,7 +1151,7 @@ const FirearmObjects = {
         }),
         headshotMultiplier: 2,
         pierce:                 1,
-        knockbackAmount:        Enums.KnockbackAmounts.High,
+        knockbackAmount:        Enums.KnockbackAmounts.Low,
         range:                  500,
         animationAttributes: [
             new ScaledAnimation({
@@ -1215,7 +1215,7 @@ const FirearmObjects = {
         }),
         headshotMultiplier:     2,
         pierce:                 4,
-        knockbackAmount:        Enums.KnockbackAmounts.High,
+        knockbackAmount:        Enums.KnockbackAmounts.VeryHigh,
         range:                  50,
         animationAttributes: [
             new ScaledAnimation({
@@ -1336,7 +1336,7 @@ const FirearmObjects = {
         }),
         headshotMultiplier:     2,
         pierce:                 4,
-        knockbackAmount:        Enums.KnockbackAmounts.High,
+        knockbackAmount:        Enums.KnockbackAmounts.Medium,
         range:                  50,
         animationAttributes: [
             new ScaledAnimation({
@@ -1495,6 +1495,7 @@ const FirearmObjects = {
         firingRate:               0,
         damage:                 30, 
         range:                 25, 
+        knockbackAmount:       Enums.KnockbackAmounts.High,
         horizontalFov:         110,
         verticalFov:           80,
         animationAttributes: [
