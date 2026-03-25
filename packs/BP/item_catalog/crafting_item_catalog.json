@@ -7,11 +7,15 @@
              "groups": [
                 {
                    "group_identifier": {
-                      "icon": "yes:akm",
-                      "name": "yes:itemGroup.name.ars"
+                      "icon": "yes:usp",
+                      "name": "yes:itemGroup.name.pistols"
                    },
                    "items": [
-                      "yes:m4"
+                      "yes:usp",
+                      "yes:m92f",
+                      "yes:luger",
+                      "yes:makarov",
+                      "yes:magnum"
                    ]
                 }
              ]
@@ -35,14 +39,26 @@
              "groups": [
                 {
                    "group_identifier": {
-                      "icon": "yes:m92f",
-                      "name": "yes:itemGroup.name.pistols"
+                      "icon": "yes:stg44",
+                      "name": "yes:itemGroup.name.ars"
                    },
                    "items": [
-                      "yes:m92f",
-                      "yes:makarov",
-                      "yes:usp",
-                      "yes:magnum"
+                      "yes:stg44",
+                      "yes:m4"
+                   ]
+                }
+             ]
+          },
+          {
+             "category_name": "equipment",
+             "groups": [
+                {
+                   "group_identifier": {
+                      "icon": "yes:kar98",
+                      "name": "yes:itemGroup.name.snipers"
+                   },
+                   "items": [
+                      "yes:kar98"
                    ]
                 }
              ]
@@ -63,6 +79,23 @@
                 }
              ]
           },
+          {
+             "category_name": "equipment",
+             "groups": [
+                {
+                   "group_identifier": {
+                      "icon": "yes:natic",
+                      "name": "yes:itemGroup.name.other"
+                   },
+                   "items": [
+                      "yes:natic",
+                      "yes:rpg7",
+                      "yes:tesla_gun"
+                   ]
+                }
+             ]
+          },
+
 
 
          {
@@ -70,43 +103,57 @@
             "groups": [
                {
                   "group_identifier": {
-                     "icon": "yes:ar_magazine_30",
-                     "name": "yes:itemGroup.name.magazines"
+                     "icon": "yes:ammo_9mm",
+                     "name": "yes:itemGroup.name.bullets"
                   },
                   "items": [
-                     "yes:ar_magazine_30",
-                     "yes:ar_magazine_50",
-                     "yes:dmr_magazine_15",
-                     "yes:smg_magazine_24",
-                     "yes:p90_magazine_50",
-                     "yes:sniper_magazine_3",
-                     "yes:pistol_magazine_8",
-                     "yes:shotgun_magazine_6"
+                     "yes:ammo_9mm",
+                     "yes:ammo_45acp",
+                     "yes:ammo_762mm"
+                  ]
+               },
+               {
+                  "group_identifier": {
+                     "icon": "yes:birdshot",
+                     "name": "yes:itemGroup.name.shotgun_shells"
+                  },
+                  "items": [
+                     "yes:birdshot"
+                  ]
+               },
+               {
+                  "group_identifier": {
+                     "icon": "yes:explosive_grenade",
+                     "name": "yes:itemGroup.name.grenades"
+                  },
+                  "items": [
+                     "yes:explosive_grenade",
+                     "yes:flame_grenade",
+                     "yes:acid_grenade",
+                     "yes:flash_grenade"
+                  ]
+               },
+               {
+                  "group_identifier": {
+                     "icon": "yes:rocket",
+                     "name": "yes:itemGroup.name.rockets"
+                  },
+                  "items": [
+                     "yes:rocket"
+                  ]
+               },
+               {
+                  "group_identifier": {
+                     "icon": "yes:tesla_ammo",
+                     "name": "yes:itemGroup.name.tesla_ammo"
+                  },
+                  "items": [
+                     "yes:tesla_ammo",
+                     "yes:tesla_ammo_empty"
                   ]
                }
             ]
-         },
-         {
-           "category_name": "items",
-           "groups": [
-              {
-                 "group_identifier": {
-                    "icon": "yes:ar_magazine_30_empty",
-                    "name": "yes:itemGroup.name.empty_magazines"
-                 },
-                 "items": [
-                   "yes:ar_magazine_30_empty",
-                   "yes:ar_magazine_50_empty",
-                   "yes:dmr_magazine_15_empty",
-                   "yes:smg_magazine_24_empty",
-                   "yes:p90_magazine_50_empty",
-                   "yes:sniper_magazine_3_empty",
-                   "yes:pistol_magazine_8_empty",
-                   "yes:shotgun_magazine_6_empty"
-                 ]
-              }
-           ]
-        }
+         }
        ]
     }
  }

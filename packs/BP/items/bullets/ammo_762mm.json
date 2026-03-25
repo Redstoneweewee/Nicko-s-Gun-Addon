@@ -21,7 +21,7 @@
             },
             "minecraft:max_stack_size": 64,
             "minecraft:display_name": {
-                "value": "7.62mm Bullet"
+                "value": "7.62mm Bullet\n§7Usable For:\n<§aMP-5§7,§a StG 44§7,§a M4§7,§a Kar98§7>"
             },
             "minecraft:allow_off_hand": true,
             "minecraft:should_despawn": {

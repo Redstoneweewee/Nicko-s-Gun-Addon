@@ -108,19 +108,6 @@ M4
 
 === SHOTGUNS ===
 
-Striker
-  - Type: Shotgun (Auto)
-  - Damage: 1.5-45
-  - Magazine: 20 shells
-  - Fire Rate: 200 RPM
-  - Reload Speed: 0.65 sec per shell
-  - Knockback: Medium
-  - Piercing: 5
-  - Spread: 3-4.5 degrees
-  - Damage Modifiers (if all pellets hit):
-    - Under 5 blocks: 45 damage
-    - After 10 blocks: 1.5 damage
-
 AGM
   - Type: Shotgun (Semi)
   - Damage: 5-35
@@ -146,6 +133,19 @@ Benelli
   - Damage Modifiers (if all pellets hit):
     - Under 5 blocks: 35 damage
     - After 10 blocks: 20 damage
+
+Striker
+  - Type: Shotgun (Auto)
+  - Damage: 1.5-45
+  - Magazine: 20 shells
+  - Fire Rate: 200 RPM
+  - Reload Speed: 0.65 sec per shell
+  - Knockback: Medium
+  - Piercing: 5
+  - Spread: 3-4.5 degrees
+  - Damage Modifiers (if all pellets hit):
+    - Under 5 blocks: 45 damage
+    - After 10 blocks: 1.5 damage
 
 
 

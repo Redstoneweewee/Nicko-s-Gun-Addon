@@ -27,7 +27,7 @@
                 }
             },
             "minecraft:display_name": {
-                "value": "Tesla Ammo"
+                "value": "Tesla Ammo\n§7Usable For:\n<§aTesla Gun§7>"
             },
             "minecraft:allow_off_hand": true,
             "minecraft:should_despawn": {

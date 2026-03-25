@@ -1,11 +1,15 @@
-yes:itemGroup.name.ars=§e§l<§r§eSimple Arsenal§e§l>§r ARs!
-yes:itemGroup.name.smgs=§e§l<§r§eSimple Arsenal§e§l>§r SMGs!
-yes:itemGroup.name.snipers=§e§l<§r§eSimple Arsenal§e§l>§r Snipers!
-yes:itemGroup.name.pistols=§e§l<§r§eSimple Arsenal§e§l>§r Pistols!
-yes:itemGroup.name.shotguns=§e§l<§r§eSimple Arsenal§e§l>§r Shotguns!
+yes:itemGroup.name.pistols=§7[§rPistols§7]
+yes:itemGroup.name.smgs=§7[§rSubmachine Guns§7]
+yes:itemGroup.name.ars=§7[§rAssault Rifles§7]
+yes:itemGroup.name.shotguns=§7[§rShotguns§7]
+yes:itemGroup.name.snipers=§7[§rSnipers§7]
+yes:itemGroup.name.other=§7[§rOther Firearms§7]
 
-yes:itemGroup.name.crafting_materials=§e§l<§r§eSimple Arsenal§e§l>§r Crafting Materials!
-yes:itemGroup.name.crafting_alloys=§e§l<§r§eSimple Arsenal§e§l>§r Alloys & Metals!
-yes:itemGroup.name.magazines=§e§l<§r§eSimple Arsenal§e§l>§r Magazines!
-yes:itemGroup.name.empty_magazines=§e§l<§r§eSimple Arsenal§e§l>§r Empty Magazines!
-yes:itemGroup.name.ammunition=§e§l<§r§eSimple Arsenal§e§l>§r Ammunition!
+
+
+
+yes:itemGroup.name.bullets=§7[§rBullets§7]
+yes:itemGroup.name.shotgun_shells=§7[§rShotgun Shells§7]
+yes:itemGroup.name.grenades=§7[§rGrenades§7]
+yes:itemGroup.name.rockets=§7[§rRockets§7]
+yes:itemGroup.name.tesla_ammo=§7[§rTesla Ammo§7]
