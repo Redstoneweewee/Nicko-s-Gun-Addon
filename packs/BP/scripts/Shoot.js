@@ -30,6 +30,18 @@ const HitMarkerVariants = {
     headshot: "headshot"
 }
 
+
+world.afterEvents.itemStopUse.subscribe(eventData => {
+    const player = eventData.source;
+    if(!FirearmUtil.isHoldingFirearm(player)) { return; }
+    const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(eventData.itemStack);
+    if(!firearmObject) { return; }
+    const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
+    if(firearmContainerSlot !== null) {
+        FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearmObject);
+    }
+});
+
 /**
  * 
  * @param {Player} player 
@@ -72,10 +84,6 @@ function shoot(player, firearm) {
         console.error(`Could not find firearmObject of type ${typeof(firearm)} in Shoot()`);
     }
     renewAmmoCount(player);
-    const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
-    if(firearmContainerSlot !== null) {
-        FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearm);
-    }
 }
 
 /**

@@ -34,7 +34,7 @@
             },
             "minecraft:use_modifiers": {
                 "movement_modifier": 1,
-                "use_duration": 9999
+                "use_duration": 99999
             },
             "minecraft:cooldown": {
                 "category": "yes:stg44",
