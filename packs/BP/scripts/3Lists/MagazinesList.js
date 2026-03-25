@@ -14,72 +14,17 @@ import { NumRange, Vec2Range } from '../2Definitions/GlobalDefinition.js';
  */
 const MagazineObjects = {
     None: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.ARMagazine30,
-        name:                  "AR Magazine [§a30§7/§a30 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.AR,
+        itemTypeId:            Enums.MagazineTypeIds.Ammo9MM,
+        name:                  "9mm Bullet",
+        magazineClass:         MagazineClasses.Ammo9MM,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               30,
         fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
     }),
-
-    ARMagazine30: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.ARMagazine30,
-        name:                  "AR Magazine [§a30§7/§a30 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.AR,
-        magazineType:          Enums.MagazineTypes.DurabilityBased,
-        maxAmmo:               30,
-        fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
-    }),
-
-    ARMagazine50: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.ARMagazine50,
-        name:                  "AR Magazine [§a50§7/§a50 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.AR,
-        magazineType:          Enums.MagazineTypes.DurabilityBased,
-        maxAmmo:               50,
-        fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
-    }),
-
-    DMRMagazine15: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.DMRMagazine15,
-        name:                  "DMR Magazine [§a15§7/§a15 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.DMR,
-        magazineType:          Enums.MagazineTypes.DurabilityBased,
-        maxAmmo:               15,
-        fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
-    }),
-
-    SMGMagazine24: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.SMGMagazine24,
-        name:                  "SMG Magazine [§a24§7/§a24 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.SMG,
-        magazineType:          Enums.MagazineTypes.DurabilityBased,
-        maxAmmo:               24,
-        fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
-    }),
-
-    SniperMagazine3: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.SniperMagazine3,
-        name:                  "Sniper Magazine [§a3§7/§a3 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.Sniper,
-        magazineType:          Enums.MagazineTypes.DurabilityBased,
-        maxAmmo:               3,
-        fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
-    }),
-
-    PistolMagazine8: new Def.Magazine({
-        itemTypeId:            Enums.MagazineTypeIds.PistolMagazine8,
-        name:                  "Pistol Magazine [§a8§7/§a8 Rounds§f]\n§7[Interact to load ammo in]",
-        magazineClass:         MagazineClasses.Pistol,
-        magazineType:          Enums.MagazineTypes.DurabilityBased,
-        maxAmmo:               8,
-        fillableByAmmoClasses: [BulletAmmoClasses.Normal, BulletAmmoClasses.HollowPoint, BulletAmmoClasses.ArmorPiercing, BulletAmmoClasses.AntiMaterial, BulletAmmoClasses.Exploding, BulletAmmoClasses.Incendiary]
-    }),
-    
     Birdshot: new Def.Magazine({
         itemTypeId:            Enums.MagazineTypeIds.Birdshot,
         name:                  "Shotgun Shell",
-        magazineClass:         MagazineClasses.Shotgun,
+        magazineClass:         MagazineClasses.ShotgunShell,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         fillableByAmmoClasses: []
@@ -88,7 +33,7 @@ const MagazineObjects = {
     Ammo9MM: new Def.Magazine({
         itemTypeId:            Enums.MagazineTypeIds.Ammo9MM,
         name:                  "9mm Bullet",
-        magazineClass:         MagazineClasses.Pistol,
+        magazineClass:         MagazineClasses.Ammo9MM,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         fillableByAmmoClasses: []
@@ -97,7 +42,7 @@ const MagazineObjects = {
     Ammo762MM: new Def.Magazine({
         itemTypeId:            Enums.MagazineTypeIds.Ammo762MM,
         name:                  "7.62mm Bullet",
-        magazineClass:         MagazineClasses.AR,
+        magazineClass:         MagazineClasses.Ammo762MM,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         fillableByAmmoClasses: []
@@ -106,7 +51,7 @@ const MagazineObjects = {
     Ammo45ACP: new Def.Magazine({
         itemTypeId:            Enums.MagazineTypeIds.Ammo45ACP,
         name:                  ".45 ACP Bullet",
-        magazineClass:         MagazineClasses.Magnum,
+        magazineClass:         MagazineClasses.Ammo45ACP,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         fillableByAmmoClasses: []
@@ -115,7 +60,7 @@ const MagazineObjects = {
     ExplosiveGrenade: new Def.ExplosiveMagazineAmmo({
         itemTypeId:            Enums.MagazineTypeIds.ExplosiveGrenade,
         name:                  "Explosive Grenade",
-        magazineClass:         MagazineClasses.GrenadeLauncher,
+        magazineClass:         MagazineClasses.Grenade,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         fillableByAmmoClasses: [],
@@ -168,7 +113,7 @@ const MagazineObjects = {
     FlameGrenade: new Def.ExplosiveMagazineAmmo({
         itemTypeId:            Enums.MagazineTypeIds.FlameGrenade,
         name:                  "Flame Grenade",
-        magazineClass:         MagazineClasses.GrenadeLauncher,
+        magazineClass:         MagazineClasses.Grenade,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         fillableByAmmoClasses: [],
@@ -215,7 +160,7 @@ const MagazineObjects = {
     FlashGrenade: new Def.ExplosiveMagazineAmmo({
         itemTypeId:            Enums.MagazineTypeIds.FlashGrenade,
         name:                  "Flash Grenade",
-        magazineClass:         MagazineClasses.GrenadeLauncher,
+        magazineClass:         MagazineClasses.Grenade,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         fillableByAmmoClasses: [],
@@ -268,7 +213,7 @@ const MagazineObjects = {
     AcidGrenade: new Def.ExplosiveMagazineAmmo({
         itemTypeId:            Enums.MagazineTypeIds.AcidGrenade,
         name:                  "Acid Grenade",
-        magazineClass:         MagazineClasses.GrenadeLauncher,
+        magazineClass:         MagazineClasses.Grenade,
         magazineType:          Enums.MagazineTypes.StackBased,
         maxAmmo:               64,
         fillableByAmmoClasses: [],
@@ -373,7 +318,7 @@ const MagazineObjects = {
     TeslaAmmo: new Def.Magazine({
         itemTypeId:            Enums.MagazineTypeIds.TeslaAmmo,
         name:                  "Tesla Ammo",
-        magazineClass:         MagazineClasses.TeslaGun,
+        magazineClass:         MagazineClasses.Tesla,
         magazineType:          Enums.MagazineTypes.DurabilityBased,
         maxAmmo:               3,
         fillableByAmmoClasses: []

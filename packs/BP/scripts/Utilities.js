@@ -1786,7 +1786,7 @@ class FirearmNameUtil {
         const magazineTypeId = TypeUtil.getValueFromList(MagazineTypeIds, String(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId)));
         const isMagazineEmpty = Boolean(firearmContainerSlot.getDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty));
         if(magazineTypeId === undefined) { return; }
-        const magazineName = this.#convertMagazineTypeIdToName(magazineTypeId, isMagazineEmpty);
+        const magazineName = this.#convertMagazineTypeIdToName(firearmContainerSlot.getItem(), magazineTypeId, isMagazineEmpty);
         //firearmContainerSlot.setLore([`§r§f${firearm.normalName}\n§r§7Magazine: ${magazineName}`]);
         firearmContainerSlot.nameTag = `§r§f${firearm.normalName}`;
         firearmContainerSlot.nameTag += `\n§r§7Magazine: ${magazineName}`;
@@ -1836,21 +1836,22 @@ class FirearmNameUtil {
     }
 
     /**
-     * 
+     * @param {ItemStack|undefined} magazineItemStack
      * @param {typeof MagazineTypeIds[keyof typeof MagazineTypeIds]} magazineTypeId
      * @param {boolean} isMagazineEmpty 
      * @returns {string}
      */
-    static #convertMagazineTypeIdToName(magazineTypeId, isMagazineEmpty) {
+    static #convertMagazineTypeIdToName(magazineItemStack, magazineTypeId, isMagazineEmpty) {
         if(magazineTypeId === MagazineTypeIds.None) { return "§7<§cNone§r§7>"; }
         const magazineClass = this.#convertMagazineTypeIdToMagazineClass(magazineTypeId);
         if(magazineClass === undefined) { return "§7<§cNone§r§7>"; }
+        if(magazineItemStack === undefined) { return "§7<§cNone§r§7>"; }
         let name = "";
-        let numbers = magazineTypeId.match(/\d+/g);
-        let ammoCount = undefined;
-        if(numbers) {
-            ammoCount = Number(numbers[numbers.length-1]);
-        }
+        //let numbers = magazineTypeId.match(/\d+/g);
+        let ammoCount = FirearmUtil.getItemAmmoUsingItemStack(magazineItemStack);
+        //if(numbers) {
+        //    ammoCount = Number(numbers[numbers.length-1]);
+        //}
         if(ammoCount !== undefined) {
             name += ammoCount.toString()+" ";
         }

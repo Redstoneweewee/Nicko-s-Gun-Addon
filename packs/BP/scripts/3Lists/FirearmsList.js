@@ -3,7 +3,7 @@ import * as Def from '../2Definitions/FirearmDefinition.js';
 import * as Enums from "../1Enums/FirearmEnums.js"
 import { SwitchFiringModeAttribute, SwitchScopeZoomAttribute } from '../2Definitions/LeftClickAbilityDefinition.js';
 import { MagazineObjects } from './MagazinesList.js';
-import { BulletAmmoClasses, ShotgunAmmoClasses } from '../1Enums/AmmoEnums.js';
+import { BulletAmmoClasses, ExploiveAmmoClasses, ShotgunAmmoClasses } from '../1Enums/AmmoEnums.js';
 import { MagazineClasses } from '../1Enums/MagazineEnums.js';
 import { LeftClickAbilityTypes } from '../1Enums/LeftClickAbilityEnums.js';
 import { NormalAnimation, ScaledAnimation } from '../2Definitions/AnimationDefinition.js';
@@ -54,7 +54,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Pistol,
+            magazineClass:          MagazineClasses.Ammo9MM,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 10,
             maxMagazineAmmoCount:       1,
@@ -120,7 +120,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Pistol,
+            magazineClass:          MagazineClasses.Ammo9MM,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 15,
             maxMagazineAmmoCount:       1,
@@ -186,7 +186,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Pistol,
+            magazineClass:          MagazineClasses.Ammo9MM,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 8,
             maxMagazineAmmoCount:       1,
@@ -252,7 +252,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Pistol,
+            magazineClass:          MagazineClasses.Ammo9MM,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 5,
             maxMagazineAmmoCount:       1,
@@ -310,7 +310,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Magnum,
+            magazineClass:          MagazineClasses.Ammo45ACP,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 8,
             maxMagazineAmmoCount:       1,
@@ -372,7 +372,7 @@ const FirearmObjects = {
                 staticAnimation: StaticShootAnimations.smg.mp5Shoot})
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.AR,
+            magazineClass:          MagazineClasses.Ammo762MM,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 30,
             maxMagazineAmmoCount:       1,
@@ -438,7 +438,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.AR,
+            magazineClass:          MagazineClasses.Ammo762MM,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 30,
             maxMagazineAmmoCount:       1,
@@ -500,7 +500,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.AR,
+            magazineClass:          MagazineClasses.Ammo762MM,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 20,
             maxMagazineAmmoCount:       1,
@@ -564,7 +564,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Shotgun,
+            magazineClass:          MagazineClasses.ShotgunShell,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 20,
             maxMagazineAmmoCount:       1,
@@ -632,7 +632,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Shotgun,
+            magazineClass:          MagazineClasses.ShotgunShell,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 6,
             maxMagazineAmmoCount:       1,
@@ -687,7 +687,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.Shotgun,
+            magazineClass:          MagazineClasses.ShotgunShell,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 10,
             maxMagazineAmmoCount:       1,
@@ -757,7 +757,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.AR,
+            magazineClass:          MagazineClasses.Ammo762MM,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 5,
             maxMagazineAmmoCount:       1,
@@ -808,7 +808,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.TeslaGun,
+            magazineClass:          MagazineClasses.Tesla,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 1,
             maxMagazineAmmoCount:       3,
@@ -858,7 +858,7 @@ const FirearmObjects = {
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
-            magazineClass:          MagazineClasses.GrenadeLauncher,
+            magazineClass:          MagazineClasses.Grenade,
             usableAmmoClasses:      [BulletAmmoClasses.Normal],
             maxMagazineItemStackAmount: 6,
             maxMagazineAmmoCount:       1,

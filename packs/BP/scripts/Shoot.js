@@ -1,6 +1,6 @@
 import { Direction, Entity, EntityComponentTypes, EntityHealthComponent, MolangVariableMap, Player, system, world } from '@minecraft/server';
 import * as FirearmDef from './2Definitions/FirearmDefinition.js';
-import { AnimationUtil, CustomVectorUtil, DamageUtil, EntityUtil, FirearmUtil, ItemUtil, NumberUtil, RayCastUtil, SoundsUtil, VectorUtil } from './Utilities.js';
+import { AnimationUtil, CustomVectorUtil, DamageUtil, EntityUtil, FirearmNameUtil, FirearmUtil, ItemUtil, NumberUtil, RayCastUtil, SoundsUtil, VectorUtil } from './Utilities.js';
 import { Global } from './Global.js';
 //import { automaticMagazineSwap } from './Detectors/AutoMagSwapDetection.js';
 import * as Reload from './Reload.js';
@@ -72,7 +72,11 @@ function shoot(player, firearm) {
         console.error(`Could not find firearmObject of type ${typeof(firearm)} in Shoot()`);
     }
     renewAmmoCount(player);
-}   
+    const firearmContainerSlot = ItemUtil.getSelectedContainerSlot(player);
+    if(firearmContainerSlot !== null) {
+        FirearmNameUtil.renewFirearmName(firearmContainerSlot, firearm);
+    }
+}
 
 /**
  * 

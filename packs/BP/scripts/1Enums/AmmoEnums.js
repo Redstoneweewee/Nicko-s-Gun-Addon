@@ -55,7 +55,8 @@ const ExploiveAmmoClasses = {
 */
 const FirearmAmmoClasses = {
    ...BulletAmmoClasses,
-   ...ShotgunAmmoClasses
+   ...ShotgunAmmoClasses,
+    ...ExploiveAmmoClasses
 };
 
 
