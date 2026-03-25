@@ -362,7 +362,7 @@ function calculateDamage(distance, gunObject) {
         return gunObject.damageDropoff.damage.min;
     }
     else if(distance >= gunObject.damageDropoff.dropOff.min) {
-        return gunObject.damageDropoff.damage.mapLinear(distance, gunObject.damageDropoff.dropOff.min, gunObject.damageDropoff.dropOff.max);
+        return gunObject.damageDropoff.damage.mapLinear(distance, gunObject.damageDropoff.dropOff.max, gunObject.damageDropoff.dropOff.min);
     }
     return gunObject.damageDropoff.damage.max;
 }
