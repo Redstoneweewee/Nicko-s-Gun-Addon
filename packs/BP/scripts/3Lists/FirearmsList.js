@@ -629,6 +629,7 @@ const FirearmObjects = {
         normalName:             "USP\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
         manualAmmoEject:      false,
+        alwaysEndCock:        false,
         firingMode:             Enums.FiringModes.Semi,
         firingRate:             0,
         bulletsPerShot:         1,
@@ -694,6 +695,7 @@ const FirearmObjects = {
         normalName:             "Luger\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
         manualAmmoEject:      false,
+        alwaysEndCock:        false,
         firingMode:             Enums.FiringModes.Semi,
         firingRate:             0,
         bulletsPerShot:         1,
@@ -758,6 +760,7 @@ const FirearmObjects = {
         normalName:             "Makarov\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
         manualAmmoEject:      false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -822,6 +825,7 @@ const FirearmObjects = {
         normalName:             "Magnum Revolver\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
         manualAmmoEject:      false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -878,6 +882,7 @@ const FirearmObjects = {
         normalName:             "M92F\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
         manualAmmoEject:      false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -886,7 +891,7 @@ const FirearmObjects = {
         }),
         headshotMultiplier: 2,
         pierce:                 1,
-        knockbackAmount:        Enums.KnockbackAmounts.High,
+        knockbackAmount:        Enums.KnockbackAmounts.VeryLow,
         range:                  500,
         animationAttributes: [
             new ScaledAnimation({
@@ -942,6 +947,7 @@ const FirearmObjects = {
         normalName:             "Kar98\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     false,
         manualAmmoEject:      true,
+        alwaysEndCock:        true,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         1,
@@ -1010,6 +1016,7 @@ const FirearmObjects = {
         normalName:             "StG 44\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
         manualAmmoEject:      false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               540,  //ideally, use multiples of 60
         bulletsPerShot:         1,
@@ -1074,6 +1081,7 @@ const FirearmObjects = {
         normalName:             "MP-5\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
         manualAmmoEject:      false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               900,  //ideally, use multiples of 60
         bulletsPerShot:         1,
@@ -1134,6 +1142,7 @@ const FirearmObjects = {
         normalName:             "M4\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     true,
         manualAmmoEject:      false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               480,  //ideally, use multiples of 60
         bulletsPerShot:         1,
@@ -1196,6 +1205,7 @@ const FirearmObjects = {
         normalName:             "Benelli Shotgun\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     false,
         manualAmmoEject:      false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         10,
@@ -1250,6 +1260,7 @@ const FirearmObjects = {
         normalName:             "AGM Shotgun\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     false,
         manualAmmoEject:      false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         bulletsPerShot:         10,
@@ -1315,6 +1326,7 @@ const FirearmObjects = {
         normalName:             "Striker Shotgun\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:     false,
         manualAmmoEject:      false,
+        alwaysEndCock:        true,
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               200,
         bulletsPerShot:         1,
@@ -1333,11 +1345,11 @@ const FirearmObjects = {
             }),
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.shotgun.strikerReloadOpenPort,
-                scaleDurationToValue: 5
+                scaleDurationToValue: 6
             }),
             new ScaledAnimation({
                 staticAnimation:      StaticReloadAnimations.shotgun.strikerReloadClosePort,
-                scaleDurationToValue: 5
+                scaleDurationToValue: 10
             }),
             new NormalAnimation({
                 staticAnimation: StaticShootAnimations.shotgun.strikerShoot
@@ -1377,6 +1389,7 @@ const FirearmObjects = {
         normalName:             "RPG-7\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:   false,
         manualAmmoEject:        false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         animationAttributes: [
@@ -1426,6 +1439,7 @@ const FirearmObjects = {
         normalName:             "NATIC Grenade Launcher\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:   false,
         manualAmmoEject:        false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         animationAttributes: [
@@ -1476,6 +1490,7 @@ const FirearmObjects = {
         normalName:             "Tesla Gun\n§7[Right-Click/Hold to shoot]",
         hasMagazineWhenEmpty:   false,
         manualAmmoEject:        false,
+        alwaysEndCock:        false,
         firingMode:               Enums.FiringModes.Semi,
         firingRate:               0,
         damage:                 30, 

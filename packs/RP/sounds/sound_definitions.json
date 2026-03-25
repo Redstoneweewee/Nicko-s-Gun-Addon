@@ -639,13 +639,98 @@
             }
          ]
       },
-      "firearm.explosion" : {
-         "max_distance" : 200.0,
-         "sounds" : [
+       "firearm.explosion" : {
+          "max_distance" : 200.0,
+          "sounds" : [
 				{
-            "name": "sounds/explosions/explosion"
-            }
-         ]
-      }
-   }
+             "name": "sounds/explosions/explosion"
+             }
+          ]
+       },
+
+
+       "firearm.tesla_gun_shoot" : {
+          "max_distance" : 200.0,
+          "sounds" : [
+				{
+             "name": "sounds/shoot/tesla_gun_shoot",
+             "volume" : 1.0
+             }
+          ]
+       },
+       "firearm.tesla_gun_hit" : {
+          "max_distance" : 200.0,
+          "sounds" : [
+				{
+             "name": "sounds/hit/tesla_gun_hit",
+             "volume" : 1.5
+             }
+          ]
+       },
+
+
+       "firearm.tesla_gun_reload_magazine_in" : {
+          "max_distance" : 80.0,
+          "sounds" : [
+				{
+             "name": "sounds/reload/tesla_gun/tesla_gun_in",
+             "volume" : 1.0
+             }
+          ]
+       },
+       "firearm.tesla_gun_activate" : {
+          "max_distance" : 80.0,
+          "sounds" : [
+				{
+             "name": "sounds/reload/tesla_gun/tesla_gun_activate",
+             "volume" : 1.0
+             }
+          ]
+       },
+       "firearm.tesla_gun_deactivate" : {
+          "max_distance" : 80.0,
+          "sounds" : [
+				{
+             "name": "sounds/reload/tesla_gun/tesla_gun_deactivate",
+             "volume" : 1.0
+             }
+          ]
+       },
+
+
+       "firearm.holster_weapon_out" : {
+          "max_distance" : 80.0,
+          "sounds" : [
+				{
+             "name": "sounds/reload/holster/holster_out_1",
+             "volume" : 1.0
+             },
+				{
+             "name": "sounds/reload/holster/holster_out_2",
+             "volume" : 1.0
+             },
+				{
+             "name": "sounds/reload/holster/holster_out_3",
+             "volume" : 1.0
+             }
+          ]
+       },
+       "firearm.holster_weapon_in" : {
+          "max_distance" : 80.0,
+          "sounds" : [
+				{
+             "name": "sounds/reload/holster/holster_in_1",
+             "volume" : 1.0
+             },
+				{
+             "name": "sounds/reload/holster/holster_in_2",
+             "volume" : 1.0
+             },
+				{
+             "name": "sounds/reload/holster/holster_in_3",
+             "volume" : 1.0
+             }
+          ]
+       }
+    }
 }

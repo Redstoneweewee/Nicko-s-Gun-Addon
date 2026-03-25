@@ -12,7 +12,17 @@
 			"materials": [ { "*": "Material.firearm" } ]
 		},
 		"controller.render.tesla_gun": {
-			"textures": [ "Texture.tesla_gun" ],
+			"arrays": {
+				"textures": {
+					"array.one": [
+						"texture.tesla_gun_0",
+						"texture.tesla_gun_1",
+						"texture.tesla_gun_2",
+						"texture.tesla_gun_3"
+					]
+				}
+			},
+			"textures": [ "array.one[v.tesla_gun_bullet_count]" ],
 			"geometry": "Geometry.tesla_gun",
 			"materials": [ { "*": "Material.tesla_gun" } ]
 		},

@@ -7,6 +7,7 @@ import { renewAmmoCount } from '../AmmoText.js';
 import { AnimationLink } from '../AnimationLink.js';
 import { AnimationTypes } from '../1Enums/AnimationEnums.js';
 import { MagazineTypeIds, MagazineTypes } from '../1Enums/MagazineEnums.js';
+import { FirearmTypeIds } from '../1Enums/FirearmEnums.js';
 
 
 
@@ -35,6 +36,8 @@ function holdingFirearmDetectionPart1(player) {
  * @param {Player} player 
  */
 function holdingFirearmDetectionPart2(player) {
+    tryRenewTeslaGunBulletCount(player);
+
     if(FirearmUtil.isSwitchingFirearm(player)) {
         tryResetCurrentFirearmId(player);
         tryResetCurrentFirearmItemStack(player);
@@ -53,6 +56,31 @@ function holdingFirearmDetectionPart2(player) {
 //---------------------- Ran in Main.js ----------------------
 export { holdingFirearmDetectionPart1, holdingFirearmDetectionPart2 };
 //---------------------- Ran in Main.js ----------------------
+
+
+/**
+ * 
+ * @param {Player} player 
+ */
+function tryRenewTeslaGunBulletCount(player) {
+    const propertyEnum = Global.PlayerDynamicProperties.animation.tesla_gun_bullet_count;
+    const selectedItemStack = ItemUtil.getSelectedItemStack(player);
+    if(selectedItemStack === undefined || selectedItemStack.typeId !== FirearmTypeIds.TeslaGun) {
+        if(player.getDynamicProperty(propertyEnum) === 0) { return; }
+        player.setDynamicProperty(propertyEnum, 0);
+        AnimationLink.renewClientAnimationVariable(player, propertyEnum);
+        return;
+    }
+
+    const firearmId = FirearmIdUtil.getFirearmId(selectedItemStack);
+    const ammoCount = Number.isNaN(firearmId)
+        ? FirearmUtil.getItemAmmoUsingItemStack(selectedItemStack)
+        : FirearmUtil.getWorldAmmoUsingId(firearmId) ?? FirearmUtil.getItemAmmoUsingItemStack(selectedItemStack);
+    const bulletCount = Math.max(0, Math.min(3, Math.floor(ammoCount ?? 0)));
+    if(player.getDynamicProperty(propertyEnum) === bulletCount) { return; }
+    player.setDynamicProperty(propertyEnum, bulletCount);
+    AnimationLink.renewClientAnimationVariable(player, propertyEnum);
+}
 
 
 /**
@@ -165,7 +193,6 @@ function tryReplaceOffhandItem(player) {
     if(offhandContainerSlot === null) { return; }
     
     player.setDynamicProperty(Global.PlayerDynamicProperties.animation.has_last_casing_in_chamber, firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber));
-    console.log(`firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber): ${firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.hasLastCasingInChamber)}`);
     AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.has_last_casing_in_chamber);
 
     const magazineTypeId = String(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.magazineTypeId));
@@ -227,6 +254,12 @@ function tryReplaceOffhandItem(player) {
         try { magazineItemStack = new ItemStack(magazineTypeId+"_empty", 1); }
         catch { console.error(`Magazine ${magazineTypeId} does not have an empty counterpart.`); return; }
     }
+
+    if(firearmObject.alwaysEndCock === true) {
+        player.setDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload, true);
+        AnimationLink.renewClientAnimationVariable(player, Global.PlayerDynamicProperties.animation.should_cock_on_reload);
+    }
+
     const ammoCount = FirearmUtil.getWorldAmmoUsingId(FirearmIdUtil.getFirearmId(firearmItemStack));
     if(ammoCount === undefined) { return; }
     const magazineObject = FirearmUtil.getMagazineObjectFromItemStackBoth(magazineItemStack);

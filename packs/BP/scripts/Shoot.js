@@ -1,6 +1,6 @@
 import { Direction, Entity, EntityComponentTypes, EntityHealthComponent, MolangVariableMap, Player, system, world } from '@minecraft/server';
 import * as FirearmDef from './2Definitions/FirearmDefinition.js';
-import { AnimationUtil, CustomVectorUtil, DamageUtil, EntityUtil, FirearmUtil, ItemUtil, NumberUtil, RayCastUtil, VectorUtil } from './Utilities.js';
+import { AnimationUtil, CustomVectorUtil, DamageUtil, EntityUtil, FirearmUtil, ItemUtil, NumberUtil, RayCastUtil, SoundsUtil, VectorUtil } from './Utilities.js';
 import { Global } from './Global.js';
 //import { automaticMagazineSwap } from './Detectors/AutoMagSwapDetection.js';
 import * as Reload from './Reload.js';
@@ -220,6 +220,7 @@ function shootTeslaGun(player, teslaGun) {
     for(const target of targetsHit) {
         anyHits = true;
         DamageUtil.dealDamageWithMultiplier(target, teslaGun.damage);
+        SoundsUtil.playSound(player, "firearm.tesla_gun_hit", target.location, teslaGun.range, 1, 0.9, 1.1);
     }
 
     //player.camera.fade({fadeColor: {red: 0.43529, green: 0.88627, blue: 0.98823}, fadeTime: {fadeInTime: 0, holdTime: 0.02, fadeOutTime: 0.1}});
@@ -271,15 +272,15 @@ function doShootRayCasts(player, gun) {
         catch { }
         
     }
-
     const lastBlockRayCast = player.dimension.getBlockFromRay(headLocation, shootDirection, { maxDistance: gun.range, includeLiquidBlocks: false, includePassableBlocks: false  });
 
     if(lastBlockRayCast !== undefined) {
+        //console.log(lastBlockRayCast.);
         hitBlock = true;
         blockDirection = lastBlockRayCast.face;
-        hitPosition = new Vector3(lastBlockRayCast.block.location.x, lastBlockRayCast.block.location.y, lastBlockRayCast.block.location.z).add(lastBlockRayCast.faceLocation).sub(new Vector3(shootDirection.x, shootDirection.y, shootDirection.z).multiplyScalar(0.0001));
-        hitPosition.sub(new Vector3(shootDirection.x, shootDirection.y, shootDirection.z).multiplyScalar(0.02));
-        hitPosition.y += 0.1;
+        console.log(`blockDirection: ${blockDirection}`);
+        hitPosition = new Vector3(lastBlockRayCast.block.location.x, lastBlockRayCast.block.location.y, lastBlockRayCast.block.location.z);
+        hitPosition.add(new Vector3(lastBlockRayCast.faceLocation.x, lastBlockRayCast.faceLocation.y, lastBlockRayCast.faceLocation.z));
     }
 
     const entityRayCast = RayCastUtil.getValidEntitiesFromRayCast(player, headLocation, shootDirection, gun.range);
@@ -319,13 +320,28 @@ function doShootRayCasts(player, gun) {
     drawBulletTrace(player, shootDirection);
 
     if(hitBlock) { 
-        const lastBlockRayCast = player.dimension.getBlockFromRay(headLocation, shootDirection, { maxDistance: gun.range, includeLiquidBlocks: false, includePassableBlocks: false  });
+        const lastGlassBlockRayCast = player.dimension.getBlockFromRay(headLocation, shootDirection, { maxDistance: gun.range, includeLiquidBlocks: false, includePassableBlocks: false  });
         let isGlassBlock = false;
         try {
-            if(lastBlockRayCast !== undefined) { isGlassBlock = glassBlocks.includes(lastBlockRayCast.block.typeId); }
+            if(lastGlassBlockRayCast !== undefined) { isGlassBlock = glassBlocks.includes(lastGlassBlockRayCast.block.typeId); }
         }
         catch {}
         if(!isGlassBlock) {
+            //Normalize hitPosition cuz it's broken right now for some reason
+            hitPosition.y += 0.1;
+            if(blockDirection === Direction.Up) {
+                hitPosition.y += 1;
+            }
+            else if(blockDirection === Direction.South) {
+                hitPosition.z += 1;
+            }
+            else if(blockDirection === Direction.East) {
+                hitPosition.x += 1;
+            }
+            hitPosition.sub(new Vector3(shootDirection.x, shootDirection.y, shootDirection.z).multiplyScalar(0.02));
+
+
+            console.log(`hitPosition: ${hitPosition.x}, ${hitPosition.y}, ${hitPosition.z}`);
             drawSparkParticle(player, shootDirection, hitPosition);
             drawShootHoleParticle(player, blockDirection, hitPosition);
         }
@@ -389,7 +405,7 @@ function calculateShootDirection(player, firearm, initialOffset = {x:0, y:0}) {
     const offsetVector = Mat3.mul(basis, offset);
     //console.log(`offsetVector: ${offsetVector.x}, ${offsetVector.y}, ${offsetVector.z}`);
     //console.log(`view: ${view.x}, ${view.y}, ${view.z}`);
-    return new Vector3(view.x, view.y, view.z).add(offsetVector);
+    return new Vector3(view.x, view.y, view.z).add(offsetVector).normalize();
 }
 
 /**

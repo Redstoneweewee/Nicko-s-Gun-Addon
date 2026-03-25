@@ -142,6 +142,7 @@
           "v.recoil                        = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:recoil');",
           "v.is_running                    = q.is_sprinting;",
           "v.has_last_casing_in_chamber    = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:has_last_casing_in_chamber');",
+          "v.tesla_gun_bullet_count        = (v.is_paperdoll || q.is_in_ui || !q.equipped_item_any_tag('slot.weapon.mainhand', 'yes:tesla_gun')) ? 0 : q.property('yes:tesla_gun_bullet_count');",
 
           "v.movement_direction            = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:movement_direction');",
           "v.movement_direction_prop_val   = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:movement_direction_value')/1.5;",
@@ -439,6 +440,9 @@
         "striker_reload_first_person":         "animation.striker_reload_first_person",
         "striker_reload_open_port_first_person":    "animation.striker_reload_open_port_first_person",
         "striker_reload_close_port_first_person":    "animation.striker_reload_close_port_first_person",
+        "striker_reload_third_person":         "animation.striker_reload_third_person",
+        "striker_reload_open_port_third_person":    "animation.striker_reload_open_port_third_person",
+        "striker_reload_close_port_third_person":    "animation.striker_reload_close_port_third_person",
 
         "magnum_reload_first_person":         "animation.magnum_reload_first_person",
         "magnum_reload_third_person":         "animation.magnum_reload_third_person",
@@ -547,7 +551,8 @@
           "rpg7_blast_back": "yes:rpg7_blast_back",
           "rpg7_blast_front": "yes:rpg7_blast_front",
           "natic_blast_front": "yes:natic_blast_front",
-          "tesla_gun_magic": "yes:tesla_gun_magic"
+          "tesla_gun_magic": "yes:tesla_gun_magic",
+          "tesla_gun_muzzle_flash": "yes:tesla_gun_muzzle_flash"
       },
       "enable_attachables": true
     }

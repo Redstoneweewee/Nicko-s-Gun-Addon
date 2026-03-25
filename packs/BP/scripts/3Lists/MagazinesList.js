@@ -127,6 +127,7 @@ const MagazineObjects = {
             shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
                 damage:    new NumRange(3, 15),
+                directDamage: 10,
                 knockback: new Vec2Range({x:0.7, y:0.2}, {x:1.2, y:0.3}),
                 range:     5
             }),
@@ -179,6 +180,7 @@ const MagazineObjects = {
             shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
                 damage:    new NumRange(3, 10),
+                directDamage: 0,
                 knockback: new Vec2Range({x:0.7, y:0.2}, {x:1.2, y:0.3}),
                 range:     5
             }),
@@ -225,6 +227,7 @@ const MagazineObjects = {
             shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
                 damage:    new NumRange(0, 0),
+                directDamage: 0,
                 knockback: new Vec2Range({x:0, y:0}, {x:1, y:0}),
                 range:     0
             }),
@@ -289,7 +292,13 @@ const MagazineObjects = {
             ],
             explosiveEffect: new Def.ExplosiveEffectAttribute({
                 range: 10,
-                applyPoison: {damage: 1, ticksPerDamage: 5, duration: 240}
+                applyPoison: new Def.ApplyPoison({
+                    damage: 1, ticksPerDamage: 5, duration: 240,
+                    potionEffects: [
+                        new Def.PotionEffect({potionType: "slowness", amplifier: 0, duration: 200}),
+                        new Def.PotionEffect({potionType: "weakness", amplifier: 0, duration: 200})
+                    ]
+                })
             })
         }),
         particleAttribute: new Def.ParticleAttribute({
@@ -318,6 +327,7 @@ const MagazineObjects = {
             shooterKnockback: {x:-1, y:-0.1}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
                 damage:    new NumRange(3, 24),
+                directDamage: 99999, //guaranteed direct hit kill if within blast radius
                 knockback: new Vec2Range({x:0.7, y:0.2}, {x:1.2, y:0.3}),
                 range:     8 
             }),

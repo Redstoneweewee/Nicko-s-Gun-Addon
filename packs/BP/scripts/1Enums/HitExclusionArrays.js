@@ -32,7 +32,7 @@ const excludedTypes = [
  * @type {GameMode[]}
  */
 const excludedGameModes = [
-    GameMode.creative,
+    GameMode.Creative,
     GameMode.spectator
 ]
 

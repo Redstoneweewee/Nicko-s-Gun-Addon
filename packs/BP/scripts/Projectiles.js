@@ -37,7 +37,7 @@ world.afterEvents.projectileHitBlock.subscribe(eventData => {
 });
 
 world.afterEvents.projectileHitEntity.subscribe(eventData => {
-    if(ExplosivesList.Rockets.includes(eventData.projectile.typeId)) { explodeExplosive(eventData.projectile, eventData.location, "entity"); }
+    if(ExplosivesList.Rockets.includes(eventData.projectile.typeId)) { explodeExplosive(eventData.projectile, eventData.location, "entity", eventData.getEntityHit().entity); }
     else if(ExplosivesList.Grenades.includes(eventData.projectile.typeId)) { tryBounceExplosive(eventData, false); }
 });
 
@@ -108,8 +108,9 @@ function trackGrenade(eventData) {
  * @param {Entity} explosive 
  * @param {import('@minecraft/server').Vector3} location 
  * @param {"block"|"entity"} hitType
+ * @param {Entity} [hitEntity]
  */
-function explodeExplosive(explosive, location, hitType) {
+function explodeExplosive(explosive, location, hitType, hitEntity) {
     if(!EntityUtil.isActuallyValid(explosive)) {
         cleanUpExplosion(explosive, "removed unloaded explosive");
         return;
@@ -135,7 +136,6 @@ function explodeExplosive(explosive, location, hitType) {
     }
 
 
-
     attribute.explosiveCamerashakes.forEach(explosiveCamerashake => {
         const players = dimension.getPlayers({location: location, maxDistance: explosiveCamerashake.range});
         players.forEach(player => {
@@ -148,6 +148,9 @@ function explodeExplosive(explosive, location, hitType) {
     const damageAttribute = attribute.explosiveDamage;
     if(damageAttribute) {
         numberOfTargets = DamageUtil.dealExplosionDamageAndKnockback(dimension, location, damageAttribute.range, damageAttribute.damage.min, damageAttribute.damage.max, damageAttribute.knockback.min, damageAttribute.knockback.max);
+        if(hitEntity && damageAttribute.directDamage > 0) {
+            DamageUtil.dealDamageNoMultiplier(hitEntity, damageAttribute.directDamage);
+        }
     }
     const effectAttribute = attribute.explosiveEffect;
     if(effectAttribute) {
@@ -178,6 +181,9 @@ function explodeExplosive(explosive, location, hitType) {
                 for(const target of targets) {
                     if(target instanceof Player) {
                         target.addEffect("poison", Math.min(poisonAttribute.ticksPerDamage+2, 24), {amplifier: 0, showParticles: false});
+                    }
+                    for(const potionEffect of poisonAttribute.potionEffects) {
+                        target.addEffect(potionEffect.potionType, potionEffect.duration, {amplifier: potionEffect.amplifier, showParticles: false});
                     }
                     DamageUtil.dealDamageNoMultiplier(target, 1);
                 }

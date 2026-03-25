@@ -637,6 +637,21 @@ const StaticReloadAnimations = {
             duration: 60, //in ticks
             type:     Enums.AnimationTypes.ReloadBoth,
             animationSounds: [
+                {
+                    soundId: "firearm.tesla_gun_deactivate",
+                    timeout: 7,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.tesla_gun_reload_magazine_in",
+                    timeout: 39,
+                    soundRange: 40
+                },
+                {
+                    soundId: "firearm.tesla_gun_activate",
+                    timeout: 48,
+                    soundRange: 40
+                }
             ]
         }),
     }
@@ -1175,12 +1190,12 @@ const StaticShootAnimations = {
             type:     Enums.AnimationTypes.Shoot,
             animationSounds: [
                 {
-                    soundId: "firearm.rpg7_shoot",
+                    soundId: "firearm.tesla_gun_shoot",
                     timeout: 0,
                     soundRange: 281.25
                 }
             ],
-            animationId: "animation.rpg7_shoot"
+            animationId: "animation.tesla_gun_shoot"
         })
     }
 }

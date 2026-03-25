@@ -113,6 +113,7 @@ class Global {
             reload_open_cock_animation_multiplier: "reload_open_cock_animation_multiplier",   //float reset across reload
             reload_cock_animation_multiplier: "reload_cock_animation_multiplier",             //float reset across reload
             has_last_casing_in_chamber: "has_last_casing_in_chamber",                         //float reset across reload
+            tesla_gun_bullet_count: "tesla_gun_bullet_count",                                 //int reset across reload
             is_reload_swapping:         "is_reload_swapping",      //Reload Type enum {swap, no_swap} reset across reload
         }
     }

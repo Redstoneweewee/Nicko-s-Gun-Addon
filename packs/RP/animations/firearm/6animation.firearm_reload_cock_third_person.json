@@ -883,6 +883,102 @@
 				}
 			}
 		},
+		"animation.striker_reload_open_port_third_person": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.3,
+			"override_previous_animation": true,
+			"anim_time_update": "q.anim_time + q.delta_time*v.reload_open_cock_animation_multiplier",
+			"bones": {
+				"rightItem": {
+					"rotation": {
+						"0.0": [0, 5, 0],
+						"0.25": [0, -7.5, 0]
+					},
+					"position": {
+						"0.0": [2.3309, -1, -0.35269],
+						"0.25": [1.43965, -1.02772, 0.11315]
+					}
+				},
+				"leftArm_custom": {
+					"rotation": {
+						"0.0": [-104.48026, -0.47097, -32.77122],
+						"0.1": [-105.76111, -11.87882, -57.50434],
+						"0.22": [-101.15691, -23.98011, -87.64089]
+					},
+					"position": {
+						"0.0": [-0.25, 0.5, -1.445],
+						"0.22": [-0.25, 0.5, -1.775]
+					}
+				},
+				"rightArm_custom": {
+					"rotation": [-103.28449, -6.25704, 43.66187],
+					"position": [2.5, 0, 0]
+				},
+				"magazine_old": {
+					"scale": 0
+				},
+				"arm_hipfire_pivot": {
+					"rotation": [0, -5, 0]
+				},
+				"loading_port": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.22": [0, 0, -107.5]
+					}
+				},
+				"shell": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.striker_reload_close_port_third_person": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.25,
+			"override_previous_animation": true,
+			"anim_time_update": "q.anim_time + q.delta_time*v.reload_cock_animation_multiplier",
+			"bones": {
+				"arm_hipfire_pivot": {
+					"rotation": [0, -5, 0]
+				},
+				"rightItem": {
+					"rotation": {
+						"0.0": [0, -7.5, 0],
+						"0.25": [0, 5, 0]
+					},
+					"position": {
+						"0.0": [1.43965, -1.02772, 0.11315],
+						"0.25": [2.3309, -1, -0.35269]
+					}
+				},
+				"leftArm_custom": {
+					"rotation": {
+						"0.03": [-101.15691, -23.98011, -87.64089],
+						"0.15": [-105.76111, -11.87882, -57.50434],
+						"0.25": [-104.48026, -0.47097, -32.77122]
+					},
+					"position": {
+						"0.03": [-0.25, 0.5, -1.775],
+						"0.25": [-0.25, 0.5, -1.445]
+					}
+				},
+				"rightArm_custom": {
+					"rotation": [-103.28449, -6.25704, 43.66187],
+					"position": [2.5, 0, 0]
+				},
+				"magazine_old": {
+					"scale": 0
+				},
+				"loading_port": {
+					"rotation": {
+						"0.03": [0, 0, -107.5],
+						"0.25": [0, 0, 0]
+					}
+				},
+				"shell": {
+					"scale": 0
+				}
+			}
+		},
 		"animation.stg44_reload_cock_third_person": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.75,

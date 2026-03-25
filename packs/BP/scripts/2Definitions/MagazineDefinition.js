@@ -93,12 +93,14 @@ class ExplosiveDamage {
     /**
      * @param {{
      * damage: NumRange,
+     * directDamage: number,
      * knockback: Vec2Range,
      * range: number
      * }} def 
      */
     constructor(def) {
         this.damage = def.damage;
+        this.directDamage = def.directDamage;
         this.knockback = def.knockback;
         this.range     = def.range;
     }
@@ -143,12 +145,44 @@ class ExplosiveStunAttribute {
     }
 }
 
+class PotionEffect {
+    /**
+     * @param {{
+     * potionType: "slowness"|"weakness"|"poison"|"wither"|"hunger"|"nausea"|"resistance"|"strength"|"speed"|"haste"|"regeneration"|"absorption"|"saturation"|"levitation"|"fatal_poison"|"instant_damage"|"instant_health"|"jump_boost"|"slow_falling"|"water_breathing"|"invisibility"|"night_vision"|"blindness",
+     * amplifier: number,
+     * duration: number
+     * }} def
+     */
+    constructor(def) {
+        this.potionType = def.potionType;
+        this.amplifier = def.amplifier;
+        this.duration = def.duration;
+    }
+}
+
+class ApplyPoison {
+    /**
+     * @param {{
+     * damage: number,
+     * ticksPerDamage: number,
+     * duration: number,
+     * potionEffects?: PotionEffect[]
+     * }} def
+     */
+    constructor(def) {
+        this.damage = def.damage;
+        this.ticksPerDamage = def.ticksPerDamage;
+        this.duration = def.duration;
+        this.potionEffects = def.potionEffects ?? [];
+    }
+}
+
 class ExplosiveEffectAttribute {
     /**
      * @param {{
      * range: number,
      * setFire?: {height: number, chance: number},
-     * applyPoison?: {damage: number, ticksPerDamage: number, duration: number},
+     * applyPoison?: ApplyPoison,
      * }} def 
      */
     constructor(def) {
@@ -179,4 +213,4 @@ class ParticleAttribute {
     }
 }
 
-export { Magazine, ExplosiveMagazineAmmo, ProjectileAttribute, ExplosiveDamage, ExplosiveCamerashakeAttribute, ExplosiveStunAttribute, ExplosiveEffectAttribute, ParticleAttribute };
+export { Magazine, ExplosiveMagazineAmmo, ProjectileAttribute, ExplosiveDamage, ExplosiveCamerashakeAttribute, ExplosiveStunAttribute, ExplosiveEffectAttribute, ParticleAttribute, PotionEffect, ApplyPoison };

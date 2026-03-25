@@ -1364,8 +1364,9 @@ class DamageUtil {
     static dealDamageNoMultiplier(target, damage) {
         const healthComponent = target.getComponent(EntityComponentTypes.Health);
         if(!(healthComponent instanceof EntityHealthComponent)) { return; }
+        if(target instanceof Player && target.getGameMode() !== GameMode.Survival && target.getGameMode() !== GameMode.Adventure) { return; }
 
-        healthComponent.setCurrentValue(healthComponent.currentValue-damage);
+        healthComponent.setCurrentValue(Math.max(healthComponent.currentValue-damage, 0));
         target.applyDamage(0.001, {cause: EntityDamageCause.override});
     }
 
@@ -1379,7 +1380,7 @@ class DamageUtil {
 
         if(target instanceof Player) {
             if(target.getGameMode() !== GameMode.Survival && target.getGameMode() !== GameMode.Adventure) { return; }
-            healthComponent.setCurrentValue(healthComponent.currentValue-damage);
+            healthComponent.setCurrentValue(Math.max(healthComponent.currentValue-damage, 0));
         }
         else {
             healthComponent.setCurrentValue(Math.max(healthComponent.currentValue-damage*1.5, 0)/**mobs get dealt 1.5x dmg from all sources*/);
@@ -2136,6 +2137,7 @@ class ColorUtil {
      * @returns {import('@minecraft/server').RGB}
      */
     static getBlockColor(block) {
+        try {
         let blockColor = (BlockColors.blockColorsMap.get(block.typeId));
 
         if(blockColor === undefined) {
@@ -2160,6 +2162,11 @@ class ColorUtil {
         }
         //console.log(`color: #${ColorUtil.rgbToHex(blockColor)}`);
         return blockColor;
+        }
+        catch(error) {
+            console.error(`error in getBlockColor for block ${block.typeId}: ${error}`);
+            return BlockColors.defaultColor;
+        }
     }
 
     /**

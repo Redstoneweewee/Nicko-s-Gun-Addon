@@ -38,7 +38,7 @@
             },
             "minecraft:cooldown": {
                 "category": "yes:tesla_gun",
-                "duration": 0
+                "duration": 3
             }
         }
     }

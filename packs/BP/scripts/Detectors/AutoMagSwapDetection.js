@@ -24,7 +24,7 @@ import { Global } from "../Global.js";
 //     console.log("automatic reload");
 
 //     //If the player is in creative, use the full counterpart of the empty one as a replacement
-//     if(player.getGameMode() === GameMode.creative) {
+//     if(player.getGameMode() === GameMode.Creative) {
 //         if(tryRenewCreativeAmmo(player, isTactical)) { return; }
 //     }
 
@@ -58,8 +58,8 @@ import { Global } from "../Global.js";
 //     }  
 
 //     //If mostAmmoIndex === -1, then could not find usable magazine
-//     if(mostAmmoIndex === -1 && player.getGameMode() !== GameMode.creative) { console.log("could not find any usable magazines."); return; }
-//     else if(mostAmmoIndex === -1 && player.getGameMode() === GameMode.creative) { FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player); return; }
+//     if(mostAmmoIndex === -1 && player.getGameMode() !== GameMode.Creative) { console.log("could not find any usable magazines."); return; }
+//     else if(mostAmmoIndex === -1 && player.getGameMode() === GameMode.Creative) { FirearmUtil.tryRenewFirearmAmmoOnMagazineChange(player); return; }
     
 //     //Swaps offhand item with magazine
 //     const magazineContainerSlot = container.getSlot(mostAmmoIndex);

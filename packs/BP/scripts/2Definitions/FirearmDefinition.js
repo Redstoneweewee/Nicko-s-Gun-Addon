@@ -15,6 +15,7 @@ class Firearm {
      * firingRate:           number,
      * hasMagazineWhenEmpty: boolean,
      * manualAmmoEject:      boolean,
+     * alwaysEndCock:        boolean,
      * spreadDegrees:        NumRange,
      * magazineAttribute:    MagazineAttribute,
      * scopeAttribute:       ScopeAttribute,
@@ -29,6 +30,7 @@ class Firearm {
         this.firingRate           = def.firingRate;
         this.hasMagazineWhenEmpty = def.hasMagazineWhenEmpty;
         this.manualAmmoEject      = def.manualAmmoEject;
+        this.alwaysEndCock        = def.alwaysEndCock;
         this.spreadDegrees   = def.spreadDegrees;
         
         this.magazineAttribute   = def.magazineAttribute;
