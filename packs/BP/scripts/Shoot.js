@@ -16,6 +16,7 @@ import { SettingsTypes } from './1Enums/SettingsEnums.js';
 import { SettingsUtil } from './UtilitiesInit.js';
 import { MathUtils } from './Math/MathUtils.js';
 import { ExplosiveMagazineAmmo } from './2Definitions/MagazineDefinition.js';
+import { ScaledAnimation } from './2Definitions/AnimationDefinition.js';
 //import { Mat3, RandVec } from '@madlad3718/mcveclib';
 
 
@@ -94,14 +95,23 @@ function shootGun(player, gun) {
 
     const newAmmoCount = FirearmUtil.tryConsumeFirearmAmmo(player, gun, 1);
     FirearmUtil.tryAddScreenshakeRecoil(player, gun);
+
+    /**@type {typeof AnimationTypes[keyof typeof AnimationTypes][]} */
+    const animationTypes = [AnimationTypes.Shoot, AnimationTypes.ShootWithAmmo, AnimationTypes.ShootOutOfAmmo];    
+    let timeMultiplier = 1;
+    for(let attributes of gun.animationAttributes) {
+        if(!animationTypes.includes(attributes.staticAnimation.type) || !(attributes instanceof ScaledAnimation)) { continue; }
+        timeMultiplier = attributes.staticAnimation.duration/attributes.scaleDurationToValue;
+    }
+
     
-    let playedSound = AnimationUtil.playAnimationWithSound(player, gun, [AnimationTypes.Shoot]) === undefined ? false : true;
+    let playedSound = AnimationUtil.playAnimationWithSound(player, gun, [AnimationTypes.Shoot], timeMultiplier) === undefined ? false : true;
     if(!playedSound) {
         if(newAmmoCount !== undefined && newAmmoCount > 0) {
-            AnimationUtil.playAnimationWithSound(player, gun, [AnimationTypes.ShootWithAmmo]);
+            AnimationUtil.playAnimationWithSound(player, gun, [AnimationTypes.ShootWithAmmo], timeMultiplier);
         }
         else if(newAmmoCount === 0) {
-            AnimationUtil.playAnimationWithSound(player, gun, [AnimationTypes.ShootOutOfAmmo]);
+            AnimationUtil.playAnimationWithSound(player, gun, [AnimationTypes.ShootOutOfAmmo], timeMultiplier);
         }
     }
     //player.setDynamicProperty(Global.PlayerDynamicProperties.script.isFirstShot, false);
@@ -205,6 +215,7 @@ function shootTeslaGun(player, teslaGun) {
         teslaGun.verticalFov,
         teslaGun.range, 
         0);
+        /*
     CustomVectorUtil.drawEffect(
         player.dimension,
         new Vector3(player.getHeadLocation().x, player.getHeadLocation().y, player.getHeadLocation().z),
@@ -215,6 +226,7 @@ function shootTeslaGun(player, teslaGun) {
         teslaGun.verticalFov,
         teslaGun.range, 
         0);
+        */
     const targetsHit = possibleTargets.filter((_, index) => hitArray[index]);
     
     for(const target of targetsHit) {

@@ -638,7 +638,7 @@ const FirearmObjects = {
             dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
-        pierce:                 1,
+        pierce:                 3,
         knockbackAmount:        Enums.KnockbackAmounts.VeryLow,
         range:                  500,
         animationAttributes: [
@@ -700,7 +700,8 @@ const FirearmObjects = {
         firingRate:             0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
+            damage:  new NumRange(14, 14),
+            dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -765,7 +766,8 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
+            damage:  new NumRange(18, 18),
+            dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -830,10 +832,11 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
+            damage:  new NumRange(80, 80),
+            dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
-        pierce:                 1,
+        pierce:                 4,
         knockbackAmount:        Enums.KnockbackAmounts.VeryHigh,
         range:                  500,
         animationAttributes: [
@@ -887,7 +890,8 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
+            damage:  new NumRange(13, 13),
+            dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
         pierce:                 1,
@@ -952,10 +956,11 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
+            damage:  new NumRange(24, 24),
+            dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
-        pierce:                 1,
+        pierce:                 3,
         knockbackAmount:        Enums.KnockbackAmounts.High,
         range:                  500,
         animationAttributes: [
@@ -1021,10 +1026,11 @@ const FirearmObjects = {
         firingRate:               540,  //ideally, use multiples of 60
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
+            damage:  new NumRange(7, 7),
+            dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
-        pierce:                 1,
+        pierce:                 2,
         knockbackAmount:        Enums.KnockbackAmounts.High,
         range:                  500,
         animationAttributes: [
@@ -1086,10 +1092,11 @@ const FirearmObjects = {
         firingRate:               900,  //ideally, use multiples of 60
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
+            damage:  new NumRange(6, 6),
+            dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
-        pierce:                 1,
+        pierce:                 4,
         knockbackAmount:        Enums.KnockbackAmounts.VeryLow,
         range:                  500,
         animationAttributes: [
@@ -1147,10 +1154,10 @@ const FirearmObjects = {
         firingRate:               480,  //ideally, use multiples of 60
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:  new NumRange(10, 10),dropOff: new NumRange(0, 0),
+            damage:  new NumRange(8, 8),dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,
-        pierce:                 1,
+        pierce:                 2,
         knockbackAmount:        Enums.KnockbackAmounts.Low,
         range:                  500,
         animationAttributes: [
@@ -1210,11 +1217,11 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         10,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:     new NumRange(5, 35),
-            dropOff:     new NumRange(1.5, 10)
+            damage:     new NumRange(20, 35),
+            dropOff:     new NumRange(5, 10)
         }),
         headshotMultiplier:     2,
-        pierce:                 4,
+        pierce:                 3,
         knockbackAmount:        Enums.KnockbackAmounts.VeryHigh,
         range:                  50,
         animationAttributes: [
@@ -1266,7 +1273,7 @@ const FirearmObjects = {
         bulletsPerShot:         10,
         damageDropoff: new Def.DamageDropoffAttribute({
             damage:     new NumRange(5, 35),
-            dropOff:     new NumRange(1.5, 10)
+            dropOff:     new NumRange(5, 10)
         }),
         headshotMultiplier:     2,
         pierce:                 4,
@@ -1285,11 +1292,13 @@ const FirearmObjects = {
                 staticAnimation:      StaticReloadAnimations.shotgun.agmReloadCock,
                 scaleDurationToValue: 12
             }),
-            new NormalAnimation({
-                staticAnimation: StaticShootAnimations.shotgun.agmShootWithAmmo
+            new ScaledAnimation({
+                staticAnimation: StaticShootAnimations.shotgun.agmShootWithAmmo,
+                scaleDurationToValue: 12
             }), 
-            new NormalAnimation({
-                staticAnimation: StaticShootAnimations.shotgun.agmShootOutOfAmmo
+            new ScaledAnimation({
+                staticAnimation: StaticShootAnimations.shotgun.agmShootOutOfAmmo,
+                scaleDurationToValue: 12
             })
         ],
         magazineAttribute: new Def.MagazineAttribute({
@@ -1329,13 +1338,13 @@ const FirearmObjects = {
         alwaysEndCock:        true,
         firingMode:               Enums.FiringModes.Auto,
         firingRate:               200,
-        bulletsPerShot:         1,
+        bulletsPerShot:         8,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:     new NumRange(5, 35),
-            dropOff:     new NumRange(1.5, 10)
+            damage:     new NumRange(1.5, 45),
+            dropOff:     new NumRange(5, 10)
         }),
         headshotMultiplier:     2,
-        pierce:                 4,
+        pierce:                 5,
         knockbackAmount:        Enums.KnockbackAmounts.Medium,
         range:                  50,
         animationAttributes: [

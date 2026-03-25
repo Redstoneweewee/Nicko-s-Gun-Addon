@@ -199,6 +199,7 @@
           "v.reload_first_ammo_animation_multiplier = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_first_ammo_animation_multiplier');",
           "v.reload_open_cock_animation_multiplier  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_open_cock_animation_multiplier');",
           "v.reload_cock_animation_multiplier       = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:reload_cock_animation_multiplier');",
+          "v.shoot_animation_multiplier             = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:shoot_animation_multiplier');",
 
 
           "v.rotation_offset_x  = (v.is_paperdoll || q.is_in_ui) ? 0 : q.property('yes:rotation_offset_x')/10000;",
