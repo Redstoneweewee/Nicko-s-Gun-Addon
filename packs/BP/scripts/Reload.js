@@ -171,7 +171,7 @@ function tryAutomaticReload(player, reloadType) {
         if(player.getGameMode() === GameMode.Creative) {
             const oldMagazineName = FirearmUtil.getMagazineObjectFromItemStackBoth(oldMagazineItemStack)?.itemTypeId;
             if(oldMagazineItemStack !== undefined && oldMagazineName !== undefined) {
-                newMagazineItemStack = new ItemStack(oldMagazineName, FirearmUtil.getMagazineObjectFromItemStackBoth(oldMagazineItemStack)?.maxAmmo);
+                newMagazineItemStack = new ItemStack(oldMagazineName);
             }
             if(newMagazineItemStack !== undefined) {
                 handleBeforeReload(1, player, 0, reloadType, oldMagazineItemStack, newMagazineItemStack, firearmObject);
