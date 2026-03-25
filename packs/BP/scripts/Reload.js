@@ -490,13 +490,12 @@ function handleReloadAnimation(iteration, player, totalReloadTimeInTicks, newMag
                 if(Number.isNaN(cockMultiplier) ) { cockMultiplier = 1.0; }
                 let idObjs = AnimationUtil.playAnimationWithSound(player, firearmObject, [AnimationTypes.ReloadCock], cockMultiplier, reloadTimeInTicks);
                 if(idObjs !== undefined) { soundTimeoutIdObjects = [...soundTimeoutIdObjects, ...idObjs]; }
-
                 reloadTimeInTicks += attribute.scaleDurationToValue;
             }
         }
 
         //adding end cock time to totalReloadTimeInTicks
-        if(iteration === 1 && player.getDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload) === true &&
+        if(player.getDynamicProperty(Global.PlayerDynamicProperties.animation.should_cock_on_reload) === true &&
            (magazineObject.magazineType === MagazineTypes.DurabilityBased || 
             magazineObject.magazineType === MagazineTypes.StackBased && newAmmoCount === finalMagazineItemStack?.amount)
         ) {
