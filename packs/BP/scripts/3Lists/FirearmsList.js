@@ -832,7 +832,7 @@ const FirearmObjects = {
         firingRate:               0,
         bulletsPerShot:         1,
         damageDropoff: new Def.DamageDropoffAttribute({
-            damage:  new NumRange(80, 80),
+            damage:  new NumRange(20, 20),
             dropOff: new NumRange(0, 0),
         }),
         headshotMultiplier: 2,

@@ -1,0 +1,193 @@
+Weapons Data (Sorted by Damage)
+================================
+
+Headshots: +100% damage
+
+Fire Rate Key:
+- Auto weapons: RPM (rounds per minute)
+- Semi weapons: Seconds between shots
+
+
+=== AMMO TYPES ===
+- 7.62mm:     MP5, M4, Kar98, StG44
+- 9mm:        M92F, USP, Makarov, Luger
+- 12 Gauge:   Benelli, AGM, Striker
+- .45 ACP:    Magnum
+- Grenades:   NATIC Grenade Launcher
+- Rockets:    RPG-7
+- Tesla Ammo: Tesla Gun
+
+
+
+=== PISTOLS ===
+
+USP
+  - Type: Pistol (Semi)
+  - Damage: 10
+  - Magazine: 10
+  - Fire Rate: 0.2 sec
+  - Knockback: 0
+  - Piercing: 3
+
+M92F
+  - Type: Pistol (Semi)
+  - Damage: 13
+  - Magazine: 15
+  - Fire Rate: 0.1 sec
+  - Knockback: 0
+  - Piercing: 1
+
+Luger
+  - Type: Pistol (Semi)
+  - Damage: 14
+  - Magazine: 8
+  - Fire Rate: 0.2 sec
+  - Knockback: 2
+  - Piercing: 1
+  
+Makarov
+  - Type: Pistol (Semi)
+  - Damage: 18
+  - Magazine: 5
+  - Fire Rate: 0.2 sec
+  - Knockback: 1
+  - Piercing: 1
+
+Magnum
+  - Type: Revolver (Semi)
+  - Damage: 20
+  - Magazine: 8
+  - Fire Rate: 0.6 sec
+  - Knockback: 4
+  - Piercing: 4
+
+
+
+
+=== SUBMACHINE GUNS ===
+
+MP5
+  - Type: Submachine Gun (Auto)
+  - Damage: 6
+  - Magazine: 30
+  - Fire Rate: 900 RPM
+  - Knockback: 0
+  - Piercing: 4
+
+
+
+
+=== ASSAULT RIFLES ===
+
+StG44
+  - Type: Assault Rifle (Auto)
+  - Damage: 7
+  - Magazine: 30
+  - Fire Rate: 540 RPM
+  - Knockback: 2
+  - Piercing: 2
+
+M4
+  - Type: Assault Rifle (Auto)
+  - Damage: 8
+  - Magazine: 20
+  - Fire Rate: 480 RPM
+  - Knockback: 1
+  - Piercing: 2
+
+
+
+
+=== SHOTGUNS ===
+
+Striker
+  - Type: Shotgun (Auto)
+  - Damage: 1.5-45
+  - Magazine: 20 shells
+  - Fire Rate: 200 RPM
+  - Reload Speed: 0.5 sec per shell
+  - Knockback: Medium
+  - Piercing: 5
+  - Spread: 2-3 degrees
+  - Damage Modifiers (if all pellets hit):
+    - Under 5 blocks: 45 damage
+    - After 10 blocks: 1.5 damage
+
+AGM
+  - Type: Shotgun (Semi)
+  - Damage: 5-35
+  - Magazine: 6 shells
+  - Fire Rate: 1.0 sec
+  - Reload Speed: 1.0 sec per shell
+  - Knockback: High
+  - Piercing: 4
+  - Spread: 2-3 degrees
+  - Damage Modifiers (if all pellets hit):
+    - Under 5 blocks: 35 damage
+    - After 10 blocks: 5 damage
+
+Benelli
+  - Type: Shotgun (Semi)
+  - Damage: 20-35
+  - Magazine: 10 shells
+  - Fire Rate: 0.5 sec
+  - Reload Speed: 1.0 sec per shell
+  - Knockback: Very High
+  - Piercing: 3
+  - Spread: 2-3 degrees
+  - Damage Modifiers (if all pellets hit):
+    - Under 5 blocks: 35 damage
+    - After 10 blocks: 20 damage
+
+
+
+
+=== SNIPER RIFLES ===
+
+Kar98
+  - Type: Sniper Rifle (Semi)
+  - Damage: 24
+  - Magazine: 5
+  - Fire Rate: 1.0 sec
+  - Knockback: 2
+  - Piercing: 3
+
+
+
+
+=== MISC ===
+
+Tesla Gun
+  - Type: Special (Semi)
+  - Damage: 30
+  - Magazine: 3
+  - Fire Rate: 1.5 sec
+  - Knockback: High
+  - Effect: Hits all enemies on screen
+
+NATIC
+  - Type: Grenade Launcher (Semi)
+  - Damage: 40
+  - Magazine: 6
+  - Fire Rate: 0.65 sec
+  - Reload Speed: 0.65 sec per shell
+  - Knockback: 2
+  - Piercing: 4
+  - Grenade Types: Explosive, Flame, Acid, Flash:
+    - Explosive: 
+    - Flame: 
+    - Acid: 
+    - Flash: 
+  
+
+
+RPG-7
+  - Type: Explosive (Semi)
+  - Hit Damage: 9999 (Instant Kill)
+  - Explosion Damage: 20-60
+  - Magazine: 1 rocket
+  - Fire Rate: N/A
+  - Reload Speed: 2.0 sec
+  - Knockback: Very High
+  - Piercing: N/A
+  - Effect: Instant kill on impact

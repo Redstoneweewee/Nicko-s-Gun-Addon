@@ -1,6 +1,7 @@
 import { Global } from '../Global.js';
 import * as Def from '../2Definitions/MagazineDefinition.js';
 import * as Enums from "../1Enums/MagazineEnums.js"
+import * as FirearmEnums from "../1Enums/FirearmEnums.js"
 import { ItemStack } from '@minecraft/server';
 import { MagazineClasses } from '../1Enums/MagazineEnums.js';
 import { BulletAmmoClasses } from '../1Enums/AmmoEnums.js';
@@ -128,7 +129,7 @@ const MagazineObjects = {
             explosiveDamage: new Def.ExplosiveDamage({
                 damage:    new NumRange(3, 15),
                 directDamage: 10,
-                knockback: new Vec2Range({x:0.7, y:0.2}, {x:1.2, y:0.3}),
+                knockback: new Vec2Range(FirearmEnums.KnockbackAmounts.High, FirearmEnums.KnockbackAmounts.VeryHigh),
                 range:     5
             }),
             explosiveCamerashakes: [
@@ -181,7 +182,7 @@ const MagazineObjects = {
             explosiveDamage: new Def.ExplosiveDamage({
                 damage:    new NumRange(3, 10),
                 directDamage: 0,
-                knockback: new Vec2Range({x:0.7, y:0.2}, {x:1.2, y:0.3}),
+                knockback: new Vec2Range(FirearmEnums.KnockbackAmounts.High, FirearmEnums.KnockbackAmounts.VeryHigh),
                 range:     5
             }),
             explosiveCamerashakes: [
@@ -228,7 +229,7 @@ const MagazineObjects = {
             explosiveDamage: new Def.ExplosiveDamage({
                 damage:    new NumRange(0, 0),
                 directDamage: 0,
-                knockback: new Vec2Range({x:0, y:0}, {x:1, y:0}),
+                knockback: new Vec2Range(FirearmEnums.KnockbackAmounts.High, FirearmEnums.KnockbackAmounts.VeryHigh),
                 range:     0
             }),
             explosiveCamerashakes: [
@@ -326,9 +327,9 @@ const MagazineObjects = {
             shootDirectionOffset: {x:0, y:0.0075}, //x:left-right, y:up-down
             shooterKnockback: {x:-1, y:-0.1}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
-                damage:    new NumRange(3, 24),
+                damage:    new NumRange(20, 60),
                 directDamage: 99999, //guaranteed direct hit kill if within blast radius
-                knockback: new Vec2Range({x:0.7, y:0.2}, {x:1.2, y:0.3}),
+                knockback: new Vec2Range(FirearmEnums.KnockbackAmounts.High, FirearmEnums.KnockbackAmounts.VeryHigh),
                 range:     8 
             }),
             explosiveCamerashakes: [
