@@ -554,7 +554,8 @@
           "rpg7_blast_front": "yes:rpg7_blast_front",
           "natic_blast_front": "yes:natic_blast_front",
           "tesla_gun_magic": "yes:tesla_gun_magic",
-          "tesla_gun_muzzle_flash": "yes:tesla_gun_muzzle_flash"
+          "tesla_gun_muzzle_flash": "yes:tesla_gun_muzzle_flash",
+          "tesla_gun_muzzle_flash_middle": "yes:tesla_gun_muzzle_flash_middle"
       },
       "enable_attachables": true
     }

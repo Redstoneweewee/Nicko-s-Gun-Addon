@@ -2762,8 +2762,26 @@
 				}
 			},
 			"particle_effects": {
-				"0.0": {
-					"effect": "tesla_gun_muzzle_flash",
+				"0.0": [
+					{
+						"effect": "tesla_gun_muzzle_flash",
+						"locator": "tesla_gun_muzzle"
+					},
+					{
+						"effect": "tesla_gun_muzzle_flash_middle",
+						"locator": "tesla_gun_muzzle"
+					}
+				],
+				"0.08": {
+					"effect": "tesla_gun_muzzle_flash_middle",
+					"locator": "tesla_gun_muzzle"
+				},
+				"0.14": {
+					"effect": "tesla_gun_muzzle_flash_middle",
+					"locator": "tesla_gun_muzzle"
+				},
+				"0.16": {
+					"effect": "tesla_gun_muzzle_flash_middle",
 					"locator": "tesla_gun_muzzle"
 				}
 			}
