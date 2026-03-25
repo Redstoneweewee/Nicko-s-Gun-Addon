@@ -9,8 +9,8 @@ Fire Rate Key:
 
 
 === AMMO TYPES ===
-- 7.62mm:     MP5, M4, Kar98, StG44
-- 9mm:        M92F, USP, Makarov, Luger
+- 7.62mm:     MP5,     M4,  Kar98,   StG44
+- 9mm:        M92F,    USP, Makarov, Luger
 - 12 Gauge:   Benelli, AGM, Striker
 - .45 ACP:    Magnum
 - Grenades:   NATIC Grenade Launcher
@@ -26,40 +26,45 @@ USP
   - Damage: 10
   - Magazine: 10
   - Fire Rate: 0.2 sec
-  - Knockback: 0
+  - Knockback: Very Low
   - Piercing: 3
+  - Reload Speed: 1.5 sec
 
 M92F
   - Type: Pistol (Semi)
   - Damage: 13
   - Magazine: 15
   - Fire Rate: 0.1 sec
-  - Knockback: 0
+  - Knockback: Very Low
   - Piercing: 1
+  - Reload Speed: 2.0 sec
 
 Luger
   - Type: Pistol (Semi)
   - Damage: 14
   - Magazine: 8
   - Fire Rate: 0.2 sec
-  - Knockback: 2
+  - Knockback: High
   - Piercing: 1
+  - Reload Speed: 1.6 sec
   
 Makarov
   - Type: Pistol (Semi)
   - Damage: 18
   - Magazine: 5
   - Fire Rate: 0.2 sec
-  - Knockback: 1
+  - Knockback: Low
   - Piercing: 1
+  - Reload Speed: 1.5 sec
 
 Magnum
   - Type: Revolver (Semi)
   - Damage: 20
   - Magazine: 8
   - Fire Rate: 0.6 sec
-  - Knockback: 4
+  - Knockback: Very High
   - Piercing: 4
+  - Reload Speed: 3.0 sec
 
 
 
@@ -71,8 +76,9 @@ MP5
   - Damage: 6
   - Magazine: 30
   - Fire Rate: 900 RPM
-  - Knockback: 0
+  - Knockback: Very Low
   - Piercing: 4
+  - Reload Speed: 1.75 sec
 
 
 
@@ -84,16 +90,18 @@ StG44
   - Damage: 7
   - Magazine: 30
   - Fire Rate: 540 RPM
-  - Knockback: 2
+  - Knockback: Medium
   - Piercing: 2
+  - Reload Speed: 1.5 sec
 
 M4
   - Type: Assault Rifle (Auto)
-  - Damage: 8
+  - Damage: 10
   - Magazine: 20
   - Fire Rate: 480 RPM
-  - Knockback: 1
+  - Knockback: Low
   - Piercing: 2
+  - Reload Speed: 1.75 sec
 
 
 
@@ -105,10 +113,10 @@ Striker
   - Damage: 1.5-45
   - Magazine: 20 shells
   - Fire Rate: 200 RPM
-  - Reload Speed: 0.5 sec per shell
+  - Reload Speed: 0.65 sec per shell
   - Knockback: Medium
   - Piercing: 5
-  - Spread: 2-3 degrees
+  - Spread: 3-4.5 degrees
   - Damage Modifiers (if all pellets hit):
     - Under 5 blocks: 45 damage
     - After 10 blocks: 1.5 damage
@@ -118,7 +126,7 @@ AGM
   - Damage: 5-35
   - Magazine: 6 shells
   - Fire Rate: 1.0 sec
-  - Reload Speed: 1.0 sec per shell
+  - Reload Speed: 0.75 sec per shell
   - Knockback: High
   - Piercing: 4
   - Spread: 2-3 degrees
@@ -131,10 +139,10 @@ Benelli
   - Damage: 20-35
   - Magazine: 10 shells
   - Fire Rate: 0.5 sec
-  - Reload Speed: 1.0 sec per shell
+  - Reload Speed: 0.75 sec per shell
   - Knockback: Very High
   - Piercing: 3
-  - Spread: 2-3 degrees
+  - Spread: 1-2 degrees
   - Damage Modifiers (if all pellets hit):
     - Under 5 blocks: 35 damage
     - After 10 blocks: 20 damage
@@ -146,10 +154,10 @@ Benelli
 
 Kar98
   - Type: Sniper Rifle (Semi)
-  - Damage: 24
+  - Damage: 35
   - Magazine: 5
   - Fire Rate: 1.0 sec
-  - Knockback: 2
+  - Knockback: Very High
   - Piercing: 3
 
 
@@ -167,17 +175,35 @@ Tesla Gun
 
 NATIC
   - Type: Grenade Launcher (Semi)
-  - Damage: 40
   - Magazine: 6
   - Fire Rate: 0.65 sec
-  - Reload Speed: 0.65 sec per shell
-  - Knockback: 2
-  - Piercing: 4
+  - Reload Speed: 1.0 sec per shell
   - Grenade Types: Explosive, Flame, Acid, Flash:
     - Explosive: 
+      - Hit Damage: 50
+      - Explosion Damage: 15-30
+      - Explosion Range: 5 blocks
+      - Knockback: Very High
     - Flame: 
+      - Hit Damage: 50
+      - Explosion Damage: 10-20
+      - Explosion Range: 5 blocks
+      - Set Fire Range: 6 blocks
+      - Set Fire Chance: 65%
+      - Knockback: Medium
     - Acid: 
+      - Hit Damage: 50
+      - Poision Duration: 12.0 secs (only poisons if you stand in range)
+      - Weakness Duration: 10.0 secs
+      - Slowness Duration: 10.0 secs
+      - Poision Range: 10 blocks
+      - Knockback: Low
     - Flash: 
+      - Hit Damage: 50
+      - Movement Stun Duration: 1.0-5.0 secs
+      - Attack Stun Duration: 1.0-4.0 secs
+      - Stun Range: 12 blocks
+      - Knockback: Very High
   
 
 
@@ -185,9 +211,8 @@ RPG-7
   - Type: Explosive (Semi)
   - Hit Damage: 9999 (Instant Kill)
   - Explosion Damage: 20-60
+  - Explosion Range: 
   - Magazine: 1 rocket
-  - Fire Rate: N/A
   - Reload Speed: 2.0 sec
   - Knockback: Very High
-  - Piercing: N/A
   - Effect: Instant kill on impact

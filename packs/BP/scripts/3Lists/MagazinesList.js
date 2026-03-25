@@ -127,8 +127,8 @@ const MagazineObjects = {
             shootDirectionOffset: {x:0, y:0.035}, //x:left-right, y:up-down
             shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
-                damage:    new NumRange(3, 15),
-                directDamage: 10,
+                damage:    new NumRange(15, 30),
+                directDamage: 30,
                 knockback: new Vec2Range(FirearmEnums.KnockbackAmounts.High, FirearmEnums.KnockbackAmounts.VeryHigh),
                 range:     5
             }),
@@ -180,9 +180,9 @@ const MagazineObjects = {
             shootDirectionOffset: {x:0, y:0.035}, //x:left-right, y:up-down
             shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
-                damage:    new NumRange(3, 10),
-                directDamage: 0,
-                knockback: new Vec2Range(FirearmEnums.KnockbackAmounts.High, FirearmEnums.KnockbackAmounts.VeryHigh),
+                damage:    new NumRange(10, 20),
+                directDamage: 50,
+                knockback: new Vec2Range(FirearmEnums.KnockbackAmounts.Medium, FirearmEnums.KnockbackAmounts.Medium),
                 range:     5
             }),
             explosiveCamerashakes: [
@@ -228,7 +228,7 @@ const MagazineObjects = {
             shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
             explosiveDamage: new Def.ExplosiveDamage({
                 damage:    new NumRange(0, 0),
-                directDamage: 0,
+                directDamage: 50,
                 knockback: new Vec2Range(FirearmEnums.KnockbackAmounts.High, FirearmEnums.KnockbackAmounts.VeryHigh),
                 range:     0
             }),
@@ -246,11 +246,11 @@ const MagazineObjects = {
             ],
             explosiveStun: new Def.ExplosiveStunAttribute({
                 screenDuration:         new NumRange(2, 25),
-                aimRestrictionDuration: new NumRange(10, 30),
-                screenDebrisDuration:   new NumRange(20, 150),
-                screenFlashDuration:    new NumRange(10, 50),
+                aimRestrictionDuration: new NumRange(20, 80),
+                screenDebrisDuration:   new NumRange(40, 200),
+                screenFlashDuration:    new NumRange(20, 100),
                 movementRestrictionMultiplier: new NumRange(0.5, 1),
-                movementRestrictionDuration: new NumRange(50, 10),
+                movementRestrictionDuration: new NumRange(100, 20),
                 range: 12
             })
         }),
@@ -279,6 +279,12 @@ const MagazineObjects = {
             spawnOffset: {x: 0.05, y:-0.15, z:2.1}, //x:left-right, y:up-down, z:forward-backward
             shootDirectionOffset: {x:0, y:0.035}, //x:left-right, y:up-down
             shooterKnockback: {x:0, y:0}, //x:forwar-backward, y:up-down
+            explosiveDamage: new Def.ExplosiveDamage({
+                damage:    new NumRange(0, 0),
+                directDamage: 50,
+                knockback: new Vec2Range(FirearmEnums.KnockbackAmounts.Low, FirearmEnums.KnockbackAmounts.Low),
+                range:     0
+            }),
             explosiveCamerashakes: [
                 new Def.ExplosiveCamerashakeAttribute({
                     intensity: 0.02,
