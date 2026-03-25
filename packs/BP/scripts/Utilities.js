@@ -115,6 +115,7 @@ class StringUtil {
 }
 
 export { StringUtil };
+
 class IdUtil {
 
     /**
@@ -1836,25 +1837,26 @@ class FirearmNameUtil {
     }
 
     /**
-     * @param {ItemStack|undefined} magazineItemStack
+     * @param {ItemStack|undefined} firearmItemStack
      * @param {typeof MagazineTypeIds[keyof typeof MagazineTypeIds]} magazineTypeId
      * @param {boolean} isMagazineEmpty 
      * @returns {string}
      */
-    static #convertMagazineTypeIdToName(magazineItemStack, magazineTypeId, isMagazineEmpty) {
+    static #convertMagazineTypeIdToName(firearmItemStack, magazineTypeId, isMagazineEmpty) {
         if(magazineTypeId === MagazineTypeIds.None) { return "§7<§cNone§r§7>"; }
         const magazineClass = this.#convertMagazineTypeIdToMagazineClass(magazineTypeId);
         if(magazineClass === undefined) { return "§7<§cNone§r§7>"; }
-        if(magazineItemStack === undefined) { return "§7<§cNone§r§7>"; }
+        if(firearmItemStack === undefined) { return "§7<§cNone§r§7>"; }
         let name = "";
         //let numbers = magazineTypeId.match(/\d+/g);
-        let ammoCount = FirearmUtil.getItemAmmoUsingItemStack(magazineItemStack);
+        const firearmId = Number(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.id));
+        let ammoCount = FirearmUtil.getWorldAmmoUsingId(firearmId)??0;
         //if(numbers) {
         //    ammoCount = Number(numbers[numbers.length-1]);
         //}
-        if(ammoCount !== undefined) {
-            name += ammoCount.toString()+" ";
-        }
+        const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
+        const maxAmmo = firearmObject ? firearmObject.magazineAttribute.maxMagazineItemStackAmount : 0;
+        name += ColorUtil.getAmmoCountColored(ammoCount, maxAmmo)+" ";
         for(const [key, magClass] of TypeUtil.getIterable(MagazineClasses)) {
             if(magazineClass === magClass) {
                 const className = MagazineClassTextNames[key];
@@ -1867,7 +1869,7 @@ class FirearmNameUtil {
             }
         }
         if(isMagazineEmpty) {
-            name = "§7<§eEmpty "+name+"§7>";
+            name = "§7<§mOut of Ammo§7>";
         }
         else {
             name = "§7<§a"+name+"§7>";
@@ -1924,10 +1926,7 @@ class FirearmNameUtil {
         if(numbers === null) { return; }
         const maxAmmoCount = numbers[numbers.length-1];
 
-        let colorModifiedAmmoCount = String(ammoCount);
-        if(ammoCount <= magazineObject.maxAmmo/5) { colorModifiedAmmoCount = "§c"+colorModifiedAmmoCount+"§a"}
-        else if(ammoCount <= magazineObject.maxAmmo/3) { colorModifiedAmmoCount = "§6"+colorModifiedAmmoCount+"§a"}
-        else if(ammoCount <= magazineObject.maxAmmo/2) { colorModifiedAmmoCount = "§e"+colorModifiedAmmoCount+"§a"}
+        let colorModifiedAmmoCount = ColorUtil.getAmmoCountColored(ammoCount, magazineObject.maxAmmo);
         const ammoCountIndex = name.substring(0, name.lastIndexOf(maxAmmoCount)).lastIndexOf(maxAmmoCount);
         const endWithOrWithoutS = ammoCount === 1 ? name.substring(ammoCountIndex+maxAmmoCount.length, name.lastIndexOf("s"))+name.substring(name.lastIndexOf("s")+1) : name.substring(ammoCountIndex+maxAmmoCount.length);
         magazineItemStack.nameTag = "§r§f"+name.substring(0, ammoCountIndex)+colorModifiedAmmoCount+endWithOrWithoutS;
@@ -2222,6 +2221,22 @@ class ColorUtil {
         return { red: r, green: g, blue: b };
     }
 
+    /**
+     * Returns the ammo count as a color-coded string based on how full the magazine is.
+     * Colors: §c (red) at ≤1/5, §6 (orange) at ≤1/3, §e (yellow) at ≤1/2, §a (green) otherwise.
+     * @param {number} ammoCount 
+     * @param {number} maxAmmo 
+     * @returns {string}
+     */
+    static getAmmoCountColored(ammoCount, maxAmmo) {
+        let colored = String(ammoCount);
+        if(ammoCount === 0)               { colored = "§m" + colored; }
+        if(ammoCount <= maxAmmo / 5)      { colored = "§c" + colored; }
+        else if(ammoCount <= maxAmmo / 3) { colored = "§p" + colored; }
+        else if(ammoCount <= maxAmmo / 2) { colored = "§e" + colored; }
+        else                              { colored = "§a" + colored; }
+        return colored;
+    }
     
 }
 export { ColorUtil };

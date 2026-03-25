@@ -1,6 +1,6 @@
 import { Player } from "@minecraft/server";
 import { Global } from './Global.js';
-import { ItemUtil, FirearmUtil} from './Utilities.js';
+import { ItemUtil, FirearmUtil, ColorUtil } from './Utilities.js';
 import { MagazineTypes } from "./1Enums/MagazineEnums.js";
 /**
  * 
@@ -22,19 +22,20 @@ function renewAmmoCount(player) {
     const isMagazineEmpty = Boolean(firearmItemStack.getDynamicProperty(Global.FirearmDynamicProperties.isMagazineEmpty));
     if(ammoCount === undefined || isMagazineEmpty === undefined) { return; }
     if(isMagazineEmpty) {
-        player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§eOut of Ammo§e§l>`);
+        player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§mOut of Ammo§e§l>`);
     }
     else if(magazineObject === undefined) {
-        player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§cNo Magazine§e§l>`);
+        player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§mNo Magazine§e§l>`);
     }
     else if(firearm?.magazineAttribute.magazineClass !== magazineObject.magazineClass) {
-        player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§eWrong Magazine Type§e§l>`);
+        player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§mWrong Magazine Type§e§l>`);
     }
     else {
         const firearmObject = FirearmUtil.getFirearmObjectFromItemStack(firearmItemStack);
         if(firearmObject === undefined) { return; }
         const maxAmmo = magazineObject.magazineType === MagazineTypes.DurabilityBased ? magazineObject.maxAmmo : firearmObject.magazineAttribute.maxMagazineItemStackAmount;
-        player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§a${ammoCount}/${maxAmmo}§e§l>`);
+        const coloredAmmoCount = ColorUtil.getAmmoCountColored(ammoCount, maxAmmo);
+        player.onScreenDisplay.setActionBar(`Ammo: §l§e<§r§a${coloredAmmoCount}/${maxAmmo}§e§l>`);
     }
 }
 
